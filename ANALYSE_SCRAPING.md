@@ -118,6 +118,52 @@ maison). ROI faible vs 4escape. Stratégie : **4escape d'abord** (gros volume),
 puis handlers par-site **ciblés** pour les indés à valeur (un par plateforme :
 Bookeo, WooCommerce, puis Playwright pour le reste).
 
+## MAJ — investigation des pages de résa propres (4escape booking)
+
+Chaque enseigne 4escape a une page de résa `<company>.4escape.io` qui appelle
+en **POST** `/booking-data-json` avec `{UID, date, viewDuration (1-14)}`.
+
+**Ce que ça donne (réel, dès le 1er run) :**
+- ✅ **PRIX** : grille complète par nb de joueurs (`prices[n].amount_charged`,
+  en centimes). Ex. Lock Academy 55€→30€/pers (2→6 j), Majestic 60→32€,
+  Deep Inside 150→240€ (forfait groupe). ⚠️ le champ `mode` distingue
+  *per-player* / forfait — à normaliser (certaines grilles sont par groupe).
+- ✅ **Planning théorique complet** (tous les créneaux, durées, maxPlayers) sur
+  14 jours glissants → c'est le **dénominateur** de l'occupation.
+- ❌ **PAS l'occupation** : les créneaux réservés ne sont **pas retirés** (compte
+  de créneaux/jour identique au passé, présent et futur ⇒ template fixe).
+
+**Limites :**
+- **11/16 enseignes renvoient 401** sur l'API directe (verrouillée). Pour
+  celles-là : prix via leur site (WordPress affiche la grille) ou via une
+  enseigne sœur. La dispo reste accessible pour TOUTES via le proxy
+  escapegame.fr `upcoming`.
+- Le `roomId` 4escape ≠ mongoid escapegame.fr ⇒ on attache la grille au
+  **niveau enseigne** (les salles d'une marque partagent la grille).
+
+## RÉTROSPECTIF (question explicite) — réponse
+
+**Non, pas d'historique d'occupation passé récupérable.** Aucune des deux API
+n'expose les réservations passées :
+- `booking-data-json` accepte une date passée mais renvoie le **planning
+  théorique** (pas l'état réel) — inexploitable pour l'occupation rétro.
+- `upcoming` ne donne que le **prochain** créneau libre (futur).
+
+L'historique ne peut donc se construire que **vers l'avant**, par accumulation
+de snapshots (/30 min) : on a déjà tout le dénominateur (planning + prix), et on
+observe le remplissage des créneaux futurs au fil du temps → occupation réelle
+reconstruite à J+1, J+2… On ne pourra pas remonter avant la date de mise en
+service du scraper.
+
+## IDF élargi (question explicite)
+
+escapegame.fr expose des pages de communes de couronne (clichy, montreuil,
+boulogne, issy, versailles…) mais **0 card 4escape** dessus : la couronne est
+quasi exclusivement sur des plateformes non-4escape ⇒ **track par-site requis**.
+La couverture 4escape via escapegame.fr est donc **Paris-centrée** (56 salles).
+Élargir l'IDF = harvester les fiches venues (tous opérateurs) par commune puis
+résoudre leur plateforme une par une (chantier track-2).
+
 ## Prochaines étapes
 1. Wirer `escape_4escape.py` dans le workflow /30 min (accumulation historique).
 2. Élargir l'annuaire : villes IDF (les slugs suburbains testés ont renvoyé 0 →

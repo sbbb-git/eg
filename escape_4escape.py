@@ -33,6 +33,8 @@ import html
 import json
 import re
 import time
+import urllib.parse as up
+import uuid
 from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -44,11 +46,16 @@ CATALOG_FILE = "escape_4escape_catalog.json"
 OBS_DIR = "escape_data/4escape"          # 1 fichier par company (append-only)
 UA = ("Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0")
 
-# Villes IDF connues sur escapegame.fr (extensible). Paris = priorité.
+# Villes IDF présentes sur escapegame.fr (extensible). Paris = gros du volume
+# 4escape ; les communes de couronne ont surtout des venues non-4escape (track
+# par-site), mais on les harvest quand même pour capter les rares cards 4escape.
 IDF_CITIES_DEFAULT = [
     "paris", "clichy", "montreuil", "nanterre", "courbevoie", "malakoff",
     "meudon", "arcueil", "argenteuil", "bondy", "bry-sur-marne",
-    "la-garenne-colombes",
+    "la-garenne-colombes", "boulogne-billancourt", "issy-les-moulineaux",
+    "saint-maur-des-fosses", "vincennes", "creteil", "versailles",
+    "saint-denis", "asnieres-sur-seine", "levallois-perret", "neuilly-sur-seine",
+    "ivry-sur-seine", "puteaux", "rueil-malmaison", "cergy", "massy",
 ]
 
 
@@ -89,10 +96,10 @@ def _attrs(tag: str) -> dict:
 
 
 def harvest_city(city: str) -> list[dict]:
-    html = http(f"{DIR_BASE}/{city}/")
-    if not html:
+    page = http(f"{DIR_BASE}/{city}/")
+    if not page:
         return []
-    tags = re.findall(r'<[^>]*data-domain="https://availability\.4escape\.io[^>]*>', html)
+    tags = re.findall(r'<[^>]*data-domain="https://availability\.4escape\.io[^>]*>', page)
     rooms = []
     for t in tags:
         a = _attrs(t)
@@ -146,6 +153,93 @@ def harvest(cities: list[str]) -> dict:
     print(f"[harvest] total catalogue : {len(rooms)} salles, "
           f"{len(companies)} enseignes ({seen_now} vues ce run)")
     return out
+
+
+# ---------------------------------------------------------------------------
+# PRIX + planning : <company>.4escape.io/booking-data-json (POST)
+#   -> renvoie le PLANNING THÉORIQUE complet (tous créneaux) + GRILLE DE PRIX
+#      par nombre de joueurs. PAS l'occupation (créneaux réservés non retirés).
+#   Certaines enseignes renvoient 401 (API verrouillée) -> on skippe proprement.
+# ---------------------------------------------------------------------------
+
+def post_booking_data(company: str, date_str: str, view: int = 1):
+    base = f"https://{company}.4escape.io"
+    body = up.urlencode({"UID": uuid.uuid4().hex, "date": date_str,
+                         "viewDuration": view}).encode()
+    backoff = 3
+    for attempt in range(3):
+        try:
+            req = Request(base + "/booking-data-json", data=body, headers={
+                "User-Agent": UA, "Accept": "application/json, */*",
+                "X-Requested-With": "XMLHttpRequest", "Origin": base,
+                "Referer": base + "/", "Content-Type": "application/x-www-form-urlencoded"})
+            with urlopen(req, timeout=30) as r:
+                return json.loads(r.read(4_000_000).decode("utf-8", "replace"))
+        except HTTPError as e:
+            return {"_error": e.code}        # 401/403/404 : inutile de réessayer
+        except (URLError, TimeoutError, OSError, json.JSONDecodeError) as e:
+            if attempt < 2:
+                time.sleep(backoff); backoff *= 2
+    return {"_error": "fail"}
+
+
+def harvest_prices(catalog: dict) -> dict:
+    """Pour chaque enseigne, récupère la grille de prix + le nb de créneaux
+    hebdo par salle, et les attache au catalogue (idempotent)."""
+    rooms = catalog.get("rooms", {})
+    companies = catalog.get("companies", {})
+    today = datetime.now().strftime("%Y-%m-%d")
+    stats = {"ok": 0, "locked": 0, "rooms_priced": 0}
+    for comp in sorted(companies):
+        data = post_booking_data(comp, today, view=7)
+        if not isinstance(data, dict) or "_error" in data or not data.get("results"):
+            stats["locked"] += 1
+            companies[comp]["prices_status"] = (
+                f"locked:{data.get('_error')}" if isinstance(data, dict) else "locked")
+            time.sleep(0.6)
+            continue
+        stats["ok"] += 1
+        # grilles par roomId 4escape + planning (créneaux/semaine)
+        grids: dict[str, dict] = {}
+        slot_count: dict[str, int] = {}
+        for s in data["results"]:
+            rid = s.get("roomId")
+            slot_count[rid] = slot_count.get(rid, 0) + 1
+            if rid not in grids and s.get("prices"):
+                grids[rid] = {pc: round(p["amount_charged"] / 100, 2)
+                              for pc, p in s["prices"].items()}
+        # Le mongoid escapegame.fr ne matche pas toujours le roomId 4escape, mais
+        # toutes les salles d'une enseigne partagent (quasi) la même grille :
+        # on attache une grille REPRÉSENTATIVE au niveau enseigne + par salle.
+        # match exact prioritaire, sinon grille modale de l'enseigne.
+        modal = max(grids.values(), key=lambda g: sum(g.values())) if grids else None
+        companies[comp]["prix_grille"] = modal
+        if modal:
+            vals = [v for v in modal.values() if v]
+            companies[comp]["prix_min"] = min(vals) if vals else None
+            companies[comp]["prix_max"] = max(vals) if vals else None
+        for room_id, r in rooms.items():
+            if r.get("company") != comp:
+                continue
+            mongoid = room_id.split("/", 1)[1]
+            grid = grids.get(mongoid, modal)
+            if grid:
+                vals = [v for v in grid.values() if v]
+                r["prix_grille"] = grid
+                r["prix_min"] = min(vals) if vals else None
+                r["prix_max"] = max(vals) if vals else None
+                r["prix_source"] = "exact" if mongoid in grids else "enseigne"
+                r["slots_per_week"] = slot_count.get(mongoid)
+                stats["rooms_priced"] += 1
+        companies[comp]["prices_status"] = "ok"
+        print(f"[prices] {companies[comp]['company_name'][:30]:30} "
+              f"grille {modal}")
+        time.sleep(0.6)
+    catalog["_meta"]["prices_updated"] = now_iso()
+    write_json(CATALOG_FILE, catalog)
+    print(f"[prices] enseignes OK={stats['ok']} verrouillées={stats['locked']} "
+          f"| salles tarifées={stats['rooms_priced']}")
+    return catalog
 
 
 # ---------------------------------------------------------------------------
@@ -248,17 +342,23 @@ def _mark_disappearance(room_store: dict) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--harvest", action="store_true")
+    ap.add_argument("--prices", action="store_true", help="grilles de prix + planning")
     ap.add_argument("--scrape", action="store_true")
     ap.add_argument("--cities", default=",".join(IDF_CITIES_DEFAULT))
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
-    if not (args.harvest or args.scrape):
-        args.harvest = args.scrape = True
+    if not (args.harvest or args.scrape or args.prices):
+        args.harvest = args.prices = args.scrape = True
 
     cities = [c.strip() for c in args.cities.split(",") if c.strip()]
     catalog = read_json(CATALOG_FILE, {}) or {}
     if args.harvest:
         catalog = harvest(cities)
+    if args.prices:
+        if catalog.get("rooms"):
+            catalog = harvest_prices(catalog)
+        else:
+            print("[prices] catalogue vide — lance --harvest d'abord.")
     if args.scrape:
         if not catalog.get("rooms"):
             print("[scrape] catalogue vide — lance --harvest d'abord.")
