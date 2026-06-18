@@ -1,0 +1,60 @@
+name: escape-daily (catalogue + prix + annuaire IDF)
+
+# Rafraîchit chaque nuit le catalogue 4escape (settings + prix), l'annuaire IDF
+# complet (sitemap) et le géocodage. Données qui changent lentement.
+on:
+  schedule:
+    - cron: "30 3 * * *"     # 03h30 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: escape-daily
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore raw store cache
+        uses: actions/cache@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}
+          restore-keys: |
+            escape-data-
+
+      - name: Catalogue 4escape (harvest + enrich + prix)
+        run: python3 escape_4escape.py --harvest --enrich --prices
+        continue-on-error: true
+
+      - name: Annuaire IDF complet (sitemap + géocodage)
+        run: python3 escape_idf_directory.py
+        continue-on-error: true
+
+      - name: Géocodage enseignes
+        run: python3 escape_geocode.py
+        continue-on-error: true
+
+      - name: Recompute vues live
+        run: |
+          python3 escape_live_compute.py || true
+          python3 escape_4escape_compute.py || true
+
+      - name: Commit
+        run: |
+          git config user.name "escape-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add escape_4escape_catalog.json escape_4escape_live.json \
+                  escape_live_data.json escape_idf_directory.json \
+                  escape_geo_cache.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "data: refresh quotidien ${{ github.run_id }}"
+          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

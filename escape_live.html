@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Escape IDF · Live (données réelles)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root{--bg:#0b0d14;--card:#151823;--card2:#1d2130;--acc:#7c5cff;--acc2:#00d2a8;
+        --ok:#22c79b;--warn:#ffce5a;--bad:#ff5c7a;--txt:#eef0f7;--muted:#8b91a7;--line:#262b3a;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+       background:var(--bg);color:var(--txt);}
+  header{padding:16px 26px;background:linear-gradient(100deg,#171a2b,#0e1019);
+         border-bottom:1px solid var(--line);position:sticky;top:0;z-index:700;
+         display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  h1{margin:0;font-size:18px;letter-spacing:.3px;}
+  h1 .live{color:var(--acc2);font-size:11px;border:1px solid var(--acc2);border-radius:20px;
+           padding:2px 9px;margin-left:8px;vertical-align:middle;animation:pulse 2s infinite;}
+  @keyframes pulse{50%{opacity:.5;}}
+  .gen{color:var(--muted);font-size:12px;}
+  .wrap{max-width:1280px;margin:0 auto;padding:18px 26px 70px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:14px 0 22px;}
+  .kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);
+       border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;}
+  .kpi::after{content:"";position:absolute;right:-20px;top:-20px;width:70px;height:70px;
+              background:radial-gradient(circle,var(--acc),transparent 70%);opacity:.25;}
+  .kpi .v{font-size:27px;font-weight:800;}
+  .kpi .l{color:var(--muted);font-size:12px;margin-top:3px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;}
+  h2{font-size:15px;margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+  #map{height:460px;border-radius:14px;}
+  .legend{font-size:12px;color:var(--muted);margin-top:8px;}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 3px 0 10px;vertical-align:middle;}
+  .filters{display:flex;flex-wrap:wrap;gap:16px;align-items:end;}
+  .filters label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+  .filters select,.filters input{background:#0e1019;color:var(--txt);border:1px solid var(--line);
+       border-radius:9px;padding:8px 10px;font-size:13px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;}
+  th{color:var(--muted);font-weight:600;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.4px;}
+  tr:hover td{background:var(--card2);}
+  .bar{display:inline-block;height:7px;border-radius:5px;background:var(--line);width:70px;vertical-align:middle;overflow:hidden;}
+  .bar>span{display:block;height:100%;}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;background:#262b3a;}
+  .pill.dispo{background:rgba(34,199,155,.18);color:var(--ok);}
+  .pill.full{background:rgba(255,92,122,.18);color:var(--bad);}
+  .grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;}
+  @media(max-width:880px){.grid2{grid-template-columns:1fr;}#map{height:340px;}}
+  .lead{font-size:12px;}
+  a.resa{color:var(--acc2);text-decoration:none;font-weight:600;}
+  a.resa:hover{text-decoration:underline;}
+  .rank{display:flex;flex-direction:column;gap:8px;}
+  .rank .row{display:flex;align-items:center;gap:10px;background:var(--card2);border-radius:10px;padding:9px 12px;}
+  .rank .n{font-weight:800;color:var(--acc);width:22px;}
+  .rank .name{flex:1;}
+  .rank .name small{color:var(--muted);}
+  .rank .val{font-weight:700;}
+  .scroll{overflow-x:auto;}
+  canvas{max-height:260px;}
+  .note{color:var(--muted);font-size:12px;background:var(--card2);border-radius:10px;padding:10px 14px;margin-top:6px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🗝️ Escape IDF <span class="live">● LIVE</span></h1>
+  <div class="gen" id="gen">chargement…</div>
+</header>
+<div class="wrap" id="app" style="display:none">
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <h2>🗺️ Carte des enseignes — demande live</h2>
+    <div id="map"></div>
+    <div class="legend">Couleur = délai moyen avant le prochain créneau libre (proxy de demande) ·
+      <span class="dot" style="background:#22c79b"></span>faible
+      <span class="dot" style="background:#ffce5a"></span>moyen
+      <span class="dot" style="background:#ff5c7a"></span>fort · taille = nb de salles</div>
+  </section>
+
+  <section>
+    <h2>🎛️ Filtres</h2>
+    <div class="filters">
+      <div><label>Prix max /pers</label><input type="range" id="fPrix" min="20" max="200" value="200" oninput="render()"><span id="fPrixV">∞</span></div>
+      <div><label>Joueurs</label><select id="fJ" onchange="render()"><option value="0">tous</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+      <div><label>Thème</label><select id="fT" onchange="render()"></select></div>
+      <div><label>Dispo aujourd'hui</label><select id="fD" onchange="render()"><option value="">indifférent</option><option value="1">oui</option></select></div>
+      <div><label>Tri</label><select id="fS" onchange="render()">
+        <option value="lead_days">demande (lead)</option><option value="prix_min">prix</option>
+        <option value="duration">durée</option><option value="room">nom</option></select></div>
+    </div>
+  </section>
+
+  <div class="grid2">
+    <section>
+      <h2>🔥 Top demande (salles les + bookées)</h2>
+      <div class="rank" id="rank"></div>
+    </section>
+    <section>
+      <h2>💶 Prix médian /pers par enseigne</h2>
+      <canvas id="priceChart"></canvas>
+      <div class="note" id="priceNote"></div>
+    </section>
+  </div>
+
+  <section>
+    <h2>📋 Toutes les salles <span id="count" class="gen"></span></h2>
+    <div class="scroll">
+    <table id="tbl"><thead><tr>
+      <th data-k="room">Salle</th><th data-k="centre">Enseigne</th><th data-k="cp">CP</th>
+      <th data-k="theme">Thème</th><th data-k="duration">Durée</th><th data-k="max_players">Joueurs</th>
+      <th data-k="prix_min">Prix /pers</th><th data-k="next_date">Prochain créneau</th>
+      <th data-k="lead_days">Demande</th><th>Résa</th>
+    </tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section>
+    <div class="note" id="meta"></div>
+  </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const PW_HASH="8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
+if(sessionStorage.getItem("escape_idf_auth")!==PW_HASH) location.replace("index.html");
+
+let DATA=null, map=null, markers=null, priceChart=null, sort={k:"lead_days",dir:-1};
+const leadColor=d=> d==null?"#5b6178": d>=7?"#ff5c7a": d>=3?"#ffce5a":"#22c79b";
+
+fetch("escape_live_data.json?_="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;init();})
+  .catch(()=>document.getElementById("gen").textContent="escape_live_data.json indisponible — lance escape_live_compute.py");
+
+function init(){
+  document.getElementById("app").style.display="block";
+  document.getElementById("gen").textContent="MAJ "+(DATA._meta?.generated||"")+" · source "+(DATA._meta?.source||"");
+  document.getElementById("meta").textContent=DATA._meta?.note||"";
+  const k=DATA.kpis;
+  document.getElementById("kpis").innerHTML=[
+    ["enseignes",k.n_centres],["salles",k.n_rooms],
+    ["prix mini marché",(k.prix_min_marche??"—")+"€"],
+    ["délai moyen prochain créneau",(k.lead_days_moyen??"—")+" j"],
+    ["salles tarifées",k.n_salles_tarifees]
+  ].map(([l,v])=>`<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+  // thèmes
+  const themes=[...new Set(DATA.rooms.map(r=>r.theme).filter(Boolean))].sort();
+  document.getElementById("fT").innerHTML='<option value="">tous</option>'+themes.map(t=>`<option>${t}</option>`).join("");
+  initMap(); drawPrice(); render();
+}
+
+function initMap(){
+  map=L.map("map",{scrollWheelZoom:false}).setView([48.86,2.35],12);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    {attribution:"© OSM © CARTO",subdomains:"abcd",maxZoom:19}).addTo(map);
+  markers=L.layerGroup().addTo(map);
+  drawMarkers(DATA.centres);
+}
+function drawMarkers(centres){
+  markers.clearLayers();
+  centres.filter(c=>c.lat).forEach(c=>{
+    const col=leadColor(c.lead_days_avg);
+    const grid=c.prix_grille?Object.entries(c.prix_grille).map(([p,v])=>`${p}j: ${v}€`).join(" · "):"n.c.";
+    L.circleMarker([c.lat,c.lon],{radius:7+(c.n_rooms||1)*1.6,color:col,fillColor:col,fillOpacity:.75,weight:2})
+     .bindPopup(`<b>${c.centre}</b><br>${c.cp||""} · ${c.n_rooms} salles<br>
+        Délai moyen: <b style="color:${col}">${c.lead_days_avg??"—"} j</b><br>
+        Grille: ${grid}<br>${c.phone?("☎ "+c.phone+"<br>"):""}
+        ${c.website?`<a href="${c.website}" target="_blank" rel="noopener">réserver ↗</a>`:""}`)
+     .addTo(markers);
+  });
+}
+
+function drawPrice(){
+  const byC={};
+  DATA.rooms.forEach(r=>{ if(r.prix_min){ (byC[r.centre]=byC[r.centre]||[]).push(r.prix_min); }});
+  const rows=Object.entries(byC).map(([c,a])=>[c,a.sort((x,y)=>x-y)[Math.floor(a.length/2)]]).sort((a,b)=>a[1]-b[1]);
+  if(priceChart)priceChart.destroy();
+  priceChart=new Chart(document.getElementById("priceChart"),{type:"bar",
+    data:{labels:rows.map(r=>r[0]),datasets:[{data:rows.map(r=>r[1]),
+      backgroundColor:rows.map(r=>"#7c5cff"),borderRadius:6}]},
+    options:{indexAxis:"y",plugins:{legend:{display:false}},
+      scales:{x:{ticks:{color:"#8b91a7",callback:v=>v+"€"},grid:{color:"#262b3a"}},
+              y:{ticks:{color:"#cfd3e0",font:{size:11}},grid:{display:false}}}}});
+  document.getElementById("priceNote").textContent=
+    rows.length?`Le moins cher : ${rows[0][0]} (${rows[0][1]}€/pers) · le plus cher : ${rows.at(-1)[0]} (${rows.at(-1)[1]}€/pers).`:"";
+}
+
+function currentRooms(){
+  const pmax=+document.getElementById("fPrix").value;
+  document.getElementById("fPrixV").textContent=pmax>=200?"∞":pmax+"€";
+  const j=+document.getElementById("fJ").value, th=document.getElementById("fT").value, disp=document.getElementById("fD").value;
+  return DATA.rooms.filter(r=>{
+    if(r.prix_min && r.prix_min>pmax) return false;
+    if(j && r.max_players && (j<r.min_players||j>r.max_players)) return false;
+    if(th && r.theme!==th) return false;
+    if(disp==="1" && !(r.available && r.lead_days===0)) return false;
+    return true;
+  });
+}
+
+function render(){
+  const rooms=currentRooms();
+  sort.k=document.getElementById("fS").value;
+  const sorted=[...rooms].sort((a,b)=>{
+    let x=a[sort.k],y=b[sort.k];
+    if(x==null)x=sort.k==="lead_days"?-1:1e9; if(y==null)y=sort.k==="lead_days"?-1:1e9;
+    return (typeof x==="number"?x-y:(""+x).localeCompare(y))*(sort.k==="room"||sort.k==="centre"?1:-1);
+  });
+  document.getElementById("count").textContent=`(${rooms.length})`;
+  document.querySelector("#tbl tbody").innerHTML=sorted.map(r=>{
+    const grid=r.prix_grille?Object.entries(r.prix_grille).map(([p,v])=>`${p}j ${v}€`).join(" · "):"—";
+    const lead=r.lead_days; const w=Math.min(100,(lead??0)/14*100);
+    const next=r.next_date?`${r.next_date.slice(5)} ${r.next_time||""}`:"—";
+    return `<tr>
+      <td>${r.room||"—"}</td><td>${r.centre||"—"}</td><td>${r.cp||"—"}</td>
+      <td><span class="pill">${r.theme||"—"}</span></td>
+      <td>${r.duration?r.duration+"min":"—"}</td>
+      <td>${r.min_players||"?"}-${r.max_players||"?"}</td>
+      <td title="${grid}">${r.prix_min?r.prix_min+"–"+r.prix_max+"€":"—"}</td>
+      <td>${next} ${r.available?'<span class="pill dispo">libre</span>':'<span class="pill full">complet</span>'}</td>
+      <td><span class="bar"><span style="width:${w}%;background:${leadColor(lead)}"></span></span> <span class="lead">${lead??"—"}j</span></td>
+      <td>${r.reservation_url?`<a class="resa" href="${r.reservation_url}" target="_blank" rel="noopener">↗</a>`:"—"}</td>
+    </tr>`;}).join("");
+  // top demande
+  const top=[...rooms].filter(r=>r.lead_days!=null).sort((a,b)=>b.lead_days-a.lead_days).slice(0,10);
+  document.getElementById("rank").innerHTML=top.map((r,i)=>`<div class="row">
+    <div class="n">${i+1}</div>
+    <div class="name">${r.room} <small>· ${r.centre}</small></div>
+    <div class="val" style="color:${leadColor(r.lead_days)}">${r.lead_days} j</div></div>`).join("")||'<div class="note">Pas encore de signal de demande (en accumulation).</div>';
+  drawMarkers(DATA.centres);
+}
+</script>
+</body>
+</html>
