@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hub · Observatoire Escape IDF</title>
+<style>
+  :root { --bg:#0f1117; --card:#1a1d27; --acc:#6c5ce7; --txt:#e8e8f0; --muted:#8a8fa3; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+         background:radial-gradient(circle at 30% 20%,#1c1f2e,#0f1117); color:var(--txt);
+         min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .card { background:var(--card); padding:36px 40px; border-radius:16px; width:340px;
+          box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  h1 { font-size:20px; margin:0 0 4px; }
+  p.sub { color:var(--muted); margin:0 0 24px; font-size:13px; }
+  input { width:100%; padding:12px 14px; border-radius:10px; border:1px solid #2a2e3c;
+          background:#11131b; color:var(--txt); font-size:15px; margin-bottom:12px; }
+  button { width:100%; padding:12px; border:0; border-radius:10px; background:var(--acc);
+           color:#fff; font-size:15px; font-weight:600; cursor:pointer; }
+  button:hover { filter:brightness(1.1); }
+  .err { color:#ff6b81; font-size:13px; min-height:18px; margin-top:8px; }
+  .links { margin-top:22px; display:none; }
+  .links a { display:block; padding:11px 14px; background:#11131b; border-radius:10px;
+             color:var(--txt); text-decoration:none; margin-bottom:8px; border:1px solid #2a2e3c; }
+  .links a:hover { border-color:var(--acc); }
+  .foot { color:var(--muted); font-size:11px; margin-top:18px; text-align:center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔐 Observatoire Escape IDF</h1>
+    <p class="sub">Accès privé — benchmark interne</p>
+
+    <div id="login">
+      <input id="pw" type="password" placeholder="Mot de passe" autocomplete="off"
+             onkeydown="if(event.key==='Enter')check()">
+      <button onclick="check()">Entrer</button>
+      <div class="err" id="err"></div>
+    </div>
+
+    <div class="links" id="links">
+      <a href="escape_idf.html">📊 Dashboard Escape Room IDF</a>
+      <a href="#" onclick="logout();return false;">🚪 Se déconnecter</a>
+    </div>
+
+    <div class="foot">SHA-256 client-side · sessionStorage · noindex</div>
+  </div>
+
+<script>
+// Hash SHA-256 du mot de passe attendu. Pour changer :
+//   python3 -c "import hashlib;print(hashlib.sha256(b'NOUVEAU').hexdigest())"
+const PW_HASH = "8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
+const KEY = "escape_idf_auth";
+
+async function sha256(s){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+async function check(){
+  const pw = document.getElementById("pw").value;
+  if(await sha256(pw) === PW_HASH){
+    sessionStorage.setItem(KEY, PW_HASH);
+    show();
+  } else {
+    document.getElementById("err").textContent = "Mot de passe incorrect.";
+  }
+}
+function show(){
+  document.getElementById("login").style.display="none";
+  document.getElementById("links").style.display="block";
+}
+function logout(){
+  sessionStorage.removeItem(KEY);
+  location.reload();
+}
+if(sessionStorage.getItem(KEY) === PW_HASH){ show(); }
+</script>
+</body>
+</html>

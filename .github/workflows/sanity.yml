@@ -1,0 +1,59 @@
+name: sanity (freshness check)
+
+# Vérifie la fraîcheur des données toutes les 6h. Ouvre (ou met à jour) une
+# issue GitHub si au moins un centre est stale (>16h sans relevé).
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore raw store cache
+        uses: actions/cache@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}
+          restore-keys: |
+            escape-data-
+
+      - name: Run sanity check
+        id: sanity
+        run: |
+          set +e
+          python3 sanity_check.py --hours 16 | tee sanity.log
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Open issue if stale
+        if: steps.sanity.outputs.code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('sanity.log', 'utf8');
+            const title = '⚠️ Escape IDF — données stale détectées';
+            const body = "Le sanity check a relevé des centres stale (>16h).\n\n```\n" + log + "\n```";
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'stale-data' });
+            if (issues.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: issues.data[0].number, body });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['stale-data'] });
+            }

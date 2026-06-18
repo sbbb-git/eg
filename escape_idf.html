@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Observatoire Escape Room · Île-de-France</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root{--bg:#0f1117;--card:#1a1d27;--card2:#212433;--acc:#6c5ce7;--ok:#00b894;
+        --warn:#fdcb6e;--bad:#ff6b81;--txt:#e8e8f0;--muted:#8a8fa3;--line:#2a2e3c;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+       background:var(--bg);color:var(--txt);}
+  header{padding:18px 24px;background:linear-gradient(90deg,#1c1f2e,#141620);
+         border-bottom:1px solid var(--line);position:sticky;top:0;z-index:600;}
+  h1{margin:0;font-size:19px;}
+  .gen{color:var(--muted);font-size:12px;margin-top:3px;}
+  .wrap{max-width:1200px;margin:0 auto;padding:20px 24px 60px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .kpi .v{font-size:26px;font-weight:700;}
+  .kpi .l{color:var(--muted);font-size:12px;margin-top:4px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;
+          padding:20px;margin:18px 0;}
+  h2{font-size:16px;margin:0 0 14px;}
+  #map{height:420px;border-radius:12px;}
+  .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:14px;}
+  .filters label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px;}
+  .filters select,.filters input{background:#11131b;color:var(--txt);border:1px solid var(--line);
+          border-radius:8px;padding:7px 9px;font-size:13px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;}
+  tr:hover td{background:var(--card2);}
+  .bar{height:8px;border-radius:5px;background:var(--line);overflow:hidden;min-width:60px;}
+  .bar>span{display:block;height:100%;}
+  .heat{display:grid;gap:3px;}
+  .heat .cell{padding:10px 4px;text-align:center;font-size:11px;border-radius:5px;color:#0d0d0d;font-weight:600;}
+  .heat .hd{color:var(--muted);font-weight:600;background:none!important;}
+  .pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr;}}
+  .cmp{background:var(--card2);border-radius:10px;padding:14px;}
+  .cmp .big{font-size:24px;font-weight:700;}
+  canvas{max-height:300px;}
+  .roadmap li{margin:6px 0;color:var(--muted);}
+  .tag{font-size:11px;color:var(--muted);}
+  a.src{color:var(--acc);text-decoration:none;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🗝️ Observatoire Escape Room — Île-de-France</h1>
+  <div class="gen" id="gen">chargement…</div>
+</header>
+<div class="wrap" id="app" style="display:none">
+
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <h2>🗺️ Carte — taux d'occupation par centre</h2>
+    <div id="map"></div>
+    <div class="tag" style="margin-top:8px">Marker vert &lt;40% · orange 40-65% · rouge &gt;65% d'occupation moyenne.</div>
+  </section>
+
+  <section>
+    <h2>🎛️ Filtres</h2>
+    <div class="filters">
+      <div><label>Prix max /pers</label><input type="range" id="fPrix" min="20" max="60" value="60" oninput="applyFilters()"><span id="fPrixV">60€</span></div>
+      <div><label>Joueurs</label><select id="fJoueurs" onchange="applyFilters()"><option value="0">Tous</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+      <div><label>Jour</label><select id="fJour" onchange="applyFilters()"><option value="">Tous</option><option>Lun</option><option>Mar</option><option>Mer</option><option>Jeu</option><option>Ven</option><option>Sam</option><option>Dim</option></select></div>
+      <div><label>Durée</label><select id="fDuree" onchange="applyFilters()"><option value="0">Toutes</option><option>60</option><option>75</option><option>90</option></select></div>
+      <div><label>Thématique</label><select id="fTheme" onchange="applyFilters()"><option value="">Toutes</option><option>aventure</option><option>horreur</option><option>enquete</option><option>sci-fi</option></select></div>
+    </div>
+    <div class="tag" id="filterInfo"></div>
+  </section>
+
+  <div class="grid2">
+    <section>
+      <h2>🔥 Heatmap occupation · jour × tranche horaire</h2>
+      <div class="heat" id="heat"></div>
+    </section>
+    <section>
+      <h2>⚖️ Comparateur de créneaux</h2>
+      <div class="filters">
+        <div><label>Créneau A</label><select id="cmpA"></select></div>
+        <div><label>Créneau B</label><select id="cmpB"></select></div>
+      </div>
+      <div class="grid2">
+        <div class="cmp" id="cmpAout"></div>
+        <div class="cmp" id="cmpBout"></div>
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <h2>🏆 Top 20 rooms par taux de réservation</h2>
+    <table id="topRooms"><thead><tr>
+      <th>#</th><th>Room</th><th>Centre</th><th>Thème</th><th>Prix</th><th>Occ. %</th><th>n</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <div class="grid2">
+    <section>
+      <h2>⏱️ Top créneaux (jour × tranche)</h2>
+      <table id="topCren"><thead><tr><th>Jour</th><th>Tranche</th><th>Occ. %</th><th>n</th></tr></thead><tbody></tbody></table>
+    </section>
+    <section>
+      <h2>📈 Évolution mensuelle par centre</h2>
+      <select id="monthCentre" onchange="drawMonthly()" style="margin-bottom:10px;background:#11131b;color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:7px"></select>
+      <canvas id="monthlyChart"></canvas>
+    </section>
+  </div>
+
+  <section>
+    <h2>📋 Classement des centres</h2>
+    <table id="centres"><thead><tr>
+      <th data-k="label">Centre</th><th data-k="cp">CP</th><th data-k="platform">Plateforme</th>
+      <th data-k="n_rooms">Rooms</th><th data-k="occ_rate">Occ. %</th>
+      <th data-k="live_demand">Résa futures</th><th data-k="prix_median">Prix méd.</th><th>Source</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <section class="roadmap">
+    <h2>🛣️ Roadmap rooms / enseignes à intégrer</h2>
+    <ul>
+      <li>Résoudre les plateformes <code>unknown</code> → endpoints FullCalendar/TimeKit réels.</li>
+      <li>Ajouter handlers : bsport, Mindbody, Anybuddy, Doinsport.</li>
+      <li>Fallback Playwright pour SPA React (WeChamber, calendars custom).</li>
+      <li>+60 indés grande couronne (77/78/91/95) à cataloguer.</li>
+      <li>Détection nouveautés (nouvelle room_id) + carte des "déserts escape".</li>
+    </ul>
+  </section>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// ---------- Auth gate (même secret que le hub) ----------
+const PW_HASH = "8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
+if(sessionStorage.getItem("escape_idf_auth") !== PW_HASH){
+  location.replace("index.html");
+}
+
+let DATA=null, map=null, monthlyChart=null;
+const occColor = r => r>65 ? "#ff6b81" : r>40 ? "#fdcb6e" : "#00b894";
+
+fetch("escape_idf_data.json?_="+Date.now())
+  .then(r=>r.json()).then(d=>{ DATA=d; render(); })
+  .catch(e=>{ document.getElementById("gen").textContent="Données indisponibles — lance escape_idf_compute.py"; });
+
+function render(){
+  if(DATA._meta?.empty){ document.getElementById("gen").textContent="Aucune donnée agrégée."; return; }
+  document.getElementById("app").style.display="block";
+  document.getElementById("gen").textContent =
+    "Généré "+ (DATA._meta?.generated||"") + " · fenêtre "+(DATA._meta?.window||"");
+  renderKpis(); renderMap(); renderHeat(); renderTopRooms(DATA.top_rooms);
+  renderTopCren(); renderCentres(); buildComparator(); buildMonthly();
+}
+
+function renderKpis(){
+  const k=DATA.kpis, el=document.getElementById("kpis");
+  const items=[["centres",k.n_centres],["rooms",k.n_rooms],
+    ["créneaux trackés",k.n_sessions],["occ. moyenne",k.occ_moyenne+"%"],
+    ["prix médian /pers",k.prix_median_global+"€"]];
+  el.innerHTML=items.map(([l,v])=>`<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+}
+
+function renderMap(){
+  map = L.map("map").setView([48.8566,2.3522],11);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    {attribution:"© OpenStreetMap © CARTO",subdomains:"abcd",maxZoom:19}).addTo(map);
+  const seen={};
+  DATA.map_points.forEach(p=>{
+    // léger jitter si plusieurs centres au même CP
+    let lat=p.lat, lon=p.lon, key=p.lat+","+p.lon;
+    if(seen[key]){ lat+=(Math.random()-.5)*0.012; lon+=(Math.random()-.5)*0.012; }
+    seen[key]=1;
+    L.circleMarker([lat,lon],{radius:8+p.n_rooms,color:occColor(p.occ_rate),
+        fillColor:occColor(p.occ_rate),fillOpacity:.7,weight:2})
+      .bindPopup(`<b>${p.label}</b><br>${p.cp} · ${p.n_rooms} rooms<br>Occ. ${p.occ_rate}%`)
+      .addTo(map);
+  });
+}
+
+function renderHeat(){
+  const h=DATA.heatmap, el=document.getElementById("heat");
+  el.style.gridTemplateColumns=`60px repeat(${h.buckets.length},1fr)`;
+  let html=`<div class="cell hd"></div>`+h.buckets.map(b=>`<div class="cell hd">${b}h</div>`).join("");
+  h.jours.forEach((j,ji)=>{
+    html+=`<div class="cell hd">${j}</div>`;
+    h.matrix[ji].forEach(v=>{
+      const bg = v===0 ? "#212433" : `hsl(${(1-v/100)*140},70%,${35+v/3}%)`;
+      html+=`<div class="cell" style="background:${bg}">${v}%</div>`;
+    });
+  });
+  el.innerHTML=html;
+}
+
+function renderTopRooms(rooms){
+  const tb=document.querySelector("#topRooms tbody");
+  tb.innerHTML = rooms.map((r,i)=>`<tr>
+    <td>${i+1}</td><td>${r.room}</td><td>${r.centre}</td>
+    <td><span class="pill" style="background:#2a2e3c">${r.theme||"—"}</span></td>
+    <td>${r.prix_min}€</td>
+    <td><div class="bar"><span style="width:${r.occ_rate}%;background:${occColor(r.occ_rate)}"></span></div>${r.occ_rate}%</td>
+    <td class="tag">${r.n_resolved}</td></tr>`).join("");
+}
+
+function renderTopCren(){
+  document.querySelector("#topCren tbody").innerHTML =
+    (DATA.top_creneaux||[]).map(c=>`<tr><td>${c.jour}</td><td>${c.tranche}h</td>
+      <td style="color:${occColor(c.occ_rate)}">${c.occ_rate}%</td><td class="tag">${c.n}</td></tr>`).join("");
+}
+
+let centreSort={k:"occ_rate",dir:-1};
+function renderCentres(){
+  const tb=document.querySelector("#centres tbody");
+  const rows=[...DATA.centres].sort((a,b)=>{
+    const x=a[centreSort.k],y=b[centreSort.k];
+    return (typeof x==="number"? x-y : (""+x).localeCompare(y))*centreSort.dir;
+  });
+  tb.innerHTML=rows.map(c=>`<tr>
+    <td>${c.label}</td><td>${c.cp}</td><td><span class="pill" style="background:#2a2e3c">${c.platform}</span></td>
+    <td>${c.n_rooms}</td>
+    <td><div class="bar"><span style="width:${c.occ_rate}%;background:${occColor(c.occ_rate)}"></span></div>${c.occ_rate}%</td>
+    <td>${c.live_demand}</td><td>${c.prix_median}€</td>
+    <td><a class="src" href="${c.url}" target="_blank" rel="noopener">↗</a></td></tr>`).join("");
+}
+document.querySelectorAll("#centres th[data-k]").forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k; centreSort.dir = centreSort.k===k? -centreSort.dir : -1;
+  centreSort.k=k; renderCentres();
+});
+
+// ---------- Comparateur ----------
+function buildComparator(){
+  const opts=[]; DATA.heatmap.jours.forEach(j=>DATA.heatmap.buckets.forEach(b=>opts.push(j+" · "+b+"h")));
+  const A=document.getElementById("cmpA"), B=document.getElementById("cmpB");
+  A.innerHTML=B.innerHTML=opts.map((o,i)=>`<option value="${i}">${o}</option>`).join("");
+  A.value=10; B.value=21; A.onchange=B.onchange=drawCmp; drawCmp();
+}
+function cmpVal(idx){
+  const nb=DATA.heatmap.buckets.length, ji=Math.floor(idx/nb), bi=idx%nb;
+  return {label:DATA.heatmap.jours[ji]+" "+DATA.heatmap.buckets[bi]+"h", v:DATA.heatmap.matrix[ji][bi]};
+}
+function drawCmp(){
+  [["cmpA","cmpAout"],["cmpB","cmpBout"]].forEach(([sel,out])=>{
+    const c=cmpVal(+document.getElementById(sel).value);
+    document.getElementById(out).innerHTML=
+      `<div class="tag">${c.label}</div><div class="big" style="color:${occColor(c.v)}">${c.v}%</div><div class="tag">occupation moyenne</div>`;
+  });
+}
+
+// ---------- Évolution mensuelle ----------
+function buildMonthly(){
+  const sel=document.getElementById("monthCentre");
+  sel.innerHTML=Object.keys(DATA.monthly).map(c=>`<option>${c}</option>`).join("");
+  drawMonthly();
+}
+function drawMonthly(){
+  const c=document.getElementById("monthCentre").value, series=DATA.monthly[c]||{};
+  const labels=Object.keys(series), vals=Object.values(series);
+  if(monthlyChart) monthlyChart.destroy();
+  monthlyChart=new Chart(document.getElementById("monthlyChart"),{
+    type:"line",data:{labels,datasets:[{label:"Occ. %",data:vals,borderColor:"#6c5ce7",
+      backgroundColor:"rgba(108,92,231,.2)",fill:true,tension:.3}]},
+    options:{plugins:{legend:{labels:{color:"#e8e8f0"}}},
+      scales:{x:{ticks:{color:"#8a8fa3"}},y:{ticks:{color:"#8a8fa3"},suggestedMax:100}}}});
+}
+
+// ---------- Filtres (note : agissent sur l'affichage des centres/rooms) ----------
+function applyFilters(){
+  const prix=+document.getElementById("fPrix").value;
+  document.getElementById("fPrixV").textContent=prix+"€";
+  const theme=document.getElementById("fTheme").value;
+  // filtre top rooms par prix + thème
+  let rooms=DATA.top_rooms.filter(r=>r.prix_min<=prix && (!theme||r.theme===theme));
+  renderTopRooms(rooms);
+  document.getElementById("filterInfo").textContent=
+    `${rooms.length} rooms correspondent · prix ≤ ${prix}€`+(theme?` · ${theme}`:"")
+    +" · (jour/joueurs/durée : affinage à brancher sur le détail des sessions)";
+}
+</script>
+</body>
+</html>

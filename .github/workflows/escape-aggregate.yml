@@ -1,0 +1,44 @@
+name: escape-aggregate (recompute store)
+
+# Recompute l'agrégat escape_idf_data.json toutes les 2h (filet de sécurité
+# au cas où un run de scrape n'aurait pas régénéré l'agrégat).
+on:
+  schedule:
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: escape-aggregate
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore raw store cache
+        uses: actions/cache@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}
+          restore-keys: |
+            escape-data-
+
+      - name: Recompute aggregate
+        run: python3 escape_idf_compute.py
+
+      - name: Commit
+        run: |
+          git config user.name "escape-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add escape_idf_data.json
+          git diff --cached --quiet || git commit -m "data: re-aggregate ${{ github.run_id }}"
+          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

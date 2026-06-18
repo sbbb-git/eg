@@ -1,0 +1,14 @@
+# Stores bruts par enseigne : volumineux, régénérés à chaque run, et destinés
+# au cache CI / archive Supabase (>30j). Le dashboard ne lit QUE l'agrégat
+# escape_idf_data.json, qui lui est versionné.
+escape_data/
+escape_archive/
+
+# Artefacts temporaires d'écriture atomique (safestore)
+.tmp_*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

@@ -1,0 +1,63 @@
+name: escape-extension (discover + scrape)
+
+# Discovery + scrape toutes les 30 min. Le store brut escape_data/ est
+# conservé entre runs via actions/cache (pas commité — voir .gitignore) ;
+# seul l'agrégat est régénéré et commité par escape-aggregate.yml.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      seed:
+        description: "Régénérer un historique de démo (offline)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: escape-extension
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore raw store cache
+        uses: actions/cache@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}
+          restore-keys: |
+            escape-data-
+
+      - name: Discovery (résout les plateformes encore unknown)
+        run: python3 escape_extension_discover.py --only-unknown
+        continue-on-error: true
+
+      - name: Scrape
+        run: |
+          if [ "${{ inputs.seed }}" = "true" ]; then
+            python3 escape_extension_scrape.py --seed
+          else
+            python3 escape_extension_scrape.py
+          fi
+
+      - name: Aggregate
+        run: python3 escape_idf_compute.py
+
+      - name: Commit aggregate + resolved
+        run: |
+          git config user.name "escape-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add escape_idf_data.json escape_extension_resolved.json escape_sanity.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "data: scrape run ${{ github.run_id }}"
+          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done
