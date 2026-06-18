@@ -26,6 +26,22 @@ l'historique (disparition du prochain créneau ⇒ réservation). Les venues
 **non couvertes par 4escape** restent sur le track "scraping par-site"
 (`escape_extension_*`).
 
+## Pipeline RÉEL (4escape) — fichiers
+
+| Fichier | Rôle |
+|---|---|
+| `escape_4escape.py` | harvest annuaire + `--enrich` (catalogue via `/api/public/settings`) + `--prices` (booking-data-json) + `--scrape` (dispo upcoming). |
+| `escape_geocode.py` | géocode les enseignes (Nominatim) → CP + lat/lon. |
+| `escape_idf_directory.py` | annuaire COMPLET IDF (153 venues, 8 dépts) via sitemap escapegame.fr. |
+| `escape_live_compute.py` | fusion catalogue+geo+dispo → `escape_live_data.json`. |
+| `escape_4escape_compute.py` | instantané demande → `escape_4escape_live.json`. |
+| `escape_live.html` | **dashboard LIVE réel** (carte tous escape games IDF, demande, prix, filtres, liens résa). |
+| `ANALYSE_SCRAPING.md` | cartographie de l'écosystème 4escape + ce qui bloque. |
+| `STRATEGIE_SCRAPING.md` | cadences 30min/quotidien/hebdo, rétrospectif, prix. |
+
+> Le dashboard de démo `escape_idf.html` (heatmap/occupation sur données seed)
+> est conservé comme **maquette** de ce que produira l'historique accumulé.
+
 ## Architecture
 
 ```
