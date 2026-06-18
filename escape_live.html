@@ -74,10 +74,11 @@
   <section>
     <h2>🗺️ Carte des enseignes — demande live</h2>
     <div id="map"></div>
-    <div class="legend">Couleur = délai moyen avant le prochain créneau libre (proxy de demande) ·
+    <div class="legend">Gros marqueurs colorés = enseignes <b>live</b> (4escape), couleur = délai au prochain créneau libre
       <span class="dot" style="background:#22c79b"></span>faible
       <span class="dot" style="background:#ffce5a"></span>moyen
-      <span class="dot" style="background:#ff5c7a"></span>fort · taille = nb de salles</div>
+      <span class="dot" style="background:#ff5c7a"></span>fort.
+      Petits points gris = autres escape games IDF recensés (données live à venir).</div>
   </section>
 
   <section>
@@ -129,10 +130,13 @@
 const PW_HASH="8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
 if(sessionStorage.getItem("escape_idf_auth")!==PW_HASH) location.replace("index.html");
 
-let DATA=null, map=null, markers=null, priceChart=null, sort={k:"lead_days",dir:-1};
+let DATA=null, DIR=null, map=null, markers=null, dirLayer=null, priceChart=null, sort={k:"lead_days",dir:-1};
 const leadColor=d=> d==null?"#5b6178": d>=7?"#ff5c7a": d>=3?"#ffce5a":"#22c79b";
 
-fetch("escape_live_data.json?_="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;init();})
+Promise.all([
+  fetch("escape_live_data.json?_="+Date.now()).then(r=>r.json()),
+  fetch("escape_idf_directory.json?_="+Date.now()).then(r=>r.json()).catch(()=>null)
+]).then(([d,dir])=>{DATA=d;DIR=dir;init();})
   .catch(()=>document.getElementById("gen").textContent="escape_live_data.json indisponible — lance escape_live_compute.py");
 
 function init(){
@@ -141,10 +145,10 @@ function init(){
   document.getElementById("meta").textContent=DATA._meta?.note||"";
   const k=DATA.kpis;
   document.getElementById("kpis").innerHTML=[
-    ["enseignes",k.n_centres],["salles",k.n_rooms],
+    ["escape games IDF recensés", DIR?DIR._meta.n_venues:"—"],
+    ["enseignes live (4escape)",k.n_centres],["salles live",k.n_rooms],
     ["prix mini marché",(k.prix_min_marche??"—")+"€"],
-    ["délai moyen prochain créneau",(k.lead_days_moyen??"—")+" j"],
-    ["salles tarifées",k.n_salles_tarifees]
+    ["délai moyen prochain créneau",(k.lead_days_moyen??"—")+" j"]
   ].map(([l,v])=>`<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
   // thèmes
   const themes=[...new Set(DATA.rooms.map(r=>r.theme).filter(Boolean))].sort();
@@ -157,7 +161,21 @@ function initMap(){
   L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
     {attribution:"© OSM © CARTO",subdomains:"abcd",maxZoom:19}).addTo(map);
   markers=L.layerGroup().addTo(map);
+  dirLayer=L.layerGroup().addTo(map);
+  drawDirectory();
   drawMarkers(DATA.centres);
+}
+function drawDirectory(){
+  if(!DIR) return;
+  dirLayer.clearLayers();
+  DIR.venues.filter(v=>v.lat && !v.covered_4escape).forEach(v=>{
+    L.circleMarker([v.lat,v.lon],{radius:4,color:"#5b6178",fillColor:"#3a3f52",
+      fillOpacity:.6,weight:1})
+     .bindPopup(`<b>${v.name}</b><br>${v.cp||""} ${v.dept_name||""}<br>
+        <span style="color:#8b91a7">données live à venir (hors 4escape)</span><br>
+        <a href="${v.url}" target="_blank" rel="noopener">fiche ↗</a>`)
+     .addTo(dirLayer);
+  });
 }
 function drawMarkers(centres){
   markers.clearLayers();
