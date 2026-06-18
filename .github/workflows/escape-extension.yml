@@ -44,7 +44,9 @@ jobs:
         continue-on-error: true
 
       - name: Scrape — source PRIMAIRE escapegame.fr / 4escape (réel)
-        run: python3 escape_4escape.py --harvest --scrape
+        # harvest (annuaire) + enrich (/api/public/settings : catalogue, CP,
+        # URL de résa) + prices (booking-data-json) + scrape (dispo upcoming)
+        run: python3 escape_4escape.py --harvest --enrich --prices --scrape
         continue-on-error: true
 
       - name: Scrape — sources par-site (catalogue étendu)

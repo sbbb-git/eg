@@ -164,6 +164,37 @@ La couverture 4escape via escapegame.fr est donc **Paris-centrée** (56 salles).
 Élargir l'IDF = harvester les fiches venues (tous opérateurs) par commune puis
 résoudre leur plateforme une par une (chantier track-2).
 
+## MAJ 2 — écosystème 4escape entièrement cartographié (autonome)
+
+Toutes les enseignes 4escape (incl. The Game, Lock Academy, Deep Inside,
+Crack the Egg, Live Cinema, Pandore, Unleash, The Quest Factory, Artifact…)
+partagent le **même backend** `<company>.4escape.io`, derrière 2 habillages :
+- iframe `<company>.4escape.io` (ex. unleashescape, thequestfactory) ;
+- widget `widgets.4escape.app` + `#/catalog/<uuid>` (ex. livecinema, pandore,
+  crack-the-egg, thegame). Le widget pose `window.forescapeStore.baseURL =
+  https://<company>.4escape.io` et tape la même API.
+
+**API publique `<company>.4escape.io/api/public/` (UNIVERSELLE, 0 × 401) :**
+
+| Endpoint | Donne | Usage |
+|---|---|---|
+| `GET /api/public/boot` | baseURL, langues, devise | validation enseigne |
+| `GET /api/public/settings` | **organization (nom, tél, site, adresse), rooms (nom, durée, joueurs, difficulté, description, URL de résa), premises (multi-site), priceCategories, tags** | **catalogue complet + découverte auto des sites de résa** |
+| `POST /booking-data-json` | planning théorique + **grille de prix** | prix (mais 401 sur ~11 enseignes) |
+| `GET availability.4escape.io/egfr/upcoming/<c>/<r>` | prochain créneau libre | dispo (proxy escapegame, universel) |
+
+→ **`/api/public/settings` remplace mon ancien catalogue** : 16/16 enseignes
+enrichies sans blocage, 49/56 salles avec métadonnées + **URL de résa
+auto-découverte** (plus besoin qu'on me donne les liens). CP non rempli par
+4escape (geo `[null,null]`) ⇒ géocodage à partir de l'adresse (TODO).
+
+**Découverte autonome (réponse à "trouve-les toi-même") :** la chaîne est
+désormais : escapegame.fr → companies → `/api/public/settings` → sites officiels
++ salles + prix + dispo. Aucune saisie manuelle d'URL requise.
+
+**Une seule enseigne hors 4escape parmi les 6 testées : One Hour**
+(`escape-game-paris.one-hour.fr`, React custom) ⇒ handler par-site dédié.
+
 ## Prochaines étapes
 1. Wirer `escape_4escape.py` dans le workflow /30 min (accumulation historique).
 2. Élargir l'annuaire : villes IDF (les slugs suburbains testés ont renvoyé 0 →

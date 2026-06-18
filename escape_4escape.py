@@ -156,6 +156,87 @@ def harvest(cities: list[str]) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# ENRICHISSEMENT autonome : <company>.4escape.io/api/public/settings
+#   Endpoint UNIVERSEL (pas de 401) qui renvoie le catalogue complet :
+#   organization (nom, adresse->CP, tel, site, URL de résa) + rooms (nom,
+#   durée, joueurs min/max, difficulté, description, website_url). Permet de
+#   géolocaliser (CP) et de DÉCOUVRIR seul les sites/URL de réservation.
+# ---------------------------------------------------------------------------
+
+def _items(v):
+    return list(v.values()) if isinstance(v, dict) else (v or [])
+
+
+def fetch_settings(company: str):
+    base = f"https://{company}.4escape.io"
+    backoff = 3
+    for attempt in range(3):
+        data = http(base + "/api/public/settings", as_json=True)
+        if isinstance(data, dict) and data.get("success"):
+            return data
+        if attempt < 2:
+            time.sleep(backoff); backoff *= 2
+    return None
+
+
+def enrich_from_settings(catalog: dict) -> dict:
+    rooms = catalog.get("rooms", {})
+    companies = catalog.get("companies", {})
+    stats = {"ok": 0, "ko": 0, "rooms_enriched": 0}
+    for comp in sorted(companies):
+        s = fetch_settings(comp)
+        if not s:
+            stats["ko"] += 1
+            time.sleep(0.5)
+            continue
+        stats["ok"] += 1
+        org = s.get("organization", {}) or {}
+        addr = org.get("address", {}) or {}
+        cp = (addr.get("zipcode") or "").strip()
+        companies[comp].update({
+            "org_name": (org.get("display_name") or org.get("name") or "").strip(),
+            "website": (org.get("website") or "").strip(),
+            "phone": re.sub(r"\s+", " ", (org.get("phone") or "")).strip(),
+            "cp": cp, "city": (addr.get("city") or "").strip(),
+            "street": (addr.get("street") or "").strip(),
+        })
+        # index des rooms settings par _id et par nom normalisé
+        by_id, by_name = {}, {}
+        for r in _items(s.get("rooms")):
+            meta = {
+                "duration": r.get("duration"),
+                "min_players": r.get("minimum_players"),
+                "max_players": r.get("maximum_players"),
+                "default_players": r.get("default_players"),
+                "difficulty": r.get("difficulty"),
+                "description": (r.get("short_description") or r.get("description") or "")[:240],
+                "reservation_url": r.get("widget_public_url") or r.get("website_url") or org.get("website"),
+            }
+            if r.get("_id"):
+                by_id[r["_id"]] = meta
+            if r.get("name"):
+                by_name[re.sub(r"\W+", "", r["name"].lower())] = meta
+        for room_id, rec in rooms.items():
+            if rec.get("company") != comp:
+                continue
+            mongoid = room_id.split("/", 1)[1]
+            meta = by_id.get(mongoid) or by_name.get(re.sub(r"\W+", "", (rec.get("room_name") or "").lower()))
+            if meta:
+                rec.update({k: v for k, v in meta.items() if v is not None})
+                stats["rooms_enriched"] += 1
+            if cp and not rec.get("cp"):
+                rec["cp"] = cp
+        print(f"[enrich] {companies[comp].get('org_name', comp)[:28]:28} "
+              f"CP {cp or '?'} · {org.get('website','')[:34]}")
+        time.sleep(0.5)
+    catalog["_meta"]["enriched"] = now_iso()
+    write_json(CATALOG_FILE, catalog)
+    print(f"[enrich] enseignes OK={stats['ok']} KO={stats['ko']} | "
+          f"salles enrichies={stats['rooms_enriched']}")
+    return catalog
+
+
+# ---------------------------------------------------------------------------
 # PRIX + planning : <company>.4escape.io/booking-data-json (POST)
 #   -> renvoie le PLANNING THÉORIQUE complet (tous créneaux) + GRILLE DE PRIX
 #      par nombre de joueurs. PAS l'occupation (créneaux réservés non retirés).
@@ -342,18 +423,24 @@ def _mark_disappearance(room_store: dict) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--harvest", action="store_true")
+    ap.add_argument("--enrich", action="store_true", help="catalogue+CP+URL résa via /api/public/settings")
     ap.add_argument("--prices", action="store_true", help="grilles de prix + planning")
     ap.add_argument("--scrape", action="store_true")
     ap.add_argument("--cities", default=",".join(IDF_CITIES_DEFAULT))
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
-    if not (args.harvest or args.scrape or args.prices):
-        args.harvest = args.prices = args.scrape = True
+    if not (args.harvest or args.scrape or args.prices or args.enrich):
+        args.harvest = args.enrich = args.prices = args.scrape = True
 
     cities = [c.strip() for c in args.cities.split(",") if c.strip()]
     catalog = read_json(CATALOG_FILE, {}) or {}
     if args.harvest:
         catalog = harvest(cities)
+    if args.enrich:
+        if catalog.get("rooms"):
+            catalog = enrich_from_settings(catalog)
+        else:
+            print("[enrich] catalogue vide — lance --harvest d'abord.")
     if args.prices:
         if catalog.get("rooms"):
             catalog = harvest_prices(catalog)
