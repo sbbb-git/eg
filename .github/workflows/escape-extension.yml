@@ -43,31 +43,33 @@ jobs:
         run: python3 escape_extension_discover.py --only-unknown
         continue-on-error: true
 
-      - name: Scrape — source PRIMAIRE escapegame.fr / 4escape (réel)
-        # harvest (annuaire) + enrich (/api/public/settings : catalogue, CP,
-        # URL de résa) + prices (booking-data-json) + scrape (dispo upcoming)
-        run: python3 escape_4escape.py --harvest --enrich --prices --scrape
+      - name: Scrape dispo — source PRIMAIRE 4escape (léger, /30 min)
+        # Uniquement la dispo (upcoming) : c'est le coeur haute-fréquence.
+        # Catalogue/enrich/prix sont rafraîchis par escape-daily.yml (lent).
+        # Si le catalogue manque (1er run), on le construit d'abord.
+        run: |
+          test -f escape_4escape_catalog.json || python3 escape_4escape.py --harvest --enrich
+          python3 escape_4escape.py --scrape
         continue-on-error: true
 
-      - name: Scrape — sources par-site (catalogue étendu)
-        run: |
-          if [ "${{ inputs.seed }}" = "true" ]; then
-            python3 escape_extension_scrape.py --seed
-          else
-            python3 escape_extension_scrape.py
-          fi
+      - name: Scrape — sources par-site (catalogue étendu, si --seed)
+        if: ${{ inputs.seed }}
+        run: python3 escape_extension_scrape.py --seed
         continue-on-error: true
 
-      - name: Aggregate
+      - name: Aggregate (vues réelles)
         run: |
+          python3 escape_live_compute.py || true
           python3 escape_4escape_compute.py || true
-          python3 escape_idf_compute.py
+          python3 sanity_check.py || true
+          # NB : escape_idf_data.json (maquette démo) n'est PAS régénéré en CI
+          # (il faudrait --seed). Il reste tel quel, versionné.
 
       - name: Commit aggregates + catalogues
         run: |
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add escape_idf_data.json escape_4escape_live.json escape_4escape_catalog.json \
+          git add escape_live_data.json escape_4escape_live.json escape_4escape_catalog.json \
                   escape_extension_resolved.json escape_sanity.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "data: scrape run ${{ github.run_id }}"
           for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

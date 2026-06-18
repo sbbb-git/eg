@@ -32,13 +32,15 @@ jobs:
           restore-keys: |
             escape-data-
 
-      - name: Recompute aggregate
-        run: python3 escape_idf_compute.py
+      - name: Recompute aggregates (réels)
+        run: |
+          python3 escape_live_compute.py || true
+          python3 escape_4escape_compute.py || true
 
       - name: Commit
         run: |
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add escape_idf_data.json
+          git add escape_live_data.json escape_4escape_live.json
           git diff --cached --quiet || git commit -m "data: re-aggregate ${{ github.run_id }}"
           for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

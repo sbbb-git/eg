@@ -15,7 +15,9 @@ from datetime import datetime, timezone
 
 from safestore import read_json, write_json
 
-DATA_GLOB = "escape_data/*_data.json"
+# Couvre les stores par-site (escape_data/*_data.json) ET la source primaire
+# 4escape (escape_data/4escape/*.json).
+DATA_GLOBS = ["escape_data/*_data.json", "escape_data/4escape/*.json"]
 OUT_FILE = "escape_sanity.json"
 
 
@@ -32,7 +34,7 @@ def main() -> int:
     args = ap.parse_args()
 
     now = datetime.now(timezone.utc)
-    files = sorted(glob.glob(DATA_GLOB))
+    files = sorted({f for g in DATA_GLOBS for f in glob.glob(g)})
     fresh, stale, broken = [], [], []
 
     for f in files:
