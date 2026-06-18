@@ -7,6 +7,25 @@ et demande live, le tout dans un dashboard statique password-protégé.
 
 > ⚠️ Usage interne / benchmark concurrentiel uniquement. Voir [`RGPD_NOTES.md`](RGPD_NOTES.md).
 
+## Source primaire : escapegame.fr / 4escape
+
+Après investigation live (voir [`ANALYSE_SCRAPING.md`](ANALYSE_SCRAPING.md)), la
+source la plus rentable est l'annuaire **escapegame.fr**, façade de la plateforme
+de résa **4escape.io**. Une API publique donne la dispo réelle :
+
+```
+GET https://availability.4escape.io/egfr/upcoming/<company>/<roomId>
+ -> { date, time, available, book-url }   # PROCHAIN créneau libre uniquement
+```
+
+`escape_4escape.py` harvest le catalogue (≈56 salles / 16 enseignes Paris, dont
+The Game, Lock Academy, Phobia, Deep Inside…) et relève le prochain créneau libre
+par salle à chaque run (append-only). La **demande** se mesure via `lead_days`
+(délai jusqu'au prochain créneau libre) ; l'**occupation** se reconstruit avec
+l'historique (disparition du prochain créneau ⇒ réservation). Les venues
+**non couvertes par 4escape** restent sur le track "scraping par-site"
+(`escape_extension_*`).
+
 ## Architecture
 
 ```

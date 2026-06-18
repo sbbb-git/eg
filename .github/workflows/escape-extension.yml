@@ -43,21 +43,29 @@ jobs:
         run: python3 escape_extension_discover.py --only-unknown
         continue-on-error: true
 
-      - name: Scrape
+      - name: Scrape — source PRIMAIRE escapegame.fr / 4escape (réel)
+        run: python3 escape_4escape.py --harvest --scrape
+        continue-on-error: true
+
+      - name: Scrape — sources par-site (catalogue étendu)
         run: |
           if [ "${{ inputs.seed }}" = "true" ]; then
             python3 escape_extension_scrape.py --seed
           else
             python3 escape_extension_scrape.py
           fi
+        continue-on-error: true
 
       - name: Aggregate
-        run: python3 escape_idf_compute.py
+        run: |
+          python3 escape_4escape_compute.py || true
+          python3 escape_idf_compute.py
 
-      - name: Commit aggregate + resolved
+      - name: Commit aggregates + catalogues
         run: |
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add escape_idf_data.json escape_extension_resolved.json escape_sanity.json 2>/dev/null || true
+          git add escape_idf_data.json escape_4escape_live.json escape_4escape_catalog.json \
+                  escape_extension_resolved.json escape_sanity.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "data: scrape run ${{ github.run_id }}"
           for i in 1 2 3 4; do git push && break || sleep $((2**i)); done
