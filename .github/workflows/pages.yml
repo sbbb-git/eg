@@ -3,14 +3,12 @@ name: pages (déploiement du dashboard)
 # Déploie le site statique (index.html + dashboards + *_data.json) sur GitHub
 # Pages. PRÉREQUIS UNIQUE (manuel, 1 fois) : Settings > Pages > Build and
 # deployment > Source = "GitHub Actions".
+# Ne se déclenche QUE sur main (branche par défaut) ou manuellement, pour ne
+# pas échouer en boucle sur la branche de dev tant que Pages n'est pas activé.
+# 1) Settings > Pages > Source = GitHub Actions  2) merge sur main (ou dispatch).
 on:
   push:
-    branches: ["claude/escape-init-fkcfrk", "main"]
-    paths:
-      - "*.html"
-      - "*_data.json"
-      - "escape_idf_directory.json"
-      - ".github/workflows/pages.yml"
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
