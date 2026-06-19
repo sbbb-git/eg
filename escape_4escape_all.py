@@ -161,7 +161,9 @@ def classify_theme(name: str, desc: str) -> str:
 
 
 def _grid(prices: dict) -> dict:
-    """prices 4escape : clé = nb de joueurs, amount_charged = prix/joueur (cents)."""
+    """prices 4escape : clé = nb de joueurs, amount_charged en cents.
+    Selon l'enseigne c'est un TOTAL (croissant avec nb joueurs) ou un prix
+    PAR JOUEUR (décroissant). On renvoie la grille brute {nb: montant}."""
     g = {}
     for k, p in (prices or {}).items():
         if str(k).isdigit() and isinstance(p, dict) and p.get("amount_charged"):
@@ -169,24 +171,77 @@ def _grid(prices: dict) -> dict:
     return g
 
 
+def price_block(prices: dict, rmeta: dict) -> dict:
+    """Calcule le PRIX TOTAL par taille de groupe + le prix total moyen/session.
+    Détecte total vs par-joueur (grille croissante = déjà un total)."""
+    raw = _grid(prices)
+    if not raw:
+        return {"prix_total": {}, "prix_total_moyen": None, "prix_joueur": {}}
+    ks = sorted(raw)
+    is_total = raw[ks[-1]] >= raw[ks[0]]
+    total = {k: (raw[k] if is_total else round(raw[k] * k, 2)) for k in ks}
+    joueur = {k: (round(raw[k] / k, 2) if is_total else raw[k]) for k in ks}
+    nmin = rmeta.get("min_players") or ks[0]
+    nmax = rmeta.get("max_players") or ks[-1]
+    valid = [total[k] for k in ks if nmin <= k <= nmax] or list(total.values())
+    return {"prix_total": total, "prix_joueur": joueur,
+            "prix_total_moyen": round(sum(valid) / len(valid), 1)}
+
+
+def _norm_id(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", (s or "").lower()).strip("-")
+
+
+def _coords(addr: dict):
+    g = (addr.get("geo") or {}).get("coordinates") or []
+    return (g[1], g[0]) if len(g) == 2 else (None, None)
+
+
 def scrape_company(comp: str, date_str: str) -> dict:
+    """Renvoie le bloc ENSEIGNE -> CENTRES (premises) -> SALLES -> SESSIONS."""
     s = api(comp, "/api/public/settings")
     if not (isinstance(s, dict) and s.get("success")):
         return {"_err": s.get("_err") if isinstance(s, dict) else "no-settings"}
     org = s.get("organization", {}) or {}
     addr = org.get("address", {}) or {}
-    rooms_meta = {}
+    org_name = (org.get("display_name") or org.get("name") or comp).strip()
+
+    # ── CENTRES = premises (sinon 1 centre = l'adresse de l'enseigne) ──
+    centres: dict[str, dict] = {}
+    for p in _items(s.get("premises")):
+        pid = p.get("_id")
+        if not pid:
+            continue
+        pa = p.get("address") or {}
+        lat, lon = _coords(pa)
+        centres[pid] = {
+            "nom": (p.get("display_name") or p.get("name") or org_name).strip(),
+            "cp": (pa.get("postal_code") or "").strip(), "ville": (pa.get("locality") or "").strip(),
+            "adresse": (pa.get("street") or "").strip(), "lat": lat, "lon": lon}
+    if not centres:
+        lat, lon = _coords(addr)
+        centres[comp] = {"nom": org_name, "cp": (addr.get("postal_code") or "").strip(),
+                         "ville": (addr.get("locality") or "").strip(),
+                         "adresse": (addr.get("street") or "").strip(), "lat": lat, "lon": lon}
+    default_cid = next(iter(centres))
+
+    # ── SALLES = rooms (rattachées à leur centre via room.premise) ──
+    rooms_meta: dict[str, dict] = {}
     for r in _items(s.get("rooms")):
-        if r.get("_id"):
-            name = (r.get("display_name") or r.get("name") or "").strip()
-            desc = (r.get("short_description") or r.get("description") or "")
-            rooms_meta[r["_id"]] = {
-                "name": name, "duration": r.get("duration"),
-                "min_players": r.get("minimum_players"), "max_players": r.get("maximum_players"),
-                "difficulty": r.get("difficulty"), "theme": classify_theme(name, desc),
-            }
+        if not r.get("_id"):
+            continue
+        name = (r.get("display_name") or r.get("name") or "").strip()
+        desc = (r.get("short_description") or r.get("description") or "")
+        cid = r.get("premise") or default_cid
+        if cid not in centres:
+            cid = default_cid
+        rooms_meta[r["_id"]] = {
+            "name": name, "centre_id": cid, "duration": r.get("duration"),
+            "min_players": r.get("minimum_players"), "max_players": r.get("maximum_players"),
+            "difficulty": r.get("difficulty"), "theme": classify_theme(name, desc)}
+
+    # ── SESSIONS ──
     sessions: dict[str, dict] = {}
-    # 1) source AUTORITAIRE : booking-data-json (tous les créneaux + booked + prix)
     bd = _booking(comp, date_str, view=7)
     locked = not (isinstance(bd, dict) and bd.get("results"))
     if not locked:
@@ -194,6 +249,7 @@ def scrape_company(comp: str, date_str: str) -> dict:
             rid, start, end = slot.get("roomId"), slot.get("start"), slot.get("end")
             if not (rid and start):
                 continue
+            rmeta = rooms_meta.get(rid, {})
             duree = None
             if end:
                 try:
@@ -202,38 +258,31 @@ def scrape_company(comp: str, date_str: str) -> dict:
                 except ValueError:
                     pass
             booked = bool(slot.get("booked"))
-            disabled = bool(slot.get("disabled"))
             sessions[f"{start[:10]}T{start[11:16]}|{rid}"] = {
                 "date": start[:10], "heure": start[11:16], "duree_minutes": duree,
-                "room_id": rid, "prix": _grid(slot.get("prices")),
+                "room_id": rid, **price_block(slot.get("prices"), rmeta),
+                "nb_joueurs_min": rmeta.get("min_players"), "nb_joueurs_max": rmeta.get("max_players"),
                 "remaining_players": slot.get("remainingPlayers"),
-                "booked": booked, "dispo": (not booked and not disabled)}
+                "booked": booked, "dispo": (not booked and not bool(slot.get("disabled")))}
     else:
-        # 2) fallback verrouillé : seulement les créneaux LIBRES via upcoming
         up_data = api(comp, "/api/public/availability/upcoming",
                       post={"date": date_str, "period": "week"})
         res = up_data.get("results") if isinstance(up_data, dict) else None
         for rid, slots in (res.items() if isinstance(res, dict) else []):
+            rmeta = rooms_meta.get(rid, {})
             for sl in (slots if isinstance(slots, list) else []):
                 start = sl.get("start")
                 if not start:
                     continue
                 sessions[f"{start[:10]}T{start[11:16]}|{rid}"] = {
                     "date": start[:10], "heure": start[11:16], "duree_minutes": None,
-                    "room_id": rid, "prix": {}, "remaining_players": None,
-                    "booked": False, "dispo": True}
-    geo = (addr.get("geo") or {}).get("coordinates") or []
-    lat = lon = None
-    if len(geo) == 2:
-        lon, lat = geo[0], geo[1]
+                    "room_id": rid, "prix_total": {}, "prix_joueur": {}, "prix_total_moyen": None,
+                    "nb_joueurs_min": rmeta.get("min_players"), "nb_joueurs_max": rmeta.get("max_players"),
+                    "remaining_players": None, "booked": False, "dispo": True}
     return {
-        "org_name": (org.get("display_name") or org.get("name") or comp).strip(),
-        "cp": (addr.get("postal_code") or addr.get("zipcode") or "").strip(),
-        "city": (addr.get("locality") or addr.get("city") or "").strip(),
-        "street": (addr.get("street") or "").strip(),
-        "lat": lat, "lon": lon,
+        "enseigne_id": _norm_id(org_name), "enseigne_nom": org_name,
         "website": (org.get("website") or "").strip(),
-        "prices_locked": locked, "rooms": rooms_meta, "sessions": sessions,
+        "centres": centres, "rooms": rooms_meta, "sessions": sessions, "prices_locked": locked,
     }
 
 
@@ -279,8 +328,9 @@ def reconcile(st: dict, current: dict, locked: bool) -> None:
         if ex is None:
             ex = {**sess, "premier_vu": now, "statut": None}
         else:
-            ex.update({k: sess[k] for k in ("prix", "duree_minutes", "remaining_players",
-                                            "booked", "dispo")})
+            ex.update({k: sess[k] for k in ("prix_total", "prix_joueur", "prix_total_moyen",
+                                            "duree_minutes", "nb_joueurs_min", "nb_joueurs_max",
+                                            "remaining_players", "booked", "dispo")})
         ex["dernier_vu"] = now
         ex["releve"] = now
         if sess.get("booked"):
@@ -317,12 +367,13 @@ def scrape(limit: int = 0) -> None:
         path = f"{OBS_DIR}/{comp}.json"
         st = read_json(path, {}) or {"company": comp, "rooms": {}, "sessions": {}}
         st.setdefault("sessions", {})
-        st.update({k: obs[k] for k in ("org_name", "cp", "city", "street", "lat", "lon", "website")})
+        st.update({k: obs[k] for k in ("enseigne_id", "enseigne_nom", "website", "centres")})
         for rid, meta in obs["rooms"].items():
             st["rooms"][rid] = meta
         reconcile(st, obs["sessions"], obs["prices_locked"])
-        st["_meta"] = {"last_scrape": now_iso(), "n_rooms": len(st["rooms"]),
-                       "n_sessions": len(st["sessions"]), "prices_locked": obs["prices_locked"]}
+        st["_meta"] = {"last_scrape": now_iso(), "n_centres": len(obs["centres"]),
+                       "n_rooms": len(st["rooms"]), "n_sessions": len(st["sessions"]),
+                       "prices_locked": obs["prices_locked"]}
         n_sess += len(obs["sessions"])
         write_json(path, st)
         if i % 10 == 0:

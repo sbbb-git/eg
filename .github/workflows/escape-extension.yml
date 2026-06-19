@@ -57,9 +57,7 @@ jobs:
         run: python3 escape_extension_scrape.py --seed
         continue-on-error: true
 
-      - name: Scrape per-slot réseau 4escape étendu (haute couverture)
-        # 33+ enseignes 4escape (Lock Academy, The Game, Panik Room…) : capture
-        # par créneau (dispo/booked/prix/joueurs) + statut reserve/libre_fin.
+      - name: Scrape per-slot (enseigne/centre/salle : dispo/booked/prix total/joueurs)
         run: python3 escape_4escape_all.py --scrape
         continue-on-error: true
 
@@ -69,6 +67,13 @@ jobs:
           python3 escape_4escape_compute.py || true
           python3 escape_all_compute.py || true
           python3 sanity_check.py || true
+
+      - name: Sync Supabase (si secrets configurés)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python3 supa_sync.py
+        continue-on-error: true
           # NB : escape_idf_data.json (maquette démo) n'est PAS régénéré en CI
           # (il faudrait --seed). Il reste tel quel, versionné.
 

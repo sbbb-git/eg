@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""escape_all_compute.py — agrège escape_data/4escape_all/*.json -> escape_all_data.json.
+"""escape_all_compute.py — agrège les relevés en hiérarchie ENSEIGNE > CENTRE >
+SALLE > SESSIONS, vers escape_all_data.json (consommé par le dashboard).
 
-Deux mesures d'occupation complémentaires :
-  - fill_now (enseignes "open" : booking-data-json accessible) = booked / total
-    sur la fenêtre J..J+7. Occupation RÉELLE instantanée (pas besoin d'attendre).
-  - occ_resolved (logique padel) = reserve / (reserve + libre_fin) sur les
-    créneaux passés/tranchés. Se renforce à chaque relevé.
+Mesures :
+  - fill_now = booked / total sur la fenêtre J..J+7 (occupation réelle quand la
+    billetterie est ouverte).
+  - prix_moyen_session = moyenne du prix TOTAL par session.
+Aucune notion de plateforme n'apparaît (volontairement).
 """
 from __future__ import annotations
 
@@ -23,7 +24,7 @@ BUCKETS = ["10-13", "13-16", "16-19", "19-21", "21-24"]
 
 
 def bucket_of(h: str) -> str:
-    hh = int(h[:2])
+    hh = int((h or "12")[:2])
     return ("10-13" if hh < 13 else "13-16" if hh < 16 else "16-19"
             if hh < 19 else "19-21" if hh < 21 else "21-24")
 
@@ -32,130 +33,157 @@ def pct(a: int, b: int) -> float:
     return round(100 * a / b, 1) if b else 0.0
 
 
+def med(xs: list):
+    xs = sorted(x for x in xs if x is not None)
+    return round(xs[len(xs) // 2], 1) if xs else None
+
+
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def per_player(grid: dict) -> float | None:
-    """Prix indicatif/joueur : grille {nb:montant}. Si le montant ressemble à un
-    total équipe (montant > 60), on divise par le nb de joueurs."""
-    if not grid:
-        return None
-    vals = []
-    for nb, amt in grid.items():
-        nb = int(nb)
-        vals.append(round(amt / nb, 1) if amt > 60 and nb else amt)
-    return round(sorted(vals)[len(vals) // 2], 1) if vals else None
-
-
 def main() -> int:
     geo = read_json(GEO_FILE, {}) or {}
+    cents = geo.get("_dept_centroids", {})
     files = sorted(glob.glob(DATA_GLOB))
     today = datetime.utcnow().date()
     horizon = today + timedelta(days=7)
 
-    centres, all_prices = [], []
-    hm = defaultdict(lambda: [0, 0])            # (ji,bucket) -> [booked, total] (open, fenêtre)
-    rooms = defaultdict(lambda: {"booked": 0, "total": 0, "centre": "", "cp": "",
-                                 "theme": "", "prix": None, "difficulty": None})
+    # enseigne_id -> {nom, website, centres:{centre_key->centre}}
+    ens: dict[str, dict] = {}
+    hm = defaultdict(lambda: [0, 0])          # (ji,bucket)->[booked,total]
     themes = defaultdict(int)
-    n_sess_tot = n_open = 0
+    all_prices, all_sess = [], 0
+    n_open_companies = 0
+
+    def coords(c):
+        if c.get("lat") and c.get("lon"):
+            return c["lat"], c["lon"]
+        cp = c.get("cp") or ""
+        g = geo.get(cp) or cents.get(cp[:2]) or [48.8566, 2.3522]
+        return g[0], g[1]
 
     for f in files:
         st = read_json(f, {}) or {}
-        sess = st.get("sessions", {})
-        if not sess:
+        sessions = st.get("sessions", {})
+        if not isinstance(sessions, dict) or not st.get("enseigne_id"):
             continue
-        sess = list(sess.values()) if isinstance(sess, dict) else sess
-        roommeta = st.get("rooms", {})
         locked = st.get("_meta", {}).get("prices_locked", True)
         if not locked:
-            n_open += 1
-        n_sess_tot += len(sess)
-        c_book = c_tot = 0                        # fenêtre J..J+7 (open)
-        r_res = r_resolved = 0                    # padel (passés)
-        cprices = []
-        for s in sess:
+            n_open_companies += 1
+        eid = st["enseigne_id"]
+        e = ens.setdefault(eid, {"id": eid, "nom": st.get("enseigne_nom", eid),
+                                 "website": st.get("website", ""), "centres": {}})
+        # centres de cette company (dédup par nom+cp+adresse)
+        local_centre = {}
+        for cid, c in (st.get("centres") or {}).items():
+            ckey = f"{c.get('nom','')}|{c.get('cp','')}|{c.get('adresse','')}".lower()
+            lat, lon = coords(c)
+            ce = e["centres"].setdefault(ckey, {
+                "id": cid, "nom": c.get("nom") or e["nom"], "cp": c.get("cp", ""),
+                "ville": c.get("ville", ""), "adresse": c.get("adresse", ""),
+                "lat": lat, "lon": lon, "salles": {}})
+            local_centre[cid] = ckey
+        default_ckey = next(iter(local_centre.values())) if local_centre else None
+        # salles
+        rooms = st.get("rooms", {})
+        for rid, r in rooms.items():
+            ckey = local_centre.get(r.get("centre_id"), default_ckey)
+            if ckey is None:
+                continue
+            e["centres"][ckey]["salles"].setdefault(rid, {
+                "id": rid, "nom": r.get("name", rid), "theme": r.get("theme", "aventure"),
+                "difficulty": r.get("difficulty"), "duree": r.get("duration"),
+                "joueurs_min": r.get("min_players"), "joueurs_max": r.get("max_players"),
+                "_book": 0, "_tot": 0, "_prices": [], "n_sessions": 0})
+        # sessions -> rattachées à leur salle
+        for sess in sessions.values():
+            all_sess += 1
+            rid = sess.get("room_id")
+            r = rooms.get(rid, {})
+            ckey = local_centre.get(r.get("centre_id"), default_ckey)
+            if ckey is None or rid not in e["centres"][ckey]["salles"]:
+                continue
+            sl = e["centres"][ckey]["salles"][rid]
+            sl["n_sessions"] += 1
+            themes[sl["theme"]] += 1
+            pm = sess.get("prix_total_moyen")
+            if pm:
+                sl["_prices"].append(pm); all_prices.append(pm)
             try:
-                d = datetime.strptime(s["date"], "%Y-%m-%d").date()
+                d = datetime.strptime(sess["date"], "%Y-%m-%d").date()
             except (ValueError, KeyError):
                 continue
-            rid = s.get("room_id")
-            rmeta = roommeta.get(rid, {})
-            theme = rmeta.get("theme", "aventure")
-            pp = per_player(s.get("prix") or {})
-            if pp:
-                cprices.append(pp); all_prices.append(pp)
-            themes[theme] += 1
-            ji, bk = d.weekday(), bucket_of(s.get("heure", "12:00"))
-            # occupation réelle (open) sur la fenêtre
             if not locked and today <= d <= horizon:
-                c_tot += 1
+                sl["_tot"] += 1
+                ji, bk = d.weekday(), bucket_of(sess.get("heure"))
                 hm[(ji, bk)][1] += 1
-                if s.get("booked"):
-                    c_book += 1
+                if sess.get("booked"):
+                    sl["_book"] += 1
                     hm[(ji, bk)][0] += 1
-                rk = f"{st.get('org_name', st.get('company'))}|{rmeta.get('name', rid)}"
-                rr = rooms[rk]
-                rr.update(centre=st.get("org_name", st.get("company")), cp=st.get("cp", ""),
-                          theme=theme, prix=pp, difficulty=rmeta.get("difficulty"))
-                rr["total"] += 1
-                rr["booked"] += 1 if s.get("booked") else 0
-            # padel : créneaux tranchés
-            if s.get("statut") in ("reserve", "libre_fin"):
-                r_resolved += 1
-                if s["statut"] == "reserve":
-                    r_res += 1
 
-        cp = st.get("cp", "")
-        if st.get("lat") and st.get("lon"):
-            coords = [st["lat"], st["lon"]]                 # coords exactes (settings)
-        else:
-            coords = geo.get(cp) or geo.get("_dept_centroids", {}).get(cp[:2]) or [48.8566, 2.3522]
-        centres.append({
-            "label": st.get("org_name", st.get("company")), "company": st.get("company"),
-            "cp": cp, "website": st.get("website", ""), "platform": "4escape",
-            "n_rooms": len(roommeta), "n_sessions": len(sess),
-            "open": not locked,
-            "fill_now": pct(c_book, c_tot), "n_booked": c_book, "n_slots_window": c_tot,
-            "occ_resolved": pct(r_res, r_resolved), "n_resolved": r_resolved,
-            "prix_median": round(sorted(cprices)[len(cprices) // 2], 1) if cprices else None,
-            "lat": coords[0], "lon": coords[1],
-        })
+    # ── consolidation hiérarchique ──
+    enseignes, map_points, top_salles = [], [], []
+    for e in ens.values():
+        centres_out = []
+        for ce in e["centres"].values():
+            salles_out, c_book, c_tot, c_prices = [], 0, 0, []
+            for sl in ce["salles"].values():
+                fill = pct(sl["_book"], sl["_tot"])
+                prix = med(sl["_prices"])
+                c_book += sl["_book"]; c_tot += sl["_tot"]
+                if prix:
+                    c_prices.append(prix)
+                so = {"id": sl["id"], "nom": sl["nom"], "theme": sl["theme"],
+                      "difficulty": sl["difficulty"], "duree": sl["duree"],
+                      "joueurs_min": sl["joueurs_min"], "joueurs_max": sl["joueurs_max"],
+                      "prix_moyen_session": prix, "fill": fill,
+                      "n_sessions": sl["n_sessions"], "n_booked": sl["_book"]}
+                salles_out.append(so)
+                if sl["_tot"] >= 5:
+                    top_salles.append({**so, "centre": ce["nom"], "enseigne": e["nom"], "cp": ce["cp"]})
+            centres_out.append({
+                "id": ce["id"], "nom": ce["nom"], "cp": ce["cp"], "ville": ce["ville"],
+                "adresse": ce["adresse"], "lat": ce["lat"], "lon": ce["lon"],
+                "n_salles": len(salles_out), "fill_now": pct(c_book, c_tot),
+                "prix_moyen_session": med(c_prices),
+                "salles": sorted(salles_out, key=lambda x: x["fill"], reverse=True)})
+            map_points.append({"centre": ce["nom"], "enseigne": e["nom"], "lat": ce["lat"],
+                               "lon": ce["lon"], "cp": ce["cp"], "fill": pct(c_book, c_tot),
+                               "n_salles": len(salles_out)})
+        n_salles = sum(c["n_salles"] for c in centres_out)
+        e_prices = [c["prix_moyen_session"] for c in centres_out if c["prix_moyen_session"]]
+        e_fill = med([c["fill_now"] for c in centres_out if c["fill_now"]]) or 0.0
+        enseignes.append({
+            "id": e["id"], "nom": e["nom"], "website": e["website"],
+            "n_centres": len(centres_out), "n_salles": n_salles,
+            "fill_now": e_fill, "prix_moyen_session": med(e_prices),
+            "centres": sorted(centres_out, key=lambda x: x["fill_now"], reverse=True)})
 
-    tot_book = sum(c["n_booked"] for c in centres)
-    tot_win = sum(c["n_slots_window"] for c in centres)
+    n_centres = sum(en["n_centres"] for en in enseignes)
+    n_salles = sum(en["n_salles"] for en in enseignes)
     kpis = {
-        "n_centres": len(centres), "n_open": n_open,
-        "n_rooms": sum(c["n_rooms"] or 0 for c in centres),
-        "n_sessions": n_sess_tot,
-        "fill_moyenne": pct(tot_book, tot_win),
-        "prix_median_joueur": round(sorted(all_prices)[len(all_prices) // 2], 1) if all_prices else None,
+        "n_enseignes": len(enseignes), "n_centres": n_centres, "n_salles": n_salles,
+        "n_sessions": all_sess, "n_open": n_open_companies,
+        "fill_moyenne": pct(sum(s[0] for s in hm.values()), sum(s[1] for s in hm.values())),
+        "prix_moyen_session": med(all_prices),
     }
     heatmap = {"jours": JOURS, "buckets": BUCKETS,
                "matrix": [[pct(*hm[(ji, bk)]) for bk in BUCKETS] for ji in range(7)]}
-    top_rooms = sorted(
-        [{"room": k.split("|", 1)[1], "centre": r["centre"], "cp": r["cp"], "theme": r["theme"],
-          "prix": r["prix"], "fill": pct(r["booked"], r["total"]), "n": r["total"]}
-         for k, r in rooms.items() if r["total"] >= 5],
-        key=lambda x: x["fill"], reverse=True)
     out = {
-        "_meta": {"generated": now_iso(), "n_files": len(files), "source": "4escape (réseau IDF)",
-                  "window": "J..J+7"},
+        "_meta": {"generated": now_iso(), "n_files": len(files), "window": "J..J+7"},
         "kpis": kpis,
-        "centres": sorted(centres, key=lambda c: (c["fill_now"], c["occ_resolved"]), reverse=True),
-        "map_points": [{"label": c["label"], "lat": c["lat"], "lon": c["lon"], "cp": c["cp"],
-                        "fill": c["fill_now"], "open": c["open"], "n_rooms": c["n_rooms"]}
-                       for c in centres],
+        "enseignes": sorted(enseignes, key=lambda x: (x["n_salles"], x["fill_now"]), reverse=True),
+        "map_points": [p for p in map_points if p["lat"]],
         "heatmap": heatmap,
-        "top_rooms": top_rooms[:25],
         "themes": dict(sorted(themes.items(), key=lambda x: -x[1])),
+        "top_salles": sorted(top_salles, key=lambda x: x["fill"], reverse=True)[:25],
         "prix_distribution": all_prices,
     }
     write_json(OUT_FILE, out)
-    print(f"[compute-all] {len(centres)} centres ({n_open} open), {len(rooms)} rooms, "
-          f"{n_sess_tot} sessions | fill moy {kpis['fill_moyenne']}% | "
-          f"prix médian {kpis['prix_median_joueur']}€/j")
+    print(f"[compute] {len(enseignes)} enseignes · {n_centres} centres · {n_salles} salles · "
+          f"{all_sess} sessions | fill {kpis['fill_moyenne']}% | "
+          f"prix moyen/session {kpis['prix_moyen_session']}€")
     return 0
 
 
