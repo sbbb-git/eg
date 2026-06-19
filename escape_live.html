@@ -160,7 +160,7 @@ function init(){
   document.getElementById("meta").textContent=DATA._meta?.note||"";
   const k=DATA.kpis;
   document.getElementById("kpis").innerHTML=[
-    ["escape games IDF recensés", DIR?DIR._meta.n_venues:"—"],
+    ["escape games IDF recensés", DIR?(DIR._meta.n_real||DIR._meta.n_venues):"—"],
     ["enseignes live (4escape)",k.n_centres],["salles live",k.n_rooms],
     ["prix mini marché",(k.prix_min_marche??"—")+"€"],
     ["délai moyen prochain créneau",(k.lead_days_moyen??"—")+" j"]
@@ -182,13 +182,14 @@ function renderDir(){
   const dept=document.getElementById("fDept").value, cov=document.getElementById("fCov").value,
         q=document.getElementById("fQ").value.toLowerCase();
   let vs=DIR.venues.filter(v=>{
+    if(v.likely_event) return false;
     if(dept && v.dept!==dept) return false;
     if(cov==="1" && !v.covered_4escape) return false;
     if(cov==="0" && v.covered_4escape) return false;
     if(q && !((v.name||"").toLowerCase().includes(q)||(v.city||"").toLowerCase().includes(q))) return false;
     return true;
   }).sort((a,b)=>(b.covered_4escape-a.covered_4escape)||(a.city||"").localeCompare(b.city||""));
-  document.getElementById("dirCount").textContent=`(${vs.length} / ${DIR.venues.length})`;
+  document.getElementById("dirCount").textContent=`(${vs.length} / ${DIR._meta.n_real||DIR.venues.length})`;
   document.querySelector("#dirTbl tbody").innerHTML=vs.map(v=>{
     const plat=v.covered_4escape?"4escape":(v.platform||"—");
     const prix=v.prix_min?`${v.prix_min}–${v.prix_max}€`:"—";
