@@ -44,6 +44,10 @@ jobs:
         run: python3 escape_idf_directory.py
         continue-on-error: true
 
+      - name: Résolution venues non-4escape (plateforme + prix)
+        run: python3 escape_resolve_sites.py
+        continue-on-error: true
+
       - name: Géocodage enseignes
         run: python3 escape_geocode.py
         continue-on-error: true

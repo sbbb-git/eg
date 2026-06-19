@@ -128,7 +128,7 @@
     </div>
     <div class="scroll">
     <table id="dirTbl"><thead><tr>
-      <th>Enseigne</th><th>Commune</th><th>Dépt</th><th>Salles</th><th>Statut</th><th>Fiche</th>
+      <th>Enseigne</th><th>Commune</th><th>Dépt</th><th>Salles</th><th>Plateforme</th><th>Prix</th><th>Statut</th><th>Lien</th>
     </tr></thead><tbody></tbody></table>
     </div>
   </section>
@@ -189,11 +189,17 @@ function renderDir(){
     return true;
   }).sort((a,b)=>(b.covered_4escape-a.covered_4escape)||(a.city||"").localeCompare(b.city||""));
   document.getElementById("dirCount").textContent=`(${vs.length} / ${DIR.venues.length})`;
-  document.querySelector("#dirTbl tbody").innerHTML=vs.map(v=>`<tr>
+  document.querySelector("#dirTbl tbody").innerHTML=vs.map(v=>{
+    const plat=v.covered_4escape?"4escape":(v.platform||"—");
+    const prix=v.prix_min?`${v.prix_min}–${v.prix_max}€`:"—";
+    const link=v.website||v.url;
+    const statut=v.covered_4escape?'<span class="pill dispo">live</span>':
+      (v.platform?'<span class="pill" style="background:rgba(255,206,90,.18);color:#ffce5a">résolu</span>':'<span class="pill">à résoudre</span>');
+    return `<tr>
     <td>${v.name||v.slug}</td><td>${(v.city||"").replace(/-/g," ")}</td><td>${v.dept||"?"}</td>
-    <td>${v.n_rooms||"—"}</td>
-    <td>${v.covered_4escape?'<span class="pill dispo">live</span>':'<span class="pill">à résoudre</span>'}</td>
-    <td><a class="resa" href="${v.url}" target="_blank" rel="noopener">↗</a></td></tr>`).join("");
+    <td>${v.n_rooms||"—"}</td><td><span class="pill">${plat}</span></td><td>${prix}</td>
+    <td>${statut}</td>
+    <td><a class="resa" href="${link}" target="_blank" rel="noopener">↗</a></td></tr>`;}).join("");
 }
 
 function initMap(){
