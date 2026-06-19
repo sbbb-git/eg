@@ -75,17 +75,32 @@ def sld(website: str) -> str | None:
 # DISCOVERY : SLD candidats -> /boot -> companies 4escape validées
 # ---------------------------------------------------------------------------
 
+def _variants(website: str, slug: str) -> set[str]:
+    """Candidats de sous-domaine 4escape pour une enseigne."""
+    out: set[str] = set()
+    s = sld(website)
+    if s:
+        out.add(s); out.add(s.replace("-", ""))
+    if slug:
+        out.add(slug); out.add(slug.replace("-", ""))
+        # enlève suffixes communs (-paris, -escape, -escapegame)
+        base = re.sub(r"-(paris|escape|escapegame|game|idf|\d+)$", "", slug)
+        if base and base != slug:
+            out.add(base)
+    return {c for c in out if c and len(c) >= 3}
+
+
 def candidate_companies() -> dict[str, str]:
-    """slug-or-name -> website, depuis toutes les sources disponibles."""
+    """sld-candidat -> website (toutes sources + variantes de slug)."""
     cands: dict[str, str] = {}
     cache = read_json(CACHE, {}) or {}
     for slug, e in (cache.get("venues") or {}).items():
-        if e.get("website"):
-            cands[slug] = e["website"]
+        for c in _variants(e.get("website", ""), slug):
+            cands.setdefault(c, e.get("website") or "")
     directory = read_json(DIRECTORY, {}) or {}
     for v in directory.get("venues", []):
-        if v.get("website"):
-            cands.setdefault(v["slug"], v["website"])
+        for c in _variants(v.get("website", ""), v.get("slug", "")):
+            cands.setdefault(c, v.get("website") or v.get("url", ""))
     return cands
 
 
@@ -101,18 +116,17 @@ def discover() -> dict:
 
     cands = candidate_companies()
     new = 0
-    for slug, website in cands.items():
-        cand = sld(website)
-        if not cand or store["tried"].get(cand) or cand in store["companies"]:
+    for cand, website in cands.items():
+        if store["tried"].get(cand) or cand in store["companies"]:
             continue
         store["tried"][cand] = True
-        d = api(cand, "/api/public/boot", tmo=10)
+        d = api(cand, "/api/public/boot", tmo=7)
         if isinstance(d, dict) and d.get("success"):
-            store["companies"][cand] = {"website": website, "slug": slug,
-                                        "source": "resolver", "found": now_iso()}
+            store["companies"][cand] = {"website": website,
+                                        "source": "discover", "found": now_iso()}
             new += 1
             print(f"[discover] ✓ {cand:24} <- {website[:40]}")
-        time.sleep(0.15)
+        time.sleep(0.1)
     store["_meta"] = {"updated": now_iso(), "n_companies": len(store["companies"]),
                       "n_tried": len(store["tried"])}
     write_json(COMPANIES_FILE, store)
