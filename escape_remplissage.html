@@ -111,11 +111,90 @@ const col=f=>f<40?"#22c79b":f<70?"#ffce5a":"#ff5c7a";
 const heatCol=v=>`rgba(124,92,255,${0.12+0.85*Math.min(1,v/100)})`;
 const euro=v=>v==null?"—":Math.round(v)+"€";
 const joueurs=(a,b)=>a&&b?`${a}–${b}`:(a||b||"—");
+const med=xs=>{xs=xs.filter(x=>x!=null).sort((a,b)=>a-b);return xs.length?Math.round(xs[Math.floor(xs.length/2)]*10)/10:null;};
+const pct=(a,b)=>b?Math.round(1000*a/b)/10:0;
+const bucketOf=h=>{const x=+(h||"12").slice(0,2);return x<13?"10-13":x<16?"13-16":x<19?"16-19":x<21?"19-21":"21-24";};
+const JOURS=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"], BUCKETS=["10-13","13-16","16-19","19-21","21-24"];
+const SUPA="https://nbvronwfvoksonatolcs.supabase.co";
+const SUPA_KEY="sb_publishable_5vFAbOG-hHH0s9mAoYmGyA_EG4bIQYj";
 let DATA=null;
 
-fetch("escape_all_data.json?cb="+Date.now()).then(r=>r.json()).then(d=>{
+// ── lecture Supabase (4 tables) + agrégation -> structure dashboard ──
+async function sbAll(table,cols,extra){
+  let out=[],from=0,step=1000;
+  for(;;){
+    const r=await fetch(`${SUPA}/rest/v1/${table}?select=${cols}${extra||""}&limit=${step}&offset=${from}`,
+      {headers:{apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY}});
+    if(!r.ok) throw new Error(table+" HTTP "+r.status);
+    const part=await r.json(); out=out.concat(part);
+    if(part.length<step) break; from+=step;
+  }
+  return out;
+}
+async function loadSupabase(){
+  const today=new Date().toISOString().slice(0,10);
+  const horizon=new Date(Date.now()+7*864e5).toISOString().slice(0,10);
+  const [ens,cen,sal]=await Promise.all([
+    sbAll("enseignes","id,nom,website"),
+    sbAll("centres","id,enseigne_id,nom,cp,ville,adresse,lat,lon"),
+    sbAll("salles","id,centre_id,nom,theme,difficulty,duree_minutes,joueurs_min,joueurs_max")]);
+  const sess=await sbAll("sessions","salle_id,date,heure,booked,prix_total_moyen","&date=gte."+today);
+  const salById={}, hm={}, themes={};
+  sal.forEach(s=>{s._book=0;s._tot=0;s._prices=[];s._n=0;salById[s.id]=s;});
+  sess.forEach(x=>{
+    const s=salById[x.salle_id]; if(!s)return;
+    s._n++; themes[s.theme]=(themes[s.theme]||0)+1;
+    if(x.prix_total_moyen!=null) s._prices.push(x.prix_total_moyen);
+    if(x.date>=today && x.date<=horizon){
+      s._tot++; const key=((new Date(x.date).getDay()+6)%7)+"|"+bucketOf(x.heure);
+      hm[key]=hm[key]||[0,0]; hm[key][1]++;
+      if(x.booked){ s._book++; hm[key][0]++; }
+    }
+  });
+  const cenById={}; cen.forEach(c=>{c._salles=[];cenById[c.id]=c;});
+  sal.forEach(s=>{ if(cenById[s.centre_id]) cenById[s.centre_id]._salles.push(s); });
+  const ensById={}; ens.forEach(e=>{e._centres=[];ensById[e.id]=e;});
+  cen.forEach(c=>{ if(ensById[c.enseigne_id]) ensById[c.enseigne_id]._centres.push(c); });
+  const top=[];
+  const enseignes=ens.map(e=>{
+    const centres=e._centres.map(c=>{
+      const salles=c._salles.map(s=>{
+        const fill=pct(s._book,s._tot), prix=med(s._prices);
+        const so={id:s.id,nom:s.nom,theme:s.theme,difficulty:s.difficulty,duree:s.duree_minutes,
+          joueurs_min:s.joueurs_min,joueurs_max:s.joueurs_max,prix_moyen_session:prix,
+          fill,n_sessions:s._n,n_booked:s._book};
+        if(s._tot>=5) top.push({...so,centre:c.nom,enseigne:e.nom,cp:c.cp});
+        return so;
+      }).sort((a,b)=>b.fill-a.fill);
+      const cb=c._salles.reduce((a,s)=>a+s._book,0), ct=c._salles.reduce((a,s)=>a+s._tot,0);
+      return {id:c.id,nom:c.nom,cp:c.cp,ville:c.ville,adresse:c.adresse,lat:c.lat,lon:c.lon,
+        n_salles:salles.length,fill_now:pct(cb,ct),
+        prix_moyen_session:med(salles.map(s=>s.prix_moyen_session)),salles};
+    }).sort((a,b)=>b.fill_now-a.fill_now);
+    return {id:e.id,nom:e.nom,website:e.website,n_centres:centres.length,
+      n_salles:centres.reduce((a,c)=>a+c.n_salles,0),
+      fill_now:med(centres.map(c=>c.fill_now))||0,
+      prix_moyen_session:med(centres.map(c=>c.prix_moyen_session)),centres};
+  }).sort((a,b)=>b.n_salles-a.n_salles||b.fill_now-a.fill_now);
+  const map_points=[];
+  enseignes.forEach(e=>e.centres.forEach(c=>{if(c.lat)map_points.push(
+    {centre:c.nom,enseigne:e.nom,lat:c.lat,lon:c.lon,cp:c.cp,fill:c.fill_now,n_salles:c.n_salles});}));
+  const totB=Object.values(hm).reduce((a,v)=>a+v[0],0), totT=Object.values(hm).reduce((a,v)=>a+v[1],0);
+  return {
+    _meta:{generated:new Date().toISOString(),source:"Supabase"},
+    kpis:{n_enseignes:enseignes.length,n_centres:enseignes.reduce((a,e)=>a+e.n_centres,0),
+      n_salles:enseignes.reduce((a,e)=>a+e.n_salles,0),n_sessions:sess.length,
+      fill_moyenne:pct(totB,totT),prix_moyen_session:med(sess.map(x=>x.prix_total_moyen))},
+    enseignes, map_points,
+    heatmap:{jours:JOURS,buckets:BUCKETS,
+      matrix:[...Array(7)].map((_,ji)=>BUCKETS.map(bk=>{const v=hm[ji+"|"+bk];return v?pct(v[0],v[1]):0;}))},
+    themes:Object.fromEntries(Object.entries(themes).sort((a,b)=>b[1]-a[1])),
+    top_salles:top.sort((a,b)=>b.fill-a.fill).slice(0,25)};
+}
+
+function boot(d){
   DATA=d; const k=d.kpis;
-  document.getElementById("gen").textContent="relevé "+(d._meta.generated||"").replace("T"," ").slice(0,16);
+  document.getElementById("gen").textContent="relevé "+(d._meta.generated||"").replace("T"," ").slice(0,16)+(d._meta.source?" · source "+d._meta.source:"");
   document.getElementById("kpis").innerHTML=[
     ["Enseignes",k.n_enseignes],["Centres",k.n_centres],["Salles",k.n_salles],
     ["Créneaux captés",k.n_sessions],["Remplissage moyen",k.fill_moyenne+"%"],
@@ -149,7 +228,13 @@ fetch("escape_all_data.json?cb="+Date.now()).then(r=>r.json()).then(d=>{
     <td><div class="bar"><span style="width:${r.fill}%;background:${col(r.fill)}"></span></div> ${r.fill}%</td></tr>`).join("");
 
   render();
-}).catch(e=>{document.getElementById("gen").textContent="erreur de chargement : "+e;});
+}
+
+loadSupabase().then(boot).catch(e=>{
+  console.warn("Supabase indisponible, repli sur JSON :", e);
+  fetch("escape_all_data.json?cb="+Date.now()).then(r=>r.json()).then(boot)
+    .catch(err=>{document.getElementById("gen").textContent="erreur de chargement : "+err;});
+});
 
 function render(){
   const q=(document.getElementById("search").value||"").toLowerCase();
