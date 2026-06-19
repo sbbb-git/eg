@@ -326,14 +326,22 @@ def reconcile(st: dict, current: dict, locked: bool) -> None:
     for key, sess in current.items():
         ex = st["sessions"].get(key)
         if ex is None:
-            ex = {**sess, "premier_vu": now, "statut": None}
+            ex = {**sess, "premier_vu": now, "statut": None,
+                  "seen_free": False, "seen_booked": False}
         else:
             ex.update({k: sess[k] for k in ("prix_total", "prix_joueur", "prix_total_moyen",
                                             "duree_minutes", "nb_joueurs_min", "nb_joueurs_max",
                                             "remaining_players", "booked", "dispo")})
         ex["dernier_vu"] = now
         ex["releve"] = now
+        if sess.get("dispo"):
+            ex["seen_free"] = True
         if sess.get("booked"):
+            ex["seen_booked"] = True
+        # 'reserve' FIABLE : booké APRÈS avoir été vu libre (vraie transition).
+        # Un créneau booké dès la 1re observation (jamais vu libre) reste 'None'
+        # -> c'est peut-être une salle fermée/bloquée, pas une vraie résa.
+        if sess.get("booked") and ex.get("seen_free"):
             ex["statut"] = "reserve"
         st["sessions"][key] = ex
     # passes sur l'historique : disparition (verrouillé) + fin de vie

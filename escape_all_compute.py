@@ -48,6 +48,7 @@ def main() -> int:
     files = sorted(glob.glob(DATA_GLOB))
     today = datetime.utcnow().date()
     horizon = today + timedelta(days=7)
+    far = today + timedelta(days=4)               # seuil "fin de fenêtre" (détection salle fermée)
 
     # enseigne_id -> {nom, website, centres:{centre_key->centre}}
     ens: dict[str, dict] = {}
@@ -95,7 +96,8 @@ def main() -> int:
                 "id": rid, "nom": r.get("name", rid), "theme": r.get("theme", "aventure"),
                 "difficulty": r.get("difficulty"), "duree": r.get("duration"),
                 "joueurs_min": r.get("min_players"), "joueurs_max": r.get("max_players"),
-                "_book": 0, "_tot": 0, "_prices": [], "n_sessions": 0})
+                "_book": 0, "_tot": 0, "_far_tot": 0, "_far_free": 0,
+                "_prices": [], "n_sessions": 0})
         # sessions -> rattachées à leur salle
         for sess in sessions.values():
             all_sess += 1
@@ -116,6 +118,10 @@ def main() -> int:
                 continue
             if not locked and today <= d <= horizon:
                 sl["_tot"] += 1
+                if d >= far:                       # fenêtre lointaine J+4..J+7
+                    sl["_far_tot"] += 1
+                    if sess.get("dispo") and not sess.get("booked"):
+                        sl["_far_free"] += 1
                 ji, bk = d.weekday(), bucket_of(sess.get("heure"))
                 hm[(ji, bk)][1] += 1
                 if sess.get("booked"):
@@ -123,24 +129,30 @@ def main() -> int:
                     hm[(ji, bk)][0] += 1
 
     # ── consolidation hiérarchique ──
+    g_book = g_tot = 0
     enseignes, map_points, top_salles = [], [], []
     for e in ens.values():
         centres_out = []
         for ce in e["centres"].values():
             salles_out, c_book, c_tot, c_prices = [], 0, 0, []
             for sl in ce["salles"].values():
+                # salle "fermée/bloquée" : a des créneaux en fin de fenêtre mais
+                # AUCUN libre même en J+4..J+7 -> ce n'est pas une vraie demande.
+                suspect = sl["_far_tot"] >= 3 and sl["_far_free"] == 0
                 fill = pct(sl["_book"], sl["_tot"])
                 prix = med(sl["_prices"])
-                c_book += sl["_book"]; c_tot += sl["_tot"]
+                if not suspect:                         # exclue du taux d'occupation
+                    c_book += sl["_book"]; c_tot += sl["_tot"]
+                    g_book += sl["_book"]; g_tot += sl["_tot"]
                 if prix:
                     c_prices.append(prix)
                 so = {"id": sl["id"], "nom": sl["nom"], "theme": sl["theme"],
                       "difficulty": sl["difficulty"], "duree": sl["duree"],
                       "joueurs_min": sl["joueurs_min"], "joueurs_max": sl["joueurs_max"],
-                      "prix_moyen_session": prix, "fill": fill,
+                      "prix_moyen_session": prix, "fill": fill, "suspect_closed": suspect,
                       "n_sessions": sl["n_sessions"], "n_booked": sl["_book"]}
                 salles_out.append(so)
-                if sl["_tot"] >= 5:
+                if sl["_tot"] >= 5 and not suspect:
                     top_salles.append({**so, "centre": ce["nom"], "enseigne": e["nom"], "cp": ce["cp"]})
             centres_out.append({
                 "id": ce["id"], "nom": ce["nom"], "cp": ce["cp"], "ville": ce["ville"],
@@ -165,7 +177,7 @@ def main() -> int:
     kpis = {
         "n_enseignes": len(enseignes), "n_centres": n_centres, "n_salles": n_salles,
         "n_sessions": all_sess, "n_open": n_open_companies,
-        "fill_moyenne": pct(sum(s[0] for s in hm.values()), sum(s[1] for s in hm.values())),
+        "fill_moyenne": pct(g_book, g_tot),
         "prix_moyen_session": med(all_prices),
     }
     heatmap = {"jours": JOURS, "buckets": BUCKETS,
