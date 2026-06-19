@@ -119,6 +119,21 @@
   </section>
 
   <section>
+    <h2>🗂️ Annuaire complet IDF <span id="dirCount" class="gen"></span></h2>
+    <div class="filters" style="margin-bottom:12px">
+      <div><label>Département</label><select id="fDept" onchange="renderDir()"></select></div>
+      <div><label>Couverture</label><select id="fCov" onchange="renderDir()">
+        <option value="">toutes</option><option value="1">live (4escape)</option><option value="0">à résoudre</option></select></div>
+      <div><label>Recherche</label><input id="fQ" placeholder="nom / commune" oninput="renderDir()"></div>
+    </div>
+    <div class="scroll">
+    <table id="dirTbl"><thead><tr>
+      <th>Enseigne</th><th>Commune</th><th>Dépt</th><th>Salles</th><th>Statut</th><th>Fiche</th>
+    </tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section>
     <div class="note" id="meta"></div>
   </section>
 </div>
@@ -153,7 +168,32 @@ function init(){
   // thèmes
   const themes=[...new Set(DATA.rooms.map(r=>r.theme).filter(Boolean))].sort();
   document.getElementById("fT").innerHTML='<option value="">tous</option>'+themes.map(t=>`<option>${t}</option>`).join("");
-  initMap(); drawPrice(); render();
+  initMap(); drawPrice(); render(); initDir();
+}
+
+function initDir(){
+  if(!DIR){document.getElementById("dirCount").textContent="(annuaire indisponible)";return;}
+  const depts=[...new Set(DIR.venues.map(v=>v.dept).filter(Boolean))].sort();
+  document.getElementById("fDept").innerHTML='<option value="">tous</option>'+
+    depts.map(d=>`<option value="${d}">${d} — ${DIR.venues[0]&&({"75":"Paris","77":"Seine-et-Marne","78":"Yvelines","91":"Essonne","92":"Hauts-de-Seine","93":"Seine-St-Denis","94":"Val-de-Marne","95":"Val-d'Oise"})[d]||d}</option>`).join("");
+  renderDir();
+}
+function renderDir(){
+  const dept=document.getElementById("fDept").value, cov=document.getElementById("fCov").value,
+        q=document.getElementById("fQ").value.toLowerCase();
+  let vs=DIR.venues.filter(v=>{
+    if(dept && v.dept!==dept) return false;
+    if(cov==="1" && !v.covered_4escape) return false;
+    if(cov==="0" && v.covered_4escape) return false;
+    if(q && !((v.name||"").toLowerCase().includes(q)||(v.city||"").toLowerCase().includes(q))) return false;
+    return true;
+  }).sort((a,b)=>(b.covered_4escape-a.covered_4escape)||(a.city||"").localeCompare(b.city||""));
+  document.getElementById("dirCount").textContent=`(${vs.length} / ${DIR.venues.length})`;
+  document.querySelector("#dirTbl tbody").innerHTML=vs.map(v=>`<tr>
+    <td>${v.name||v.slug}</td><td>${(v.city||"").replace(/-/g," ")}</td><td>${v.dept||"?"}</td>
+    <td>${v.n_rooms||"—"}</td>
+    <td>${v.covered_4escape?'<span class="pill dispo">live</span>':'<span class="pill">à résoudre</span>'}</td>
+    <td><a class="resa" href="${v.url}" target="_blank" rel="noopener">↗</a></td></tr>`).join("");
 }
 
 function initMap(){
