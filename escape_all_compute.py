@@ -196,6 +196,10 @@ def main() -> int:
         "top_salles": sorted(top_salles, key=lambda x: x["fill"], reverse=True)[:25],
         "prix_distribution": all_prices,
     }
+    # garde-fou : ne JAMAIS écraser un agrégat valide par du vide (cache CI manquant)
+    if not enseignes:
+        print("[compute] 0 enseigne (store vide ?) — escape_all_data.json CONSERVÉ, pas d'écrasement")
+        return 0
     write_json(OUT_FILE, out)
     print(f"[compute] {len(enseignes)} enseignes · {n_centres} centres · {n_salles} salles · "
           f"{all_sess} sessions | fill {kpis['fill_moyenne']}% | "

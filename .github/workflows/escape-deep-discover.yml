@@ -29,6 +29,14 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Restore raw store cache
+        uses: actions/cache@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}
+          restore-keys: |
+            escape-data-
+
       - name: Install Playwright + Chromium
         run: |
           pip install --quiet playwright
