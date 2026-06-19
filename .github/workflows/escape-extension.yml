@@ -57,10 +57,17 @@ jobs:
         run: python3 escape_extension_scrape.py --seed
         continue-on-error: true
 
+      - name: Scrape per-slot réseau 4escape étendu (haute couverture)
+        # 33+ enseignes 4escape (Lock Academy, The Game, Panik Room…) : capture
+        # par créneau (dispo/booked/prix/joueurs) + statut reserve/libre_fin.
+        run: python3 escape_4escape_all.py --scrape
+        continue-on-error: true
+
       - name: Aggregate (vues réelles)
         run: |
           python3 escape_live_compute.py || true
           python3 escape_4escape_compute.py || true
+          python3 escape_all_compute.py || true
           python3 sanity_check.py || true
           # NB : escape_idf_data.json (maquette démo) n'est PAS régénéré en CI
           # (il faudrait --seed). Il reste tel quel, versionné.
@@ -70,6 +77,7 @@ jobs:
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
           git add escape_live_data.json escape_4escape_live.json escape_4escape_catalog.json \
+                  escape_all_data.json escape_4escape_companies.json \
                   escape_extension_resolved.json escape_sanity.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "data: scrape run ${{ github.run_id }}"
           for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

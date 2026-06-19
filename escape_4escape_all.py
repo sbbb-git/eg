@@ -208,9 +208,16 @@ def scrape_company(comp: str, date_str: str) -> dict:
                     "date": start[:10], "heure": start[11:16], "duree_minutes": None,
                     "room_id": rid, "prix": {}, "remaining_players": None,
                     "booked": False, "dispo": True}
+    geo = (addr.get("geo") or {}).get("coordinates") or []
+    lat = lon = None
+    if len(geo) == 2:
+        lon, lat = geo[0], geo[1]
     return {
         "org_name": (org.get("display_name") or org.get("name") or comp).strip(),
-        "cp": (addr.get("zipcode") or "").strip(), "city": (addr.get("city") or "").strip(),
+        "cp": (addr.get("postal_code") or addr.get("zipcode") or "").strip(),
+        "city": (addr.get("locality") or addr.get("city") or "").strip(),
+        "street": (addr.get("street") or "").strip(),
+        "lat": lat, "lon": lon,
         "website": (org.get("website") or "").strip(),
         "prices_locked": locked, "rooms": rooms_meta, "sessions": sessions,
     }
@@ -296,7 +303,7 @@ def scrape(limit: int = 0) -> None:
         path = f"{OBS_DIR}/{comp}.json"
         st = read_json(path, {}) or {"company": comp, "rooms": {}, "sessions": {}}
         st.setdefault("sessions", {})
-        st.update({k: obs[k] for k in ("org_name", "cp", "city", "website")})
+        st.update({k: obs[k] for k in ("org_name", "cp", "city", "street", "lat", "lon", "website")})
         for rid, meta in obs["rooms"].items():
             st["rooms"][rid] = meta
         reconcile(st, obs["sessions"], obs["prices_locked"])

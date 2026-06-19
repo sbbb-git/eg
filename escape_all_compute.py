@@ -108,7 +108,10 @@ def main() -> int:
                     r_res += 1
 
         cp = st.get("cp", "")
-        coords = geo.get(cp) or geo.get("_dept_centroids", {}).get(cp[:2]) or [48.8566, 2.3522]
+        if st.get("lat") and st.get("lon"):
+            coords = [st["lat"], st["lon"]]                 # coords exactes (settings)
+        else:
+            coords = geo.get(cp) or geo.get("_dept_centroids", {}).get(cp[:2]) or [48.8566, 2.3522]
         centres.append({
             "label": st.get("org_name", st.get("company")), "company": st.get("company"),
             "cp": cp, "website": st.get("website", ""), "platform": "4escape",

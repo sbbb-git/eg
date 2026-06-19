@@ -36,11 +36,12 @@ jobs:
         run: |
           python3 escape_live_compute.py || true
           python3 escape_4escape_compute.py || true
+          python3 escape_all_compute.py || true
 
       - name: Commit
         run: |
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add escape_live_data.json escape_4escape_live.json
+          git add escape_live_data.json escape_4escape_live.json escape_all_data.json
           git diff --cached --quiet || git commit -m "data: re-aggregate ${{ github.run_id }}"
           for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

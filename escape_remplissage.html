@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Escape IDF · Remplissage réseau 4escape</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root{--bg:#0b0d14;--card:#151823;--card2:#1d2130;--acc:#7c5cff;--acc2:#00d2a8;
+        --ok:#22c79b;--warn:#ffce5a;--bad:#ff5c7a;--txt:#eef0f7;--muted:#8b91a7;--line:#262b3a;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--txt);}
+  header{padding:16px 26px;background:linear-gradient(100deg,#171a2b,#0e1019);border-bottom:1px solid var(--line);
+         position:sticky;top:0;z-index:700;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  h1{margin:0;font-size:18px;}
+  h1 .live{color:var(--acc2);font-size:11px;border:1px solid var(--acc2);border-radius:20px;padding:2px 9px;margin-left:8px;}
+  .gen{color:var(--muted);font-size:12px;}
+  .wrap{max-width:1280px;margin:0 auto;padding:18px 26px 70px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:14px 0 22px;}
+  .kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;}
+  .kpi::after{content:"";position:absolute;right:-20px;top:-20px;width:70px;height:70px;background:radial-gradient(circle,var(--acc),transparent 70%);opacity:.25;}
+  .kpi .v{font-size:27px;font-weight:800;}
+  .kpi .l{color:var(--muted);font-size:12px;margin-top:3px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;}
+  h2{font-size:15px;margin:0 0 14px;}
+  #map{height:420px;border-radius:14px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;}
+  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.4px;}
+  tr:hover td{background:var(--card2);}
+  .bar{display:inline-block;height:8px;border-radius:5px;background:var(--line);width:90px;vertical-align:middle;overflow:hidden;}
+  .bar>span{display:block;height:100%;}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;background:#262b3a;}
+  .pill.open{background:rgba(34,199,155,.18);color:var(--ok);}
+  .pill.locked{background:rgba(255,206,90,.16);color:var(--warn);}
+  .grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;}
+  @media(max-width:880px){.grid2{grid-template-columns:1fr;}#map{height:320px;}}
+  a.resa{color:var(--acc2);text-decoration:none;font-weight:600;}
+  /* heatmap */
+  .hm{border-collapse:separate;border-spacing:3px;}
+  .hm td{padding:0;border:0;}
+  .cell{width:54px;height:34px;border-radius:7px;text-align:center;font-size:11px;line-height:34px;color:#0b0d14;font-weight:700;}
+  .hmlabel{color:var(--muted);font-size:11px;padding:4px 6px;text-align:right;}
+  .themes{display:flex;flex-direction:column;gap:9px;}
+  .themes .row{display:flex;align-items:center;gap:10px;}
+  .themes .tname{width:120px;font-size:13px;text-transform:capitalize;}
+  .themes .tbar{flex:1;height:14px;background:var(--line);border-radius:7px;overflow:hidden;}
+  .themes .tbar>span{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));}
+  .themes .tn{width:46px;text-align:right;color:var(--muted);font-size:12px;}
+  .note{color:var(--muted);font-size:12px;line-height:1.5;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🗝️ Escape IDF — Remplissage réseau <span class="live">4escape · LIVE</span></h1>
+  <div class="gen" id="gen">chargement…</div>
+</header>
+<div class="wrap">
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <h2>📍 Carte des centres — couleur = taux de remplissage (7 jours)</h2>
+    <div id="map"></div>
+    <div class="note" style="margin-top:8px">🟢 &lt;40% &nbsp; 🟡 40–70% &nbsp; 🔴 &gt;70% &nbsp;·&nbsp; les enseignes « verrouillées » (prix non publics) n'ont pas de taux instantané.</div>
+  </section>
+
+  <div class="grid2">
+    <section>
+      <h2>🔥 Heatmap occupation — jour × tranche horaire</h2>
+      <table class="hm" id="heatmap"></table>
+      <div class="note" style="margin-top:10px">% de créneaux <b>réservés</b> sur la fenêtre J..J+7 (enseignes à données ouvertes).</div>
+    </section>
+    <section>
+      <h2>🎭 Thèmes (par nb de créneaux)</h2>
+      <div class="themes" id="themes"></div>
+    </section>
+  </div>
+
+  <section>
+    <h2>🏢 Enseignes — remplissage & prix</h2>
+    <table id="centres"><thead><tr>
+      <th>Enseigne</th><th>CP</th><th>Salles</th><th>Données</th><th>Remplissage 7j</th><th>Créneaux</th><th>Prix/joueur</th><th>Lien</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <section>
+    <h2>🏆 Top salles les plus réservées</h2>
+    <table id="rooms"><thead><tr>
+      <th>Salle</th><th>Enseigne</th><th>Thème</th><th>Prix/j</th><th>Remplissage</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+const fmt=n=>n==null?"—":n;
+const col=f=>f<40?"#22c79b":f<70?"#ffce5a":"#ff5c7a";
+function heatCol(v){ // gradient transparent->acc for heatmap
+  const a=Math.min(1,v/100); return `rgba(124,92,255,${0.12+0.85*a})`;}
+
+fetch("escape_all_data.json").then(r=>r.json()).then(d=>{
+  const k=d.kpis;
+  document.getElementById("gen").textContent="relevé "+(d._meta.generated||"").replace("T"," ").slice(0,16)+" · "+d._meta.source;
+  document.getElementById("kpis").innerHTML=[
+    ["Enseignes 4escape",k.n_centres],
+    ["dont données ouvertes",k.n_open],
+    ["Salles",k.n_rooms],
+    ["Créneaux captés",k.n_sessions],
+    ["Remplissage moyen",k.fill_moyenne+"%"],
+    ["Prix médian / joueur",(k.prix_median_joueur||"—")+"€"],
+  ].map(([l,v])=>`<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+
+  // carte
+  const map=L.map("map",{scrollWheelZoom:false}).setView([48.86,2.35],11);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    {attribution:"© OpenStreetMap © CARTO",subdomains:"abcd",maxZoom:19}).addTo(map);
+  (d.map_points||[]).forEach(p=>{
+    if(!p.lat)return;
+    const c=p.open?col(p.fill):"#5a6075";
+    L.circleMarker([p.lat,p.lon],{radius:7,color:c,fillColor:c,fillOpacity:.85,weight:1})
+     .bindPopup(`<b>${p.label}</b><br>${p.open?("Remplissage "+p.fill+"%"):"prix verrouillés"}<br>${p.n_rooms} salles · CP ${p.cp||"?"}`)
+     .addTo(map);
+  });
+
+  // heatmap
+  const hm=d.heatmap, ht=document.getElementById("heatmap");
+  let head="<tr><td></td>"+hm.buckets.map(b=>`<td class="hmlabel" style="text-align:center">${b}h</td>`).join("")+"</tr>";
+  let rows=hm.matrix.map((row,i)=>`<tr><td class="hmlabel">${hm.jours[i]}</td>`+
+    row.map(v=>`<td><div class="cell" style="background:${heatCol(v)};color:${v>55?'#fff':'#cdd2e6'}">${v||""}</div></td>`).join("")+"</tr>").join("");
+  ht.innerHTML=head+rows;
+
+  // thèmes
+  const th=d.themes||{}, max=Math.max(1,...Object.values(th));
+  document.getElementById("themes").innerHTML=Object.entries(th).map(([t,n])=>
+    `<div class="row"><div class="tname">${t}</div><div class="tbar"><span style="width:${100*n/max}%"></span></div><div class="tn">${n}</div></div>`).join("");
+
+  // enseignes
+  document.querySelector("#centres tbody").innerHTML=d.centres.map(c=>{
+    const f=c.open?c.fill_now:null;
+    const barre=c.open?`<div class="bar"><span style="width:${f}%;background:${col(f)}"></span></div> ${f}%`:'<span class="note">—</span>';
+    return `<tr>
+      <td>${c.label}</td><td>${c.cp||"—"}</td><td>${c.n_rooms}</td>
+      <td>${c.open?'<span class="pill open">ouvertes</span>':'<span class="pill locked">verrouillées</span>'}</td>
+      <td>${barre}</td>
+      <td>${c.open?(c.n_booked+"/"+c.n_slots_window):"—"}</td>
+      <td>${c.prix_median?c.prix_median+"€":"—"}</td>
+      <td>${c.website?`<a class="resa" href="${c.website}" target="_blank" rel="noopener">↗</a>`:"—"}</td></tr>`;}).join("");
+
+  // top rooms
+  document.querySelector("#rooms tbody").innerHTML=(d.top_rooms||[]).map(r=>`<tr>
+    <td>${r.room}</td><td>${r.centre}</td><td style="text-transform:capitalize">${r.theme}</td>
+    <td>${r.prix?r.prix+"€":"—"}</td>
+    <td><div class="bar"><span style="width:${r.fill}%;background:${col(r.fill)}"></span></div> ${r.fill}%</td></tr>`).join("");
+}).catch(e=>{document.getElementById("gen").textContent="erreur de chargement : "+e;});
+</script>
+</body>
+</html>

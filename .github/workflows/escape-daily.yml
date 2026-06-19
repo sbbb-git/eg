@@ -52,6 +52,14 @@ jobs:
         run: python3 escape_resolve_sites.py
         continue-on-error: true
 
+      - name: Résolution de masse des 256 (site + plateforme)
+        run: python3 escape_resolve_all.py
+        continue-on-error: true
+
+      - name: Découverte companies 4escape (réseau étendu via /boot)
+        run: python3 escape_4escape_all.py --discover
+        continue-on-error: true
+
       - name: Géocodage enseignes
         run: python3 escape_geocode.py
         continue-on-error: true
@@ -67,6 +75,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add escape_4escape_catalog.json escape_4escape_live.json \
                   escape_live_data.json escape_idf_directory.json \
+                  escape_sites_cache.json escape_4escape_companies.json \
                   escape_geo_cache.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "data: refresh quotidien ${{ github.run_id }}"
           for i in 1 2 3 4; do git push && break || sleep $((2**i)); done
