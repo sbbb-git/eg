@@ -26,6 +26,16 @@ l'historique (disparition du prochain créneau ⇒ réservation). Les venues
 **non couvertes par 4escape** restent sur le track "scraping par-site"
 (`escape_extension_*`).
 
+## Déploiement (GitHub Pages)
+
+Le site est statique. **Réglage unique** à faire dans l'UI GitHub :
+*Settings → Pages → Build and deployment → Source = **GitHub Actions***.
+Ensuite le workflow `pages.yml` publie automatiquement à chaque push (dashboard
++ data). Le site est protégé par mot de passe (SHA-256 client-side).
+
+> Alternative sans workflow : *Source = Deploy from a branch →
+> `claude/escape-init-fkcfrk` / `(root)`* — sert `index.html` directement.
+
 ## Pipeline RÉEL (4escape) — fichiers
 
 | Fichier | Rôle |
