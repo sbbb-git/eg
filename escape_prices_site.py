@@ -20,6 +20,13 @@ from safestore import read_json, write_json
 
 CATALOG = "escape_4escape_catalog.json"
 UA = "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0"
+
+# Prix vérifiés manuellement sur le site quand l'auto-extraction échoue
+# (sites JS-rendered ou formats atypiques). source="site-verif".
+OVERRIDES = {
+    # Live Cinema : 49-75€/joueur (relevé sur livecinema.fr/reserver/)
+    "livecinema": {"prix_min": 49, "prix_max": 75},
+}
 PATHS = ["", "tarifs/", "tarifs", "reserver/", "reservation/", "nos-tarifs/",
          "prix/", "tarif/", "reservations/"]
 MIN_PP, MAX_PP = 15, 90   # bornes plausibles d'un prix /pers escape room
@@ -52,10 +59,25 @@ def main() -> int:
     rooms = catalog.get("rooms", {})
     done = 0
     for comp, info in companies.items():
-        if info.get("prices_status") == "ok" or not info.get("website"):
+        # override prioritaire si l'enseigne n'a toujours pas de prix
+        if comp in OVERRIDES and not info.get("prix_min"):
+            ov = OVERRIDES[comp]
+            info.update({"prix_min": ov["prix_min"], "prix_max": ov["prix_max"],
+                         "prix_source": "site-verif"})
+            for rid, r in rooms.items():
+                if r.get("company") == comp and not r.get("prix_min"):
+                    r.update({"prix_min": ov["prix_min"], "prix_max": ov["prix_max"],
+                              "prix_source": "site-verif"})
+            done += 1
+            print(f"[prix-site] {info.get('org_name', comp)[:26]:26} "
+                  f"{ov['prix_min']}-{ov['prix_max']}€ (vérifié)")
             continue
-        if info.get("prix_min") and info.get("prix_source") == "site":
-            continue  # déjà fait
+        if info.get("prices_status") == "ok" and info.get("prix_min"):
+            continue
+        if not info.get("website"):
+            continue
+        if info.get("prix_min"):
+            continue  # déjà tarifée (API ou site)
         site = info["website"].rstrip("/") + "/"
         grid, per_pers = None, []
         for p in PATHS:
