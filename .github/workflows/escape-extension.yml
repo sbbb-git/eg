@@ -57,7 +57,7 @@ jobs:
         run: python3 escape_extension_scrape.py --seed
         continue-on-error: true
 
-      - name: Scrape per-slot (enseigne/centre/salle : dispo/booked/prix total/joueurs)
+      - name: Scrape per-slot (enseigne, centre, salle — dispo, prix, joueurs)
         run: python3 escape_4escape_all.py --scrape
         continue-on-error: true
 
@@ -74,8 +74,6 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: python3 supa_sync.py
         continue-on-error: true
-          # NB : escape_idf_data.json (maquette démo) n'est PAS régénéré en CI
-          # (il faudrait --seed). Il reste tel quel, versionné.
 
       - name: Commit aggregates + catalogues
         run: |
