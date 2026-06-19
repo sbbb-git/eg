@@ -51,13 +51,14 @@
   </div>
 
 <script>
-// Hash SHA-256 du mot de passe attendu. Pour changer :
-//   python3 -c "import hashlib;print(hashlib.sha256(b'NOUVEAU').hexdigest())"
-const PW_HASH = "8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
+// SHA-256 SALÉ du mot de passe. Pour changer :
+//   python3 -c "import hashlib;print(hashlib.sha256(('eg-obs-2026::'+'NOUVEAU').encode()).hexdigest())"
+const SALT = "eg-obs-2026::";
+const PW_HASH = "3051e55a55f577cba6ecfe04c946a1273b1eaf74c4f67daef994af7e55c8fa0c";
 const KEY = "escape_idf_auth";
 
 async function sha256(s){
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(SALT + s));
   return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
 }
 async function check(){

@@ -126,7 +126,8 @@ def main() -> int:
     tot_book = sum(c["n_booked"] for c in centres)
     tot_win = sum(c["n_slots_window"] for c in centres)
     kpis = {
-        "n_centres": len(centres), "n_open": n_open, "n_rooms": len(rooms),
+        "n_centres": len(centres), "n_open": n_open,
+        "n_rooms": sum(c["n_rooms"] or 0 for c in centres),
         "n_sessions": n_sess_tot,
         "fill_moyenne": pct(tot_book, tot_win),
         "prix_median_joueur": round(sorted(all_prices)[len(all_prices) // 2], 1) if all_prices else None,
