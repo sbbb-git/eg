@@ -377,8 +377,24 @@ def scrape(limit: int = 0) -> None:
         st.setdefault("sessions", {})
         st.update({k: obs[k] for k in ("enseigne_id", "enseigne_nom", "website", "centres")})
         for rid, meta in obs["rooms"].items():
+            prev = st["rooms"].get(rid, {})
+            meta["history"] = prev.get("history", [])      # préservé entre relevés
+            meta["n_releves"] = prev.get("n_releves", 0)
             st["rooms"][rid] = meta
         reconcile(st, obs["sessions"], obs["prices_locked"])
+        # historique par salle (free/booked du relevé courant) -> variance + confiance
+        cur: dict[str, list] = {}
+        for s in obs["sessions"].values():
+            fb = cur.setdefault(s["room_id"], [0, 0])
+            fb[0] += 1 if s.get("dispo") else 0
+            fb[1] += 1 if s.get("booked") else 0
+        ts = now_iso()
+        for rid, meta in st["rooms"].items():
+            fb = cur.get(rid)
+            if fb is None:
+                continue
+            meta["history"] = (meta.get("history", []) + [{"releve": ts, "free": fb[0], "booked": fb[1]}])[-60:]
+            meta["n_releves"] = meta.get("n_releves", 0) + 1
         st["_meta"] = {"last_scrape": now_iso(), "n_centres": len(obs["centres"]),
                        "n_rooms": len(st["rooms"]), "n_sessions": len(st["sessions"]),
                        "prices_locked": obs["prices_locked"]}

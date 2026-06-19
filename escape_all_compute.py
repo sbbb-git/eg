@@ -97,7 +97,7 @@ def main() -> int:
                 "difficulty": r.get("difficulty"), "duree": r.get("duration"),
                 "joueurs_min": r.get("min_players"), "joueurs_max": r.get("max_players"),
                 "_book": 0, "_tot": 0, "_far_tot": 0, "_far_free": 0,
-                "_prices": [], "n_sessions": 0})
+                "_conf": 0, "_prices": [], "n_sessions": 0})
         # sessions -> rattachées à leur salle
         for sess in sessions.values():
             all_sess += 1
@@ -108,6 +108,8 @@ def main() -> int:
                 continue
             sl = e["centres"][ckey]["salles"][rid]
             sl["n_sessions"] += 1
+            if sess.get("statut") in ("reserve", "libre_fin"):
+                sl["_conf"] += 1                       # créneau "tranché" = signal réel
             themes[sl["theme"]] += 1
             pm = sess.get("prix_total_moyen")
             if pm:
@@ -146,10 +148,12 @@ def main() -> int:
                     g_book += sl["_book"]; g_tot += sl["_tot"]
                 if prix:
                     c_prices.append(prix)
+                conf = ("élevée" if sl["_conf"] >= 8 else "moyenne" if sl["_conf"] >= 2 else "faible")
                 so = {"id": sl["id"], "nom": sl["nom"], "theme": sl["theme"],
                       "difficulty": sl["difficulty"], "duree": sl["duree"],
                       "joueurs_min": sl["joueurs_min"], "joueurs_max": sl["joueurs_max"],
                       "prix_moyen_session": prix, "fill": fill, "suspect_closed": suspect,
+                      "confidence": conf, "n_confirmed": sl["_conf"],
                       "n_sessions": sl["n_sessions"], "n_booked": sl["_book"]}
                 salles_out.append(so)
                 if sl["_tot"] >= 5 and not suspect:

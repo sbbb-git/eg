@@ -108,6 +108,7 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 const col=f=>f<40?"#22c79b":f<70?"#ffce5a":"#ff5c7a";
+const confCol=c=>c==="élevée"?"#22c79b":c==="moyenne"?"#ffce5a":"#5a6075";
 const heatCol=v=>`rgba(124,92,255,${0.12+0.85*Math.min(1,v/100)})`;
 const euro=v=>v==null?"—":Math.round(v)+"€";
 const joueurs=(a,b)=>a&&b?`${a}–${b}`:(a||b||"—");
@@ -135,16 +136,18 @@ async function loadSupabase(){
   const today=new Date().toISOString().slice(0,10);
   const horizon=new Date(Date.now()+7*864e5).toISOString().slice(0,10);
   const far=new Date(Date.now()+4*864e5).toISOString().slice(0,10);
+  const from14=new Date(Date.now()-14*864e5).toISOString().slice(0,10);
   const [ens,cen,sal]=await Promise.all([
     sbAll("enseignes","id,nom,website"),
     sbAll("centres","id,enseigne_id,nom,cp,ville,adresse,lat,lon"),
     sbAll("salles","id,centre_id,nom,theme,difficulty,duree_minutes,joueurs_min,joueurs_max")]);
-  const sess=await sbAll("sessions","salle_id,date,heure,booked,dispo,prix_total_moyen","&date=gte."+today);
+  const sess=await sbAll("sessions","salle_id,date,heure,booked,dispo,prix_total_moyen,statut","&date=gte."+from14);
   const salById={}, hm={}, themes={};
-  sal.forEach(s=>{s._book=0;s._tot=0;s._farTot=0;s._farFree=0;s._prices=[];s._n=0;salById[s.id]=s;});
+  sal.forEach(s=>{s._book=0;s._tot=0;s._farTot=0;s._farFree=0;s._conf=0;s._prices=[];s._n=0;salById[s.id]=s;});
   sess.forEach(x=>{
     const s=salById[x.salle_id]; if(!s)return;
     s._n++; themes[s.theme]=(themes[s.theme]||0)+1;
+    if(x.statut==="reserve"||x.statut==="libre_fin") s._conf++;
     if(x.prix_total_moyen!=null) s._prices.push(x.prix_total_moyen);
     if(x.date>=today && x.date<=horizon){
       s._tot++;
@@ -164,9 +167,10 @@ async function loadSupabase(){
       const salles=c._salles.map(s=>{
         s._suspect=(s._farTot>=3 && s._farFree===0);   // salle fermée/bloquée ?
         const fill=pct(s._book,s._tot), prix=med(s._prices);
+        const conf=s._conf>=8?"élevée":s._conf>=2?"moyenne":"faible";
         const so={id:s.id,nom:s.nom,theme:s.theme,difficulty:s.difficulty,duree:s.duree_minutes,
           joueurs_min:s.joueurs_min,joueurs_max:s.joueurs_max,prix_moyen_session:prix,
-          fill,suspect_closed:s._suspect,n_sessions:s._n,n_booked:s._book};
+          fill,suspect_closed:s._suspect,confidence:conf,n_confirmed:s._conf,n_sessions:s._n,n_booked:s._book};
         if(s._tot>=5 && !s._suspect) top.push({...so,centre:c.nom,enseigne:e.nom,cp:c.cp});
         return so;
       }).sort((a,b)=>b.fill-a.fill);
@@ -259,7 +263,7 @@ function render(){
           <td>${euro(s.prix_moyen_session)}</td>
           <td>${s.suspect_closed
             ? '<span class="pill" style="background:rgba(139,145,167,.22);color:#8b91a7" title="aucun créneau libre même en fin de fenêtre — probablement fermée/non réservable, exclue du taux">🔒 fermée ?</span>'
-            : `<div class="bar"><span style="width:${s.fill}%;background:${col(s.fill)}"></span></div> ${s.fill}%`}</td>
+            : `<div class="bar"><span style="width:${s.fill}%;background:${col(s.fill)}"></span></div> ${s.fill}% <span title="confiance ${s.confidence} — ${s.n_confirmed} créneau(x) tranché(s) observé(s)" style="color:${confCol(s.confidence)}">●</span>`}</td>
           <td>${s.n_booked}/${s.n_sessions}</td></tr>`).join("")}
         </tbody></table>
       </div>`).join("");
