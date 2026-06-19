@@ -1,0 +1,58 @@
+name: escape-deep-discover (Playwright - comptes 4escape cachés)
+
+# Découvre par lots les comptes 4escape sous sous-domaine non devinable, via
+# Playwright (charge la page de résa, intercepte l'appel *.4escape.io).
+# Tourne plusieurs fois par jour ; chaque run traite un lot puis commit.
+on:
+  schedule:
+    - cron: "20 */4 * * *"      # toutes les 4 h
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Nombre de sites à sonder ce run"
+        default: "30"
+
+concurrency:
+  group: escape-deep-discover
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Playwright + Chromium
+        run: |
+          pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Deep discover (lot)
+        run: python3 escape_deep_discover.py --limit ${{ github.event.inputs.limit || '30' }}
+        continue-on-error: true
+
+      - name: Scrape + agrège + sync les nouveaux comptes
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python3 escape_4escape_all.py --scrape || true
+          python3 escape_all_compute.py || true
+          python3 supa_sync.py || true
+        continue-on-error: true
+
+      - name: Commit
+        run: |
+          git config user.name "escape-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add escape_4escape_companies.json escape_all_data.json
+          git diff --cached --quiet || git commit -m "deep-discover: comptes 4escape cachés ${{ github.run_id }}"
+          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done
