@@ -39,9 +39,10 @@ jobs:
           restore-keys: |
             escape-data-
 
-      - name: Discovery (résout les plateformes encore unknown)
-        run: python3 escape_extension_discover.py --only-unknown
-        continue-on-error: true
+      # NB: la détection de plateforme (escape_extension_discover --only-unknown)
+      # est lente (41 brands × retries) et inutile à 30 min — déplacée dans
+      # escape-daily.yml. Le job /30 min reste léger (scrape + sync) et finit
+      # largement sous le timeout (cœur ~7 min).
 
       - name: Scrape dispo — source PRIMAIRE 4escape (léger, /30 min)
         # Uniquement la dispo (upcoming) : c'est le coeur haute-fréquence.

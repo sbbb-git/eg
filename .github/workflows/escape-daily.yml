@@ -60,6 +60,10 @@ jobs:
         run: python3 escape_4escape_all.py --discover
         continue-on-error: true
 
+      - name: Détection plateforme des venues encore unknown (lent, 1x/jour)
+        run: python3 escape_extension_discover.py --only-unknown
+        continue-on-error: true
+
       - name: Géocodage enseignes
         run: python3 escape_geocode.py
         continue-on-error: true
