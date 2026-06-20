@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-06-20T03:40:13+00:00",
+    "generated": "2026-06-20T07:14:54+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -11,7 +11,7 @@
     "n_observations": 0,
     "lead_days_moyen": 0.0,
     "prix_min_marche": 25,
-    "n_salles_tarifees": 46
+    "n_salles_tarifees": 56
   },
   "centres": [
     {
@@ -75,8 +75,14 @@
       "n_rooms": 3,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": null,
-      "prix_grille": null
+      "prix_min": 28.0,
+      "prix_grille": {
+        "2": 54.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 30.0,
+        "6": 28.0
+      }
     },
     {
       "centre": "Majestic Escape Game",
@@ -121,8 +127,12 @@
       "n_rooms": 1,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": 32,
-      "prix_grille": null
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 95.0,
+        "3": 69.0,
+        "4": 59.0
+      }
     },
     {
       "centre": "The Game",
@@ -134,8 +144,14 @@
       "n_rooms": 12,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": 50,
-      "prix_grille": null
+      "prix_min": 110.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      }
     },
     {
       "centre": "Lock Academy",
@@ -147,13 +163,15 @@
       "n_rooms": 6,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": 30,
+      "prix_min": 30.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
       }
     },
     {
@@ -187,8 +205,13 @@
       "n_rooms": 2,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": null,
-      "prix_grille": null
+      "prix_min": 35.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 35.0
+      }
     },
     {
       "centre": "Phobia Escape Game",
@@ -200,8 +223,15 @@
       "n_rooms": 5,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": null,
-      "prix_grille": null
+      "prix_min": 78.0,
+      "prix_grille": {
+        "2": 129.0,
+        "3": 129.0,
+        "4": 129.0,
+        "5": 129.0,
+        "6": 153.0,
+        "7": 180.0
+      }
     },
     {
       "centre": "Joueurz Paris",
@@ -239,8 +269,14 @@
       "n_rooms": 2,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": 25,
-      "prix_grille": null
+      "prix_min": 28.0,
+      "prix_grille": {
+        "1": 50.0,
+        "2": 50.0,
+        "3": 50.0,
+        "4": 50.0,
+        "5": 50.0
+      }
     },
     {
       "centre": "Wanderlust Escapegame",
@@ -252,8 +288,22 @@
       "n_rooms": 3,
       "lead_days_avg": null,
       "demand_pct": 100.0,
-      "prix_min": 27.0,
-      "prix_grille": null
+      "prix_min": 29.0,
+      "prix_grille": {
+        "8": 53.0,
+        "9": 53.0,
+        "10": 53.0,
+        "11": 53.0,
+        "12": 50.0,
+        "13": 50.0,
+        "14": 50.0,
+        "15": 50.0,
+        "16": 50.0,
+        "17": 46.0,
+        "18": 46.0,
+        "19": 46.0,
+        "20": 46.0
+      }
     }
   ],
   "rooms": [
@@ -379,9 +429,14 @@
       "duration": 75,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 34.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 44.0,
+        "4": 39.0,
+        "5": 34.0
+      },
       "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
       "available": null,
       "next_date": null,
@@ -484,9 +539,13 @@
       "duration": 75,
       "min_players": 4,
       "max_players": 6,
-      "prix_min": 32,
-      "prix_max": 69,
-      "prix_grille": null,
+      "prix_min": 31.0,
+      "prix_max": 40.0,
+      "prix_grille": {
+        "4": 40.0,
+        "5": 35.0,
+        "6": 31.0
+      },
       "reservation_url": "https://unleashescape.com/",
       "available": null,
       "next_date": null,
@@ -507,9 +566,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -530,9 +595,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -553,14 +624,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 30,
-      "prix_max": 55,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
       },
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
       "available": null,
@@ -610,14 +682,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 30,
-      "prix_max": 55,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
       },
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-examen/",
       "available": null,
@@ -662,9 +735,14 @@
       "duration": 120,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 35.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 35.0
+      },
       "reservation_url": "https://www.masterio.fr/la-pierre-de-lumiere/",
       "available": null,
       "next_date": null,
@@ -685,14 +763,16 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 30,
-      "prix_max": 55,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
       },
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-le-casse-du-siecle/",
       "available": null,
@@ -714,14 +794,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 30,
-      "prix_max": 55,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
       },
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
       "available": null,
@@ -743,9 +824,15 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 28.0,
+      "prix_max": 54.0,
+      "prix_grille": {
+        "2": 54.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 30.0,
+        "6": 28.0
+      },
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": null,
       "next_date": null,
@@ -766,9 +853,14 @@
       "duration": 75,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 34.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 44.0,
+        "4": 39.0,
+        "5": 34.0
+      },
       "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
       "available": null,
       "next_date": null,
@@ -789,9 +881,15 @@
       "duration": null,
       "min_players": null,
       "max_players": null,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -842,9 +940,15 @@
       "duration": null,
       "min_players": null,
       "max_players": null,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -865,9 +969,15 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 129.0,
+      "prix_max": 153.0,
+      "prix_grille": {
+        "2": 129.0,
+        "3": 129.0,
+        "4": 129.0,
+        "5": 129.0,
+        "6": 153.0
+      },
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": null,
       "next_date": null,
@@ -888,14 +998,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": 30,
-      "prix_max": 55,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
       },
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
       "available": null,
@@ -917,9 +1028,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1000,9 +1117,15 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 129.0,
+      "prix_max": 153.0,
+      "prix_grille": {
+        "2": 129.0,
+        "3": 129.0,
+        "4": 129.0,
+        "5": 129.0,
+        "6": 153.0
+      },
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": null,
       "next_date": null,
@@ -1081,9 +1204,14 @@
       "duration": 120,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 35.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 35.0
+      },
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": null,
       "next_date": null,
@@ -1165,9 +1293,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1188,9 +1322,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1211,14 +1351,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": 30,
-      "prix_max": 55,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
       "prix_grille": {
-        "6": 30,
-        "2": 55,
-        "3": 40,
-        "4": 35,
-        "5": 32
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
       },
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
       "available": null,
@@ -1286,9 +1427,16 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 129.0,
+      "prix_max": 180.0,
+      "prix_grille": {
+        "2": 129.0,
+        "3": 129.0,
+        "4": 129.0,
+        "5": 129.0,
+        "6": 153.0,
+        "7": 180.0
+      },
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
       "available": null,
       "next_date": null,
@@ -1309,9 +1457,12 @@
       "duration": 60,
       "min_players": 1,
       "max_players": 2,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 78.0,
+      "prix_max": 78.0,
+      "prix_grille": {
+        "1": 78.0,
+        "2": 78.0
+      },
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": null,
       "next_date": null,
@@ -1332,9 +1483,14 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 4,
-      "prix_min": null,
-      "prix_max": null,
-      "prix_grille": null,
+      "prix_min": 116.0,
+      "prix_max": 140.0,
+      "prix_grille": {
+        "2": 116.0,
+        "3": 116.0,
+        "4": 116.0,
+        "5": 140.0
+      },
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": null,
       "next_date": null,
@@ -1378,9 +1534,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1401,9 +1563,15 @@
       "duration": null,
       "min_players": null,
       "max_players": null,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1424,9 +1592,15 @@
       "duration": null,
       "min_players": null,
       "max_players": null,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1470,9 +1644,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1516,9 +1696,15 @@
       "duration": 90,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 50,
-      "prix_max": 50,
-      "prix_grille": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
       "reservation_url": "https://thegame-france.com",
       "available": null,
       "next_date": null,
@@ -1562,9 +1748,16 @@
       "duration": 85,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 25,
-      "prix_max": 25,
-      "prix_grille": null,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
       "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
       "available": null,
       "next_date": null,
@@ -1585,13 +1778,13 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": 27.0,
-      "prix_max": 45.0,
+      "prix_min": 29.0,
+      "prix_max": 49.0,
       "prix_grille": {
-        "2": 45.0,
-        "3": 33.0,
-        "4": 30.0,
-        "5": 27.0
+        "2": 49.0,
+        "3": 38.0,
+        "4": 32.0,
+        "5": 29.0
       },
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
       "available": null,
@@ -1613,13 +1806,13 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": 27.0,
-      "prix_max": 45.0,
+      "prix_min": 29.0,
+      "prix_max": 49.0,
       "prix_grille": {
-        "2": 45.0,
-        "3": 33.0,
-        "4": 30.0,
-        "5": 27.0
+        "2": 49.0,
+        "3": 38.0,
+        "4": 32.0,
+        "5": 29.0
       },
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": null,
@@ -1641,9 +1834,16 @@
       "duration": 75,
       "min_players": 2,
       "max_players": 7,
-      "prix_min": 25,
-      "prix_max": 25,
-      "prix_grille": null,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
       "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
       "available": null,
       "next_date": null,
@@ -1664,13 +1864,13 @@
       "duration": 60,
       "min_players": 2,
       "max_players": 5,
-      "prix_min": 27.0,
-      "prix_max": 45.0,
+      "prix_min": 29.0,
+      "prix_max": 49.0,
       "prix_grille": {
-        "2": 45.0,
-        "3": 33.0,
-        "4": 30.0,
-        "5": 27.0
+        "2": 49.0,
+        "3": 38.0,
+        "4": 32.0,
+        "5": 29.0
       },
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/le-super-sauvetage/",
       "available": null,
