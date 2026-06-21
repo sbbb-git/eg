@@ -19,6 +19,7 @@ from urllib.request import Request, urlopen
 from playwright.sync_api import sync_playwright
 
 from safestore import write_json
+import escape_proxy
 
 UA = "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0"
 RESA_PATHS = ["", "reservation/", "reserver/", "booking/", "reservations/",
@@ -68,7 +69,8 @@ def capture(site: str, timeout: int = 55000) -> dict:
     captured = []
     with sync_playwright() as p:
         b = p.chromium.launch(headless=True, args=["--no-sandbox", "--ignore-certificate-errors"])
-        ctx = b.new_context(ignore_https_errors=True, locale="fr-FR")
+        ctx = b.new_context(ignore_https_errors=True, locale="fr-FR",
+                            proxy=escape_proxy.playwright_proxy())
         pg = ctx.new_page()
 
         def on_resp(r):

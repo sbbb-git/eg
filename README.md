@@ -150,3 +150,28 @@ fichier dont le dashboard a besoin).
 (généré via `--seed`, offline) pour que le dashboard s'affiche immédiatement.
 Les chiffres ne sont **pas** des relevés réels tant que les handlers live ne sont
 pas activés enseigne par enseigne.
+
+## Couverture des plateformes anti-bot (Bookeo) — proxy résidentiel
+
+Certaines venues (Bookeo) bloquent les IP de datacenter
+(« Access from unauthorized IP address detected »). Pour les scraper il faut
+sortir par un **proxy résidentiel** (Bright Data, Oxylabs, Smartproxy…).
+
+**Activation** — ajouter ces 3 secrets au repo (Settings ▸ Secrets ▸ Actions) :
+
+| Secret | Exemple |
+|---|---|
+| `PROXY_SERVER` | `http://gate.smartproxy.com:7000` |
+| `PROXY_USERNAME` | identifiant du provider |
+| `PROXY_PASSWORD` | mot de passe du provider |
+
+Une fois définis :
+- `escape_engine_bookeo.py` pilote le flux Bookeo via le proxy et extrait les
+  créneaux → `escape_data/4escape_all/bookeo__<slug>.json` (même format que
+  4escape → agrégé + Supabase automatiquement).
+- Le workflow `escape-bookeo.yml` tourne toutes les 4 h ; **sans** ces secrets il
+  se saute proprement (aucun coût). Les engines Playwright (`escape_deep_discover`,
+  `escape_engine_generic`) routent aussi par le proxy quand il est configuré.
+
+Sans proxy, tout le reste (4escape, ~95 % du marché sérieux IDF) fonctionne
+normalement — 4escape n'a pas de blocage IP.

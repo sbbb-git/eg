@@ -1,0 +1,82 @@
+name: escape-bookeo (venues Bookeo via proxy résidentiel)
+
+# Scrape les venues sur Bookeo, qui bloquent les IP datacenter. Nécessite un
+# proxy résidentiel : ajouter les secrets PROXY_SERVER / PROXY_USERNAME /
+# PROXY_PASSWORD (Bright Data, Oxylabs, Smartproxy…). Tant qu'ils ne sont pas
+# définis, le job se saute proprement (aucun coût inutile).
+on:
+  schedule:
+    - cron: "40 */4 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: escape-bookeo
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  PROXY_SERVER: ${{ secrets.PROXY_SERVER }}
+  PROXY_USERNAME: ${{ secrets.PROXY_USERNAME }}
+  PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
+
+jobs:
+  bookeo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: guard
+        name: Proxy configuré ?
+        run: |
+          if [ -z "$PROXY_SERVER" ]; then
+            echo "skip=1" >> "$GITHUB_OUTPUT"
+            echo "::notice::Pas de proxy résidentiel (secret PROXY_SERVER) — job sauté."
+          else
+            echo "skip=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.guard.outputs.skip == '0'
+        with:
+          python-version: "3.11"
+
+      - name: Restore raw store cache
+        if: steps.guard.outputs.skip == '0'
+        uses: actions/cache@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}
+          restore-keys: escape-data-
+
+      - name: Install Playwright + Chromium
+        if: steps.guard.outputs.skip == '0'
+        run: |
+          pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Scrape Bookeo (via proxy)
+        if: steps.guard.outputs.skip == '0'
+        run: python3 escape_engine_bookeo.py
+        continue-on-error: true
+
+      - name: Agrège + sync
+        if: steps.guard.outputs.skip == '0'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python3 escape_all_compute.py || true
+          python3 supa_sync.py || true
+
+      - name: Commit
+        if: steps.guard.outputs.skip == '0'
+        run: |
+          git config user.name "escape-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add escape_all_data.json
+          git diff --cached --quiet || git commit -m "bookeo: créneaux via proxy ${{ github.run_id }}"
+          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done

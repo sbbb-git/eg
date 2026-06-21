@@ -22,6 +22,7 @@ from urllib.request import Request, urlopen
 from playwright.sync_api import sync_playwright
 
 from safestore import read_json, write_json
+import escape_proxy
 
 COMPANIES_FILE = "escape_4escape_companies.json"
 CACHE = "escape_sites_cache.json"
@@ -115,7 +116,8 @@ def main() -> int:
         b = p.chromium.launch(headless=True, args=["--no-sandbox", "--ignore-certificate-errors",
                                                     "--disable-blink-features=AutomationControlled"])
         ctx = b.new_context(ignore_https_errors=True, locale="fr-FR",
-                            viewport={"width": 1366, "height": 900}, user_agent=UA)
+                            viewport={"width": 1366, "height": 900}, user_agent=UA,
+                            proxy=escape_proxy.playwright_proxy())
         for website, slug in todo:
             pw_tried[website] = datetime.utcnow().isoformat()
             pg = ctx.new_page()
