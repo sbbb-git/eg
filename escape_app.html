@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6c5ce7">
+<meta name="robots" content="noindex, nofollow">
+<title>Escape IDF · live</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{--bg:#0f1117;--card:#1a1d27;--card2:#11131b;--acc:#6c5ce7;--txt:#e8e8f0;--muted:#8a8fa3;--line:#2a2e3c;--ok:#22c55e;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);-webkit-tap-highlight-color:transparent}
+  header{padding:14px 16px calc(14px + env(safe-area-inset-top));background:linear-gradient(135deg,#1c1f2e,#0f1117);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line)}
+  h1{font-size:17px;margin:0;display:flex;align-items:center;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+  .kpis{display:flex;gap:8px;margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-width:84px;flex:0 0 auto}
+  .kpi b{font-size:18px;display:block}.kpi span{color:var(--muted);font-size:11px}
+  nav{display:flex;position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+  nav button{flex:1;padding:13px 4px;background:none;border:0;color:var(--muted);font-size:13px;font-weight:600;border-bottom:2px solid transparent;cursor:pointer}
+  nav button.on{color:var(--txt);border-bottom-color:var(--acc)}
+  main{padding:14px 16px calc(28px + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  input,select{background:var(--card2);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:10px 12px;font-size:14px;flex:1;min-width:120px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}
+  .card:active{border-color:var(--acc)}
+  .card h3{margin:0 0 3px;font-size:15px}
+  .card .sub{color:var(--muted);font-size:12.5px}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .tag{background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:11px;color:var(--muted)}
+  .tag.free{color:var(--ok);border-color:#1f3a2a}
+  .muted{color:var(--muted)}.center{text-align:center;padding:40px 0;color:var(--muted)}
+  #map{height:72vh;border-radius:14px;border:1px solid var(--line)}
+  .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card);color:var(--txt)}
+  .leaflet-popup-content a{color:#a99cff}
+  .day{margin:18px 0 8px;font-size:13px;color:var(--acc);font-weight:700;text-transform:capitalize}
+  .slot{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:7px}
+  .slot .t{font-weight:700;font-variant-numeric:tabular-nums}.slot .p{color:var(--muted);font-size:13px}
+  /* overlay détail */
+  #ov{position:fixed;inset:0;background:rgba(8,9,14,.6);backdrop-filter:blur(3px);z-index:100;display:none}
+  #ov.on{display:block}
+  #sheet{position:absolute;left:0;right:0;bottom:0;max-height:88vh;overflow-y:auto;background:var(--bg);border-radius:18px 18px 0 0;border-top:1px solid var(--line);padding:18px 16px calc(28px + env(safe-area-inset-bottom))}
+  #sheet .grab{width:40px;height:4px;background:var(--line);border-radius:2px;margin:0 auto 14px}
+  .salle{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
+  .next{display:flex;gap:6px;flex-wrap:wrap}
+  .next span{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:12px;font-variant-numeric:tabular-nums}
+  a.close{position:sticky;top:0;float:right;color:var(--muted);text-decoration:none;font-size:22px;line-height:1}
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="dot"></span> Observatoire Escape · Île-de-France</h1>
+  <div class="kpis" id="kpis"></div>
+</header>
+<nav>
+  <button data-tab="centres" class="on">Centres</button>
+  <button data-tab="dispos">Dispos 7j</button>
+  <button data-tab="carte">Carte</button>
+</nav>
+<main id="view"><div class="center">Chargement des données en direct…</div></main>
+
+<div id="ov"><div id="sheet"></div></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const URL="https://nbvronwfvoksonatolcs.supabase.co/rest/v1";
+const KEY="sb_publishable_5vFAbOG-hHH0s9mAoYmGyA_EG4bIQYj";
+const H={apikey:KEY,Authorization:"Bearer "+KEY};
+const $=s=>document.querySelector(s);
+const esc=s=>(s||"").replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
+const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1).toLowerCase():"";
+async function q(path){const r=await fetch(URL+"/"+path,{headers:H});if(!r.ok)throw new Error(r.status);return r.json();}
+async function qAll(path){ // pagination (Supabase plafonne à 1000/req)
+  let out=[],from=0;
+  for(;;){const r=await fetch(URL+"/"+path,{headers:{...H,Range:`${from}-${from+999}`}});
+    if(!r.ok)throw new Error(r.status);const b=await r.json();out=out.concat(b);
+    if(b.length<1000||from>9000)break;from+=1000;}
+  return out;
+}
+const today=new Date().toISOString().slice(0,10);
+const in7=new Date(Date.now()+8*864e5).toISOString().slice(0,10);
+
+let CENTRES=[],SALLES={},SALLES_BY_CENTRE={},FREE=[],map=null;
+
+async function load(){
+  const [centres,salles,free]=await Promise.all([
+    q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id,enseignes(nom)&order=ville"),
+    q("salles?select=id,nom,theme,duree_minutes,joueurs_min,joueurs_max,difficulty,centre_id"),
+    qAll(`sessions?select=salle_id,date,heure,prix_total_moyen&dispo=is.true&date=gte.${today}&date=lte.${in7}&order=date,heure`)
+  ]);
+  CENTRES=centres; FREE=free;
+  salles.forEach(s=>{SALLES[s.id]=s;(SALLES_BY_CENTRE[s.centre_id]=SALLES_BY_CENTRE[s.centre_id]||[]).push(s)});
+  // KPIs
+  const nf=free.length, villes=new Set(centres.map(c=>c.ville).filter(Boolean));
+  $("#kpis").innerHTML=[["🏠",centres.length,"centres"],["🚪",salles.length,"salles"],["🟢",nf,"créneaux libres 7j"],["📍",villes.size,"villes"]]
+    .map(([e,n,l])=>`<div class="kpi"><b>${n}</b><span>${e} ${l}</span></div>`).join("");
+  renderCentres();
+}
+
+/* ───── onglet Centres ───── */
+function freeCountFor(centreId){
+  const ids=new Set((SALLES_BY_CENTRE[centreId]||[]).map(s=>s.id));
+  return FREE.filter(f=>ids.has(f.salle_id)).length;
+}
+function renderCentres(){
+  const villes=[...new Set(CENTRES.map(c=>c.ville).filter(Boolean))].sort();
+  const themes=[...new Set(Object.values(SALLES).map(s=>s.theme).filter(Boolean))].sort();
+  $("#view").innerHTML=`<div class="filters">
+    <input id="qtext" placeholder="🔍 centre, enseigne, ville…">
+    <select id="qville"><option value="">Toutes villes</option>${villes.map(v=>`<option>${esc(cap(v))}</option>`).join("")}</select>
+    <select id="qtheme"><option value="">Tous thèmes</option>${themes.map(t=>`<option value="${esc(t)}">${esc(cap(t))}</option>`).join("")}</select>
+    </div><div id="list"></div>`;
+  const draw=()=>{
+    const tx=$("#qtext").value.toLowerCase(),vv=$("#qville").value.toLowerCase(),th=$("#qtheme").value;
+    const rows=CENTRES.filter(c=>{
+      const ens=c.enseignes?.nom||"";
+      const hay=(c.nom+" "+ens+" "+c.ville).toLowerCase();
+      if(tx&&!hay.includes(tx))return false;
+      if(vv&&(c.ville||"").toLowerCase()!==vv)return false;
+      if(th&&!(SALLES_BY_CENTRE[c.id]||[]).some(s=>s.theme===th))return false;
+      return true;
+    });
+    $("#list").innerHTML=rows.length?rows.map(c=>{
+      const ns=(SALLES_BY_CENTRE[c.id]||[]).length, nf=freeCountFor(c.id), ens=c.enseignes?.nom||"";
+      return `<div class="card" onclick="openCentre('${c.id}')">
+        <h3>${esc(c.nom||ens)}</h3>
+        <div class="sub">${esc(ens)}${c.ville?" · "+esc(cap(c.ville)):""}</div>
+        <div class="tags"><span class="tag">${ns} salle${ns>1?"s":""}</span>${nf?`<span class="tag free">🟢 ${nf} libres 7j</span>`:`<span class="tag">complet 7j</span>`}</div>
+      </div>`;}).join(""):`<div class="center">Aucun centre.</div>`;
+  };
+  draw(); ["qtext","qville","qtheme"].forEach(id=>$("#"+id).oninput=draw);
+}
+
+/* ───── détail centre (overlay) ───── */
+const dfmt=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
+async function openCentre(id){
+  const c=CENTRES.find(x=>x.id===id);if(!c)return;
+  $("#ov").classList.add("on");
+  $("#sheet").innerHTML=`<div class="grab"></div><div class="center">Chargement…</div>`;
+  const salles=SALLES_BY_CENTRE[id]||[];
+  let sess=[];
+  if(salles.length){
+    const ids=salles.map(s=>s.id).join(",");
+    sess=await q(`sessions?select=salle_id,date,heure,prix_total_moyen&dispo=is.true&date=gte.${today}&salle_id=in.(${ids})&order=date,heure&limit=2000`);
+  }
+  const byRoom={}; sess.forEach(s=>(byRoom[s.salle_id]=byRoom[s.salle_id]||[]).push(s));
+  const ens=c.enseignes?.nom||"";
+  $("#sheet").innerHTML=`<a class="close" onclick="closeOv()">✕</a><div class="grab"></div>
+    <h2 style="margin:0 0 2px;font-size:19px">${esc(c.nom||ens)}</h2>
+    <div class="muted" style="font-size:13px;margin-bottom:14px">${esc(ens)}${c.adresse?" · "+esc(c.adresse):""}${c.ville?", "+esc(cap(c.ville)):""}</div>
+    ${salles.map(s=>{
+      const nx=(byRoom[s.id]||[]).slice(0,12);
+      return `<div class="salle"><h3 style="margin:0 0 2px;font-size:15px">${esc(s.nom||"Salle")}</h3>
+        <div class="chips">${[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min",(s.joueurs_min||s.joueurs_max)&&`${s.joueurs_min||"?"}–${s.joueurs_max||"?"} j`,s.difficulty&&"★".repeat(Math.min(5,s.difficulty))].filter(Boolean).map(t=>`<span class="tag">${esc(String(t))}</span>`).join("")}</div>
+        ${nx.length?`<div class="muted" style="font-size:12px;margin-bottom:5px">Prochains créneaux libres :</div><div class="next">${nx.map(o=>`<span>${dfmt(o.date)} ${o.heure}${o.prix_total_moyen?" · "+Math.round(o.prix_total_moyen)+"€":""}</span>`).join("")}</div>`:`<div class="muted" style="font-size:12.5px">Complet sur la période.</div>`}
+      </div>`;}).join("")||`<div class="muted">Pas de salle référencée.</div>`}`;
+}
+function closeOv(){$("#ov").classList.remove("on");}
+$("#ov").onclick=e=>{if(e.target.id==="ov")closeOv();};
+
+/* ───── onglet Dispos ───── */
+function renderDispos(){
+  const villes=[...new Set(CENTRES.map(c=>c.ville).filter(Boolean))].sort();
+  const centreOf={}; CENTRES.forEach(c=>centreOf[c.id]=c);
+  const salleCentre={}; Object.values(SALLES).forEach(s=>salleCentre[s.id]=s.centre_id);
+  $("#view").innerHTML=`<div class="filters"><select id="dville"><option value="">Toutes villes</option>${villes.map(v=>`<option>${esc(cap(v))}</option>`).join("")}</select></div><div id="dlist"></div>`;
+  const draw=()=>{
+    const vv=$("#dville").value.toLowerCase();
+    const rows=FREE.filter(f=>{const c=centreOf[salleCentre[f.salle_id]];return c&&(!vv||(c.ville||"").toLowerCase()===vv);});
+    const byDay={}; rows.forEach(f=>(byDay[f.date]=byDay[f.date]||[]).push(f));
+    const days=Object.keys(byDay).sort();
+    $("#dlist").innerHTML=days.length?days.map(d=>`<div class="day">${dfmt(d)} · ${byDay[d].length} créneaux</div>`+
+      byDay[d].slice(0,80).map(f=>{const s=SALLES[f.salle_id]||{},c=centreOf[salleCentre[f.salle_id]]||{};
+        return `<div class="slot"><div><div class="t">${f.heure}</div><div class="muted" style="font-size:12px">${esc(s.nom||"")} · ${esc(c.nom||c.enseignes?.nom||"")}${c.ville?" ("+esc(cap(c.ville))+")":""}</div></div><div class="p">${f.prix_total_moyen?Math.round(f.prix_total_moyen)+"€":""}</div></div>`;}).join("")
+    ).join(""):`<div class="center">Aucun créneau libre sur 7 jours.</div>`;
+  };
+  draw(); $("#dville").oninput=draw;
+}
+
+/* ───── onglet Carte ───── */
+function renderCarte(){
+  $("#view").innerHTML=`<div id="map"></div>`;
+  setTimeout(()=>{
+    map=L.map("map").setView([48.857,2.352],10);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{attribution:"© OSM © CARTO",maxZoom:19}).addTo(map);
+    const pts=CENTRES.filter(c=>c.lat&&c.lon);
+    pts.forEach(c=>{const nf=freeCountFor(c.id);
+      L.circleMarker([c.lat,c.lon],{radius:7,color:nf?"#22c55e":"#6c5ce7",fillColor:nf?"#22c55e":"#6c5ce7",fillOpacity:.8,weight:1})
+       .addTo(map).bindPopup(`<b>${esc(c.nom||c.enseignes?.nom||"")}</b><br>${esc(cap(c.ville||""))} · ${nf} libres 7j<br><a href="#" onclick="closeP();openCentre('${c.id}');return false">Voir les créneaux →</a>`);});
+  },60);
+}
+function closeP(){if(map)map.closePopup();}
+
+/* ───── navigation onglets ───── */
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
+  ({centres:renderCentres,dispos:renderDispos,carte:renderCarte}[b.dataset.tab])();
+});
+
+load().catch(e=>$("#view").innerHTML=`<div class="center">Erreur de chargement (${e.message}). Réessaie dans un instant.</div>`);
+</script>
+</body>
+</html>
