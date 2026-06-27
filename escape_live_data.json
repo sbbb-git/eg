@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-06-27T13:42:42+00:00",
+    "generated": "2026-06-27T15:04:02+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 3416,
-    "lead_days_moyen": 0.8,
+    "n_observations": 3472,
+    "lead_days_moyen": 0.9,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -35,8 +35,8 @@
       "website": "http://www.wanderlust-escapegame.com/",
       "phone": "0143440265",
       "n_rooms": 3,
-      "lead_days_avg": 3.3,
-      "demand_pct": 33.3,
+      "lead_days_avg": 4.0,
+      "demand_pct": 100.0,
       "prix_min": 29.0,
       "prix_grille": {
         "8": 53.0,
@@ -99,7 +99,7 @@
       "website": "https://thegame-france.com",
       "phone": "01 43 29 26 21",
       "n_rooms": 12,
-      "lead_days_avg": 1.2,
+      "lead_days_avg": 1.3,
       "demand_pct": 91.7,
       "prix_min": 110.0,
       "prix_grille": {
@@ -188,6 +188,27 @@
       }
     },
     {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 0.3,
+      "demand_pct": 16.7,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      }
+    },
+    {
       "centre": "Majestic Escape Game",
       "cp": "75001",
       "lat": 48.863708,
@@ -219,27 +240,6 @@
       "demand_pct": 0.0,
       "prix_min": 32,
       "prix_grille": null
-    },
-    {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      }
     },
     {
       "centre": "Masterio",
@@ -332,7 +332,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 10,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 0
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-01",
       "next_time": "16:25",
       "lead_days": 4,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 4
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-06-30",
       "next_time": "09:45",
       "lead_days": 3,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 7
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-06-30",
       "next_time": "10:00",
       "lead_days": 3,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 5
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-06-29",
       "next_time": "22:15",
       "lead_days": 2,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 13
     },
     {
@@ -470,8 +470,39 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 10
+    },
+    {
+      "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
+      "room": "Le casse du siècle",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-le-casse-du-siecle/",
+      "available": true,
+      "next_date": "2026-06-29",
+      "next_time": "17:30",
+      "lead_days": 2,
+      "n_obs": 62,
+      "n_reserved": 15
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -499,7 +530,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 7
     },
     {
@@ -528,8 +559,37 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 7
+    },
+    {
+      "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
+      "room": "Braquage du casino",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "cambriolage",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-06-29",
+      "next_time": "09:30",
+      "lead_days": 2,
+      "n_obs": 62,
+      "n_reserved": 9
     },
     {
       "room_id": "thegame/5b4844b63e4e381f7695d257",
@@ -557,7 +617,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 12
     },
     {
@@ -587,7 +647,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 5
     },
     {
@@ -617,7 +677,7 @@
       "next_date": "2026-06-28",
       "next_time": "22:15",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 17
     },
     {
@@ -644,7 +704,7 @@
       "next_date": "2026-06-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 23
     },
     {
@@ -673,7 +733,7 @@
       "next_date": "2026-06-28",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 10
     },
     {
@@ -701,7 +761,7 @@
       "next_date": "2026-06-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 28
     },
     {
@@ -730,7 +790,7 @@
       "next_date": "2026-06-28",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 4
     },
     {
@@ -760,7 +820,7 @@
       "next_date": "2026-06-28",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 24
     },
     {
@@ -789,7 +849,7 @@
       "next_date": "2026-06-28",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 8
     },
     {
@@ -818,7 +878,7 @@
       "next_date": "2026-06-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 15
     },
     {
@@ -846,7 +906,7 @@
       "next_date": "2026-06-28",
       "next_time": "16:45",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 20
     },
     {
@@ -877,37 +937,8 @@
       "next_date": "2026-06-28",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 19
-    },
-    {
-      "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
-      "room": "Braquage du casino",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "cambriolage",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-06-28",
-      "next_time": "20:00",
-      "lead_days": 1,
-      "n_obs": 61,
-      "n_reserved": 8
     },
     {
       "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
@@ -933,10 +964,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-06-28",
-      "next_time": "11:15",
+      "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 61,
-      "n_reserved": 11
+      "n_obs": 62,
+      "n_reserved": 12
     },
     {
       "room_id": "thegame/5b4846f43e4e381f7695fabe",
@@ -962,10 +993,66 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-06-28",
-      "next_time": "09:30",
+      "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 61,
-      "n_reserved": 11
+      "n_obs": 62,
+      "n_reserved": 12
+    },
+    {
+      "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
+      "room": "La lampe merveilleuse",
+      "centre": "Wanderlust Escapegame",
+      "cp": "75012",
+      "lat": 48.8348383,
+      "lon": 2.3989767,
+      "theme": "romans",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 29.0,
+      "prix_max": 49.0,
+      "prix_grille": {
+        "2": 49.0,
+        "3": 38.0,
+        "4": 32.0,
+        "5": 29.0
+      },
+      "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
+      "available": true,
+      "next_date": "2026-06-28",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 62,
+      "n_reserved": 13
+    },
+    {
+      "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
+      "room": "L’AcademX",
+      "centre": "Wanderlust Escapegame",
+      "cp": "75012",
+      "lat": 48.8348383,
+      "lon": 2.3989767,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 29.0,
+      "prix_max": 49.0,
+      "prix_grille": {
+        "2": 49.0,
+        "3": 38.0,
+        "4": 32.0,
+        "5": 29.0
+      },
+      "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
+      "available": true,
+      "next_date": "2026-06-28",
+      "next_time": "10:30",
+      "lead_days": 1,
+      "n_obs": 62,
+      "n_reserved": 15
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -994,7 +1081,7 @@
       "next_date": "2026-06-28",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 24
     },
     {
@@ -1022,7 +1109,7 @@
       "next_date": "2026-06-27",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 23
     },
     {
@@ -1052,7 +1139,7 @@
       "next_date": "2026-06-27",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 16
     },
     {
@@ -1075,7 +1162,7 @@
       "next_date": "2026-06-27",
       "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 24
     },
     {
@@ -1105,7 +1192,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 12
     },
     {
@@ -1133,7 +1220,7 @@
       "next_date": "2026-06-27",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 20
     },
     {
@@ -1163,7 +1250,7 @@
       "next_date": "2026-06-27",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 13
     },
     {
@@ -1186,7 +1273,7 @@
       "next_date": "2026-06-27",
       "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 17
     },
     {
@@ -1214,39 +1301,8 @@
       "next_date": "2026-06-27",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 21
-    },
-    {
-      "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
-      "room": "Le casse du siècle",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-le-casse-du-siecle/",
-      "available": true,
-      "next_date": "2026-06-27",
-      "next_time": "22:30",
-      "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 14
     },
     {
       "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
@@ -1275,7 +1331,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 6
     },
     {
@@ -1304,7 +1360,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 30
     },
     {
@@ -1331,10 +1387,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "20:40",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 26
+      "n_obs": 62,
+      "n_reserved": 27
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -1363,7 +1419,7 @@
       "next_date": "2026-06-27",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 13
     },
     {
@@ -1391,10 +1447,10 @@
       "reservation_url": "https://majestic-escapegame.paris/titanic/",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "20:15",
+      "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 17
+      "n_obs": 62,
+      "n_reserved": 18
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -1423,7 +1479,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 17
     },
     {
@@ -1452,7 +1508,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 27
     },
     {
@@ -1482,7 +1538,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 18
     },
     {
@@ -1510,7 +1566,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 21
     },
     {
@@ -1538,10 +1594,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "22:15",
+      "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 25
+      "n_obs": 62,
+      "n_reserved": 26
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1569,7 +1625,7 @@
       "next_date": "2026-06-27",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 9
     },
     {
@@ -1599,7 +1655,7 @@
       "next_date": "2026-06-27",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 9
     },
     {
@@ -1620,10 +1676,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "20:00",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 30
+      "n_obs": 62,
+      "n_reserved": 31
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1645,7 +1701,7 @@
       "next_date": "2026-06-27",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 23
     },
     {
@@ -1675,7 +1731,7 @@
       "next_date": "2026-06-27",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 28
     },
     {
@@ -1701,7 +1757,7 @@
       "next_date": "2026-06-27",
       "next_time": "17:15",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 29
     },
     {
@@ -1727,10 +1783,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "16:40",
+      "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 27
+      "n_obs": 62,
+      "n_reserved": 28
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -1750,10 +1806,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "16:30",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 29
+      "n_obs": 62,
+      "n_reserved": 30
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1775,7 +1831,7 @@
       "next_date": "2026-06-27",
       "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 18
     },
     {
@@ -1798,7 +1854,7 @@
       "next_date": "2026-06-27",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 61,
+      "n_obs": 62,
       "n_reserved": 23
     },
     {
@@ -1819,66 +1875,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-06-27",
-      "next_time": "16:00",
+      "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 16
-    },
-    {
-      "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
-      "room": "La lampe merveilleuse",
-      "centre": "Wanderlust Escapegame",
-      "cp": "75012",
-      "lat": 48.8348383,
-      "lon": 2.3989767,
-      "theme": "romans",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 29.0,
-      "prix_max": 49.0,
-      "prix_grille": {
-        "2": 49.0,
-        "3": 38.0,
-        "4": 32.0,
-        "5": 29.0
-      },
-      "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
-      "available": true,
-      "next_date": "2026-06-27",
-      "next_time": "18:15",
-      "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 12
-    },
-    {
-      "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
-      "room": "L’AcademX",
-      "centre": "Wanderlust Escapegame",
-      "cp": "75012",
-      "lat": 48.8348383,
-      "lon": 2.3989767,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 29.0,
-      "prix_max": 49.0,
-      "prix_grille": {
-        "2": 49.0,
-        "3": 38.0,
-        "4": 32.0,
-        "5": 29.0
-      },
-      "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
-      "available": true,
-      "next_date": "2026-06-27",
-      "next_time": "18:30",
-      "lead_days": 0,
-      "n_obs": 61,
-      "n_reserved": 14
+      "n_obs": 62,
+      "n_reserved": 17
     }
   ]
 }
