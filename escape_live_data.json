@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-06-28T21:00:53+00:00",
+    "generated": "2026-06-28T22:04:11+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 4312,
-    "lead_days_moyen": 1.4,
+    "n_observations": 4424,
+    "lead_days_moyen": 1.5,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -94,6 +94,25 @@
       }
     },
     {
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "website": "https://www.lantichambre.paris",
+      "phone": "+33 1 75 51 56 84",
+      "n_rooms": 2,
+      "lead_days_avg": 1.5,
+      "demand_pct": 100.0,
+      "prix_min": 28.0,
+      "prix_grille": {
+        "1": 50.0,
+        "2": 50.0,
+        "3": 50.0,
+        "4": 50.0,
+        "5": 50.0
+      }
+    },
+    {
       "centre": "Lock Academy",
       "cp": "75001",
       "lat": 48.8639412,
@@ -151,6 +170,26 @@
         "4": 35.0,
         "5": 30.0,
         "6": 28.0
+      }
+    },
+    {
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "website": "https://majestic-escapegame.paris/",
+      "phone": "",
+      "n_rooms": 4,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 45.0,
+        "4": 40.0,
+        "5": 35.0,
+        "6": 32.0,
+        "7": 32.0
       }
     },
     {
@@ -221,6 +260,26 @@
       }
     },
     {
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "website": "https://www.phobiaescapegame.fr/",
+      "phone": "01 44 24 85 28",
+      "n_rooms": 5,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 78.0,
+      "prix_grille": {
+        "2": 129.0,
+        "3": 129.0,
+        "4": 129.0,
+        "5": 129.0,
+        "6": 153.0,
+        "7": 180.0
+      }
+    },
+    {
       "centre": "Joueurz Paris",
       "cp": "75018",
       "lat": 48.8903889,
@@ -245,65 +304,6 @@
       "demand_pct": 100.0,
       "prix_min": 28,
       "prix_grille": null
-    },
-    {
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "website": "https://www.lantichambre.paris",
-      "phone": "+33 1 75 51 56 84",
-      "n_rooms": 2,
-      "lead_days_avg": 1.0,
-      "demand_pct": 100.0,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "1": 50.0,
-        "2": 50.0,
-        "3": 50.0,
-        "4": 50.0,
-        "5": 50.0
-      }
-    },
-    {
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "website": "https://www.phobiaescapegame.fr/",
-      "phone": "01 44 24 85 28",
-      "n_rooms": 5,
-      "lead_days_avg": 0.8,
-      "demand_pct": 80.0,
-      "prix_min": 78.0,
-      "prix_grille": {
-        "2": 129.0,
-        "3": 129.0,
-        "4": 129.0,
-        "5": 129.0,
-        "6": 153.0,
-        "7": 180.0
-      }
-    },
-    {
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "website": "https://majestic-escapegame.paris/",
-      "phone": "",
-      "n_rooms": 4,
-      "lead_days_avg": 0.2,
-      "demand_pct": 25.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 45.0,
-        "4": 40.0,
-        "5": 35.0,
-        "6": 32.0,
-        "7": 32.0
-      }
     }
   ],
   "rooms": [
@@ -332,7 +332,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 9,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 0
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:15",
       "lead_days": 8,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 5
     },
     {
@@ -384,7 +384,7 @@
       "next_date": "2026-07-01",
       "next_time": "10:15",
       "lead_days": 3,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 15
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-01",
       "next_time": "10:15",
       "lead_days": 3,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 18
     },
     {
@@ -440,7 +440,7 @@
       "next_date": "2026-07-01",
       "next_time": "10:30",
       "lead_days": 3,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 21
     },
     {
@@ -468,7 +468,7 @@
       "next_date": "2026-06-30",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 9
     },
     {
@@ -497,7 +497,7 @@
       "next_date": "2026-06-30",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 7
     },
     {
@@ -525,7 +525,7 @@
       "next_date": "2026-06-30",
       "next_time": "11:00",
       "lead_days": 2,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 22
     },
     {
@@ -556,7 +556,7 @@
       "next_date": "2026-06-30",
       "next_time": "11:00",
       "lead_days": 2,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 21
     },
     {
@@ -586,8 +586,38 @@
       "next_date": "2026-06-30",
       "next_time": "18:00",
       "lead_days": 2,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 11
+    },
+    {
+      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
+      "room": "La revanche du docteur Kang",
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "theme": "adventure",
+      "difficulty": 0,
+      "duration": 85,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
+      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
+      "available": true,
+      "next_date": "2026-06-30",
+      "next_time": "10:15",
+      "lead_days": 2,
+      "n_obs": 79,
+      "n_reserved": 6
     },
     {
       "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
@@ -616,7 +646,7 @@
       "next_date": "2026-06-29",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 18
     },
     {
@@ -644,8 +674,38 @@
       "next_date": "2026-06-29",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 28
+    },
+    {
+      "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
+      "room": "Mission galactique",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "scifi",
+      "difficulty": 0,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 32.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 45.0,
+        "4": 40.0,
+        "5": 35.0,
+        "6": 32.0,
+        "7": 32.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
+      "available": true,
+      "next_date": "2026-06-29",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 79,
+      "n_reserved": 19
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -667,7 +727,7 @@
       "next_date": "2026-06-29",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 29
     },
     {
@@ -694,7 +754,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 26
     },
     {
@@ -723,7 +783,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 10
     },
     {
@@ -752,7 +812,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 11
     },
     {
@@ -782,7 +842,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 19
     },
     {
@@ -810,7 +870,7 @@
       "next_date": "2026-06-29",
       "next_time": "19:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 24
     },
     {
@@ -840,7 +900,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 18
     },
     {
@@ -863,7 +923,7 @@
       "next_date": "2026-06-29",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 21
     },
     {
@@ -891,7 +951,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 24
     },
     {
@@ -922,7 +982,7 @@
       "next_date": "2026-06-29",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 15
     },
     {
@@ -952,7 +1012,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 11
     },
     {
@@ -981,7 +1041,7 @@
       "next_date": "2026-06-29",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 39
     },
     {
@@ -1009,7 +1069,7 @@
       "next_date": "2026-06-29",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 35
     },
     {
@@ -1038,7 +1098,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 5
     },
     {
@@ -1066,10 +1126,10 @@
       "reservation_url": "https://www.theoneescape.com",
       "available": true,
       "next_date": "2026-06-29",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 77,
-      "n_reserved": 25
+      "n_obs": 79,
+      "n_reserved": 26
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1097,7 +1157,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 9
     },
     {
@@ -1126,7 +1186,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 30
     },
     {
@@ -1156,7 +1216,7 @@
       "next_date": "2026-06-29",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 15
     },
     {
@@ -1185,7 +1245,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 18
     },
     {
@@ -1215,8 +1275,38 @@
       "next_date": "2026-06-29",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 21
+    },
+    {
+      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
+      "room": "Les aventuriers de l’Atlantide",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/atlantide/",
+      "available": true,
+      "next_date": "2026-06-29",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 79,
+      "n_reserved": 23
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -1244,8 +1334,38 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 34
+    },
+    {
+      "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
+      "room": "Oggy prisonnier du temps",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "romans",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 3,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/oggy/",
+      "available": true,
+      "next_date": "2026-06-29",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 79,
+      "n_reserved": 24
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1272,7 +1392,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 28
     },
     {
@@ -1302,7 +1422,7 @@
       "next_date": "2026-06-29",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 32
     },
     {
@@ -1331,7 +1451,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 12
     },
     {
@@ -1360,7 +1480,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 7
     },
     {
@@ -1381,10 +1501,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-06-29",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 77,
-      "n_reserved": 38
+      "n_obs": 79,
+      "n_reserved": 39
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1406,7 +1526,7 @@
       "next_date": "2026-06-29",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 32
     },
     {
@@ -1436,8 +1556,34 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 35
+    },
+    {
+      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
+      "room": "Loft 13",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "horror",
+      "difficulty": 6,
+      "duration": 60,
+      "min_players": 1,
+      "max_players": 2,
+      "prix_min": 78.0,
+      "prix_max": 78.0,
+      "prix_grille": {
+        "1": 78.0,
+        "2": 78.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
+      "available": true,
+      "next_date": "2026-06-29",
+      "next_time": "10:40",
+      "lead_days": 1,
+      "n_obs": 79,
+      "n_reserved": 37
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1464,7 +1610,7 @@
       "next_date": "2026-06-29",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 37
     },
     {
@@ -1485,10 +1631,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-06-29",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 77,
-      "n_reserved": 35
+      "n_obs": 79,
+      "n_reserved": 36
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1516,7 +1662,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 7
     },
     {
@@ -1545,7 +1691,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 9
     },
     {
@@ -1574,7 +1720,7 @@
       "next_date": "2026-06-29",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 15
     },
     {
@@ -1597,7 +1743,7 @@
       "next_date": "2026-06-29",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 26
     },
     {
@@ -1626,7 +1772,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 17
     },
     {
@@ -1649,7 +1795,7 @@
       "next_date": "2026-06-29",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 32
     },
     {
@@ -1678,7 +1824,7 @@
       "next_date": "2026-06-29",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 12
     },
     {
@@ -1701,38 +1847,8 @@
       "next_date": "2026-06-29",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 21
-    },
-    {
-      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
-      "room": "La revanche du docteur Kang",
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "theme": "adventure",
-      "difficulty": 0,
-      "duration": 85,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 28.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 37.0,
-        "4": 32.0,
-        "5": 30.0,
-        "6": 28.0,
-        "7": 28.0
-      },
-      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
-      "available": true,
-      "next_date": "2026-06-29",
-      "next_time": "10:15",
-      "lead_days": 1,
-      "n_obs": 77,
-      "n_reserved": 5
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1761,124 +1877,8 @@
       "next_date": "2026-06-29",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 77,
+      "n_obs": 79,
       "n_reserved": 28
-    },
-    {
-      "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
-      "room": "Mission galactique",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "scifi",
-      "difficulty": 0,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 32.0,
-      "prix_max": 60.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 45.0,
-        "4": 40.0,
-        "5": 35.0,
-        "6": 32.0,
-        "7": 32.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
-      "available": true,
-      "next_date": "2026-06-28",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 77,
-      "n_reserved": 18
-    },
-    {
-      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
-      "room": "Les aventuriers de l’Atlantide",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/atlantide/",
-      "available": true,
-      "next_date": "2026-06-28",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 77,
-      "n_reserved": 22
-    },
-    {
-      "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
-      "room": "Oggy prisonnier du temps",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "romans",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 3,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/oggy/",
-      "available": true,
-      "next_date": "2026-06-28",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 77,
-      "n_reserved": 23
-    },
-    {
-      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
-      "room": "Loft 13",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "horror",
-      "difficulty": 6,
-      "duration": 60,
-      "min_players": 1,
-      "max_players": 2,
-      "prix_min": 78.0,
-      "prix_max": 78.0,
-      "prix_grille": {
-        "1": 78.0,
-        "2": 78.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
-      "available": true,
-      "next_date": "2026-06-28",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 77,
-      "n_reserved": 36
     }
   ]
 }
