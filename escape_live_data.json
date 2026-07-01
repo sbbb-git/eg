@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-01T23:15:32+00:00",
+    "generated": "2026-07-01T23:22:41+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 5936,
+    "n_observations": 5992,
     "lead_days_moyen": 1.4,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -73,6 +73,27 @@
       }
     },
     {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 1.5,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      }
+    },
+    {
       "centre": "The Game",
       "cp": "75005",
       "lat": 48.8468159,
@@ -89,27 +110,6 @@
         "4": 148.0,
         "5": 170.0,
         "6": 192.0
-      }
-    },
-    {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 1.2,
-      "demand_pct": 100.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 6,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 12
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 0
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:15",
       "lead_days": 5,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 5
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:15",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 19
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 11
     },
     {
@@ -470,7 +470,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 14
     },
     {
@@ -501,7 +501,7 @@
       "next_date": "2026-07-03",
       "next_time": "22:30",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 20
     },
     {
@@ -530,8 +530,38 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 14
+    },
+    {
+      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
+      "room": "Très Cher Lock",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
+      "available": true,
+      "next_date": "2026-07-03",
+      "next_time": "18:00",
+      "lead_days": 2,
+      "n_obs": 107,
+      "n_reserved": 20
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -559,8 +589,38 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 15
+    },
+    {
+      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
+      "room": "Un crime presque parfait",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
+      "available": true,
+      "next_date": "2026-07-03",
+      "next_time": "16:00",
+      "lead_days": 2,
+      "n_obs": 107,
+      "n_reserved": 16
     },
     {
       "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
@@ -587,7 +647,7 @@
       "next_date": "2026-07-03",
       "next_time": "15:15",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 21
     },
     {
@@ -615,7 +675,7 @@
       "next_date": "2026-07-03",
       "next_time": "15:30",
       "lead_days": 2,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 24
     },
     {
@@ -643,10 +703,10 @@
       "reservation_url": "https://www.theoneescape.com/missions-escape-game/le-grand-hotel-de-paris",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "10:00",
+      "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 106,
-      "n_reserved": 25
+      "n_obs": 107,
+      "n_reserved": 26
     },
     {
       "room_id": "thequestfactory/608bb6116e100464ca326c19",
@@ -673,7 +733,7 @@
       "next_date": "2026-07-02",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 36
     },
     {
@@ -703,7 +763,7 @@
       "next_date": "2026-07-02",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 26
     },
     {
@@ -726,7 +786,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:20",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 33
     },
     {
@@ -753,7 +813,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 36
     },
     {
@@ -782,7 +842,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 15
     },
     {
@@ -812,7 +872,7 @@
       "next_date": "2026-07-02",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 29
     },
     {
@@ -840,7 +900,7 @@
       "next_date": "2026-07-02",
       "next_time": "15:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 34
     },
     {
@@ -870,7 +930,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 28
     },
     {
@@ -893,7 +953,7 @@
       "next_date": "2026-07-02",
       "next_time": "17:20",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 27
     },
     {
@@ -921,7 +981,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 37
     },
     {
@@ -951,7 +1011,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 21
     },
     {
@@ -980,7 +1040,7 @@
       "next_date": "2026-07-02",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 52
     },
     {
@@ -1006,10 +1066,10 @@
       "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 106,
-      "n_reserved": 46
+      "n_obs": 107,
+      "n_reserved": 47
     },
     {
       "room_id": "thegame/5b4845a1ca5f6e1f2252ec01,5bc4474ad0877338631e9725,5d3af16d2427e85e5d17a8eb,5d3af2542427e85e5d17a918",
@@ -1037,7 +1097,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 9
     },
     {
@@ -1067,7 +1127,7 @@
       "next_date": "2026-07-02",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 35
     },
     {
@@ -1096,38 +1156,8 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 38
-    },
-    {
-      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
-      "room": "Très Cher Lock",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
-      "available": true,
-      "next_date": "2026-07-02",
-      "next_time": "12:00",
-      "lead_days": 1,
-      "n_obs": 106,
-      "n_reserved": 19
     },
     {
       "room_id": "thegame/5b4849363e4e381f76962317",
@@ -1155,7 +1185,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 23
     },
     {
@@ -1185,7 +1215,7 @@
       "next_date": "2026-07-02",
       "next_time": "16:15",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 27
     },
     {
@@ -1215,7 +1245,7 @@
       "next_date": "2026-07-02",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 30
     },
     {
@@ -1244,7 +1274,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 44
     },
     {
@@ -1274,7 +1304,7 @@
       "next_date": "2026-07-02",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 32
     },
     {
@@ -1302,7 +1332,7 @@
       "next_date": "2026-07-02",
       "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 33
     },
     {
@@ -1330,7 +1360,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 37
     },
     {
@@ -1361,7 +1391,7 @@
       "next_date": "2026-07-02",
       "next_time": "14:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 30
     },
     {
@@ -1389,10 +1419,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 106,
-      "n_reserved": 42
+      "n_obs": 107,
+      "n_reserved": 43
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1420,38 +1450,8 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 16
-    },
-    {
-      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
-      "room": "Un crime presque parfait",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
-      "available": true,
-      "next_date": "2026-07-02",
-      "next_time": "12:00",
-      "lead_days": 1,
-      "n_obs": 106,
-      "n_reserved": 15
     },
     {
       "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
@@ -1473,7 +1473,7 @@
       "next_date": "2026-07-02",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 48
     },
     {
@@ -1496,7 +1496,7 @@
       "next_date": "2026-07-02",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 36
     },
     {
@@ -1526,7 +1526,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 44
     },
     {
@@ -1552,7 +1552,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 47
     },
     {
@@ -1580,7 +1580,7 @@
       "next_date": "2026-07-02",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 48
     },
     {
@@ -1603,7 +1603,7 @@
       "next_date": "2026-07-02",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 44
     },
     {
@@ -1632,7 +1632,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 11
     },
     {
@@ -1661,7 +1661,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 15
     },
     {
@@ -1690,7 +1690,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 19
     },
     {
@@ -1713,7 +1713,7 @@
       "next_date": "2026-07-02",
       "next_time": "17:15",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 35
     },
     {
@@ -1742,7 +1742,7 @@
       "next_date": "2026-07-02",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 20
     },
     {
@@ -1765,7 +1765,7 @@
       "next_date": "2026-07-02",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 37
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 15
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-07-02",
       "next_time": "17:15",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 31
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-02",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 13
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-02",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 106,
+      "n_obs": 107,
       "n_reserved": 37
     }
   ]
