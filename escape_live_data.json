@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-02T15:43:14+00:00",
+    "generated": "2026-07-02T17:44:38+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 6328,
-    "lead_days_moyen": 0.8,
+    "n_observations": 6384,
+    "lead_days_moyen": 0.9,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -146,6 +146,19 @@
       "prix_grille": null
     },
     {
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "website": "https://joueurz.fr/",
+      "phone": "‭09 86 32 29 01‬",
+      "n_rooms": 2,
+      "lead_days_avg": 0.5,
+      "demand_pct": 50.0,
+      "prix_min": 25,
+      "prix_grille": null
+    },
+    {
       "centre": "L'Antichambre",
       "cp": "75018",
       "lat": 48.8859971,
@@ -192,8 +205,8 @@
       "website": "http://www.thequestfactory.paris/",
       "phone": "09 54 63 22 00",
       "n_rooms": 3,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
+      "lead_days_avg": 0.3,
+      "demand_pct": 33.3,
       "prix_min": 28.0,
       "prix_grille": {
         "2": 54.0,
@@ -280,19 +293,6 @@
       }
     },
     {
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "website": "https://joueurz.fr/",
-      "phone": "‭09 86 32 29 01‬",
-      "n_rooms": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 25,
-      "prix_grille": null
-    },
-    {
       "centre": "Crack the Egg",
       "cp": "75012",
       "lat": 48.8457677,
@@ -332,7 +332,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 5,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 12
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 5,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 0
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:15",
       "lead_days": 4,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 5
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 4,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 12
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 3,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 15
     },
     {
@@ -470,7 +470,7 @@
       "next_date": "2026-07-04",
       "next_time": "14:15",
       "lead_days": 2,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 20
     },
     {
@@ -499,8 +499,37 @@
       "next_date": "2026-07-04",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 13
+    },
+    {
+      "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
+      "room": "Braquage à la française",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "cambriolage",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-07-04",
+      "next_time": "21:45",
+      "lead_days": 2,
+      "n_obs": 114,
+      "n_reserved": 22
     },
     {
       "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
@@ -529,8 +558,36 @@
       "next_date": "2026-07-03",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 29
+    },
+    {
+      "room_id": "thequestfactory/608bb6116e100464ca326c19",
+      "room": "Le fléau du druide",
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "theme": "spooky",
+      "difficulty": 6,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 34.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 44.0,
+        "4": 39.0,
+        "5": 34.0
+      },
+      "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
+      "available": true,
+      "next_date": "2026-07-03",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 114,
+      "n_reserved": 38
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -559,7 +616,7 @@
       "next_date": "2026-07-03",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 28
     },
     {
@@ -582,7 +639,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 34
     },
     {
@@ -611,7 +668,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 17
     },
     {
@@ -641,7 +698,7 @@
       "next_date": "2026-07-03",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 30
     },
     {
@@ -672,7 +729,7 @@
       "next_date": "2026-07-03",
       "next_time": "22:30",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 20
     },
     {
@@ -701,7 +758,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 10
     },
     {
@@ -730,7 +787,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 15
     },
     {
@@ -760,7 +817,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 20
     },
     {
@@ -790,7 +847,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:15",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 28
     },
     {
@@ -819,7 +876,7 @@
       "next_date": "2026-07-03",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 18
     },
     {
@@ -848,7 +905,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 15
     },
     {
@@ -878,8 +935,31 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 16
+    },
+    {
+      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
+      "room": "Le studio",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "adventure",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-07-03",
+      "next_time": "18:15",
+      "lead_days": 1,
+      "n_obs": 114,
+      "n_reserved": 53
     },
     {
       "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
@@ -907,37 +987,8 @@
       "next_date": "2026-07-03",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 17
-    },
-    {
-      "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
-      "room": "Braquage à la française",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "cambriolage",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-07-03",
-      "next_time": "21:45",
-      "lead_days": 1,
-      "n_obs": 113,
-      "n_reserved": 21
     },
     {
       "room_id": "thegame/5b4846f43e4e381f7695fabe",
@@ -965,7 +1016,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 21
     },
     {
@@ -994,7 +1045,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 16
     },
     {
@@ -1024,7 +1075,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 15
     },
     {
@@ -1052,7 +1103,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:45",
       "lead_days": 1,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 22
     },
     {
@@ -1078,38 +1129,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-03",
-      "next_time": "17:00",
+      "next_time": "18:30",
       "lead_days": 1,
-      "n_obs": 113,
-      "n_reserved": 25
-    },
-    {
-      "room_id": "thequestfactory/608bb6116e100464ca326c19",
-      "room": "Le fléau du druide",
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "theme": "spooky",
-      "difficulty": 6,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 34.0,
-      "prix_max": 60.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 44.0,
-        "4": 39.0,
-        "5": 34.0
-      },
-      "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
-      "available": true,
-      "next_date": "2026-07-02",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 37
+      "n_obs": 114,
+      "n_reserved": 26
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -1135,7 +1158,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 40
     },
     {
@@ -1163,7 +1186,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:30",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 36
     },
     {
@@ -1193,7 +1216,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 30
     },
     {
@@ -1216,7 +1239,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 28
     },
     {
@@ -1244,7 +1267,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 40
     },
     {
@@ -1274,7 +1297,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 22
     },
     {
@@ -1301,10 +1324,10 @@
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "20:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 54
+      "n_obs": 114,
+      "n_reserved": 55
     },
     {
       "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
@@ -1331,7 +1354,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 50
     },
     {
@@ -1361,7 +1384,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 38
     },
     {
@@ -1390,7 +1413,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 41
     },
     {
@@ -1419,7 +1442,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 25
     },
     {
@@ -1449,7 +1472,7 @@
       "next_date": "2026-07-02",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 31
     },
     {
@@ -1476,10 +1499,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "18:00",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 47
+      "n_obs": 114,
+      "n_reserved": 48
     },
     {
       "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
@@ -1508,7 +1531,7 @@
       "next_date": "2026-07-02",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 33
     },
     {
@@ -1536,7 +1559,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 35
     },
     {
@@ -1564,7 +1587,7 @@
       "next_date": "2026-07-02",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 41
     },
     {
@@ -1595,7 +1618,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 32
     },
     {
@@ -1625,31 +1648,8 @@
       "next_date": "2026-07-02",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 46
-    },
-    {
-      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
-      "room": "Le studio",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "adventure",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-07-02",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 52
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1669,10 +1669,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "18:15",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 38
+      "n_obs": 114,
+      "n_reserved": 39
     },
     {
       "room_id": "phobiaescapegame/6347fa448f1f302c07547ce6",
@@ -1699,10 +1699,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "19:20",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 47
+      "n_obs": 114,
+      "n_reserved": 48
     },
     {
       "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
@@ -1725,10 +1725,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "18:30",
+      "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 51
+      "n_obs": 114,
+      "n_reserved": 52
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1753,10 +1753,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "18:00",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 51
+      "n_obs": 114,
+      "n_reserved": 52
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -1778,7 +1778,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 48
     },
     {
@@ -1801,7 +1801,7 @@
       "next_date": "2026-07-02",
       "next_time": "20:45",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 36
     },
     {
@@ -1822,10 +1822,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-02",
-      "next_time": "18:15",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 113,
-      "n_reserved": 39
+      "n_obs": 114,
+      "n_reserved": 40
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-02",
       "next_time": "20:45",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 32
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-02",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 113,
+      "n_obs": 114,
       "n_reserved": 40
     }
   ]
