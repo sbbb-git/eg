@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-03T02:57:35+00:00",
+    "generated": "2026-07-03T06:12:35+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 6664,
+    "n_observations": 6720,
     "lead_days_moyen": 0.4,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -89,6 +89,27 @@
         "4": 148.0,
         "5": 170.0,
         "6": 192.0
+      }
+    },
+    {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 0.2,
+      "demand_pct": 16.7,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
       }
     },
     {
@@ -178,27 +199,6 @@
         "2": 95.0,
         "3": 69.0,
         "4": 59.0
-      }
-    },
-    {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 4,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 12
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 4,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 0
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:15",
       "lead_days": 3,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 5
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 3,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 12
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 2,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 15
     },
     {
@@ -470,7 +470,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 2,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 16
     },
     {
@@ -499,8 +499,38 @@
       "next_date": "2026-07-04",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 20
+    },
+    {
+      "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
+      "room": "L'examen",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "puzzle",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-examen/",
+      "available": true,
+      "next_date": "2026-07-04",
+      "next_time": "13:00",
+      "lead_days": 1,
+      "n_obs": 120,
+      "n_reserved": 32
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -528,7 +558,7 @@
       "next_date": "2026-07-04",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 19
     },
     {
@@ -557,7 +587,7 @@
       "next_date": "2026-07-04",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 13
     },
     {
@@ -586,7 +616,7 @@
       "next_date": "2026-07-04",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 18
     },
     {
@@ -615,7 +645,7 @@
       "next_date": "2026-07-04",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 22
     },
     {
@@ -645,7 +675,7 @@
       "next_date": "2026-07-03",
       "next_time": "13:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 30
     },
     {
@@ -673,7 +703,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 39
     },
     {
@@ -703,7 +733,7 @@
       "next_date": "2026-07-03",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 28
     },
     {
@@ -724,10 +754,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-03",
-      "next_time": "20:00",
+      "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 119,
-      "n_reserved": 35
+      "n_obs": 120,
+      "n_reserved": 36
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -751,10 +781,10 @@
       "reservation_url": "https://unleashescape.com/",
       "available": true,
       "next_date": "2026-07-03",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 119,
-      "n_reserved": 41
+      "n_obs": 120,
+      "n_reserved": 42
     },
     {
       "room_id": "thegame/61692b777595e33dcdfe9f5c",
@@ -782,7 +812,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 17
     },
     {
@@ -810,10 +840,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
       "available": true,
       "next_date": "2026-07-03",
-      "next_time": "19:00",
+      "next_time": "17:30",
       "lead_days": 0,
-      "n_obs": 119,
-      "n_reserved": 31
+      "n_obs": 120,
+      "n_reserved": 32
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -840,38 +870,8 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 38
-    },
-    {
-      "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
-      "room": "L'examen",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "puzzle",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-examen/",
-      "available": true,
-      "next_date": "2026-07-03",
-      "next_time": "17:30",
-      "lead_days": 0,
-      "n_obs": 119,
-      "n_reserved": 31
     },
     {
       "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
@@ -893,7 +893,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 29
     },
     {
@@ -921,7 +921,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 41
     },
     {
@@ -952,7 +952,7 @@
       "next_date": "2026-07-03",
       "next_time": "22:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 20
     },
     {
@@ -982,7 +982,7 @@
       "next_date": "2026-07-03",
       "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 23
     },
     {
@@ -1011,7 +1011,7 @@
       "next_date": "2026-07-03",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 56
     },
     {
@@ -1039,7 +1039,7 @@
       "next_date": "2026-07-03",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 52
     },
     {
@@ -1068,7 +1068,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 10
     },
     {
@@ -1098,7 +1098,7 @@
       "next_date": "2026-07-03",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 39
     },
     {
@@ -1127,7 +1127,7 @@
       "next_date": "2026-07-03",
       "next_time": "11:20",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 42
     },
     {
@@ -1157,7 +1157,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 20
     },
     {
@@ -1186,7 +1186,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 26
     },
     {
@@ -1216,7 +1216,7 @@
       "next_date": "2026-07-03",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 29
     },
     {
@@ -1246,7 +1246,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 32
     },
     {
@@ -1275,7 +1275,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 50
     },
     {
@@ -1305,7 +1305,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 34
     },
     {
@@ -1333,7 +1333,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 37
     },
     {
@@ -1361,7 +1361,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 42
     },
     {
@@ -1392,7 +1392,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 34
     },
     {
@@ -1422,7 +1422,7 @@
       "next_date": "2026-07-03",
       "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 48
     },
     {
@@ -1451,7 +1451,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 15
     },
     {
@@ -1481,7 +1481,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 16
     },
     {
@@ -1504,7 +1504,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 53
     },
     {
@@ -1527,7 +1527,7 @@
       "next_date": "2026-07-03",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 40
     },
     {
@@ -1557,7 +1557,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 50
     },
     {
@@ -1583,7 +1583,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:40",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 53
     },
     {
@@ -1611,7 +1611,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 54
     },
     {
@@ -1634,7 +1634,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 49
     },
     {
@@ -1657,7 +1657,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 38
     },
     {
@@ -1686,7 +1686,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 21
     },
     {
@@ -1709,7 +1709,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 41
     },
     {
@@ -1738,7 +1738,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 16
     },
     {
@@ -1761,7 +1761,7 @@
       "next_date": "2026-07-03",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 34
     },
     {
@@ -1791,7 +1791,7 @@
       "next_date": "2026-07-03",
       "next_time": "10:15",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 15
     },
     {
@@ -1819,7 +1819,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 23
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-03",
       "next_time": "18:30",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 26
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-03",
       "next_time": "09:45",
       "lead_days": 0,
-      "n_obs": 119,
+      "n_obs": 120,
       "n_reserved": 41
     }
   ]
