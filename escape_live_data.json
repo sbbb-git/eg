@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-04T10:09:21+00:00",
+    "generated": "2026-07-04T10:54:54+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 7392,
+    "n_observations": 7448,
     "lead_days_moyen": 0.6,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -22,7 +22,7 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 2.3,
+      "lead_days_avg": 2.7,
       "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
@@ -90,6 +90,25 @@
       }
     },
     {
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "website": "https://www.lantichambre.paris",
+      "phone": "+33 1 75 51 56 84",
+      "n_rooms": 2,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 28.0,
+      "prix_grille": {
+        "1": 50.0,
+        "2": 50.0,
+        "3": 50.0,
+        "4": 50.0,
+        "5": 50.0
+      }
+    },
+    {
       "centre": "The Game",
       "cp": "75005",
       "lat": 48.8468159,
@@ -126,25 +145,6 @@
         "5": 47.0,
         "6": 44.0,
         "7": 44.0
-      }
-    },
-    {
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "website": "https://www.lantichambre.paris",
-      "phone": "+33 1 75 51 56 84",
-      "n_rooms": 2,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "1": 50.0,
-        "2": 50.0,
-        "3": 50.0,
-        "4": 50.0,
-        "5": 50.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 1
     },
     {
@@ -360,8 +360,37 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 3,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 12
+    },
+    {
+      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
+      "room": "Le magicien de Paris",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 70,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-magicien-de-paris/",
+      "available": true,
+      "next_date": "2026-07-07",
+      "next_time": "10:00",
+      "lead_days": 3,
+      "n_obs": 133,
+      "n_reserved": 13
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -383,7 +412,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:15",
       "lead_days": 2,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 5
     },
     {
@@ -412,37 +441,8 @@
       "next_date": "2026-07-06",
       "next_time": "12:15",
       "lead_days": 2,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 21
-    },
-    {
-      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
-      "room": "Le magicien de Paris",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 70,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-magicien-de-paris/",
-      "available": true,
-      "next_date": "2026-07-06",
-      "next_time": "12:00",
-      "lead_days": 2,
-      "n_obs": 132,
-      "n_reserved": 12
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -470,7 +470,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 14
     },
     {
@@ -500,7 +500,7 @@
       "next_date": "2026-07-05",
       "next_time": "17:00",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 33
     },
     {
@@ -527,7 +527,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 44
     },
     {
@@ -556,7 +556,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 15
     },
     {
@@ -585,7 +585,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 18
     },
     {
@@ -616,7 +616,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 21
     },
     {
@@ -646,7 +646,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 25
     },
     {
@@ -675,7 +675,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 10
     },
     {
@@ -705,7 +705,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 41
     },
     {
@@ -734,7 +734,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 16
     },
     {
@@ -763,7 +763,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 20
     },
     {
@@ -792,7 +792,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 15
     },
     {
@@ -821,7 +821,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 19
     },
     {
@@ -850,7 +850,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 21
     },
     {
@@ -879,8 +879,38 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 17
+    },
+    {
+      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
+      "room": "La revanche du docteur Kang",
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "theme": "adventure",
+      "difficulty": 0,
+      "duration": 85,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
+      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
+      "available": true,
+      "next_date": "2026-07-05",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 133,
+      "n_reserved": 18
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -909,7 +939,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 45
     },
     {
@@ -937,7 +967,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 42
     },
     {
@@ -967,7 +997,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 29
     },
     {
@@ -988,10 +1018,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "18:40",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 39
+      "n_obs": 133,
+      "n_reserved": 40
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -1020,7 +1050,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 35
     },
     {
@@ -1046,10 +1076,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "22:00",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 40
+      "n_obs": 133,
+      "n_reserved": 41
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -1078,7 +1108,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 34
     },
     {
@@ -1099,10 +1129,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "13:20",
+      "next_time": "16:40",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 36
+      "n_obs": 133,
+      "n_reserved": 37
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -1129,7 +1159,7 @@
       "next_date": "2026-07-04",
       "next_time": "19:30",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 47
     },
     {
@@ -1158,7 +1188,7 @@
       "next_date": "2026-07-04",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 62
     },
     {
@@ -1186,7 +1216,7 @@
       "next_date": "2026-07-04",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 57
     },
     {
@@ -1213,10 +1243,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "11:20",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 51
+      "n_obs": 133,
+      "n_reserved": 52
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -1245,7 +1275,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 22
     },
     {
@@ -1274,7 +1304,7 @@
       "next_date": "2026-07-04",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 27
     },
     {
@@ -1304,7 +1334,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 32
     },
     {
@@ -1332,10 +1362,10 @@
       "reservation_url": "https://majestic-escapegame.paris/atlantide/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "20:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 35
+      "n_obs": 133,
+      "n_reserved": 36
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -1361,10 +1391,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "12:40",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 56
+      "n_obs": 133,
+      "n_reserved": 57
     },
     {
       "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
@@ -1391,10 +1421,10 @@
       "reservation_url": "https://majestic-escapegame.paris/oggy/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "12:00",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 37
+      "n_obs": 133,
+      "n_reserved": 38
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1419,10 +1449,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "12:15",
+      "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 40
+      "n_obs": 133,
+      "n_reserved": 41
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1447,10 +1477,10 @@
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "13:15",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 48
+      "n_obs": 133,
+      "n_reserved": 49
     },
     {
       "room_id": "secretshunters/630e0712e628b39d8affaeff",
@@ -1480,7 +1510,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 35
     },
     {
@@ -1510,7 +1540,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 52
     },
     {
@@ -1540,7 +1570,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 18
     },
     {
@@ -1561,10 +1591,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "14:45",
+      "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 58
+      "n_obs": 133,
+      "n_reserved": 59
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1586,7 +1616,7 @@
       "next_date": "2026-07-04",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 43
     },
     {
@@ -1614,10 +1644,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "12:40",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 56
+      "n_obs": 133,
+      "n_reserved": 57
     },
     {
       "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
@@ -1640,10 +1670,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "12:00",
+      "next_time": "14:40",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 56
+      "n_obs": 133,
+      "n_reserved": 57
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1668,10 +1698,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "11:20",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 61
+      "n_obs": 133,
+      "n_reserved": 62
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -1691,10 +1721,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "14:45",
+      "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 54
+      "n_obs": 133,
+      "n_reserved": 55
     },
     {
       "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
@@ -1722,7 +1752,7 @@
       "next_date": "2026-07-04",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 22
     },
     {
@@ -1743,10 +1773,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "11:30",
+      "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 42
+      "n_obs": 133,
+      "n_reserved": 43
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1766,10 +1796,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "12:15",
+      "next_time": "15:15",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 43
+      "n_obs": 133,
+      "n_reserved": 44
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -1791,38 +1821,8 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 39
-    },
-    {
-      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
-      "room": "La revanche du docteur Kang",
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "theme": "adventure",
-      "difficulty": 0,
-      "duration": 85,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 28.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 37.0,
-        "4": 32.0,
-        "5": 30.0,
-        "6": 28.0,
-        "7": 28.0
-      },
-      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
-      "available": true,
-      "next_date": "2026-07-04",
-      "next_time": "14:15",
-      "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 17
     },
     {
       "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
@@ -1849,7 +1849,7 @@
       "next_date": "2026-07-04",
       "next_time": "16:45",
       "lead_days": 0,
-      "n_obs": 132,
+      "n_obs": 133,
       "n_reserved": 26
     },
     {
@@ -1875,10 +1875,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "17:00",
+      "next_time": "18:30",
       "lead_days": 0,
-      "n_obs": 132,
-      "n_reserved": 29
+      "n_obs": 133,
+      "n_reserved": 30
     }
   ]
 }
