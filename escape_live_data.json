@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-04T15:44:43+00:00",
+    "generated": "2026-07-04T17:03:48+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 7616,
+    "n_observations": 7672,
     "lead_days_moyen": 0.9,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -81,7 +81,7 @@
       "phone": "01 43 29 26 21",
       "n_rooms": 12,
       "lead_days_avg": 1.2,
-      "demand_pct": 91.7,
+      "demand_pct": 100.0,
       "prix_min": 110.0,
       "prix_grille": {
         "2": 110.0,
@@ -107,6 +107,19 @@
         "3": 69.0,
         "4": 59.0
       }
+    },
+    {
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "website": "https://joueurz.fr/",
+      "phone": "‭09 86 32 29 01‬",
+      "n_rooms": 2,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 25,
+      "prix_grille": null
     },
     {
       "centre": "L'Antichambre",
@@ -280,19 +293,6 @@
       }
     },
     {
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "website": "https://joueurz.fr/",
-      "phone": "‭09 86 32 29 01‬",
-      "n_rooms": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 25,
-      "prix_grille": null
-    },
-    {
       "centre": "Crack the Egg",
       "cp": "75012",
       "lat": 48.8457677,
@@ -325,10 +325,10 @@
       "reservation_url": "https://www.livecinema.fr",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "18:10",
+      "next_time": "21:40",
       "lead_days": 10,
-      "n_obs": 136,
-      "n_reserved": 7
+      "n_obs": 137,
+      "n_reserved": 8
     },
     {
       "room_id": "wanderlust-escapegame/5f401daaaaca390e829da8b4",
@@ -355,7 +355,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 1
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 3,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 12
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 3,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 13
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 3,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 16
     },
     {
@@ -470,7 +470,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:15",
       "lead_days": 2,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 21
     },
     {
@@ -499,7 +499,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 14
     },
     {
@@ -529,7 +529,7 @@
       "next_date": "2026-07-05",
       "next_time": "17:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 33
     },
     {
@@ -557,7 +557,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 43
     },
     {
@@ -587,7 +587,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 30
     },
     {
@@ -614,7 +614,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 44
     },
     {
@@ -643,7 +643,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 18
     },
     {
@@ -673,7 +673,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 36
     },
     {
@@ -704,7 +704,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 21
     },
     {
@@ -734,7 +734,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 25
     },
     {
@@ -763,7 +763,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 10
     },
     {
@@ -793,7 +793,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 41
     },
     {
@@ -822,8 +822,37 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 17
+    },
+    {
+      "room_id": "thegame/5b4849363e4e381f76962317",
+      "room": "La mission spatiale",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "scifi",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-07-05",
+      "next_time": "21:45",
+      "lead_days": 1,
+      "n_obs": 137,
+      "n_reserved": 28
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -851,7 +880,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 20
     },
     {
@@ -880,8 +909,54 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 15
+    },
+    {
+      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
+      "room": "Le studio",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "adventure",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-07-05",
+      "next_time": "13:00",
+      "lead_days": 1,
+      "n_obs": 137,
+      "n_reserved": 61
+    },
+    {
+      "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
+      "room": "La croisière infernale",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "prison",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-07-05",
+      "next_time": "13:00",
+      "lead_days": 1,
+      "n_obs": 137,
+      "n_reserved": 57
     },
     {
       "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
@@ -909,7 +984,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 19
     },
     {
@@ -938,7 +1013,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 23
     },
     {
@@ -967,7 +1042,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 21
     },
     {
@@ -996,7 +1071,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 18
     },
     {
@@ -1026,7 +1101,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 18
     },
     {
@@ -1054,7 +1129,7 @@
       "next_date": "2026-07-05",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 27
     },
     {
@@ -1084,7 +1159,7 @@
       "next_date": "2026-07-05",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 45
     },
     {
@@ -1105,10 +1180,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "20:00",
+      "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 40
+      "n_obs": 137,
+      "n_reserved": 41
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -1135,7 +1210,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 43
     },
     {
@@ -1165,7 +1240,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 35
     },
     {
@@ -1186,10 +1261,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "20:40",
+      "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 39
+      "n_obs": 137,
+      "n_reserved": 40
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -1216,7 +1291,7 @@
       "next_date": "2026-07-04",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 48
     },
     {
@@ -1245,7 +1320,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 64
     },
     {
@@ -1273,7 +1348,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 58
     },
     {
@@ -1302,7 +1377,7 @@
       "next_date": "2026-07-04",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 55
     },
     {
@@ -1332,37 +1407,8 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 22
-    },
-    {
-      "room_id": "thegame/5b4849363e4e381f76962317",
-      "room": "La mission spatiale",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "scifi",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-07-04",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 27
     },
     {
       "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
@@ -1391,7 +1437,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 32
     },
     {
@@ -1421,7 +1467,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 36
     },
     {
@@ -1450,7 +1496,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 58
     },
     {
@@ -1480,7 +1526,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 38
     },
     {
@@ -1508,7 +1554,7 @@
       "next_date": "2026-07-04",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 41
     },
     {
@@ -1536,7 +1582,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 49
     },
     {
@@ -1567,7 +1613,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 35
     },
     {
@@ -1597,7 +1643,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 52
     },
     {
@@ -1627,31 +1673,8 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 19
-    },
-    {
-      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
-      "room": "Le studio",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "adventure",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-07-04",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 60
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1673,7 +1696,7 @@
       "next_date": "2026-07-04",
       "next_time": "21:15",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 44
     },
     {
@@ -1703,7 +1726,7 @@
       "next_date": "2026-07-04",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 59
     },
     {
@@ -1727,10 +1750,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "18:30",
+      "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 58
+      "n_obs": 137,
+      "n_reserved": 59
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1755,33 +1778,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "18:00",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 63
-    },
-    {
-      "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
-      "room": "La croisière infernale",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "prison",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-07-04",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 56
+      "n_obs": 137,
+      "n_reserved": 64
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1803,7 +1803,7 @@
       "next_date": "2026-07-04",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 44
     },
     {
@@ -1826,7 +1826,7 @@
       "next_date": "2026-07-04",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 45
     },
     {
@@ -1849,7 +1849,7 @@
       "next_date": "2026-07-04",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 136,
+      "n_obs": 137,
       "n_reserved": 39
     },
     {
@@ -1875,10 +1875,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-04",
-      "next_time": "18:30",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 136,
-      "n_reserved": 30
+      "n_obs": 137,
+      "n_reserved": 31
     }
   ]
 }
