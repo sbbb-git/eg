@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-05T15:12:06+00:00",
+    "generated": "2026-07-05T15:52:02+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 8288,
+    "n_observations": 8344,
     "lead_days_moyen": 0.6,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -105,6 +105,19 @@
       }
     },
     {
+      "centre": "Pandore & Associés",
+      "cp": "75011",
+      "lat": 48.8595469,
+      "lon": 2.3768143,
+      "website": "https://www.pandore-escape.com",
+      "phone": "0980764529",
+      "n_rooms": 2,
+      "lead_days_avg": 0.5,
+      "demand_pct": 50.0,
+      "prix_min": 32,
+      "prix_grille": null
+    },
+    {
       "centre": "Masterio",
       "cp": "75014",
       "lat": 48.8346257,
@@ -199,19 +212,6 @@
         "6": 32.0,
         "7": 32.0
       }
-    },
-    {
-      "centre": "Pandore & Associés",
-      "cp": "75011",
-      "lat": 48.8595469,
-      "lon": 2.3768143,
-      "website": "https://www.pandore-escape.com",
-      "phone": "0980764529",
-      "n_rooms": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 32,
-      "prix_grille": null
     },
     {
       "centre": "UNLEASH",
@@ -327,7 +327,7 @@
       "next_date": "2026-07-15",
       "next_time": "15:50",
       "lead_days": 10,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 11
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 5,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 1
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 12
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 13
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 16
     },
     {
@@ -471,7 +471,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 35
     },
     {
@@ -500,7 +500,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 21
     },
     {
@@ -529,8 +529,31 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 19
+    },
+    {
+      "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
+      "room": "Règlement de contes",
+      "centre": "Pandore & Associés",
+      "cp": "75011",
+      "lat": 48.8595469,
+      "lon": 2.3768143,
+      "theme": "romans",
+      "difficulty": 7,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 32,
+      "prix_max": 65,
+      "prix_grille": null,
+      "reservation_url": "https://www.pandore-escape.com",
+      "available": true,
+      "next_date": "2026-07-06",
+      "next_time": "21:20",
+      "lead_days": 1,
+      "n_obs": 149,
+      "n_reserved": 45
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -557,7 +580,7 @@
       "next_date": "2026-07-06",
       "next_time": "19:45",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 50
     },
     {
@@ -586,7 +609,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 14
     },
     {
@@ -615,7 +638,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 18
     },
     {
@@ -644,7 +667,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 21
     },
     {
@@ -673,7 +696,7 @@
       "next_date": "2026-07-06",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 16
     },
     {
@@ -696,7 +719,7 @@
       "next_date": "2026-07-06",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 64
     },
     {
@@ -719,7 +742,7 @@
       "next_date": "2026-07-06",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 60
     },
     {
@@ -748,7 +771,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 14
     },
     {
@@ -777,21 +800,21 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 23
     },
     {
-      "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
-      "room": "Braquage à la française",
+      "room_id": "thegame/5b4846f43e4e381f7695fabe",
+      "room": "Les catacombes",
       "centre": "The Game",
       "cp": "75005",
       "lat": 48.8468159,
       "lon": 2.3521258,
-      "theme": "cambriolage",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
+      "theme": "prison",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
       "prix_min": 110.0,
       "prix_max": 192.0,
       "prix_grille": {
@@ -806,8 +829,8 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 148,
-      "n_reserved": 25
+      "n_obs": 149,
+      "n_reserved": 22
     },
     {
       "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
@@ -836,7 +859,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 21
     },
     {
@@ -864,7 +887,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 44
     },
     {
@@ -892,10 +915,10 @@
       "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "20:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 30
+      "n_obs": 149,
+      "n_reserved": 31
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -915,10 +938,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:40",
+      "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 46
+      "n_obs": 149,
+      "n_reserved": 47
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -944,7 +967,7 @@
       "next_date": "2026-07-05",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 45
     },
     {
@@ -974,7 +997,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 38
     },
     {
@@ -1002,7 +1025,7 @@
       "next_date": "2026-07-05",
       "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 48
     },
     {
@@ -1032,31 +1055,8 @@
       "next_date": "2026-07-05",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 38
-    },
-    {
-      "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
-      "room": "Règlement de contes",
-      "centre": "Pandore & Associés",
-      "cp": "75011",
-      "lat": 48.8595469,
-      "lon": 2.3768143,
-      "theme": "romans",
-      "difficulty": 7,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 32,
-      "prix_max": 65,
-      "prix_grille": null,
-      "reservation_url": "https://www.pandore-escape.com",
-      "available": true,
-      "next_date": "2026-07-05",
-      "next_time": "19:20",
-      "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 44
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -1086,7 +1086,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 21
     },
     {
@@ -1116,7 +1116,7 @@
       "next_date": "2026-07-05",
       "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 26
     },
     {
@@ -1143,10 +1143,10 @@
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:00",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 67
+      "n_obs": 149,
+      "n_reserved": 68
     },
     {
       "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
@@ -1171,10 +1171,10 @@
       "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:00",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 62
+      "n_obs": 149,
+      "n_reserved": 63
     },
     {
       "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
@@ -1203,7 +1203,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 44
     },
     {
@@ -1230,10 +1230,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:00",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 61
+      "n_obs": 149,
+      "n_reserved": 62
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -1262,7 +1262,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 24
     },
     {
@@ -1291,7 +1291,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 28
     },
     {
@@ -1321,7 +1321,7 @@
       "next_date": "2026-07-05",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 35
     },
     {
@@ -1351,7 +1351,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 38
     },
     {
@@ -1378,10 +1378,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:00",
+      "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 62
+      "n_obs": 149,
+      "n_reserved": 63
     },
     {
       "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
@@ -1410,7 +1410,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 41
     },
     {
@@ -1436,10 +1436,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:15",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 46
+      "n_obs": 149,
+      "n_reserved": 47
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1464,10 +1464,10 @@
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "17:45",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 53
+      "n_obs": 149,
+      "n_reserved": 54
     },
     {
       "room_id": "secretshunters/630e0712e628b39d8affaeff",
@@ -1495,10 +1495,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "17:30",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 38
+      "n_obs": 149,
+      "n_reserved": 39
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1527,7 +1527,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 55
     },
     {
@@ -1557,7 +1557,7 @@
       "next_date": "2026-07-05",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 20
     },
     {
@@ -1580,7 +1580,7 @@
       "next_date": "2026-07-05",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 50
     },
     {
@@ -1610,7 +1610,7 @@
       "next_date": "2026-07-05",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 65
     },
     {
@@ -1634,10 +1634,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "17:15",
+      "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 66
+      "n_obs": 149,
+      "n_reserved": 67
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1662,10 +1662,39 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "18:00",
+      "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 69
+      "n_obs": 149,
+      "n_reserved": 70
+    },
+    {
+      "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
+      "room": "Braquage à la française",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "cambriolage",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-07-05",
+      "next_time": "21:45",
+      "lead_days": 0,
+      "n_obs": 149,
+      "n_reserved": 26
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1685,39 +1714,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "17:30",
+      "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 47
-    },
-    {
-      "room_id": "thegame/5b4846f43e4e381f7695fabe",
-      "room": "Les catacombes",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "prison",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-07-05",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 21
+      "n_obs": 149,
+      "n_reserved": 48
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1739,7 +1739,7 @@
       "next_date": "2026-07-05",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 50
     },
     {
@@ -1768,7 +1768,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 18
     },
     {
@@ -1791,7 +1791,7 @@
       "next_date": "2026-07-05",
       "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 41
     },
     {
@@ -1817,10 +1817,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "16:45",
+      "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 31
+      "n_obs": 149,
+      "n_reserved": 32
     },
     {
       "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
@@ -1845,10 +1845,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-05",
-      "next_time": "17:00",
+      "next_time": "18:30",
       "lead_days": 0,
-      "n_obs": 148,
-      "n_reserved": 36
+      "n_obs": 149,
+      "n_reserved": 37
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-05",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 148,
+      "n_obs": 149,
       "n_reserved": 47
     }
   ]
