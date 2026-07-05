@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-05T20:59:35+00:00",
+    "generated": "2026-07-05T23:01:00+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 8512,
-    "lead_days_moyen": 1.4,
+    "n_observations": 8568,
+    "lead_days_moyen": 1.6,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -62,7 +62,7 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 1.7,
+      "lead_days_avg": 4.3,
       "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
@@ -71,6 +71,19 @@
         "4": 220.0,
         "5": 240.0
       }
+    },
+    {
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "website": "https://joueurz.fr/",
+      "phone": "‭09 86 32 29 01‬",
+      "n_rooms": 2,
+      "lead_days_avg": 2.0,
+      "demand_pct": 100.0,
+      "prix_min": 25,
+      "prix_grille": null
     },
     {
       "centre": "Pandore & Associés",
@@ -126,6 +139,26 @@
       }
     },
     {
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "website": "https://www.theoneescape.com",
+      "phone": "09 75 90 83 68",
+      "n_rooms": 3,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      }
+    },
+    {
       "centre": "The Quest Factory",
       "cp": "75010",
       "lat": 48.8773877,
@@ -142,6 +175,26 @@
         "4": 35.0,
         "5": 30.0,
         "6": 28.0
+      }
+    },
+    {
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "website": "https://majestic-escapegame.paris/",
+      "phone": "",
+      "n_rooms": 4,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 45.0,
+        "4": 40.0,
+        "5": 35.0,
+        "6": 32.0,
+        "7": 32.0
       }
     },
     {
@@ -221,19 +274,6 @@
       }
     },
     {
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "website": "https://joueurz.fr/",
-      "phone": "‭09 86 32 29 01‬",
-      "n_rooms": 2,
-      "lead_days_avg": 1.0,
-      "demand_pct": 100.0,
-      "prix_min": 25,
-      "prix_grille": null
-    },
-    {
       "centre": "Crack the Egg",
       "cp": "75012",
       "lat": 48.8457677,
@@ -264,46 +304,6 @@
         "4": 50.0,
         "5": 50.0
       }
-    },
-    {
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "website": "https://majestic-escapegame.paris/",
-      "phone": "",
-      "n_rooms": 4,
-      "lead_days_avg": 0.8,
-      "demand_pct": 75.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 45.0,
-        "4": 40.0,
-        "5": 35.0,
-        "6": 32.0,
-        "7": 32.0
-      }
-    },
-    {
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "website": "https://www.theoneescape.com",
-      "phone": "09 75 90 83 68",
-      "n_rooms": 3,
-      "lead_days_avg": 0.7,
-      "demand_pct": 66.7,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      }
     }
   ],
   "rooms": [
@@ -327,8 +327,36 @@
       "next_date": "2026-07-15",
       "next_time": "15:50",
       "lead_days": 10,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 11
+    },
+    {
+      "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
+      "room": "Le taxidermiste",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 150.0,
+      "prix_max": 240.0,
+      "prix_grille": {
+        "2": 150.0,
+        "3": 190.0,
+        "4": 220.0,
+        "5": 240.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
+      "available": true,
+      "next_date": "2026-07-15",
+      "next_time": "09:45",
+      "lead_days": 10,
+      "n_obs": 153,
+      "n_reserved": 13
     },
     {
       "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
@@ -355,7 +383,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:15",
       "lead_days": 5,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 34
     },
     {
@@ -383,7 +411,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:30",
       "lead_days": 5,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 39
     },
     {
@@ -411,36 +439,31 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 5,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 1
     },
     {
-      "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
-      "room": "Le taxidermiste",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 150.0,
-      "prix_max": 240.0,
-      "prix_grille": {
-        "2": 150.0,
-        "3": 190.0,
-        "4": 220.0,
-        "5": 240.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
+      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
+      "room": "Le studio",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "adventure",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
       "available": true,
-      "next_date": "2026-07-07",
-      "next_time": "09:45",
-      "lead_days": 2,
-      "n_obs": 152,
-      "n_reserved": 12
+      "next_date": "2026-07-08",
+      "next_time": "09:30",
+      "lead_days": 3,
+      "n_obs": 153,
+      "n_reserved": 65
     },
     {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
@@ -468,7 +491,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 13
     },
     {
@@ -491,7 +514,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:20",
       "lead_days": 2,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 49
     },
     {
@@ -520,7 +543,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 16
     },
     {
@@ -551,7 +574,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:30",
       "lead_days": 2,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 23
     },
     {
@@ -581,7 +604,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 35
     },
     {
@@ -610,7 +633,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 21
     },
     {
@@ -638,7 +661,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 45
     },
     {
@@ -668,7 +691,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 33
     },
     {
@@ -695,7 +718,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 46
     },
     {
@@ -724,7 +747,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 19
     },
     {
@@ -754,7 +777,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 40
     },
     {
@@ -782,7 +805,7 @@
       "next_date": "2026-07-06",
       "next_time": "22:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 51
     },
     {
@@ -812,7 +835,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 40
     },
     {
@@ -835,7 +858,7 @@
       "next_date": "2026-07-06",
       "next_time": "21:20",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 45
     },
     {
@@ -863,7 +886,7 @@
       "next_date": "2026-07-06",
       "next_time": "19:45",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 50
     },
     {
@@ -893,7 +916,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 29
     },
     {
@@ -922,7 +945,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 69
     },
     {
@@ -950,7 +973,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 65
     },
     {
@@ -979,7 +1002,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 14
     },
     {
@@ -1009,7 +1032,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 46
     },
     {
@@ -1038,7 +1061,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 18
     },
     {
@@ -1067,7 +1090,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 64
     },
     {
@@ -1097,7 +1120,7 @@
       "next_date": "2026-07-06",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 26
     },
     {
@@ -1126,8 +1149,38 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 29
+    },
+    {
+      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
+      "room": "Titanic",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "histoire",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/titanic/",
+      "available": true,
+      "next_date": "2026-07-06",
+      "next_time": "12:15",
+      "lead_days": 1,
+      "n_obs": 153,
+      "n_reserved": 36
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -1156,7 +1209,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 40
     },
     {
@@ -1185,7 +1238,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 65
     },
     {
@@ -1215,7 +1268,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 43
     },
     {
@@ -1243,7 +1296,7 @@
       "next_date": "2026-07-06",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 48
     },
     {
@@ -1271,7 +1324,7 @@
       "next_date": "2026-07-06",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 55
     },
     {
@@ -1302,8 +1355,38 @@
       "next_date": "2026-07-06",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 40
+    },
+    {
+      "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
+      "room": "Hallucinations chimiques chez le Dr Grant",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 31.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 36.0,
+        "5": 33.0,
+        "6": 31.0,
+        "7": 31.0
+      },
+      "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
+      "available": true,
+      "next_date": "2026-07-06",
+      "next_time": "12:15",
+      "lead_days": 1,
+      "n_obs": 153,
+      "n_reserved": 57
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1331,7 +1414,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 21
     },
     {
@@ -1360,7 +1443,7 @@
       "next_date": "2026-07-06",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 16
     },
     {
@@ -1390,31 +1473,8 @@
       "next_date": "2026-07-06",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 22
-    },
-    {
-      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
-      "room": "Le studio",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "adventure",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-07-06",
-      "next_time": "20:00",
-      "lead_days": 1,
-      "n_obs": 152,
-      "n_reserved": 64
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1436,7 +1496,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 53
     },
     {
@@ -1466,7 +1526,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 67
     },
     {
@@ -1492,7 +1552,7 @@
       "next_date": "2026-07-06",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 69
     },
     {
@@ -1520,7 +1580,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 72
     },
     {
@@ -1543,7 +1603,7 @@
       "next_date": "2026-07-06",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 60
     },
     {
@@ -1572,7 +1632,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 14
     },
     {
@@ -1601,7 +1661,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 23
     },
     {
@@ -1630,7 +1690,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 27
     },
     {
@@ -1653,7 +1713,7 @@
       "next_date": "2026-07-06",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 50
     },
     {
@@ -1682,7 +1742,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 22
     },
     {
@@ -1705,7 +1765,7 @@
       "next_date": "2026-07-06",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 53
     },
     {
@@ -1734,7 +1794,7 @@
       "next_date": "2026-07-06",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 19
     },
     {
@@ -1757,7 +1817,7 @@
       "next_date": "2026-07-06",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 43
     },
     {
@@ -1787,7 +1847,7 @@
       "next_date": "2026-07-06",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 21
     },
     {
@@ -1817,68 +1877,8 @@
       "next_date": "2026-07-06",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 152,
+      "n_obs": 153,
       "n_reserved": 48
-    },
-    {
-      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
-      "room": "Titanic",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "histoire",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/titanic/",
-      "available": true,
-      "next_date": "2026-07-05",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 152,
-      "n_reserved": 35
-    },
-    {
-      "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
-      "room": "Hallucinations chimiques chez le Dr Grant",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 31.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 36.0,
-        "5": 33.0,
-        "6": 31.0,
-        "7": 31.0
-      },
-      "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
-      "available": true,
-      "next_date": "2026-07-05",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 152,
-      "n_reserved": 56
     }
   ]
 }
