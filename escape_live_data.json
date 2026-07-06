@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-06T21:39:45+00:00",
+    "generated": "2026-07-06T23:07:27+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 8960,
+    "n_observations": 9016,
     "lead_days_moyen": 1.5,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -107,6 +107,25 @@
       }
     },
     {
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "website": "https://thegame-france.com",
+      "phone": "01 43 29 26 21",
+      "n_rooms": 12,
+      "lead_days_avg": 1.1,
+      "demand_pct": 100.0,
+      "prix_min": 110.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      }
+    },
+    {
       "centre": "THE ONE Escape",
       "cp": "75002",
       "lat": 48.8669279,
@@ -193,25 +212,6 @@
         "2": 95.0,
         "3": 69.0,
         "4": 59.0
-      }
-    },
-    {
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "website": "https://thegame-france.com",
-      "phone": "01 43 29 26 21",
-      "n_rooms": 12,
-      "lead_days_avg": 1.0,
-      "demand_pct": 100.0,
-      "prix_min": 110.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
       }
     },
     {
@@ -327,7 +327,7 @@
       "next_date": "2026-07-15",
       "next_time": "16:25",
       "lead_days": 9,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 12
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-15",
       "next_time": "09:45",
       "lead_days": 9,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 13
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:15",
       "lead_days": 4,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 34
     },
     {
@@ -411,7 +411,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:30",
       "lead_days": 4,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 39
     },
     {
@@ -439,7 +439,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 4,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 1
     },
     {
@@ -462,7 +462,7 @@
       "next_date": "2026-07-09",
       "next_time": "14:45",
       "lead_days": 3,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 66
     },
     {
@@ -492,7 +492,7 @@
       "next_date": "2026-07-08",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 40
     },
     {
@@ -523,7 +523,36 @@
       "next_date": "2026-07-08",
       "next_time": "15:30",
       "lead_days": 2,
-      "n_obs": 160,
+      "n_obs": 161,
+      "n_reserved": 24
+    },
+    {
+      "room_id": "thegame/5b4846f43e4e381f7695fabe",
+      "room": "Les catacombes",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "prison",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-07-08",
+      "next_time": "09:30",
+      "lead_days": 2,
+      "n_obs": 161,
       "n_reserved": 24
     },
     {
@@ -553,7 +582,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 36
     },
     {
@@ -582,7 +611,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 21
     },
     {
@@ -610,7 +639,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 47
     },
     {
@@ -639,7 +668,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 13
     },
     {
@@ -669,7 +698,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 35
     },
     {
@@ -692,7 +721,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 49
     },
     {
@@ -719,7 +748,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 48
     },
     {
@@ -748,7 +777,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 16
     },
     {
@@ -777,7 +806,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 19
     },
     {
@@ -803,10 +832,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-07",
-      "next_time": "11:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
-      "n_reserved": 52
+      "n_obs": 161,
+      "n_reserved": 53
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -835,7 +864,7 @@
       "next_date": "2026-07-07",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 41
     },
     {
@@ -858,7 +887,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 46
     },
     {
@@ -886,7 +915,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 52
     },
     {
@@ -916,7 +945,7 @@
       "next_date": "2026-07-07",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 29
     },
     {
@@ -945,7 +974,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 72
     },
     {
@@ -973,7 +1002,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 69
     },
     {
@@ -1002,7 +1031,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 15
     },
     {
@@ -1032,7 +1061,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 47
     },
     {
@@ -1061,7 +1090,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 19
     },
     {
@@ -1090,7 +1119,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 66
     },
     {
@@ -1120,7 +1149,7 @@
       "next_date": "2026-07-07",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 28
     },
     {
@@ -1149,7 +1178,7 @@
       "next_date": "2026-07-07",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 29
     },
     {
@@ -1179,7 +1208,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 38
     },
     {
@@ -1209,7 +1238,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 42
     },
     {
@@ -1238,7 +1267,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 67
     },
     {
@@ -1268,7 +1297,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 45
     },
     {
@@ -1296,7 +1325,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 49
     },
     {
@@ -1324,7 +1353,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 57
     },
     {
@@ -1353,10 +1382,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-07",
-      "next_time": "11:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
-      "n_reserved": 41
+      "n_obs": 161,
+      "n_reserved": 42
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1385,7 +1414,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 59
     },
     {
@@ -1414,7 +1443,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 21
     },
     {
@@ -1443,7 +1472,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 18
     },
     {
@@ -1473,7 +1502,7 @@
       "next_date": "2026-07-07",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 24
     },
     {
@@ -1496,7 +1525,7 @@
       "next_date": "2026-07-07",
       "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 55
     },
     {
@@ -1526,7 +1555,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 69
     },
     {
@@ -1552,7 +1581,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 71
     },
     {
@@ -1580,7 +1609,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 73
     },
     {
@@ -1603,7 +1632,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 61
     },
     {
@@ -1632,7 +1661,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 14
     },
     {
@@ -1661,7 +1690,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 23
     },
     {
@@ -1690,7 +1719,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 27
     },
     {
@@ -1713,37 +1742,8 @@
       "next_date": "2026-07-07",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 51
-    },
-    {
-      "room_id": "thegame/5b4846f43e4e381f7695fabe",
-      "room": "Les catacombes",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "prison",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-07-07",
-      "next_time": "18:15",
-      "lead_days": 1,
-      "n_obs": 160,
-      "n_reserved": 23
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1765,7 +1765,7 @@
       "next_date": "2026-07-07",
       "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 56
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 21
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 45
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 21
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 160,
+      "n_obs": 161,
       "n_reserved": 50
     }
   ]
