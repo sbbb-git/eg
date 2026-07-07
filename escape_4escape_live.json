@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-07-07T03:22:02+00:00",
+    "generated": "2026-07-07T05:35:28+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 9128,
+    "n_observations": 9184,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -18,6 +18,15 @@
       "demand_pct": 100.0
     },
     {
+      "company": "deepinsideparis",
+      "company_name": "Deep Inside, Paris",
+      "n_rooms": 3,
+      "n_reserved": 48,
+      "n_avail_now": 1,
+      "lead_days_avg": 3.0,
+      "demand_pct": 66.7
+    },
+    {
       "company": "wanderlust-escapegame",
       "company_name": "Wanderlust Escape Game, Paris",
       "n_rooms": 3,
@@ -25,15 +34,6 @@
       "n_avail_now": 0,
       "lead_days_avg": 3.0,
       "demand_pct": 100.0
-    },
-    {
-      "company": "deepinsideparis",
-      "company_name": "Deep Inside, Paris",
-      "n_rooms": 3,
-      "n_reserved": 47,
-      "n_avail_now": 2,
-      "lead_days_avg": 2.7,
-      "demand_pct": 33.3
     },
     {
       "company": "joueurz-paris",
@@ -166,7 +166,7 @@
       "next_time": "09:45",
       "lead_days": 8,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 13
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "16:25",
       "lead_days": 8,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 12
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:15",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 34
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "10:30",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 39
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "10:00",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 1
     },
     {
@@ -241,8 +241,23 @@
       "next_time": "14:45",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 66
+    },
+    {
+      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
+      "room": "Le magicien de Paris",
+      "centre": "Deep Inside, Paris",
+      "theme": "fantasy",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-08",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 164,
+      "n_reserved": 14
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -256,7 +271,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 40
     },
     {
@@ -271,7 +286,7 @@
       "next_time": "15:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 24
     },
     {
@@ -286,7 +301,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 30
     },
     {
@@ -301,7 +316,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 24
     },
     {
@@ -316,7 +331,7 @@
       "next_time": "15:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 49
     },
     {
@@ -331,7 +346,7 @@
       "next_time": "15:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 46
     },
     {
@@ -346,7 +361,7 @@
       "next_time": "16:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 55
     },
     {
@@ -361,7 +376,7 @@
       "next_time": "14:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 51
     },
     {
@@ -376,7 +391,7 @@
       "next_time": "16:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 56
     },
     {
@@ -391,7 +406,7 @@
       "next_time": "14:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 45
     },
     {
@@ -406,23 +421,8 @@
       "next_time": "10:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 21
-    },
-    {
-      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
-      "room": "Le magicien de Paris",
-      "centre": "Deep Inside, Paris",
-      "theme": "fantasy",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-07",
-      "next_time": "10:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 163,
-      "n_reserved": 13
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -436,7 +436,7 @@
       "next_time": "14:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 62
     },
     {
@@ -451,7 +451,7 @@
       "next_time": "14:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 21
     },
     {
@@ -466,7 +466,7 @@
       "next_time": "09:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 50
     },
     {
@@ -481,7 +481,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 41
     },
     {
@@ -496,7 +496,7 @@
       "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 28
     },
     {
@@ -511,7 +511,7 @@
       "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 24
     },
     {
@@ -526,7 +526,7 @@
       "next_time": "12:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 35
     },
     {
@@ -541,7 +541,7 @@
       "next_time": "14:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 38
     },
     {
@@ -556,7 +556,7 @@
       "next_time": "12:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 42
     },
     {
@@ -571,7 +571,7 @@
       "next_time": "12:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 45
     },
     {
@@ -586,7 +586,7 @@
       "next_time": "15:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 52
     },
     {
@@ -601,7 +601,7 @@
       "next_time": "15:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 57
     },
     {
@@ -616,7 +616,7 @@
       "next_time": "11:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 66
     },
     {
@@ -631,7 +631,7 @@
       "next_time": "11:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 67
     },
     {
@@ -646,7 +646,7 @@
       "next_time": "11:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 69
     },
     {
@@ -661,7 +661,7 @@
       "next_time": "12:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 71
     },
     {
@@ -676,7 +676,7 @@
       "next_time": "11:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 73
     },
     {
@@ -691,7 +691,7 @@
       "next_time": "13:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 54
     },
     {
@@ -706,7 +706,7 @@
       "next_time": "13:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 50
     },
     {
@@ -721,7 +721,7 @@
       "next_time": "16:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 43
     },
     {
@@ -736,7 +736,7 @@
       "next_time": "09:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 16
     },
     {
@@ -751,7 +751,7 @@
       "next_time": "09:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 19
     }
   ]

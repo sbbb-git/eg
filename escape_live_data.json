@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-07T03:22:02+00:00",
+    "generated": "2026-07-07T05:35:28+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 9128,
+    "n_observations": 9184,
     "lead_days_moyen": 0.6,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -26,6 +26,24 @@
       "demand_pct": 100.0,
       "prix_min": 49,
       "prix_grille": null
+    },
+    {
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "website": "http://www.deepinsideparis.fr",
+      "phone": "01 42 05 56 53",
+      "n_rooms": 3,
+      "lead_days_avg": 3.0,
+      "demand_pct": 66.7,
+      "prix_min": 120.0,
+      "prix_grille": {
+        "2": 150.0,
+        "3": 190.0,
+        "4": 220.0,
+        "5": 240.0
+      }
     },
     {
       "centre": "Wanderlust Escapegame",
@@ -52,24 +70,6 @@
         "18": 46.0,
         "19": 46.0,
         "20": 46.0
-      }
-    },
-    {
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "website": "http://www.deepinsideparis.fr",
-      "phone": "01 42 05 56 53",
-      "n_rooms": 3,
-      "lead_days_avg": 2.7,
-      "demand_pct": 33.3,
-      "prix_min": 120.0,
-      "prix_grille": {
-        "2": 150.0,
-        "3": 190.0,
-        "4": 220.0,
-        "5": 240.0
       }
     },
     {
@@ -327,7 +327,7 @@
       "next_date": "2026-07-15",
       "next_time": "16:25",
       "lead_days": 8,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 12
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-15",
       "next_time": "09:45",
       "lead_days": 8,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 13
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:15",
       "lead_days": 3,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 34
     },
     {
@@ -411,7 +411,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:30",
       "lead_days": 3,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 39
     },
     {
@@ -439,7 +439,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 3,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 1
     },
     {
@@ -462,8 +462,37 @@
       "next_date": "2026-07-09",
       "next_time": "14:45",
       "lead_days": 2,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 66
+    },
+    {
+      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
+      "room": "Le magicien de Paris",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 70,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-magicien-de-paris/",
+      "available": true,
+      "next_date": "2026-07-08",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 164,
+      "n_reserved": 14
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -492,7 +521,7 @@
       "next_date": "2026-07-08",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 40
     },
     {
@@ -523,7 +552,7 @@
       "next_date": "2026-07-08",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 24
     },
     {
@@ -553,7 +582,7 @@
       "next_date": "2026-07-08",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 30
     },
     {
@@ -582,7 +611,7 @@
       "next_date": "2026-07-08",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 24
     },
     {
@@ -612,7 +641,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:45",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 36
     },
     {
@@ -641,7 +670,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:15",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 21
     },
     {
@@ -669,37 +698,8 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 48
-    },
-    {
-      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
-      "room": "Le magicien de Paris",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 70,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-magicien-de-paris/",
-      "available": true,
-      "next_date": "2026-07-07",
-      "next_time": "10:00",
-      "lead_days": 0,
-      "n_obs": 163,
-      "n_reserved": 13
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -728,7 +728,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 35
     },
     {
@@ -751,7 +751,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 49
     },
     {
@@ -778,7 +778,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 48
     },
     {
@@ -807,7 +807,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 16
     },
     {
@@ -836,7 +836,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 19
     },
     {
@@ -864,7 +864,7 @@
       "next_date": "2026-07-07",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 54
     },
     {
@@ -894,7 +894,7 @@
       "next_date": "2026-07-07",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 41
     },
     {
@@ -917,7 +917,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 46
     },
     {
@@ -945,7 +945,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 52
     },
     {
@@ -974,7 +974,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 73
     },
     {
@@ -1002,7 +1002,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 70
     },
     {
@@ -1031,7 +1031,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 15
     },
     {
@@ -1061,7 +1061,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 47
     },
     {
@@ -1090,7 +1090,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 19
     },
     {
@@ -1119,7 +1119,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 66
     },
     {
@@ -1149,7 +1149,7 @@
       "next_date": "2026-07-07",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 28
     },
     {
@@ -1178,7 +1178,7 @@
       "next_date": "2026-07-07",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 29
     },
     {
@@ -1208,7 +1208,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:15",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 38
     },
     {
@@ -1238,7 +1238,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 42
     },
     {
@@ -1267,7 +1267,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 67
     },
     {
@@ -1297,7 +1297,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 45
     },
     {
@@ -1325,7 +1325,7 @@
       "next_date": "2026-07-07",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 50
     },
     {
@@ -1353,7 +1353,7 @@
       "next_date": "2026-07-07",
       "next_time": "15:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 57
     },
     {
@@ -1384,7 +1384,7 @@
       "next_date": "2026-07-07",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 43
     },
     {
@@ -1414,7 +1414,7 @@
       "next_date": "2026-07-07",
       "next_time": "10:15",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 59
     },
     {
@@ -1443,7 +1443,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 21
     },
     {
@@ -1472,7 +1472,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 18
     },
     {
@@ -1502,7 +1502,7 @@
       "next_date": "2026-07-07",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 24
     },
     {
@@ -1525,7 +1525,7 @@
       "next_date": "2026-07-07",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 55
     },
     {
@@ -1555,7 +1555,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 69
     },
     {
@@ -1581,7 +1581,7 @@
       "next_date": "2026-07-07",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 71
     },
     {
@@ -1609,7 +1609,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:20",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 73
     },
     {
@@ -1632,7 +1632,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 62
     },
     {
@@ -1661,7 +1661,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 14
     },
     {
@@ -1690,7 +1690,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 23
     },
     {
@@ -1719,7 +1719,7 @@
       "next_date": "2026-07-07",
       "next_time": "11:15",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 27
     },
     {
@@ -1742,7 +1742,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 51
     },
     {
@@ -1765,7 +1765,7 @@
       "next_date": "2026-07-07",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 56
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 21
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 45
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-07",
       "next_time": "14:15",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 21
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-07",
       "next_time": "09:45",
       "lead_days": 0,
-      "n_obs": 163,
+      "n_obs": 164,
       "n_reserved": 50
     }
   ]
