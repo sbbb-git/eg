@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-07-08T19:24:51+00:00",
+    "generated": "2026-07-08T19:47:08+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 10080,
+    "n_observations": 10136,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -63,6 +63,24 @@
       "demand_pct": 100.0
     },
     {
+      "company": "lockacademy-paris",
+      "company_name": "Lock Academy, Paris",
+      "n_rooms": 6,
+      "n_reserved": 209,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0
+    },
+    {
+      "company": "masterio",
+      "company_name": "Masterio, Paris",
+      "n_rooms": 2,
+      "n_reserved": 121,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0
+    },
+    {
       "company": "secretshunters",
       "company_name": "Secrets Hunters, Paris",
       "n_rooms": 3,
@@ -81,6 +99,15 @@
       "demand_pct": 100.0
     },
     {
+      "company": "thequestfactory",
+      "company_name": "The Quest Factory, Paris",
+      "n_rooms": 3,
+      "n_reserved": 218,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0
+    },
+    {
       "company": "unleashescape",
       "company_name": "Unleash Escape, Paris",
       "n_rooms": 1,
@@ -90,28 +117,19 @@
       "demand_pct": 100.0
     },
     {
-      "company": "thequestfactory",
-      "company_name": "The Quest Factory, Paris",
+      "company": "theoneescape",
+      "company_name": "The One Escape, Paris",
       "n_rooms": 3,
-      "n_reserved": 217,
-      "n_avail_now": 1,
-      "lead_days_avg": 0.7,
-      "demand_pct": 66.7
-    },
-    {
-      "company": "lockacademy-paris",
-      "company_name": "Lock Academy, Paris",
-      "n_rooms": 6,
-      "n_reserved": 206,
-      "n_avail_now": 3,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0
+      "n_reserved": 153,
+      "n_avail_now": 2,
+      "lead_days_avg": 0.3,
+      "demand_pct": 33.3
     },
     {
       "company": "crack-the-egg-paris",
       "company_name": "Crack The Egg, Paris",
       "n_rooms": 4,
-      "n_reserved": 223,
+      "n_reserved": 227,
       "n_avail_now": 3,
       "lead_days_avg": 0.2,
       "demand_pct": 25.0
@@ -126,29 +144,11 @@
       "demand_pct": 25.0
     },
     {
-      "company": "masterio",
-      "company_name": "Masterio, Paris",
-      "n_rooms": 2,
-      "n_reserved": 119,
-      "n_avail_now": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
-    },
-    {
       "company": "phobiaescapegame",
       "company_name": "Phobia, Paris",
       "n_rooms": 5,
-      "n_reserved": 392,
+      "n_reserved": 395,
       "n_avail_now": 5,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
-    },
-    {
-      "company": "theoneescape",
-      "company_name": "The One Escape, Paris",
-      "n_rooms": 3,
-      "n_reserved": 152,
-      "n_avail_now": 3,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
     }
@@ -166,7 +166,7 @@
       "next_time": "09:45",
       "lead_days": 7,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 13
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "15:15",
       "lead_days": 7,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 16
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:15",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 29
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "10:15",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 34
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "10:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 39
     },
     {
@@ -241,7 +241,7 @@
       "next_time": "10:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 1
     },
     {
@@ -256,7 +256,7 @@
       "next_time": "15:20",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 51
     },
     {
@@ -271,14 +271,14 @@
       "next_time": "15:20",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 48
     },
     {
-      "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
-      "room": "L'abri",
+      "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
+      "room": "L'inquiétant professeur Tychsen",
       "centre": "Crack The Egg, Paris",
-      "theme": "virus",
+      "theme": "investigation",
       "players": "2 3 4 5 6",
       "city": "paris",
       "available": true,
@@ -286,8 +286,8 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 58
+      "n_obs": 181,
+      "n_reserved": 61
     },
     {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
@@ -301,7 +301,7 @@
       "next_time": "16:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 16
     },
     {
@@ -316,7 +316,7 @@
       "next_time": "14:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 66
     },
     {
@@ -331,7 +331,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 70
     },
     {
@@ -346,7 +346,7 @@
       "next_time": "10:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 25
     },
     {
@@ -361,8 +361,38 @@
       "next_time": "09:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 55
+    },
+    {
+      "room_id": "lockacademy-paris/629e19e6759443af758e931e",
+      "room": "Révolte à la Lock",
+      "centre": "Lock Academy, Paris",
+      "theme": "cambriolage",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-09",
+      "next_time": "16:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 181,
+      "n_reserved": 43
+    },
+    {
+      "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
+      "room": "L'examen",
+      "centre": "Lock Academy, Paris",
+      "theme": "puzzle",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-09",
+      "next_time": "20:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 181,
+      "n_reserved": 46
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -376,8 +406,23 @@
       "next_time": "21:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 27
+    },
+    {
+      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
+      "room": "L.A. Confidential",
+      "centre": "Lock Academy, Paris",
+      "theme": "cambriolage",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-09",
+      "next_time": "18:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 181,
+      "n_reserved": 37
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -391,7 +436,7 @@
       "next_time": "16:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 30
     },
     {
@@ -406,7 +451,7 @@
       "next_time": "20:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 26
     },
     {
@@ -421,8 +466,38 @@
       "next_time": "10:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 44
+    },
+    {
+      "room_id": "masterio/6194dc8fea0e575e68ca368e",
+      "room": "La pierre de lumière",
+      "centre": "Masterio, Paris",
+      "theme": "fantasy",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-09",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 181,
+      "n_reserved": 59
+    },
+    {
+      "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
+      "room": "Le magasin de jouets",
+      "centre": "Masterio, Paris",
+      "theme": "fantasy",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-09",
+      "next_time": "10:30",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 181,
+      "n_reserved": 62
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -436,7 +511,7 @@
       "next_time": "11:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 60
     },
     {
@@ -451,7 +526,7 @@
       "next_time": "11:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 58
     },
     {
@@ -466,7 +541,7 @@
       "next_time": "11:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 48
     },
     {
@@ -481,7 +556,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 17
     },
     {
@@ -496,7 +571,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 21
     },
     {
@@ -511,7 +586,7 @@
       "next_time": "13:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 19
     },
     {
@@ -526,7 +601,7 @@
       "next_time": "13:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 23
     },
     {
@@ -541,7 +616,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 32
     },
     {
@@ -556,7 +631,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 24
     },
     {
@@ -571,7 +646,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 21
     },
     {
@@ -586,7 +661,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 16
     },
     {
@@ -601,7 +676,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 27
     },
     {
@@ -616,7 +691,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 31
     },
     {
@@ -631,7 +706,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 26
     },
     {
@@ -646,8 +721,23 @@
       "next_time": "13:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 23
+    },
+    {
+      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
+      "room": "Le crime de l’Orient-Express",
+      "centre": "The One Escape, Paris",
+      "theme": "investigation",
+      "players": "4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-09",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 181,
+      "n_reserved": 49
     },
     {
       "room_id": "thequestfactory/608bb6116e100464ca326c19",
@@ -661,98 +751,8 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 180,
+      "n_obs": 181,
       "n_reserved": 55
-    },
-    {
-      "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
-      "room": "Descente sous tension",
-      "centre": "The Quest Factory, Paris",
-      "theme": "adventure",
-      "players": "2 3 4 5",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-09",
-      "next_time": "10:00",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 79
-    },
-    {
-      "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
-      "room": "Nautilus, l'expédition Aronnax",
-      "centre": "Unleash Escape, Paris",
-      "theme": "romans",
-      "players": "4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-09",
-      "next_time": "10:00",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 55
-    },
-    {
-      "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
-      "room": "L'œuf noir",
-      "centre": "Crack The Egg, Paris",
-      "theme": "fantasy",
-      "players": "3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-08",
-      "next_time": "20:45",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 55
-    },
-    {
-      "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
-      "room": "L'inquiétant professeur Tychsen",
-      "centre": "Crack The Egg, Paris",
-      "theme": "investigation",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-08",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 60
-    },
-    {
-      "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
-      "room": "Chinatown : dans les griffes de la Triade",
-      "centre": "Crack The Egg, Paris",
-      "theme": "cambriolage",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-08",
-      "next_time": "20:45",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 50
-    },
-    {
-      "room_id": "lockacademy-paris/629e19e6759443af758e931e",
-      "room": "Révolte à la Lock",
-      "centre": "Lock Academy, Paris",
-      "theme": "cambriolage",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-08",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 180,
-      "n_reserved": 42
     }
   ]
 }
