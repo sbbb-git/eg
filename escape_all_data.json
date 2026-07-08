@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-08T03:53:21+00:00",
+    "generated": "2026-07-08T05:40:21+00:00",
     "n_files": 48,
     "window": "J..J+7"
   },
@@ -9,8 +9,8 @@
     "n_centres": 64,
     "n_salles": 310,
     "n_sessions": 53043,
-    "n_open": 46,
-    "fill_moyenne": 21.7,
+    "n_open": 45,
+    "fill_moyenne": 21.9,
     "prix_moyen_session": 133.8
   },
   "enseignes": [
@@ -820,7 +820,7 @@
       "website": "https://www.freeing.fr",
       "n_centres": 4,
       "n_salles": 33,
-      "fill_now": 24.0,
+      "fill_now": 24.3,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -832,7 +832,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 6,
-          "fill_now": 31.2,
+          "fill_now": 32.0,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -852,6 +852,22 @@
               "n_booked": 15
             },
             {
+              "id": "5d8b9bc14c94f9704d3d9563",
+              "nom": "The Saw Massacre",
+              "theme": "horreur",
+              "difficulty": 9,
+              "duree": 90,
+              "joueurs_min": 3,
+              "joueurs_max": 6,
+              "prix_moyen_session": null,
+              "fill": 35.3,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 21,
+              "n_sessions": 64,
+              "n_booked": 6
+            },
+            {
               "id": "5d8b9731ae58fc7034466f2e",
               "nom": "Breaking Lab",
               "theme": "aventure",
@@ -866,22 +882,6 @@
               "n_confirmed": 19,
               "n_sessions": 70,
               "n_booked": 6
-            },
-            {
-              "id": "5d8b9bc14c94f9704d3d9563",
-              "nom": "The Saw Massacre",
-              "theme": "horreur",
-              "difficulty": 9,
-              "duree": 90,
-              "joueurs_min": 3,
-              "joueurs_max": 6,
-              "prix_moyen_session": null,
-              "fill": 29.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 20,
-              "n_sessions": 64,
-              "n_booked": 5
             },
             {
               "id": "68a09f6b0ea88855fad1a52a",
@@ -942,7 +942,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 10,
-          "fill_now": 24.0,
+          "fill_now": 24.3,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -1098,12 +1098,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 16.7,
+              "fill": 19.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 50,
+              "n_confirmed": 51,
               "n_sessions": 134,
-              "n_booked": 6
+              "n_booked": 7
             }
           ]
         },
@@ -1585,7 +1585,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 11,
-          "fill_now": 38.1,
+          "fill_now": 38.3,
           "prix_moyen_session": 149.2,
           "salles": [
             {
@@ -1603,6 +1603,22 @@
               "n_confirmed": 143,
               "n_sessions": 208,
               "n_booked": 29
+            },
+            {
+              "id": "5b4847e2ca5f6e1f2253145d",
+              "nom": "Le Trésor des Templiers",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
+              "fill": 42.9,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 145,
+              "n_sessions": 208,
+              "n_booked": 24
             },
             {
               "id": "5b4849363e4e381f76962317",
@@ -1633,22 +1649,6 @@
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 140,
-              "n_sessions": 208,
-              "n_booked": 23
-            },
-            {
-              "id": "5b4847e2ca5f6e1f2253145d",
-              "nom": "Le Trésor des Templiers",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 41.1,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 145,
               "n_sessions": 208,
               "n_booked": 23
             },
@@ -3269,9 +3269,25 @@
           "lat": 48.859,
           "lon": 2.379,
           "n_salles": 5,
-          "fill_now": 39.0,
+          "fill_now": 39.4,
           "prix_moyen_session": 141.2,
           "salles": [
+            {
+              "id": "5ab24062f851065321e455b4",
+              "nom": "L'ASCENSEUR",
+              "theme": "aventure",
+              "difficulty": 6,
+              "duree": 60,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 141.2,
+              "fill": 42.9,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 134,
+              "n_sessions": 233,
+              "n_booked": 27
+            },
             {
               "id": "5ab0e35b2de89f25bdb614a5",
               "nom": "LE MUSEE",
@@ -3302,22 +3318,6 @@
               "confidence": "élevée",
               "n_confirmed": 144,
               "n_sessions": 234,
-              "n_booked": 26
-            },
-            {
-              "id": "5ab24062f851065321e455b4",
-              "nom": "L'ASCENSEUR",
-              "theme": "aventure",
-              "difficulty": 6,
-              "duree": 60,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 141.2,
-              "fill": 41.3,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 133,
-              "n_sessions": 233,
               "n_booked": 26
             },
             {
@@ -3573,9 +3573,25 @@
           "lat": 48.8675,
           "lon": 2.3414,
           "n_salles": 3,
-          "fill_now": 30.9,
+          "fill_now": 31.5,
           "prix_moyen_session": 142.0,
           "salles": [
+            {
+              "id": "629e19e6759443af758e931e",
+              "nom": "Révolte à la Lock",
+              "theme": "science-fiction",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 142.0,
+              "fill": 37.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 131,
+              "n_sessions": 202,
+              "n_booked": 20
+            },
             {
               "id": "629e1c488cea48af92bd2835",
               "nom": "L.A. Confidential",
@@ -3591,22 +3607,6 @@
               "n_confirmed": 143,
               "n_sessions": 202,
               "n_booked": 20
-            },
-            {
-              "id": "629e19e6759443af758e931e",
-              "nom": "Révolte à la Lock",
-              "theme": "science-fiction",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 142.0,
-              "fill": 35.2,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 130,
-              "n_sessions": 202,
-              "n_booked": 19
             },
             {
               "id": "629e7639759443af758eaf8c",
@@ -4134,111 +4134,6 @@
               "n_confirmed": 18,
               "n_sessions": 26,
               "n_booked": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "la-base-cr-teil",
-      "nom": "La Base Créteil",
-      "website": "https://www.labase-creteil.fr/",
-      "n_centres": 1,
-      "n_salles": 5,
-      "fill_now": 18.8,
-      "prix_moyen_session": null,
-      "centres": [
-        {
-          "id": "labase-creteil",
-          "nom": "La Base Créteil",
-          "cp": "94000",
-          "ville": "CRETEIL",
-          "adresse": "1 rue Le Corbusier",
-          "lat": 48.78,
-          "lon": 2.46,
-          "n_salles": 5,
-          "fill_now": 18.8,
-          "prix_moyen_session": null,
-          "salles": [
-            {
-              "id": "683d7635444a477afb8c7daa",
-              "nom": "KARAOKE BOX",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 30,
-              "joueurs_min": 1,
-              "joueurs_max": 12,
-              "prix_moyen_session": null,
-              "fill": 24.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 327,
-              "n_sessions": 450,
-              "n_booked": 42
-            },
-            {
-              "id": "6839a01a7c19539488cf6f17",
-              "nom": "QUIZ BOXING",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 60,
-              "joueurs_min": 4,
-              "joueurs_max": 12,
-              "prix_moyen_session": null,
-              "fill": 19.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 185,
-              "n_sessions": 262,
-              "n_booked": 19
-            },
-            {
-              "id": "683994e97c19539488cf654c",
-              "nom": "GAME SIDE",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 30,
-              "joueurs_min": 2,
-              "joueurs_max": 75,
-              "prix_moyen_session": null,
-              "fill": 19.1,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 334,
-              "n_sessions": 486,
-              "n_booked": 36
-            },
-            {
-              "id": "6a0d6309cdd1ae4989c080f7",
-              "nom": "LA CABANE PERDUE",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 1,
-              "joueurs_max": 7,
-              "prix_moyen_session": null,
-              "fill": 17.0,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 61,
-              "n_sessions": 138,
-              "n_booked": 8
-            },
-            {
-              "id": "68ac578eeebc1ec45f47dbd0",
-              "nom": "KARAOKE BOX #2",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 30,
-              "joueurs_min": 1,
-              "joueurs_max": 12,
-              "prix_moyen_session": null,
-              "fill": 8.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 254,
-              "n_sessions": 324,
-              "n_booked": 8
             }
           ]
         }
@@ -4777,6 +4672,111 @@
               "confidence": "faible",
               "n_confirmed": 0,
               "n_sessions": 208,
+              "n_booked": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "la-base-cr-teil",
+      "nom": "La Base Créteil",
+      "website": "https://www.labase-creteil.fr/",
+      "n_centres": 1,
+      "n_salles": 5,
+      "fill_now": 0.0,
+      "prix_moyen_session": null,
+      "centres": [
+        {
+          "id": "labase-creteil",
+          "nom": "La Base Créteil",
+          "cp": "94000",
+          "ville": "CRETEIL",
+          "adresse": "1 rue Le Corbusier",
+          "lat": 48.78,
+          "lon": 2.46,
+          "n_salles": 5,
+          "fill_now": 0.0,
+          "prix_moyen_session": null,
+          "salles": [
+            {
+              "id": "683994e97c19539488cf654c",
+              "nom": "GAME SIDE",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 30,
+              "joueurs_min": 2,
+              "joueurs_max": 75,
+              "prix_moyen_session": null,
+              "fill": 0.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 409,
+              "n_sessions": 486,
+              "n_booked": 0
+            },
+            {
+              "id": "6839a01a7c19539488cf6f17",
+              "nom": "QUIZ BOXING",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 60,
+              "joueurs_min": 4,
+              "joueurs_max": 12,
+              "prix_moyen_session": null,
+              "fill": 0.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 224,
+              "n_sessions": 262,
+              "n_booked": 0
+            },
+            {
+              "id": "683d7635444a477afb8c7daa",
+              "nom": "KARAOKE BOX",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 30,
+              "joueurs_min": 1,
+              "joueurs_max": 12,
+              "prix_moyen_session": null,
+              "fill": 0.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 393,
+              "n_sessions": 450,
+              "n_booked": 0
+            },
+            {
+              "id": "68ac578eeebc1ec45f47dbd0",
+              "nom": "KARAOKE BOX #2",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 30,
+              "joueurs_min": 1,
+              "joueurs_max": 12,
+              "prix_moyen_session": null,
+              "fill": 0.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 288,
+              "n_sessions": 324,
+              "n_booked": 0
+            },
+            {
+              "id": "6a0d6309cdd1ae4989c080f7",
+              "nom": "LA CABANE PERDUE",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 1,
+              "joueurs_max": 7,
+              "prix_moyen_session": null,
+              "fill": 0.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 78,
+              "n_sessions": 138,
               "n_booked": 0
             }
           ]
@@ -6546,7 +6546,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "60740",
-      "fill": 24.0,
+      "fill": 24.3,
       "n_salles": 10
     },
     {
@@ -6555,7 +6555,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "60740",
-      "fill": 31.2,
+      "fill": 32.0,
       "n_salles": 6
     },
     {
@@ -6645,7 +6645,7 @@
       "lat": 48.78,
       "lon": 2.46,
       "cp": "94000",
-      "fill": 18.8,
+      "fill": 0.0,
       "n_salles": 5
     },
     {
@@ -6717,7 +6717,7 @@
       "lat": 48.8675,
       "lon": 2.3414,
       "cp": "75002",
-      "fill": 30.9,
+      "fill": 31.5,
       "n_salles": 3
     },
     {
@@ -6843,7 +6843,7 @@
       "lat": 48.859,
       "lon": 2.379,
       "cp": "75011",
-      "fill": 39.0,
+      "fill": 39.4,
       "n_salles": 5
     },
     {
@@ -6906,7 +6906,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "75005",
-      "fill": 38.1,
+      "fill": 38.3,
       "n_salles": 11
     },
     {
@@ -6992,52 +6992,52 @@
     ],
     "matrix": [
       [
-        31.5,
-        28.8,
-        24.0,
-        19.8,
-        21.9
+        28.7,
+        27.2,
+        25.1,
+        20.2,
+        22.7
       ],
       [
-        17.1,
-        18.9,
-        22.9,
-        20.8,
-        16.0
-      ],
-      [
-        34.1,
-        35.7,
-        32.2,
-        41.0,
-        27.5
-      ],
-      [
-        33.3,
-        32.5,
-        36.4,
-        34.8,
-        18.8
-      ],
-      [
+        16.5,
+        19.7,
+        23.6,
         20.5,
-        24.1,
-        18.2,
-        23.0,
-        19.4
+        14.3
       ],
       [
-        21.9,
-        33.9,
-        32.7,
-        19.4,
-        14.7
+        34.8,
+        38.7,
+        33.5,
+        41.0,
+        27.3
       ],
       [
-        19.4,
-        21.9,
+        30.8,
+        32.5,
+        38.0,
+        36.2,
+        19.5
+      ],
+      [
+        17.5,
+        23.8,
+        19.0,
+        24.5,
+        21.1
+      ],
+      [
+        21.4,
+        35.8,
+        34.2,
+        20.3,
+        15.6
+      ],
+      [
+        20.4,
         23.2,
-        17.3,
+        24.2,
+        17.4,
         17.7
       ]
     ]
@@ -7507,23 +7507,23 @@
       "cp": "75001"
     },
     {
-      "id": "5b4849363e4e381f76962317",
-      "nom": "La Mission Spatiale",
-      "theme": "science-fiction",
-      "difficulty": 0,
-      "duree": 90,
+      "id": "5ab24062f851065321e455b4",
+      "nom": "L'ASCENSEUR",
+      "theme": "aventure",
+      "difficulty": 6,
+      "duree": 60,
       "joueurs_min": 2,
       "joueurs_max": 6,
-      "prix_moyen_session": 149.2,
+      "prix_moyen_session": 141.2,
       "fill": 42.9,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 138,
-      "n_sessions": 208,
-      "n_booked": 24,
-      "centre": "Cardinal Lemoine",
-      "enseigne": "The Game",
-      "cp": "75005"
+      "n_confirmed": 134,
+      "n_sessions": 233,
+      "n_booked": 27,
+      "centre": "26 rue bréguet 75011 Paris",
+      "enseigne": "RASHOMON ESCAPE",
+      "cp": "75011"
     }
   ],
   "prix_distribution": [
