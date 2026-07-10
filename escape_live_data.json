@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-10T03:18:21+00:00",
+    "generated": "2026-07-10T06:30:07+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 10808,
+    "n_observations": 10864,
     "lead_days_moyen": 0.6,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -62,8 +62,8 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 2.0,
-      "demand_pct": 66.7,
+      "lead_days_avg": 3.0,
+      "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
         "2": 150.0,
@@ -332,7 +332,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 22,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 2
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-15",
       "next_time": "15:15",
       "lead_days": 5,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 16
     },
     {
@@ -383,8 +383,37 @@
       "next_date": "2026-07-15",
       "next_time": "09:45",
       "lead_days": 5,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 13
+    },
+    {
+      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
+      "room": "Le palais de l'horreur",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
+      "available": true,
+      "next_date": "2026-07-13",
+      "next_time": "10:15",
+      "lead_days": 3,
+      "n_obs": 194,
+      "n_reserved": 30
     },
     {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
@@ -412,7 +441,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 17
     },
     {
@@ -440,39 +469,10 @@
       "reservation_url": "https://www.theoneescape.com/missions-escape-game/le-grand-hotel-de-paris",
       "available": true,
       "next_date": "2026-07-10",
-      "next_time": "10:00",
+      "next_time": "11:45",
       "lead_days": 0,
-      "n_obs": 193,
-      "n_reserved": 44
-    },
-    {
-      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
-      "room": "Le palais de l'horreur",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
-      "available": true,
-      "next_date": "2026-07-10",
-      "next_time": "10:15",
-      "lead_days": 0,
-      "n_obs": 193,
-      "n_reserved": 29
+      "n_obs": 194,
+      "n_reserved": 45
     },
     {
       "room_id": "thequestfactory/608bb6116e100464ca326c19",
@@ -499,7 +499,7 @@
       "next_date": "2026-07-10",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 60
     },
     {
@@ -529,7 +529,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 42
     },
     {
@@ -552,7 +552,7 @@
       "next_date": "2026-07-10",
       "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 54
     },
     {
@@ -577,10 +577,10 @@
       "reservation_url": "https://unleashescape.com/",
       "available": true,
       "next_date": "2026-07-10",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 193,
-      "n_reserved": 56
+      "n_obs": 194,
+      "n_reserved": 57
     },
     {
       "room_id": "thegame/63e3cc231084c231d1aa9fdf",
@@ -608,7 +608,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 17
     },
     {
@@ -637,7 +637,7 @@
       "next_date": "2026-07-10",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 21
     },
     {
@@ -667,7 +667,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 44
     },
     {
@@ -695,7 +695,7 @@
       "next_date": "2026-07-10",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 68
     },
     {
@@ -725,7 +725,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 50
     },
     {
@@ -748,7 +748,7 @@
       "next_date": "2026-07-10",
       "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 51
     },
     {
@@ -776,7 +776,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:45",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 62
     },
     {
@@ -807,7 +807,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 28
     },
     {
@@ -837,7 +837,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 40
     },
     {
@@ -866,7 +866,7 @@
       "next_date": "2026-07-10",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 89
     },
     {
@@ -894,7 +894,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 84
     },
     {
@@ -923,7 +923,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 21
     },
     {
@@ -953,7 +953,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 52
     },
     {
@@ -982,7 +982,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 25
     },
     {
@@ -1011,7 +1011,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 77
     },
     {
@@ -1041,7 +1041,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 33
     },
     {
@@ -1070,7 +1070,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 33
     },
     {
@@ -1100,7 +1100,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 48
     },
     {
@@ -1130,7 +1130,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 55
     },
     {
@@ -1159,7 +1159,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 81
     },
     {
@@ -1189,7 +1189,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 59
     },
     {
@@ -1217,7 +1217,7 @@
       "next_date": "2026-07-10",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 67
     },
     {
@@ -1245,7 +1245,7 @@
       "next_date": "2026-07-10",
       "next_time": "13:15",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 65
     },
     {
@@ -1276,7 +1276,7 @@
       "next_date": "2026-07-10",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 54
     },
     {
@@ -1306,7 +1306,7 @@
       "next_date": "2026-07-10",
       "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 68
     },
     {
@@ -1335,7 +1335,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 25
     },
     {
@@ -1364,7 +1364,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 22
     },
     {
@@ -1394,7 +1394,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 29
     },
     {
@@ -1415,10 +1415,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-07-10",
-      "next_time": "11:15",
+      "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 193,
-      "n_reserved": 69
+      "n_obs": 194,
+      "n_reserved": 70
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1440,7 +1440,7 @@
       "next_date": "2026-07-10",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 62
     },
     {
@@ -1470,7 +1470,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 83
     },
     {
@@ -1496,7 +1496,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:40",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 84
     },
     {
@@ -1524,7 +1524,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 87
     },
     {
@@ -1545,10 +1545,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-07-10",
-      "next_time": "11:15",
+      "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 193,
-      "n_reserved": 74
+      "n_obs": 194,
+      "n_reserved": 75
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1576,7 +1576,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 16
     },
     {
@@ -1605,7 +1605,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 27
     },
     {
@@ -1634,7 +1634,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 32
     },
     {
@@ -1657,7 +1657,7 @@
       "next_date": "2026-07-10",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 60
     },
     {
@@ -1686,7 +1686,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 27
     },
     {
@@ -1709,7 +1709,7 @@
       "next_date": "2026-07-10",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 62
     },
     {
@@ -1738,7 +1738,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 25
     },
     {
@@ -1761,7 +1761,7 @@
       "next_date": "2026-07-10",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 55
     },
     {
@@ -1791,7 +1791,7 @@
       "next_date": "2026-07-10",
       "next_time": "10:15",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 25
     },
     {
@@ -1819,7 +1819,7 @@
       "next_date": "2026-07-10",
       "next_time": "15:15",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 36
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-10",
       "next_time": "15:30",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 41
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-10",
       "next_time": "09:45",
       "lead_days": 0,
-      "n_obs": 193,
+      "n_obs": 194,
       "n_reserved": 56
     }
   ]
