@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-11T16:58:10+00:00",
+    "generated": "2026-07-11T17:55:13+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 11928,
-    "lead_days_moyen": 1.1,
+    "n_observations": 11984,
+    "lead_days_moyen": 1.2,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -112,6 +112,19 @@
       }
     },
     {
+      "centre": "Pandore & Associés",
+      "cp": "75011",
+      "lat": 48.8595469,
+      "lon": 2.3768143,
+      "website": "https://www.pandore-escape.com",
+      "phone": "0980764529",
+      "n_rooms": 2,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 32,
+      "prix_grille": null
+    },
+    {
       "centre": "UNLEASH",
       "cp": "75012",
       "lat": 48.8394291,
@@ -180,6 +193,25 @@
       }
     },
     {
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "website": "https://www.lantichambre.paris",
+      "phone": "+33 1 75 51 56 84",
+      "n_rooms": 2,
+      "lead_days_avg": 0.5,
+      "demand_pct": 50.0,
+      "prix_min": 28.0,
+      "prix_grille": {
+        "1": 50.0,
+        "2": 50.0,
+        "3": 50.0,
+        "4": 50.0,
+        "5": 50.0
+      }
+    },
+    {
       "centre": "Lock Academy",
       "cp": "75001",
       "lat": 48.8639412,
@@ -218,19 +250,6 @@
         "5": 30.0,
         "6": 28.0
       }
-    },
-    {
-      "centre": "Pandore & Associés",
-      "cp": "75011",
-      "lat": 48.8595469,
-      "lon": 2.3768143,
-      "website": "https://www.pandore-escape.com",
-      "phone": "0980764529",
-      "n_rooms": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 32,
-      "prix_grille": null
     },
     {
       "centre": "Secrets Hunters",
@@ -285,25 +304,6 @@
       "demand_pct": 0.0,
       "prix_min": 28,
       "prix_grille": null
-    },
-    {
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "website": "https://www.lantichambre.paris",
-      "phone": "+33 1 75 51 56 84",
-      "n_rooms": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "1": 50.0,
-        "2": 50.0,
-        "3": 50.0,
-        "4": 50.0,
-        "5": 50.0
-      }
     }
   ],
   "rooms": [
@@ -332,7 +332,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 21,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 2
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-15",
       "next_time": "15:15",
       "lead_days": 4,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 18
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-15",
       "next_time": "09:45",
       "lead_days": 4,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 13
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-14",
       "next_time": "21:45",
       "lead_days": 3,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 19
     },
     {
@@ -442,7 +442,7 @@
       "next_date": "2026-07-13",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 48
     },
     {
@@ -471,7 +471,7 @@
       "next_date": "2026-07-13",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 30
     },
     {
@@ -500,7 +500,7 @@
       "next_date": "2026-07-13",
       "next_time": "22:00",
       "lead_days": 2,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 18
     },
     {
@@ -529,7 +529,7 @@
       "next_date": "2026-07-13",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 25
     },
     {
@@ -558,7 +558,7 @@
       "next_date": "2026-07-13",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 31
     },
     {
@@ -587,7 +587,7 @@
       "next_date": "2026-07-13",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 29
     },
     {
@@ -617,8 +617,31 @@
       "next_date": "2026-07-12",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 47
+    },
+    {
+      "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
+      "room": "L'entrepôt fantastique",
+      "centre": "Pandore & Associés",
+      "cp": "75011",
+      "lat": 48.8595469,
+      "lon": 2.3768143,
+      "theme": "adventure",
+      "difficulty": 7,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 32,
+      "prix_max": 65,
+      "prix_grille": null,
+      "reservation_url": "https://www.pandore-escape.com",
+      "available": true,
+      "next_date": "2026-07-12",
+      "next_time": "10:40",
+      "lead_days": 1,
+      "n_obs": 214,
+      "n_reserved": 63
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -644,8 +667,31 @@
       "next_date": "2026-07-12",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 60
+    },
+    {
+      "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
+      "room": "Règlement de contes",
+      "centre": "Pandore & Associés",
+      "cp": "75011",
+      "lat": 48.8595469,
+      "lon": 2.3768143,
+      "theme": "romans",
+      "difficulty": 7,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 32,
+      "prix_max": 65,
+      "prix_grille": null,
+      "reservation_url": "https://www.pandore-escape.com",
+      "available": true,
+      "next_date": "2026-07-12",
+      "next_time": "18:40",
+      "lead_days": 1,
+      "n_obs": 214,
+      "n_reserved": 61
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -672,7 +718,7 @@
       "next_date": "2026-07-12",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 69
     },
     {
@@ -703,7 +749,7 @@
       "next_date": "2026-07-12",
       "next_time": "12:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 32
     },
     {
@@ -733,7 +779,7 @@
       "next_date": "2026-07-12",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 46
     },
     {
@@ -762,7 +808,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 23
     },
     {
@@ -791,7 +837,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 31
     },
     {
@@ -820,7 +866,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 39
     },
     {
@@ -850,7 +896,7 @@
       "next_date": "2026-07-12",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 52
     },
     {
@@ -880,7 +926,7 @@
       "next_date": "2026-07-12",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 61
     },
     {
@@ -910,7 +956,7 @@
       "next_date": "2026-07-12",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 64
     },
     {
@@ -939,7 +985,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 28
     },
     {
@@ -968,7 +1014,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 25
     },
     {
@@ -991,7 +1037,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 80
     },
     {
@@ -1014,7 +1060,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 87
     },
     {
@@ -1043,7 +1089,7 @@
       "next_date": "2026-07-12",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 21
     },
     {
@@ -1072,7 +1118,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 30
     },
     {
@@ -1101,8 +1147,38 @@
       "next_date": "2026-07-12",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 36
+    },
+    {
+      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
+      "room": "La revanche du docteur Kang",
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "theme": "adventure",
+      "difficulty": 0,
+      "duration": 85,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
+      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
+      "available": true,
+      "next_date": "2026-07-12",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 214,
+      "n_reserved": 30
     },
     {
       "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
@@ -1129,7 +1205,7 @@
       "next_date": "2026-07-12",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 42
     },
     {
@@ -1157,7 +1233,7 @@
       "next_date": "2026-07-12",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 48
     },
     {
@@ -1185,31 +1261,8 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 64
-    },
-    {
-      "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
-      "room": "L'entrepôt fantastique",
-      "centre": "Pandore & Associés",
-      "cp": "75011",
-      "lat": 48.8595469,
-      "lon": 2.3768143,
-      "theme": "adventure",
-      "difficulty": 7,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 32,
-      "prix_max": 65,
-      "prix_grille": null,
-      "reservation_url": "https://www.pandore-escape.com",
-      "available": true,
-      "next_date": "2026-07-11",
-      "next_time": "21:20",
-      "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 62
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -1238,7 +1291,7 @@
       "next_date": "2026-07-11",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 47
     },
     {
@@ -1266,7 +1319,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 76
     },
     {
@@ -1296,31 +1349,8 @@
       "next_date": "2026-07-11",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 55
-    },
-    {
-      "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
-      "room": "Règlement de contes",
-      "centre": "Pandore & Associés",
-      "cp": "75011",
-      "lat": 48.8595469,
-      "lon": 2.3768143,
-      "theme": "romans",
-      "difficulty": 7,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 32,
-      "prix_max": 65,
-      "prix_grille": null,
-      "reservation_url": "https://www.pandore-escape.com",
-      "available": true,
-      "next_date": "2026-07-11",
-      "next_time": "21:20",
-      "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 60
     },
     {
       "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
@@ -1346,10 +1376,10 @@
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "20:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 96
+      "n_obs": 214,
+      "n_reserved": 97
     },
     {
       "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
@@ -1376,7 +1406,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 92
     },
     {
@@ -1406,7 +1436,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 57
     },
     {
@@ -1435,7 +1465,7 @@
       "next_date": "2026-07-11",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 86
     },
     {
@@ -1465,7 +1495,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 35
     },
     {
@@ -1492,10 +1522,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:20",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 89
+      "n_obs": 214,
+      "n_reserved": 90
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1520,10 +1550,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:45",
+      "next_time": "22:45",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 72
+      "n_obs": 214,
+      "n_reserved": 73
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1548,10 +1578,10 @@
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "20:00",
+      "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 71
+      "n_obs": 214,
+      "n_reserved": 72
     },
     {
       "room_id": "secretshunters/630e0712e628b39d8affaeff",
@@ -1581,7 +1611,7 @@
       "next_date": "2026-07-11",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 59
     },
     {
@@ -1611,7 +1641,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 74
     },
     {
@@ -1641,7 +1671,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 32
     },
     {
@@ -1662,10 +1692,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:45",
+      "next_time": "22:45",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 71
+      "n_obs": 214,
+      "n_reserved": 72
     },
     {
       "room_id": "phobiaescapegame/6347fa448f1f302c07547ce6",
@@ -1692,10 +1722,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:20",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 91
+      "n_obs": 214,
+      "n_reserved": 92
     },
     {
       "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
@@ -1718,10 +1748,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:45",
+      "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 93
+      "n_obs": 214,
+      "n_reserved": 94
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1746,10 +1776,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:20",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 95
+      "n_obs": 214,
+      "n_reserved": 96
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1769,10 +1799,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 66
+      "n_obs": 214,
+      "n_reserved": 67
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1794,7 +1824,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:45",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 70
     },
     {
@@ -1815,40 +1845,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 58
-    },
-    {
-      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
-      "room": "La revanche du docteur Kang",
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "theme": "adventure",
-      "difficulty": 0,
-      "duration": 85,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 28.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 37.0,
-        "4": 32.0,
-        "5": 30.0,
-        "6": 28.0,
-        "7": 28.0
-      },
-      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
-      "available": true,
-      "next_date": "2026-07-11",
-      "next_time": "20:15",
-      "lead_days": 0,
-      "n_obs": 213,
-      "n_reserved": 29
+      "n_obs": 214,
+      "n_reserved": 59
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-11",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 213,
+      "n_obs": 214,
       "n_reserved": 63
     }
   ]
