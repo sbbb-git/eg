@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-11T06:12:28+00:00",
+    "generated": "2026-07-11T07:27:01+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 11480,
+    "n_observations": 11536,
     "lead_days_moyen": 0.8,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -92,6 +92,26 @@
       }
     },
     {
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "website": "https://www.theoneescape.com",
+      "phone": "09 75 90 83 68",
+      "n_rooms": 3,
+      "lead_days_avg": 0.3,
+      "demand_pct": 33.3,
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      }
+    },
+    {
       "centre": "Lock Academy",
       "cp": "75001",
       "lat": 48.8639412,
@@ -110,26 +130,6 @@
         "5": 32.0,
         "6": 30.0,
         "7": 30.0
-      }
-    },
-    {
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "website": "https://www.theoneescape.com",
-      "phone": "09 75 90 83 68",
-      "n_rooms": 3,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 21,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 2
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-15",
       "next_time": "15:15",
       "lead_days": 4,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 18
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-15",
       "next_time": "09:45",
       "lead_days": 4,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 13
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-14",
       "next_time": "21:45",
       "lead_days": 3,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 19
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-13",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 30
     },
     {
@@ -470,7 +470,7 @@
       "next_date": "2026-07-13",
       "next_time": "22:00",
       "lead_days": 2,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 18
     },
     {
@@ -499,8 +499,38 @@
       "next_date": "2026-07-13",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 23
+    },
+    {
+      "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
+      "room": "Le Grand Hôtel de Paris",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 44.0,
+      "prix_max": 189.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      },
+      "reservation_url": "https://www.theoneescape.com/missions-escape-game/le-grand-hotel-de-paris",
+      "available": true,
+      "next_date": "2026-07-12",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 206,
+      "n_reserved": 47
     },
     {
       "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
@@ -529,7 +559,7 @@
       "next_date": "2026-07-12",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 44
     },
     {
@@ -558,7 +588,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 23
     },
     {
@@ -587,7 +617,7 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 30
     },
     {
@@ -616,7 +646,7 @@
       "next_date": "2026-07-12",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 35
     },
     {
@@ -645,38 +675,8 @@
       "next_date": "2026-07-12",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 27
-    },
-    {
-      "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
-      "room": "Le Grand Hôtel de Paris",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 44.0,
-      "prix_max": 189.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      },
-      "reservation_url": "https://www.theoneescape.com/missions-escape-game/le-grand-hotel-de-paris",
-      "available": true,
-      "next_date": "2026-07-11",
-      "next_time": "10:00",
-      "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 46
     },
     {
       "room_id": "thequestfactory/608bb6116e100464ca326c19",
@@ -703,7 +703,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 62
     },
     {
@@ -733,7 +733,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 46
     },
     {
@@ -756,7 +756,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 58
     },
     {
@@ -783,7 +783,7 @@
       "next_date": "2026-07-11",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 59
     },
     {
@@ -811,10 +811,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "19:00",
+      "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 46
+      "n_obs": 206,
+      "n_reserved": 47
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -841,7 +841,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 73
     },
     {
@@ -871,7 +871,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 54
     },
     {
@@ -892,10 +892,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "12:40",
+      "next_time": "18:40",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 56
+      "n_obs": 206,
+      "n_reserved": 57
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -920,10 +920,10 @@
       "reservation_url": "https://www.masterio.fr/la-pierre-de-lumiere/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "10:00",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 67
+      "n_obs": 206,
+      "n_reserved": 68
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -953,7 +953,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:30",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 31
     },
     {
@@ -982,7 +982,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 93
     },
     {
@@ -1010,7 +1010,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 90
     },
     {
@@ -1040,7 +1040,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 57
     },
     {
@@ -1069,7 +1069,7 @@
       "next_date": "2026-07-11",
       "next_time": "11:15",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 29
     },
     {
@@ -1098,7 +1098,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 82
     },
     {
@@ -1128,7 +1128,7 @@
       "next_date": "2026-07-11",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 34
     },
     {
@@ -1157,7 +1157,7 @@
       "next_date": "2026-07-11",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 38
     },
     {
@@ -1187,7 +1187,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 51
     },
     {
@@ -1217,7 +1217,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 59
     },
     {
@@ -1246,7 +1246,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 86
     },
     {
@@ -1276,7 +1276,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 63
     },
     {
@@ -1304,7 +1304,7 @@
       "next_date": "2026-07-11",
       "next_time": "16:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 71
     },
     {
@@ -1332,7 +1332,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:30",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 68
     },
     {
@@ -1363,7 +1363,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 58
     },
     {
@@ -1391,10 +1391,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "10:15",
+      "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 71
+      "n_obs": 206,
+      "n_reserved": 72
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1422,7 +1422,7 @@
       "next_date": "2026-07-11",
       "next_time": "11:15",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 27
     },
     {
@@ -1451,7 +1451,7 @@
       "next_date": "2026-07-11",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 24
     },
     {
@@ -1481,7 +1481,7 @@
       "next_date": "2026-07-11",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 32
     },
     {
@@ -1502,10 +1502,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "13:00",
+      "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 76
+      "n_obs": 206,
+      "n_reserved": 77
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1527,7 +1527,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 67
     },
     {
@@ -1557,7 +1557,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 88
     },
     {
@@ -1583,7 +1583,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:40",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 89
     },
     {
@@ -1611,7 +1611,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 91
     },
     {
@@ -1632,10 +1632,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "13:00",
+      "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 81
+      "n_obs": 206,
+      "n_reserved": 82
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1663,7 +1663,7 @@
       "next_date": "2026-07-11",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 17
     },
     {
@@ -1686,7 +1686,7 @@
       "next_date": "2026-07-11",
       "next_time": "11:30",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 63
     },
     {
@@ -1715,7 +1715,7 @@
       "next_date": "2026-07-11",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 29
     },
     {
@@ -1738,7 +1738,7 @@
       "next_date": "2026-07-11",
       "next_time": "10:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 66
     },
     {
@@ -1761,7 +1761,7 @@
       "next_date": "2026-07-11",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 56
     },
     {
@@ -1791,7 +1791,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 28
     },
     {
@@ -1819,7 +1819,7 @@
       "next_date": "2026-07-11",
       "next_time": "11:45",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 39
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-11",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 205,
+      "n_obs": 206,
       "n_reserved": 45
     },
     {
@@ -1875,10 +1875,10 @@
       "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
       "available": true,
       "next_date": "2026-07-11",
-      "next_time": "09:45",
+      "next_time": "13:45",
       "lead_days": 0,
-      "n_obs": 205,
-      "n_reserved": 59
+      "n_obs": 206,
+      "n_reserved": 60
     }
   ]
 }
