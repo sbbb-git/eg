@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-07-14T11:37:15+00:00",
+    "generated": "2026-07-14T12:11:55+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 14000,
+    "n_observations": 14056,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -45,6 +45,24 @@
       "demand_pct": 66.7
     },
     {
+      "company": "secretshunters",
+      "company_name": "Secrets Hunters, Paris",
+      "n_rooms": 3,
+      "n_reserved": 255,
+      "n_avail_now": 2,
+      "lead_days_avg": 0.3,
+      "demand_pct": 33.3
+    },
+    {
+      "company": "theoneescape",
+      "company_name": "The One Escape, Paris",
+      "n_rooms": 3,
+      "n_reserved": 199,
+      "n_avail_now": 2,
+      "lead_days_avg": 0.3,
+      "demand_pct": 33.3
+    },
+    {
       "company": "lockacademy-paris",
       "company_name": "Lock Academy, Paris",
       "n_rooms": 6,
@@ -57,7 +75,7 @@
       "company": "coqsenpate",
       "company_name": "Pandore & Associés, Paris",
       "n_rooms": 2,
-      "n_reserved": 148,
+      "n_reserved": 149,
       "n_avail_now": 2,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -66,7 +84,7 @@
       "company": "crack-the-egg-paris",
       "company_name": "Crack The Egg, Paris",
       "n_rooms": 4,
-      "n_reserved": 308,
+      "n_reserved": 312,
       "n_avail_now": 4,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -84,7 +102,7 @@
       "company": "majestic-escapegame",
       "company_name": "Majestic Escape Game, Paris",
       "n_rooms": 4,
-      "n_reserved": 257,
+      "n_reserved": 258,
       "n_avail_now": 4,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -93,7 +111,7 @@
       "company": "masterio",
       "company_name": "Masterio, Paris",
       "n_rooms": 2,
-      "n_reserved": 157,
+      "n_reserved": 158,
       "n_avail_now": 2,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -102,17 +120,8 @@
       "company": "phobiaescapegame",
       "company_name": "Phobia, Paris",
       "n_rooms": 5,
-      "n_reserved": 526,
+      "n_reserved": 530,
       "n_avail_now": 5,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
-    },
-    {
-      "company": "secretshunters",
-      "company_name": "Secrets Hunters, Paris",
-      "n_rooms": 3,
-      "n_reserved": 253,
-      "n_avail_now": 3,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
     },
@@ -126,19 +135,10 @@
       "demand_pct": 0.0
     },
     {
-      "company": "theoneescape",
-      "company_name": "The One Escape, Paris",
-      "n_rooms": 3,
-      "n_reserved": 198,
-      "n_avail_now": 3,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
-    },
-    {
       "company": "thequestfactory",
       "company_name": "The Quest Factory, Paris",
       "n_rooms": 3,
-      "n_reserved": 276,
+      "n_reserved": 278,
       "n_avail_now": 3,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -166,7 +166,7 @@
       "next_time": "10:00",
       "lead_days": 18,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 2
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "12:15",
       "lead_days": 4,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 36
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "09:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 13
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "10:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 32
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "17:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 19
     },
     {
@@ -241,8 +241,38 @@
       "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 63
+    },
+    {
+      "room_id": "secretshunters/630e0712e628b39d8affaeff",
+      "room": "La fête foraine Tivoli",
+      "centre": "Secrets Hunters, Paris",
+      "theme": "investigation",
+      "players": "3 4 5 6 7 8 9",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-15",
+      "next_time": "11:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 251,
+      "n_reserved": 74
+    },
+    {
+      "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
+      "room": "Le Grand Hôtel de Paris",
+      "centre": "The One Escape, Paris",
+      "theme": "horror",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-15",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 251,
+      "n_reserved": 51
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -253,11 +283,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "16:00",
+      "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 77
+      "n_obs": 251,
+      "n_reserved": 78
     },
     {
       "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
@@ -271,7 +301,7 @@
       "next_time": "16:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 71
     },
     {
@@ -283,11 +313,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "14:00",
+      "next_time": "15:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 85
+      "n_obs": 251,
+      "n_reserved": 86
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -298,11 +328,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "18:15",
+      "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 75
+      "n_obs": 251,
+      "n_reserved": 76
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -313,11 +343,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "14:00",
+      "next_time": "17:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 80
+      "n_obs": 251,
+      "n_reserved": 81
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -328,11 +358,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "13:00",
+      "next_time": "14:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 68
+      "n_obs": 251,
+      "n_reserved": 69
     },
     {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
@@ -346,7 +376,7 @@
       "next_time": "22:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 21
     },
     {
@@ -361,7 +391,7 @@
       "next_time": "14:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 93
     },
     {
@@ -376,7 +406,7 @@
       "next_time": "18:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 102
     },
     {
@@ -391,7 +421,7 @@
       "next_time": "19:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 75
     },
     {
@@ -406,7 +436,7 @@
       "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 55
     },
     {
@@ -421,7 +451,7 @@
       "next_time": "19:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 36
     },
     {
@@ -436,7 +466,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 50
     },
     {
@@ -451,7 +481,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 38
     },
     {
@@ -466,7 +496,7 @@
       "next_time": "16:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 40
     },
     {
@@ -481,7 +511,7 @@
       "next_time": "16:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 54
     },
     {
@@ -496,7 +526,7 @@
       "next_time": "20:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 61
     },
     {
@@ -508,11 +538,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "16:00",
+      "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 71
+      "n_obs": 251,
+      "n_reserved": 72
     },
     {
       "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
@@ -526,7 +556,7 @@
       "next_time": "16:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 71
     },
     {
@@ -538,11 +568,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "15:00",
+      "next_time": "17:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 76
+      "n_obs": 251,
+      "n_reserved": 77
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -556,7 +586,7 @@
       "next_time": "17:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 81
     },
     {
@@ -568,11 +598,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "14:00",
+      "next_time": "16:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 97
+      "n_obs": 251,
+      "n_reserved": 98
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -586,7 +616,7 @@
       "next_time": "16:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 103
     },
     {
@@ -598,11 +628,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "14:00",
+      "next_time": "16:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 107
+      "n_obs": 251,
+      "n_reserved": 108
     },
     {
       "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
@@ -613,11 +643,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "13:20",
+      "next_time": "14:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 110
+      "n_obs": 251,
+      "n_reserved": 111
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -628,11 +658,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "14:00",
+      "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 109
+      "n_obs": 251,
+      "n_reserved": 110
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -646,7 +676,7 @@
       "next_time": "17:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 92
     },
     {
@@ -658,26 +688,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-14",
-      "next_time": "13:30",
+      "next_time": "16:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 88
-    },
-    {
-      "room_id": "secretshunters/630e0712e628b39d8affaeff",
-      "room": "La fête foraine Tivoli",
-      "centre": "Secrets Hunters, Paris",
-      "theme": "investigation",
-      "players": "3 4 5 6 7 8 9",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-14",
-      "next_time": "13:30",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 73
+      "n_obs": 251,
+      "n_reserved": 89
     },
     {
       "room_id": "thegame/63e3cc231084c231d1aa9fdf",
@@ -691,7 +706,7 @@
       "next_time": "21:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 21
     },
     {
@@ -706,7 +721,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 27
     },
     {
@@ -721,7 +736,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 31
     },
     {
@@ -736,23 +751,8 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 250,
+      "n_obs": 251,
       "n_reserved": 36
-    },
-    {
-      "room_id": "thegame/5b4849363e4e381f76962317",
-      "room": "La mission spatiale",
-      "centre": "The Game, Paris",
-      "theme": "scifi",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-14",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 250,
-      "n_reserved": 45
     }
   ]
 }
