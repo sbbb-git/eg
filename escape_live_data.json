@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-15T21:00:03+00:00",
+    "generated": "2026-07-15T21:57:27+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 15120,
+    "n_observations": 15176,
     "lead_days_moyen": 1.5,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -110,6 +110,26 @@
         "5": 32.0,
         "6": 30.0,
         "7": 30.0
+      }
+    },
+    {
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "website": "https://www.theoneescape.com",
+      "phone": "09 75 90 83 68",
+      "n_rooms": 3,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
       }
     },
     {
@@ -284,26 +304,6 @@
       "demand_pct": 100.0,
       "prix_min": 28,
       "prix_grille": null
-    },
-    {
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "website": "https://www.theoneescape.com",
-      "phone": "09 75 90 83 68",
-      "n_rooms": 3,
-      "lead_days_avg": null,
-      "demand_pct": 100.0,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      }
     }
   ],
   "rooms": [
@@ -332,7 +332,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 17,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 2
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-21",
       "next_time": "17:35",
       "lead_days": 6,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 20
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-18",
       "next_time": "09:45",
       "lead_days": 3,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 15
     },
     {
@@ -413,7 +413,7 @@
       "next_date": "2026-07-18",
       "next_time": "12:15",
       "lead_days": 3,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 38
     },
     {
@@ -443,7 +443,7 @@
       "next_date": "2026-07-17",
       "next_time": "12:00",
       "lead_days": 2,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 67
     },
     {
@@ -471,7 +471,7 @@
       "next_date": "2026-07-17",
       "next_time": "11:45",
       "lead_days": 2,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 59
     },
     {
@@ -499,8 +499,38 @@
       "next_date": "2026-07-17",
       "next_time": "12:00",
       "lead_days": 2,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 66
+    },
+    {
+      "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
+      "room": "Le Grand Hôtel de Paris",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 44.0,
+      "prix_max": 189.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      },
+      "reservation_url": "https://www.theoneescape.com/missions-escape-game/le-grand-hotel-de-paris",
+      "available": true,
+      "next_date": "2026-07-16",
+      "next_time": "11:45",
+      "lead_days": 1,
+      "n_obs": 271,
+      "n_reserved": 57
     },
     {
       "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
@@ -528,7 +558,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 35
     },
     {
@@ -556,7 +586,7 @@
       "next_date": "2026-07-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 77
     },
     {
@@ -585,7 +615,7 @@
       "next_date": "2026-07-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 25
     },
     {
@@ -615,7 +645,7 @@
       "next_date": "2026-07-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 65
     },
     {
@@ -638,7 +668,7 @@
       "next_date": "2026-07-16",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 86
     },
     {
@@ -665,7 +695,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 73
     },
     {
@@ -694,7 +724,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 25
     },
     {
@@ -723,7 +753,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 32
     },
     {
@@ -753,7 +783,7 @@
       "next_date": "2026-07-16",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 61
     },
     {
@@ -779,10 +809,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-16",
-      "next_time": "11:00",
+      "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 270,
-      "n_reserved": 97
+      "n_obs": 271,
+      "n_reserved": 98
     },
     {
       "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
@@ -804,7 +834,7 @@
       "next_date": "2026-07-16",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 79
     },
     {
@@ -832,7 +862,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 83
     },
     {
@@ -863,7 +893,7 @@
       "next_date": "2026-07-16",
       "next_time": "21:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 39
     },
     {
@@ -893,7 +923,7 @@
       "next_date": "2026-07-16",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 55
     },
     {
@@ -922,7 +952,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 116
     },
     {
@@ -950,7 +980,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 110
     },
     {
@@ -979,8 +1009,38 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 36
+    },
+    {
+      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
+      "room": "Le crime de l’Orient-Express",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "investigation",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 44.0,
+      "prix_max": 189.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      },
+      "reservation_url": "https://www.theoneescape.com",
+      "available": true,
+      "next_date": "2026-07-16",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 271,
+      "n_reserved": 77
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1008,7 +1068,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 41
     },
     {
@@ -1037,7 +1097,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 108
     },
     {
@@ -1067,7 +1127,7 @@
       "next_date": "2026-07-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 40
     },
     {
@@ -1096,7 +1156,7 @@
       "next_date": "2026-07-16",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 50
     },
     {
@@ -1126,7 +1186,7 @@
       "next_date": "2026-07-16",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 68
     },
     {
@@ -1156,7 +1216,7 @@
       "next_date": "2026-07-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 79
     },
     {
@@ -1185,7 +1245,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 114
     },
     {
@@ -1215,7 +1275,7 @@
       "next_date": "2026-07-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 80
     },
     {
@@ -1241,10 +1301,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-16",
-      "next_time": "11:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 270,
-      "n_reserved": 95
+      "n_obs": 271,
+      "n_reserved": 96
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1271,7 +1331,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 89
     },
     {
@@ -1302,8 +1362,38 @@
       "next_date": "2026-07-16",
       "next_time": "13:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 78
+    },
+    {
+      "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
+      "room": "Hallucinations chimiques chez le Dr Grant",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 31.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 36.0,
+        "5": 33.0,
+        "6": 31.0,
+        "7": 31.0
+      },
+      "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
+      "available": true,
+      "next_date": "2026-07-16",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 271,
+      "n_reserved": 84
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1331,7 +1421,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 40
     },
     {
@@ -1360,7 +1450,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 34
     },
     {
@@ -1390,7 +1480,7 @@
       "next_date": "2026-07-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 42
     },
     {
@@ -1413,7 +1503,7 @@
       "next_date": "2026-07-16",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 102
     },
     {
@@ -1436,7 +1526,7 @@
       "next_date": "2026-07-16",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 93
     },
     {
@@ -1466,7 +1556,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 116
     },
     {
@@ -1492,7 +1582,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 122
     },
     {
@@ -1520,7 +1610,7 @@
       "next_date": "2026-07-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 121
     },
     {
@@ -1543,7 +1633,7 @@
       "next_date": "2026-07-16",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 112
     },
     {
@@ -1572,7 +1662,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 32
     },
     {
@@ -1601,7 +1691,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 41
     },
     {
@@ -1630,7 +1720,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 45
     },
     {
@@ -1653,7 +1743,7 @@
       "next_date": "2026-07-16",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 82
     },
     {
@@ -1682,7 +1772,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 39
     },
     {
@@ -1705,7 +1795,7 @@
       "next_date": "2026-07-16",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 88
     },
     {
@@ -1734,7 +1824,7 @@
       "next_date": "2026-07-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 41
     },
     {
@@ -1757,7 +1847,7 @@
       "next_date": "2026-07-16",
       "next_time": "17:15",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 77
     },
     {
@@ -1787,98 +1877,8 @@
       "next_date": "2026-07-16",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 270,
+      "n_obs": 271,
       "n_reserved": 79
-    },
-    {
-      "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
-      "room": "Le Grand Hôtel de Paris",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 44.0,
-      "prix_max": 189.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      },
-      "reservation_url": "https://www.theoneescape.com/missions-escape-game/le-grand-hotel-de-paris",
-      "available": false,
-      "next_date": null,
-      "next_time": null,
-      "lead_days": null,
-      "n_obs": 270,
-      "n_reserved": 57
-    },
-    {
-      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
-      "room": "Le crime de l’Orient-Express",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "investigation",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 44.0,
-      "prix_max": 189.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      },
-      "reservation_url": "https://www.theoneescape.com",
-      "available": false,
-      "next_date": null,
-      "next_time": null,
-      "lead_days": null,
-      "n_obs": 270,
-      "n_reserved": 77
-    },
-    {
-      "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
-      "room": "Hallucinations chimiques chez le Dr Grant",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 31.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 36.0,
-        "5": 33.0,
-        "6": 31.0,
-        "7": 31.0
-      },
-      "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
-      "available": false,
-      "next_date": null,
-      "next_time": null,
-      "lead_days": null,
-      "n_obs": 270,
-      "n_reserved": 84
     }
   ]
 }
