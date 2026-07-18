@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-18T15:55:54+00:00",
+    "generated": "2026-07-18T16:55:05+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 17248,
-    "lead_days_moyen": 1.0,
+    "n_observations": 17304,
+    "lead_days_moyen": 1.1,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -92,6 +92,26 @@
       }
     },
     {
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "website": "https://majestic-escapegame.paris/",
+      "phone": "",
+      "n_rooms": 4,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 45.0,
+        "4": 40.0,
+        "5": 35.0,
+        "6": 32.0,
+        "7": 32.0
+      }
+    },
+    {
       "centre": "UNLEASH",
       "cp": "75012",
       "lat": 48.8394291,
@@ -109,6 +129,27 @@
       }
     },
     {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 1.0,
+      "demand_pct": 50.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      }
+    },
+    {
       "centre": "Joueurz Paris",
       "cp": "75018",
       "lat": 48.8903889,
@@ -122,24 +163,23 @@
       "prix_grille": null
     },
     {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 0.8,
-      "demand_pct": 33.3,
-      "prix_min": 30.0,
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "website": "https://www.theoneescape.com",
+      "phone": "09 75 90 83 68",
+      "n_rooms": 3,
+      "lead_days_avg": 0.7,
+      "demand_pct": 66.7,
+      "prix_min": 31.0,
       "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
       }
     },
     {
@@ -193,26 +233,6 @@
       }
     },
     {
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "website": "https://www.theoneescape.com",
-      "phone": "09 75 90 83 68",
-      "n_rooms": 3,
-      "lead_days_avg": 0.3,
-      "demand_pct": 33.3,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      }
-    },
-    {
       "centre": "Secrets Hunters",
       "cp": "75011",
       "lat": 48.848797,
@@ -250,26 +270,6 @@
         "4": 35.0,
         "5": 30.0,
         "6": 28.0
-      }
-    },
-    {
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "website": "https://majestic-escapegame.paris/",
-      "phone": "",
-      "n_rooms": 4,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 45.0,
-        "4": 40.0,
-        "5": 35.0,
-        "6": 32.0,
-        "7": 32.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 14,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 2
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-07-22",
       "next_time": "15:50",
       "lead_days": 4,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 21
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-22",
       "next_time": "09:45",
       "lead_days": 4,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 17
     },
     {
@@ -414,7 +414,7 @@
       "next_date": "2026-07-22",
       "next_time": "13:30",
       "lead_days": 4,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 50
     },
     {
@@ -443,7 +443,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:15",
       "lead_days": 3,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 41
     },
     {
@@ -472,7 +472,7 @@
       "next_date": "2026-07-20",
       "next_time": "12:00",
       "lead_days": 2,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 26
     },
     {
@@ -501,7 +501,7 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 28
     },
     {
@@ -530,7 +530,7 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 37
     },
     {
@@ -560,8 +560,38 @@
       "next_date": "2026-07-19",
       "next_time": "22:15",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 62
+    },
+    {
+      "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
+      "room": "Mission galactique",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "scifi",
+      "difficulty": 0,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 32.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 45.0,
+        "4": 40.0,
+        "5": 35.0,
+        "6": 32.0,
+        "7": 32.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
+      "available": true,
+      "next_date": "2026-07-19",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 309,
+      "n_reserved": 76
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -587,7 +617,7 @@
       "next_date": "2026-07-19",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 84
     },
     {
@@ -616,7 +646,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 35
     },
     {
@@ -644,7 +674,7 @@
       "next_date": "2026-07-19",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 113
     },
     {
@@ -672,8 +702,38 @@
       "next_date": "2026-07-19",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 93
+    },
+    {
+      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
+      "room": "L.A. Confidential",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
+      "available": true,
+      "next_date": "2026-07-19",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 309,
+      "n_reserved": 62
     },
     {
       "room_id": "thegame/5b4845a1ca5f6e1f2252ec01,5bc4474ad0877338631e9725,5d3af16d2427e85e5d17a8eb,5d3af2542427e85e5d17a918",
@@ -701,8 +761,38 @@
       "next_date": "2026-07-19",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 43
+    },
+    {
+      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
+      "room": "Le crime de l’Orient-Express",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "investigation",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 44.0,
+      "prix_max": 189.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      },
+      "reservation_url": "https://www.theoneescape.com",
+      "available": true,
+      "next_date": "2026-07-19",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 309,
+      "n_reserved": 84
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -730,7 +820,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 46
     },
     {
@@ -759,8 +849,98 @@
       "next_date": "2026-07-19",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 56
+    },
+    {
+      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
+      "room": "Titanic",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "histoire",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/titanic/",
+      "available": true,
+      "next_date": "2026-07-19",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 309,
+      "n_reserved": 79
+    },
+    {
+      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
+      "room": "Les aventuriers de l’Atlantide",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/atlantide/",
+      "available": true,
+      "next_date": "2026-07-19",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 309,
+      "n_reserved": 96
+    },
+    {
+      "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
+      "room": "Oggy prisonnier du temps",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "romans",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 3,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/oggy/",
+      "available": true,
+      "next_date": "2026-07-19",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 309,
+      "n_reserved": 97
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -788,7 +968,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 47
     },
     {
@@ -818,7 +998,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 48
     },
     {
@@ -841,7 +1021,7 @@
       "next_date": "2026-07-19",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 116
     },
     {
@@ -864,7 +1044,7 @@
       "next_date": "2026-07-19",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 106
     },
     {
@@ -887,7 +1067,7 @@
       "next_date": "2026-07-19",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 126
     },
     {
@@ -916,7 +1096,7 @@
       "next_date": "2026-07-19",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 48
     },
     {
@@ -945,7 +1125,7 @@
       "next_date": "2026-07-19",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 52
     },
     {
@@ -968,7 +1148,7 @@
       "next_date": "2026-07-19",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 91
     },
     {
@@ -997,7 +1177,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 43
     },
     {
@@ -1026,7 +1206,7 @@
       "next_date": "2026-07-19",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 49
     },
     {
@@ -1056,7 +1236,7 @@
       "next_date": "2026-07-19",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 91
     },
     {
@@ -1084,38 +1264,8 @@
       "next_date": "2026-07-18",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 88
-    },
-    {
-      "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
-      "room": "Mission galactique",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "scifi",
-      "difficulty": 0,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 32.0,
-      "prix_max": 60.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 45.0,
-        "4": 40.0,
-        "5": 35.0,
-        "6": 32.0,
-        "7": 32.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
-      "available": true,
-      "next_date": "2026-07-18",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 75
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -1135,10 +1285,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-18",
-      "next_time": "21:20",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 92
+      "n_obs": 309,
+      "n_reserved": 93
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -1167,7 +1317,7 @@
       "next_date": "2026-07-18",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 70
     },
     {
@@ -1197,7 +1347,7 @@
       "next_date": "2026-07-18",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 75
     },
     {
@@ -1218,40 +1368,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-07-18",
-      "next_time": "20:40",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 87
-    },
-    {
-      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
-      "room": "L.A. Confidential",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
-      "available": true,
-      "next_date": "2026-07-18",
-      "next_time": "20:30",
-      "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 61
+      "n_obs": 309,
+      "n_reserved": 88
     },
     {
       "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
@@ -1279,7 +1399,7 @@
       "next_date": "2026-07-18",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 132
     },
     {
@@ -1307,38 +1427,8 @@
       "next_date": "2026-07-18",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 124
-    },
-    {
-      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
-      "room": "Le crime de l’Orient-Express",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "investigation",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 44.0,
-      "prix_max": 189.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      },
-      "reservation_url": "https://www.theoneescape.com",
-      "available": true,
-      "next_date": "2026-07-18",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 83
     },
     {
       "room_id": "phobiaescapegame/6347f8f9b89b502bcbbf1bc7",
@@ -1366,7 +1456,7 @@
       "next_date": "2026-07-18",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 121
     },
     {
@@ -1396,68 +1486,8 @@
       "next_date": "2026-07-18",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 47
-    },
-    {
-      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
-      "room": "Titanic",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "histoire",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/titanic/",
-      "available": true,
-      "next_date": "2026-07-18",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 78
-    },
-    {
-      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
-      "room": "Les aventuriers de l’Atlantide",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/atlantide/",
-      "available": true,
-      "next_date": "2026-07-18",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 95
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -1485,38 +1515,8 @@
       "next_date": "2026-07-18",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 129
-    },
-    {
-      "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
-      "room": "Oggy prisonnier du temps",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "romans",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 3,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/oggy/",
-      "available": true,
-      "next_date": "2026-07-18",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 96
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1543,7 +1543,7 @@
       "next_date": "2026-07-18",
       "next_time": "21:15",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 114
     },
     {
@@ -1571,7 +1571,7 @@
       "next_date": "2026-07-18",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 100
     },
     {
@@ -1602,7 +1602,7 @@
       "next_date": "2026-07-18",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 92
     },
     {
@@ -1632,7 +1632,7 @@
       "next_date": "2026-07-18",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 95
     },
     {
@@ -1661,7 +1661,7 @@
       "next_date": "2026-07-18",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 48
     },
     {
@@ -1691,7 +1691,7 @@
       "next_date": "2026-07-18",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 131
     },
     {
@@ -1717,7 +1717,7 @@
       "next_date": "2026-07-18",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 136
     },
     {
@@ -1745,7 +1745,7 @@
       "next_date": "2026-07-18",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 138
     },
     {
@@ -1768,7 +1768,7 @@
       "next_date": "2026-07-18",
       "next_time": "21:15",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 98
     },
     {
@@ -1791,7 +1791,7 @@
       "next_date": "2026-07-18",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 84
     },
     {
@@ -1821,7 +1821,7 @@
       "next_date": "2026-07-18",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 308,
+      "n_obs": 309,
       "n_reserved": 39
     },
     {
@@ -1847,10 +1847,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
       "available": true,
       "next_date": "2026-07-18",
-      "next_time": "18:15",
+      "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 66
+      "n_obs": 309,
+      "n_reserved": 67
     },
     {
       "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
@@ -1875,10 +1875,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-18",
-      "next_time": "18:30",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 308,
-      "n_reserved": 73
+      "n_obs": 309,
+      "n_reserved": 74
     }
   ]
 }
