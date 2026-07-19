@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-19T15:57:13+00:00",
+    "generated": "2026-07-19T16:55:51+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 18088,
+    "n_observations": 18144,
     "lead_days_moyen": 0.8,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -99,6 +99,25 @@
       "prix_grille": null
     },
     {
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "website": "https://www.lantichambre.paris",
+      "phone": "+33 1 75 51 56 84",
+      "n_rooms": 2,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 28.0,
+      "prix_grille": {
+        "1": 50.0,
+        "2": 50.0,
+        "3": 50.0,
+        "4": 50.0,
+        "5": 50.0
+      }
+    },
+    {
       "centre": "Lock Academy",
       "cp": "75001",
       "lat": 48.8639412,
@@ -106,8 +125,8 @@
       "website": "https://lockacademy.com/",
       "phone": "09 83 86 86 96",
       "n_rooms": 6,
-      "lead_days_avg": 0.5,
-      "demand_pct": 16.7,
+      "lead_days_avg": 0.7,
+      "demand_pct": 33.3,
       "prix_min": 30.0,
       "prix_grille": {
         "1": 55.0,
@@ -117,25 +136,6 @@
         "5": 32.0,
         "6": 30.0,
         "7": 30.0
-      }
-    },
-    {
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "website": "https://www.lantichambre.paris",
-      "phone": "+33 1 75 51 56 84",
-      "n_rooms": 2,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "1": 50.0,
-        "2": 50.0,
-        "3": 50.0,
-        "4": 50.0,
-        "5": 50.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-08-03",
       "next_time": "10:00",
       "lead_days": 15,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 3
     },
     {
@@ -361,7 +361,7 @@
       "next_date": "2026-07-23",
       "next_time": "10:15",
       "lead_days": 4,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 43
     },
     {
@@ -384,7 +384,7 @@
       "next_date": "2026-07-22",
       "next_time": "15:50",
       "lead_days": 3,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 21
     },
     {
@@ -410,10 +410,10 @@
       "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
       "available": true,
       "next_date": "2026-07-22",
-      "next_time": "09:45",
+      "next_time": "11:45",
       "lead_days": 3,
-      "n_obs": 323,
-      "n_reserved": 17
+      "n_obs": 324,
+      "n_reserved": 18
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -443,7 +443,7 @@
       "next_date": "2026-07-22",
       "next_time": "13:30",
       "lead_days": 3,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 50
     },
     {
@@ -471,7 +471,7 @@
       "next_date": "2026-07-22",
       "next_time": "10:15",
       "lead_days": 3,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 73
     },
     {
@@ -499,7 +499,7 @@
       "next_date": "2026-07-22",
       "next_time": "10:30",
       "lead_days": 3,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 79
     },
     {
@@ -528,7 +528,7 @@
       "next_date": "2026-07-20",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 26
     },
     {
@@ -557,8 +557,38 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 28
+    },
+    {
+      "room_id": "lockacademy-paris/629e19e6759443af758e931e",
+      "room": "Révolte à la Lock",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
+      "available": true,
+      "next_date": "2026-07-20",
+      "next_time": "18:00",
+      "lead_days": 1,
+      "n_obs": 324,
+      "n_reserved": 73
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -586,7 +616,7 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 49
     },
     {
@@ -609,7 +639,7 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 120
     },
     {
@@ -632,7 +662,7 @@
       "next_date": "2026-07-20",
       "next_time": "17:45",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 109
     },
     {
@@ -655,7 +685,7 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 130
     },
     {
@@ -684,7 +714,7 @@
       "next_date": "2026-07-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 37
     },
     {
@@ -707,7 +737,7 @@
       "next_date": "2026-07-20",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 93
     },
     {
@@ -730,7 +760,7 @@
       "next_date": "2026-07-20",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 101
     },
     {
@@ -753,7 +783,7 @@
       "next_date": "2026-07-20",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 87
     },
     {
@@ -783,8 +813,38 @@
       "next_date": "2026-07-20",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 43
+    },
+    {
+      "room_id": "lantichambre/5b507e9910285904e2dd51c0",
+      "room": "Rock'n Spy",
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "theme": "cambriolage",
+      "difficulty": 5,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
+      "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
+      "available": true,
+      "next_date": "2026-07-20",
+      "next_time": "09:45",
+      "lead_days": 1,
+      "n_obs": 324,
+      "n_reserved": 94
     },
     {
       "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
@@ -813,7 +873,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 62
     },
     {
@@ -841,7 +901,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 91
     },
     {
@@ -871,7 +931,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 78
     },
     {
@@ -894,7 +954,7 @@
       "next_date": "2026-07-19",
       "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 99
     },
     {
@@ -921,7 +981,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 85
     },
     {
@@ -950,38 +1010,8 @@
       "next_date": "2026-07-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 38
-    },
-    {
-      "room_id": "lockacademy-paris/629e19e6759443af758e931e",
-      "room": "Révolte à la Lock",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
-      "available": true,
-      "next_date": "2026-07-19",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 72
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -1008,7 +1038,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 115
     },
     {
@@ -1036,10 +1066,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-examen/",
       "available": true,
       "next_date": "2026-07-19",
-      "next_time": "20:30",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 78
+      "n_obs": 324,
+      "n_reserved": 79
     },
     {
       "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
@@ -1061,7 +1091,7 @@
       "next_date": "2026-07-19",
       "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 92
     },
     {
@@ -1087,10 +1117,10 @@
       "reservation_url": "https://www.masterio.fr/la-pierre-de-lumiere/",
       "available": true,
       "next_date": "2026-07-19",
-      "next_time": "19:30",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 96
+      "n_obs": 324,
+      "n_reserved": 97
     },
     {
       "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
@@ -1117,10 +1147,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
       "available": true,
       "next_date": "2026-07-19",
-      "next_time": "20:30",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 63
+      "n_obs": 324,
+      "n_reserved": 64
     },
     {
       "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
@@ -1148,7 +1178,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 135
     },
     {
@@ -1176,7 +1206,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 129
     },
     {
@@ -1205,7 +1235,7 @@
       "next_date": "2026-07-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 45
     },
     {
@@ -1233,10 +1263,10 @@
       "reservation_url": "https://www.theoneescape.com",
       "available": true,
       "next_date": "2026-07-19",
-      "next_time": "20:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 86
+      "n_obs": 324,
+      "n_reserved": 87
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1264,7 +1294,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 46
     },
     {
@@ -1293,7 +1323,7 @@
       "next_date": "2026-07-19",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 129
     },
     {
@@ -1323,7 +1353,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 49
     },
     {
@@ -1352,7 +1382,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 59
     },
     {
@@ -1382,7 +1412,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 82
     },
     {
@@ -1412,7 +1442,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 99
     },
     {
@@ -1441,7 +1471,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 135
     },
     {
@@ -1471,7 +1501,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 100
     },
     {
@@ -1499,7 +1529,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 119
     },
     {
@@ -1527,7 +1557,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 104
     },
     {
@@ -1558,7 +1588,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 96
     },
     {
@@ -1588,7 +1618,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 98
     },
     {
@@ -1617,7 +1647,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 49
     },
     {
@@ -1647,7 +1677,7 @@
       "next_date": "2026-07-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 49
     },
     {
@@ -1677,7 +1707,7 @@
       "next_date": "2026-07-19",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 137
     },
     {
@@ -1701,10 +1731,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-07-19",
-      "next_time": "18:30",
+      "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 143
+      "n_obs": 324,
+      "n_reserved": 144
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1731,7 +1761,7 @@
       "next_date": "2026-07-19",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 143
     },
     {
@@ -1760,7 +1790,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 49
     },
     {
@@ -1789,7 +1819,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 54
     },
     {
@@ -1818,7 +1848,7 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 43
     },
     {
@@ -1847,38 +1877,8 @@
       "next_date": "2026-07-19",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 323,
+      "n_obs": 324,
       "n_reserved": 50
-    },
-    {
-      "room_id": "lantichambre/5b507e9910285904e2dd51c0",
-      "room": "Rock'n Spy",
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "theme": "cambriolage",
-      "difficulty": 5,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 28.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 37.0,
-        "4": 32.0,
-        "5": 30.0,
-        "6": 28.0,
-        "7": 28.0
-      },
-      "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
-      "available": true,
-      "next_date": "2026-07-19",
-      "next_time": "19:45",
-      "lead_days": 0,
-      "n_obs": 323,
-      "n_reserved": 93
     }
   ]
 }
