@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-20T21:11:41+00:00",
+    "generated": "2026-07-20T22:58:35+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 18984,
-    "lead_days_moyen": 1.4,
+    "n_observations": 19096,
+    "lead_days_moyen": 1.5,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -42,6 +42,24 @@
       }
     },
     {
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "website": "http://www.deepinsideparis.fr",
+      "phone": "01 42 05 56 53",
+      "n_rooms": 3,
+      "lead_days_avg": 4.0,
+      "demand_pct": 100.0,
+      "prix_min": 120.0,
+      "prix_grille": {
+        "2": 150.0,
+        "3": 190.0,
+        "4": 220.0,
+        "5": 240.0
+      }
+    },
+    {
       "centre": "Live Cinema",
       "cp": "75002",
       "lat": 48.8684999,
@@ -53,24 +71,6 @@
       "demand_pct": 100.0,
       "prix_min": 49,
       "prix_grille": null
-    },
-    {
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "website": "http://www.deepinsideparis.fr",
-      "phone": "01 42 05 56 53",
-      "n_rooms": 3,
-      "lead_days_avg": 2.0,
-      "demand_pct": 100.0,
-      "prix_min": 120.0,
-      "prix_grille": {
-        "2": 150.0,
-        "3": 190.0,
-        "4": 220.0,
-        "5": 240.0
-      }
     },
     {
       "centre": "Lock Academy",
@@ -332,8 +332,37 @@
       "next_date": "2026-08-03",
       "next_time": "10:00",
       "lead_days": 14,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 3
+    },
+    {
+      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
+      "room": "Le magicien de Paris",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 70,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-magicien-de-paris/",
+      "available": true,
+      "next_date": "2026-07-27",
+      "next_time": "10:00",
+      "lead_days": 7,
+      "n_obs": 341,
+      "n_reserved": 30
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -355,7 +384,7 @@
       "next_date": "2026-07-23",
       "next_time": "15:15",
       "lead_days": 3,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 22
     },
     {
@@ -384,7 +413,7 @@
       "next_date": "2026-07-23",
       "next_time": "10:15",
       "lead_days": 3,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 43
     },
     {
@@ -412,7 +441,7 @@
       "next_date": "2026-07-22",
       "next_time": "11:45",
       "lead_days": 2,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 18
     },
     {
@@ -443,7 +472,7 @@
       "next_date": "2026-07-22",
       "next_time": "13:30",
       "lead_days": 2,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 52
     },
     {
@@ -473,7 +502,7 @@
       "next_date": "2026-07-22",
       "next_time": "14:00",
       "lead_days": 2,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 52
     },
     {
@@ -503,7 +532,7 @@
       "next_date": "2026-07-22",
       "next_time": "14:00",
       "lead_days": 2,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 54
     },
     {
@@ -531,7 +560,7 @@
       "next_date": "2026-07-22",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 73
     },
     {
@@ -559,7 +588,7 @@
       "next_date": "2026-07-22",
       "next_time": "10:30",
       "lead_days": 2,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 79
     },
     {
@@ -589,7 +618,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 65
     },
     {
@@ -617,37 +646,8 @@
       "next_date": "2026-07-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 97
-    },
-    {
-      "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
-      "room": "Le magicien de Paris",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 70,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-magicien-de-paris/",
-      "available": true,
-      "next_date": "2026-07-21",
-      "next_time": "16:00",
-      "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 29
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -676,7 +676,7 @@
       "next_date": "2026-07-21",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 84
     },
     {
@@ -699,7 +699,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 102
     },
     {
@@ -726,7 +726,7 @@
       "next_date": "2026-07-21",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 92
     },
     {
@@ -755,7 +755,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 29
     },
     {
@@ -784,7 +784,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 41
     },
     {
@@ -814,7 +814,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 75
     },
     {
@@ -840,10 +840,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-21",
-      "next_time": "11:00",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 118
+      "n_obs": 341,
+      "n_reserved": 120
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -872,7 +872,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 82
     },
     {
@@ -895,7 +895,7 @@
       "next_date": "2026-07-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 93
     },
     {
@@ -923,7 +923,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 103
     },
     {
@@ -953,7 +953,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 67
     },
     {
@@ -982,7 +982,7 @@
       "next_date": "2026-07-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 141
     },
     {
@@ -1010,7 +1010,7 @@
       "next_date": "2026-07-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 134
     },
     {
@@ -1039,7 +1039,7 @@
       "next_date": "2026-07-21",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 48
     },
     {
@@ -1069,7 +1069,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 93
     },
     {
@@ -1098,7 +1098,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 50
     },
     {
@@ -1127,7 +1127,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 139
     },
     {
@@ -1156,7 +1156,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 64
     },
     {
@@ -1184,10 +1184,10 @@
       "reservation_url": "https://majestic-escapegame.paris/titanic/",
       "available": true,
       "next_date": "2026-07-21",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 88
+      "n_obs": 341,
+      "n_reserved": 89
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -1214,10 +1214,10 @@
       "reservation_url": "https://majestic-escapegame.paris/atlantide/",
       "available": true,
       "next_date": "2026-07-21",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 105
+      "n_obs": 341,
+      "n_reserved": 106
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -1245,7 +1245,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 144
     },
     {
@@ -1273,10 +1273,10 @@
       "reservation_url": "https://majestic-escapegame.paris/oggy/",
       "available": true,
       "next_date": "2026-07-21",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 107
+      "n_obs": 341,
+      "n_reserved": 108
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1303,7 +1303,7 @@
       "next_date": "2026-07-21",
       "next_time": "14:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 123
     },
     {
@@ -1331,7 +1331,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 108
     },
     {
@@ -1360,10 +1360,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-21",
-      "next_time": "11:00",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 100
+      "n_obs": 341,
+      "n_reserved": 102
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1392,7 +1392,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 103
     },
     {
@@ -1421,7 +1421,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 54
     },
     {
@@ -1450,7 +1450,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 51
     },
     {
@@ -1473,7 +1473,7 @@
       "next_date": "2026-07-21",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 125
     },
     {
@@ -1496,7 +1496,7 @@
       "next_date": "2026-07-21",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 112
     },
     {
@@ -1526,7 +1526,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 147
     },
     {
@@ -1552,7 +1552,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 151
     },
     {
@@ -1580,7 +1580,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 153
     },
     {
@@ -1603,7 +1603,7 @@
       "next_date": "2026-07-21",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 136
     },
     {
@@ -1632,7 +1632,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 41
     },
     {
@@ -1661,7 +1661,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 53
     },
     {
@@ -1688,10 +1688,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-07-21",
-      "next_time": "11:15",
+      "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
-      "n_reserved": 58
+      "n_obs": 341,
+      "n_reserved": 59
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1713,7 +1713,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 96
     },
     {
@@ -1742,7 +1742,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 48
     },
     {
@@ -1765,7 +1765,7 @@
       "next_date": "2026-07-21",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 103
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 52
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-07-21",
       "next_time": "16:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 90
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-07-21",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 48
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-21",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 339,
+      "n_obs": 341,
       "n_reserved": 99
     }
   ]
