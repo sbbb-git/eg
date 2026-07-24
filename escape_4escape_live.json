@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-07-24T21:03:07+00:00",
+    "generated": "2026-07-24T23:00:44+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 21672,
+    "n_observations": 21784,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -12,7 +12,7 @@
       "company": "wanderlust-escapegame",
       "company_name": "Wanderlust Escape Game, Paris",
       "n_rooms": 3,
-      "n_reserved": 184,
+      "n_reserved": 186,
       "n_avail_now": 0,
       "lead_days_avg": 4.0,
       "demand_pct": 100.0
@@ -39,9 +39,9 @@
       "company": "thegame",
       "company_name": "The Game, Paris",
       "n_rooms": 12,
-      "n_reserved": 702,
+      "n_reserved": 705,
       "n_avail_now": 0,
-      "lead_days_avg": 1.8,
+      "lead_days_avg": 2.0,
       "demand_pct": 100.0
     },
     {
@@ -54,6 +54,15 @@
       "demand_pct": 100.0
     },
     {
+      "company": "majestic-escapegame",
+      "company_name": "Majestic Escape Game, Paris",
+      "n_rooms": 4,
+      "n_reserved": 447,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.5,
+      "demand_pct": 100.0
+    },
+    {
       "company": "thequestfactory",
       "company_name": "The Quest Factory, Paris",
       "n_rooms": 3,
@@ -63,19 +72,10 @@
       "demand_pct": 100.0
     },
     {
-      "company": "majestic-escapegame",
-      "company_name": "Majestic Escape Game, Paris",
-      "n_rooms": 4,
-      "n_reserved": 444,
-      "n_avail_now": 0,
-      "lead_days_avg": 1.2,
-      "demand_pct": 100.0
-    },
-    {
       "company": "coqsenpate",
       "company_name": "Pandore & Associés, Paris",
       "n_rooms": 2,
-      "n_reserved": 221,
+      "n_reserved": 222,
       "n_avail_now": 0,
       "lead_days_avg": 1.0,
       "demand_pct": 100.0
@@ -166,7 +166,7 @@
       "next_time": "13:30",
       "lead_days": 10,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 4
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "09:45",
       "lead_days": 4,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 20
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:15",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 44
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "10:00",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 32
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "15:50",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 26
     },
     {
@@ -241,7 +241,7 @@
       "next_time": "13:00",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 35
     },
     {
@@ -256,8 +256,23 @@
       "next_time": "20:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 97
+    },
+    {
+      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
+      "room": "Titanic",
+      "centre": "Majestic Escape Game, Paris",
+      "theme": "histoire",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-26",
+      "next_time": "14:15",
+      "lead_days": 2,
+      "platform": "4escape",
+      "n_obs": 389,
+      "n_reserved": 102
     },
     {
       "room_id": "thegame/61692b777595e33dcdfe9f5c",
@@ -271,7 +286,7 @@
       "next_time": "21:45",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 48
     },
     {
@@ -286,7 +301,7 @@
       "next_time": "09:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 56
     },
     {
@@ -301,8 +316,23 @@
       "next_time": "09:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 76
+    },
+    {
+      "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
+      "room": "Le tremblement de terre",
+      "centre": "The Game, Paris",
+      "theme": "adventure",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-26",
+      "next_time": "09:30",
+      "lead_days": 2,
+      "platform": "4escape",
+      "n_obs": 389,
+      "n_reserved": 66
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -316,7 +346,7 @@
       "next_time": "09:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 63
     },
     {
@@ -331,7 +361,7 @@
       "next_time": "09:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 53
     },
     {
@@ -343,11 +373,26 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-26",
+      "next_time": "20:00",
+      "lead_days": 2,
+      "platform": "4escape",
+      "n_obs": 389,
+      "n_reserved": 64
+    },
+    {
+      "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
+      "room": "Braquage à la française",
+      "centre": "The Game, Paris",
+      "theme": "cambriolage",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-07-26",
       "next_time": "09:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 63
+      "n_obs": 389,
+      "n_reserved": 69
     },
     {
       "room_id": "thegame/5b4846f43e4e381f7695fabe",
@@ -361,7 +406,7 @@
       "next_time": "11:15",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 57
     },
     {
@@ -376,7 +421,7 @@
       "next_time": "20:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 61
     },
     {
@@ -391,7 +436,7 @@
       "next_time": "22:15",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 79
     },
     {
@@ -406,7 +451,7 @@
       "next_time": "12:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 109
     },
     {
@@ -421,7 +466,7 @@
       "next_time": "18:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 110
     },
     {
@@ -433,11 +478,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "11:20",
+      "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 116
+      "n_obs": 389,
+      "n_reserved": 117
     },
     {
       "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
@@ -451,7 +496,7 @@
       "next_time": "11:20",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 105
     },
     {
@@ -466,7 +511,7 @@
       "next_time": "12:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 123
     },
     {
@@ -481,7 +526,7 @@
       "next_time": "10:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 106
     },
     {
@@ -496,7 +541,7 @@
       "next_time": "12:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 114
     },
     {
@@ -511,7 +556,7 @@
       "next_time": "13:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 101
     },
     {
@@ -526,7 +571,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 131
     },
     {
@@ -541,7 +586,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 145
     },
     {
@@ -556,7 +601,7 @@
       "next_time": "12:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 62
     },
     {
@@ -571,7 +616,7 @@
       "next_time": "09:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 120
     },
     {
@@ -586,7 +631,7 @@
       "next_time": "13:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 86
     },
     {
@@ -601,7 +646,7 @@
       "next_time": "22:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 93
     },
     {
@@ -616,7 +661,7 @@
       "next_time": "20:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 60
     },
     {
@@ -631,7 +676,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 78
     },
     {
@@ -646,7 +691,7 @@
       "next_time": "20:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 58
     },
     {
@@ -661,23 +706,8 @@
       "next_time": "22:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 62
-    },
-    {
-      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
-      "room": "Titanic",
-      "centre": "Majestic Escape Game, Paris",
-      "theme": "histoire",
-      "players": "2 3 4 5",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "10:15",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 101
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -688,11 +718,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 120
+      "n_obs": 389,
+      "n_reserved": 121
     },
     {
       "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
@@ -703,11 +733,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 126
+      "n_obs": 389,
+      "n_reserved": 127
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -721,38 +751,8 @@
       "next_time": "12:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 387,
+      "n_obs": 389,
       "n_reserved": 119
-    },
-    {
-      "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
-      "room": "Le magasin de jouets",
-      "centre": "Masterio, Paris",
-      "theme": "fantasy",
-      "players": "2 3 4 5",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "10:30",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 125
-    },
-    {
-      "room_id": "phobiaescapegame/6347f8f9b89b502bcbbf1bc7",
-      "room": "Alice",
-      "centre": "Phobia, Paris",
-      "theme": "romans",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "10:00",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 387,
-      "n_reserved": 161
     }
   ]
 }
