@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-25T16:56:45+00:00",
+    "generated": "2026-07-25T17:13:20+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 22176,
-    "lead_days_moyen": 1.0,
+    "n_observations": 22232,
+    "lead_days_moyen": 1.1,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -109,6 +109,27 @@
       }
     },
     {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 1.2,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      }
+    },
+    {
       "centre": "THE ONE Escape",
       "cp": "75002",
       "lat": 48.8669279,
@@ -175,6 +196,25 @@
       "prix_grille": null
     },
     {
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "website": "http://www.thequestfactory.paris/",
+      "phone": "09 54 63 22 00",
+      "n_rooms": 3,
+      "lead_days_avg": 0.7,
+      "demand_pct": 66.7,
+      "prix_min": 28.0,
+      "prix_grille": {
+        "2": 54.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 30.0,
+        "6": 28.0
+      }
+    },
+    {
       "centre": "Pandore & Associés",
       "cp": "75011",
       "lat": 48.8595469,
@@ -186,27 +226,6 @@
       "demand_pct": 50.0,
       "prix_min": 32,
       "prix_grille": null
-    },
-    {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      }
     },
     {
       "centre": "Masterio",
@@ -246,25 +265,6 @@
       }
     },
     {
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "website": "http://www.thequestfactory.paris/",
-      "phone": "09 54 63 22 00",
-      "n_rooms": 3,
-      "lead_days_avg": 0.3,
-      "demand_pct": 33.3,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "2": 54.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 30.0,
-        "6": 28.0
-      }
-    },
-    {
       "centre": "Phobia Escape Game",
       "cp": "75013",
       "lat": 48.8351638,
@@ -272,8 +272,8 @@
       "website": "https://www.phobiaescapegame.fr/",
       "phone": "01 44 24 85 28",
       "n_rooms": 5,
-      "lead_days_avg": 0.2,
-      "demand_pct": 20.0,
+      "lead_days_avg": 0.4,
+      "demand_pct": 40.0,
       "prix_min": 78.0,
       "prix_grille": {
         "2": 129.0,
@@ -332,7 +332,7 @@
       "next_date": "2026-08-03",
       "next_time": "13:30",
       "lead_days": 9,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 4
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:45",
       "lead_days": 3,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 20
     },
     {
@@ -383,7 +383,7 @@
       "next_date": "2026-07-27",
       "next_time": "15:50",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 26
     },
     {
@@ -412,7 +412,7 @@
       "next_date": "2026-07-27",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 46
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-07-27",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 34
     },
     {
@@ -468,7 +468,7 @@
       "next_date": "2026-07-27",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 107
     },
     {
@@ -497,7 +497,7 @@
       "next_date": "2026-07-27",
       "next_time": "13:00",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 35
     },
     {
@@ -526,8 +526,38 @@
       "next_date": "2026-07-27",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 64
+    },
+    {
+      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
+      "room": "Un crime presque parfait",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
+      "available": true,
+      "next_date": "2026-07-27",
+      "next_time": "16:00",
+      "lead_days": 2,
+      "n_obs": 397,
+      "n_reserved": 63
     },
     {
       "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
@@ -555,7 +585,7 @@
       "next_date": "2026-07-27",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 66
     },
     {
@@ -584,7 +614,7 @@
       "next_date": "2026-07-27",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 58
     },
     {
@@ -614,7 +644,7 @@
       "next_date": "2026-07-26",
       "next_time": "22:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 79
     },
     {
@@ -642,7 +672,7 @@
       "next_date": "2026-07-26",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 110
     },
     {
@@ -672,7 +702,7 @@
       "next_date": "2026-07-26",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 98
     },
     {
@@ -695,7 +725,7 @@
       "next_date": "2026-07-26",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 120
     },
     {
@@ -724,7 +754,7 @@
       "next_date": "2026-07-26",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 48
     },
     {
@@ -754,7 +784,7 @@
       "next_date": "2026-07-26",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 87
     },
     {
@@ -784,7 +814,7 @@
       "next_date": "2026-07-26",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 94
     },
     {
@@ -812,7 +842,7 @@
       "next_date": "2026-07-26",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 121
     },
     {
@@ -843,8 +873,66 @@
       "next_date": "2026-07-26",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 62
+    },
+    {
+      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
+      "room": "L.A. Confidential",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
+      "available": true,
+      "next_date": "2026-07-26",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 397,
+      "n_reserved": 81
+    },
+    {
+      "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
+      "room": "Descente sous tension",
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "theme": "adventure",
+      "difficulty": 6,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 34.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 44.0,
+        "4": 39.0,
+        "5": 34.0
+      },
+      "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
+      "available": true,
+      "next_date": "2026-07-26",
+      "next_time": "18:00",
+      "lead_days": 1,
+      "n_obs": 397,
+      "n_reserved": 159
     },
     {
       "room_id": "thegame/5b4845a1ca5f6e1f2252ec01,5bc4474ad0877338631e9725,5d3af16d2427e85e5d17a8eb,5d3af2542427e85e5d17a918",
@@ -872,7 +960,7 @@
       "next_date": "2026-07-26",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 56
     },
     {
@@ -902,7 +990,7 @@
       "next_date": "2026-07-26",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 109
     },
     {
@@ -931,7 +1019,7 @@
       "next_date": "2026-07-26",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 58
     },
     {
@@ -960,8 +1048,38 @@
       "next_date": "2026-07-26",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 163
+    },
+    {
+      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
+      "room": "Très Cher Lock",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
+      "available": true,
+      "next_date": "2026-07-26",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 397,
+      "n_reserved": 62
     },
     {
       "room_id": "thegame/5b4849363e4e381f76962317",
@@ -989,7 +1107,7 @@
       "next_date": "2026-07-26",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 76
     },
     {
@@ -1019,7 +1137,7 @@
       "next_date": "2026-07-26",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 102
     },
     {
@@ -1049,7 +1167,7 @@
       "next_date": "2026-07-26",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 124
     },
     {
@@ -1079,7 +1197,7 @@
       "next_date": "2026-07-26",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 131
     },
     {
@@ -1109,7 +1227,7 @@
       "next_date": "2026-07-26",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 124
     },
     {
@@ -1138,7 +1256,7 @@
       "next_date": "2026-07-26",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 66
     },
     {
@@ -1161,8 +1279,34 @@
       "next_date": "2026-07-26",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 134
+    },
+    {
+      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
+      "room": "Loft 13",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "horror",
+      "difficulty": 6,
+      "duration": 60,
+      "min_players": 1,
+      "max_players": 2,
+      "prix_min": 78.0,
+      "prix_max": 78.0,
+      "prix_grille": {
+        "1": 78.0,
+        "2": 78.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
+      "available": true,
+      "next_date": "2026-07-26",
+      "next_time": "10:40",
+      "lead_days": 1,
+      "n_obs": 397,
+      "n_reserved": 174
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -1184,7 +1328,7 @@
       "next_date": "2026-07-26",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 148
     },
     {
@@ -1213,7 +1357,7 @@
       "next_date": "2026-07-26",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 53
     },
     {
@@ -1242,7 +1386,7 @@
       "next_date": "2026-07-26",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 70
     },
     {
@@ -1265,7 +1409,7 @@
       "next_date": "2026-07-26",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 110
     },
     {
@@ -1288,7 +1432,7 @@
       "next_date": "2026-07-26",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 116
     },
     {
@@ -1317,7 +1461,7 @@
       "next_date": "2026-07-26",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 61
     },
     {
@@ -1340,7 +1484,7 @@
       "next_date": "2026-07-26",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 103
     },
     {
@@ -1370,7 +1514,7 @@
       "next_date": "2026-07-26",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 63
     },
     {
@@ -1398,7 +1542,7 @@
       "next_date": "2026-07-25",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 138
     },
     {
@@ -1421,38 +1565,8 @@
       "next_date": "2026-07-25",
       "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 110
-    },
-    {
-      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
-      "room": "L.A. Confidential",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 80
     },
     {
       "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
@@ -1478,68 +1592,10 @@
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 164
-    },
-    {
-      "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
-      "room": "Descente sous tension",
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "theme": "adventure",
-      "difficulty": 6,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 34.0,
-      "prix_max": 60.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 44.0,
-        "4": 39.0,
-        "5": 34.0
-      },
-      "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 158
-    },
-    {
-      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
-      "room": "Très Cher Lock",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
-      "available": true,
-      "next_date": "2026-07-25",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 61
+      "n_obs": 397,
+      "n_reserved": 165
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -1567,7 +1623,7 @@
       "next_date": "2026-07-25",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 168
     },
     {
@@ -1593,10 +1649,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "19:45",
+      "next_time": "21:15",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 140
+      "n_obs": 397,
+      "n_reserved": 141
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1621,10 +1677,10 @@
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "20:00",
+      "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 129
+      "n_obs": 397,
+      "n_reserved": 130
     },
     {
       "room_id": "secretshunters/630e0712e628b39d8affaeff",
@@ -1654,38 +1710,8 @@
       "next_date": "2026-07-25",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 118
-    },
-    {
-      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
-      "room": "Un crime presque parfait",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 62
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1707,7 +1733,7 @@
       "next_date": "2026-07-25",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 125
     },
     {
@@ -1737,34 +1763,8 @@
       "next_date": "2026-07-25",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 396,
+      "n_obs": 397,
       "n_reserved": 175
-    },
-    {
-      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
-      "room": "Loft 13",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "horror",
-      "difficulty": 6,
-      "duration": 60,
-      "min_players": 1,
-      "max_players": 2,
-      "prix_min": 78.0,
-      "prix_max": 78.0,
-      "prix_grille": {
-        "1": 78.0,
-        "2": 78.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
-      "available": true,
-      "next_date": "2026-07-25",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 173
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1789,10 +1789,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "19:20",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 180
+      "n_obs": 397,
+      "n_reserved": 181
     },
     {
       "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
@@ -1817,10 +1817,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "18:15",
+      "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 90
+      "n_obs": 397,
+      "n_reserved": 91
     },
     {
       "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
@@ -1845,10 +1845,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "18:30",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 96
+      "n_obs": 397,
+      "n_reserved": 97
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1875,10 +1875,10 @@
       "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
       "available": true,
       "next_date": "2026-07-25",
-      "next_time": "19:45",
+      "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 396,
-      "n_reserved": 122
+      "n_obs": 397,
+      "n_reserved": 123
     }
   ]
 }
