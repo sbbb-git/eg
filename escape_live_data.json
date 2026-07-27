@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-27T21:09:33+00:00",
+    "generated": "2026-07-27T22:59:44+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,12 +8,30 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 23800,
-    "lead_days_moyen": 1.3,
+    "n_observations": 23912,
+    "lead_days_moyen": 1.4,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
   "centres": [
+    {
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "website": "http://www.deepinsideparis.fr",
+      "phone": "01 42 05 56 53",
+      "n_rooms": 3,
+      "lead_days_avg": 3.7,
+      "demand_pct": 100.0,
+      "prix_min": 120.0,
+      "prix_grille": {
+        "2": 150.0,
+        "3": 190.0,
+        "4": 220.0,
+        "5": 240.0
+      }
+    },
     {
       "centre": "Live Cinema",
       "cp": "75002",
@@ -65,24 +83,6 @@
         "18": 46.0,
         "19": 46.0,
         "20": 46.0
-      }
-    },
-    {
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "website": "http://www.deepinsideparis.fr",
-      "phone": "01 42 05 56 53",
-      "n_rooms": 3,
-      "lead_days_avg": 2.7,
-      "demand_pct": 100.0,
-      "prix_min": 120.0,
-      "prix_grille": {
-        "2": 150.0,
-        "3": 190.0,
-        "4": 220.0,
-        "5": 240.0
       }
     },
     {
@@ -308,6 +308,34 @@
   ],
   "rooms": [
     {
+      "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
+      "room": "Le taxidermiste",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 150.0,
+      "prix_max": 240.0,
+      "prix_grille": {
+        "2": 150.0,
+        "3": 190.0,
+        "4": 220.0,
+        "5": 240.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
+      "available": true,
+      "next_date": "2026-08-03",
+      "next_time": "09:45",
+      "lead_days": 7,
+      "n_obs": 427,
+      "n_reserved": 22
+    },
+    {
       "room_id": "wanderlust-escapegame/5f401daaaaca390e829da8b4",
       "room": "Super sauvetage",
       "centre": "Wanderlust Escapegame",
@@ -332,36 +360,8 @@
       "next_date": "2026-08-03",
       "next_time": "13:30",
       "lead_days": 7,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 4
-    },
-    {
-      "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
-      "room": "Le taxidermiste",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 150.0,
-      "prix_max": 240.0,
-      "prix_grille": {
-        "2": 150.0,
-        "3": 190.0,
-        "4": 220.0,
-        "5": 240.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
-      "available": true,
-      "next_date": "2026-07-31",
-      "next_time": "11:45",
-      "lead_days": 4,
-      "n_obs": 425,
-      "n_reserved": 21
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -383,7 +383,7 @@
       "next_date": "2026-07-30",
       "next_time": "15:50",
       "lead_days": 3,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 27
     },
     {
@@ -411,7 +411,7 @@
       "next_date": "2026-07-30",
       "next_time": "12:00",
       "lead_days": 3,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 113
     },
     {
@@ -440,7 +440,7 @@
       "next_date": "2026-07-30",
       "next_time": "10:00",
       "lead_days": 3,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 36
     },
     {
@@ -463,7 +463,7 @@
       "next_date": "2026-07-30",
       "next_time": "14:45",
       "lead_days": 3,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 141
     },
     {
@@ -486,7 +486,7 @@
       "next_date": "2026-07-30",
       "next_time": "14:45",
       "lead_days": 3,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 156
     },
     {
@@ -516,7 +516,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 81
     },
     {
@@ -545,7 +545,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 47
     },
     {
@@ -575,7 +575,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 101
     },
     {
@@ -598,7 +598,7 @@
       "next_date": "2026-07-28",
       "next_time": "17:20",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 130
     },
     {
@@ -625,7 +625,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 110
     },
     {
@@ -654,7 +654,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 37
     },
     {
@@ -683,7 +683,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 54
     },
     {
@@ -711,10 +711,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 90
+      "n_obs": 427,
+      "n_reserved": 91
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -739,10 +739,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "11:00",
+      "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 143
+      "n_obs": 427,
+      "n_reserved": 144
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -769,10 +769,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-examen/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 100
+      "n_obs": 427,
+      "n_reserved": 101
     },
     {
       "room_id": "coqsenpate/5e16519a581bf32e8a7ecb1b,66ed7e012eebf0da83490d79",
@@ -794,7 +794,7 @@
       "next_date": "2026-07-28",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 118
     },
     {
@@ -822,7 +822,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 128
     },
     {
@@ -853,7 +853,7 @@
       "next_date": "2026-07-28",
       "next_time": "13:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 67
     },
     {
@@ -881,10 +881,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 89
+      "n_obs": 427,
+      "n_reserved": 90
     },
     {
       "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
@@ -912,7 +912,7 @@
       "next_date": "2026-07-28",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 171
     },
     {
@@ -940,7 +940,7 @@
       "next_date": "2026-07-28",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 164
     },
     {
@@ -969,7 +969,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 60
     },
     {
@@ -999,7 +999,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 117
     },
     {
@@ -1028,7 +1028,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 63
     },
     {
@@ -1057,7 +1057,7 @@
       "next_date": "2026-07-28",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 173
     },
     {
@@ -1087,7 +1087,7 @@
       "next_date": "2026-07-28",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 67
     },
     {
@@ -1116,7 +1116,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 80
     },
     {
@@ -1146,7 +1146,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 108
     },
     {
@@ -1176,7 +1176,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 130
     },
     {
@@ -1205,7 +1205,7 @@
       "next_date": "2026-07-28",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 179
     },
     {
@@ -1235,7 +1235,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 136
     },
     {
@@ -1261,10 +1261,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "11:00",
+      "next_time": "13:30",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 151
+      "n_obs": 427,
+      "n_reserved": 152
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1291,7 +1291,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 139
     },
     {
@@ -1320,10 +1320,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "11:00",
+      "next_time": "13:30",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 127
+      "n_obs": 427,
+      "n_reserved": 128
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1352,7 +1352,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 131
     },
     {
@@ -1379,10 +1379,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "09:30",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 71
+      "n_obs": 427,
+      "n_reserved": 72
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -1410,7 +1410,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 66
     },
     {
@@ -1440,7 +1440,7 @@
       "next_date": "2026-07-28",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 67
     },
     {
@@ -1463,7 +1463,7 @@
       "next_date": "2026-07-28",
       "next_time": "17:45",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 132
     },
     {
@@ -1493,7 +1493,7 @@
       "next_date": "2026-07-28",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 185
     },
     {
@@ -1519,7 +1519,7 @@
       "next_date": "2026-07-28",
       "next_time": "14:40",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 183
     },
     {
@@ -1547,7 +1547,7 @@
       "next_date": "2026-07-28",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 193
     },
     {
@@ -1576,7 +1576,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 56
     },
     {
@@ -1605,7 +1605,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 69
     },
     {
@@ -1634,7 +1634,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 75
     },
     {
@@ -1657,7 +1657,7 @@
       "next_date": "2026-07-28",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 115
     },
     {
@@ -1686,7 +1686,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 59
     },
     {
@@ -1709,7 +1709,7 @@
       "next_date": "2026-07-28",
       "next_time": "17:45",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 122
     },
     {
@@ -1738,7 +1738,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 67
     },
     {
@@ -1761,7 +1761,7 @@
       "next_date": "2026-07-28",
       "next_time": "16:15",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 110
     },
     {
@@ -1791,7 +1791,7 @@
       "next_date": "2026-07-28",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 67
     },
     {
@@ -1817,10 +1817,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "10:15",
+      "next_time": "13:45",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 96
+      "n_obs": 427,
+      "n_reserved": 97
     },
     {
       "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
@@ -1845,10 +1845,10 @@
       "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/lacademx/",
       "available": true,
       "next_date": "2026-07-28",
-      "next_time": "10:30",
+      "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 425,
-      "n_reserved": 102
+      "n_obs": 427,
+      "n_reserved": 103
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1877,7 +1877,7 @@
       "next_date": "2026-07-28",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 425,
+      "n_obs": 427,
       "n_reserved": 134
     }
   ]
