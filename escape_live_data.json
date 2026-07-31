@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-07-31T21:02:57+00:00",
+    "generated": "2026-07-31T22:59:22+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 26432,
-    "lead_days_moyen": 1.4,
+    "n_observations": 26488,
+    "lead_days_moyen": 1.5,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -80,7 +80,7 @@
       "website": "https://thegame-france.com",
       "phone": "01 43 29 26 21",
       "n_rooms": 12,
-      "lead_days_avg": 1.6,
+      "lead_days_avg": 1.8,
       "demand_pct": 100.0,
       "prix_min": 110.0,
       "prix_grille": {
@@ -119,7 +119,7 @@
       "website": "http://www.thequestfactory.paris/",
       "phone": "09 54 63 22 00",
       "n_rooms": 3,
-      "lead_days_avg": 1.0,
+      "lead_days_avg": 1.3,
       "demand_pct": 100.0,
       "prix_min": 28.0,
       "prix_grille": {
@@ -327,7 +327,7 @@
       "next_date": "2026-08-04",
       "next_time": "21:05",
       "lead_days": 4,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 30
     },
     {
@@ -355,7 +355,7 @@
       "next_date": "2026-08-03",
       "next_time": "09:45",
       "lead_days": 3,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 22
     },
     {
@@ -384,7 +384,7 @@
       "next_date": "2026-08-03",
       "next_time": "12:15",
       "lead_days": 3,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 50
     },
     {
@@ -413,7 +413,7 @@
       "next_date": "2026-08-03",
       "next_time": "12:00",
       "lead_days": 3,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 40
     },
     {
@@ -441,7 +441,7 @@
       "next_date": "2026-08-03",
       "next_time": "13:45",
       "lead_days": 3,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 108
     },
     {
@@ -469,7 +469,7 @@
       "next_date": "2026-08-03",
       "next_time": "14:00",
       "lead_days": 3,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 113
     },
     {
@@ -497,7 +497,7 @@
       "next_date": "2026-08-03",
       "next_time": "13:30",
       "lead_days": 3,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 4
     },
     {
@@ -527,8 +527,36 @@
       "next_date": "2026-08-02",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 92
+    },
+    {
+      "room_id": "thequestfactory/608bb6116e100464ca326c19",
+      "room": "Le fléau du druide",
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "theme": "spooky",
+      "difficulty": 6,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 34.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 44.0,
+        "4": 39.0,
+        "5": 34.0
+      },
+      "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
+      "available": true,
+      "next_date": "2026-08-02",
+      "next_time": "14:00",
+      "lead_days": 2,
+      "n_obs": 473,
+      "n_reserved": 120
     },
     {
       "room_id": "thegame/63e3cc231084c231d1aa9fdf",
@@ -556,7 +584,7 @@
       "next_date": "2026-08-02",
       "next_time": "21:45",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 43
     },
     {
@@ -585,7 +613,7 @@
       "next_date": "2026-08-02",
       "next_time": "21:45",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 66
     },
     {
@@ -614,8 +642,66 @@
       "next_date": "2026-08-02",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 70
+    },
+    {
+      "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
+      "room": "L'avion",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "adventure",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-08-02",
+      "next_time": "13:00",
+      "lead_days": 2,
+      "n_obs": 473,
+      "n_reserved": 73
+    },
+    {
+      "room_id": "thegame/5b4849363e4e381f76962317",
+      "room": "La mission spatiale",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "scifi",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-08-02",
+      "next_time": "09:30",
+      "lead_days": 2,
+      "n_obs": 473,
+      "n_reserved": 92
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -643,7 +729,7 @@
       "next_date": "2026-08-02",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 65
     },
     {
@@ -672,7 +758,7 @@
       "next_date": "2026-08-02",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 80
     },
     {
@@ -701,7 +787,7 @@
       "next_date": "2026-08-02",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 67
     },
     {
@@ -730,36 +816,8 @@
       "next_date": "2026-08-02",
       "next_time": "20:00",
       "lead_days": 2,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 80
-    },
-    {
-      "room_id": "thequestfactory/608bb6116e100464ca326c19",
-      "room": "Le fléau du druide",
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "theme": "spooky",
-      "difficulty": 6,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 34.0,
-      "prix_max": 60.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 44.0,
-        "4": 39.0,
-        "5": 34.0
-      },
-      "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
-      "available": true,
-      "next_date": "2026-08-01",
-      "next_time": "16:00",
-      "lead_days": 1,
-      "n_obs": 472,
-      "n_reserved": 119
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -788,7 +846,7 @@
       "next_date": "2026-08-01",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 116
     },
     {
@@ -811,7 +869,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:40",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 140
     },
     {
@@ -838,7 +896,7 @@
       "next_date": "2026-08-01",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 121
     },
     {
@@ -868,7 +926,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 104
     },
     {
@@ -896,7 +954,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 156
     },
     {
@@ -926,7 +984,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 115
     },
     {
@@ -949,7 +1007,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 129
     },
     {
@@ -975,10 +1033,10 @@
       "reservation_url": "https://www.masterio.fr/la-pierre-de-lumiere/",
       "available": true,
       "next_date": "2026-08-01",
-      "next_time": "10:00",
+      "next_time": "12:45",
       "lead_days": 1,
-      "n_obs": 472,
-      "n_reserved": 145
+      "n_obs": 473,
+      "n_reserved": 146
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -1008,7 +1066,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 76
     },
     {
@@ -1038,7 +1096,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 104
     },
     {
@@ -1067,7 +1125,7 @@
       "next_date": "2026-08-01",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 191
     },
     {
@@ -1095,7 +1153,7 @@
       "next_date": "2026-08-01",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 180
     },
     {
@@ -1125,37 +1183,8 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 132
-    },
-    {
-      "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
-      "room": "L'avion",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "adventure",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-08-01",
-      "next_time": "09:30",
-      "lead_days": 1,
-      "n_obs": 472,
-      "n_reserved": 72
     },
     {
       "room_id": "phobiaescapegame/6347f8f9b89b502bcbbf1bc7",
@@ -1183,7 +1212,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 191
     },
     {
@@ -1213,37 +1242,8 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 76
-    },
-    {
-      "room_id": "thegame/5b4849363e4e381f76962317",
-      "room": "La mission spatiale",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "scifi",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-08-01",
-      "next_time": "21:45",
-      "lead_days": 1,
-      "n_obs": 472,
-      "n_reserved": 91
     },
     {
       "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
@@ -1272,7 +1272,7 @@
       "next_date": "2026-08-01",
       "next_time": "22:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 120
     },
     {
@@ -1302,7 +1302,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 148
     },
     {
@@ -1331,7 +1331,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 198
     },
     {
@@ -1361,7 +1361,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 155
     },
     {
@@ -1389,7 +1389,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 169
     },
     {
@@ -1417,7 +1417,7 @@
       "next_date": "2026-08-01",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 158
     },
     {
@@ -1448,7 +1448,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 143
     },
     {
@@ -1478,7 +1478,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 150
     },
     {
@@ -1507,7 +1507,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 85
     },
     {
@@ -1536,7 +1536,7 @@
       "next_date": "2026-08-01",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 79
     },
     {
@@ -1566,7 +1566,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 72
     },
     {
@@ -1587,10 +1587,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-08-01",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 472,
-      "n_reserved": 144
+      "n_obs": 473,
+      "n_reserved": 145
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1612,7 +1612,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 141
     },
     {
@@ -1642,7 +1642,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 204
     },
     {
@@ -1668,7 +1668,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 201
     },
     {
@@ -1696,7 +1696,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 212
     },
     {
@@ -1717,10 +1717,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-08-01",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 472,
-      "n_reserved": 159
+      "n_obs": 473,
+      "n_reserved": 160
     },
     {
       "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
@@ -1748,7 +1748,7 @@
       "next_date": "2026-08-01",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 87
     },
     {
@@ -1771,7 +1771,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:45",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 127
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 130
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-08-01",
       "next_time": "10:45",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 121
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-08-01",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 79
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-01",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 472,
+      "n_obs": 473,
       "n_reserved": 151
     }
   ]
