@@ -2,85 +2,303 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6c5ce7">
 <meta name="robots" content="noindex, nofollow">
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<title>Hub · Observatoire Escape IDF</title>
+<title>Observatoire Escape · Île-de-France</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-  :root { --bg:#0f1117; --card:#1a1d27; --acc:#6c5ce7; --txt:#e8e8f0; --muted:#8a8fa3; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-         background:radial-gradient(circle at 30% 20%,#1c1f2e,#0f1117); color:var(--txt);
-         min-height:100vh; display:flex; align-items:center; justify-content:center; }
-  .card { background:var(--card); padding:36px 40px; border-radius:16px; width:340px;
-          box-shadow:0 20px 60px rgba(0,0,0,.5); }
-  h1 { font-size:20px; margin:0 0 4px; }
-  p.sub { color:var(--muted); margin:0 0 24px; font-size:13px; }
-  input { width:100%; padding:12px 14px; border-radius:10px; border:1px solid #2a2e3c;
-          background:#11131b; color:var(--txt); font-size:15px; margin-bottom:12px; }
-  button { width:100%; padding:12px; border:0; border-radius:10px; background:var(--acc);
-           color:#fff; font-size:15px; font-weight:600; cursor:pointer; }
-  button:hover { filter:brightness(1.1); }
-  .err { color:#ff6b81; font-size:13px; min-height:18px; margin-top:8px; }
-  .links { margin-top:22px; display:none; }
-  .links a { display:block; padding:11px 14px; background:#11131b; border-radius:10px;
-             color:var(--txt); text-decoration:none; margin-bottom:8px; border:1px solid #2a2e3c; }
-  .links a:hover { border-color:var(--acc); }
-  .foot { color:var(--muted); font-size:11px; margin-top:18px; text-align:center; }
+  :root{--bg:#0f1117;--card:#1a1d27;--card2:#11131b;--acc:#6c5ce7;--txt:#e8e8f0;--muted:#8a8fa3;--line:#2a2e3c;--ok:#22c55e;--warn:#f59e0b}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);-webkit-tap-highlight-color:transparent}
+  /* ---- gate ---- */
+  #gate{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,#1c1f2e,#0f1117);z-index:200}
+  #gate .box{background:var(--card);padding:34px 36px;border-radius:16px;width:330px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #gate h1{font-size:19px;margin:0 0 4px}#gate p{color:var(--muted);font-size:13px;margin:0 0 22px}
+  #gate input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:15px;margin-bottom:12px}
+  #gate button{width:100%;padding:12px;border:0;border-radius:10px;background:var(--acc);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+  #gate .err{color:#ff6b81;font-size:13px;min-height:18px;margin-top:8px}
+  /* ---- app ---- */
+  #app{display:none}
+  header{padding:14px 16px calc(14px + env(safe-area-inset-top));background:linear-gradient(135deg,#1c1f2e,#0f1117);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line)}
+  .hrow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  h1{font-size:16px;margin:0;display:flex;align-items:center;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);flex:0 0 auto}
+  .out{color:var(--muted);font-size:12px;text-decoration:none;border:1px solid var(--line);padding:5px 9px;border-radius:8px}
+  .kpis{display:flex;gap:8px;margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-width:82px;flex:0 0 auto}
+  .kpi b{font-size:18px;display:block}.kpi span{color:var(--muted);font-size:11px}
+  nav{display:flex;position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+  nav button{flex:1;padding:13px 4px;background:none;border:0;color:var(--muted);font-size:13px;font-weight:600;border-bottom:2px solid transparent;cursor:pointer}
+  nav button.on{color:var(--txt);border-bottom-color:var(--acc)}
+  main{padding:14px 16px calc(30px + env(safe-area-inset-bottom));max-width:780px;margin:0 auto}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  input,select{background:var(--card2);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:10px 12px;font-size:14px;flex:1;min-width:120px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}
+  .card:active{border-color:var(--acc)}
+  .card h3{margin:0 0 3px;font-size:15px}.card .sub{color:var(--muted);font-size:12.5px}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .tag{background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:11px;color:var(--muted)}
+  .tag.free{color:var(--ok);border-color:#1f3a2a}.tag.full{color:var(--warn);border-color:#3a2f1a}
+  .muted{color:var(--muted)}.center{text-align:center;padding:40px 0;color:var(--muted)}
+  #map{height:70vh;border-radius:14px;border:1px solid var(--line)}
+  .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card);color:var(--txt)}
+  .leaflet-popup-content a{color:#a99cff}
+  .day{margin:18px 0 8px;font-size:13px;color:var(--acc);font-weight:700;text-transform:capitalize}
+  .slot{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:7px}
+  .slot .t{font-weight:700;font-variant-numeric:tabular-nums}.slot .p{color:var(--muted);font-size:13px}
+  /* overlay détail */
+  #ov{position:fixed;inset:0;background:rgba(8,9,14,.6);backdrop-filter:blur(3px);z-index:100;display:none}
+  #ov.on{display:block}
+  #sheet{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow-y:auto;background:var(--bg);border-radius:18px 18px 0 0;border-top:1px solid var(--line);padding:16px 16px calc(30px + env(safe-area-inset-bottom))}
+  #sheet .grab{width:40px;height:4px;background:var(--line);border-radius:2px;margin:2px auto 14px}
+  .bar{position:sticky;top:-16px;background:var(--bg);padding:6px 0;display:flex;justify-content:space-between;align-items:center;z-index:2}
+  .bar a{color:var(--muted);text-decoration:none;font-size:14px}
+  .salle,.centre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+  .salle{cursor:pointer}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+  .next{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .next span{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:12px;font-variant-numeric:tabular-nums}
+  /* panneau sources */
+  .src{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0}
+  .src h4{margin:0 0 8px;font-size:12px;color:var(--acc);text-transform:uppercase;letter-spacing:.04em}
+  .src .row{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+  .src .row:last-child{border:0}.src .row .k{color:var(--muted)}.src .row a{color:#a99cff;text-decoration:none;word-break:break-all;text-align:right}
+  .occ{height:8px;border-radius:4px;background:#2a2e3c;overflow:hidden;margin:8px 0}
+  .occ i{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#6c5ce7)}
 </style>
 </head>
 <body>
-  <div class="card">
+
+<!-- ═══ mot de passe ═══ -->
+<div id="gate">
+  <div class="box">
     <h1>🔐 Observatoire Escape IDF</h1>
-    <p class="sub">Accès privé — benchmark interne</p>
-
-    <div id="login">
-      <input id="pw" type="password" placeholder="Mot de passe" autocomplete="off"
-             onkeydown="if(event.key==='Enter')check()">
-      <button onclick="check()">Entrer</button>
-      <div class="err" id="err"></div>
-    </div>
-
-    <div class="links" id="links">
-      <a href="escape_app.html">📱 App live — centres · dispos · carte (mobile)</a>
-      <a href="escape_remplissage.html">🔥 Observatoire — enseignes · centres · salles (données réelles)</a>
-      <a href="escape_live.html">🟢 Catalogue & disponibilités</a>
-      <a href="#" onclick="logout();return false;">🚪 Se déconnecter</a>
-    </div>
-
-    <div class="foot">SHA-256 salé client-side · build v3 · noindex</div>
+    <p>Accès privé — benchmark interne</p>
+    <input id="pw" type="password" placeholder="Mot de passe" autocomplete="off"
+           onkeydown="if(event.key==='Enter')check()">
+    <button onclick="check()">Entrer</button>
+    <div class="err" id="err"></div>
   </div>
+</div>
 
+<!-- ═══ app ═══ -->
+<div id="app">
+  <header>
+    <div class="hrow">
+      <h1><span class="dot"></span> Observatoire Escape · IDF</h1>
+      <a class="out" href="#" onclick="logout();return false;">Quitter</a>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </header>
+  <nav>
+    <button data-tab="enseignes" class="on">Enseignes</button>
+    <button data-tab="salles">Salles</button>
+    <button data-tab="dispos">Dispos 7j</button>
+    <button data-tab="carte">Carte</button>
+  </nav>
+  <main id="view"><div class="center">Chargement des données en direct…</div></main>
+</div>
+
+<div id="ov"><div id="sheet"></div></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-// SHA-256 SALÉ du mot de passe. Pour changer :
-//   python3 -c "import hashlib;print(hashlib.sha256(('eg-obs-2026::'+'NOUVEAU').encode()).hexdigest())"
-const SALT = "eg-obs-2026::";
-const PW_HASH = "3051e55a55f577cba6ecfe04c946a1273b1eaf74c4f67daef994af7e55c8fa0c";
-const KEY = "escape_idf_auth";
+/* ───────── gate ───────── */
+const PW_HASH="8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
+const AUTH="escape_idf_auth";
+async function sha256(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
+async function check(){if(await sha256(document.getElementById("pw").value)===PW_HASH){sessionStorage.setItem(AUTH,PW_HASH);enter();}else{document.getElementById("err").textContent="Mot de passe incorrect.";}}
+function logout(){sessionStorage.removeItem(AUTH);location.reload();}
+function enter(){document.getElementById("gate").style.display="none";document.getElementById("app").style.display="block";if(!window._loaded){window._loaded=1;load().catch(e=>view().innerHTML=`<div class="center">Erreur (${e.message}). Réessaie dans un instant.</div>`);}}
+if(sessionStorage.getItem(AUTH)===PW_HASH){addEventListener("DOMContentLoaded",enter);}
 
-async function sha256(s){
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(SALT + s));
-  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
+/* ───────── données ───────── */
+const API="https://nbvronwfvoksonatolcs.supabase.co/rest/v1";
+const KEY="sb_publishable_5vFAbOG-hHH0s9mAoYmGyA_EG4bIQYj";
+const H={apikey:KEY,Authorization:"Bearer "+KEY};
+const $=s=>document.querySelector(s), view=()=>document.getElementById("view");
+const esc=s=>(s||"").replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
+const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1).toLowerCase():"";
+const today=new Date().toISOString().slice(0,10);
+const in7=new Date(Date.now()+8*864e5).toISOString().slice(0,10);
+const dfmt=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
+const ago=iso=>{if(!iso)return"—";const m=Math.round((Date.now()-new Date(iso))/60000);return m<60?`il y a ${m} min`:m<1440?`il y a ${Math.round(m/60)} h`:`il y a ${Math.round(m/1440)} j`;};
+async function q(path){const r=await fetch(API+"/"+path,{headers:H});if(!r.ok)throw new Error(r.status);return r.json();}
+async function qAll(path){let out=[],f=0;for(;;){const r=await fetch(API+"/"+path,{headers:{...H,Range:`${f}-${f+999}`}});if(!r.ok)throw new Error(r.status);const b=await r.json();out=out.concat(b);if(b.length<1000||f>12000)break;f+=1000;}return out;}
+async function qCount(path){const r=await fetch(API+"/"+path+"&limit=1",{headers:{...H,Prefer:"count=exact",Range:"0-0"}});const cr=r.headers.get("content-range");return cr&&cr.includes("/")?(+cr.split("/")[1]||0):0;}
+
+let EN={},CE={},SA={},CENTRES_BY_ENS={},SALLES_BY_CENTRE={},ENS_OF_SALLE={},CENTRE_OF_SALLE={},FREE=[],FREE_BY_SALLE={},map=null;
+
+async function load(){
+  const [ens,cent,sal,free]=await Promise.all([
+    q("enseignes?select=id,nom,website&order=nom"),
+    q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id"),
+    q("salles?select=id,nom,theme,duree_minutes,joueurs_min,joueurs_max,difficulty,centre_id"),
+    qAll(`sessions?select=salle_id,date,heure,prix_total_moyen&dispo=is.true&date=gte.${today}&date=lte.${in7}&order=date,heure`)
+  ]);
+  ens.forEach(e=>EN[e.id]=e);
+  cent.forEach(c=>{CE[c.id]=c;(CENTRES_BY_ENS[c.enseigne_id]=CENTRES_BY_ENS[c.enseigne_id]||[]).push(c);});
+  sal.forEach(s=>{SA[s.id]=s;(SALLES_BY_CENTRE[s.centre_id]=SALLES_BY_CENTRE[s.centre_id]||[]).push(s);
+    const c=CE[s.centre_id];CENTRE_OF_SALLE[s.id]=c;if(c)ENS_OF_SALLE[s.id]=c.enseigne_id;});
+  FREE=free;free.forEach(f=>FREE_BY_SALLE[f.salle_id]=(FREE_BY_SALLE[f.salle_id]||0)+1);
+  const villes=new Set(cent.map(c=>c.ville).filter(Boolean));
+  $("#kpis").innerHTML=[["🏷️",ens.length,"enseignes"],["🚪",sal.length,"salles"],["🟢",free.length,"libres 7j"],["📍",villes.size,"villes"]]
+    .map(([e,n,l])=>`<div class="kpi"><b>${n}</b><span>${e} ${l}</span></div>`).join("");
+  renderEnseignes();
 }
-async function check(){
-  const pw = document.getElementById("pw").value.trim().toLowerCase();
-  if(await sha256(pw) === PW_HASH){
-    sessionStorage.setItem(KEY, PW_HASH);
-    show();
-  } else {
-    document.getElementById("err").textContent = "Mot de passe incorrect.";
-  }
+const sallesOfEns=eid=>(CENTRES_BY_ENS[eid]||[]).flatMap(c=>SALLES_BY_CENTRE[c.id]||[]);
+const freeOfEns=eid=>sallesOfEns(eid).reduce((n,s)=>n+(FREE_BY_SALLE[s.id]||0),0);
+
+/* ───────── onglet ENSEIGNES ───────── */
+function renderEnseignes(){
+  view().innerHTML=`<div class="filters"><input id="qe" placeholder="🔍 enseigne…"></div><div id="list"></div>`;
+  const draw=()=>{
+    const tx=$("#qe").value.toLowerCase();
+    const rows=Object.values(EN).filter(e=>e.nom.toLowerCase().includes(tx))
+      .map(e=>({e,ns:sallesOfEns(e.id).length,nc:(CENTRES_BY_ENS[e.id]||[]).length,nf:freeOfEns(e.id)}))
+      .filter(r=>r.ns>0).sort((a,b)=>b.ns-a.ns);
+    $("#list").innerHTML=rows.map(({e,ns,nc,nf})=>`<div class="card" onclick="openEns('${e.id}')">
+      <h3>${esc(e.nom)}</h3>
+      <div class="tags"><span class="tag">${nc} centre${nc>1?"s":""}</span><span class="tag">${ns} salle${ns>1?"s":""}</span>
+      ${nf?`<span class="tag free">🟢 ${nf} libres 7j</span>`:`<span class="tag full">complet 7j</span>`}</div>
+    </div>`).join("")||`<div class="center">Aucune enseigne.</div>`;
+  };
+  draw();$("#qe").oninput=draw;
 }
-function show(){
-  document.getElementById("login").style.display="none";
-  document.getElementById("links").style.display="block";
+
+/* ───────── onglet SALLES ───────── */
+function renderSalles(){
+  const themes=[...new Set(Object.values(SA).map(s=>s.theme).filter(Boolean))].sort();
+  view().innerHTML=`<div class="filters"><input id="qs" placeholder="🔍 salle, enseigne, ville…">
+    <select id="qt"><option value="">Tous thèmes</option>${themes.map(t=>`<option value="${esc(t)}">${esc(cap(t))}</option>`).join("")}</select></div><div id="list"></div>`;
+  const draw=()=>{
+    const tx=$("#qs").value.toLowerCase(),th=$("#qt").value;
+    const rows=Object.values(SA).filter(s=>{
+      const c=CENTRE_OF_SALLE[s.id]||{},e=EN[ENS_OF_SALLE[s.id]]||{};
+      const hay=`${s.nom} ${e.nom||""} ${c.ville||""}`.toLowerCase();
+      return hay.includes(tx)&&(!th||s.theme===th);
+    }).sort((a,b)=>(FREE_BY_SALLE[b.id]||0)-(FREE_BY_SALLE[a.id]||0));
+    $("#list").innerHTML=rows.slice(0,300).map(s=>{
+      const c=CENTRE_OF_SALLE[s.id]||{},e=EN[ENS_OF_SALLE[s.id]]||{},nf=FREE_BY_SALLE[s.id]||0;
+      return `<div class="card" onclick="openSalle('${s.id}')"><h3>${esc(s.nom||"Salle")}</h3>
+        <div class="sub">${esc(e.nom||"")}${c.ville?" · "+esc(cap(c.ville)):""}</div>
+        <div class="tags">${s.theme?`<span class="tag">${esc(cap(s.theme))}</span>`:""}${s.duree_minutes?`<span class="tag">${s.duree_minutes} min</span>`:""}
+        ${nf?`<span class="tag free">🟢 ${nf} libres</span>`:`<span class="tag full">complet 7j</span>`}</div></div>`;
+    }).join("")||`<div class="center">Aucune salle.</div>`;
+    if(rows.length>300)$("#list").innerHTML+=`<div class="center">…${rows.length-300} autres — affine la recherche.</div>`;
+  };
+  draw();$("#qs").oninput=draw;$("#qt").oninput=draw;
 }
-function logout(){
-  sessionStorage.removeItem(KEY);
-  location.reload();
+
+/* ───────── détail ENSEIGNE ───────── */
+function ovOpen(html){$("#ov").classList.add("on");$("#sheet").innerHTML=html;$("#sheet").scrollTop=0;}
+function closeOv(){$("#ov").classList.remove("on");}
+$("#ov").onclick=e=>{if(e.target.id==="ov")closeOv();};
+
+async function openEns(eid){
+  const e=EN[eid];if(!e)return;
+  const centres=CENTRES_BY_ENS[eid]||[], salles=sallesOfEns(eid);
+  ovOpen(`<div class="grab"></div><div class="bar"><a onclick="closeOv()">✕ fermer</a></div>
+    <h2 style="margin:2px 0 2px;font-size:20px">${esc(e.nom)}</h2>
+    <div class="muted" style="font-size:13px">${centres.length} centre(s) · ${salles.length} salle(s)</div>
+    <div class="src" id="ensrc"><h4>Sources & fraîcheur</h4><div class="muted" style="font-size:13px">Chargement…</div></div>
+    <div id="enscentres"></div>`);
+  // corps : centres -> salles cliquables
+  $("#enscentres").innerHTML=centres.map(c=>{
+    const ss=SALLES_BY_CENTRE[c.id]||[];
+    return `<div class="centre"><h3 style="margin:0 0 2px;font-size:15px">📍 ${esc(c.nom||e.nom)}</h3>
+      <div class="muted" style="font-size:12.5px;margin-bottom:8px">${esc(c.adresse||"")}${c.ville?", "+esc(cap(c.ville)):""}</div>
+      ${ss.map(s=>{const nf=FREE_BY_SALLE[s.id]||0;return `<div class="salle" onclick="event.stopPropagation();openSalle('${s.id}','${eid}')">
+        <div style="display:flex;justify-content:space-between;gap:8px"><b style="font-size:14px">${esc(s.nom||"Salle")}</b>
+        <span class="tag ${nf?"free":"full"}">${nf?"🟢 "+nf+" libres":"complet 7j"}</span></div>
+        <div class="muted" style="font-size:12px;margin-top:3px">${[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min"].filter(Boolean).join(" · ")}</div></div>`;}).join("")}
+    </div>`;}).join("");
+  // sources (requêtes légères)
+  const ids=salles.map(s=>s.id);
+  let last="—",tot=0;
+  if(ids.length){const inq=`(${ids.join(",")})`;
+    const [ls,ct]=await Promise.all([
+      q(`sessions?select=dernier_vu&salle_id=in.${inq}&order=dernier_vu.desc&limit=1`),
+      qCount(`sessions?salle_id=in.${inq}`)]);
+    last=ago(ls[0]?.dernier_vu);tot=ct;}
+  $("#ensrc").innerHTML=`<h4>Sources & fraîcheur</h4>
+    ${e.website?`<div class="row"><span class="k">Site officiel</span><a href="${esc(e.website)}" target="_blank" rel="noopener">${esc(e.website.replace(/^https?:\/\//,""))} ↗</a></div>`:""}
+    <div class="row"><span class="k">Réservation</span><span>en ligne — relevé automatique</span></div>
+    <div class="row"><span class="k">Dernier relevé</span><span>${last}</span></div>
+    <div class="row"><span class="k">Créneaux observés</span><span>${tot.toLocaleString("fr-FR")}</span></div>
+    <div class="row"><span class="k">Créneaux libres 7j</span><span>${freeOfEns(eid)}</span></div>`;
 }
-if(sessionStorage.getItem(KEY) === PW_HASH){ show(); }
+
+/* ───────── détail SALLE ───────── */
+async function openSalle(sid,fromEns){
+  const s=SA[sid];if(!s)return;
+  const c=CENTRE_OF_SALLE[sid]||{},e=EN[ENS_OF_SALLE[sid]]||{};
+  ovOpen(`<div class="grab"></div><div class="bar">
+      <a onclick="${fromEns?`openEns('${fromEns}')`:"closeOv()"}">${fromEns?"‹ "+esc(e.nom):"✕ fermer"}</a>
+      <a onclick="closeOv()">✕</a></div>
+    <h2 style="margin:2px 0 2px;font-size:20px">${esc(s.nom||"Salle")}</h2>
+    <div class="muted" style="font-size:13px">${esc(e.nom||"")}${c.nom?" · "+esc(c.nom):""}${c.ville?" ("+esc(cap(c.ville))+")":""}</div>
+    <div class="chips">${[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min",(s.joueurs_min||s.joueurs_max)&&`${s.joueurs_min||"?"}–${s.joueurs_max||"?"} joueurs`,s.difficulty&&"difficulté "+"★".repeat(Math.min(5,s.difficulty))].filter(Boolean).map(t=>`<span class="tag">${esc(String(t))}</span>`).join("")}</div>
+    <div class="src" id="ssrc"><h4>Sources & fraîcheur</h4><div class="muted" style="font-size:13px">Chargement…</div></div>
+    <div id="snext"><div class="muted" style="font-size:13px">Chargement des créneaux…</div></div>`);
+  const [next,lastSeen,totObs,nFree,nBook]=await Promise.all([
+    q(`sessions?select=date,heure,prix_total_moyen&salle_id=eq.${sid}&dispo=is.true&date=gte.${today}&order=date,heure&limit=24`),
+    q(`sessions?select=dernier_vu,date&salle_id=eq.${sid}&order=dernier_vu.desc&limit=1`),
+    qCount(`sessions?salle_id=eq.${sid}`),
+    qCount(`sessions?salle_id=eq.${sid}&date=gte.${today}&dispo=is.true`),
+    qCount(`sessions?salle_id=eq.${sid}&date=gte.${today}&dispo=is.false`)
+  ]);
+  const tot=nFree+nBook, occ=tot?Math.round(100*nBook/tot):0;
+  $("#ssrc").innerHTML=`<h4>Sources & fraîcheur</h4>
+    ${e.website?`<div class="row"><span class="k">Site officiel</span><a href="${esc(e.website)}" target="_blank" rel="noopener">${esc(e.website.replace(/^https?:\/\//,""))} ↗</a></div>`:""}
+    <div class="row"><span class="k">Réservation</span><span>en ligne — relevé automatique</span></div>
+    <div class="row"><span class="k">Dernier relevé</span><span>${ago(lastSeen[0]?.dernier_vu)}</span></div>
+    <div class="row"><span class="k">Créneaux observés</span><span>${totObs.toLocaleString("fr-FR")}</span></div>
+    <div class="row"><span class="k">Occupation à venir</span><span>${occ}% (${nBook}/${tot})</span></div>
+    <div class="occ"><i style="width:${occ}%"></i></div>`;
+  $("#snext").innerHTML=`<h4 style="font-size:13px;color:var(--acc);margin:14px 0 8px">PROCHAINS CRÉNEAUX LIBRES</h4>`+
+    (next.length?next.map(o=>`<div class="slot"><div class="t">${dfmt(o.date)} · ${o.heure}</div><div class="p">${o.prix_total_moyen?Math.round(o.prix_total_moyen)+"€":""}</div></div>`).join(""):`<div class="muted" style="font-size:13px">Complet sur la période.</div>`);
+}
+
+/* ───────── onglet DISPOS ───────── */
+function renderDispos(){
+  const villes=[...new Set(Object.values(CE).map(c=>c.ville).filter(Boolean))].sort();
+  view().innerHTML=`<div class="filters"><select id="dv"><option value="">Toutes villes</option>${villes.map(v=>`<option>${esc(cap(v))}</option>`).join("")}</select></div><div id="list"></div>`;
+  const draw=()=>{
+    const vv=$("#dv").value.toLowerCase();
+    const rows=FREE.filter(f=>{const c=CENTRE_OF_SALLE[f.salle_id];return c&&(!vv||(c.ville||"").toLowerCase()===vv);});
+    const byDay={};rows.forEach(f=>(byDay[f.date]=byDay[f.date]||[]).push(f));
+    const days=Object.keys(byDay).sort();
+    $("#list").innerHTML=days.length?days.map(d=>`<div class="day">${dfmt(d)} · ${byDay[d].length} créneaux</div>`+
+      byDay[d].slice(0,60).map(f=>{const s=SA[f.salle_id]||{},c=CENTRE_OF_SALLE[f.salle_id]||{},e=EN[ENS_OF_SALLE[f.salle_id]]||{};
+        return `<div class="slot" style="cursor:pointer" onclick="openSalle('${f.salle_id}')"><div><div class="t">${f.heure}</div>
+          <div class="muted" style="font-size:12px">${esc(s.nom||"")} · ${esc(e.nom||"")}${c.ville?" ("+esc(cap(c.ville))+")":""}</div></div>
+          <div class="p">${f.prix_total_moyen?Math.round(f.prix_total_moyen)+"€":""}</div></div>`;}).join("")
+    ).join(""):`<div class="center">Aucun créneau libre sur 7 jours.</div>`;
+  };
+  draw();$("#dv").oninput=draw;
+}
+
+/* ───────── onglet CARTE ───────── */
+function renderCarte(){
+  view().innerHTML=`<div id="map"></div>`;
+  setTimeout(()=>{
+    map=L.map("map").setView([48.857,2.352],10);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{attribution:"© OSM © CARTO",maxZoom:19}).addTo(map);
+    Object.values(CE).filter(c=>c.lat&&c.lon).forEach(c=>{
+      const nf=(SALLES_BY_CENTRE[c.id]||[]).reduce((n,s)=>n+(FREE_BY_SALLE[s.id]||0),0);
+      const e=EN[c.enseigne_id]||{};
+      L.circleMarker([c.lat,c.lon],{radius:7,color:nf?"#22c55e":"#6c5ce7",fillColor:nf?"#22c55e":"#6c5ce7",fillOpacity:.8,weight:1})
+       .addTo(map).bindPopup(`<b>${esc(e.nom||c.nom||"")}</b><br>${esc(cap(c.ville||""))} · ${nf} libres 7j<br><a href="#" onclick="map.closePopup();openEns('${c.enseigne_id}');return false">Voir l'enseigne →</a>`);
+    });
+  },60);
+}
+
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
+  ({enseignes:renderEnseignes,salles:renderSalles,dispos:renderDispos,carte:renderCarte}[b.dataset.tab])();
+});
 </script>
 </body>
 </html>
