@@ -105,10 +105,11 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 /* ───────── gate ───────── */
-const PW_HASH="8e598211958dd442845b9c0c83f55d185b5eac4ccd5a9f86a2c07f3d3cd03fe2";
+const SALT="eg-obs-2026::";
+const PW_HASH="3051e55a55f577cba6ecfe04c946a1273b1eaf74c4f67daef994af7e55c8fa0c";
 const AUTH="escape_idf_auth";
-async function sha256(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
-async function check(){if(await sha256(document.getElementById("pw").value)===PW_HASH){sessionStorage.setItem(AUTH,PW_HASH);enter();}else{document.getElementById("err").textContent="Mot de passe incorrect.";}}
+async function sha256(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(SALT+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
+async function check(){if(await sha256(document.getElementById("pw").value.trim().toLowerCase())===PW_HASH){sessionStorage.setItem(AUTH,PW_HASH);enter();}else{document.getElementById("err").textContent="Mot de passe incorrect.";}}
 function logout(){sessionStorage.removeItem(AUTH);location.reload();}
 function enter(){document.getElementById("gate").style.display="none";document.getElementById("app").style.display="block";if(!window._loaded){window._loaded=1;load().catch(e=>view().innerHTML=`<div class="center">Erreur (${e.message}). Réessaie dans un instant.</div>`);}}
 if(sessionStorage.getItem(AUTH)===PW_HASH){addEventListener("DOMContentLoaded",enter);}
