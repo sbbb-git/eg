@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-08T07:47:20+00:00",
+    "generated": "2026-08-08T08:37:43+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 31808,
+    "n_observations": 31864,
     "lead_days_moyen": 1.8,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -69,7 +69,7 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 1.7,
+      "lead_days_avg": 2.0,
       "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
@@ -332,7 +332,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:15",
       "lead_days": 18,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 122
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:30",
       "lead_days": 18,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 129
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:00",
       "lead_days": 18,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 22
     },
     {
@@ -417,7 +417,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 203
     },
     {
@@ -446,7 +446,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 210
     },
     {
@@ -476,7 +476,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 217
     },
     {
@@ -502,7 +502,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:40",
       "lead_days": 6,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 215
     },
     {
@@ -530,7 +530,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 222
     },
     {
@@ -558,8 +558,37 @@
       "next_date": "2026-08-10",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 26
+    },
+    {
+      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
+      "room": "Le palais de l'horreur",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
+      "available": true,
+      "next_date": "2026-08-10",
+      "next_time": "10:15",
+      "lead_days": 2,
+      "n_obs": 569,
+      "n_reserved": 63
     },
     {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
@@ -587,7 +616,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 53
     },
     {
@@ -616,7 +645,7 @@
       "next_date": "2026-08-10",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 55
     },
     {
@@ -639,37 +668,8 @@
       "next_date": "2026-08-09",
       "next_time": "19:20",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 38
-    },
-    {
-      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
-      "room": "Le palais de l'horreur",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
-      "available": true,
-      "next_date": "2026-08-09",
-      "next_time": "22:15",
-      "lead_days": 1,
-      "n_obs": 568,
-      "n_reserved": 62
     },
     {
       "room_id": "thegame/61692b777595e33dcdfe9f5c",
@@ -697,7 +697,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 79
     },
     {
@@ -726,7 +726,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 91
     },
     {
@@ -756,7 +756,7 @@
       "next_date": "2026-08-09",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 85
     },
     {
@@ -785,7 +785,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 83
     },
     {
@@ -814,7 +814,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 82
     },
     {
@@ -843,7 +843,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 96
     },
     {
@@ -873,7 +873,7 @@
       "next_date": "2026-08-08",
       "next_time": "11:45",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 108
     },
     {
@@ -901,7 +901,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 137
     },
     {
@@ -929,10 +929,10 @@
       "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 137
+      "n_obs": 569,
+      "n_reserved": 138
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -952,10 +952,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "12:00",
+      "next_time": "12:40",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 170
+      "n_obs": 569,
+      "n_reserved": 171
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -981,7 +981,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 146
     },
     {
@@ -1011,7 +1011,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 126
     },
     {
@@ -1039,7 +1039,7 @@
       "next_date": "2026-08-08",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 176
     },
     {
@@ -1069,7 +1069,7 @@
       "next_date": "2026-08-08",
       "next_time": "11:30",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 134
     },
     {
@@ -1090,10 +1090,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "12:00",
+      "next_time": "12:40",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 153
+      "n_obs": 569,
+      "n_reserved": 154
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -1120,7 +1120,7 @@
       "next_date": "2026-08-08",
       "next_time": "19:30",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 171
     },
     {
@@ -1149,10 +1149,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-le-casse-du-siecle/",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "10:30",
+      "next_time": "18:30",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 87
+      "n_obs": 569,
+      "n_reserved": 88
     },
     {
       "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
@@ -1181,7 +1181,7 @@
       "next_date": "2026-08-08",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 121
     },
     {
@@ -1210,7 +1210,7 @@
       "next_date": "2026-08-08",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 223
     },
     {
@@ -1238,7 +1238,7 @@
       "next_date": "2026-08-08",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 204
     },
     {
@@ -1267,7 +1267,7 @@
       "next_date": "2026-08-08",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 86
     },
     {
@@ -1295,10 +1295,10 @@
       "reservation_url": "https://www.theoneescape.com",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "12:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 161
+      "n_obs": 569,
+      "n_reserved": 162
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -1327,7 +1327,7 @@
       "next_date": "2026-08-08",
       "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 94
     },
     {
@@ -1356,7 +1356,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 109
     },
     {
@@ -1384,10 +1384,10 @@
       "reservation_url": "https://majestic-escapegame.paris/titanic/",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 148
+      "n_obs": 569,
+      "n_reserved": 149
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -1416,7 +1416,7 @@
       "next_date": "2026-08-08",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 177
     },
     {
@@ -1444,10 +1444,10 @@
       "reservation_url": "https://majestic-escapegame.paris/oggy/",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 0,
-      "n_obs": 568,
-      "n_reserved": 185
+      "n_obs": 569,
+      "n_reserved": 186
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1474,7 +1474,7 @@
       "next_date": "2026-08-08",
       "next_time": "13:45",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 199
     },
     {
@@ -1502,7 +1502,7 @@
       "next_date": "2026-08-08",
       "next_time": "13:15",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 188
     },
     {
@@ -1533,7 +1533,7 @@
       "next_date": "2026-08-08",
       "next_time": "11:30",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 171
     },
     {
@@ -1563,7 +1563,7 @@
       "next_date": "2026-08-08",
       "next_time": "16:15",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 187
     },
     {
@@ -1592,7 +1592,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 105
     },
     {
@@ -1621,7 +1621,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 103
     },
     {
@@ -1644,7 +1644,7 @@
       "next_date": "2026-08-08",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 189
     },
     {
@@ -1667,7 +1667,7 @@
       "next_date": "2026-08-08",
       "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 161
     },
     {
@@ -1690,7 +1690,7 @@
       "next_date": "2026-08-08",
       "next_time": "13:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 204
     },
     {
@@ -1719,7 +1719,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 95
     },
     {
@@ -1748,7 +1748,7 @@
       "next_date": "2026-08-08",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 106
     },
     {
@@ -1771,7 +1771,7 @@
       "next_date": "2026-08-08",
       "next_time": "10:45",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 145
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-08-08",
       "next_time": "12:15",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 150
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-08-08",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 143
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-08-08",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 94
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-08",
       "next_time": "11:45",
       "lead_days": 0,
-      "n_obs": 568,
+      "n_obs": 569,
       "n_reserved": 182
     }
   ]
