@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-08T18:36:10+00:00",
+    "generated": "2026-08-08T19:29:05+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 32592,
-    "lead_days_moyen": 2.3,
+    "n_observations": 32648,
+    "lead_days_moyen": 2.4,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -132,6 +132,25 @@
       "prix_grille": null
     },
     {
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "website": "http://www.thequestfactory.paris/",
+      "phone": "09 54 63 22 00",
+      "n_rooms": 3,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 28.0,
+      "prix_grille": {
+        "2": 54.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 30.0,
+        "6": 28.0
+      }
+    },
+    {
       "centre": "Majestic Escape Game",
       "cp": "75001",
       "lat": 48.863708,
@@ -203,6 +222,24 @@
       }
     },
     {
+      "centre": "Masterio",
+      "cp": "75014",
+      "lat": 48.8346257,
+      "lon": 2.3158672,
+      "website": "https://www.masterio.fr/",
+      "phone": "0642200284",
+      "n_rooms": 2,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 35.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 35.0
+      }
+    },
+    {
       "centre": "Joueurz Paris",
       "cp": "75018",
       "lat": 48.8903889,
@@ -229,24 +266,6 @@
       "prix_grille": null
     },
     {
-      "centre": "Masterio",
-      "cp": "75014",
-      "lat": 48.8346257,
-      "lon": 2.3158672,
-      "website": "https://www.masterio.fr/",
-      "phone": "0642200284",
-      "n_rooms": 2,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0,
-      "prix_min": 35.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 41.0,
-        "4": 36.0,
-        "5": 35.0
-      }
-    },
-    {
       "centre": "L'Antichambre",
       "cp": "75018",
       "lat": 48.8859971,
@@ -254,8 +273,8 @@
       "website": "https://www.lantichambre.paris",
       "phone": "+33 1 75 51 56 84",
       "n_rooms": 2,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
       "prix_min": 28.0,
       "prix_grille": {
         "1": 50.0,
@@ -263,25 +282,6 @@
         "3": 50.0,
         "4": 50.0,
         "5": 50.0
-      }
-    },
-    {
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "website": "http://www.thequestfactory.paris/",
-      "phone": "09 54 63 22 00",
-      "n_rooms": 3,
-      "lead_days_avg": 0.3,
-      "demand_pct": 33.3,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "2": 54.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 30.0,
-        "6": 28.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:15",
       "lead_days": 18,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 122
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:30",
       "lead_days": 18,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 129
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:00",
       "lead_days": 18,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 22
     },
     {
@@ -417,7 +417,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 203
     },
     {
@@ -446,7 +446,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 210
     },
     {
@@ -476,7 +476,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 217
     },
     {
@@ -502,7 +502,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:40",
       "lead_days": 6,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 215
     },
     {
@@ -530,7 +530,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 222
     },
     {
@@ -558,7 +558,7 @@
       "next_date": "2026-08-10",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 26
     },
     {
@@ -588,7 +588,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 109
     },
     {
@@ -617,7 +617,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 63
     },
     {
@@ -646,7 +646,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 53
     },
     {
@@ -675,7 +675,7 @@
       "next_date": "2026-08-10",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 55
     },
     {
@@ -698,8 +698,36 @@
       "next_date": "2026-08-09",
       "next_time": "19:20",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 38
+    },
+    {
+      "room_id": "thequestfactory/608bb6116e100464ca326c19",
+      "room": "Le fléau du druide",
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "theme": "spooky",
+      "difficulty": 6,
+      "duration": 75,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 34.0,
+      "prix_max": 60.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 44.0,
+        "4": 39.0,
+        "5": 34.0
+      },
+      "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
+      "available": true,
+      "next_date": "2026-08-09",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 583,
+      "n_reserved": 139
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -728,7 +756,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 139
     },
     {
@@ -751,7 +779,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 180
     },
     {
@@ -778,7 +806,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 147
     },
     {
@@ -807,7 +835,7 @@
       "next_date": "2026-08-09",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 80
     },
     {
@@ -837,7 +865,7 @@
       "next_date": "2026-08-09",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 127
     },
     {
@@ -867,7 +895,7 @@
       "next_date": "2026-08-09",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 142
     },
     {
@@ -890,7 +918,7 @@
       "next_date": "2026-08-09",
       "next_time": "14:40",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 161
     },
     {
@@ -918,7 +946,7 @@
       "next_date": "2026-08-09",
       "next_time": "15:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 173
     },
     {
@@ -949,7 +977,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 90
     },
     {
@@ -979,8 +1007,37 @@
       "next_date": "2026-08-09",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 124
+    },
+    {
+      "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
+      "room": "Cannibal Island",
+      "centre": "The Quest Factory",
+      "cp": "75010",
+      "lat": 48.8773877,
+      "lon": 2.3544906,
+      "theme": "spooky",
+      "difficulty": 7,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 28.0,
+      "prix_max": 54.0,
+      "prix_grille": {
+        "2": 54.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 30.0,
+        "6": 28.0
+      },
+      "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
+      "available": true,
+      "next_date": "2026-08-09",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 583,
+      "n_reserved": 227
     },
     {
       "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
@@ -1007,7 +1064,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 206
     },
     {
@@ -1036,7 +1093,7 @@
       "next_date": "2026-08-09",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 87
     },
     {
@@ -1066,7 +1123,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 163
     },
     {
@@ -1095,7 +1152,7 @@
       "next_date": "2026-08-09",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 94
     },
     {
@@ -1125,7 +1182,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 97
     },
     {
@@ -1154,7 +1211,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 113
     },
     {
@@ -1184,7 +1241,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 151
     },
     {
@@ -1214,7 +1271,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 180
     },
     {
@@ -1244,7 +1301,35 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
+      "n_reserved": 191
+    },
+    {
+      "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
+      "room": "Le magasin de jouets",
+      "centre": "Masterio",
+      "cp": "75014",
+      "lat": 48.8346257,
+      "lon": 2.3158672,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 120,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 35.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 35.0
+      },
+      "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
+      "available": true,
+      "next_date": "2026-08-09",
+      "next_time": "15:30",
+      "lead_days": 1,
+      "n_obs": 583,
       "n_reserved": 191
     },
     {
@@ -1275,7 +1360,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 177
     },
     {
@@ -1305,7 +1390,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 191
     },
     {
@@ -1334,7 +1419,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 106
     },
     {
@@ -1363,7 +1448,7 @@
       "next_date": "2026-08-09",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 107
     },
     {
@@ -1393,7 +1478,7 @@
       "next_date": "2026-08-09",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 86
     },
     {
@@ -1416,7 +1501,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 193
     },
     {
@@ -1439,7 +1524,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 163
     },
     {
@@ -1462,7 +1547,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 206
     },
     {
@@ -1491,7 +1576,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 83
     },
     {
@@ -1520,7 +1605,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 96
     },
     {
@@ -1549,7 +1634,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 107
     },
     {
@@ -1572,7 +1657,7 @@
       "next_date": "2026-08-09",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 150
     },
     {
@@ -1601,7 +1686,7 @@
       "next_date": "2026-08-09",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 83
     },
     {
@@ -1624,7 +1709,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 153
     },
     {
@@ -1653,7 +1738,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 96
     },
     {
@@ -1676,7 +1761,7 @@
       "next_date": "2026-08-09",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 145
     },
     {
@@ -1706,36 +1791,38 @@
       "next_date": "2026-08-09",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 97
     },
     {
-      "room_id": "thequestfactory/608bb6116e100464ca326c19",
-      "room": "Le fléau du druide",
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "theme": "spooky",
-      "difficulty": 6,
+      "room_id": "lantichambre/5b507e9910285904e2dd51c0",
+      "room": "Rock'n Spy",
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "theme": "cambriolage",
+      "difficulty": 5,
       "duration": 75,
       "min_players": 2,
-      "max_players": 5,
-      "prix_min": 34.0,
-      "prix_max": 60.0,
+      "max_players": 7,
+      "prix_min": 28.0,
+      "prix_max": 45.0,
       "prix_grille": {
-        "2": 60.0,
-        "3": 44.0,
-        "4": 39.0,
-        "5": 34.0
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
       },
-      "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
+      "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
       "available": true,
-      "next_date": "2026-08-08",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 582,
-      "n_reserved": 138
+      "next_date": "2026-08-09",
+      "next_time": "09:45",
+      "lead_days": 1,
+      "n_obs": 583,
+      "n_reserved": 186
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -1762,37 +1849,8 @@
       "next_date": "2026-08-08",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 177
-    },
-    {
-      "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
-      "room": "Cannibal Island",
-      "centre": "The Quest Factory",
-      "cp": "75010",
-      "lat": 48.8773877,
-      "lon": 2.3544906,
-      "theme": "spooky",
-      "difficulty": 7,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 28.0,
-      "prix_max": 54.0,
-      "prix_grille": {
-        "2": 54.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 30.0,
-        "6": 28.0
-      },
-      "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
-      "available": true,
-      "next_date": "2026-08-08",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 582,
-      "n_reserved": 226
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1819,66 +1877,8 @@
       "next_date": "2026-08-08",
       "next_time": "22:45",
       "lead_days": 0,
-      "n_obs": 582,
+      "n_obs": 583,
       "n_reserved": 202
-    },
-    {
-      "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
-      "room": "Le magasin de jouets",
-      "centre": "Masterio",
-      "cp": "75014",
-      "lat": 48.8346257,
-      "lon": 2.3158672,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 120,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 35.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 41.0,
-        "4": 36.0,
-        "5": 35.0
-      },
-      "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
-      "available": true,
-      "next_date": "2026-08-08",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 582,
-      "n_reserved": 190
-    },
-    {
-      "room_id": "lantichambre/5b507e9910285904e2dd51c0",
-      "room": "Rock'n Spy",
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "theme": "cambriolage",
-      "difficulty": 5,
-      "duration": 75,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 28.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 37.0,
-        "4": 32.0,
-        "5": 30.0,
-        "6": 28.0,
-        "7": 28.0
-      },
-      "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
-      "available": true,
-      "next_date": "2026-08-08",
-      "next_time": "21:45",
-      "lead_days": 0,
-      "n_obs": 582,
-      "n_reserved": 185
     }
   ]
 }
