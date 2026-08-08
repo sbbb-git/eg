@@ -66,7 +66,7 @@ input.txt{flex:1;min-width:150px}
 main{padding:6px 0 60px}
 .grid{display:grid;gap:12px}
 .tiles{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
-.two{grid-template-columns:1fr 1fr}
+.two{grid-template-columns:1fr 1fr;align-items:start}  /* chaque carte à sa hauteur */
 @media(max-width:860px){.two{grid-template-columns:1fr}}
 
 /* Les enfants de grille/flex ont min-width:auto : sans ce reset ils s'élargissent
@@ -262,24 +262,39 @@ let PER="7", VILLE="", TAB="vue";
    PUBLIE  : une salle qui n'a JAMAIS eu un créneau libre ne se remplit pas à
              100 %, elle ne publie simplement pas ses dispos (fermée/bloquée).
              On la sort des taux d'occupation et on la compte à part. */
-let DAY_OK=new Set(), PUBLIE=new Set(), N_NOPUB=0;
+let DAY_OK=new Set(), PUBLIE=new Set(), N_NOPUB=0, MUET={};
 function calibrate(){
   const byDay={};
   SESS.forEach(x=>byDay[x.date]=(byDay[x.date]||0)+1);
   const counts=Object.values(byDay).sort((a,b)=>a-b);
   const med=counts.length?counts[Math.floor(counts.length/2)]:0;
   DAY_OK=new Set(Object.keys(byDay).filter(d=>byDay[d]>=med*0.3));
-  const seenFree={},allSalles=new Set();
-  SESS.forEach(x=>{if(!DAY_OK.has(x.date))return;allSalles.add(x.salle_id);
-    if(x.dispo)seenFree[x.salle_id]=1;});
-  PUBLIE=new Set(Object.keys(seenFree));
-  N_NOPUB=[...allSalles].filter(s=>!PUBLIE.has(s)).length;
+  const st={};
+  SESS.forEach(x=>{if(!DAY_OK.has(x.date))return;
+    const s=st[x.salle_id]=st[x.salle_id]||{n:0,libre:0,booked:0,prix:0};
+    s.n++;if(x.dispo)s.libre++;else if(x.booked)s.booked++;if(x.prix_total_moyen)s.prix++;});
+  PUBLIE=new Set(Object.keys(st).filter(k=>st[k].libre>0));
+  /* Salle « muette » = pas un seul créneau libre observé. On distingue la cause,
+     car ce n'est pas la même information :
+       - tous les créneaux explicitement réservés  -> complet / fermé sur la période
+       - aucun prix publié (API dégradée côté enseigne) -> dispo non publiée */
+  MUET={};
+  Object.entries(st).forEach(([id,s])=>{
+    if(s.libre>0)return;
+    MUET[id]={...s, raison: s.booked>=s.n*0.8 ? "complet"
+                         : s.prix===0        ? "non-publiee"
+                         : "fermee"};
+  });
+  N_NOPUB=Object.keys(MUET).length;
 }
+const MUET_LIB={complet:"complet sur la période",
+                "non-publiee":"disponibilités non publiées",
+                fermee:"salle fermée / bloquée"};
 
 async function boot(){
   const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}`);
   const pages=Math.min(Math.ceil(nSess/1000),20);
-  const sel=`sessions?select=salle_id,date,heure,dispo,prix_total_moyen&date=gte.${TODAY}&order=date,heure`;
+  const sel=`sessions?select=salle_id,date,heure,dispo,booked,prix_total_moyen&date=gte.${TODAY}&order=date,heure`;
   const [ens,cent,sal,fresh,...chunks]=await Promise.all([
     q("enseignes?select=id,nom,website&order=nom"),
     q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id"),
@@ -370,7 +385,32 @@ function viewVue(A){
   </div>
   <div class="grid" style="margin-bottom:12px">${cardHeatmap(A)}</div>
   <div class="grid two">${cardRank(A)}${cardScatter(A)}</div>
-  <div class="grid" style="margin-top:12px">${cardTopSalles(A)}</div>`;
+  <div class="grid two" style="margin-top:12px">${cardTopSalles(A)}${cardMuettes()}</div>`;
+}
+
+/* Salles sans le moindre créneau libre — signalées, jamais comptées dans les taux */
+function cardMuettes(){
+  const byEns={};
+  Object.entries(MUET).forEach(([sid,m])=>{
+    const eid=ENS_OF[sid];if(!eid)return;
+    (byEns[eid]=byEns[eid]||{tot:0,list:[]}).list.push({sid,...m});
+  });
+  Object.keys(byEns).forEach(eid=>{
+    byEns[eid].tot=(BY_ENS[eid]||[]).flatMap(c=>BY_CENTRE[c.id]||[]).length;});
+  const rows=Object.entries(byEns).map(([eid,v])=>({eid,nom:(EN[eid]||{}).nom||eid,
+      n:v.list.length,tot:v.tot,all:v.list.length>=v.tot&&v.tot>0,
+      raison:v.list.sort((a,b)=>b.n-a.n)[0].raison})).sort((a,b)=>b.n-a.n);
+  if(!rows.length)return card("Salles sans disponibilité","Aucune : toutes les salles suivies publient au moins un créneau libre.","","","mu");
+  const body=rows.slice(0,12).map(r=>`<div class="item" onclick="openEns('${r.eid}')" style="margin-bottom:6px">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+        <b style="font-size:13.5px">${esc(r.nom)}</b>
+        <span class="chip c">⚠ ${r.n}/${r.tot} salle${r.n>1?"s":""}</span></div>
+      <div class="meta">${r.all?"<b>toute l'enseigne</b> — ":""}${MUET_LIB[r.raison]}</div></div>`).join("");
+  const table=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Salles muettes</th><th>Cause probable</th></tr></thead><tbody>
+    ${rows.map(r=>`<tr><td>${esc(r.nom)}</td><td class="n">${r.n}/${r.tot}</td><td>${MUET_LIB[r.raison]}</td></tr>`).join("")}</tbody></table>`;
+  return card(`Salles sans disponibilité · ${N_NOPUB}`,
+    "Pas un seul créneau libre observé. Exclues des taux d'occupation (sinon elles ressortiraient à « 100 % occupé »).",
+    body,table,"mu");
 }
 
 /* Heatmap : occupation par jour × tranche horaire (séquentiel, 1 teinte) */
@@ -473,7 +513,8 @@ function viewEnseignes(A){
     const salles=(BY_ENS[e.id]||[]).flatMap(c=>BY_CENTRE[c.id]||[]);
     const ag=A.parEns[e.id];
     return {e,nc:(BY_ENS[e.id]||[]).length,ns:salles.length,occ:ag?pct(ag.n-ag.libres,ag.n):null,
-            libres:ag?ag.libres:0,prix:ag?median(ag.prix):null};
+            libres:ag?ag.libres:0,prix:ag?median(ag.prix):null,
+            muettes:salles.filter(s=>MUET[s.id]).length};
   }).filter(r=>r.ns>0).sort((a,b)=>(b.occ??-1)-(a.occ??-1));
   return `<input class="txt" id="qe" placeholder="Rechercher une enseigne…" style="width:100%;margin:12px 0"
     oninput="filterList('qe','#elist')"><div id="elist">${rows.map(r=>`
@@ -481,7 +522,8 @@ function viewEnseignes(A){
       <h4>${esc(r.e.nom)}</h4>
       <div class="meta">${r.nc} centre${r.nc>1?"s":""} · ${r.ns} salle${r.ns>1?"s":""}${r.prix?" · médian "+eur(r.prix):""}</div>
       <div class="chips">${r.occ!=null?`<span class="chip">${r.occ}% occupé</span>`:""}
-        ${r.libres?`<span class="chip g">${r.libres} libres</span>`:`<span class="chip c">complet</span>`}</div></div>`).join("")}</div>`;
+        ${r.libres?`<span class="chip g">${r.libres} libres</span>`:""}
+        ${r.muettes?`<span class="chip c">⚠ ${r.muettes}/${r.ns} sans dispo publiée</span>`:""}</div></div>`).join("")}</div>`;
 }
 function viewSalles(A){
   const rows=Object.values(SA).map(s=>{const t=A.topSalle[s.id];
@@ -495,7 +537,8 @@ function viewSalles(A){
       <div class="chips">${r.s.theme?`<span class="chip">${esc(cap(r.s.theme))}</span>`:""}
         ${r.s.duree_minutes?`<span class="chip">${r.s.duree_minutes} min</span>`:""}
         ${r.occ!=null?`<span class="chip">${r.occ}% occupé</span>`:""}
-        ${r.libres?`<span class="chip g">${r.libres} libres</span>`:""}</div></div>`).join("")}</div>`;
+        ${r.libres?`<span class="chip g">${r.libres} libres</span>`:""}
+        ${MUET[r.s.id]?`<span class="chip c">⚠ ${MUET_LIB[MUET[r.s.id].raison]}</span>`:""}</div></div>`).join("")}</div>`;
 }
 function filterList(inp,list){
   const t=$("#"+inp).value.toLowerCase();
@@ -588,7 +631,10 @@ async function openSalle(sid,fromEns){
     <div class="r"><span class="k">Dernier relevé</span><span>${ago(ls[0]&&ls[0].dernier_vu)}</span></div>
     <div class="r"><span class="k">Créneaux observés</span><span>${tot.toLocaleString("fr-FR")}</span></div>
     <div class="r"><span class="k">Occupation à venir</span><span>${occ} % (${nb}/${t})</span></div>
-    <div class="bar-mini" style="margin-top:8px"><i style="width:${occ}%"></i></div>`;
+    <div class="bar-mini" style="margin-top:8px"><i style="width:${occ}%"></i></div>
+    ${MUET[sid]?`<div class="r" style="margin-top:8px"><span class="k">⚠ Signalement</span>
+      <span style="color:var(--warn);text-align:right">${MUET_LIB[MUET[sid].raison]} — aucun créneau libre observé,
+      salle exclue des taux d'occupation</span></div>`:""}`;
   document.getElementById("sn").innerHTML=
     `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Prochains créneaux libres</h4>`+
     (next.length?`<table class="tv"><tbody>${next.map(o=>`<tr><td>${dlong(o.date)}</td><td class="n">${o.heure}</td>
