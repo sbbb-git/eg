@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-08T15:35:39+00:00",
+    "generated": "2026-08-08T16:30:29+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 32368,
+    "n_observations": 32424,
     "lead_days_moyen": 2.1,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -150,6 +150,19 @@
       }
     },
     {
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "website": "https://joueurz.fr/",
+      "phone": "‭09 86 32 29 01‬",
+      "n_rooms": 2,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 25,
+      "prix_grille": null
+    },
+    {
       "centre": "The Game",
       "cp": "75005",
       "lat": 48.8468159,
@@ -190,25 +203,6 @@
       }
     },
     {
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "website": "https://www.lantichambre.paris",
-      "phone": "+33 1 75 51 56 84",
-      "n_rooms": 2,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0,
-      "prix_min": 28.0,
-      "prix_grille": {
-        "1": 50.0,
-        "2": 50.0,
-        "3": 50.0,
-        "4": 50.0,
-        "5": 50.0
-      }
-    },
-    {
       "centre": "Crack the Egg",
       "cp": "75012",
       "lat": 48.8457677,
@@ -216,8 +210,8 @@
       "website": "https://crack-the-egg.com/",
       "phone": "06 58 10 28 13",
       "n_rooms": 4,
-      "lead_days_avg": 0.2,
-      "demand_pct": 25.0,
+      "lead_days_avg": 0.5,
+      "demand_pct": 50.0,
       "prix_min": 28,
       "prix_grille": null
     },
@@ -293,17 +287,23 @@
       }
     },
     {
-      "centre": "Joueurz Paris",
+      "centre": "L'Antichambre",
       "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "website": "https://joueurz.fr/",
-      "phone": "‭09 86 32 29 01‬",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "website": "https://www.lantichambre.paris",
+      "phone": "+33 1 75 51 56 84",
       "n_rooms": 2,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0,
-      "prix_min": 25,
-      "prix_grille": null
+      "prix_min": 28.0,
+      "prix_grille": {
+        "1": 50.0,
+        "2": 50.0,
+        "3": 50.0,
+        "4": 50.0,
+        "5": 50.0
+      }
     }
   ],
   "rooms": [
@@ -332,7 +332,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:15",
       "lead_days": 18,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 122
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:30",
       "lead_days": 18,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 129
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-08-26",
       "next_time": "10:00",
       "lead_days": 18,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 22
     },
     {
@@ -417,7 +417,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 203
     },
     {
@@ -446,7 +446,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 210
     },
     {
@@ -476,7 +476,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 217
     },
     {
@@ -502,7 +502,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:40",
       "lead_days": 6,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 215
     },
     {
@@ -530,7 +530,7 @@
       "next_date": "2026-08-14",
       "next_time": "10:00",
       "lead_days": 6,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 222
     },
     {
@@ -558,7 +558,7 @@
       "next_date": "2026-08-10",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 26
     },
     {
@@ -588,7 +588,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 109
     },
     {
@@ -617,7 +617,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 63
     },
     {
@@ -646,7 +646,7 @@
       "next_date": "2026-08-10",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 53
     },
     {
@@ -675,7 +675,7 @@
       "next_date": "2026-08-10",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 55
     },
     {
@@ -698,7 +698,7 @@
       "next_date": "2026-08-09",
       "next_time": "19:20",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 38
     },
     {
@@ -728,7 +728,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 139
     },
     {
@@ -755,7 +755,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 147
     },
     {
@@ -784,7 +784,7 @@
       "next_date": "2026-08-09",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 80
     },
     {
@@ -815,7 +815,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 90
     },
     {
@@ -845,7 +845,7 @@
       "next_date": "2026-08-09",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 124
     },
     {
@@ -874,7 +874,7 @@
       "next_date": "2026-08-09",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 87
     },
     {
@@ -904,7 +904,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 163
     },
     {
@@ -933,7 +933,7 @@
       "next_date": "2026-08-09",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 94
     },
     {
@@ -963,7 +963,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 97
     },
     {
@@ -993,7 +993,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 151
     },
     {
@@ -1023,7 +1023,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 180
     },
     {
@@ -1053,7 +1053,7 @@
       "next_date": "2026-08-09",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 191
     },
     {
@@ -1082,7 +1082,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 106
     },
     {
@@ -1110,10 +1110,56 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
       "available": true,
       "next_date": "2026-08-09",
-      "next_time": "14:00",
+      "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 578,
-      "n_reserved": 85
+      "n_obs": 579,
+      "n_reserved": 86
+    },
+    {
+      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
+      "room": "Le studio",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "adventure",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-08-09",
+      "next_time": "09:30",
+      "lead_days": 1,
+      "n_obs": 579,
+      "n_reserved": 193
+    },
+    {
+      "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
+      "room": "La croisière infernale",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "prison",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-08-09",
+      "next_time": "09:30",
+      "lead_days": 1,
+      "n_obs": 579,
+      "n_reserved": 206
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1141,7 +1187,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 83
     },
     {
@@ -1170,7 +1216,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 96
     },
     {
@@ -1199,7 +1245,7 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 107
     },
     {
@@ -1228,7 +1274,7 @@
       "next_date": "2026-08-09",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 83
     },
     {
@@ -1251,7 +1297,7 @@
       "next_date": "2026-08-09",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 153
     },
     {
@@ -1280,38 +1326,31 @@
       "next_date": "2026-08-09",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 96
     },
     {
-      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
-      "room": "La revanche du docteur Kang",
-      "centre": "L'Antichambre",
-      "cp": "75018",
-      "lat": 48.8859971,
-      "lon": 2.336706,
-      "theme": "adventure",
+      "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
+      "room": "Chinatown : dans les griffes de la Triade",
+      "centre": "Crack the Egg",
+      "cp": "75012",
+      "lat": 48.8457677,
+      "lon": 2.3781551,
+      "theme": "cambriolage",
       "difficulty": 0,
-      "duration": 85,
+      "duration": 60,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 28.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 37.0,
-        "4": 32.0,
-        "5": 30.0,
-        "6": 28.0,
-        "7": 28.0
-      },
-      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
+      "prix_min": 28,
+      "prix_max": 48,
+      "prix_grille": null,
+      "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-08-09",
-      "next_time": "10:15",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 578,
-      "n_reserved": 95
+      "n_obs": 579,
+      "n_reserved": 145
     },
     {
       "room_id": "thequestfactory/608bb6116e100464ca326c19",
@@ -1338,7 +1377,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 137
     },
     {
@@ -1359,10 +1398,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "20:00",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 176
+      "n_obs": 579,
+      "n_reserved": 177
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -1391,7 +1430,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 126
     },
     {
@@ -1419,7 +1458,7 @@
       "next_date": "2026-08-08",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 176
     },
     {
@@ -1449,7 +1488,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 139
     },
     {
@@ -1470,10 +1509,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "20:00",
+      "next_time": "21:20",
       "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 158
+      "n_obs": 579,
+      "n_reserved": 159
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -1500,7 +1539,7 @@
       "next_date": "2026-08-08",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 172
     },
     {
@@ -1529,7 +1568,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 225
     },
     {
@@ -1557,7 +1596,7 @@
       "next_date": "2026-08-08",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 205
     },
     {
@@ -1586,7 +1625,7 @@
       "next_date": "2026-08-08",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 112
     },
     {
@@ -1614,7 +1653,7 @@
       "next_date": "2026-08-08",
       "next_time": "22:45",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 202
     },
     {
@@ -1642,7 +1681,7 @@
       "next_date": "2026-08-08",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 190
     },
     {
@@ -1673,7 +1712,7 @@
       "next_date": "2026-08-08",
       "next_time": "19:00",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 175
     },
     {
@@ -1703,7 +1742,7 @@
       "next_date": "2026-08-08",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 190
     },
     {
@@ -1730,33 +1769,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 105
-    },
-    {
-      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
-      "room": "Le studio",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "adventure",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-08-08",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 192
+      "n_obs": 579,
+      "n_reserved": 106
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1778,31 +1794,8 @@
       "next_date": "2026-08-08",
       "next_time": "19:15",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 162
-    },
-    {
-      "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
-      "room": "La croisière infernale",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "prison",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-08-08",
-      "next_time": "18:15",
-      "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 205
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1822,33 +1815,40 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "18:15",
+      "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 148
+      "n_obs": 579,
+      "n_reserved": 149
     },
     {
-      "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
-      "room": "Chinatown : dans les griffes de la Triade",
-      "centre": "Crack the Egg",
-      "cp": "75012",
-      "lat": 48.8457677,
-      "lon": 2.3781551,
-      "theme": "cambriolage",
+      "room_id": "lantichambre/67e2eff03c047e943c7c51b8",
+      "room": "La revanche du docteur Kang",
+      "centre": "L'Antichambre",
+      "cp": "75018",
+      "lat": 48.8859971,
+      "lon": 2.336706,
+      "theme": "adventure",
       "difficulty": 0,
-      "duration": 60,
+      "duration": 85,
       "min_players": 2,
       "max_players": 6,
-      "prix_min": 28,
-      "prix_max": 48,
-      "prix_grille": null,
-      "reservation_url": "https://crack-the-egg.com/",
+      "prix_min": 28.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 37.0,
+        "4": 32.0,
+        "5": 30.0,
+        "6": 28.0,
+        "7": 28.0
+      },
+      "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
       "available": true,
       "next_date": "2026-08-08",
-      "next_time": "18:15",
+      "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 578,
-      "n_reserved": 144
+      "n_obs": 579,
+      "n_reserved": 96
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-08",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 578,
+      "n_obs": 579,
       "n_reserved": 184
     }
   ]
