@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-15T20:19:22+00:00",
+    "generated": "2026-08-15T21:18:56+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 41776,
-    "lead_days_moyen": 2.2,
+    "n_observations": 41832,
+    "lead_days_moyen": 2.3,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -80,7 +80,7 @@
       "website": "https://thegame-france.com",
       "phone": "01 43 29 26 21",
       "n_rooms": 12,
-      "lead_days_avg": 1.1,
+      "lead_days_avg": 1.2,
       "demand_pct": 100.0,
       "prix_min": 110.0,
       "prix_grille": {
@@ -215,6 +215,27 @@
       }
     },
     {
+      "centre": "Secrets Hunters",
+      "cp": "75011",
+      "lat": 48.848797,
+      "lon": 2.3975261,
+      "website": "https://www.secretshunters.fr/",
+      "phone": "0781882979",
+      "n_rooms": 3,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 33.0,
+      "prix_grille": {
+        "3": 48.0,
+        "4": 36.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 33.0
+      }
+    },
+    {
       "centre": "Masterio",
       "cp": "75014",
       "lat": 48.8346257,
@@ -283,27 +304,6 @@
         "4": 50.0,
         "5": 50.0
       }
-    },
-    {
-      "centre": "Secrets Hunters",
-      "cp": "75011",
-      "lat": 48.848797,
-      "lon": 2.3975261,
-      "website": "https://www.secretshunters.fr/",
-      "phone": "0781882979",
-      "n_rooms": 3,
-      "lead_days_avg": 0.7,
-      "demand_pct": 66.7,
-      "prix_min": 33.0,
-      "prix_grille": {
-        "3": 48.0,
-        "4": 36.0,
-        "5": 33.0,
-        "6": 33.0,
-        "7": 33.0,
-        "8": 33.0,
-        "9": 33.0
-      }
     }
   ],
   "rooms": [
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 21,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:30",
       "lead_days": 21,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 130
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 21,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 23
     },
     {
@@ -411,7 +411,7 @@
       "next_date": "2026-08-22",
       "next_time": "09:30",
       "lead_days": 7,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 229
     },
     {
@@ -439,7 +439,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 31
     },
     {
@@ -468,7 +468,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 81
     },
     {
@@ -497,7 +497,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 67
     },
     {
@@ -520,8 +520,37 @@
       "next_date": "2026-08-17",
       "next_time": "11:15",
       "lead_days": 2,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 242
+    },
+    {
+      "room_id": "thegame/5b4846f43e4e381f7695fabe",
+      "room": "Les catacombes",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "prison",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "09:30",
+      "lead_days": 2,
+      "n_obs": 747,
+      "n_reserved": 114
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -543,7 +572,7 @@
       "next_date": "2026-08-16",
       "next_time": "21:40",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 57
     },
     {
@@ -573,7 +602,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 133
     },
     {
@@ -601,7 +630,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 165
     },
     {
@@ -630,7 +659,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 63
     },
     {
@@ -660,7 +689,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 173
     },
     {
@@ -683,7 +712,7 @@
       "next_date": "2026-08-16",
       "next_time": "11:20",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 229
     },
     {
@@ -710,7 +739,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 170
     },
     {
@@ -739,7 +768,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 95
     },
     {
@@ -769,8 +798,36 @@
       "next_date": "2026-08-16",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 140
+    },
+    {
+      "room_id": "secretshunters/630dff49e628b39d8aff93eb",
+      "room": "La disparition du train Zanetti",
+      "centre": "Secrets Hunters",
+      "cp": "75011",
+      "lat": 48.848797,
+      "lon": 2.3975261,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 33.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 33.0
+      },
+      "reservation_url": "https://www.secretshunters.fr/",
+      "available": true,
+      "next_date": "2026-08-16",
+      "next_time": "19:00",
+      "lead_days": 1,
+      "n_obs": 747,
+      "n_reserved": 216
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -799,7 +856,7 @@
       "next_date": "2026-08-16",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 162
     },
     {
@@ -822,7 +879,7 @@
       "next_date": "2026-08-16",
       "next_time": "17:20",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 194
     },
     {
@@ -850,7 +907,7 @@
       "next_date": "2026-08-16",
       "next_time": "15:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 200
     },
     {
@@ -881,7 +938,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:30",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 105
     },
     {
@@ -911,7 +968,7 @@
       "next_date": "2026-08-16",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 143
     },
     {
@@ -940,7 +997,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 269
     },
     {
@@ -968,7 +1025,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 248
     },
     {
@@ -997,7 +1054,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 120
     },
     {
@@ -1027,7 +1084,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 197
     },
     {
@@ -1056,7 +1113,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 123
     },
     {
@@ -1085,7 +1142,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 218
     },
     {
@@ -1115,7 +1172,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 119
     },
     {
@@ -1144,7 +1201,7 @@
       "next_date": "2026-08-16",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 144
     },
     {
@@ -1174,7 +1231,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 187
     },
     {
@@ -1204,7 +1261,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 224
     },
     {
@@ -1233,7 +1290,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 227
     },
     {
@@ -1261,10 +1318,10 @@
       "reservation_url": "https://majestic-escapegame.paris/oggy/",
       "available": true,
       "next_date": "2026-08-16",
-      "next_time": "10:00",
+      "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 746,
-      "n_reserved": 227
+      "n_obs": 747,
+      "n_reserved": 228
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1291,7 +1348,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 239
     },
     {
@@ -1319,7 +1376,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 218
     },
     {
@@ -1350,7 +1407,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 211
     },
     {
@@ -1380,7 +1437,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 232
     },
     {
@@ -1407,10 +1464,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-08-16",
-      "next_time": "09:30",
+      "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
-      "n_reserved": 137
+      "n_obs": 747,
+      "n_reserved": 138
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -1438,7 +1495,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 129
     },
     {
@@ -1468,7 +1525,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 107
     },
     {
@@ -1491,7 +1548,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 188
     },
     {
@@ -1521,7 +1578,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 234
     },
     {
@@ -1547,7 +1604,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 230
     },
     {
@@ -1575,7 +1632,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 240
     },
     {
@@ -1604,7 +1661,7 @@
       "next_date": "2026-08-16",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 107
     },
     {
@@ -1631,10 +1688,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-08-16",
-      "next_time": "09:30",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 746,
-      "n_reserved": 122
+      "n_obs": 747,
+      "n_reserved": 123
     },
     {
       "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
@@ -1662,7 +1719,7 @@
       "next_date": "2026-08-16",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 133
     },
     {
@@ -1685,37 +1742,8 @@
       "next_date": "2026-08-16",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 176
-    },
-    {
-      "room_id": "thegame/5b4846f43e4e381f7695fabe",
-      "room": "Les catacombes",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "prison",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "21:45",
-      "lead_days": 1,
-      "n_obs": 746,
-      "n_reserved": 113
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1737,7 +1765,7 @@
       "next_date": "2026-08-16",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 176
     },
     {
@@ -1766,7 +1794,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 122
     },
     {
@@ -1789,7 +1817,7 @@
       "next_date": "2026-08-16",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 168
     },
     {
@@ -1819,7 +1847,7 @@
       "next_date": "2026-08-16",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 119
     },
     {
@@ -1849,36 +1877,8 @@
       "next_date": "2026-08-16",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 746,
+      "n_obs": 747,
       "n_reserved": 229
-    },
-    {
-      "room_id": "secretshunters/630dff49e628b39d8aff93eb",
-      "room": "La disparition du train Zanetti",
-      "centre": "Secrets Hunters",
-      "cp": "75011",
-      "lat": 48.848797,
-      "lon": 2.3975261,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 33.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 41.0,
-        "4": 36.0,
-        "5": 33.0
-      },
-      "reservation_url": "https://www.secretshunters.fr/",
-      "available": true,
-      "next_date": "2026-08-15",
-      "next_time": "23:00",
-      "lead_days": 0,
-      "n_obs": 746,
-      "n_reserved": 215
     }
   ]
 }
