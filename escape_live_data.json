@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-15T14:21:03+00:00",
+    "generated": "2026-08-15T14:50:54+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 41048,
-    "lead_days_moyen": 1.5,
+    "n_observations": 41160,
+    "lead_days_moyen": 1.7,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
   },
@@ -40,6 +40,19 @@
         "19": 46.0,
         "20": 46.0
       }
+    },
+    {
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "website": "https://joueurz.fr/",
+      "phone": "‭09 86 32 29 01‬",
+      "n_rooms": 2,
+      "lead_days_avg": 4.5,
+      "demand_pct": 100.0,
+      "prix_min": 25,
+      "prix_grille": null
     },
     {
       "centre": "Deep Inside Paris",
@@ -151,6 +164,27 @@
       }
     },
     {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 0.2,
+      "demand_pct": 16.7,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      }
+    },
+    {
       "centre": "Pandore & Associés",
       "cp": "75011",
       "lat": 48.8595469,
@@ -178,27 +212,6 @@
         "2": 95.0,
         "3": 69.0,
         "4": 59.0
-      }
-    },
-    {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
       }
     },
     {
@@ -261,19 +274,6 @@
       }
     },
     {
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "website": "https://joueurz.fr/",
-      "phone": "‭09 86 32 29 01‬",
-      "n_rooms": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 25,
-      "prix_grille": null
-    },
-    {
       "centre": "Crack the Egg",
       "cp": "75012",
       "lat": 48.8457677,
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 21,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:30",
       "lead_days": 21,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 130
     },
     {
@@ -388,8 +388,31 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 21,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 23
+    },
+    {
+      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
+      "room": "Le studio",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "adventure",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-08-22",
+      "next_time": "09:30",
+      "lead_days": 7,
+      "n_obs": 735,
+      "n_reserved": 229
     },
     {
       "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
@@ -416,7 +439,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 31
     },
     {
@@ -445,7 +468,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 81
     },
     {
@@ -474,8 +497,31 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 67
+    },
+    {
+      "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
+      "room": "La croisière infernale",
+      "centre": "Joueurz Paris",
+      "cp": "75018",
+      "lat": 48.8903889,
+      "lon": 2.331314,
+      "theme": "prison",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 25,
+      "prix_max": 52,
+      "prix_grille": null,
+      "reservation_url": "https://joueurz.fr/",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "11:15",
+      "lead_days": 2,
+      "n_obs": 735,
+      "n_reserved": 242
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -497,7 +543,7 @@
       "next_date": "2026-08-16",
       "next_time": "21:40",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 57
     },
     {
@@ -527,7 +573,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 133
     },
     {
@@ -555,7 +601,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 164
     },
     {
@@ -584,7 +630,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 61
     },
     {
@@ -613,7 +659,7 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 95
     },
     {
@@ -642,7 +688,7 @@
       "next_date": "2026-08-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 119
     },
     {
@@ -671,7 +717,7 @@
       "next_date": "2026-08-16",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 122
     },
     {
@@ -700,7 +746,7 @@
       "next_date": "2026-08-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 143
     },
     {
@@ -730,7 +776,7 @@
       "next_date": "2026-08-16",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 187
     },
     {
@@ -759,7 +805,7 @@
       "next_date": "2026-08-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 137
     },
     {
@@ -788,8 +834,38 @@
       "next_date": "2026-08-16",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 129
+    },
+    {
+      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
+      "room": "Un crime presque parfait",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
+      "available": true,
+      "next_date": "2026-08-16",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 735,
+      "n_reserved": 105
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -817,7 +893,7 @@
       "next_date": "2026-08-16",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 107
     },
     {
@@ -846,7 +922,7 @@
       "next_date": "2026-08-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 122
     },
     {
@@ -875,7 +951,7 @@
       "next_date": "2026-08-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 131
     },
     {
@@ -904,7 +980,7 @@
       "next_date": "2026-08-16",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 112
     },
     {
@@ -933,7 +1009,7 @@
       "next_date": "2026-08-16",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 121
     },
     {
@@ -963,8 +1039,8 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 170
+      "n_obs": 735,
+      "n_reserved": 172
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -984,10 +1060,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-08-15",
-      "next_time": "18:40",
+      "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 222
+      "n_obs": 735,
+      "n_reserved": 223
     },
     {
       "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
@@ -1013,7 +1089,7 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 169
     },
     {
@@ -1043,7 +1119,7 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 139
     },
     {
@@ -1071,7 +1147,7 @@
       "next_date": "2026-08-15",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 212
     },
     {
@@ -1101,7 +1177,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 161
     },
     {
@@ -1124,7 +1200,7 @@
       "next_date": "2026-08-15",
       "next_time": "19:20",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 189
     },
     {
@@ -1152,7 +1228,7 @@
       "next_date": "2026-08-15",
       "next_time": "19:30",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 198
     },
     {
@@ -1183,7 +1259,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 103
     },
     {
@@ -1213,7 +1289,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 141
     },
     {
@@ -1242,7 +1318,7 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 268
     },
     {
@@ -1270,7 +1346,7 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 247
     },
     {
@@ -1300,7 +1376,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 195
     },
     {
@@ -1327,10 +1403,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": true,
       "next_date": "2026-08-15",
-      "next_time": "18:00",
+      "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 215
+      "n_obs": 735,
+      "n_reserved": 216
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -1359,8 +1435,8 @@
       "next_date": "2026-08-15",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 114
+      "n_obs": 735,
+      "n_reserved": 116
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -1389,8 +1465,8 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 217
+      "n_obs": 735,
+      "n_reserved": 219
     },
     {
       "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
@@ -1418,7 +1494,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:40",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 225
     },
     {
@@ -1448,8 +1524,8 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 224
+      "n_obs": 735,
+      "n_reserved": 226
     },
     {
       "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
@@ -1476,7 +1552,7 @@
       "next_date": "2026-08-15",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 236
     },
     {
@@ -1504,7 +1580,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 216
     },
     {
@@ -1535,7 +1611,7 @@
       "next_date": "2026-08-15",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 210
     },
     {
@@ -1565,61 +1641,8 @@
       "next_date": "2026-08-15",
       "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 231
-    },
-    {
-      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
-      "room": "Un crime presque parfait",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
-      "available": true,
-      "next_date": "2026-08-15",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 104
-    },
-    {
-      "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
-      "room": "Le studio",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "adventure",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-08-15",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 228
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1641,7 +1664,7 @@
       "next_date": "2026-08-15",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 187
     },
     {
@@ -1671,7 +1694,7 @@
       "next_date": "2026-08-15",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 230
     },
     {
@@ -1697,7 +1720,7 @@
       "next_date": "2026-08-15",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 226
     },
     {
@@ -1725,31 +1748,8 @@
       "next_date": "2026-08-15",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 236
-    },
-    {
-      "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
-      "room": "La croisière infernale",
-      "centre": "Joueurz Paris",
-      "cp": "75018",
-      "lat": 48.8903889,
-      "lon": 2.331314,
-      "theme": "prison",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 25,
-      "prix_max": 52,
-      "prix_grille": null,
-      "reservation_url": "https://joueurz.fr/",
-      "available": true,
-      "next_date": "2026-08-15",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 241
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1771,7 +1771,7 @@
       "next_date": "2026-08-15",
       "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 174
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-08-15",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 175
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-08-15",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 167
     },
     {
@@ -1845,10 +1845,10 @@
       "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
       "available": true,
       "next_date": "2026-08-15",
-      "next_time": "18:15",
+      "next_time": "20:15",
       "lead_days": 0,
-      "n_obs": 733,
-      "n_reserved": 117
+      "n_obs": 735,
+      "n_reserved": 118
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-15",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 733,
+      "n_obs": 735,
       "n_reserved": 227
     }
   ]
