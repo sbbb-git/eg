@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-16T19:20:35+00:00",
+    "generated": "2026-08-16T19:45:52+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 43736,
+    "n_observations": 43792,
     "lead_days_moyen": 1.9,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -154,6 +154,48 @@
       }
     },
     {
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "website": "https://lockacademy.com/",
+      "phone": "09 83 86 86 96",
+      "n_rooms": 6,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      }
+    },
+    {
+      "centre": "Secrets Hunters",
+      "cp": "75011",
+      "lat": 48.848797,
+      "lon": 2.3975261,
+      "website": "https://www.secretshunters.fr/",
+      "phone": "0781882979",
+      "n_rooms": 3,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 33.0,
+      "prix_grille": {
+        "3": 48.0,
+        "4": 36.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 33.0
+      }
+    },
+    {
       "centre": "Masterio",
       "cp": "75014",
       "lat": 48.8346257,
@@ -204,27 +246,6 @@
       }
     },
     {
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "website": "https://lockacademy.com/",
-      "phone": "09 83 86 86 96",
-      "n_rooms": 6,
-      "lead_days_avg": 0.8,
-      "demand_pct": 83.3,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      }
-    },
-    {
       "centre": "THE ONE Escape",
       "cp": "75002",
       "lat": 48.8669279,
@@ -242,27 +263,6 @@
         "5": 47.0,
         "6": 44.0,
         "7": 44.0
-      }
-    },
-    {
-      "centre": "Secrets Hunters",
-      "cp": "75011",
-      "lat": 48.848797,
-      "lon": 2.3975261,
-      "website": "https://www.secretshunters.fr/",
-      "phone": "0781882979",
-      "n_rooms": 3,
-      "lead_days_avg": 0.3,
-      "demand_pct": 33.3,
-      "prix_min": 33.0,
-      "prix_grille": {
-        "3": 48.0,
-        "4": 36.0,
-        "5": 33.0,
-        "6": 33.0,
-        "7": 33.0,
-        "8": 33.0,
-        "9": 33.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 20,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:30",
       "lead_days": 20,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 130
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 20,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 23
     },
     {
@@ -411,7 +411,7 @@
       "next_date": "2026-08-22",
       "next_time": "09:30",
       "lead_days": 6,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 229
     },
     {
@@ -434,7 +434,7 @@
       "next_date": "2026-08-17",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 58
     },
     {
@@ -462,7 +462,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 31
     },
     {
@@ -492,7 +492,7 @@
       "next_date": "2026-08-17",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 137
     },
     {
@@ -521,7 +521,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 81
     },
     {
@@ -549,7 +549,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 169
     },
     {
@@ -578,7 +578,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 68
     },
     {
@@ -601,7 +601,7 @@
       "next_date": "2026-08-17",
       "next_time": "21:20",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 233
     },
     {
@@ -628,7 +628,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 173
     },
     {
@@ -657,7 +657,7 @@
       "next_date": "2026-08-17",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 68
     },
     {
@@ -686,7 +686,7 @@
       "next_date": "2026-08-17",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 96
     },
     {
@@ -716,7 +716,7 @@
       "next_date": "2026-08-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 143
     },
     {
@@ -744,7 +744,7 @@
       "next_date": "2026-08-17",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 221
     },
     {
@@ -774,7 +774,7 @@
       "next_date": "2026-08-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 166
     },
     {
@@ -797,7 +797,7 @@
       "next_date": "2026-08-17",
       "next_time": "19:20",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 198
     },
     {
@@ -825,7 +825,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:15",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 206
     },
     {
@@ -856,7 +856,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 109
     },
     {
@@ -886,7 +886,7 @@
       "next_date": "2026-08-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 149
     },
     {
@@ -915,7 +915,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 275
     },
     {
@@ -943,7 +943,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 252
     },
     {
@@ -972,7 +972,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 122
     },
     {
@@ -1001,8 +1001,38 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 126
+    },
+    {
+      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
+      "room": "Très Cher Lock",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "14:00",
+      "lead_days": 1,
+      "n_obs": 782,
+      "n_reserved": 123
     },
     {
       "room_id": "thegame/5b4849363e4e381f76962317",
@@ -1030,7 +1060,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 145
     },
     {
@@ -1060,8 +1090,36 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 193
+    },
+    {
+      "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
+      "room": "La société secrète : récupérez l’œuf de Fabergé !",
+      "centre": "Secrets Hunters",
+      "cp": "75011",
+      "lat": 48.848797,
+      "lon": 2.3975261,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 33.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 41.0,
+        "4": 36.0,
+        "5": 33.0
+      },
+      "reservation_url": "https://www.secretshunters.fr/",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "18:00",
+      "lead_days": 1,
+      "n_obs": 782,
+      "n_reserved": 245
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1088,8 +1146,39 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 225
+    },
+    {
+      "room_id": "secretshunters/630e0712e628b39d8affaeff",
+      "room": "La fête foraine Tivoli",
+      "centre": "Secrets Hunters",
+      "cp": "75011",
+      "lat": 48.848797,
+      "lon": 2.3975261,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 3,
+      "max_players": 9,
+      "prix_min": 33.0,
+      "prix_max": 48.0,
+      "prix_grille": {
+        "3": 48.0,
+        "4": 36.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 33.0
+      },
+      "reservation_url": "https://www.secretshunters.fr/",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "18:00",
+      "lead_days": 1,
+      "n_obs": 782,
+      "n_reserved": 215
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1117,7 +1206,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 142
     },
     {
@@ -1146,7 +1235,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 130
     },
     {
@@ -1176,7 +1265,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 110
     },
     {
@@ -1199,7 +1288,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 192
     },
     {
@@ -1222,7 +1311,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 243
     },
     {
@@ -1251,7 +1340,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 109
     },
     {
@@ -1280,7 +1369,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 125
     },
     {
@@ -1309,7 +1398,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 136
     },
     {
@@ -1332,7 +1421,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 179
     },
     {
@@ -1361,7 +1450,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 114
     },
     {
@@ -1384,7 +1473,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 182
     },
     {
@@ -1413,7 +1502,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 123
     },
     {
@@ -1436,7 +1525,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 171
     },
     {
@@ -1466,7 +1555,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 122
     },
     {
@@ -1496,7 +1585,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 234
     },
     {
@@ -1526,7 +1615,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 179
     },
     {
@@ -1556,7 +1645,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 200
     },
     {
@@ -1585,38 +1674,8 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 226
-    },
-    {
-      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
-      "room": "Très Cher Lock",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 781,
-      "n_reserved": 122
     },
     {
       "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
@@ -1645,7 +1704,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 229
     },
     {
@@ -1674,7 +1733,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 235
     },
     {
@@ -1704,67 +1763,8 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 231
-    },
-    {
-      "room_id": "secretshunters/6515a3ca5aee586a12075ca6",
-      "room": "La société secrète : récupérez l’œuf de Fabergé !",
-      "centre": "Secrets Hunters",
-      "cp": "75011",
-      "lat": 48.848797,
-      "lon": 2.3975261,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 33.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 41.0,
-        "4": 36.0,
-        "5": 33.0
-      },
-      "reservation_url": "https://www.secretshunters.fr/",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 781,
-      "n_reserved": 244
-    },
-    {
-      "room_id": "secretshunters/630e0712e628b39d8affaeff",
-      "room": "La fête foraine Tivoli",
-      "centre": "Secrets Hunters",
-      "cp": "75011",
-      "lat": 48.848797,
-      "lon": 2.3975261,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 3,
-      "max_players": 9,
-      "prix_min": 33.0,
-      "prix_max": 48.0,
-      "prix_grille": {
-        "3": 48.0,
-        "4": 36.0,
-        "5": 33.0,
-        "6": 33.0,
-        "7": 33.0,
-        "8": 33.0,
-        "9": 33.0
-      },
-      "reservation_url": "https://www.secretshunters.fr/",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 781,
-      "n_reserved": 214
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1793,7 +1793,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 237
     },
     {
@@ -1823,7 +1823,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 242
     },
     {
@@ -1849,7 +1849,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 237
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-16",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 781,
+      "n_obs": 782,
       "n_reserved": 249
     }
   ]
