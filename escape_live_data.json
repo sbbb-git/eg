@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-16T20:21:00+00:00",
+    "generated": "2026-08-16T21:17:46+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 43848,
+    "n_observations": 43960,
     "lead_days_moyen": 2.1,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -53,6 +53,25 @@
       "demand_pct": 100.0,
       "prix_min": 25,
       "prix_grille": null
+    },
+    {
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "website": "https://thegame-france.com",
+      "phone": "01 43 29 26 21",
+      "n_rooms": 12,
+      "lead_days_avg": 1.1,
+      "demand_pct": 100.0,
+      "prix_min": 110.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      }
     },
     {
       "centre": "Live Cinema",
@@ -172,25 +191,6 @@
         "2": 95.0,
         "3": 69.0,
         "4": 59.0
-      }
-    },
-    {
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "website": "https://thegame-france.com",
-      "phone": "01 43 29 26 21",
-      "n_rooms": 12,
-      "lead_days_avg": 1.0,
-      "demand_pct": 100.0,
-      "prix_min": 110.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
       }
     },
     {
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 20,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:30",
       "lead_days": 20,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 130
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 20,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 23
     },
     {
@@ -411,8 +411,37 @@
       "next_date": "2026-08-22",
       "next_time": "09:30",
       "lead_days": 6,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 229
+    },
+    {
+      "room_id": "thegame/63e3cc231084c231d1aa9fdf",
+      "room": "Mission secrète",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-08-18",
+      "next_time": "09:30",
+      "lead_days": 2,
+      "n_obs": 785,
+      "n_reserved": 69
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -434,7 +463,7 @@
       "next_date": "2026-08-17",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 58
     },
     {
@@ -462,7 +491,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 31
     },
     {
@@ -492,7 +521,7 @@
       "next_date": "2026-08-17",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 137
     },
     {
@@ -521,7 +550,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 81
     },
     {
@@ -549,7 +578,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 169
     },
     {
@@ -578,7 +607,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 68
     },
     {
@@ -608,7 +637,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 180
     },
     {
@@ -631,7 +660,7 @@
       "next_date": "2026-08-17",
       "next_time": "21:20",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 233
     },
     {
@@ -658,37 +687,8 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 173
-    },
-    {
-      "room_id": "thegame/63e3cc231084c231d1aa9fdf",
-      "room": "Mission secrète",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-08-17",
-      "next_time": "11:15",
-      "lead_days": 1,
-      "n_obs": 783,
-      "n_reserved": 68
     },
     {
       "room_id": "thegame/61692b777595e33dcdfe9f5c",
@@ -716,7 +716,7 @@
       "next_date": "2026-08-17",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 96
     },
     {
@@ -746,7 +746,7 @@
       "next_date": "2026-08-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 143
     },
     {
@@ -774,7 +774,7 @@
       "next_date": "2026-08-17",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 221
     },
     {
@@ -804,7 +804,7 @@
       "next_date": "2026-08-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 166
     },
     {
@@ -827,7 +827,7 @@
       "next_date": "2026-08-17",
       "next_time": "19:20",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 198
     },
     {
@@ -855,7 +855,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:15",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 206
     },
     {
@@ -886,7 +886,7 @@
       "next_date": "2026-08-17",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 110
     },
     {
@@ -916,7 +916,7 @@
       "next_date": "2026-08-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 149
     },
     {
@@ -945,7 +945,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 275
     },
     {
@@ -973,7 +973,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 252
     },
     {
@@ -1002,7 +1002,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 122
     },
     {
@@ -1032,7 +1032,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 201
     },
     {
@@ -1061,7 +1061,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 126
     },
     {
@@ -1090,7 +1090,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 227
     },
     {
@@ -1120,7 +1120,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 123
     },
     {
@@ -1149,7 +1149,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 145
     },
     {
@@ -1179,7 +1179,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 193
     },
     {
@@ -1209,7 +1209,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 230
     },
     {
@@ -1238,7 +1238,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 236
     },
     {
@@ -1268,7 +1268,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 232
     },
     {
@@ -1296,7 +1296,7 @@
       "next_date": "2026-08-17",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 245
     },
     {
@@ -1324,7 +1324,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 225
     },
     {
@@ -1355,7 +1355,7 @@
       "next_date": "2026-08-17",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 215
     },
     {
@@ -1385,7 +1385,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 238
     },
     {
@@ -1414,7 +1414,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 142
     },
     {
@@ -1443,7 +1443,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 130
     },
     {
@@ -1473,7 +1473,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 110
     },
     {
@@ -1496,7 +1496,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 192
     },
     {
@@ -1526,7 +1526,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 243
     },
     {
@@ -1552,7 +1552,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 238
     },
     {
@@ -1580,7 +1580,7 @@
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 250
     },
     {
@@ -1603,7 +1603,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 243
     },
     {
@@ -1632,7 +1632,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 109
     },
     {
@@ -1661,7 +1661,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 125
     },
     {
@@ -1690,7 +1690,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 136
     },
     {
@@ -1713,7 +1713,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 179
     },
     {
@@ -1742,7 +1742,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 114
     },
     {
@@ -1765,7 +1765,7 @@
       "next_date": "2026-08-17",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 182
     },
     {
@@ -1794,7 +1794,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 123
     },
     {
@@ -1817,7 +1817,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 171
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-08-17",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 122
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-17",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 783,
+      "n_obs": 785,
       "n_reserved": 234
     }
   ]
