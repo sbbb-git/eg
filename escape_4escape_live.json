@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-08-16T18:58:28+00:00",
+    "generated": "2026-08-16T19:20:35+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 43680,
+    "n_observations": 43736,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -72,10 +72,28 @@
       "demand_pct": 100.0
     },
     {
+      "company": "masterio",
+      "company_name": "Masterio, Paris",
+      "n_rooms": 2,
+      "n_reserved": 431,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0
+    },
+    {
       "company": "thegame",
       "company_name": "The Game, Paris",
       "n_rooms": 12,
       "n_reserved": 1436,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0
+    },
+    {
+      "company": "thequestfactory",
+      "company_name": "The Quest Factory, Paris",
+      "n_rooms": 3,
+      "n_reserved": 696,
       "n_avail_now": 0,
       "lead_days_avg": 1.0,
       "demand_pct": 100.0
@@ -90,20 +108,20 @@
       "demand_pct": 100.0
     },
     {
-      "company": "masterio",
-      "company_name": "Masterio, Paris",
-      "n_rooms": 2,
-      "n_reserved": 430,
-      "n_avail_now": 1,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0
-    },
-    {
       "company": "lockacademy-paris",
       "company_name": "Lock Academy, Paris",
       "n_rooms": 6,
-      "n_reserved": 796,
-      "n_avail_now": 4,
+      "n_reserved": 799,
+      "n_avail_now": 1,
+      "lead_days_avg": 0.8,
+      "demand_pct": 83.3
+    },
+    {
+      "company": "secretshunters",
+      "company_name": "Secrets Hunters, Paris",
+      "n_rooms": 3,
+      "n_reserved": 679,
+      "n_avail_now": 2,
       "lead_days_avg": 0.3,
       "demand_pct": 33.3
     },
@@ -133,24 +151,6 @@
       "n_avail_now": 5,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
-    },
-    {
-      "company": "secretshunters",
-      "company_name": "Secrets Hunters, Paris",
-      "n_rooms": 3,
-      "n_reserved": 678,
-      "n_avail_now": 3,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
-    },
-    {
-      "company": "thequestfactory",
-      "company_name": "The Quest Factory, Paris",
-      "n_rooms": 3,
-      "n_reserved": 693,
-      "n_avail_now": 3,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
     }
   ],
   "rooms_top_demande": [
@@ -166,7 +166,7 @@
       "next_time": "10:15",
       "lead_days": 20,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 123
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "10:30",
       "lead_days": 20,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 130
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:00",
       "lead_days": 20,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 23
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "09:30",
       "lead_days": 6,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 229
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "21:20",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 233
     },
     {
@@ -241,7 +241,7 @@
       "next_time": "19:20",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 198
     },
     {
@@ -256,7 +256,7 @@
       "next_time": "15:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 192
     },
     {
@@ -271,7 +271,7 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 179
     },
     {
@@ -286,7 +286,7 @@
       "next_time": "15:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 182
     },
     {
@@ -301,7 +301,7 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 171
     },
     {
@@ -316,7 +316,7 @@
       "next_time": "09:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 31
     },
     {
@@ -331,7 +331,7 @@
       "next_time": "10:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 81
     },
     {
@@ -346,7 +346,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 68
     },
     {
@@ -361,7 +361,7 @@
       "next_time": "14:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 243
     },
     {
@@ -376,7 +376,7 @@
       "next_time": "14:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 122
     },
     {
@@ -391,7 +391,7 @@
       "next_time": "09:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 234
     },
     {
@@ -406,8 +406,38 @@
       "next_time": "20:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 58
+    },
+    {
+      "room_id": "lockacademy-paris/629e19e6759443af758e931e",
+      "room": "Révolte à la Lock",
+      "centre": "Lock Academy, Paris",
+      "theme": "cambriolage",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 781,
+      "n_reserved": 143
+    },
+    {
+      "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
+      "room": "L'examen",
+      "centre": "Lock Academy, Paris",
+      "theme": "puzzle",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 781,
+      "n_reserved": 166
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -421,8 +451,23 @@
       "next_time": "15:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 109
+    },
+    {
+      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
+      "room": "L.A. Confidential",
+      "centre": "Lock Academy, Paris",
+      "theme": "cambriolage",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 781,
+      "n_reserved": 149
     },
     {
       "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
@@ -436,7 +481,7 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 110
     },
     {
@@ -451,7 +496,7 @@
       "next_time": "10:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 193
     },
     {
@@ -466,8 +511,38 @@
       "next_time": "15:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 206
+    },
+    {
+      "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
+      "room": "Le magasin de jouets",
+      "centre": "Masterio, Paris",
+      "theme": "fantasy",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "15:30",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 781,
+      "n_reserved": 225
+    },
+    {
+      "room_id": "secretshunters/630dff49e628b39d8aff93eb",
+      "room": "La disparition du train Zanetti",
+      "centre": "Secrets Hunters, Paris",
+      "theme": "investigation",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-17",
+      "next_time": "18:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 781,
+      "n_reserved": 221
     },
     {
       "room_id": "thegame/63e3cc231084c231d1aa9fdf",
@@ -481,7 +556,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 68
     },
     {
@@ -496,7 +571,7 @@
       "next_time": "18:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 96
     },
     {
@@ -511,7 +586,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 122
     },
     {
@@ -526,7 +601,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 126
     },
     {
@@ -541,7 +616,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 145
     },
     {
@@ -556,7 +631,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 142
     },
     {
@@ -571,7 +646,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 130
     },
     {
@@ -586,7 +661,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 109
     },
     {
@@ -601,7 +676,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 125
     },
     {
@@ -616,7 +691,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 136
     },
     {
@@ -631,7 +706,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 114
     },
     {
@@ -646,7 +721,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 123
     },
     {
@@ -661,98 +736,23 @@
       "next_time": "11:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
+      "n_obs": 781,
       "n_reserved": 137
     },
     {
-      "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
-      "room": "Nautilus, l'expédition Aronnax",
-      "centre": "Unleash Escape, Paris",
-      "theme": "romans",
-      "players": "4 5 6",
+      "room_id": "thequestfactory/608bb6116e100464ca326c19",
+      "room": "Le fléau du druide",
+      "centre": "The Quest Factory, Paris",
+      "theme": "spooky",
+      "players": "2 3 4 5",
       "city": "paris",
       "available": true,
       "next_date": "2026-08-17",
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 780,
-      "n_reserved": 173
-    },
-    {
-      "room_id": "lockacademy-paris/629e19e6759443af758e931e",
-      "room": "Révolte à la Lock",
-      "centre": "Lock Academy, Paris",
-      "theme": "cambriolage",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 780,
-      "n_reserved": 142
-    },
-    {
-      "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
-      "room": "L'examen",
-      "centre": "Lock Academy, Paris",
-      "theme": "puzzle",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 780,
-      "n_reserved": 165
-    },
-    {
-      "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
-      "room": "L.A. Confidential",
-      "centre": "Lock Academy, Paris",
-      "theme": "cambriolage",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 780,
-      "n_reserved": 148
-    },
-    {
-      "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
-      "room": "Très Cher Lock",
-      "centre": "Lock Academy, Paris",
-      "theme": "investigation",
-      "players": "2 3 4 5",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 780,
-      "n_reserved": 122
-    },
-    {
-      "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
-      "room": "Mission galactique",
-      "centre": "Majestic Escape Game, Paris",
-      "theme": "scifi",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-16",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 780,
-      "n_reserved": 179
+      "n_obs": 781,
+      "n_reserved": 169
     }
   ]
 }
