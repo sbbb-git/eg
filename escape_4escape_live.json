@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-08-17T19:54:11+00:00",
+    "generated": "2026-08-17T20:22:39+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 45584,
+    "n_observations": 45640,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -58,6 +58,15 @@
       "company_name": "Pandore & Associés, Paris",
       "n_rooms": 2,
       "n_reserved": 438,
+      "n_avail_now": 0,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0
+    },
+    {
+      "company": "crack-the-egg-paris",
+      "company_name": "Crack The Egg, Paris",
+      "n_rooms": 4,
+      "n_reserved": 738,
       "n_avail_now": 0,
       "lead_days_avg": 1.0,
       "demand_pct": 100.0
@@ -142,15 +151,6 @@
       "n_avail_now": 0,
       "lead_days_avg": 1.0,
       "demand_pct": 100.0
-    },
-    {
-      "company": "crack-the-egg-paris",
-      "company_name": "Crack The Egg, Paris",
-      "n_rooms": 4,
-      "n_reserved": 736,
-      "n_avail_now": 2,
-      "lead_days_avg": 0.5,
-      "demand_pct": 50.0
     }
   ],
   "rooms_top_demande": [
@@ -166,7 +166,7 @@
       "next_time": "10:15",
       "lead_days": 19,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 123
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "10:30",
       "lead_days": 19,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 130
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:00",
       "lead_days": 19,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 23
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "16:15",
       "lead_days": 13,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 123
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "09:30",
       "lead_days": 5,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 229
     },
     {
@@ -241,7 +241,7 @@
       "next_time": "09:45",
       "lead_days": 4,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 34
     },
     {
@@ -256,7 +256,7 @@
       "next_time": "14:15",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 86
     },
     {
@@ -271,7 +271,7 @@
       "next_time": "10:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 70
     },
     {
@@ -286,7 +286,7 @@
       "next_time": "12:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 112
     },
     {
@@ -301,7 +301,7 @@
       "next_time": "17:20",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 235
     },
     {
@@ -316,8 +316,23 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 203
+    },
+    {
+      "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
+      "room": "L'abri",
+      "centre": "Crack The Egg, Paris",
+      "theme": "virus",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-18",
+      "next_time": "15:30",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 815,
+      "n_reserved": 195
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -331,8 +346,23 @@
       "next_time": "16:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 183
+    },
+    {
+      "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
+      "room": "L'inquiétant professeur Tychsen",
+      "centre": "Crack The Egg, Paris",
+      "theme": "investigation",
+      "players": "2 3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-18",
+      "next_time": "15:30",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 815,
+      "n_reserved": 186
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -346,7 +376,7 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 174
     },
     {
@@ -361,7 +391,7 @@
       "next_time": "16:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 247
     },
     {
@@ -376,7 +406,7 @@
       "next_time": "09:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 238
     },
     {
@@ -391,7 +421,7 @@
       "next_time": "17:35",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 60
     },
     {
@@ -406,7 +436,7 @@
       "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 144
     },
     {
@@ -421,7 +451,7 @@
       "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 167
     },
     {
@@ -436,7 +466,7 @@
       "next_time": "19:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 112
     },
     {
@@ -451,7 +481,7 @@
       "next_time": "12:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 150
     },
     {
@@ -466,7 +496,7 @@
       "next_time": "18:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 124
     },
     {
@@ -481,7 +511,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 184
     },
     {
@@ -496,7 +526,7 @@
       "next_time": "14:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 199
     },
     {
@@ -511,7 +541,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 236
     },
     {
@@ -526,7 +556,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 237
     },
     {
@@ -541,7 +571,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 209
     },
     {
@@ -556,7 +586,7 @@
       "next_time": "10:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 229
     },
     {
@@ -571,7 +601,7 @@
       "next_time": "16:40",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 235
     },
     {
@@ -586,7 +616,7 @@
       "next_time": "18:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 245
     },
     {
@@ -601,7 +631,7 @@
       "next_time": "16:40",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 253
     },
     {
@@ -616,7 +646,7 @@
       "next_time": "16:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 245
     },
     {
@@ -631,7 +661,7 @@
       "next_time": "16:40",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 259
     },
     {
@@ -646,7 +676,7 @@
       "next_time": "16:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 223
     },
     {
@@ -661,7 +691,7 @@
       "next_time": "16:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 247
     },
     {
@@ -676,7 +706,7 @@
       "next_time": "16:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 217
     },
     {
@@ -691,7 +721,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 69
     },
     {
@@ -706,7 +736,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 98
     },
     {
@@ -721,38 +751,8 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 814,
+      "n_obs": 815,
       "n_reserved": 127
-    },
-    {
-      "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
-      "room": "L'avion",
-      "centre": "The Game, Paris",
-      "theme": "adventure",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-18",
-      "next_time": "09:30",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 814,
-      "n_reserved": 132
-    },
-    {
-      "room_id": "thegame/5b4849363e4e381f76962317",
-      "room": "La mission spatiale",
-      "centre": "The Game, Paris",
-      "theme": "scifi",
-      "players": "2 3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-18",
-      "next_time": "09:30",
-      "lead_days": 1,
-      "platform": "4escape",
-      "n_obs": 814,
-      "n_reserved": 152
     }
   ]
 }
