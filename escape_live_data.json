@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-19T17:53:01+00:00",
+    "generated": "2026-08-19T18:29:42+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 49000,
+    "n_observations": 49056,
     "lead_days_moyen": 1.8,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -138,6 +138,23 @@
       "prix_grille": null
     },
     {
+      "centre": "UNLEASH",
+      "cp": "75012",
+      "lat": 48.8394291,
+      "lon": 2.3810944,
+      "website": "https://unleashescape.com/",
+      "phone": "0143442589",
+      "n_rooms": 1,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 95.0,
+        "3": 69.0,
+        "4": 59.0
+      }
+    },
+    {
       "centre": "Phobia Escape Game",
       "cp": "75013",
       "lat": 48.8351638,
@@ -237,23 +254,6 @@
       }
     },
     {
-      "centre": "UNLEASH",
-      "cp": "75012",
-      "lat": 48.8394291,
-      "lon": 2.3810944,
-      "website": "https://unleashescape.com/",
-      "phone": "0143442589",
-      "n_rooms": 1,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 95.0,
-        "3": 69.0,
-        "4": 59.0
-      }
-    },
-    {
       "centre": "Secrets Hunters",
       "cp": "75011",
       "lat": 48.848797,
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 17,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "12:00",
       "lead_days": 17,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 131
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 17,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 23
     },
     {
@@ -418,7 +418,7 @@
       "next_date": "2026-08-30",
       "next_time": "18:15",
       "lead_days": 11,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 124
     },
     {
@@ -446,7 +446,7 @@
       "next_date": "2026-08-26",
       "next_time": "09:45",
       "lead_days": 7,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 35
     },
     {
@@ -469,7 +469,7 @@
       "next_date": "2026-08-22",
       "next_time": "09:30",
       "lead_days": 3,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 229
     },
     {
@@ -498,7 +498,7 @@
       "next_date": "2026-08-21",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 90
     },
     {
@@ -527,7 +527,7 @@
       "next_date": "2026-08-21",
       "next_time": "11:15",
       "lead_days": 2,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 71
     },
     {
@@ -550,7 +550,7 @@
       "next_date": "2026-08-20",
       "next_time": "15:50",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 64
     },
     {
@@ -580,7 +580,7 @@
       "next_date": "2026-08-20",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 148
     },
     {
@@ -609,7 +609,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 75
     },
     {
@@ -639,7 +639,7 @@
       "next_date": "2026-08-20",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 190
     },
     {
@@ -662,8 +662,35 @@
       "next_date": "2026-08-20",
       "next_time": "20:40",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 243
+    },
+    {
+      "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
+      "room": "Nautilus, l'expédition Aronnax",
+      "centre": "UNLEASH",
+      "cp": "75012",
+      "lat": 48.8394291,
+      "lon": 2.3810944,
+      "theme": "romans",
+      "difficulty": 8,
+      "duration": 75,
+      "min_players": 4,
+      "max_players": 6,
+      "prix_min": 31.0,
+      "prix_max": 40.0,
+      "prix_grille": {
+        "4": 40.0,
+        "5": 35.0,
+        "6": 31.0
+      },
+      "reservation_url": "https://unleashescape.com/",
+      "available": true,
+      "next_date": "2026-08-20",
+      "next_time": "14:00",
+      "lead_days": 1,
+      "n_obs": 876,
+      "n_reserved": 190
     },
     {
       "room_id": "thegame/61692b777595e33dcdfe9f5c",
@@ -691,7 +718,7 @@
       "next_date": "2026-08-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 102
     },
     {
@@ -714,7 +741,7 @@
       "next_date": "2026-08-20",
       "next_time": "19:20",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 210
     },
     {
@@ -745,7 +772,7 @@
       "next_date": "2026-08-20",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 114
     },
     {
@@ -774,7 +801,7 @@
       "next_date": "2026-08-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 140
     },
     {
@@ -803,7 +830,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 246
     },
     {
@@ -833,7 +860,7 @@
       "next_date": "2026-08-20",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 128
     },
     {
@@ -863,7 +890,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 205
     },
     {
@@ -893,7 +920,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 244
     },
     {
@@ -922,7 +949,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 255
     },
     {
@@ -952,7 +979,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 244
     },
     {
@@ -981,7 +1008,7 @@
       "next_date": "2026-08-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 142
     },
     {
@@ -1011,7 +1038,7 @@
       "next_date": "2026-08-20",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 115
     },
     {
@@ -1041,7 +1068,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 264
     },
     {
@@ -1067,7 +1094,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 253
     },
     {
@@ -1095,7 +1122,7 @@
       "next_date": "2026-08-20",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 269
     },
     {
@@ -1118,7 +1145,7 @@
       "next_date": "2026-08-20",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 254
     },
     {
@@ -1147,7 +1174,7 @@
       "next_date": "2026-08-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 125
     },
     {
@@ -1176,7 +1203,7 @@
       "next_date": "2026-08-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 139
     },
     {
@@ -1205,7 +1232,7 @@
       "next_date": "2026-08-20",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 152
     },
     {
@@ -1233,35 +1260,8 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 184
-    },
-    {
-      "room_id": "unleashescape/615f33ae9f4f94f1acea71f4",
-      "room": "Nautilus, l'expédition Aronnax",
-      "centre": "UNLEASH",
-      "cp": "75012",
-      "lat": 48.8394291,
-      "lon": 2.3810944,
-      "theme": "romans",
-      "difficulty": 8,
-      "duration": 75,
-      "min_players": 4,
-      "max_players": 6,
-      "prix_min": 31.0,
-      "prix_max": 40.0,
-      "prix_grille": {
-        "4": 40.0,
-        "5": 35.0,
-        "6": 31.0
-      },
-      "reservation_url": "https://unleashescape.com/",
-      "available": true,
-      "next_date": "2026-08-19",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 875,
-      "n_reserved": 189
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -1290,7 +1290,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 151
     },
     {
@@ -1318,7 +1318,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 234
     },
     {
@@ -1348,7 +1348,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 174
     },
     {
@@ -1376,7 +1376,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 215
     },
     {
@@ -1406,7 +1406,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 155
     },
     {
@@ -1435,7 +1435,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 291
     },
     {
@@ -1463,7 +1463,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 265
     },
     {
@@ -1492,7 +1492,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 139
     },
     {
@@ -1522,7 +1522,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 218
     },
     {
@@ -1551,7 +1551,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 162
     },
     {
@@ -1579,7 +1579,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 261
     },
     {
@@ -1607,7 +1607,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 240
     },
     {
@@ -1638,7 +1638,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:30",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 228
     },
     {
@@ -1668,7 +1668,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 254
     },
     {
@@ -1697,7 +1697,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 156
     },
     {
@@ -1720,7 +1720,7 @@
       "next_date": "2026-08-19",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 200
     },
     {
@@ -1743,7 +1743,7 @@
       "next_date": "2026-08-19",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 189
     },
     {
@@ -1772,7 +1772,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 128
     },
     {
@@ -1793,10 +1793,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-08-19",
-      "next_time": "20:00",
+      "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 875,
-      "n_reserved": 192
+      "n_obs": 876,
+      "n_reserved": 193
     },
     {
       "room_id": "thegame/5b4844b63e4e381f7695d257",
@@ -1824,7 +1824,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 140
     },
     {
@@ -1847,7 +1847,7 @@
       "next_date": "2026-08-19",
       "next_time": "20:30",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 181
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-19",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 875,
+      "n_obs": 876,
       "n_reserved": 247
     }
   ]
