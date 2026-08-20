@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-08-20T16:33:55+00:00",
+    "generated": "2026-08-20T16:40:31+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 50568,
+    "n_observations": 50624,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -30,9 +30,9 @@
       "company": "livecinema",
       "company_name": "Live Cinema, Paris",
       "n_rooms": 1,
-      "n_reserved": 66,
+      "n_reserved": 67,
       "n_avail_now": 0,
-      "lead_days_avg": 3.0,
+      "lead_days_avg": 5.0,
       "demand_pct": 100.0
     },
     {
@@ -81,6 +81,15 @@
       "demand_pct": 50.0
     },
     {
+      "company": "crack-the-egg-paris",
+      "company_name": "Crack The Egg, Paris",
+      "n_rooms": 4,
+      "n_reserved": 775,
+      "n_avail_now": 2,
+      "lead_days_avg": 0.5,
+      "demand_pct": 50.0
+    },
+    {
       "company": "lockacademy-paris",
       "company_name": "Lock Academy, Paris",
       "n_rooms": 6,
@@ -99,22 +108,13 @@
       "demand_pct": 33.3
     },
     {
-      "company": "crack-the-egg-paris",
-      "company_name": "Crack The Egg, Paris",
-      "n_rooms": 4,
-      "n_reserved": 774,
-      "n_avail_now": 3,
-      "lead_days_avg": 0.2,
-      "demand_pct": 25.0
-    },
-    {
       "company": "majestic-escapegame",
       "company_name": "Majestic Escape Game, Paris",
       "n_rooms": 4,
-      "n_reserved": 895,
-      "n_avail_now": 4,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
+      "n_reserved": 898,
+      "n_avail_now": 3,
+      "lead_days_avg": 0.2,
+      "demand_pct": 25.0
     },
     {
       "company": "phobiaescapegame",
@@ -166,7 +166,7 @@
       "next_time": "10:15",
       "lead_days": 16,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 123
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "12:00",
       "lead_days": 16,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 131
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:00",
       "lead_days": 16,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 23
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "18:15",
       "lead_days": 10,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 124
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "09:45",
       "lead_days": 6,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 35
     },
     {
@@ -237,12 +237,12 @@
       "players": "3 4 5 6",
       "city": "paris",
       "available": true,
-      "next_date": "2026-08-23",
-      "next_time": "21:05",
-      "lead_days": 3,
+      "next_date": "2026-08-25",
+      "next_time": "17:00",
+      "lead_days": 5,
       "platform": "4escape",
-      "n_obs": 903,
-      "n_reserved": 66
+      "n_obs": 904,
+      "n_reserved": 67
     },
     {
       "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
@@ -256,7 +256,7 @@
       "next_time": "10:15",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 93
     },
     {
@@ -271,7 +271,7 @@
       "next_time": "09:30",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 229
     },
     {
@@ -286,8 +286,23 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 244
+    },
+    {
+      "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
+      "room": "L'œuf noir",
+      "centre": "Crack The Egg, Paris",
+      "theme": "fantasy",
+      "players": "3 4 5 6",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-21",
+      "next_time": "14:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 904,
+      "n_reserved": 192
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -301,7 +316,7 @@
       "next_time": "14:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 184
     },
     {
@@ -316,7 +331,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 259
     },
     {
@@ -331,7 +346,7 @@
       "next_time": "19:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 153
     },
     {
@@ -346,7 +361,7 @@
       "next_time": "17:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 176
     },
     {
@@ -361,8 +376,23 @@
       "next_time": "17:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 157
+    },
+    {
+      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
+      "room": "Les aventuriers de l’Atlantide",
+      "centre": "Majestic Escape Game, Paris",
+      "theme": "fantasy",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 904,
+      "n_reserved": 248
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -376,7 +406,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 218
     },
     {
@@ -391,7 +421,7 @@
       "next_time": "10:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 243
     },
     {
@@ -406,7 +436,7 @@
       "next_time": "11:15",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 71
     },
     {
@@ -421,7 +451,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 105
     },
     {
@@ -436,7 +466,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 143
     },
     {
@@ -451,7 +481,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 144
     },
     {
@@ -466,7 +496,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 168
     },
     {
@@ -481,7 +511,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 144
     },
     {
@@ -496,7 +526,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 127
     },
     {
@@ -511,7 +541,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 143
     },
     {
@@ -526,7 +556,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 157
     },
     {
@@ -541,7 +571,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 132
     },
     {
@@ -556,7 +586,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 143
     },
     {
@@ -571,7 +601,7 @@
       "next_time": "10:00",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 150
     },
     {
@@ -586,7 +616,7 @@
       "next_time": "21:20",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 212
     },
     {
@@ -601,23 +631,8 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 203
-    },
-    {
-      "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
-      "room": "L'œuf noir",
-      "centre": "Crack The Egg, Paris",
-      "theme": "fantasy",
-      "players": "3 4 5 6",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-20",
-      "next_time": "18:30",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 903,
-      "n_reserved": 191
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -631,7 +646,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 196
     },
     {
@@ -646,7 +661,7 @@
       "next_time": "22:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 78
     },
     {
@@ -661,7 +676,7 @@
       "next_time": "21:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 252
     },
     {
@@ -676,7 +691,7 @@
       "next_time": "21:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 115
     },
     {
@@ -691,7 +706,7 @@
       "next_time": "22:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 129
     },
     {
@@ -706,7 +721,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 115
     },
     {
@@ -721,7 +736,7 @@
       "next_time": "22:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
+      "n_obs": 904,
       "n_reserved": 193
     },
     {
@@ -733,26 +748,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-08-20",
-      "next_time": "18:15",
+      "next_time": "22:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 903,
-      "n_reserved": 208
-    },
-    {
-      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
-      "room": "Les aventuriers de l’Atlantide",
-      "centre": "Majestic Escape Game, Paris",
-      "theme": "fantasy",
-      "players": "2 3 4 5",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-20",
-      "next_time": "18:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 903,
-      "n_reserved": 247
+      "n_obs": 904,
+      "n_reserved": 209
     }
   ]
 }
