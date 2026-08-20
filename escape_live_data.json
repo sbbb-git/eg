@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-20T17:26:49+00:00",
+    "generated": "2026-08-20T17:58:57+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 50680,
+    "n_observations": 50736,
     "lead_days_moyen": 1.8,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -136,6 +136,26 @@
       }
     },
     {
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "website": "https://www.phobiaescapegame.fr/",
+      "phone": "01 44 24 85 28",
+      "n_rooms": 5,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 78.0,
+      "prix_grille": {
+        "2": 129.0,
+        "3": 129.0,
+        "4": 129.0,
+        "5": 129.0,
+        "6": 153.0,
+        "7": 180.0
+      }
+    },
+    {
       "centre": "The Game",
       "cp": "75005",
       "lat": 48.8468159,
@@ -155,26 +175,6 @@
       }
     },
     {
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "website": "https://www.phobiaescapegame.fr/",
-      "phone": "01 44 24 85 28",
-      "n_rooms": 5,
-      "lead_days_avg": 0.8,
-      "demand_pct": 80.0,
-      "prix_min": 78.0,
-      "prix_grille": {
-        "2": 129.0,
-        "3": 129.0,
-        "4": 129.0,
-        "5": 129.0,
-        "6": 153.0,
-        "7": 180.0
-      }
-    },
-    {
       "centre": "Lock Academy",
       "cp": "75001",
       "lat": 48.8639412,
@@ -182,8 +182,8 @@
       "website": "https://lockacademy.com/",
       "phone": "09 83 86 86 96",
       "n_rooms": 6,
-      "lead_days_avg": 0.7,
-      "demand_pct": 66.7,
+      "lead_days_avg": 0.8,
+      "demand_pct": 83.3,
       "prix_min": 30.0,
       "prix_grille": {
         "1": 55.0,
@@ -193,6 +193,26 @@
         "5": 32.0,
         "6": 30.0,
         "7": 30.0
+      }
+    },
+    {
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "website": "https://www.theoneescape.com",
+      "phone": "09 75 90 83 68",
+      "n_rooms": 3,
+      "lead_days_avg": 0.7,
+      "demand_pct": 66.7,
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
       }
     },
     {
@@ -207,26 +227,6 @@
       "demand_pct": 50.0,
       "prix_min": 28,
       "prix_grille": null
-    },
-    {
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "website": "https://www.theoneescape.com",
-      "phone": "09 75 90 83 68",
-      "n_rooms": 3,
-      "lead_days_avg": 0.3,
-      "demand_pct": 33.3,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      }
     },
     {
       "centre": "The Quest Factory",
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 16,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "12:00",
       "lead_days": 16,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 131
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 16,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 23
     },
     {
@@ -418,7 +418,7 @@
       "next_date": "2026-08-30",
       "next_time": "18:15",
       "lead_days": 10,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 124
     },
     {
@@ -446,7 +446,7 @@
       "next_date": "2026-08-26",
       "next_time": "09:45",
       "lead_days": 6,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 35
     },
     {
@@ -469,7 +469,7 @@
       "next_date": "2026-08-25",
       "next_time": "17:00",
       "lead_days": 5,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 67
     },
     {
@@ -498,7 +498,7 @@
       "next_date": "2026-08-22",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 93
     },
     {
@@ -521,7 +521,7 @@
       "next_date": "2026-08-22",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 229
     },
     {
@@ -551,7 +551,7 @@
       "next_date": "2026-08-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 150
     },
     {
@@ -574,7 +574,7 @@
       "next_date": "2026-08-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 244
     },
     {
@@ -603,7 +603,7 @@
       "next_date": "2026-08-21",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 71
     },
     {
@@ -632,7 +632,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 105
     },
     {
@@ -662,7 +662,7 @@
       "next_date": "2026-08-21",
       "next_time": "19:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 153
     },
     {
@@ -692,7 +692,7 @@
       "next_date": "2026-08-21",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 176
     },
     {
@@ -715,7 +715,7 @@
       "next_date": "2026-08-21",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 213
     },
     {
@@ -743,7 +743,7 @@
       "next_date": "2026-08-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 218
     },
     {
@@ -774,7 +774,7 @@
       "next_date": "2026-08-21",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 116
     },
     {
@@ -804,7 +804,7 @@
       "next_date": "2026-08-21",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 157
     },
     {
@@ -833,7 +833,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 143
     },
     {
@@ -862,7 +862,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 144
     },
     {
@@ -891,7 +891,7 @@
       "next_date": "2026-08-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 253
     },
     {
@@ -920,7 +920,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 168
     },
     {
@@ -949,7 +949,7 @@
       "next_date": "2026-08-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 262
     },
     {
@@ -977,8 +977,38 @@
       "next_date": "2026-08-21",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 243
+    },
+    {
+      "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
+      "room": "Hallucinations chimiques chez le Dr Grant",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 31.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 36.0,
+        "5": 33.0,
+        "6": 31.0,
+        "7": 31.0
+      },
+      "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
+      "available": true,
+      "next_date": "2026-08-21",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 906,
+      "n_reserved": 261
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -1006,8 +1036,38 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 144
+    },
+    {
+      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
+      "room": "Un crime presque parfait",
+      "centre": "Lock Academy",
+      "cp": "75001",
+      "lat": 48.8639412,
+      "lon": 2.3420663,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "1": 55.0,
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0
+      },
+      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
+      "available": true,
+      "next_date": "2026-08-21",
+      "next_time": "22:00",
+      "lead_days": 1,
+      "n_obs": 906,
+      "n_reserved": 116
     },
     {
       "room_id": "phobiaescapegame/6347fa448f1f302c07547ce6",
@@ -1036,8 +1096,34 @@
       "next_date": "2026-08-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 270
+    },
+    {
+      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
+      "room": "Loft 13",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "horror",
+      "difficulty": 6,
+      "duration": 60,
+      "min_players": 1,
+      "max_players": 2,
+      "prix_min": 78.0,
+      "prix_max": 78.0,
+      "prix_grille": {
+        "1": 78.0,
+        "2": 78.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
+      "available": true,
+      "next_date": "2026-08-21",
+      "next_time": "10:40",
+      "lead_days": 1,
+      "n_obs": 906,
+      "n_reserved": 260
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1064,7 +1150,7 @@
       "next_date": "2026-08-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 276
     },
     {
@@ -1087,7 +1173,7 @@
       "next_date": "2026-08-21",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 259
     },
     {
@@ -1116,7 +1202,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 127
     },
     {
@@ -1145,7 +1231,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 143
     },
     {
@@ -1174,7 +1260,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 157
     },
     {
@@ -1195,10 +1281,10 @@
       "reservation_url": "https://crack-the-egg.com/",
       "available": true,
       "next_date": "2026-08-21",
-      "next_time": "14:00",
+      "next_time": "16:15",
       "lead_days": 1,
-      "n_obs": 905,
-      "n_reserved": 192
+      "n_obs": 906,
+      "n_reserved": 193
     },
     {
       "room_id": "thegame/5b4846f43e4e381f7695fabe",
@@ -1226,7 +1312,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 132
     },
     {
@@ -1255,7 +1341,7 @@
       "next_date": "2026-08-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 143
     },
     {
@@ -1278,7 +1364,7 @@
       "next_date": "2026-08-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 184
     },
     {
@@ -1306,7 +1392,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 189
     },
     {
@@ -1335,7 +1421,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 78
     },
     {
@@ -1365,7 +1451,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 193
     },
     {
@@ -1392,7 +1478,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 192
     },
     {
@@ -1420,7 +1506,7 @@
       "next_date": "2026-08-20",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 246
     },
     {
@@ -1449,7 +1535,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 298
     },
     {
@@ -1477,7 +1563,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 272
     },
     {
@@ -1507,7 +1593,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 224
     },
     {
@@ -1537,7 +1623,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 129
     },
     {
@@ -1567,7 +1653,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:15",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 209
     },
     {
@@ -1597,7 +1683,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 249
     },
     {
@@ -1627,7 +1713,7 @@
       "next_date": "2026-08-20",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 248
     },
     {
@@ -1655,7 +1741,7 @@
       "next_date": "2026-08-20",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 271
     },
     {
@@ -1686,38 +1772,8 @@
       "next_date": "2026-08-20",
       "next_time": "21:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 240
-    },
-    {
-      "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
-      "room": "Hallucinations chimiques chez le Dr Grant",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 31.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 36.0,
-        "5": 33.0,
-        "6": 31.0,
-        "7": 31.0
-      },
-      "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
-      "available": true,
-      "next_date": "2026-08-20",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 905,
-      "n_reserved": 260
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1745,38 +1801,8 @@
       "next_date": "2026-08-20",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 162
-    },
-    {
-      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
-      "room": "Un crime presque parfait",
-      "centre": "Lock Academy",
-      "cp": "75001",
-      "lat": 48.8639412,
-      "lon": 2.3420663,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "1": 55.0,
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0
-      },
-      "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
-      "available": true,
-      "next_date": "2026-08-20",
-      "next_time": "20:00",
-      "lead_days": 0,
-      "n_obs": 905,
-      "n_reserved": 115
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1798,34 +1824,8 @@
       "next_date": "2026-08-20",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 203
-    },
-    {
-      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
-      "room": "Loft 13",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "horror",
-      "difficulty": 6,
-      "duration": 60,
-      "min_players": 1,
-      "max_players": 2,
-      "prix_min": 78.0,
-      "prix_max": 78.0,
-      "prix_grille": {
-        "1": 78.0,
-        "2": 78.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
-      "available": true,
-      "next_date": "2026-08-20",
-      "next_time": "19:45",
-      "lead_days": 0,
-      "n_obs": 905,
-      "n_reserved": 259
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1847,7 +1847,7 @@
       "next_date": "2026-08-20",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 196
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-20",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 905,
+      "n_obs": 906,
       "n_reserved": 252
     }
   ]
