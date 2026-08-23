@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2026-08-23T10:52:32+00:00",
+    "generated": "2026-08-23T11:20:21+00:00",
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 56000,
+    "n_observations": 56056,
     "source": "escapegame.fr / 4escape.io",
     "note": "lead_days = délai (jours) jusqu'au prochain créneau libre = proxy de demande. Occupation/heatmap se construisent avec l'historique."
   },
@@ -21,7 +21,7 @@
       "company": "lantichambre",
       "company_name": "L’Antichambre, Paris",
       "n_rooms": 2,
-      "n_reserved": 389,
+      "n_reserved": 390,
       "n_avail_now": 1,
       "lead_days_avg": 4.0,
       "demand_pct": 50.0
@@ -48,7 +48,7 @@
       "company": "thegame",
       "company_name": "The Game, Paris",
       "n_rooms": 12,
-      "n_reserved": 1743,
+      "n_reserved": 1744,
       "n_avail_now": 8,
       "lead_days_avg": 0.3,
       "demand_pct": 33.3
@@ -63,6 +63,15 @@
       "demand_pct": 33.3
     },
     {
+      "company": "lockacademy-paris",
+      "company_name": "Lock Academy, Paris",
+      "n_rooms": 6,
+      "n_reserved": 887,
+      "n_avail_now": 5,
+      "lead_days_avg": 0.2,
+      "demand_pct": 16.7
+    },
+    {
       "company": "coqsenpate",
       "company_name": "Pandore & Associés, Paris",
       "n_rooms": 2,
@@ -75,7 +84,7 @@
       "company": "crack-the-egg-paris",
       "company_name": "Crack The Egg, Paris",
       "n_rooms": 4,
-      "n_reserved": 811,
+      "n_reserved": 812,
       "n_avail_now": 4,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -84,17 +93,8 @@
       "company": "joueurz-paris",
       "company_name": "Joueurz, Paris",
       "n_rooms": 2,
-      "n_reserved": 514,
+      "n_reserved": 515,
       "n_avail_now": 2,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0
-    },
-    {
-      "company": "lockacademy-paris",
-      "company_name": "Lock Academy, Paris",
-      "n_rooms": 6,
-      "n_reserved": 885,
-      "n_avail_now": 6,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
     },
@@ -129,7 +129,7 @@
       "company": "secretshunters",
       "company_name": "Secrets Hunters, Paris",
       "n_rooms": 3,
-      "n_reserved": 801,
+      "n_reserved": 802,
       "n_avail_now": 3,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -138,7 +138,7 @@
       "company": "thequestfactory",
       "company_name": "The Quest Factory, Paris",
       "n_rooms": 3,
-      "n_reserved": 792,
+      "n_reserved": 793,
       "n_avail_now": 3,
       "lead_days_avg": 0.0,
       "demand_pct": 0.0
@@ -166,7 +166,7 @@
       "next_time": "10:15",
       "lead_days": 13,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 123
     },
     {
@@ -181,7 +181,7 @@
       "next_time": "12:00",
       "lead_days": 13,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 131
     },
     {
@@ -196,7 +196,7 @@
       "next_time": "10:00",
       "lead_days": 13,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 23
     },
     {
@@ -211,7 +211,7 @@
       "next_time": "14:15",
       "lead_days": 8,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 125
     },
     {
@@ -226,7 +226,7 @@
       "next_time": "09:45",
       "lead_days": 3,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 35
     },
     {
@@ -241,7 +241,7 @@
       "next_time": "12:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 86
     },
     {
@@ -256,8 +256,23 @@
       "next_time": "17:00",
       "lead_days": 2,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 69
+    },
+    {
+      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
+      "room": "Un crime presque parfait",
+      "centre": "Lock Academy, Paris",
+      "theme": "investigation",
+      "players": "2 3 4 5",
+      "city": "paris",
+      "available": true,
+      "next_date": "2026-08-24",
+      "next_time": "16:00",
+      "lead_days": 1,
+      "platform": "4escape",
+      "n_obs": 1001,
+      "n_reserved": 120
     },
     {
       "room_id": "thegame/63e3cc231084c231d1aa9fdf",
@@ -271,7 +286,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 76
     },
     {
@@ -286,7 +301,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 111
     },
     {
@@ -301,7 +316,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 160
     },
     {
@@ -316,7 +331,7 @@
       "next_time": "09:30",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 176
     },
     {
@@ -331,7 +346,7 @@
       "next_time": "11:45",
       "lead_days": 1,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 159
     },
     {
@@ -346,7 +361,7 @@
       "next_time": "16:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 262
     },
     {
@@ -361,7 +376,7 @@
       "next_time": "16:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 232
     },
     {
@@ -376,7 +391,7 @@
       "next_time": "15:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 213
     },
     {
@@ -388,11 +403,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-08-23",
-      "next_time": "13:00",
+      "next_time": "14:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
-      "n_reserved": 200
+      "n_obs": 1001,
+      "n_reserved": 201
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -406,7 +421,7 @@
       "next_time": "15:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 205
     },
     {
@@ -421,7 +436,7 @@
       "next_time": "16:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 193
     },
     {
@@ -436,7 +451,7 @@
       "next_time": "18:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 100
     },
     {
@@ -451,7 +466,7 @@
       "next_time": "18:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 238
     },
     {
@@ -463,11 +478,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-08-23",
-      "next_time": "14:45",
+      "next_time": "16:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
-      "n_reserved": 276
+      "n_obs": 1001,
+      "n_reserved": 277
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -478,11 +493,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-08-23",
-      "next_time": "15:45",
+      "next_time": "19:45",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
-      "n_reserved": 264
+      "n_obs": 1001,
+      "n_reserved": 265
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -496,7 +511,7 @@
       "next_time": "20:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 159
     },
     {
@@ -508,11 +523,11 @@
       "city": "paris",
       "available": true,
       "next_date": "2026-08-23",
-      "next_time": "17:30",
+      "next_time": "20:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
-      "n_reserved": 185
+      "n_obs": 1001,
+      "n_reserved": 186
     },
     {
       "room_id": "lockacademy-paris/629e00cc8cea48af92bd0fac",
@@ -526,7 +541,7 @@
       "next_time": "20:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 121
     },
     {
@@ -541,7 +556,7 @@
       "next_time": "20:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 164
     },
     {
@@ -556,23 +571,8 @@
       "next_time": "18:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 137
-    },
-    {
-      "room_id": "lockacademy-paris/629df71f8cea48af92bce71b",
-      "room": "Un crime presque parfait",
-      "centre": "Lock Academy, Paris",
-      "theme": "investigation",
-      "players": "2 3 4 5",
-      "city": "paris",
-      "available": true,
-      "next_date": "2026-08-23",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "platform": "4escape",
-      "n_obs": 1000,
-      "n_reserved": 119
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -586,7 +586,7 @@
       "next_time": "22:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 204
     },
     {
@@ -601,7 +601,7 @@
       "next_time": "14:15",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 221
     },
     {
@@ -616,7 +616,7 @@
       "next_time": "14:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 265
     },
     {
@@ -631,7 +631,7 @@
       "next_time": "14:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 265
     },
     {
@@ -646,7 +646,7 @@
       "next_time": "19:30",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 228
     },
     {
@@ -661,7 +661,7 @@
       "next_time": "20:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 252
     },
     {
@@ -676,7 +676,7 @@
       "next_time": "14:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 266
     },
     {
@@ -691,7 +691,7 @@
       "next_time": "14:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 279
     },
     {
@@ -706,7 +706,7 @@
       "next_time": "14:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 288
     },
     {
@@ -721,7 +721,7 @@
       "next_time": "14:40",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 275
     },
     {
@@ -736,7 +736,7 @@
       "next_time": "14:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 294
     },
     {
@@ -751,7 +751,7 @@
       "next_time": "19:00",
       "lead_days": 0,
       "platform": "4escape",
-      "n_obs": 1000,
+      "n_obs": 1001,
       "n_reserved": 262
     }
   ]
