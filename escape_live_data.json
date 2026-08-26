@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-08-26T11:06:53+00:00",
+    "generated": "2026-08-26T11:58:40+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 61376,
+    "n_observations": 61432,
     "lead_days_moyen": 1.1,
     "prix_min_marche": 25,
     "n_salles_tarifees": 56
@@ -62,7 +62,7 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 2.7,
+      "lead_days_avg": 3.3,
       "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
@@ -332,7 +332,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:15",
       "lead_days": 10,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 123
     },
     {
@@ -360,7 +360,7 @@
       "next_date": "2026-09-05",
       "next_time": "12:00",
       "lead_days": 10,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 131
     },
     {
@@ -388,7 +388,7 @@
       "next_date": "2026-09-05",
       "next_time": "10:00",
       "lead_days": 10,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 23
     },
     {
@@ -411,7 +411,7 @@
       "next_date": "2026-08-31",
       "next_time": "15:15",
       "lead_days": 5,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 71
     },
     {
@@ -440,7 +440,7 @@
       "next_date": "2026-08-31",
       "next_time": "10:00",
       "lead_days": 5,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 90
     },
     {
@@ -470,8 +470,37 @@
       "next_date": "2026-08-31",
       "next_time": "14:15",
       "lead_days": 5,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 125
+    },
+    {
+      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
+      "room": "Le palais de l'horreur",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
+      "available": true,
+      "next_date": "2026-08-29",
+      "next_time": "10:15",
+      "lead_days": 3,
+      "n_obs": 1097,
+      "n_reserved": 106
     },
     {
       "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
@@ -498,7 +527,7 @@
       "next_date": "2026-08-28",
       "next_time": "09:45",
       "lead_days": 2,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 37
     },
     {
@@ -529,7 +558,7 @@
       "next_date": "2026-08-28",
       "next_time": "12:30",
       "lead_days": 2,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 126
     },
     {
@@ -559,37 +588,8 @@
       "next_date": "2026-08-27",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 166
-    },
-    {
-      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
-      "room": "Le palais de l'horreur",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
-      "available": true,
-      "next_date": "2026-08-27",
-      "next_time": "10:15",
-      "lead_days": 1,
-      "n_obs": 1096,
-      "n_reserved": 105
     },
     {
       "room_id": "thegame/63e3cc231084c231d1aa9fdf",
@@ -617,7 +617,7 @@
       "next_date": "2026-08-27",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 82
     },
     {
@@ -646,7 +646,7 @@
       "next_date": "2026-08-27",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 117
     },
     {
@@ -676,7 +676,7 @@
       "next_date": "2026-08-27",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 168
     },
     {
@@ -704,7 +704,7 @@
       "next_date": "2026-08-27",
       "next_time": "21:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 274
     },
     {
@@ -734,7 +734,7 @@
       "next_date": "2026-08-27",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 194
     },
     {
@@ -764,7 +764,7 @@
       "next_date": "2026-08-27",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 176
     },
     {
@@ -793,7 +793,7 @@
       "next_date": "2026-08-27",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 169
     },
     {
@@ -823,7 +823,7 @@
       "next_date": "2026-08-27",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 145
     },
     {
@@ -853,7 +853,7 @@
       "next_date": "2026-08-27",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 291
     },
     {
@@ -882,7 +882,7 @@
       "next_date": "2026-08-27",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 188
     },
     {
@@ -910,7 +910,7 @@
       "next_date": "2026-08-26",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 208
     },
     {
@@ -940,7 +940,7 @@
       "next_date": "2026-08-26",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 214
     },
     {
@@ -963,7 +963,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 274
     },
     {
@@ -990,7 +990,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 210
     },
     {
@@ -1013,7 +1013,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 244
     },
     {
@@ -1041,7 +1041,7 @@
       "next_date": "2026-08-26",
       "next_time": "19:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 242
     },
     {
@@ -1070,7 +1070,7 @@
       "next_date": "2026-08-26",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 329
     },
     {
@@ -1098,7 +1098,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 295
     },
     {
@@ -1128,7 +1128,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 248
     },
     {
@@ -1157,7 +1157,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 165
     },
     {
@@ -1184,10 +1184,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": true,
       "next_date": "2026-08-26",
-      "next_time": "14:00",
+      "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 1096,
-      "n_reserved": 292
+      "n_obs": 1097,
+      "n_reserved": 293
     },
     {
       "room_id": "thegame/5b4849363e4e381f76962317",
@@ -1215,7 +1215,7 @@
       "next_date": "2026-08-26",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 187
     },
     {
@@ -1245,7 +1245,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:15",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 238
     },
     {
@@ -1275,7 +1275,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 281
     },
     {
@@ -1302,10 +1302,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": true,
       "next_date": "2026-08-26",
-      "next_time": "14:00",
+      "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 1096,
-      "n_reserved": 304
+      "n_obs": 1097,
+      "n_reserved": 305
     },
     {
       "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
@@ -1334,7 +1334,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 285
     },
     {
@@ -1360,10 +1360,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-08-26",
-      "next_time": "15:00",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1096,
-      "n_reserved": 305
+      "n_obs": 1097,
+      "n_reserved": 306
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1390,7 +1390,7 @@
       "next_date": "2026-08-26",
       "next_time": "15:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 264
     },
     {
@@ -1421,7 +1421,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 264
     },
     {
@@ -1450,7 +1450,7 @@
       "next_date": "2026-08-26",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 185
     },
     {
@@ -1479,7 +1479,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 161
     },
     {
@@ -1509,7 +1509,7 @@
       "next_date": "2026-08-26",
       "next_time": "22:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 123
     },
     {
@@ -1532,7 +1532,7 @@
       "next_date": "2026-08-26",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 259
     },
     {
@@ -1555,7 +1555,7 @@
       "next_date": "2026-08-26",
       "next_time": "15:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 221
     },
     {
@@ -1585,7 +1585,7 @@
       "next_date": "2026-08-26",
       "next_time": "15:20",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 314
     },
     {
@@ -1609,10 +1609,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-08-26",
-      "next_time": "13:20",
+      "next_time": "14:40",
       "lead_days": 0,
-      "n_obs": 1096,
-      "n_reserved": 297
+      "n_obs": 1097,
+      "n_reserved": 298
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1637,10 +1637,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-08-26",
-      "next_time": "14:00",
+      "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1096,
-      "n_reserved": 322
+      "n_obs": 1097,
+      "n_reserved": 323
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -1662,7 +1662,7 @@
       "next_date": "2026-08-26",
       "next_time": "20:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 302
     },
     {
@@ -1691,7 +1691,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 143
     },
     {
@@ -1720,7 +1720,7 @@
       "next_date": "2026-08-26",
       "next_time": "21:45",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 163
     },
     {
@@ -1743,7 +1743,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 212
     },
     {
@@ -1772,7 +1772,7 @@
       "next_date": "2026-08-26",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 157
     },
     {
@@ -1795,7 +1795,7 @@
       "next_date": "2026-08-26",
       "next_time": "15:30",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 214
     },
     {
@@ -1822,10 +1822,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-08-26",
-      "next_time": "14:45",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1096,
-      "n_reserved": 160
+      "n_obs": 1097,
+      "n_reserved": 161
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -1847,7 +1847,7 @@
       "next_date": "2026-08-26",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 199
     },
     {
@@ -1877,7 +1877,7 @@
       "next_date": "2026-08-26",
       "next_time": "19:45",
       "lead_days": 0,
-      "n_obs": 1096,
+      "n_obs": 1097,
       "n_reserved": 280
     }
   ]
