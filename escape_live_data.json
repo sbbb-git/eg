@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-09-12T21:57:10+00:00",
+    "generated": "2026-09-12T23:43:21+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,7 +8,7 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 67536,
+    "n_observations": 67592,
     "lead_days_moyen": 1.2,
     "prix_min_marche": 25.0,
     "n_salles_tarifees": 56
@@ -71,6 +71,33 @@
       "demand_pct": 100.0,
       "prix_min": 49,
       "prix_grille": null
+    },
+    {
+      "centre": "Wanderlust Escapegame",
+      "cp": "75012",
+      "lat": 48.8348383,
+      "lon": 2.3989767,
+      "website": "http://www.wanderlust-escapegame.com/",
+      "phone": "0143440265",
+      "n_rooms": 3,
+      "lead_days_avg": 1.7,
+      "demand_pct": 100.0,
+      "prix_min": 27.0,
+      "prix_grille": {
+        "8": 57.0,
+        "9": 57.0,
+        "10": 57.0,
+        "11": 57.0,
+        "12": 54.0,
+        "13": 54.0,
+        "14": 54.0,
+        "15": 54.0,
+        "16": 51.0,
+        "17": 51.0,
+        "18": 51.0,
+        "19": 51.0,
+        "20": 51.0
+      }
     },
     {
       "centre": "The Game",
@@ -316,33 +343,6 @@
         "4": 50.0,
         "5": 50.0
       }
-    },
-    {
-      "centre": "Wanderlust Escapegame",
-      "cp": "75012",
-      "lat": 48.8348383,
-      "lon": 2.3989767,
-      "website": "http://www.wanderlust-escapegame.com/",
-      "phone": "0143440265",
-      "n_rooms": 3,
-      "lead_days_avg": 1.0,
-      "demand_pct": 100.0,
-      "prix_min": 27.0,
-      "prix_grille": {
-        "8": 57.0,
-        "9": 57.0,
-        "10": 57.0,
-        "11": 57.0,
-        "12": 54.0,
-        "13": 54.0,
-        "14": 54.0,
-        "15": 54.0,
-        "16": 51.0,
-        "17": 51.0,
-        "18": 51.0,
-        "19": 51.0,
-        "20": 51.0
-      }
     }
   ],
   "rooms": [
@@ -371,8 +371,36 @@
       "next_date": "2026-09-16",
       "next_time": "09:45",
       "lead_days": 4,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 46
+    },
+    {
+      "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
+      "room": "La lampe merveilleuse",
+      "centre": "Wanderlust Escapegame",
+      "cp": "75012",
+      "lat": 48.8348383,
+      "lon": 2.3989767,
+      "theme": "romans",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 27.0,
+      "prix_max": 45.0,
+      "prix_grille": {
+        "2": 45.0,
+        "3": 33.0,
+        "4": 30.0,
+        "5": 27.0
+      },
+      "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
+      "available": true,
+      "next_date": "2026-09-15",
+      "next_time": "18:15",
+      "lead_days": 3,
+      "n_obs": 1207,
+      "n_reserved": 131
     },
     {
       "room_id": "livecinema/68775a283c303b1a97ca011e",
@@ -394,7 +422,7 @@
       "next_date": "2026-09-14",
       "next_time": "15:50",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 82
     },
     {
@@ -424,7 +452,7 @@
       "next_date": "2026-09-14",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 183
     },
     {
@@ -453,7 +481,7 @@
       "next_date": "2026-09-14",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 120
     },
     {
@@ -482,7 +510,7 @@
       "next_date": "2026-09-14",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 92
     },
     {
@@ -511,7 +539,7 @@
       "next_date": "2026-09-14",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 130
     },
     {
@@ -540,7 +568,7 @@
       "next_date": "2026-09-14",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 189
     },
     {
@@ -569,7 +597,7 @@
       "next_date": "2026-09-14",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 207
     },
     {
@@ -598,7 +626,7 @@
       "next_date": "2026-09-14",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 185
     },
     {
@@ -627,7 +655,7 @@
       "next_date": "2026-09-14",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 171
     },
     {
@@ -655,7 +683,7 @@
       "next_date": "2026-09-13",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 248
     },
     {
@@ -684,7 +712,7 @@
       "next_date": "2026-09-13",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 103
     },
     {
@@ -714,7 +742,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 243
     },
     {
@@ -737,7 +765,7 @@
       "next_date": "2026-09-13",
       "next_time": "12:40",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 314
     },
     {
@@ -764,7 +792,7 @@
       "next_date": "2026-09-13",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 242
     },
     {
@@ -794,7 +822,7 @@
       "next_date": "2026-09-13",
       "next_time": "19:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 196
     },
     {
@@ -822,7 +850,7 @@
       "next_date": "2026-09-13",
       "next_time": "19:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 306
     },
     {
@@ -852,7 +880,7 @@
       "next_date": "2026-09-13",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 220
     },
     {
@@ -875,7 +903,7 @@
       "next_date": "2026-09-13",
       "next_time": "13:20",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 287
     },
     {
@@ -903,7 +931,7 @@
       "next_date": "2026-09-13",
       "next_time": "12:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 274
     },
     {
@@ -934,7 +962,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:30",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 146
     },
     {
@@ -964,7 +992,7 @@
       "next_date": "2026-09-13",
       "next_time": "19:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 201
     },
     {
@@ -993,7 +1021,7 @@
       "next_date": "2026-09-13",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 376
     },
     {
@@ -1019,10 +1047,10 @@
       "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
       "available": true,
       "next_date": "2026-09-13",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1206,
-      "n_reserved": 338
+      "n_obs": 1207,
+      "n_reserved": 339
     },
     {
       "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
@@ -1051,7 +1079,7 @@
       "next_date": "2026-09-13",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 287
     },
     {
@@ -1080,7 +1108,7 @@
       "next_date": "2026-09-13",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 183
     },
     {
@@ -1109,7 +1137,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 319
     },
     {
@@ -1139,7 +1167,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 160
     },
     {
@@ -1168,7 +1196,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 206
     },
     {
@@ -1198,7 +1226,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:15",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 275
     },
     {
@@ -1228,7 +1256,7 @@
       "next_date": "2026-09-13",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 318
     },
     {
@@ -1257,7 +1285,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 328
     },
     {
@@ -1287,7 +1315,7 @@
       "next_date": "2026-09-13",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 320
     },
     {
@@ -1315,7 +1343,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 349
     },
     {
@@ -1343,7 +1371,7 @@
       "next_date": "2026-09-13",
       "next_time": "13:15",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 301
     },
     {
@@ -1374,7 +1402,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 300
     },
     {
@@ -1404,7 +1432,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 330
     },
     {
@@ -1433,7 +1461,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 182
     },
     {
@@ -1463,7 +1491,7 @@
       "next_date": "2026-09-13",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 137
     },
     {
@@ -1499,7 +1527,7 @@
       "next_date": "2026-09-13",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 295
     },
     {
@@ -1522,7 +1550,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 249
     },
     {
@@ -1551,7 +1579,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 343
     },
     {
@@ -1577,7 +1605,7 @@
       "next_date": "2026-09-13",
       "next_time": "13:20",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 323
     },
     {
@@ -1604,7 +1632,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 349
     },
     {
@@ -1640,7 +1668,7 @@
       "next_date": "2026-09-13",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 362
     },
     {
@@ -1669,7 +1697,7 @@
       "next_date": "2026-09-13",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 159
     },
     {
@@ -1698,7 +1726,7 @@
       "next_date": "2026-09-13",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 208
     },
     {
@@ -1721,7 +1749,7 @@
       "next_date": "2026-09-13",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 240
     },
     {
@@ -1744,7 +1772,7 @@
       "next_date": "2026-09-13",
       "next_time": "10:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 236
     },
     {
@@ -1773,7 +1801,7 @@
       "next_date": "2026-09-13",
       "next_time": "21:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 181
     },
     {
@@ -1796,7 +1824,7 @@
       "next_date": "2026-09-13",
       "next_time": "11:30",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 222
     },
     {
@@ -1826,36 +1854,8 @@
       "next_date": "2026-09-13",
       "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 147
-    },
-    {
-      "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
-      "room": "La lampe merveilleuse",
-      "centre": "Wanderlust Escapegame",
-      "cp": "75012",
-      "lat": 48.8348383,
-      "lon": 2.3989767,
-      "theme": "romans",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 27.0,
-      "prix_max": 45.0,
-      "prix_grille": {
-        "2": 45.0,
-        "3": 33.0,
-        "4": 30.0,
-        "5": 27.0
-      },
-      "reservation_url": "https://wanderlust-escapegame.com/salle-escape-game-paris/la-lampe-merveilleuse/",
-      "available": true,
-      "next_date": "2026-09-13",
-      "next_time": "13:45",
-      "lead_days": 1,
-      "n_obs": 1206,
-      "n_reserved": 130
     },
     {
       "room_id": "wanderlust-escapegame/5f401ce582dc550d63413ef2",
@@ -1882,7 +1882,7 @@
       "next_date": "2026-09-13",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 136
     },
     {
@@ -1912,7 +1912,7 @@
       "next_date": "2026-09-13",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 311
     },
     {
@@ -1940,7 +1940,7 @@
       "next_date": "2026-09-13",
       "next_time": "13:30",
       "lead_days": 1,
-      "n_obs": 1206,
+      "n_obs": 1207,
       "n_reserved": 28
     }
   ]
