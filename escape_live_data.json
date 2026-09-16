@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-09-16T20:55:24+00:00",
+    "generated": "2026-09-16T23:33:02+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 68880,
-    "lead_days_moyen": 1.1,
+    "n_observations": 68936,
+    "lead_days_moyen": 1.2,
     "prix_min_marche": 25.0,
     "n_salles_tarifees": 56
   },
@@ -22,7 +22,7 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 2.3,
+      "lead_days_avg": 3.7,
       "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
@@ -347,6 +347,34 @@
   ],
   "rooms": [
     {
+      "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
+      "room": "Le taxidermiste",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 5,
+      "prix_min": 150.0,
+      "prix_max": 240.0,
+      "prix_grille": {
+        "2": 150.0,
+        "3": 190.0,
+        "4": 220.0,
+        "5": 240.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "11:45",
+      "lead_days": 5,
+      "n_obs": 1231,
+      "n_reserved": 48
+    },
+    {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
       "room": "Le magicien de Paris",
       "centre": "Deep Inside Paris",
@@ -372,7 +400,7 @@
       "next_date": "2026-09-21",
       "next_time": "16:00",
       "lead_days": 5,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 104
     },
     {
@@ -401,7 +429,7 @@
       "next_date": "2026-09-18",
       "next_time": "09:30",
       "lead_days": 2,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 163
     },
     {
@@ -424,36 +452,8 @@
       "next_date": "2026-09-17",
       "next_time": "15:50",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 85
-    },
-    {
-      "room_id": "deepinsideparis/66e9b096424ecc1b29c26d5b",
-      "room": "Le taxidermiste",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 5,
-      "prix_min": 150.0,
-      "prix_max": 240.0,
-      "prix_grille": {
-        "2": 150.0,
-        "3": 190.0,
-        "4": 220.0,
-        "5": 240.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-taxidermiste/",
-      "available": true,
-      "next_date": "2026-09-17",
-      "next_time": "09:45",
-      "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 47
     },
     {
       "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
@@ -482,7 +482,7 @@
       "next_date": "2026-09-17",
       "next_time": "17:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 188
     },
     {
@@ -511,7 +511,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 122
     },
     {
@@ -537,10 +537,10 @@
       "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 252
+      "n_obs": 1231,
+      "n_reserved": 253
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -569,7 +569,7 @@
       "next_date": "2026-09-17",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 251
     },
     {
@@ -592,7 +592,7 @@
       "next_date": "2026-09-17",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 320
     },
     {
@@ -619,7 +619,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 252
     },
     {
@@ -648,7 +648,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 95
     },
     {
@@ -677,7 +677,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 135
     },
     {
@@ -707,7 +707,7 @@
       "next_date": "2026-09-17",
       "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 201
     },
     {
@@ -733,10 +733,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "11:00",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 313
+      "n_obs": 1231,
+      "n_reserved": 314
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -765,7 +765,7 @@
       "next_date": "2026-09-17",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 224
     },
     {
@@ -788,7 +788,7 @@
       "next_date": "2026-09-17",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 294
     },
     {
@@ -816,7 +816,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 280
     },
     {
@@ -847,7 +847,7 @@
       "next_date": "2026-09-17",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 150
     },
     {
@@ -875,10 +875,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-l-a-confidential/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "14:00",
+      "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 205
+      "n_obs": 1231,
+      "n_reserved": 206
     },
     {
       "room_id": "thequestfactory/608bb5566fb00564e5f25a88",
@@ -904,10 +904,10 @@
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 384
+      "n_obs": 1231,
+      "n_reserved": 385
     },
     {
       "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
@@ -932,10 +932,10 @@
       "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 346
+      "n_obs": 1231,
+      "n_reserved": 347
     },
     {
       "room_id": "thegame/5b4845a1ca5f6e1f2252ec01,5bc4474ad0877338631e9725,5d3af16d2427e85e5d17a8eb,5d3af2542427e85e5d17a918",
@@ -963,7 +963,7 @@
       "next_date": "2026-09-17",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 193
     },
     {
@@ -991,10 +991,10 @@
       "reservation_url": "https://www.theoneescape.com",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 296
+      "n_obs": 1231,
+      "n_reserved": 297
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1022,7 +1022,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 189
     },
     {
@@ -1051,7 +1051,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 323
     },
     {
@@ -1081,7 +1081,7 @@
       "next_date": "2026-09-17",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 164
     },
     {
@@ -1110,7 +1110,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 210
     },
     {
@@ -1140,7 +1140,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 282
     },
     {
@@ -1170,7 +1170,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 325
     },
     {
@@ -1199,7 +1199,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 333
     },
     {
@@ -1229,7 +1229,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 328
     },
     {
@@ -1255,10 +1255,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "11:00",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 355
+      "n_obs": 1231,
+      "n_reserved": 356
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1283,10 +1283,10 @@
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "10:30",
+      "next_time": "17:45",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 305
+      "n_obs": 1231,
+      "n_reserved": 306
     },
     {
       "room_id": "secretshunters/630e0712e628b39d8affaeff",
@@ -1314,10 +1314,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "11:00",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 308
+      "n_obs": 1231,
+      "n_reserved": 309
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1344,10 +1344,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 339
+      "n_obs": 1231,
+      "n_reserved": 340
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1375,7 +1375,7 @@
       "next_date": "2026-09-17",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 210
     },
     {
@@ -1404,7 +1404,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 189
     },
     {
@@ -1432,10 +1432,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-un-crime-presque-parfait/",
       "available": true,
       "next_date": "2026-09-17",
-      "next_time": "18:00",
+      "next_time": "22:00",
       "lead_days": 1,
-      "n_obs": 1230,
-      "n_reserved": 142
+      "n_obs": 1231,
+      "n_reserved": 143
     },
     {
       "room_id": "joueurz-paris/67f93b7a767106656e0e73cc,67f93ccf767106656e0e744b",
@@ -1470,7 +1470,7 @@
       "next_date": "2026-09-17",
       "next_time": "18:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 309
     },
     {
@@ -1493,7 +1493,7 @@
       "next_date": "2026-09-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 254
     },
     {
@@ -1522,7 +1522,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 347
     },
     {
@@ -1548,7 +1548,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:40",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 329
     },
     {
@@ -1575,7 +1575,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 355
     },
     {
@@ -1611,7 +1611,7 @@
       "next_date": "2026-09-17",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 376
     },
     {
@@ -1640,7 +1640,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 187
     },
     {
@@ -1669,7 +1669,7 @@
       "next_date": "2026-09-17",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 212
     },
     {
@@ -1692,7 +1692,7 @@
       "next_date": "2026-09-17",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 243
     },
     {
@@ -1721,7 +1721,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 174
     },
     {
@@ -1744,7 +1744,7 @@
       "next_date": "2026-09-17",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 239
     },
     {
@@ -1773,7 +1773,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 189
     },
     {
@@ -1796,7 +1796,7 @@
       "next_date": "2026-09-17",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 228
     },
     {
@@ -1826,7 +1826,7 @@
       "next_date": "2026-09-17",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 150
     },
     {
@@ -1854,7 +1854,7 @@
       "next_date": "2026-09-17",
       "next_time": "19:45",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 131
     },
     {
@@ -1882,7 +1882,7 @@
       "next_date": "2026-09-17",
       "next_time": "20:00",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 138
     },
     {
@@ -1912,7 +1912,7 @@
       "next_date": "2026-09-17",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 319
     },
     {
@@ -1940,7 +1940,7 @@
       "next_date": "2026-09-17",
       "next_time": "19:30",
       "lead_days": 1,
-      "n_obs": 1230,
+      "n_obs": 1231,
       "n_reserved": 29
     }
   ]
