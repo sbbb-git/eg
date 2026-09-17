@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-09-17T21:06:02+00:00",
+    "generated": "2026-09-17T23:55:22+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 69216,
-    "lead_days_moyen": 1.2,
+    "n_observations": 69272,
+    "lead_days_moyen": 1.3,
     "prix_min_marche": 25.0,
     "n_salles_tarifees": 56
   },
@@ -114,7 +114,7 @@
       "website": "https://thegame-france.com",
       "phone": "01 43 29 26 21",
       "n_rooms": 12,
-      "lead_days_avg": 1.2,
+      "lead_days_avg": 1.4,
       "demand_pct": 100.0,
       "prix_min": 110.0,
       "prix_grille": {
@@ -371,7 +371,7 @@
       "next_date": "2026-09-21",
       "next_time": "11:45",
       "lead_days": 4,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 48
     },
     {
@@ -400,8 +400,37 @@
       "next_date": "2026-09-21",
       "next_time": "16:00",
       "lead_days": 4,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 104
+    },
+    {
+      "room_id": "thegame/63e3cc231084c231d1aa9fdf",
+      "room": "Mission secrète",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "09:30",
+      "lead_days": 4,
+      "n_obs": 1237,
+      "n_reserved": 97
     },
     {
       "room_id": "theoneescape/66613d1f4e1353dd61da11d5",
@@ -430,7 +459,7 @@
       "next_date": "2026-09-20",
       "next_time": "17:00",
       "lead_days": 3,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 188
     },
     {
@@ -459,7 +488,7 @@
       "next_date": "2026-09-20",
       "next_time": "09:30",
       "lead_days": 3,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 193
     },
     {
@@ -487,7 +516,7 @@
       "next_date": "2026-09-19",
       "next_time": "10:15",
       "lead_days": 2,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 131
     },
     {
@@ -515,7 +544,7 @@
       "next_date": "2026-09-19",
       "next_time": "10:30",
       "lead_days": 2,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 138
     },
     {
@@ -543,7 +572,7 @@
       "next_date": "2026-09-19",
       "next_time": "10:00",
       "lead_days": 2,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 29
     },
     {
@@ -566,7 +595,7 @@
       "next_date": "2026-09-18",
       "next_time": "17:35",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 88
     },
     {
@@ -595,7 +624,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 124
     },
     {
@@ -623,7 +652,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 254
     },
     {
@@ -653,7 +682,7 @@
       "next_date": "2026-09-18",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 251
     },
     {
@@ -676,7 +705,7 @@
       "next_date": "2026-09-18",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 321
     },
     {
@@ -703,37 +732,8 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 255
-    },
-    {
-      "room_id": "thegame/63e3cc231084c231d1aa9fdf",
-      "room": "Mission secrète",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-09-18",
-      "next_time": "16:30",
-      "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 96
     },
     {
       "room_id": "thegame/61692b777595e33dcdfe9f5c",
@@ -761,7 +761,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 137
     },
     {
@@ -791,7 +791,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 202
     },
     {
@@ -817,10 +817,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:30",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 315
+      "n_obs": 1237,
+      "n_reserved": 316
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -849,7 +849,7 @@
       "next_date": "2026-09-18",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 224
     },
     {
@@ -872,7 +872,7 @@
       "next_date": "2026-09-18",
       "next_time": "15:20",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 296
     },
     {
@@ -900,7 +900,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 281
     },
     {
@@ -931,7 +931,7 @@
       "next_date": "2026-09-18",
       "next_time": "18:30",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 151
     },
     {
@@ -961,7 +961,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 206
     },
     {
@@ -990,7 +990,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 386
     },
     {
@@ -1018,7 +1018,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 348
     },
     {
@@ -1046,10 +1046,10 @@
       "reservation_url": "https://www.theoneescape.com",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 297
+      "n_obs": 1237,
+      "n_reserved": 298
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1077,7 +1077,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 191
     },
     {
@@ -1106,7 +1106,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 324
     },
     {
@@ -1136,7 +1136,7 @@
       "next_date": "2026-09-18",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 166
     },
     {
@@ -1165,7 +1165,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 212
     },
     {
@@ -1195,7 +1195,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 284
     },
     {
@@ -1225,7 +1225,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 326
     },
     {
@@ -1254,7 +1254,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 334
     },
     {
@@ -1284,7 +1284,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 329
     },
     {
@@ -1310,10 +1310,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:30",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 357
+      "n_obs": 1237,
+      "n_reserved": 358
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1340,7 +1340,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 307
     },
     {
@@ -1369,10 +1369,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:30",
+      "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 310
+      "n_obs": 1237,
+      "n_reserved": 311
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1399,10 +1399,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 342
+      "n_obs": 1237,
+      "n_reserved": 343
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1430,7 +1430,7 @@
       "next_date": "2026-09-18",
       "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 211
     },
     {
@@ -1459,7 +1459,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 190
     },
     {
@@ -1489,7 +1489,7 @@
       "next_date": "2026-09-18",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 144
     },
     {
@@ -1523,10 +1523,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 311
+      "n_obs": 1237,
+      "n_reserved": 312
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1548,7 +1548,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 255
     },
     {
@@ -1577,7 +1577,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 348
     },
     {
@@ -1603,7 +1603,7 @@
       "next_date": "2026-09-18",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 329
     },
     {
@@ -1630,7 +1630,7 @@
       "next_date": "2026-09-18",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 356
     },
     {
@@ -1664,10 +1664,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 378
+      "n_obs": 1237,
+      "n_reserved": 379
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1695,7 +1695,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 164
     },
     {
@@ -1724,7 +1724,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 189
     },
     {
@@ -1753,7 +1753,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 212
     },
     {
@@ -1776,7 +1776,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 244
     },
     {
@@ -1803,10 +1803,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "14:45",
+      "next_time": "16:30",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 176
+      "n_obs": 1237,
+      "n_reserved": 177
     },
     {
       "room_id": "crack-the-egg-paris/6852cc3759e1b405108ce50c",
@@ -1828,7 +1828,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 240
     },
     {
@@ -1857,7 +1857,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 191
     },
     {
@@ -1880,7 +1880,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 229
     },
     {
@@ -1908,10 +1908,10 @@
       "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 1236,
-      "n_reserved": 150
+      "n_obs": 1237,
+      "n_reserved": 151
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1940,7 +1940,7 @@
       "next_date": "2026-09-18",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 1236,
+      "n_obs": 1237,
       "n_reserved": 322
     }
   ]
