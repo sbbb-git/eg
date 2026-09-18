@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-09-18T08:47:46+00:00",
+    "generated": "2026-09-18T11:38:43+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 69384,
-    "lead_days_moyen": 0.3,
+    "n_observations": 69440,
+    "lead_days_moyen": 0.5,
     "prix_min_marche": 25.0,
     "n_salles_tarifees": 56
   },
@@ -22,8 +22,8 @@
       "website": "http://www.deepinsideparis.fr",
       "phone": "01 42 05 56 53",
       "n_rooms": 3,
-      "lead_days_avg": 2.0,
-      "demand_pct": 66.7,
+      "lead_days_avg": 3.0,
+      "demand_pct": 100.0,
       "prix_min": 120.0,
       "prix_grille": {
         "2": 280.0,
@@ -114,8 +114,8 @@
       "website": "https://thegame-france.com",
       "phone": "01 43 29 26 21",
       "n_rooms": 12,
-      "lead_days_avg": 0.4,
-      "demand_pct": 16.7,
+      "lead_days_avg": 0.9,
+      "demand_pct": 50.0,
       "prix_min": 110.0,
       "prix_grille": {
         "2": 110.0,
@@ -371,7 +371,7 @@
       "next_date": "2026-09-21",
       "next_time": "11:45",
       "lead_days": 3,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 48
     },
     {
@@ -401,8 +401,37 @@
       "next_date": "2026-09-21",
       "next_time": "11:45",
       "lead_days": 3,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 189
+    },
+    {
+      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
+      "room": "Le palais de l'horreur",
+      "centre": "Deep Inside Paris",
+      "cp": "75019",
+      "lat": 48.8845472,
+      "lon": 2.3701339,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 120.0,
+      "prix_max": 198.0,
+      "prix_grille": {
+        "2": 120.0,
+        "3": 135.0,
+        "4": 160.0,
+        "5": 180.0,
+        "6": 198.0
+      },
+      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "14:15",
+      "lead_days": 3,
+      "n_obs": 1240,
+      "n_reserved": 124
     },
     {
       "room_id": "deepinsideparis/5f929c63ea2920589116e23a",
@@ -430,7 +459,7 @@
       "next_date": "2026-09-21",
       "next_time": "16:00",
       "lead_days": 3,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 104
     },
     {
@@ -459,8 +488,37 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 3,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 97
+    },
+    {
+      "room_id": "thegame/61692b777595e33dcdfe9f5c",
+      "room": "Le Far West",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "adventure",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-09-20",
+      "next_time": "21:45",
+      "lead_days": 2,
+      "n_obs": 1240,
+      "n_reserved": 138
     },
     {
       "room_id": "thegame/5b4845a1ca5f6e1f2252ec01,5bc4474ad0877338631e9725,5d3af16d2427e85e5d17a8eb,5d3af2542427e85e5d17a918",
@@ -486,10 +544,97 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-09-20",
-      "next_time": "09:30",
+      "next_time": "20:00",
       "lead_days": 2,
-      "n_obs": 1239,
-      "n_reserved": 193
+      "n_obs": 1240,
+      "n_reserved": 194
+    },
+    {
+      "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
+      "room": "Le tremblement de terre",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "adventure",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-09-20",
+      "next_time": "18:15",
+      "lead_days": 2,
+      "n_obs": 1240,
+      "n_reserved": 211
+    },
+    {
+      "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
+      "room": "Braquage du casino",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "cambriolage",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-09-19",
+      "next_time": "09:30",
+      "lead_days": 1,
+      "n_obs": 1240,
+      "n_reserved": 190
+    },
+    {
+      "room_id": "thegame/5b4844b63e4e381f7695d257",
+      "room": "L'enlèvement",
+      "centre": "The Game",
+      "cp": "75005",
+      "lat": 48.8468159,
+      "lon": 2.3521258,
+      "theme": "investigation",
+      "difficulty": 0,
+      "duration": 90,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 110.0,
+      "prix_max": 192.0,
+      "prix_grille": {
+        "2": 110.0,
+        "3": 126.0,
+        "4": 148.0,
+        "5": 170.0,
+        "6": 192.0
+      },
+      "reservation_url": "https://thegame-france.com",
+      "available": true,
+      "next_date": "2026-09-19",
+      "next_time": "21:45",
+      "lead_days": 1,
+      "n_obs": 1240,
+      "n_reserved": 192
     },
     {
       "room_id": "wanderlust-escapegame/5f401c1baaca390e829da878",
@@ -516,7 +661,7 @@
       "next_date": "2026-09-19",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 131
     },
     {
@@ -544,7 +689,7 @@
       "next_date": "2026-09-19",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 138
     },
     {
@@ -572,7 +717,7 @@
       "next_date": "2026-09-19",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 29
     },
     {
@@ -595,37 +740,8 @@
       "next_date": "2026-09-18",
       "next_time": "17:35",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 88
-    },
-    {
-      "room_id": "deepinsideparis/5f92a43a59bd8058ad2f0d2d",
-      "room": "Le palais de l'horreur",
-      "centre": "Deep Inside Paris",
-      "cp": "75019",
-      "lat": 48.8845472,
-      "lon": 2.3701339,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 120.0,
-      "prix_max": 198.0,
-      "prix_grille": {
-        "2": 120.0,
-        "3": 135.0,
-        "4": 160.0,
-        "5": 180.0,
-        "6": 198.0
-      },
-      "reservation_url": "https://deepinsideparis.fr/le-palais-de-lhorreur/",
-      "available": true,
-      "next_date": "2026-09-18",
-      "next_time": "10:15",
-      "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 124
     },
     {
       "room_id": "thequestfactory/608bb6116e100464ca326c19",
@@ -650,10 +766,10 @@
       "reservation_url": "https://www.thequestfactory.paris/le-fleau-du-druide/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 255
+      "n_obs": 1240,
+      "n_reserved": 256
     },
     {
       "room_id": "majestic-escapegame/6556792f963da1e441ce489f",
@@ -680,10 +796,10 @@
       "reservation_url": "https://majestic-escapegame.paris/mission-galactique/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 251
+      "n_obs": 1240,
+      "n_reserved": 252
     },
     {
       "room_id": "coqsenpate/6544b0722e0e912ac1d561a7",
@@ -705,7 +821,7 @@
       "next_date": "2026-09-18",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 321
     },
     {
@@ -730,39 +846,10 @@
       "reservation_url": "https://unleashescape.com/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 256
-    },
-    {
-      "room_id": "thegame/61692b777595e33dcdfe9f5c",
-      "room": "Le Far West",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "adventure",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-09-18",
-      "next_time": "14:45",
-      "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 137
+      "n_obs": 1240,
+      "n_reserved": 257
     },
     {
       "room_id": "lockacademy-paris/629e19e6759443af758e931e",
@@ -789,10 +876,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-revolte-la-lock/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "16:00",
+      "next_time": "17:30",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 202
+      "n_obs": 1240,
+      "n_reserved": 203
     },
     {
       "room_id": "secretshunters/630dff49e628b39d8aff93eb",
@@ -817,10 +904,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "13:00",
+      "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 316
+      "n_obs": 1240,
+      "n_reserved": 317
     },
     {
       "room_id": "lockacademy-paris/629e7639759443af758eaf8c",
@@ -849,7 +936,7 @@
       "next_date": "2026-09-18",
       "next_time": "17:30",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 224
     },
     {
@@ -870,10 +957,10 @@
       "reservation_url": "https://www.pandore-escape.com",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "15:20",
+      "next_time": "17:20",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 296
+      "n_obs": 1240,
+      "n_reserved": 297
     },
     {
       "room_id": "masterio/6194dc8fea0e575e68ca368e",
@@ -898,9 +985,9 @@
       "reservation_url": "https://www.masterio.fr/la-pierre-de-lumiere/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "17:15",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 281
     },
     {
@@ -929,10 +1016,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-le-casse-du-siecle/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "18:30",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 151
+      "n_obs": 1240,
+      "n_reserved": 152
     },
     {
       "room_id": "lockacademy-paris/629e1c488cea48af92bd2835",
@@ -961,7 +1048,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 206
     },
     {
@@ -988,10 +1075,10 @@
       "reservation_url": "https://www.thequestfactory.paris/cannibal-island/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 387
+      "n_obs": 1240,
+      "n_reserved": 388
     },
     {
       "room_id": "thequestfactory/6718d74642f21045f9e88ce9",
@@ -1016,10 +1103,10 @@
       "reservation_url": "https://www.thequestfactory.paris/descente-sous-tension/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 349
+      "n_obs": 1240,
+      "n_reserved": 350
     },
     {
       "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
@@ -1046,10 +1133,10 @@
       "reservation_url": "https://www.theoneescape.com",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 298
+      "n_obs": 1240,
+      "n_reserved": 299
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1077,7 +1164,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 191
     },
     {
@@ -1104,9 +1191,9 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "16:40",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 324
     },
     {
@@ -1134,10 +1221,10 @@
       "reservation_url": "https://lockacademy.com/enquete/escape-game-paris-tres-cher-lock/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "18:00",
+      "next_time": "16:00",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 166
+      "n_obs": 1240,
+      "n_reserved": 167
     },
     {
       "room_id": "thegame/5b4849363e4e381f76962317",
@@ -1163,10 +1250,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "14:45",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 212
+      "n_obs": 1240,
+      "n_reserved": 213
     },
     {
       "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
@@ -1193,9 +1280,9 @@
       "reservation_url": "https://majestic-escapegame.paris/titanic/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:15",
+      "next_time": "14:15",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 284
     },
     {
@@ -1223,9 +1310,9 @@
       "reservation_url": "https://majestic-escapegame.paris/atlantide/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 326
     },
     {
@@ -1252,9 +1339,9 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 334
     },
     {
@@ -1282,9 +1369,9 @@
       "reservation_url": "https://majestic-escapegame.paris/oggy/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 329
     },
     {
@@ -1310,10 +1397,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "13:00",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 358
+      "n_obs": 1240,
+      "n_reserved": 359
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1338,9 +1425,9 @@
       "reservation_url": "https://www.masterio.fr/le-magasin-de-jouets/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:30",
+      "next_time": "17:45",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 307
     },
     {
@@ -1369,10 +1456,10 @@
       "reservation_url": "https://www.secretshunters.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "13:00",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 311
+      "n_obs": 1240,
+      "n_reserved": 312
     },
     {
       "room_id": "theoneescape/5fff2a24833a3f0c140ff35d",
@@ -1399,39 +1486,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:15",
+      "next_time": "16:15",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 343
-    },
-    {
-      "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
-      "room": "Le tremblement de terre",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "adventure",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-09-18",
-      "next_time": "11:15",
-      "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 211
+      "n_obs": 1240,
+      "n_reserved": 344
     },
     {
       "room_id": "thegame/5b4847e2ca5f6e1f2253145d",
@@ -1459,7 +1517,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 190
     },
     {
@@ -1489,7 +1547,7 @@
       "next_date": "2026-09-18",
       "next_time": "18:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 144
     },
     {
@@ -1523,10 +1581,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "13:00",
+      "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 313
+      "n_obs": 1240,
+      "n_reserved": 314
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1548,7 +1606,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 255
     },
     {
@@ -1575,9 +1633,9 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 348
     },
     {
@@ -1601,10 +1659,10 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:00",
+      "next_time": "14:40",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 329
+      "n_obs": 1240,
+      "n_reserved": 330
     },
     {
       "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
@@ -1628,9 +1686,9 @@
       "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "10:00",
+      "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 356
     },
     {
@@ -1664,10 +1722,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "13:00",
+      "next_time": "18:15",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 380
+      "n_obs": 1240,
+      "n_reserved": 381
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1695,37 +1753,8 @@
       "next_date": "2026-09-18",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 164
-    },
-    {
-      "room_id": "thegame/5b48419eca5f6e1f22529b77,5bc4470fd0877338631e9717",
-      "room": "Braquage du casino",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "cambriolage",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-09-18",
-      "next_time": "16:30",
-      "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 189
     },
     {
       "room_id": "thegame/5b484030ca5f6e1f2252731f,5bc446d35e15c9385eeb21d2",
@@ -1751,10 +1780,10 @@
       "reservation_url": "https://thegame-france.com",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "14:45",
+      "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 212
+      "n_obs": 1240,
+      "n_reserved": 213
     },
     {
       "room_id": "crack-the-egg-paris/6853bb63dd45216f76cad541",
@@ -1776,7 +1805,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 244
     },
     {
@@ -1805,7 +1834,7 @@
       "next_date": "2026-09-18",
       "next_time": "16:30",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 177
     },
     {
@@ -1828,37 +1857,8 @@
       "next_date": "2026-09-18",
       "next_time": "14:00",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 240
-    },
-    {
-      "room_id": "thegame/5b4844b63e4e381f7695d257",
-      "room": "L'enlèvement",
-      "centre": "The Game",
-      "cp": "75005",
-      "lat": 48.8468159,
-      "lon": 2.3521258,
-      "theme": "investigation",
-      "difficulty": 0,
-      "duration": 90,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 110.0,
-      "prix_max": 192.0,
-      "prix_grille": {
-        "2": 110.0,
-        "3": 126.0,
-        "4": 148.0,
-        "5": 170.0,
-        "6": 192.0
-      },
-      "reservation_url": "https://thegame-france.com",
-      "available": true,
-      "next_date": "2026-09-18",
-      "next_time": "14:45",
-      "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 191
     },
     {
       "room_id": "crack-the-egg-paris/6851e7fe89ff80d7a52c2d19",
@@ -1880,7 +1880,7 @@
       "next_date": "2026-09-18",
       "next_time": "14:45",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 229
     },
     {
@@ -1908,10 +1908,10 @@
       "reservation_url": "https://www.lantichambre.paris/escape-games/dr-kang",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "12:15",
+      "next_time": "16:15",
       "lead_days": 0,
-      "n_obs": 1239,
-      "n_reserved": 151
+      "n_obs": 1240,
+      "n_reserved": 152
     },
     {
       "room_id": "lantichambre/5b507e9910285904e2dd51c0",
@@ -1938,9 +1938,9 @@
       "reservation_url": "https://www.lantichambre.paris/escape-games/kgb",
       "available": true,
       "next_date": "2026-09-18",
-      "next_time": "09:45",
+      "next_time": "15:45",
       "lead_days": 0,
-      "n_obs": 1239,
+      "n_obs": 1240,
       "n_reserved": 322
     }
   ]
