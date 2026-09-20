@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-09-20T20:23:39+00:00",
+    "generated": "2026-09-20T22:11:39+00:00",
     "source": "escapegame.fr / 4escape /api/public",
     "mode": "réel",
     "note": "lead_days = délai (j) au prochain créneau libre = proxy de demande. Occupation par créneau en cours de construction (historique)."
@@ -8,8 +8,8 @@
   "kpis": {
     "n_centres": 16,
     "n_rooms": 56,
-    "n_observations": 70392,
-    "lead_days_moyen": 1.0,
+    "n_observations": 70448,
+    "lead_days_moyen": 1.2,
     "prix_min_marche": 25.0,
     "n_salles_tarifees": 56
   },
@@ -121,6 +121,26 @@
       }
     },
     {
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "website": "https://www.theoneescape.com",
+      "phone": "09 75 90 83 68",
+      "n_rooms": 3,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 31.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      }
+    },
+    {
       "centre": "The Quest Factory",
       "cp": "75010",
       "lat": 48.8773877,
@@ -137,6 +157,26 @@
         "4": 35.0,
         "5": 30.0,
         "6": 28.0
+      }
+    },
+    {
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "website": "https://majestic-escapegame.paris/",
+      "phone": "",
+      "n_rooms": 4,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 30.0,
+      "prix_grille": {
+        "2": 60.0,
+        "3": 45.0,
+        "4": 40.0,
+        "5": 35.0,
+        "6": 32.0,
+        "7": 32.0
       }
     },
     {
@@ -228,6 +268,25 @@
       }
     },
     {
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "website": "https://www.phobiaescapegame.fr/",
+      "phone": "01 44 24 85 28",
+      "n_rooms": 5,
+      "lead_days_avg": 1.0,
+      "demand_pct": 100.0,
+      "prix_min": 78.0,
+      "prix_grille": {
+        "2": 108.0,
+        "3": 108.0,
+        "4": 108.0,
+        "5": 108.0,
+        "6": 128.0
+      }
+    },
+    {
       "centre": "Joueurz Paris",
       "cp": "75018",
       "lat": 48.8903889,
@@ -284,65 +343,6 @@
         "4": 50.0,
         "5": 50.0
       }
-    },
-    {
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "website": "https://www.theoneescape.com",
-      "phone": "09 75 90 83 68",
-      "n_rooms": 3,
-      "lead_days_avg": 0.7,
-      "demand_pct": 66.7,
-      "prix_min": 31.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      }
-    },
-    {
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "website": "https://majestic-escapegame.paris/",
-      "phone": "",
-      "n_rooms": 4,
-      "lead_days_avg": 0.2,
-      "demand_pct": 25.0,
-      "prix_min": 30.0,
-      "prix_grille": {
-        "2": 60.0,
-        "3": 45.0,
-        "4": 40.0,
-        "5": 35.0,
-        "6": 32.0,
-        "7": 32.0
-      }
-    },
-    {
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "website": "https://www.phobiaescapegame.fr/",
-      "phone": "01 44 24 85 28",
-      "n_rooms": 5,
-      "lead_days_avg": 0.0,
-      "demand_pct": 0.0,
-      "prix_min": 78.0,
-      "prix_grille": {
-        "2": 108.0,
-        "3": 108.0,
-        "4": 108.0,
-        "5": 108.0,
-        "6": 128.0
-      }
     }
   ],
   "rooms": [
@@ -371,7 +371,7 @@
       "next_date": "2026-09-23",
       "next_time": "10:15",
       "lead_days": 3,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 134
     },
     {
@@ -399,7 +399,7 @@
       "next_date": "2026-09-23",
       "next_time": "10:30",
       "lead_days": 3,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 142
     },
     {
@@ -427,7 +427,7 @@
       "next_date": "2026-09-23",
       "next_time": "10:00",
       "lead_days": 3,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 32
     },
     {
@@ -450,7 +450,7 @@
       "next_date": "2026-09-22",
       "next_time": "17:35",
       "lead_days": 2,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 89
     },
     {
@@ -478,7 +478,7 @@
       "next_date": "2026-09-22",
       "next_time": "11:00",
       "lead_days": 2,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 366
     },
     {
@@ -509,7 +509,7 @@
       "next_date": "2026-09-22",
       "next_time": "11:00",
       "lead_days": 2,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 318
     },
     {
@@ -537,7 +537,7 @@
       "next_date": "2026-09-21",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 48
     },
     {
@@ -567,7 +567,7 @@
       "next_date": "2026-09-21",
       "next_time": "11:45",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 189
     },
     {
@@ -596,7 +596,7 @@
       "next_date": "2026-09-21",
       "next_time": "14:15",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 124
     },
     {
@@ -624,7 +624,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 258
     },
     {
@@ -653,7 +653,7 @@
       "next_date": "2026-09-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 104
     },
     {
@@ -683,7 +683,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 256
     },
     {
@@ -706,7 +706,7 @@
       "next_date": "2026-09-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 330
     },
     {
@@ -733,7 +733,7 @@
       "next_date": "2026-09-21",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 262
     },
     {
@@ -762,7 +762,7 @@
       "next_date": "2026-09-21",
       "next_time": "13:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 98
     },
     {
@@ -791,7 +791,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 139
     },
     {
@@ -821,7 +821,7 @@
       "next_date": "2026-09-21",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 209
     },
     {
@@ -849,7 +849,7 @@
       "next_date": "2026-09-21",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 326
     },
     {
@@ -879,7 +879,7 @@
       "next_date": "2026-09-21",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 231
     },
     {
@@ -902,7 +902,7 @@
       "next_date": "2026-09-21",
       "next_time": "18:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 304
     },
     {
@@ -930,7 +930,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 287
     },
     {
@@ -961,7 +961,7 @@
       "next_date": "2026-09-21",
       "next_time": "17:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 156
     },
     {
@@ -991,7 +991,7 @@
       "next_date": "2026-09-21",
       "next_time": "12:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 211
     },
     {
@@ -1020,7 +1020,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 396
     },
     {
@@ -1048,7 +1048,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 358
     },
     {
@@ -1077,8 +1077,38 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 195
+    },
+    {
+      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
+      "room": "Le crime de l’Orient-Express",
+      "centre": "THE ONE Escape",
+      "cp": "75002",
+      "lat": 48.8669279,
+      "lon": 2.352301,
+      "theme": "investigation",
+      "difficulty": null,
+      "duration": null,
+      "min_players": null,
+      "max_players": null,
+      "prix_min": 44.0,
+      "prix_max": 189.0,
+      "prix_grille": {
+        "2": 189.0,
+        "3": 189.0,
+        "4": 54.0,
+        "5": 47.0,
+        "6": 44.0,
+        "7": 44.0
+      },
+      "reservation_url": "https://www.theoneescape.com",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "12:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 303
     },
     {
       "room_id": "thegame/5b4848763e4e381f7696230b,5d3af2cee8dd215e56b52e11,5d3af3252427e85e5d17a92a",
@@ -1106,8 +1136,37 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 196
+    },
+    {
+      "room_id": "phobiaescapegame/6347f8f9b89b502bcbbf1bc7",
+      "room": "Alice",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "romans",
+      "difficulty": 10,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 108.0,
+      "prix_max": 128.0,
+      "prix_grille": {
+        "2": 108.0,
+        "3": 108.0,
+        "4": 108.0,
+        "5": 108.0,
+        "6": 128.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 330
     },
     {
       "room_id": "lockacademy-paris/629dfe5e759443af758e7906",
@@ -1136,7 +1195,7 @@
       "next_date": "2026-09-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 171
     },
     {
@@ -1165,8 +1224,127 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 216
+    },
+    {
+      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
+      "room": "Titanic",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "histoire",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/titanic/",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:15",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 288
+    },
+    {
+      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
+      "room": "Les aventuriers de l’Atlantide",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "fantasy",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/atlantide/",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 330
+    },
+    {
+      "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
+      "room": "Les disparus",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "horror",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 108.0,
+      "prix_max": 128.0,
+      "prix_grille": {
+        "2": 108.0,
+        "3": 108.0,
+        "4": 108.0,
+        "5": 108.0,
+        "6": 128.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 340
+    },
+    {
+      "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
+      "room": "Oggy prisonnier du temps",
+      "centre": "Majestic Escape Game",
+      "cp": "75001",
+      "lat": 48.863708,
+      "lon": 2.3475524,
+      "theme": "romans",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 3,
+      "max_players": 7,
+      "prix_min": 30.0,
+      "prix_max": 55.0,
+      "prix_grille": {
+        "2": 55.0,
+        "3": 40.0,
+        "4": 35.0,
+        "5": 32.0,
+        "6": 30.0,
+        "7": 30.0
+      },
+      "reservation_url": "https://majestic-escapegame.paris/oggy/",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 334
     },
     {
       "room_id": "masterio/6714ca71dc11d0bed0a3aa4e",
@@ -1193,7 +1371,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 311
     },
     {
@@ -1221,10 +1399,10 @@
       "reservation_url": "https://theoneescape.com/missions-escape-game/chemical-hallucinations",
       "available": true,
       "next_date": "2026-09-21",
-      "next_time": "10:15",
+      "next_time": "12:15",
       "lead_days": 1,
-      "n_obs": 1257,
-      "n_reserved": 348
+      "n_obs": 1258,
+      "n_reserved": 349
     },
     {
       "room_id": "thegame/5d3af3c7e8dd215e56b52e3b",
@@ -1252,7 +1430,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 215
     },
     {
@@ -1281,7 +1459,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 192
     },
     {
@@ -1311,7 +1489,7 @@
       "next_date": "2026-09-21",
       "next_time": "16:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 147
     },
     {
@@ -1345,10 +1523,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-09-21",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1257,
-      "n_reserved": 323
+      "n_obs": 1258,
+      "n_reserved": 324
     },
     {
       "room_id": "crack-the-egg-paris/6853b83e9433130707b74d39,6853ba5e9433130707b74e57",
@@ -1370,8 +1548,90 @@
       "next_date": "2026-09-21",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 260
+    },
+    {
+      "room_id": "phobiaescapegame/6347fa448f1f302c07547ce6",
+      "room": "Da Vinci",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "cambriolage",
+      "difficulty": 0,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 6,
+      "prix_min": 108.0,
+      "prix_max": 128.0,
+      "prix_grille": {
+        "2": 108.0,
+        "3": 108.0,
+        "4": 108.0,
+        "5": 108.0,
+        "6": 128.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 353
+    },
+    {
+      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
+      "room": "Loft 13",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "horror",
+      "difficulty": 6,
+      "duration": 60,
+      "min_players": 1,
+      "max_players": 2,
+      "prix_min": 78.0,
+      "prix_max": 78.0,
+      "prix_grille": {
+        "1": 78.0,
+        "2": 78.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:40",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 335
+    },
+    {
+      "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
+      "room": "Houdini",
+      "centre": "Phobia Escape Game",
+      "cp": "75013",
+      "lat": 48.8351638,
+      "lon": 2.3609876,
+      "theme": "prison",
+      "difficulty": 5,
+      "duration": 60,
+      "min_players": 2,
+      "max_players": 4,
+      "prix_min": 96.0,
+      "prix_max": 96.0,
+      "prix_grille": {
+        "2": 96.0,
+        "3": 96.0,
+        "4": 96.0
+      },
+      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
+      "available": true,
+      "next_date": "2026-09-21",
+      "next_time": "10:00",
+      "lead_days": 1,
+      "n_obs": 1258,
+      "n_reserved": 359
     },
     {
       "room_id": "joueurz-paris/67f93a47767106656e0e7298,67f93b1c767106656e0e7354,67f63b07c8c137aa0b3b3e8d",
@@ -1404,10 +1664,10 @@
       "reservation_url": "https://joueurz.fr/",
       "available": true,
       "next_date": "2026-09-21",
-      "next_time": "09:30",
+      "next_time": "11:15",
       "lead_days": 1,
-      "n_obs": 1257,
-      "n_reserved": 391
+      "n_obs": 1258,
+      "n_reserved": 392
     },
     {
       "room_id": "thegame/5d3af4482427e85e5d17a950",
@@ -1435,7 +1695,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 167
     },
     {
@@ -1464,7 +1724,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 193
     },
     {
@@ -1493,7 +1753,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 221
     },
     {
@@ -1516,7 +1776,7 @@
       "next_date": "2026-09-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 249
     },
     {
@@ -1545,7 +1805,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 180
     },
     {
@@ -1568,7 +1828,7 @@
       "next_date": "2026-09-21",
       "next_time": "15:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 242
     },
     {
@@ -1597,7 +1857,7 @@
       "next_date": "2026-09-21",
       "next_time": "09:30",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 197
     },
     {
@@ -1620,7 +1880,7 @@
       "next_date": "2026-09-21",
       "next_time": "14:00",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 234
     },
     {
@@ -1650,7 +1910,7 @@
       "next_date": "2026-09-21",
       "next_time": "10:15",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 155
     },
     {
@@ -1680,268 +1940,8 @@
       "next_date": "2026-09-21",
       "next_time": "09:45",
       "lead_days": 1,
-      "n_obs": 1257,
+      "n_obs": 1258,
       "n_reserved": 328
-    },
-    {
-      "room_id": "theoneescape/5fff49e8e4df910bf7fbf3de,63565b00ac0ddb7129c8ab42",
-      "room": "Le crime de l’Orient-Express",
-      "centre": "THE ONE Escape",
-      "cp": "75002",
-      "lat": 48.8669279,
-      "lon": 2.352301,
-      "theme": "investigation",
-      "difficulty": null,
-      "duration": null,
-      "min_players": null,
-      "max_players": null,
-      "prix_min": 44.0,
-      "prix_max": 189.0,
-      "prix_grille": {
-        "2": 189.0,
-        "3": 189.0,
-        "4": 54.0,
-        "5": 47.0,
-        "6": 44.0,
-        "7": 44.0
-      },
-      "reservation_url": "https://www.theoneescape.com",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 303
-    },
-    {
-      "room_id": "phobiaescapegame/6347f8f9b89b502bcbbf1bc7",
-      "room": "Alice",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "romans",
-      "difficulty": 10,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 108.0,
-      "prix_max": 128.0,
-      "prix_grille": {
-        "2": 108.0,
-        "3": 108.0,
-        "4": 108.0,
-        "5": 108.0,
-        "6": 128.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-alice.html",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 330
-    },
-    {
-      "room_id": "majestic-escapegame/5e445c6c07e70c1f5c0cb5a3",
-      "room": "Titanic",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "histoire",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/titanic/",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 287
-    },
-    {
-      "room_id": "majestic-escapegame/5e4459e53c44c61f3618f06b",
-      "room": "Les aventuriers de l’Atlantide",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "fantasy",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/atlantide/",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 330
-    },
-    {
-      "room_id": "phobiaescapegame/634812b1b89b502bcbbf20e7",
-      "room": "Les disparus",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "horror",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 108.0,
-      "prix_max": 128.0,
-      "prix_grille": {
-        "2": 108.0,
-        "3": 108.0,
-        "4": 108.0,
-        "5": 108.0,
-        "6": 128.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-les-disparus.html",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 340
-    },
-    {
-      "room_id": "majestic-escapegame/5e445daa07e70c1f5c0cbff5",
-      "room": "Oggy prisonnier du temps",
-      "centre": "Majestic Escape Game",
-      "cp": "75001",
-      "lat": 48.863708,
-      "lon": 2.3475524,
-      "theme": "romans",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 3,
-      "max_players": 7,
-      "prix_min": 30.0,
-      "prix_max": 55.0,
-      "prix_grille": {
-        "2": 55.0,
-        "3": 40.0,
-        "4": 35.0,
-        "5": 32.0,
-        "6": 30.0,
-        "7": 30.0
-      },
-      "reservation_url": "https://majestic-escapegame.paris/oggy/",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 334
-    },
-    {
-      "room_id": "phobiaescapegame/6347fa448f1f302c07547ce6",
-      "room": "Da Vinci",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "cambriolage",
-      "difficulty": 0,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 6,
-      "prix_min": 108.0,
-      "prix_max": 128.0,
-      "prix_grille": {
-        "2": 108.0,
-        "3": 108.0,
-        "4": 108.0,
-        "5": 108.0,
-        "6": 128.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-da-vinci.html",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 353
-    },
-    {
-      "room_id": "phobiaescapegame/6347f771b89b502bcbbf1a16",
-      "room": "Loft 13",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "horror",
-      "difficulty": 6,
-      "duration": 60,
-      "min_players": 1,
-      "max_players": 2,
-      "prix_min": 78.0,
-      "prix_max": 78.0,
-      "prix_grille": {
-        "1": 78.0,
-        "2": 78.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-loft-13.html",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:15",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 334
-    },
-    {
-      "room_id": "phobiaescapegame/6347dd2fb89b502bcbbf16ea",
-      "room": "Houdini",
-      "centre": "Phobia Escape Game",
-      "cp": "75013",
-      "lat": 48.8351638,
-      "lon": 2.3609876,
-      "theme": "prison",
-      "difficulty": 5,
-      "duration": 60,
-      "min_players": 2,
-      "max_players": 4,
-      "prix_min": 96.0,
-      "prix_max": 96.0,
-      "prix_grille": {
-        "2": 96.0,
-        "3": 96.0,
-        "4": 96.0
-      },
-      "reservation_url": "https://www.phobiaescapegame.fr/escape-game-harry-houdini.html",
-      "available": true,
-      "next_date": "2026-09-20",
-      "next_time": "22:00",
-      "lead_days": 0,
-      "n_obs": 1257,
-      "n_reserved": 359
     }
   ]
 }
