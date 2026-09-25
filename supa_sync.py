@@ -92,7 +92,13 @@ def main() -> int:
                 "prix_total_moyen": sess.get("prix_total_moyen"),
                 "dispo": sess.get("dispo"), "booked": sess.get("booked"), "statut": sess.get("statut"),
                 "premier_vu": sess.get("premier_vu"), "dernier_vu": sess.get("dernier_vu"),
-                "releve": sess.get("releve")}
+                "releve": sess.get("releve"),
+                # capacité + places vendues (sessions partagées ; None si salle privée)
+                "prive": sess.get("prive"), "groupby": sess.get("groupby"),
+                "places_max": sess.get("places_max"),
+                "places_restantes": sess.get("places_restantes"),
+                "places_init": sess.get("places_init"),
+                "places_vendues": sess.get("places_vendues")}
 
     print(f"[supa] {len(enseignes)} enseignes · {len(centres)} centres · "
           f"{len(salles)} salles · {len(sessions)} sessions")

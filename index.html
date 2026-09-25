@@ -240,7 +240,11 @@ const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1).toLowerCase():"";
 const pct=(a,b)=>b?Math.round(100*a/b):0;
 const eur=v=>v==null?"—":Math.round(v)+" €";
 const iso=d=>d.toISOString().slice(0,10);
-const TODAY=iso(new Date());
+/* Les horaires publiés sont en heure de Paris : « aujourd'hui » et « maintenant » aussi,
+   quel que soit le fuseau du lecteur (sinon la date bascule faux entre 0 h et 2 h). */
+const PARIS=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Paris",year:"numeric",month:"2-digit",
+  day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});      // -> "2026-09-25 16:10"
+const TODAY=PARIS.format(new Date()).slice(0,10);
 const JOURS=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
 const BUCKETS=[[0,12,"–12h"],[12,14,"12-14"],[14,16,"14-16"],[16,18,"16-18"],[18,20,"18-20"],[20,22,"20-22"],[22,24,"22h+"]];
 const RAMP=["--h1","--h2","--h3","--h4","--h5","--h6"];
@@ -255,6 +259,36 @@ async function qCount(p){const r=await fetch(API+"/"+p+"&limit=1",{headers:{...H
   const cr=r.headers.get("content-range");return cr&&cr.includes("/")?(+cr.split("/")[1]||0):0;}
 
 let EN={},CE={},SA={},BY_ENS={},BY_CENTRE={},CENTRE_OF={},ENS_OF={},SESS=[],FRESH=null,map=null;
+/* Joueurs & panier RÉELS — sessions vendues à la place (non privées).
+   places_vendues = baisse des places libres observée par le scraper depuis TRACK_START.
+   On ne retient que les sessions suivies ≥ SUIVI_MIN jours avant leur date : une session
+   découverte la veille a déjà vendu des places sans qu'on les voie (sous-comptage). */
+const TRACK_START="2026-09-25", SUIVI_MIN=5, VENTES_MIN=20;
+let VENTES=[];
+async function qAll(p){let out=[],f=0;for(;;){const b=await qPage(p,f);out=out.concat(b);
+  if(b.length<1000||f>=19000)break;f+=1000;}return out;}
+const dayDiff=(a,b)=>Math.round((new Date(a+"T12:00")-new Date(b+"T12:00"))/864e5);
+function panierPour(grid,n){                 // prix_total = prix TOTAL par taille de groupe
+  if(!grid||!n)return null;
+  const ks=Object.keys(grid).map(Number).filter(k=>k>0&&grid[k]!=null);
+  if(!ks.length)return null;
+  if(grid[n]!=null)return +grid[n];
+  const k=ks.reduce((a,b)=>Math.abs(b-n)<Math.abs(a-n)?b:a);
+  return grid[k]/k*n;
+}
+function ventesStats(){
+  const rows=VENTES.filter(v=>!VILLE||(CENTRE_OF[v.salle_id]||{}).ville===VILLE);
+  const parEns={};
+  rows.forEach(v=>{const eid=ENS_OF[v.salle_id];if(!eid)return;
+    const e=parEns[eid]=parEns[eid]||{j:[],p:[],pj:[]};
+    e.j.push(v.places_vendues);
+    const pa=panierPour(v.prix_total,v.places_vendues);
+    if(pa){e.p.push(pa);e.pj.push(pa/v.places_vendues);}});
+  const J=rows.map(v=>v.places_vendues), P=rows.map(v=>panierPour(v.prix_total,v.places_vendues)).filter(Boolean);
+  return {n:rows.length,jMed:median(J),pMed:median(P),parEns,nEns:Object.keys(parEns).length};
+}
+const frDate=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
+const FIABLE=iso(new Date(new Date(TRACK_START+"T12:00").getTime()+(SUIVI_MIN+7)*864e5));
 let PER="7", VILLE="", TAB="vue";
 /* Deux garde-fous de justesse, calculés une fois après chargement :
    DAY_OK  : on écarte les jours de bord d'horizon (le scraper voit ~7 j, le
@@ -294,12 +328,15 @@ const MUET_LIB={complet:"complet sur la période",
 async function boot(){
   const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}`);
   const pages=Math.min(Math.ceil(nSess/1000),20);
-  const sel=`sessions?select=salle_id,date,heure,dispo,booked,prix_total_moyen&date=gte.${TODAY}&order=date,heure`;
-  const [ens,cent,sal,fresh,...chunks]=await Promise.all([
+  const sel=`sessions?select=salle_id,date,heure,dispo,booked,prive,prix_total_moyen&date=gte.${TODAY}&order=date,heure`;
+  const D30=iso(new Date(Date.now()-30*864e5));
+  const selV=`sessions?select=salle_id,date,premier_vu,places_vendues,prix_total&prive=is.false&places_vendues=gt.0&date=gte.${D30}&date=lt.${TODAY}&order=date`;
+  const [ens,cent,sal,fresh,ventes,...chunks]=await Promise.all([
     q("enseignes?select=id,nom,website&order=nom"),
     q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id"),
     q("salles?select=id,nom,theme,duree_minutes,joueurs_min,joueurs_max,difficulty,centre_id"),
     q("sessions?select=dernier_vu&order=dernier_vu.desc&limit=1"),
+    qAll(selV).catch(()=>[]),                 // ne doit jamais bloquer le dashboard
     ...Array.from({length:pages},(_,i)=>qPage(sel,i*1000))
   ]);
   ens.forEach(e=>EN[e.id]=e);
@@ -307,6 +344,9 @@ async function boot(){
   sal.forEach(s=>{SA[s.id]=s;(BY_CENTRE[s.centre_id]=BY_CENTRE[s.centre_id]||[]).push(s);
     const c=CE[s.centre_id];CENTRE_OF[s.id]=c;if(c)ENS_OF[s.id]=c.enseigne_id;});
   SESS=chunks.flat();
+  VENTES=ventes.filter(v=>{                  // suivie assez tôt avant sa date ?
+    const debut=v.premier_vu&&v.premier_vu.slice(0,10)>TRACK_START?v.premier_vu.slice(0,10):TRACK_START;
+    return dayDiff(v.date,debut)>=SUIVI_MIN;});
   calibrate();
   FRESH=fresh[0]&&fresh[0].dernier_vu;
   $("#fresh").textContent="relevé "+ago(FRESH);
@@ -318,6 +358,7 @@ async function boot(){
 
 /* ── filtrage (une rangée de filtres cadre TOUS les graphes) ── */
 function slice(){
+  const nowHM=PARIS.format(new Date()).slice(11,16);
   const now=new Date(), end=new Date();
   let from=TODAY, to=null, hFrom=null;
   if(PER==="7"){end.setDate(now.getDate()+7);to=iso(end);}
@@ -326,6 +367,7 @@ function slice(){
     const e=new Date(s);e.setDate(s.getDate()+1);from=iso(s);to=iso(e);}
   return SESS.filter(x=>{
     if(!DAY_OK.has(x.date))return false;          // jour de bord d'horizon -> écarté
+    if(x.date===TODAY&&x.heure<nowHM)return false; // déjà passé : plus réservable, pas « occupé »
     if(x.date<from)return false;
     if(to&&x.date>to)return false;
     if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
@@ -343,10 +385,11 @@ function aggregate(all){
            sallesHors:new Set(all.filter(x=>!PUBLIE.has(x.salle_id)).map(x=>x.salle_id)).size};
   for(const x of rows){
     if(x.dispo)A.libres++;
-    if(x.prix_total_moyen)A.prix.push(x.prix_total_moyen);
+    const px=x.prive!==false?x.prix_total_moyen:null;   // prive null = pas encore renseigné -> gardé
+    if(px)A.prix.push(px);
     const eid=ENS_OF[x.salle_id];
     if(eid){const e=A.parEns[eid]=A.parEns[eid]||{n:0,libres:0,prix:[]};
-      e.n++;if(x.dispo)e.libres++;if(x.prix_total_moyen)e.prix.push(x.prix_total_moyen);}
+      e.n++;if(x.dispo)e.libres++;if(px)e.prix.push(px);}
     const t=A.topSalle[x.salle_id]=A.topSalle[x.salle_id]||{n:0,libres:0};
     t.n++;if(x.dispo)t.libres++;
     const jd=(new Date(x.date+"T12:00").getDay()+6)%7, h=+x.heure.slice(0,2);
@@ -370,12 +413,15 @@ function render(){
 
 /* ── Vue d'ensemble ── */
 function viewVue(A){
-  const occ=pct(A.n-A.libres,A.n), pm=median(A.prix);
+  const occ=pct(A.n-A.libres,A.n), pm=median(A.prix), V=ventesStats();
   const salles=new Set(Object.keys(A.topSalle)).size;
   const libresSoir=SESS.filter(x=>x.date===TODAY&&+x.heure.slice(0,2)>=17&&x.dispo).length;
   const tiles=[
     {lab:"Taux d'occupation",val:occ+" %",ctx:`${(A.n-A.libres).toLocaleString("fr-FR")} créneaux pris sur ${A.n.toLocaleString("fr-FR")} publiés`,bar:occ},
-    {lab:"Prix médian / session",val:eur(pm),ctx:pm?`fourchette ${eur(A.prix.reduce((a,b)=>b<a?b:a))} – ${eur(A.prix.reduce((a,b)=>b>a?b:a))}`:"prix non publiés"},
+    {lab:"Panier estimé · salle privée",val:eur(pm),ctx:pm?`prix moyen d'une session sur les tailles de groupe proposées — la taille réelle n'est pas publiée`:"prix non publiés"},
+    (V.n>=VENTES_MIN
+      ?{lab:"Joueurs / session · réel",val:V.jMed,ctx:`panier réel ${eur(V.pMed)} · ${V.n} sessions vendues à la place, ${V.nEns} enseigne${V.nEns>1?"s":""} (30 j)`}
+      :{lab:"Joueurs / session · réel",val:"—",ctx:`collecte démarrée le ${frDate(TRACK_START)} · premiers chiffres fiables vers le ${frDate(FIABLE)}`}),
     {lab:"Salles mesurées",val:salles,ctx:`${Object.keys(A.parEns).length} enseignes${A.sallesHors?` · ${A.sallesHors} salles sans dispo publiée, exclues`:""}`},
     {lab:"Libres ce soir",val:libresSoir,ctx:"créneaux encore réservables après 17h"},
   ];
@@ -385,7 +431,29 @@ function viewVue(A){
   </div>
   <div class="grid" style="margin-bottom:12px">${cardHeatmap(A)}</div>
   <div class="grid two">${cardRank(A)}${cardScatter(A)}</div>
+  <div class="grid" style="margin-top:12px">${cardVentes(V)}</div>
   <div class="grid two" style="margin-top:12px">${cardTopSalles(A)}${cardMuettes()}</div>`;
+}
+
+/* Joueurs et panier RÉELS — sessions vendues à la place.
+   Une table : 4 mesures par enseigne, peu de lignes — le chiffre est l'information. */
+function cardVentes(V){
+  const sub=`Sessions vendues à la place (non privées) : places vendues = baisse des places libres
+    observée par le scraper. Sessions passées des 30 derniers jours, suivies ≥ ${SUIVI_MIN} j avant leur date.`;
+  if(V.n<VENTES_MIN)
+    return card("Joueurs et panier réels",sub,
+      `<div class="center" style="padding:22px 0">Collecte en cours depuis le ${frDate(TRACK_START)} — ${V.n} session${V.n>1?"s":""} mesurée${V.n>1?"s":""} pour l'instant.<br>
+       Premiers chiffres fiables vers le <b>${frDate(FIABLE)}</b><br>
+       <span style="font-size:12px">Salles privées : 4escape ne publie pas la taille du groupe ; seul le panier estimé est disponible.</span></div>`,"","ve");
+  const rows=Object.entries(V.parEns).map(([eid,e])=>({nom:(EN[eid]||{}).nom||eid,eid,n:e.j.length,
+      j:median(e.j),p:median(e.p),pj:median(e.pj)})).sort((a,b)=>b.n-a.n);
+  const t=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Sessions</th><th class="n">Joueurs / session</th>
+    <th class="n">Panier / session</th><th class="n">€ / joueur</th></tr></thead><tbody>
+    ${rows.map(r=>`<tr style="cursor:pointer" onclick="openEns('${r.eid}')"><td>${esc(r.nom)}</td><td class="n">${r.n}</td>
+      <td class="n">${r.j}</td><td class="n">${eur(r.p)}</td><td class="n">${r.pj?Math.round(r.pj)+" €":"—"}</td></tr>`).join("")}
+    <tr><td><b>Ensemble</b></td><td class="n"><b>${V.n}</b></td><td class="n"><b>${V.jMed}</b></td><td class="n"><b>${eur(V.pMed)}</b></td><td class="n"></td></tr>
+    </tbody></table>`;
+  return card("Joueurs et panier réels",sub+" Médianes.",t,"","ve");
 }
 
 /* Salles sans le moindre créneau libre — signalées, jamais comptées dans les taux */
@@ -668,10 +736,16 @@ function openMethodo(){
       les afficher à « 100 % occupé », ce qui serait faux — elles sont donc <b>exclues des taux</b>.<br>
       • Le <b>dernier jour de l'horizon</b> n'est publié que partiellement par les enseignes ; il est écarté
       pour ne pas gonfler artificiellement l'occupation.</div></div>
-    <div class="src"><h4>Prix</h4>
-      <div class="csub" style="line-height:1.6">Prix <b>total d'une session</b> (pas par personne), moyenné sur les
-      tailles de groupe proposées, tel que publié par l'enseigne. Les enseignes qui n'affichent pas leurs tarifs
-      en ligne apparaissent sans prix.</div></div>`);
+    <div class="src"><h4>Prix et panier</h4>
+      <div class="csub" style="line-height:1.6"><b>Panier estimé (salles privées)</b> : prix <b>total d'une session</b>,
+      moyenné sur les tailles de groupe proposées. Chaque tarif est lu selon son type publié (prix du groupe ou prix
+      par joueur). 4escape ne publie pas combien de joueurs ont réservé une salle privée : ce panier est une
+      <b>estimation</b>, pas une mesure.<br>
+      <b>Joueurs et panier réels (sessions vendues à la place)</b> : quand une session se vend par place, le nombre de
+      places libres baisse à chaque vente. Le scraper suit ce nombre depuis le ${frDate(TRACK_START)} ; la
+      référence est le plus haut niveau de places libres observé, ce qui écarte la capacité que l'enseigne bloque
+      d'emblée et absorbe les annulations. Seules les sessions suivies au moins ${SUIVI_MIN} jours avant leur date
+      sont comptées. Limite : une vente suivie d'une annulation entre deux relevés est invisible.</div></div>`);
 }
 
 /* tooltips partagés (survol + focus) */

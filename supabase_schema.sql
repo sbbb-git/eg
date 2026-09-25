@@ -57,6 +57,17 @@ create table if not exists sessions (
   releve            timestamptz,
   primary key (salle_id, date, heure)      -- upsert idempotent
 );
+
+-- Capacité & places vendues (ajouté sept. 2026 ; idempotent, sans effet si déjà présent).
+-- places_vendues n'a de sens que pour les sessions PARTAGÉES (vendues à la place) :
+-- pour une salle privée, 4escape masque la taille du groupe -> NULL.
+alter table sessions
+  add column if not exists prive            boolean,   -- salle privée (true) / vendue à la place (false)
+  add column if not exists groupby          text,      -- 'players' ou 'teams'
+  add column if not exists places_max       int,       -- capacité du créneau
+  add column if not exists places_restantes int,       -- places libres au dernier relevé
+  add column if not exists places_init      int,       -- référence : plus haut niveau de places libres observé
+  add column if not exists places_vendues   int default 0; -- référence - restantes = ventes réelles
 create index if not exists sessions_date_idx    on sessions(date);
 create index if not exists sessions_statut_idx  on sessions(statut);
 create index if not exists sessions_booked_idx  on sessions(booked);

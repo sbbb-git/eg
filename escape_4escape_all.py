@@ -160,27 +160,41 @@ def classify_theme(name: str, desc: str) -> str:
     return "aventure"
 
 
+# Modes de tarif 4escape, lus entrée par entrée (une grille peut les mélanger,
+# ex. forfait jusqu'à 3 joueurs puis prix par joueur) :
+#   absolute / absolute-product-quantity      -> montant = prix du GROUPE
+#   per-player / per-product-quantity         -> montant = prix PAR JOUEUR
+PER_PLAYER_MODES = {"per-player", "per-product-quantity"}
+
+
 def _grid(prices: dict) -> dict:
     """prices 4escape : clé = nb de joueurs, amount_charged en cents.
-    Selon l'enseigne c'est un TOTAL (croissant avec nb joueurs) ou un prix
-    PAR JOUEUR (décroissant). On renvoie la grille brute {nb: montant}."""
+    Renvoie {nb: (montant €, mode)}."""
     g = {}
     for k, p in (prices or {}).items():
         if str(k).isdigit() and isinstance(p, dict) and p.get("amount_charged"):
-            g[int(k)] = round(p["amount_charged"] / 100, 2)
+            g[int(k)] = (round(p["amount_charged"] / 100, 2), p.get("mode"))
     return g
 
 
 def price_block(prices: dict, rmeta: dict) -> dict:
-    """Calcule le PRIX TOTAL par taille de groupe + le prix total moyen/session.
-    Détecte total vs par-joueur (grille croissante = déjà un total)."""
+    """PRIX TOTAL payé par taille de groupe + prix total moyen d'une session.
+    Le type de tarif vient du champ `mode` de l'API. L'ancienne heuristique
+    (« grille croissante = déjà un total ») lisait un tarif par joueur plat
+    — 25 €, 25 €, 25 € — comme un prix de groupe : ~18 % des grilles étaient
+    fausses. Elle ne sert plus que de repli quand `mode` est absent."""
     raw = _grid(prices)
     if not raw:
         return {"prix_total": {}, "prix_total_moyen": None, "prix_joueur": {}}
     ks = sorted(raw)
-    is_total = raw[ks[-1]] >= raw[ks[0]]
-    total = {k: (raw[k] if is_total else round(raw[k] * k, 2)) for k in ks}
-    joueur = {k: (round(raw[k] / k, 2) if is_total else raw[k]) for k in ks}
+    if all(m for _, m in raw.values()):
+        total = {k: (round(raw[k][0] * k, 2) if raw[k][1] in PER_PLAYER_MODES else raw[k][0])
+                 for k in ks}
+    else:
+        amt = {k: raw[k][0] for k in ks}
+        is_total = amt[ks[-1]] >= amt[ks[0]]
+        total = {k: (amt[k] if is_total else round(amt[k] * k, 2)) for k in ks}
+    joueur = {k: round(total[k] / k, 2) for k in ks}
     nmin = rmeta.get("min_players") or ks[0]
     nmax = rmeta.get("max_players") or ks[-1]
     valid = [total[k] for k in ks if nmin <= k <= nmax] or list(total.values())
@@ -262,7 +276,9 @@ def scrape_company(comp: str, date_str: str) -> dict:
                 "date": start[:10], "heure": start[11:16], "duree_minutes": duree,
                 "room_id": rid, **price_block(slot.get("prices"), rmeta),
                 "nb_joueurs_min": rmeta.get("min_players"), "nb_joueurs_max": rmeta.get("max_players"),
-                "remaining_players": slot.get("remainingPlayers"),
+                "prive": slot.get("private"), "groupby": slot.get("booking_groupby_method"),
+                "places_max": slot.get("maximumPlayers"),
+                "places_restantes": slot.get("remainingPlayers"),
                 "booked": booked, "dispo": (not booked and not bool(slot.get("disabled")))}
     else:
         up_data = api(comp, "/api/public/availability/upcoming",
@@ -278,7 +294,8 @@ def scrape_company(comp: str, date_str: str) -> dict:
                     "date": start[:10], "heure": start[11:16], "duree_minutes": None,
                     "room_id": rid, "prix_total": {}, "prix_joueur": {}, "prix_total_moyen": None,
                     "nb_joueurs_min": rmeta.get("min_players"), "nb_joueurs_max": rmeta.get("max_players"),
-                    "remaining_players": None, "booked": False, "dispo": True}
+                    "prive": None, "groupby": None, "places_max": None,
+                    "places_restantes": None, "booked": False, "dispo": True}
     return {
         "enseigne_id": _norm_id(org_name), "enseigne_nom": org_name,
         "website": (org.get("website") or "").strip(),
@@ -314,6 +331,24 @@ def _slot_dt(sess: dict):
         return None
 
 
+def _suivi_places(ex: dict) -> None:
+    """Places réellement vendues sur une session PARTAGÉE (vendue à la place).
+    Référence = plus haut niveau de places libres jamais observé : la capacité
+    que l'enseigne bloque d'emblée n'est donc pas comptée comme vendue, et une
+    annulation ou une hausse de capacité remonte la référence au lieu de fausser
+    le cumul. Une session fermée garde toutes ses places (vérifié sur l'API) :
+    elle ne passe pas pour complète.
+    Salle PRIVÉE : 0 place restante signifie « réservée », pas « 6 joueurs » ;
+    4escape masque la taille du groupe -> vendues = None (non mesurable)."""
+    rest = ex.get("places_restantes")
+    if rest is not None:
+        ex["places_init"] = max(rest, ex.get("places_init") or 0)
+    if ex.get("prive") is False and rest is not None and ex.get("places_init") is not None:
+        ex["places_vendues"] = max(0, ex["places_init"] - rest)
+    else:
+        ex["places_vendues"] = None
+
+
 def reconcile(st: dict, current: dict, locked: bool) -> None:
     """Fusion idempotente + reconstitution du statut (héritage logique padel) :
        - slot 'booked' (donnée ouverte)         -> reserve
@@ -331,7 +366,9 @@ def reconcile(st: dict, current: dict, locked: bool) -> None:
         else:
             ex.update({k: sess[k] for k in ("prix_total", "prix_joueur", "prix_total_moyen",
                                             "duree_minutes", "nb_joueurs_min", "nb_joueurs_max",
-                                            "remaining_players", "booked", "dispo")})
+                                            "prive", "groupby", "places_max", "booked", "dispo")})
+            if sess.get("places_restantes") is not None:
+                ex["places_restantes"] = sess["places_restantes"]
         ex["dernier_vu"] = now
         ex["releve"] = now
         if sess.get("dispo"):
@@ -343,6 +380,7 @@ def reconcile(st: dict, current: dict, locked: bool) -> None:
         # -> c'est peut-être une salle fermée/bloquée, pas une vraie résa.
         if sess.get("booked") and ex.get("seen_free"):
             ex["statut"] = "reserve"
+        _suivi_places(ex)
         st["sessions"][key] = ex
     # passes sur l'historique : disparition (verrouillé) + fin de vie
     for key, ex in st["sessions"].items():
