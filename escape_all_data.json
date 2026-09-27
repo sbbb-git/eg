@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-09-27T03:56:38+00:00",
+    "generated": "2026-09-27T05:30:07+00:00",
     "n_files": 49,
     "window": "J..J+7"
   },
@@ -10,7 +10,7 @@
     "n_salles": 323,
     "n_sessions": 223621,
     "n_open": 48,
-    "fill_moyenne": 23.3,
+    "fill_moyenne": 23.4,
     "prix_moyen_session": 135.5
   },
   "enseignes": [
@@ -1148,7 +1148,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 10,
-          "fill_now": 7.9,
+          "fill_now": 8.8,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -1176,12 +1176,44 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
+              "fill": 13.9,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 324,
+              "n_sessions": 554,
+              "n_booked": 5
+            },
+            {
+              "id": "65730e122961183a481cbc49",
+              "nom": "Retour Dans Le Temps",
+              "theme": "science-fiction",
+              "difficulty": 6,
+              "duree": 60,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": null,
               "fill": 11.1,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 323,
-              "n_sessions": 554,
+              "n_confirmed": 286,
+              "n_sessions": 553,
               "n_booked": 4
+            },
+            {
+              "id": "67176445b6b10aaf1a0b00f5",
+              "nom": "La Secte",
+              "theme": "aventure",
+              "difficulty": 7,
+              "duree": 75,
+              "joueurs_min": 3,
+              "joueurs_max": 6,
+              "prix_moyen_session": null,
+              "fill": 10.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 311,
+              "n_sessions": 462,
+              "n_booked": 3
             },
             {
               "id": "5b3ddafd7b234453c620b73a",
@@ -1198,38 +1230,6 @@
               "n_confirmed": 284,
               "n_sessions": 554,
               "n_booked": 3
-            },
-            {
-              "id": "65730e122961183a481cbc49",
-              "nom": "Retour Dans Le Temps",
-              "theme": "science-fiction",
-              "difficulty": 6,
-              "duree": 60,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": null,
-              "fill": 8.3,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 285,
-              "n_sessions": 553,
-              "n_booked": 3
-            },
-            {
-              "id": "67176445b6b10aaf1a0b00f5",
-              "nom": "La Secte",
-              "theme": "aventure",
-              "difficulty": 7,
-              "duree": 75,
-              "joueurs_min": 3,
-              "joueurs_max": 6,
-              "prix_moyen_session": null,
-              "fill": 6.7,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 310,
-              "n_sessions": 462,
-              "n_booked": 2
             },
             {
               "id": "5b3df0ae3d55cb53cc8cebf9",
@@ -1511,7 +1511,7 @@
       "website": "https://thegame-france.com",
       "n_centres": 2,
       "n_salles": 20,
-      "fill_now": 46.8,
+      "fill_now": 47.0,
       "prix_moyen_session": 149.2,
       "centres": [
         {
@@ -1523,7 +1523,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 9,
-          "fill_now": 46.8,
+          "fill_now": 47.0,
           "prix_moyen_session": 149.2,
           "salles": [
             {
@@ -1607,6 +1607,22 @@
               "n_booked": 26
             },
             {
+              "id": "5d3af3c7e8dd215e56b52e3b",
+              "nom": "Le Tremblement de Terre",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
+              "fill": 46.4,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 636,
+              "n_sessions": 856,
+              "n_booked": 26
+            },
+            {
               "id": "5d3af4482427e85e5d17a950",
               "nom": "Le Cinéma Hanté",
               "theme": "horreur",
@@ -1621,22 +1637,6 @@
               "n_confirmed": 677,
               "n_sessions": 856,
               "n_booked": 26
-            },
-            {
-              "id": "5d3af3c7e8dd215e56b52e3b",
-              "nom": "Le Tremblement de Terre",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 44.6,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 635,
-              "n_sessions": 856,
-              "n_booked": 25
             },
             {
               "id": "5d3af3252427e85e5d17a92a",
@@ -1781,6 +1781,22 @@
               "n_booked": 24
             },
             {
+              "id": "5b4846f43e4e381f7695fabe",
+              "nom": "Les Catacombes",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
+              "fill": 41.1,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 669,
+              "n_sessions": 856,
+              "n_booked": 23
+            },
+            {
               "id": "5bc446d35e15c9385eeb21d2",
               "nom": "Braquage à la Française",
               "theme": "enquête",
@@ -1805,28 +1821,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 39.3,
+              "fill": 37.5,
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 659,
               "n_sessions": 856,
-              "n_booked": 22
-            },
-            {
-              "id": "5b4846f43e4e381f7695fabe",
-              "nom": "Les Catacombes",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 39.3,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 668,
-              "n_sessions": 856,
-              "n_booked": 22
+              "n_booked": 21
             },
             {
               "id": "5bc4470fd0877338631e9717",
@@ -5875,7 +5875,7 @@
       "website": "https://cyberdances.com/fr",
       "n_centres": 1,
       "n_salles": 3,
-      "fill_now": 16.9,
+      "fill_now": 17.1,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -5887,7 +5887,7 @@
           "lat": 48.8322,
           "lon": 2.3555,
           "n_salles": 3,
-          "fill_now": 16.9,
+          "fill_now": 17.1,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -5899,12 +5899,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 19.1,
+              "fill": 19.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 797,
+              "n_confirmed": 798,
               "n_sessions": 1746,
-              "n_booked": 61
+              "n_booked": 62
             },
             {
               "id": "6a42be38c59581ec03586554",
@@ -6224,7 +6224,7 @@
       "website": "https://www.panikroom.fr/",
       "n_centres": 1,
       "n_salles": 2,
-      "fill_now": 48.0,
+      "fill_now": 49.0,
       "prix_moyen_session": 181.8,
       "centres": [
         {
@@ -6236,7 +6236,7 @@
           "lat": 48.86435669999999,
           "lon": 2.3405462,
           "n_salles": 2,
-          "fill_now": 48.0,
+          "fill_now": 49.0,
           "prix_moyen_session": 181.8,
           "salles": [
             {
@@ -6264,12 +6264,12 @@
               "joueurs_min": 3,
               "joueurs_max": 6,
               "prix_moyen_session": 181.8,
-              "fill": 34.7,
+              "fill": 36.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 583,
+              "n_confirmed": 584,
               "n_sessions": 749,
-              "n_booked": 17
+              "n_booked": 18
             }
           ]
         }
@@ -6725,7 +6725,7 @@
       "lat": 48.8322,
       "lon": 2.3555,
       "cp": "75013",
-      "fill": 16.9,
+      "fill": 17.1,
       "n_salles": 3
     },
     {
@@ -6788,7 +6788,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "60740",
-      "fill": 7.9,
+      "fill": 8.8,
       "n_salles": 10
     },
     {
@@ -7040,7 +7040,7 @@
       "lat": 48.86435669999999,
       "lon": 2.3405462,
       "cp": "75001",
-      "fill": 48.0,
+      "fill": 49.0,
       "n_salles": 2
     },
     {
@@ -7157,7 +7157,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "75005",
-      "fill": 46.8,
+      "fill": 47.0,
       "n_salles": 9
     },
     {
@@ -7269,18 +7269,18 @@
         24.3
       ],
       [
-        28.5,
+        28.7,
         44.7,
         44.9,
         29.3,
         18.5
       ],
       [
-        50.2,
+        50.7,
         52.7,
         46.5,
         31.7,
-        23.6
+        24.6
       ]
     ]
   },
