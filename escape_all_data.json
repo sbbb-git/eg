@@ -1,16 +1,16 @@
 {
   "_meta": {
-    "generated": "2026-10-02T11:57:40+00:00",
+    "generated": "2026-10-02T14:51:08+00:00",
     "n_files": 50,
     "window": "J..J+7"
   },
   "kpis": {
     "n_enseignes": 50,
     "n_centres": 65,
-    "n_salles": 332,
-    "n_sessions": 234463,
+    "n_salles": 333,
+    "n_sessions": 234466,
     "n_open": 49,
-    "fill_moyenne": 26.0,
+    "fill_moyenne": 27.6,
     "prix_moyen_session": 137.2
   },
   "enseignes": [
@@ -19,7 +19,7 @@
       "nom": "Monkeykwest",
       "website": "https://monkeykwest.com/",
       "n_centres": 5,
-      "n_salles": 55,
+      "n_salles": 56,
       "fill_now": 0.0,
       "prix_moyen_session": null,
       "centres": [
@@ -427,7 +427,7 @@
           "adresse": "",
           "lat": 48.8566,
           "lon": 2.3522,
-          "n_salles": 21,
+          "n_salles": 22,
           "fill_now": 0.0,
           "prix_moyen_session": null,
           "salles": [
@@ -737,7 +737,7 @@
             },
             {
               "id": "6abe556c89b932ccc74d012d",
-              "nom": "Escape Game Arsène Lupin aux Mureaux",
+              "nom": "Escape Game Da Vinci aux Mureaux",
               "theme": "fantastique",
               "difficulty": 6,
               "duree": 45,
@@ -757,6 +757,22 @@
               "theme": "fantastique",
               "difficulty": 5,
               "duree": 30,
+              "joueurs_min": 1,
+              "joueurs_max": 5,
+              "prix_moyen_session": null,
+              "fill": 0.0,
+              "suspect_closed": false,
+              "confidence": "faible",
+              "n_confirmed": 0,
+              "n_sessions": 0,
+              "n_booked": 0
+            },
+            {
+              "id": "6abf7a84e726a248db3a2133",
+              "nom": "Escape Game Halloween à Méaulte",
+              "theme": "fantastique",
+              "difficulty": 5,
+              "duree": 60,
               "joueurs_min": 1,
               "joueurs_max": 5,
               "prix_moyen_session": null,
@@ -980,7 +996,7 @@
       "website": "https://www.freeing.fr",
       "n_centres": 4,
       "n_salles": 34,
-      "fill_now": 15.7,
+      "fill_now": 16.5,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -992,7 +1008,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 6,
-          "fill_now": 21.6,
+          "fill_now": 24.8,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -1004,12 +1020,12 @@
               "joueurs_min": 1,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 37.5,
+              "fill": 41.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 275,
+              "n_confirmed": 276,
               "n_sessions": 384,
-              "n_booked": 9
+              "n_booked": 10
             },
             {
               "id": "6856d64aea66e44a8a646fa6",
@@ -1020,12 +1036,12 @@
               "joueurs_min": 1,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 31.8,
+              "fill": 36.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 268,
+              "n_confirmed": 269,
               "n_sessions": 352,
-              "n_booked": 7
+              "n_booked": 8
             },
             {
               "id": "5d8ba12eae58fc703446700c",
@@ -1052,12 +1068,12 @@
               "joueurs_min": 3,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 11.8,
+              "fill": 23.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 156,
+              "n_confirmed": 158,
               "n_sessions": 272,
-              "n_booked": 2
+              "n_booked": 4
             },
             {
               "id": "5d8b9731ae58fc7034466f2e",
@@ -1102,7 +1118,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 7,
-          "fill_now": 15.7,
+          "fill_now": 16.5,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -1122,6 +1138,22 @@
               "n_booked": 5
             },
             {
+              "id": "644d6022a658f319ef635399",
+              "nom": "L'Evasion Du Siècle",
+              "theme": "enquête",
+              "difficulty": 6,
+              "duree": 75,
+              "joueurs_min": 3,
+              "joueurs_max": 6,
+              "prix_moyen_session": null,
+              "fill": 26.3,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 163,
+              "n_sessions": 304,
+              "n_booked": 5
+            },
+            {
               "id": "62ac9e73a71521d2047201df",
               "nom": "SWAT",
               "theme": "aventure",
@@ -1134,22 +1166,6 @@
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 160,
-              "n_sessions": 304,
-              "n_booked": 4
-            },
-            {
-              "id": "644d6022a658f319ef635399",
-              "nom": "L'Evasion Du Siècle",
-              "theme": "enquête",
-              "difficulty": 6,
-              "duree": 75,
-              "joueurs_min": 3,
-              "joueurs_max": 6,
-              "prix_moyen_session": null,
-              "fill": 21.1,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 162,
               "n_sessions": 304,
               "n_booked": 4
             },
@@ -1228,7 +1244,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 10,
-          "fill_now": 15.3,
+          "fill_now": 15.5,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -1312,6 +1328,22 @@
               "n_booked": 5
             },
             {
+              "id": "608d37f264e1f04e445944cb",
+              "nom": "Le Manoir Sinistre",
+              "theme": "aventure",
+              "difficulty": 6,
+              "duree": 60,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": null,
+              "fill": 13.9,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 302,
+              "n_sessions": 576,
+              "n_booked": 5
+            },
+            {
               "id": "65730e122961183a481cbc49",
               "nom": "Retour Dans Le Temps",
               "theme": "science-fiction",
@@ -1324,22 +1356,6 @@
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 289,
-              "n_sessions": 576,
-              "n_booked": 4
-            },
-            {
-              "id": "608d37f264e1f04e445944cb",
-              "nom": "Le Manoir Sinistre",
-              "theme": "aventure",
-              "difficulty": 6,
-              "duree": 60,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": null,
-              "fill": 11.1,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 301,
               "n_sessions": 576,
               "n_booked": 4
             },
@@ -1371,7 +1387,7 @@
               "fill": 8.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 276,
+              "n_confirmed": 277,
               "n_sessions": 576,
               "n_booked": 3
             },
@@ -1591,7 +1607,7 @@
       "website": "https://thegame-france.com",
       "n_centres": 2,
       "n_salles": 20,
-      "fill_now": 46.6,
+      "fill_now": 48.9,
       "prix_moyen_session": 149.2,
       "centres": [
         {
@@ -1603,7 +1619,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 11,
-          "fill_now": 46.6,
+          "fill_now": 48.9,
           "prix_moyen_session": 149.2,
           "salles": [
             {
@@ -1615,12 +1631,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 55.4,
+              "fill": 58.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 690,
+              "n_confirmed": 693,
               "n_sessions": 896,
-              "n_booked": 31
+              "n_booked": 33
             },
             {
               "id": "5b48419eca5f6e1f22529b77",
@@ -1631,10 +1647,26 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
+              "fill": 55.4,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 691,
+              "n_sessions": 896,
+              "n_booked": 31
+            },
+            {
+              "id": "5b4848763e4e381f7696230b",
+              "nom": "L'Avion",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
               "fill": 51.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 689,
+              "n_confirmed": 680,
               "n_sessions": 896,
               "n_booked": 29
             },
@@ -1663,10 +1695,42 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
+              "fill": 50.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 704,
+              "n_sessions": 896,
+              "n_booked": 28
+            },
+            {
+              "id": "5b4849363e4e381f76962317",
+              "nom": "La Mission Spatiale",
+              "theme": "science-fiction",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
+              "fill": 50.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 646,
+              "n_sessions": 896,
+              "n_booked": 28
+            },
+            {
+              "id": "5b4844b63e4e381f7695d257",
+              "nom": "L'Enlèvement",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
               "fill": 48.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 703,
+              "n_confirmed": 670,
               "n_sessions": 896,
               "n_booked": 27
             },
@@ -1682,23 +1746,7 @@
               "fill": 48.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 680,
-              "n_sessions": 896,
-              "n_booked": 27
-            },
-            {
-              "id": "5b4848763e4e381f7696230b",
-              "nom": "L'Avion",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 48.2,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 678,
+              "n_confirmed": 681,
               "n_sessions": 896,
               "n_booked": 27
             },
@@ -1714,41 +1762,9 @@
               "fill": 46.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 648,
+              "n_confirmed": 651,
               "n_sessions": 896,
               "n_booked": 26
-            },
-            {
-              "id": "5b4849363e4e381f76962317",
-              "nom": "La Mission Spatiale",
-              "theme": "science-fiction",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 46.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 644,
-              "n_sessions": 896,
-              "n_booked": 26
-            },
-            {
-              "id": "5b4844b63e4e381f7695d257",
-              "nom": "L'Enlèvement",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 44.6,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 667,
-              "n_sessions": 896,
-              "n_booked": 25
             },
             {
               "id": "5b484030ca5f6e1f2252731f",
@@ -1759,12 +1775,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 42.9,
+              "fill": 44.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 693,
+              "n_confirmed": 694,
               "n_sessions": 896,
-              "n_booked": 24
+              "n_booked": 25
             },
             {
               "id": "5bc446d35e15c9385eeb21d2",
@@ -1775,12 +1791,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 30.4,
+              "fill": 33.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 627,
+              "n_confirmed": 629,
               "n_sessions": 896,
-              "n_booked": 17
+              "n_booked": 19
             }
           ]
         },
@@ -1793,7 +1809,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "n_salles": 9,
-          "fill_now": 44.6,
+          "fill_now": 47.0,
           "prix_moyen_session": 149.2,
           "salles": [
             {
@@ -1805,12 +1821,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 55.4,
+              "fill": 58.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 710,
+              "n_confirmed": 714,
               "n_sessions": 896,
-              "n_booked": 31
+              "n_booked": 33
             },
             {
               "id": "63e3cc231084c231d1aa9fdf",
@@ -1821,12 +1837,28 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 51.8,
+              "fill": 53.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 724,
+              "n_confirmed": 726,
               "n_sessions": 896,
-              "n_booked": 29
+              "n_booked": 30
+            },
+            {
+              "id": "5d3af16d2427e85e5d17a8eb",
+              "nom": "Le Métro",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
+              "fill": 48.2,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 690,
+              "n_sessions": 896,
+              "n_booked": 27
             },
             {
               "id": "5d3af4482427e85e5d17a950",
@@ -1840,25 +1872,9 @@
               "fill": 48.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 709,
+              "n_confirmed": 711,
               "n_sessions": 896,
               "n_booked": 27
-            },
-            {
-              "id": "5d3af16d2427e85e5d17a8eb",
-              "nom": "Le Métro",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 44.6,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 689,
-              "n_sessions": 896,
-              "n_booked": 25
             },
             {
               "id": "5d3af2542427e85e5d17a918",
@@ -1869,12 +1885,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 42.9,
+              "fill": 44.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 647,
+              "n_confirmed": 648,
               "n_sessions": 896,
-              "n_booked": 24
+              "n_booked": 25
             },
             {
               "id": "5d3af2cee8dd215e56b52e11",
@@ -1885,12 +1901,28 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 42.9,
+              "fill": 44.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 678,
+              "n_confirmed": 681,
               "n_sessions": 896,
-              "n_booked": 24
+              "n_booked": 25
+            },
+            {
+              "id": "5d3af3c7e8dd215e56b52e3b",
+              "nom": "Le Tremblement de Terre",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 149.2,
+              "fill": 44.6,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 666,
+              "n_sessions": 896,
+              "n_booked": 25
             },
             {
               "id": "5d3af3252427e85e5d17a92a",
@@ -1909,22 +1941,6 @@
               "n_booked": 24
             },
             {
-              "id": "5d3af3c7e8dd215e56b52e3b",
-              "nom": "Le Tremblement de Terre",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 149.2,
-              "fill": 41.1,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 664,
-              "n_sessions": 896,
-              "n_booked": 23
-            },
-            {
               "id": "5d3af40be8dd215e56b52e52",
               "nom": "Le Tremblement de Terre",
               "theme": "aventure",
@@ -1933,12 +1949,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 149.2,
-              "fill": 32.1,
+              "fill": 37.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 630,
+              "n_confirmed": 633,
               "n_sessions": 896,
-              "n_booked": 18
+              "n_booked": 21
             }
           ]
         }
@@ -1950,7 +1966,7 @@
       "website": "https://taktic.fr/",
       "n_centres": 1,
       "n_salles": 15,
-      "fill_now": 18.6,
+      "fill_now": 19.0,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -1962,7 +1978,7 @@
           "lat": 48.8322,
           "lon": 2.3555,
           "n_salles": 15,
-          "fill_now": 18.6,
+          "fill_now": 19.0,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -1974,12 +1990,12 @@
               "joueurs_min": 8,
               "joueurs_max": 16,
               "prix_moyen_session": null,
-              "fill": 37.5,
+              "fill": 39.3,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 314,
+              "n_confirmed": 316,
               "n_sessions": 896,
-              "n_booked": 21
+              "n_booked": 22
             },
             {
               "id": "69164dff8fdbbd416c59ebca",
@@ -1993,9 +2009,25 @@
               "fill": 30.4,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 231,
+              "n_confirmed": 234,
               "n_sessions": 899,
               "n_booked": 17
+            },
+            {
+              "id": "65f226587ae272c940fe97b7",
+              "nom": "Le Wagon de l’Armistice",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 60,
+              "joueurs_min": 2,
+              "joueurs_max": 7,
+              "prix_moyen_session": null,
+              "fill": 28.6,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 376,
+              "n_sessions": 1008,
+              "n_booked": 18
             },
             {
               "id": "69a3604c3e57ea571b6ed360",
@@ -2014,8 +2046,8 @@
               "n_booked": 16
             },
             {
-              "id": "65f226587ae272c940fe97b7",
-              "nom": "Le Wagon de l’Armistice",
+              "id": "68b0c327225f18639301e3bd",
+              "nom": "Le rituel secret de Notre Dame",
               "theme": "aventure",
               "difficulty": 0,
               "duree": 60,
@@ -2025,25 +2057,9 @@
               "fill": 27.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 374,
+              "n_confirmed": 353,
               "n_sessions": 1008,
               "n_booked": 17
-            },
-            {
-              "id": "68b0c327225f18639301e3bd",
-              "nom": "Le rituel secret de Notre Dame",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 60,
-              "joueurs_min": 2,
-              "joueurs_max": 7,
-              "prix_moyen_session": null,
-              "fill": 25.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 352,
-              "n_sessions": 1008,
-              "n_booked": 16
             },
             {
               "id": "65f2258f7ae272c940fe96b5",
@@ -2057,7 +2073,7 @@
               "fill": 22.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 289,
+              "n_confirmed": 291,
               "n_sessions": 1008,
               "n_booked": 14
             },
@@ -2462,7 +2478,7 @@
       "website": "https://www.lantichambre.paris",
       "n_centres": 1,
       "n_salles": 13,
-      "fill_now": 23.9,
+      "fill_now": 27.1,
       "prix_moyen_session": 140.5,
       "centres": [
         {
@@ -2474,7 +2490,7 @@
           "lat": 48.8212098,
           "lon": 2.2082234,
           "n_salles": 13,
-          "fill_now": 23.9,
+          "fill_now": 27.1,
           "prix_moyen_session": 140.5,
           "salles": [
             {
@@ -2489,7 +2505,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 736,
+              "n_confirmed": 739,
               "n_sessions": 784,
               "n_booked": 49
             },
@@ -2510,8 +2526,88 @@
               "n_booked": 7
             },
             {
+              "id": "5b506ff750b35804dc19efa5",
+              "nom": "Time Machine",
+              "theme": "science-fiction",
+              "difficulty": 6,
+              "duree": 75,
+              "joueurs_min": 2,
+              "joueurs_max": 7,
+              "prix_moyen_session": 140.5,
+              "fill": 32.7,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 411,
+              "n_sessions": 784,
+              "n_booked": 16
+            },
+            {
+              "id": "5b50821a50b35804dc19f004",
+              "nom": "Ghost",
+              "theme": "aventure",
+              "difficulty": 9,
+              "duree": 75,
+              "joueurs_min": 2,
+              "joueurs_max": 7,
+              "prix_moyen_session": 140.5,
+              "fill": 31.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 341,
+              "n_sessions": 672,
+              "n_booked": 13
+            },
+            {
+              "id": "67e2eff03c047e943c7c51b8",
+              "nom": "Dr Kang",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 85,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 129.4,
+              "fill": 31.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 504,
+              "n_sessions": 672,
+              "n_booked": 13
+            },
+            {
               "id": "5b506f5c50b35804dc19ef92",
               "nom": "Shogun",
+              "theme": "aventure",
+              "difficulty": 4,
+              "duree": 75,
+              "joueurs_min": 2,
+              "joueurs_max": 7,
+              "prix_moyen_session": 140.5,
+              "fill": 30.6,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 354,
+              "n_sessions": 784,
+              "n_booked": 15
+            },
+            {
+              "id": "5b50813f50b35804dc19eff5",
+              "nom": "Contagion",
+              "theme": "aventure",
+              "difficulty": 7,
+              "duree": 75,
+              "joueurs_min": 2,
+              "joueurs_max": 7,
+              "prix_moyen_session": 140.5,
+              "fill": 28.6,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 294,
+              "n_sessions": 672,
+              "n_booked": 12
+            },
+            {
+              "id": "5b506eeb50b35804dc19ef88",
+              "nom": "Crypte",
               "theme": "aventure",
               "difficulty": 4,
               "duree": 75,
@@ -2521,9 +2617,9 @@
               "fill": 28.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 351,
-              "n_sessions": 784,
-              "n_booked": 14
+              "n_confirmed": 290,
+              "n_sessions": 672,
+              "n_booked": 12
             },
             {
               "id": "5b5070f010285904e2dd51a5",
@@ -2537,73 +2633,9 @@
               "fill": 28.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 353,
+              "n_confirmed": 356,
               "n_sessions": 672,
               "n_booked": 12
-            },
-            {
-              "id": "67e2eff03c047e943c7c51b8",
-              "nom": "Dr Kang",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 85,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 129.4,
-              "fill": 28.6,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 501,
-              "n_sessions": 672,
-              "n_booked": 12
-            },
-            {
-              "id": "5b506ff750b35804dc19efa5",
-              "nom": "Time Machine",
-              "theme": "science-fiction",
-              "difficulty": 6,
-              "duree": 75,
-              "joueurs_min": 2,
-              "joueurs_max": 7,
-              "prix_moyen_session": 140.5,
-              "fill": 26.5,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 406,
-              "n_sessions": 784,
-              "n_booked": 13
-            },
-            {
-              "id": "5b50813f50b35804dc19eff5",
-              "nom": "Contagion",
-              "theme": "aventure",
-              "difficulty": 7,
-              "duree": 75,
-              "joueurs_min": 2,
-              "joueurs_max": 7,
-              "prix_moyen_session": 140.5,
-              "fill": 26.2,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 292,
-              "n_sessions": 672,
-              "n_booked": 11
-            },
-            {
-              "id": "5b50821a50b35804dc19f004",
-              "nom": "Ghost",
-              "theme": "aventure",
-              "difficulty": 9,
-              "duree": 75,
-              "joueurs_min": 2,
-              "joueurs_max": 7,
-              "prix_moyen_session": 140.5,
-              "fill": 26.2,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 337,
-              "n_sessions": 672,
-              "n_booked": 11
             },
             {
               "id": "5b507e9910285904e2dd51c0",
@@ -2614,44 +2646,12 @@
               "joueurs_min": 2,
               "joueurs_max": 7,
               "prix_moyen_session": 140.5,
-              "fill": 22.4,
+              "fill": 24.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 373,
+              "n_confirmed": 376,
               "n_sessions": 784,
-              "n_booked": 11
-            },
-            {
-              "id": "5b506eeb50b35804dc19ef88",
-              "nom": "Crypte",
-              "theme": "aventure",
-              "difficulty": 4,
-              "duree": 75,
-              "joueurs_min": 2,
-              "joueurs_max": 7,
-              "prix_moyen_session": 140.5,
-              "fill": 21.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 285,
-              "n_sessions": 672,
-              "n_booked": 9
-            },
-            {
-              "id": "5b507e1650b35804dc19efcb",
-              "nom": "Vaudou",
-              "theme": "aventure",
-              "difficulty": 4,
-              "duree": 75,
-              "joueurs_min": 2,
-              "joueurs_max": 7,
-              "prix_moyen_session": 140.5,
-              "fill": 20.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 368,
-              "n_sessions": 784,
-              "n_booked": 10
+              "n_booked": 12
             },
             {
               "id": "5b50716f50b35804dc19efb9",
@@ -2662,12 +2662,28 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 129.4,
-              "fill": 19.0,
+              "fill": 23.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 364,
+              "n_confirmed": 368,
               "n_sessions": 672,
-              "n_booked": 8
+              "n_booked": 10
+            },
+            {
+              "id": "5b507e1650b35804dc19efcb",
+              "nom": "Vaudou",
+              "theme": "aventure",
+              "difficulty": 4,
+              "duree": 75,
+              "joueurs_min": 2,
+              "joueurs_max": 7,
+              "prix_moyen_session": 140.5,
+              "fill": 22.4,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 371,
+              "n_sessions": 784,
+              "n_booked": 11
             },
             {
               "id": "5b50809450b35804dc19efe7",
@@ -2678,12 +2694,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 129.4,
-              "fill": 14.3,
+              "fill": 16.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 272,
+              "n_confirmed": 274,
               "n_sessions": 672,
-              "n_booked": 6
+              "n_booked": 7
             }
           ]
         }
@@ -2896,7 +2912,7 @@
       "website": "https://www.escapelab.fr",
       "n_centres": 1,
       "n_salles": 9,
-      "fill_now": 25.0,
+      "fill_now": 21.8,
       "prix_moyen_session": 117.6,
       "centres": [
         {
@@ -2908,7 +2924,7 @@
           "lat": 48.8688885,
           "lon": 2.3456682,
           "n_salles": 9,
-          "fill_now": 25.0,
+          "fill_now": 21.8,
           "prix_moyen_session": 117.6,
           "salles": [
             {
@@ -2923,7 +2939,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 774,
+              "n_confirmed": 778,
               "n_sessions": 987,
               "n_booked": 62
             },
@@ -2939,7 +2955,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 760,
+              "n_confirmed": 764,
               "n_sessions": 986,
               "n_booked": 62
             },
@@ -2955,7 +2971,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 770,
+              "n_confirmed": 774,
               "n_sessions": 988,
               "n_booked": 62
             },
@@ -2971,7 +2987,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 740,
+              "n_confirmed": 744,
               "n_sessions": 985,
               "n_booked": 62
             },
@@ -2987,7 +3003,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 748,
+              "n_confirmed": 752,
               "n_sessions": 986,
               "n_booked": 62
             },
@@ -3003,7 +3019,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 741,
+              "n_confirmed": 745,
               "n_sessions": 983,
               "n_booked": 62
             },
@@ -3019,7 +3035,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 728,
+              "n_confirmed": 732,
               "n_sessions": 967,
               "n_booked": 61
             },
@@ -3032,12 +3048,12 @@
               "joueurs_min": 3,
               "joueurs_max": 8,
               "prix_moyen_session": 181.5,
-              "fill": 27.4,
+              "fill": 24.2,
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 352,
               "n_sessions": 987,
-              "n_booked": 17
+              "n_booked": 15
             },
             {
               "id": "662b6d6dc085c7459d8a531b",
@@ -3048,12 +3064,12 @@
               "joueurs_min": 3,
               "joueurs_max": 8,
               "prix_moyen_session": 181.5,
-              "fill": 22.6,
+              "fill": 19.4,
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 306,
               "n_sessions": 989,
-              "n_booked": 14
+              "n_booked": 12
             }
           ]
         }
@@ -3089,12 +3105,12 @@
               "joueurs_min": 8,
               "joueurs_max": 18,
               "prix_moyen_session": null,
-              "fill": 41.3,
+              "fill": 39.7,
               "suspect_closed": true,
               "confidence": "élevée",
               "n_confirmed": 215,
               "n_sessions": 999,
-              "n_booked": 26
+              "n_booked": 25
             },
             {
               "id": "66deddb705a61b88325932bf",
@@ -3137,12 +3153,12 @@
               "joueurs_min": 1,
               "joueurs_max": 21,
               "prix_moyen_session": null,
-              "fill": 29.7,
+              "fill": 28.6,
               "suspect_closed": true,
               "confidence": "élevée",
               "n_confirmed": 214,
               "n_sessions": 1444,
-              "n_booked": 27
+              "n_booked": 26
             },
             {
               "id": "6808f02511b303e44cba1334",
@@ -3234,7 +3250,7 @@
       "website": "https://merciinternet.com",
       "n_centres": 1,
       "n_salles": 9,
-      "fill_now": 10.4,
+      "fill_now": 11.6,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -3246,25 +3262,9 @@
           "lat": 48.8769,
           "lon": 2.338,
           "n_salles": 9,
-          "fill_now": 10.4,
+          "fill_now": 11.6,
           "prix_moyen_session": null,
           "salles": [
-            {
-              "id": "67c56ec71aad134dd5b5ae72",
-              "nom": "Qui Aura Le Meilleur Alibi",
-              "theme": "enquête",
-              "difficulty": 0,
-              "duree": 60,
-              "joueurs_min": 3,
-              "joueurs_max": 10,
-              "prix_moyen_session": null,
-              "fill": 16.0,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 680,
-              "n_sessions": 1340,
-              "n_booked": 15
-            },
             {
               "id": "67c56de11aad134dd5b58348",
               "nom": "Cours De Pâtisserie Arrosé",
@@ -3274,11 +3274,43 @@
               "joueurs_min": 3,
               "joueurs_max": 10,
               "prix_moyen_session": null,
-              "fill": 15.5,
+              "fill": 17.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 499,
+              "n_confirmed": 501,
               "n_sessions": 1194,
+              "n_booked": 15
+            },
+            {
+              "id": "67c56ec71aad134dd5b5ae72",
+              "nom": "Qui Aura Le Meilleur Alibi",
+              "theme": "enquête",
+              "difficulty": 0,
+              "duree": 60,
+              "joueurs_min": 3,
+              "joueurs_max": 10,
+              "prix_moyen_session": null,
+              "fill": 17.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 684,
+              "n_sessions": 1340,
+              "n_booked": 16
+            },
+            {
+              "id": "67ee3f69d8fccf2e563dda63",
+              "nom": "Pokerface",
+              "theme": "aventure",
+              "difficulty": 0,
+              "duree": 60,
+              "joueurs_min": 3,
+              "joueurs_max": 8,
+              "prix_moyen_session": null,
+              "fill": 13.5,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 76,
+              "n_sessions": 300,
               "n_booked": 13
             },
             {
@@ -3290,12 +3322,12 @@
               "joueurs_min": 4,
               "joueurs_max": 10,
               "prix_moyen_session": null,
-              "fill": 12.5,
+              "fill": 10.4,
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 458,
               "n_sessions": 1357,
-              "n_booked": 12
+              "n_booked": 10
             },
             {
               "id": "69b7f5a88f63bf8765a00151",
@@ -3309,24 +3341,8 @@
               "fill": 10.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 441,
+              "n_confirmed": 442,
               "n_sessions": 1243,
-              "n_booked": 9
-            },
-            {
-              "id": "67ee3f69d8fccf2e563dda63",
-              "nom": "Pokerface",
-              "theme": "aventure",
-              "difficulty": 0,
-              "duree": 60,
-              "joueurs_min": 3,
-              "joueurs_max": 8,
-              "prix_moyen_session": null,
-              "fill": 9.4,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 72,
-              "n_sessions": 300,
               "n_booked": 9
             },
             {
@@ -3354,12 +3370,12 @@
               "joueurs_min": 3,
               "joueurs_max": 5,
               "prix_moyen_session": null,
-              "fill": 3.1,
+              "fill": 6.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 34,
+              "n_confirmed": 37,
               "n_sessions": 300,
-              "n_booked": 3
+              "n_booked": 6
             },
             {
               "id": "67ee3f0dd8fccf2e563dd969",
@@ -3403,7 +3419,7 @@
       "website": "http://batman-escape.com",
       "n_centres": 1,
       "n_salles": 8,
-      "fill_now": 11.2,
+      "fill_now": 13.3,
       "prix_moyen_session": 36.0,
       "centres": [
         {
@@ -3415,7 +3431,7 @@
           "lat": 48.8950353,
           "lon": 2.3869887,
           "n_salles": 8,
-          "fill_now": 11.2,
+          "fill_now": 13.3,
           "prix_moyen_session": 36.0,
           "salles": [
             {
@@ -3427,28 +3443,12 @@
               "joueurs_min": 2,
               "joueurs_max": 12,
               "prix_moyen_session": 36.0,
-              "fill": 26.2,
+              "fill": 28.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 602,
+              "n_confirmed": 606,
               "n_sessions": 1308,
-              "n_booked": 21
-            },
-            {
-              "id": "64477b667033d7ccd6564602",
-              "nom": "The Batcave : Scénario Gentils",
-              "theme": "science-fiction",
-              "difficulty": 0,
-              "duree": 45,
-              "joueurs_min": 2,
-              "joueurs_max": 12,
-              "prix_moyen_session": 36.0,
-              "fill": 13.8,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 501,
-              "n_sessions": 1308,
-              "n_booked": 11
+              "n_booked": 23
             },
             {
               "id": "64477cd70fec180f24a1f1dd",
@@ -3459,12 +3459,28 @@
               "joueurs_min": 2,
               "joueurs_max": 24,
               "prix_moyen_session": 36.0,
-              "fill": 10.1,
+              "fill": 12.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 280,
+              "n_confirmed": 284,
               "n_sessions": 1897,
-              "n_booked": 12
+              "n_booked": 15
+            },
+            {
+              "id": "64477b667033d7ccd6564602",
+              "nom": "The Batcave : Scénario Gentils",
+              "theme": "science-fiction",
+              "difficulty": 0,
+              "duree": 45,
+              "joueurs_min": 2,
+              "joueurs_max": 12,
+              "prix_moyen_session": 36.0,
+              "fill": 12.5,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 501,
+              "n_sessions": 1308,
+              "n_booked": 10
             },
             {
               "id": "64477d470fec180f24a1f673",
@@ -3475,12 +3491,12 @@
               "joueurs_min": 2,
               "joueurs_max": 24,
               "prix_moyen_session": 36.0,
-              "fill": 6.6,
+              "fill": 11.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 438,
+              "n_confirmed": 442,
               "n_sessions": 1196,
-              "n_booked": 5
+              "n_booked": 9
             },
             {
               "id": "64a5289a7b96229706e625dc",
@@ -3491,12 +3507,12 @@
               "joueurs_min": 1,
               "joueurs_max": 10,
               "prix_moyen_session": 7.0,
-              "fill": 6.1,
+              "fill": 7.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 157,
+              "n_confirmed": 160,
               "n_sessions": 3146,
-              "n_booked": 11
+              "n_booked": 14
             },
             {
               "id": "654e4afb36671a2f807b09f8",
@@ -3556,7 +3572,7 @@
       "website": "https://www.rashomon-escape.com/",
       "n_centres": 2,
       "n_salles": 7,
-      "fill_now": 51.6,
+      "fill_now": 57.1,
       "prix_moyen_session": 141.2,
       "centres": [
         {
@@ -3568,7 +3584,7 @@
           "lat": 48.859,
           "lon": 2.379,
           "n_salles": 2,
-          "fill_now": 51.6,
+          "fill_now": 57.1,
           "prix_moyen_session": 141.2,
           "salles": [
             {
@@ -3580,12 +3596,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 141.2,
-              "fill": 52.4,
+              "fill": 58.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 904,
+              "n_confirmed": 909,
               "n_sessions": 1063,
-              "n_booked": 33
+              "n_booked": 37
             },
             {
               "id": "68fbce611aafe5dddf435eaf",
@@ -3596,12 +3612,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 141.2,
-              "fill": 50.8,
+              "fill": 55.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 894,
+              "n_confirmed": 899,
               "n_sessions": 1058,
-              "n_booked": 32
+              "n_booked": 35
             }
           ]
         },
@@ -3614,7 +3630,7 @@
           "lat": 48.859,
           "lon": 2.379,
           "n_salles": 5,
-          "fill_now": 47.6,
+          "fill_now": 51.1,
           "prix_moyen_session": 141.2,
           "salles": [
             {
@@ -3626,12 +3642,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 141.2,
-              "fill": 49.2,
+              "fill": 52.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 828,
+              "n_confirmed": 834,
               "n_sessions": 1007,
-              "n_booked": 31
+              "n_booked": 33
             },
             {
               "id": "5ab25afab2da69534f09dea8",
@@ -3642,12 +3658,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 131.5,
-              "fill": 49.2,
+              "fill": 52.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 804,
+              "n_confirmed": 809,
               "n_sessions": 1007,
-              "n_booked": 31
+              "n_booked": 33
             },
             {
               "id": "5ab25c05f851065321e4567a",
@@ -3658,28 +3674,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 141.2,
-              "fill": 47.6,
+              "fill": 50.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 805,
+              "n_confirmed": 810,
               "n_sessions": 1008,
-              "n_booked": 30
-            },
-            {
-              "id": "5ab0e4b022fa8d25b71d1f41",
-              "nom": "LE PHARAON",
-              "theme": "aventure",
-              "difficulty": 9,
-              "duree": 60,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 141.2,
-              "fill": 46.0,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 805,
-              "n_sessions": 1007,
-              "n_booked": 29
+              "n_booked": 32
             },
             {
               "id": "5ab24062f851065321e455b4",
@@ -3690,12 +3690,28 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 141.2,
-              "fill": 46.0,
+              "fill": 50.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 813,
+              "n_confirmed": 819,
               "n_sessions": 1006,
-              "n_booked": 29
+              "n_booked": 32
+            },
+            {
+              "id": "5ab0e4b022fa8d25b71d1f41",
+              "nom": "LE PHARAON",
+              "theme": "aventure",
+              "difficulty": 9,
+              "duree": 60,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 141.2,
+              "fill": 49.2,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 809,
+              "n_sessions": 1007,
+              "n_booked": 31
             }
           ]
         }
@@ -3707,7 +3723,7 @@
       "website": "https://joueurz.fr/",
       "n_centres": 1,
       "n_salles": 7,
-      "fill_now": 19.6,
+      "fill_now": 20.2,
       "prix_moyen_session": 326.2,
       "centres": [
         {
@@ -3719,7 +3735,7 @@
           "lat": 48.8925,
           "lon": 2.3444,
           "n_salles": 7,
-          "fill_now": 19.6,
+          "fill_now": 20.2,
           "prix_moyen_session": 326.2,
           "salles": [
             {
@@ -3731,12 +3747,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 66.1,
+              "fill": 67.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 705,
+              "n_confirmed": 708,
               "n_sessions": 896,
-              "n_booked": 37
+              "n_booked": 38
             },
             {
               "id": "67f93ccf767106656e0e744b",
@@ -3747,12 +3763,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 39.3,
+              "fill": 41.1,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 645,
+              "n_confirmed": 646,
               "n_sessions": 896,
-              "n_booked": 22
+              "n_booked": 23
             },
             {
               "id": "67f93b1c767106656e0e7354",
@@ -3844,7 +3860,7 @@
       "website": "https://lockacademy.com/",
       "n_centres": 3,
       "n_salles": 6,
-      "fill_now": 68.3,
+      "fill_now": 69.7,
       "prix_moyen_session": 142.0,
       "centres": [
         {
@@ -3856,7 +3872,7 @@
           "lat": 48.8607,
           "lon": 2.3358,
           "n_salles": 3,
-          "fill_now": 68.3,
+          "fill_now": 69.7,
           "prix_moyen_session": 132.5,
           "salles": [
             {
@@ -3871,7 +3887,7 @@
               "fill": 75.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 597,
+              "n_confirmed": 599,
               "n_sessions": 704,
               "n_booked": 33
             },
@@ -3884,12 +3900,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 132.5,
-              "fill": 69.4,
+              "fill": 73.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 673,
+              "n_confirmed": 677,
               "n_sessions": 784,
-              "n_booked": 34
+              "n_booked": 36
             },
             {
               "id": "629dfe5e759443af758e7906",
@@ -3903,7 +3919,7 @@
               "fill": 61.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 639,
+              "n_confirmed": 641,
               "n_sessions": 784,
               "n_booked": 30
             }
@@ -3918,9 +3934,25 @@
           "lat": 48.8675,
           "lon": 2.3414,
           "n_salles": 3,
-          "fill_now": 59.3,
+          "fill_now": 60.5,
           "prix_moyen_session": 142.0,
           "salles": [
+            {
+              "id": "629e19e6759443af758e931e",
+              "nom": "Révolte à la Lock",
+              "theme": "science-fiction",
+              "difficulty": 0,
+              "duree": 90,
+              "joueurs_min": 2,
+              "joueurs_max": 6,
+              "prix_moyen_session": 142.0,
+              "fill": 63.0,
+              "suspect_closed": false,
+              "confidence": "élevée",
+              "n_confirmed": 675,
+              "n_sessions": 864,
+              "n_booked": 34
+            },
             {
               "id": "629e1c488cea48af92bd2835",
               "nom": "L.A. Confidential",
@@ -3936,22 +3968,6 @@
               "n_confirmed": 675,
               "n_sessions": 864,
               "n_booked": 34
-            },
-            {
-              "id": "629e19e6759443af758e931e",
-              "nom": "Révolte à la Lock",
-              "theme": "science-fiction",
-              "difficulty": 0,
-              "duree": 90,
-              "joueurs_min": 2,
-              "joueurs_max": 6,
-              "prix_moyen_session": 142.0,
-              "fill": 59.3,
-              "suspect_closed": false,
-              "confidence": "élevée",
-              "n_confirmed": 673,
-              "n_sessions": 864,
-              "n_booked": 32
             },
             {
               "id": "629e7639759443af758eaf8c",
@@ -3992,7 +4008,7 @@
       "website": "https://www.potions-and-co.com",
       "n_centres": 1,
       "n_salles": 6,
-      "fill_now": 58.3,
+      "fill_now": 55.0,
       "prix_moyen_session": 265.0,
       "centres": [
         {
@@ -4004,7 +4020,7 @@
           "lat": 48.8613133,
           "lon": 2.3430192,
           "n_salles": 6,
-          "fill_now": 58.3,
+          "fill_now": 55.0,
           "prix_moyen_session": 265.0,
           "salles": [
             {
@@ -4049,9 +4065,9 @@
               "joueurs_max": 40,
               "prix_moyen_session": 39.0,
               "fill": 50.0,
-              "suspect_closed": true,
+              "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 87,
+              "n_confirmed": 88,
               "n_sessions": 129,
               "n_booked": 4
             },
@@ -4113,7 +4129,7 @@
       "website": "http://www.wanderlust-escapegame.com/",
       "n_centres": 1,
       "n_salles": 6,
-      "fill_now": 41.9,
+      "fill_now": 42.3,
       "prix_moyen_session": 121.2,
       "centres": [
         {
@@ -4125,7 +4141,7 @@
           "lat": 48.83496479999999,
           "lon": 2.3987916,
           "n_salles": 6,
-          "fill_now": 41.9,
+          "fill_now": 42.3,
           "prix_moyen_session": 121.2,
           "salles": [
             {
@@ -4140,7 +4156,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 814,
+              "n_confirmed": 818,
               "n_sessions": 896,
               "n_booked": 56
             },
@@ -4153,12 +4169,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 121.2,
-              "fill": 48.2,
+              "fill": 50.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 737,
+              "n_confirmed": 738,
               "n_sessions": 896,
-              "n_booked": 27
+              "n_booked": 28
             },
             {
               "id": "5f401ce582dc550d63413ef2",
@@ -4234,7 +4250,7 @@
       "website": "http://theexit.fr",
       "n_centres": 2,
       "n_salles": 6,
-      "fill_now": 21.4,
+      "fill_now": 25.0,
       "prix_moyen_session": 115.7,
       "centres": [
         {
@@ -4246,7 +4262,7 @@
           "lat": 48.8,
           "lon": 1.95,
           "n_salles": 3,
-          "fill_now": 21.4,
+          "fill_now": 25.0,
           "prix_moyen_session": 115.7,
           "salles": [
             {
@@ -4258,12 +4274,12 @@
               "joueurs_min": 3,
               "joueurs_max": 5,
               "prix_moyen_session": 115.7,
-              "fill": 21.4,
+              "fill": 28.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 258,
+              "n_confirmed": 262,
               "n_sessions": 677,
-              "n_booked": 9
+              "n_booked": 12
             },
             {
               "id": "5ecbc31c5444f247f9fd233c",
@@ -4277,7 +4293,7 @@
               "fill": 21.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 273,
+              "n_confirmed": 274,
               "n_sessions": 677,
               "n_booked": 9
             },
@@ -4396,7 +4412,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 832,
+              "n_confirmed": 835,
               "n_sessions": 896,
               "n_booked": 56
             },
@@ -4412,7 +4428,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 730,
+              "n_confirmed": 733,
               "n_sessions": 784,
               "n_booked": 49
             },
@@ -4428,7 +4444,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 1036,
+              "n_confirmed": 1042,
               "n_sessions": 1120,
               "n_booked": 70
             },
@@ -4444,7 +4460,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 1034,
+              "n_confirmed": 1040,
               "n_sessions": 1120,
               "n_booked": 70
             },
@@ -4460,7 +4476,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 1035,
+              "n_confirmed": 1040,
               "n_sessions": 1120,
               "n_booked": 70
             },
@@ -4490,7 +4506,7 @@
       "website": "https://crack-the-egg.com/",
       "n_centres": 1,
       "n_salles": 5,
-      "fill_now": 18.9,
+      "fill_now": 21.9,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -4502,7 +4518,7 @@
           "lat": 48.84,
           "lon": 2.387,
           "n_salles": 5,
-          "fill_now": 18.9,
+          "fill_now": 21.9,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -4514,12 +4530,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 30.8,
+              "fill": 38.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 242,
+              "n_confirmed": 246,
               "n_sessions": 571,
-              "n_booked": 12
+              "n_booked": 15
             },
             {
               "id": "6852cc3759e1b405108ce50c",
@@ -4546,12 +4562,12 @@
               "joueurs_min": 3,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 17.9,
+              "fill": 20.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 210,
+              "n_confirmed": 212,
               "n_sessions": 572,
-              "n_booked": 7
+              "n_booked": 8
             },
             {
               "id": "6853b83e9433130707b74d39",
@@ -4562,12 +4578,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 12.2,
+              "fill": 14.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 234,
+              "n_confirmed": 235,
               "n_sessions": 598,
-              "n_booked": 5
+              "n_booked": 6
             },
             {
               "id": "6853ba5e9433130707b74e57",
@@ -4578,12 +4594,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 7.3,
+              "fill": 9.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 151,
+              "n_confirmed": 152,
               "n_sessions": 598,
-              "n_booked": 3
+              "n_booked": 4
             }
           ]
         }
@@ -4595,7 +4611,7 @@
       "website": "https://www.labase-creteil.fr/",
       "n_centres": 1,
       "n_salles": 5,
-      "fill_now": 14.8,
+      "fill_now": 15.9,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -4607,7 +4623,7 @@
           "lat": 48.78,
           "lon": 2.46,
           "n_salles": 5,
-          "fill_now": 14.8,
+          "fill_now": 15.9,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -4619,12 +4635,12 @@
               "joueurs_min": 1,
               "joueurs_max": 7,
               "prix_moyen_session": null,
-              "fill": 41.4,
+              "fill": 55.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 420,
+              "n_confirmed": 423,
               "n_sessions": 592,
-              "n_booked": 12
+              "n_booked": 16
             },
             {
               "id": "683d7635444a477afb8c7daa",
@@ -4700,7 +4716,7 @@
       "website": "https://www.phobiaescapegame.fr/",
       "n_centres": 1,
       "n_salles": 5,
-      "fill_now": 10.6,
+      "fill_now": 12.9,
       "prix_moyen_session": 133.8,
       "centres": [
         {
@@ -4712,7 +4728,7 @@
           "lat": 48.8352642,
           "lon": 2.3607714,
           "n_salles": 5,
-          "fill_now": 10.6,
+          "fill_now": 12.9,
           "prix_moyen_session": 133.8,
           "salles": [
             {
@@ -4724,12 +4740,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 133.8,
-              "fill": 15.7,
+              "fill": 20.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 487,
+              "n_confirmed": 489,
               "n_sessions": 1120,
-              "n_booked": 11
+              "n_booked": 14
             },
             {
               "id": "6347fa448f1f302c07547ce6",
@@ -4740,12 +4756,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 133.8,
-              "fill": 11.4,
+              "fill": 15.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 430,
+              "n_confirmed": 433,
               "n_sessions": 1120,
-              "n_booked": 8
+              "n_booked": 11
             },
             {
               "id": "6347f8f9b89b502bcbbf1bc7",
@@ -4756,12 +4772,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 133.8,
-              "fill": 10.0,
+              "fill": 11.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 492,
+              "n_confirmed": 493,
               "n_sessions": 1120,
-              "n_booked": 7
+              "n_booked": 8
             },
             {
               "id": "6347f771b89b502bcbbf1a16",
@@ -4772,12 +4788,12 @@
               "joueurs_min": 1,
               "joueurs_max": 2,
               "prix_moyen_session": 78.0,
-              "fill": 8.6,
+              "fill": 10.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 484,
+              "n_confirmed": 485,
               "n_sessions": 1120,
-              "n_booked": 6
+              "n_booked": 7
             },
             {
               "id": "6347dd2fb89b502bcbbf16ea",
@@ -4832,7 +4848,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 690,
+              "n_confirmed": 692,
               "n_sessions": 736,
               "n_booked": 46
             },
@@ -4848,7 +4864,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 615,
+              "n_confirmed": 617,
               "n_sessions": 656,
               "n_booked": 41
             }
@@ -4878,7 +4894,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 615,
+              "n_confirmed": 616,
               "n_sessions": 656,
               "n_booked": 41
             },
@@ -4894,7 +4910,7 @@
               "fill": 100.0,
               "suspect_closed": true,
               "confidence": "élevée",
-              "n_confirmed": 58,
+              "n_confirmed": 60,
               "n_sessions": 104,
               "n_booked": 46
             },
@@ -5056,7 +5072,7 @@
               "fill": 86.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 714,
+              "n_confirmed": 717,
               "n_sessions": 785,
               "n_booked": 43
             },
@@ -5072,7 +5088,7 @@
               "fill": 76.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 712,
+              "n_confirmed": 715,
               "n_sessions": 785,
               "n_booked": 38
             },
@@ -5088,7 +5104,7 @@
               "fill": 72.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 677,
+              "n_confirmed": 680,
               "n_sessions": 785,
               "n_booked": 36
             },
@@ -5104,7 +5120,7 @@
               "fill": 66.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 664,
+              "n_confirmed": 667,
               "n_sessions": 785,
               "n_booked": 33
             }
@@ -5118,7 +5134,7 @@
       "website": "https://www.theoneescape.com",
       "n_centres": 1,
       "n_salles": 4,
-      "fill_now": 43.8,
+      "fill_now": 44.3,
       "prix_moyen_session": 178.0,
       "centres": [
         {
@@ -5130,7 +5146,7 @@
           "lat": 48.8669656,
           "lon": 2.3522464,
           "n_salles": 4,
-          "fill_now": 43.8,
+          "fill_now": 44.3,
           "prix_moyen_session": 178.0,
           "salles": [
             {
@@ -5142,12 +5158,12 @@
               "joueurs_min": 2,
               "joueurs_max": 7,
               "prix_moyen_session": 328.0,
-              "fill": 66.1,
+              "fill": 64.3,
               "suspect_closed": false,
               "confidence": "élevée",
               "n_confirmed": 675,
               "n_sessions": 896,
-              "n_booked": 37
+              "n_booked": 36
             },
             {
               "id": "5fff49e8e4df910bf7fbf3de",
@@ -5158,12 +5174,12 @@
               "joueurs_min": 4,
               "joueurs_max": 7,
               "prix_moyen_session": 178.0,
-              "fill": 44.9,
+              "fill": 46.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 377,
+              "n_confirmed": 378,
               "n_sessions": 784,
-              "n_booked": 22
+              "n_booked": 23
             },
             {
               "id": "63565b00ac0ddb7129c8ab42",
@@ -5174,12 +5190,12 @@
               "joueurs_min": 4,
               "joueurs_max": 7,
               "prix_moyen_session": 178.0,
-              "fill": 36.7,
+              "fill": 38.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 325,
+              "n_confirmed": 326,
               "n_sessions": 784,
-              "n_booked": 18
+              "n_booked": 19
             },
             {
               "id": "5fff2a24833a3f0c140ff35d",
@@ -5193,7 +5209,7 @@
               "fill": 24.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 354,
+              "n_confirmed": 355,
               "n_sessions": 784,
               "n_booked": 12
             }
@@ -5207,7 +5223,7 @@
       "website": "https://majestic-escapegame.paris/",
       "n_centres": 1,
       "n_salles": 4,
-      "fill_now": 27.0,
+      "fill_now": 30.6,
       "prix_moyen_session": 162.0,
       "centres": [
         {
@@ -5219,7 +5235,7 @@
           "lat": 48.8637709,
           "lon": 2.347552,
           "n_salles": 4,
-          "fill_now": 27.0,
+          "fill_now": 30.6,
           "prix_moyen_session": 162.0,
           "salles": [
             {
@@ -5231,12 +5247,12 @@
               "joueurs_min": 2,
               "joueurs_max": 7,
               "prix_moyen_session": 167.7,
-              "fill": 38.8,
+              "fill": 40.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 644,
+              "n_confirmed": 645,
               "n_sessions": 784,
-              "n_booked": 19
+              "n_booked": 20
             },
             {
               "id": "5e445c6c07e70c1f5c0cb5a3",
@@ -5247,12 +5263,12 @@
               "joueurs_min": 2,
               "joueurs_max": 7,
               "prix_moyen_session": 153.3,
-              "fill": 34.7,
+              "fill": 36.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 628,
+              "n_confirmed": 630,
               "n_sessions": 784,
-              "n_booked": 17
+              "n_booked": 18
             },
             {
               "id": "5e4459e53c44c61f3618f06b",
@@ -5263,12 +5279,12 @@
               "joueurs_min": 2,
               "joueurs_max": 7,
               "prix_moyen_session": 153.3,
-              "fill": 18.4,
+              "fill": 22.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 573,
+              "n_confirmed": 575,
               "n_sessions": 784,
-              "n_booked": 9
+              "n_booked": 11
             },
             {
               "id": "5e445daa07e70c1f5c0cbff5",
@@ -5279,12 +5295,12 @@
               "joueurs_min": 3,
               "joueurs_max": 7,
               "prix_moyen_session": 162.0,
-              "fill": 16.3,
+              "fill": 22.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 566,
+              "n_confirmed": 569,
               "n_sessions": 784,
-              "n_booked": 8
+              "n_booked": 11
             }
           ]
         }
@@ -5323,7 +5339,7 @@
               "fill": 33.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 353,
+              "n_confirmed": 354,
               "n_sessions": 1022,
               "n_booked": 21
             },
@@ -5339,7 +5355,7 @@
               "fill": 20.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 344,
+              "n_confirmed": 345,
               "n_sessions": 1072,
               "n_booked": 13
             },
@@ -5371,7 +5387,7 @@
               "fill": 14.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 226,
+              "n_confirmed": 227,
               "n_sessions": 1020,
               "n_booked": 9
             }
@@ -5577,7 +5593,7 @@
       "website": "https://www.pandore-escape.com",
       "n_centres": 1,
       "n_salles": 3,
-      "fill_now": 41.7,
+      "fill_now": 45.8,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -5589,7 +5605,7 @@
           "lat": 48.8595,
           "lon": 2.3768,
           "n_salles": 3,
-          "fill_now": 41.7,
+          "fill_now": 45.8,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -5617,12 +5633,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 44.8,
+              "fill": 48.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 599,
+              "n_confirmed": 603,
               "n_sessions": 993,
-              "n_booked": 26
+              "n_booked": 28
             },
             {
               "id": "6544b0722e0e912ac1d561a7",
@@ -5633,12 +5649,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": null,
-              "fill": 37.3,
+              "fill": 42.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 620,
+              "n_confirmed": 623,
               "n_sessions": 1023,
-              "n_booked": 22
+              "n_booked": 25
             }
           ]
         }
@@ -5650,7 +5666,7 @@
       "website": "http://www.thequestfactory.paris/",
       "n_centres": 1,
       "n_salles": 3,
-      "fill_now": 30.6,
+      "fill_now": 32.7,
       "prix_moyen_session": 144.5,
       "centres": [
         {
@@ -5662,7 +5678,7 @@
           "lat": 48.8773905,
           "lon": 2.3545915,
           "n_salles": 3,
-          "fill_now": 30.6,
+          "fill_now": 32.7,
           "prix_moyen_session": 144.5,
           "salles": [
             {
@@ -5674,12 +5690,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 144.5,
-              "fill": 46.9,
+              "fill": 49.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 471,
+              "n_confirmed": 473,
               "n_sessions": 784,
-              "n_booked": 23
+              "n_booked": 24
             },
             {
               "id": "608bb5566fb00564e5f25a88",
@@ -5706,12 +5722,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 144.5,
-              "fill": 16.3,
+              "fill": 20.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 338,
+              "n_confirmed": 341,
               "n_sessions": 784,
-              "n_booked": 8
+              "n_booked": 10
             }
           ]
         }
@@ -5723,7 +5739,7 @@
       "website": "https://www.secretshunters.fr/",
       "n_centres": 1,
       "n_salles": 3,
-      "fill_now": 28.9,
+      "fill_now": 32.1,
       "prix_moyen_session": 135.5,
       "centres": [
         {
@@ -5735,7 +5751,7 @@
           "lat": 48.8488,
           "lon": 2.3976,
           "n_salles": 3,
-          "fill_now": 28.9,
+          "fill_now": 32.1,
           "prix_moyen_session": 135.5,
           "salles": [
             {
@@ -5747,12 +5763,12 @@
               "joueurs_min": 3,
               "joueurs_max": 9,
               "prix_moyen_session": 206.1,
-              "fill": 37.2,
+              "fill": 39.7,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 727,
+              "n_confirmed": 734,
               "n_sessions": 1252,
-              "n_booked": 29
+              "n_booked": 31
             },
             {
               "id": "630dff49e628b39d8aff93eb",
@@ -5763,12 +5779,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 135.5,
-              "fill": 32.2,
+              "fill": 37.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 1006,
+              "n_confirmed": 1012,
               "n_sessions": 1435,
-              "n_booked": 29
+              "n_booked": 34
             },
             {
               "id": "6515a3ca5aee586a12075ca6",
@@ -5779,12 +5795,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": 135.5,
-              "fill": 16.7,
+              "fill": 17.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 674,
+              "n_confirmed": 676,
               "n_sessions": 1242,
-              "n_booked": 13
+              "n_booked": 14
             }
           ]
         }
@@ -5796,7 +5812,7 @@
       "website": "https://cyberdances.com/fr",
       "n_centres": 1,
       "n_salles": 3,
-      "fill_now": 22.7,
+      "fill_now": 29.7,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -5808,7 +5824,7 @@
           "lat": 48.8322,
           "lon": 2.3555,
           "n_salles": 3,
-          "fill_now": 22.7,
+          "fill_now": 29.7,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -5820,12 +5836,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 26.7,
+              "fill": 33.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 941,
-              "n_sessions": 1975,
-              "n_booked": 86
+              "n_confirmed": 964,
+              "n_sessions": 1977,
+              "n_booked": 109
             },
             {
               "id": "6a42be38c59581ec03586554",
@@ -5836,12 +5852,12 @@
               "joueurs_min": 2,
               "joueurs_max": 5,
               "prix_moyen_session": null,
-              "fill": 20.5,
+              "fill": 27.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 870,
-              "n_sessions": 1978,
-              "n_booked": 66
+              "n_confirmed": 895,
+              "n_sessions": 1979,
+              "n_booked": 89
             },
             {
               "id": "6a072c0a64c66bbd6976dd18",
@@ -5852,12 +5868,12 @@
               "joueurs_min": 8,
               "joueurs_max": 25,
               "prix_moyen_session": null,
-              "fill": 14.1,
+              "fill": 20.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 68,
+              "n_confirmed": 72,
               "n_sessions": 403,
-              "n_booked": 9
+              "n_booked": 13
             }
           ]
         }
@@ -5896,7 +5912,7 @@
               "fill": 22.2,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 168,
+              "n_confirmed": 169,
               "n_sessions": 187,
               "n_booked": 4
             },
@@ -6042,7 +6058,7 @@
               "fill": 18.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 426,
+              "n_confirmed": 427,
               "n_sessions": 1204,
               "n_booked": 15
             },
@@ -6058,7 +6074,7 @@
               "fill": 17.5,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 390,
+              "n_confirmed": 391,
               "n_sessions": 1204,
               "n_booked": 14
             },
@@ -6161,7 +6177,7 @@
       "website": "https://momentum-escape.fr/",
       "n_centres": 1,
       "n_salles": 3,
-      "fill_now": 5.9,
+      "fill_now": 6.9,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -6173,7 +6189,7 @@
           "lat": 48.91,
           "lon": 2.45,
           "n_salles": 3,
-          "fill_now": 5.9,
+          "fill_now": 6.9,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -6185,12 +6201,12 @@
               "joueurs_min": 3,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 8.8,
+              "fill": 11.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 12,
+              "n_confirmed": 15,
               "n_sessions": 46,
-              "n_booked": 3
+              "n_booked": 4
             },
             {
               "id": "6a464b617e90ad9c0e8498a1",
@@ -6204,7 +6220,7 @@
               "fill": 8.8,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 13,
+              "n_confirmed": 14,
               "n_sessions": 46,
               "n_booked": 3
             },
@@ -6307,7 +6323,7 @@
       "website": "https://www.panikroom.fr/",
       "n_centres": 1,
       "n_salles": 2,
-      "fill_now": 66.3,
+      "fill_now": 67.3,
       "prix_moyen_session": 181.8,
       "centres": [
         {
@@ -6319,7 +6335,7 @@
           "lat": 48.86435669999999,
           "lon": 2.3405462,
           "n_salles": 2,
-          "fill_now": 66.3,
+          "fill_now": 67.3,
           "prix_moyen_session": 181.8,
           "salles": [
             {
@@ -6331,12 +6347,12 @@
               "joueurs_min": 3,
               "joueurs_max": 6,
               "prix_moyen_session": 181.8,
-              "fill": 69.4,
+              "fill": 71.4,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 611,
+              "n_confirmed": 612,
               "n_sessions": 784,
-              "n_booked": 34
+              "n_booked": 35
             },
             {
               "id": "6442943012c01fd157b780ab",
@@ -6350,7 +6366,7 @@
               "fill": 63.3,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 625,
+              "n_confirmed": 627,
               "n_sessions": 784,
               "n_booked": 31
             }
@@ -6421,7 +6437,7 @@
       "website": "https://www.wyb-immersion.com/",
       "n_centres": 1,
       "n_salles": 2,
-      "fill_now": 36.1,
+      "fill_now": 38.9,
       "prix_moyen_session": 175.8,
       "centres": [
         {
@@ -6433,7 +6449,7 @@
           "lat": 48.8655,
           "lon": 2.3707,
           "n_salles": 2,
-          "fill_now": 36.1,
+          "fill_now": 38.9,
           "prix_moyen_session": 175.8,
           "salles": [
             {
@@ -6445,12 +6461,12 @@
               "joueurs_min": 3,
               "joueurs_max": 7,
               "prix_moyen_session": 175.8,
-              "fill": 36.1,
+              "fill": 38.9,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 461,
+              "n_confirmed": 465,
               "n_sessions": 1141,
-              "n_booked": 26
+              "n_booked": 28
             },
             {
               "id": "6323381456a9713e4e68c7c0",
@@ -6519,7 +6535,7 @@
       "website": "https://paris.bombsquad.games/",
       "n_centres": 1,
       "n_salles": 1,
-      "fill_now": 47.8,
+      "fill_now": 48.1,
       "prix_moyen_session": 133.6,
       "centres": [
         {
@@ -6531,7 +6547,7 @@
           "lat": 48.8637,
           "lon": 2.3615,
           "n_salles": 1,
-          "fill_now": 47.8,
+          "fill_now": 48.1,
           "prix_moyen_session": 133.6,
           "salles": [
             {
@@ -6543,12 +6559,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 133.6,
-              "fill": 47.8,
+              "fill": 48.1,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 3413,
+              "n_confirmed": 3422,
               "n_sessions": 5488,
-              "n_booked": 164
+              "n_booked": 165
             }
           ]
         }
@@ -6560,7 +6576,7 @@
       "website": "https://souslegende.com/",
       "n_centres": 1,
       "n_salles": 1,
-      "fill_now": 39.6,
+      "fill_now": 43.6,
       "prix_moyen_session": null,
       "centres": [
         {
@@ -6572,7 +6588,7 @@
           "lat": 48.850027,
           "lon": 2.3397425,
           "n_salles": 1,
-          "fill_now": 39.6,
+          "fill_now": 43.6,
           "prix_moyen_session": null,
           "salles": [
             {
@@ -6584,12 +6600,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": null,
-              "fill": 39.6,
+              "fill": 43.6,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 1057,
+              "n_confirmed": 1061,
               "n_sessions": 1523,
-              "n_booked": 40
+              "n_booked": 44
             }
           ]
         }
@@ -6601,7 +6617,7 @@
       "website": "https://borderliveconcepts.com",
       "n_centres": 1,
       "n_salles": 1,
-      "fill_now": 18.1,
+      "fill_now": 19.0,
       "prix_moyen_session": 248.0,
       "centres": [
         {
@@ -6613,7 +6629,7 @@
           "lat": 48.8925,
           "lon": 2.3444,
           "n_salles": 1,
-          "fill_now": 18.1,
+          "fill_now": 19.0,
           "prix_moyen_session": 248.0,
           "salles": [
             {
@@ -6625,12 +6641,12 @@
               "joueurs_min": 2,
               "joueurs_max": 6,
               "prix_moyen_session": 248.0,
-              "fill": 18.1,
+              "fill": 19.0,
               "suspect_closed": false,
               "confidence": "élevée",
-              "n_confirmed": 261,
+              "n_confirmed": 262,
               "n_sessions": 1680,
-              "n_booked": 19
+              "n_booked": 20
             }
           ]
         }
@@ -6800,7 +6816,7 @@
       "lat": 48.8950353,
       "lon": 2.3869887,
       "cp": "75019",
-      "fill": 11.2,
+      "fill": 13.3,
       "n_salles": 8
     },
     {
@@ -6809,7 +6825,7 @@
       "lat": 48.8637,
       "lon": 2.3615,
       "cp": "75003",
-      "fill": 47.8,
+      "fill": 48.1,
       "n_salles": 1
     },
     {
@@ -6818,7 +6834,7 @@
       "lat": 48.8925,
       "lon": 2.3444,
       "cp": "75018",
-      "fill": 18.1,
+      "fill": 19.0,
       "n_salles": 1
     },
     {
@@ -6863,7 +6879,7 @@
       "lat": 48.8595,
       "lon": 2.3768,
       "cp": "75011",
-      "fill": 41.7,
+      "fill": 45.8,
       "n_salles": 3
     },
     {
@@ -6872,7 +6888,7 @@
       "lat": 48.84,
       "lon": 2.387,
       "cp": "75012",
-      "fill": 18.9,
+      "fill": 21.9,
       "n_salles": 5
     },
     {
@@ -6881,7 +6897,7 @@
       "lat": 48.8322,
       "lon": 2.3555,
       "cp": "75013",
-      "fill": 22.7,
+      "fill": 29.7,
       "n_salles": 3
     },
     {
@@ -6926,7 +6942,7 @@
       "lat": 48.8688885,
       "lon": 2.3456682,
       "cp": "75002",
-      "fill": 25.0,
+      "fill": 21.8,
       "n_salles": 9
     },
     {
@@ -6935,7 +6951,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "60740",
-      "fill": 15.3,
+      "fill": 15.5,
       "n_salles": 10
     },
     {
@@ -6944,7 +6960,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "60740",
-      "fill": 21.6,
+      "fill": 24.8,
       "n_salles": 6
     },
     {
@@ -6953,7 +6969,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "60100",
-      "fill": 15.7,
+      "fill": 16.5,
       "n_salles": 7
     },
     {
@@ -7007,7 +7023,7 @@
       "lat": 48.8925,
       "lon": 2.3444,
       "cp": "75018",
-      "fill": 19.6,
+      "fill": 20.2,
       "n_salles": 7
     },
     {
@@ -7034,7 +7050,7 @@
       "lat": 48.78,
       "lon": 2.46,
       "cp": "94000",
-      "fill": 14.8,
+      "fill": 15.9,
       "n_salles": 5
     },
     {
@@ -7052,7 +7068,7 @@
       "lat": 48.8212098,
       "lon": 2.2082234,
       "cp": "75018",
-      "fill": 23.9,
+      "fill": 27.1,
       "n_salles": 13
     },
     {
@@ -7088,7 +7104,7 @@
       "lat": 48.8607,
       "lon": 2.3358,
       "cp": "75001",
-      "fill": 68.3,
+      "fill": 69.7,
       "n_salles": 3
     },
     {
@@ -7106,7 +7122,7 @@
       "lat": 48.8675,
       "lon": 2.3414,
       "cp": "75002",
-      "fill": 59.3,
+      "fill": 60.5,
       "n_salles": 3
     },
     {
@@ -7115,7 +7131,7 @@
       "lat": 48.8637709,
       "lon": 2.347552,
       "cp": "75001",
-      "fill": 27.0,
+      "fill": 30.6,
       "n_salles": 4
     },
     {
@@ -7133,7 +7149,7 @@
       "lat": 48.8769,
       "lon": 2.338,
       "cp": "75009",
-      "fill": 10.4,
+      "fill": 11.6,
       "n_salles": 9
     },
     {
@@ -7142,7 +7158,7 @@
       "lat": 48.91,
       "lon": 2.45,
       "cp": "93140",
-      "fill": 5.9,
+      "fill": 6.9,
       "n_salles": 3
     },
     {
@@ -7170,7 +7186,7 @@
       "lon": 2.3522,
       "cp": "",
       "fill": 0.0,
-      "n_salles": 21
+      "n_salles": 22
     },
     {
       "centre": "Escape géant B2C",
@@ -7196,7 +7212,7 @@
       "lat": 48.86435669999999,
       "lon": 2.3405462,
       "cp": "75001",
-      "fill": 66.3,
+      "fill": 67.3,
       "n_salles": 2
     },
     {
@@ -7205,7 +7221,7 @@
       "lat": 48.8352642,
       "lon": 2.3607714,
       "cp": "75013",
-      "fill": 10.6,
+      "fill": 12.9,
       "n_salles": 5
     },
     {
@@ -7223,7 +7239,7 @@
       "lat": 48.8613133,
       "lon": 2.3430192,
       "cp": "75004",
-      "fill": 58.3,
+      "fill": 55.0,
       "n_salles": 6
     },
     {
@@ -7232,7 +7248,7 @@
       "lat": 48.859,
       "lon": 2.379,
       "cp": "75011",
-      "fill": 51.6,
+      "fill": 57.1,
       "n_salles": 2
     },
     {
@@ -7241,7 +7257,7 @@
       "lat": 48.859,
       "lon": 2.379,
       "cp": "75011",
-      "fill": 47.6,
+      "fill": 51.1,
       "n_salles": 5
     },
     {
@@ -7250,7 +7266,7 @@
       "lat": 48.8488,
       "lon": 2.3976,
       "cp": "75011",
-      "fill": 28.9,
+      "fill": 32.1,
       "n_salles": 3
     },
     {
@@ -7259,7 +7275,7 @@
       "lat": 48.850027,
       "lon": 2.3397425,
       "cp": "75006",
-      "fill": 39.6,
+      "fill": 43.6,
       "n_salles": 1
     },
     {
@@ -7268,7 +7284,7 @@
       "lat": 48.8322,
       "lon": 2.3555,
       "cp": "75013",
-      "fill": 18.6,
+      "fill": 19.0,
       "n_salles": 15
     },
     {
@@ -7295,7 +7311,7 @@
       "lat": 48.8,
       "lon": 1.95,
       "cp": "78100",
-      "fill": 21.4,
+      "fill": 25.0,
       "n_salles": 3
     },
     {
@@ -7304,7 +7320,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "75005",
-      "fill": 46.6,
+      "fill": 48.9,
       "n_salles": 11
     },
     {
@@ -7313,7 +7329,7 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "cp": "75005",
-      "fill": 44.6,
+      "fill": 47.0,
       "n_salles": 9
     },
     {
@@ -7322,7 +7338,7 @@
       "lat": 48.8669656,
       "lon": 2.3522464,
       "cp": "75002",
-      "fill": 43.8,
+      "fill": 44.3,
       "n_salles": 4
     },
     {
@@ -7331,7 +7347,7 @@
       "lat": 48.8773905,
       "lon": 2.3545915,
       "cp": "75010",
-      "fill": 30.6,
+      "fill": 32.7,
       "n_salles": 3
     },
     {
@@ -7349,7 +7365,7 @@
       "lat": 48.83496479999999,
       "lon": 2.3987916,
       "cp": "75012",
-      "fill": 41.9,
+      "fill": 42.3,
       "n_salles": 6
     },
     {
@@ -7367,7 +7383,7 @@
       "lat": 48.8655,
       "lon": 2.3707,
       "cp": "75011",
-      "fill": 36.1,
+      "fill": 38.9,
       "n_salles": 2
     }
   ],
@@ -7390,59 +7406,59 @@
     ],
     "matrix": [
       [
-        25.2,
-        23.8,
-        27.4,
-        39.9,
-        33.7
+        30.1,
+        24.0,
+        28.8,
+        41.0,
+        34.2
       ],
       [
-        20.5,
+        25.0,
         20.8,
-        20.7,
-        28.4,
+        20.9,
+        31.3,
         18.4
       ],
       [
         16.6,
         20.9,
-        16.5,
-        22.6,
-        14.3
+        17.1,
+        24.6,
+        15.1
       ],
       [
-        21.2,
-        20.7,
-        23.2,
-        30.2,
-        13.4
+        21.4,
+        22.4,
+        23.1,
+        26.6,
+        13.9
       ],
       [
-        32.0,
-        39.1,
-        27.4,
-        43.1,
-        38.7
+        31.5,
+        40.2,
+        34.3,
+        46.6,
+        43.6
       ],
       [
-        42.4,
-        60.2,
-        64.9,
-        50.7,
-        39.4
+        43.3,
+        61.9,
+        66.2,
+        53.2,
+        40.9
       ],
       [
-        36.7,
-        44.9,
-        40.8,
-        23.6,
-        19.2
+        37.7,
+        46.6,
+        41.5,
+        25.6,
+        19.7
       ]
     ]
   },
   "themes": {
     "aventure": 141279,
-    "science-fiction": 29556,
+    "science-fiction": 29559,
     "enquête": 28388,
     "fantastique": 6837,
     "horreur": 5944
@@ -7460,7 +7476,7 @@
       "fill": 86.0,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 714,
+      "n_confirmed": 717,
       "n_sessions": 785,
       "n_booked": 43,
       "centre": "Deep Inside Paris",
@@ -7517,7 +7533,7 @@
       "fill": 76.0,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 712,
+      "n_confirmed": 715,
       "n_sessions": 785,
       "n_booked": 38,
       "centre": "Deep Inside Paris",
@@ -7536,9 +7552,28 @@
       "fill": 75.0,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 597,
+      "n_confirmed": 599,
       "n_sessions": 704,
       "n_booked": 33,
+      "centre": "Académie Châtelet",
+      "enseigne": "Lock Academy",
+      "cp": "75001"
+    },
+    {
+      "id": "629df71f8cea48af92bce71b",
+      "nom": "Un Crime Presque Parfait",
+      "theme": "enquête",
+      "difficulty": 0,
+      "duree": 90,
+      "joueurs_min": 2,
+      "joueurs_max": 5,
+      "prix_moyen_session": 132.5,
+      "fill": 73.5,
+      "suspect_closed": false,
+      "confidence": "élevée",
+      "n_confirmed": 677,
+      "n_sessions": 784,
+      "n_booked": 36,
       "centre": "Académie Châtelet",
       "enseigne": "Lock Academy",
       "cp": "75001"
@@ -7555,31 +7590,12 @@
       "fill": 72.0,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 677,
+      "n_confirmed": 680,
       "n_sessions": 785,
       "n_booked": 36,
       "centre": "Deep Inside Paris",
       "enseigne": "Deep Inside Paris",
       "cp": "75019"
-    },
-    {
-      "id": "629df71f8cea48af92bce71b",
-      "nom": "Un Crime Presque Parfait",
-      "theme": "enquête",
-      "difficulty": 0,
-      "duree": 90,
-      "joueurs_min": 2,
-      "joueurs_max": 5,
-      "prix_moyen_session": 132.5,
-      "fill": 69.4,
-      "suspect_closed": false,
-      "confidence": "élevée",
-      "n_confirmed": 673,
-      "n_sessions": 784,
-      "n_booked": 34,
-      "centre": "Académie Châtelet",
-      "enseigne": "Lock Academy",
-      "cp": "75001"
     },
     {
       "id": "61f3eea2684cc9935356218e",
@@ -7590,12 +7606,12 @@
       "joueurs_min": 3,
       "joueurs_max": 6,
       "prix_moyen_session": 181.8,
-      "fill": 69.4,
+      "fill": 71.4,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 611,
+      "n_confirmed": 612,
       "n_sessions": 784,
-      "n_booked": 34,
+      "n_booked": 35,
       "centre": "PANIK ROOM",
       "enseigne": "PANIK ROOM",
       "cp": "75001"
@@ -7609,34 +7625,15 @@
       "joueurs_min": 2,
       "joueurs_max": 6,
       "prix_moyen_session": null,
-      "fill": 66.1,
+      "fill": 67.9,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 705,
+      "n_confirmed": 708,
       "n_sessions": 896,
-      "n_booked": 37,
+      "n_booked": 38,
       "centre": "Joueurz Paris",
       "enseigne": "Joueurz Paris",
       "cp": "75018"
-    },
-    {
-      "id": "66613d1f4e1353dd61da11d5",
-      "nom": "LE GRAND HÔTEL DE PARIS",
-      "theme": "aventure",
-      "difficulty": 0,
-      "duree": 90,
-      "joueurs_min": 2,
-      "joueurs_max": 7,
-      "prix_moyen_session": 328.0,
-      "fill": 66.1,
-      "suspect_closed": false,
-      "confidence": "élevée",
-      "n_confirmed": 675,
-      "n_sessions": 896,
-      "n_booked": 37,
-      "centre": "THE ONE Escape",
-      "enseigne": "THE ONE Escape",
-      "cp": "75002"
     },
     {
       "id": "5f92a43a59bd8058ad2f0d2d",
@@ -7650,12 +7647,31 @@
       "fill": 66.0,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 664,
+      "n_confirmed": 667,
       "n_sessions": 785,
       "n_booked": 33,
       "centre": "Deep Inside Paris",
       "enseigne": "Deep Inside Paris",
       "cp": "75019"
+    },
+    {
+      "id": "66613d1f4e1353dd61da11d5",
+      "nom": "LE GRAND HÔTEL DE PARIS",
+      "theme": "aventure",
+      "difficulty": 0,
+      "duree": 90,
+      "joueurs_min": 2,
+      "joueurs_max": 7,
+      "prix_moyen_session": 328.0,
+      "fill": 64.3,
+      "suspect_closed": false,
+      "confidence": "élevée",
+      "n_confirmed": 675,
+      "n_sessions": 896,
+      "n_booked": 36,
+      "centre": "THE ONE Escape",
+      "enseigne": "THE ONE Escape",
+      "cp": "75002"
     },
     {
       "id": "6442943012c01fd157b780ab",
@@ -7669,12 +7685,31 @@
       "fill": 63.3,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 625,
+      "n_confirmed": 627,
       "n_sessions": 784,
       "n_booked": 31,
       "centre": "PANIK ROOM",
       "enseigne": "PANIK ROOM",
       "cp": "75001"
+    },
+    {
+      "id": "629e19e6759443af758e931e",
+      "nom": "Révolte à la Lock",
+      "theme": "science-fiction",
+      "difficulty": 0,
+      "duree": 90,
+      "joueurs_min": 2,
+      "joueurs_max": 6,
+      "prix_moyen_session": 142.0,
+      "fill": 63.0,
+      "suspect_closed": false,
+      "confidence": "élevée",
+      "n_confirmed": 675,
+      "n_sessions": 864,
+      "n_booked": 34,
+      "centre": "Académie Sébastopol",
+      "enseigne": "Lock Academy",
+      "cp": "75002"
     },
     {
       "id": "629e1c488cea48af92bd2835",
@@ -7707,7 +7742,7 @@
       "fill": 61.2,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 639,
+      "n_confirmed": 641,
       "n_sessions": 784,
       "n_booked": 30,
       "centre": "Académie Châtelet",
@@ -7715,23 +7750,61 @@
       "cp": "75001"
     },
     {
-      "id": "629e19e6759443af758e931e",
-      "nom": "Révolte à la Lock",
-      "theme": "science-fiction",
+      "id": "5b4845a1ca5f6e1f2252ec01",
+      "nom": "Le Métro",
+      "theme": "aventure",
       "difficulty": 0,
       "duree": 90,
       "joueurs_min": 2,
       "joueurs_max": 6,
-      "prix_moyen_session": 142.0,
-      "fill": 59.3,
+      "prix_moyen_session": 149.2,
+      "fill": 58.9,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 673,
-      "n_sessions": 864,
-      "n_booked": 32,
-      "centre": "Académie Sébastopol",
-      "enseigne": "Lock Academy",
-      "cp": "75002"
+      "n_confirmed": 693,
+      "n_sessions": 896,
+      "n_booked": 33,
+      "centre": "Cardinal Lemoine",
+      "enseigne": "The Game",
+      "cp": "75005"
+    },
+    {
+      "id": "61692b777595e33dcdfe9f5c",
+      "nom": "Le Far West",
+      "theme": "aventure",
+      "difficulty": 0,
+      "duree": 90,
+      "joueurs_min": 2,
+      "joueurs_max": 6,
+      "prix_moyen_session": 149.2,
+      "fill": 58.9,
+      "suspect_closed": false,
+      "confidence": "élevée",
+      "n_confirmed": 714,
+      "n_sessions": 896,
+      "n_booked": 33,
+      "centre": "Saint-Michel",
+      "enseigne": "The Game",
+      "cp": "75005"
+    },
+    {
+      "id": "68fbd139ccc7651041c32fb9",
+      "nom": "LE VIRuS",
+      "theme": "science-fiction",
+      "difficulty": 6,
+      "duree": 60,
+      "joueurs_min": 2,
+      "joueurs_max": 6,
+      "prix_moyen_session": 141.2,
+      "fill": 58.7,
+      "suspect_closed": false,
+      "confidence": "élevée",
+      "n_confirmed": 909,
+      "n_sessions": 1063,
+      "n_booked": 37,
+      "centre": "2 Passage du chemin vert 75011 Paris",
+      "enseigne": "RASHOMON ESCAPE",
+      "cp": "75011"
     },
     {
       "id": "62a1f9322a9cd500b0e4ecf0",
@@ -7791,58 +7864,20 @@
       "cp": "75002"
     },
     {
-      "id": "5b4845a1ca5f6e1f2252ec01",
-      "nom": "Le Métro",
+      "id": "68fbce611aafe5dddf435eaf",
+      "nom": "LA MORGUE",
       "theme": "aventure",
-      "difficulty": 0,
-      "duree": 90,
-      "joueurs_min": 2,
-      "joueurs_max": 6,
-      "prix_moyen_session": 149.2,
-      "fill": 55.4,
-      "suspect_closed": false,
-      "confidence": "élevée",
-      "n_confirmed": 690,
-      "n_sessions": 896,
-      "n_booked": 31,
-      "centre": "Cardinal Lemoine",
-      "enseigne": "The Game",
-      "cp": "75005"
-    },
-    {
-      "id": "61692b777595e33dcdfe9f5c",
-      "nom": "Le Far West",
-      "theme": "aventure",
-      "difficulty": 0,
-      "duree": 90,
-      "joueurs_min": 2,
-      "joueurs_max": 6,
-      "prix_moyen_session": 149.2,
-      "fill": 55.4,
-      "suspect_closed": false,
-      "confidence": "élevée",
-      "n_confirmed": 710,
-      "n_sessions": 896,
-      "n_booked": 31,
-      "centre": "Saint-Michel",
-      "enseigne": "The Game",
-      "cp": "75005"
-    },
-    {
-      "id": "68fbd139ccc7651041c32fb9",
-      "nom": "LE VIRuS",
-      "theme": "science-fiction",
-      "difficulty": 6,
+      "difficulty": 4,
       "duree": 60,
       "joueurs_min": 2,
       "joueurs_max": 6,
       "prix_moyen_session": 141.2,
-      "fill": 52.4,
+      "fill": 55.6,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 904,
-      "n_sessions": 1063,
-      "n_booked": 33,
+      "n_confirmed": 899,
+      "n_sessions": 1058,
+      "n_booked": 35,
       "centre": "2 Passage du chemin vert 75011 Paris",
       "enseigne": "RASHOMON ESCAPE",
       "cp": "75011"
@@ -7856,15 +7891,34 @@
       "joueurs_min": 2,
       "joueurs_max": 6,
       "prix_moyen_session": 149.2,
-      "fill": 51.8,
+      "fill": 55.4,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 689,
+      "n_confirmed": 691,
       "n_sessions": 896,
-      "n_booked": 29,
+      "n_booked": 31,
       "centre": "Cardinal Lemoine",
       "enseigne": "The Game",
       "cp": "75005"
+    },
+    {
+      "id": "6a0d6309cdd1ae4989c080f7",
+      "nom": "LA CABANE PERDUE",
+      "theme": "aventure",
+      "difficulty": 0,
+      "duree": 90,
+      "joueurs_min": 1,
+      "joueurs_max": 7,
+      "prix_moyen_session": null,
+      "fill": 55.2,
+      "suspect_closed": false,
+      "confidence": "élevée",
+      "n_confirmed": 423,
+      "n_sessions": 592,
+      "n_booked": 16,
+      "centre": "La Base Créteil",
+      "enseigne": "La Base Créteil",
+      "cp": "94000"
     },
     {
       "id": "63e3cc231084c231d1aa9fdf",
@@ -7875,53 +7929,15 @@
       "joueurs_min": 2,
       "joueurs_max": 6,
       "prix_moyen_session": 149.2,
-      "fill": 51.8,
+      "fill": 53.6,
       "suspect_closed": false,
       "confidence": "élevée",
-      "n_confirmed": 724,
+      "n_confirmed": 726,
       "n_sessions": 896,
-      "n_booked": 29,
+      "n_booked": 30,
       "centre": "Saint-Michel",
       "enseigne": "The Game",
       "cp": "75005"
-    },
-    {
-      "id": "68fbce611aafe5dddf435eaf",
-      "nom": "LA MORGUE",
-      "theme": "aventure",
-      "difficulty": 4,
-      "duree": 60,
-      "joueurs_min": 2,
-      "joueurs_max": 6,
-      "prix_moyen_session": 141.2,
-      "fill": 50.8,
-      "suspect_closed": false,
-      "confidence": "élevée",
-      "n_confirmed": 894,
-      "n_sessions": 1058,
-      "n_booked": 32,
-      "centre": "2 Passage du chemin vert 75011 Paris",
-      "enseigne": "RASHOMON ESCAPE",
-      "cp": "75011"
-    },
-    {
-      "id": "69bafc45035efd5eee414689",
-      "nom": "Le diamant - ANNIVERSAIRE",
-      "theme": "aventure",
-      "difficulty": 0,
-      "duree": 60,
-      "joueurs_min": 10,
-      "joueurs_max": 15,
-      "prix_moyen_session": 349.0,
-      "fill": 50.0,
-      "suspect_closed": false,
-      "confidence": "élevée",
-      "n_confirmed": 140,
-      "n_sessions": 190,
-      "n_booked": 7,
-      "centre": "SECRET LAND",
-      "enseigne": "Escape Game Aventure Puteaux",
-      "cp": "92800"
     }
   ],
   "prix_distribution": [
