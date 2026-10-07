@@ -6,31 +6,84 @@ Secrets (env, JAMAIS versionnés) :
   SUPABASE_URL   = https://<ref>.supabase.co
   SUPABASE_KEY   = clé secrète (service_role / sb_secret_…)
 
-  SUPABASE_URL=… SUPABASE_KEY=… python3 supa_sync.py
+  SUPABASE_URL=… SUPABASE_KEY=… python3 supa_sync.py                # tout le store
+  SUPABASE_URL=… SUPABASE_KEY=… python3 supa_sync.py --since <ISO>  # sessions modifiées depuis
+
+Le mode --since n'envoie que les sessions dont `maj` (posé par reconcile à chaque
+changement) est postérieur : indispensable pour relever toutes les ~10 min sans
+renvoyer 200 000 lignes à chaque passage.
 """
 from __future__ import annotations
 
+import argparse
 import glob
 import json
 import os
+import urllib.parse as up
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-from safestore import read_json
+from safestore import read_json, write_json
 
 URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 KEY = os.environ.get("SUPABASE_KEY", "")
 GEO = read_json("escape_geo_cp.json", {}) or {}
 CENTROIDS = GEO.get("_dept_centroids", {})
 CHUNK = 500
+GEO_CACHE = "escape_data/geo_centres.json"     # conservé par le cache CI, comme le store
+_geo = read_json(GEO_CACHE, {}) or {}
+
+
+def _geocode(adresse: str, ville: str, cp: str):
+    """Géoplateforme IGN (successeur d'api-adresse). Résultat mis en cache, y compris
+    les échecs, pour ne jamais redemander la même adresse."""
+    q = " ".join(x for x in (adresse, cp, ville.replace("-", " ")) if x).strip()
+    if not q or not adresse:
+        return None
+    if q in _geo:
+        return _geo[q]
+    res = None
+    try:
+        d = json.loads(urlopen("https://data.geopf.fr/geocodage/search?"
+                               + up.urlencode({"q": q, "limit": 1}), timeout=20).read())
+        f = (d.get("features") or [None])[0]
+        if f and f["properties"].get("score", 0) >= 0.5:
+            lon, lat = f["geometry"]["coordinates"]
+            res = [lat, lon]
+    except Exception:
+        return None                    # incident réseau : on réessaiera au prochain passage
+    _geo[q] = res
+    write_json(GEO_CACHE, _geo)
+    return res
 
 
 def _coords(c: dict):
     if c.get("lat") and c.get("lon"):
         return c["lat"], c["lon"]
+    g = _geocode(c.get("adresse") or "", c.get("ville") or "", c.get("cp") or "")
+    if g:
+        return g[0], g[1]
     cp = c.get("cp") or ""
     g = GEO.get(cp) or CENTROIDS.get(cp[:2]) or [None, None]
     return g[0], g[1]
+
+
+def _req(method: str, path: str):
+    return Request(f"{URL}/rest/v1/{path}", method=method,
+                   headers={"apikey": KEY, "Authorization": "Bearer " + KEY})
+
+
+def purge_enseignes_orphelines(actives: set[str]) -> None:
+    """Supprime les enseignes sans aucun centre ET absentes du store courant
+    (ex. 'lagazettedelutece', ancien identifiant remplacé par 'la-gazette-de-lut-ce').
+    Sans centre, il n'y a ni salle ni session rattachée : rien d'autre n'est effacé."""
+    ens = {e["id"] for e in json.loads(urlopen(_req("GET", "enseignes?select=id"), timeout=60).read())}
+    avec = {c["enseigne_id"] for c in json.loads(urlopen(_req("GET", "centres?select=enseigne_id"), timeout=60).read())}
+    orph = sorted(ens - avec - actives)
+    if orph:
+        ids = ",".join(f'"{i}"' for i in orph)
+        urlopen(_req("DELETE", f"enseignes?id=in.({up.quote(ids)})"), timeout=60)
+        print(f"[supa] enseignes orphelines supprimées : {orph}")
 
 
 def upsert(table: str, rows: list[dict], on_conflict: str) -> None:
@@ -53,6 +106,9 @@ def upsert(table: str, rows: list[dict], on_conflict: str) -> None:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--since", help="n'envoie que les sessions modifiées depuis cet instant ISO")
+    args = ap.parse_args()
     if not (URL and KEY):
         print("[supa] SUPABASE_URL / SUPABASE_KEY manquants — abandon."); return 1
     enseignes, centres, salles, sessions = {}, {}, {}, {}
@@ -84,6 +140,8 @@ def main() -> int:
             rid = sess.get("room_id")
             if rid not in salles:
                 continue
+            if args.since and (sess.get("maj") or "") < args.since:
+                continue
             sessions[f"{rid}|{sess['date']}|{sess['heure']}"] = {
                 "salle_id": rid, "date": sess["date"], "heure": sess["heure"],
                 "duree_minutes": sess.get("duree_minutes"),
@@ -106,6 +164,8 @@ def main() -> int:
     upsert("centres", list(centres.values()), "id")
     upsert("salles", list(salles.values()), "id")
     upsert("sessions", list(sessions.values()), "salle_id,date,heure")
+    if not args.since:
+        purge_enseignes_orphelines(set(enseignes))
     print("[supa] sync terminé ✓")
     return 0
 
