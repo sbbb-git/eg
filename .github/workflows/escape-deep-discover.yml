@@ -2,7 +2,9 @@ name: escape-deep-discover (Playwright - comptes 4escape cachés)
 
 # Découvre par lots les comptes 4escape sous sous-domaine non devinable, via
 # Playwright (charge la page de résa, intercepte l'appel *.4escape.io).
-# Tourne plusieurs fois par jour ; chaque run traite un lot puis commit.
+# Tourne plusieurs fois par jour ; chaque run traite un lot puis commit la liste
+# des comptes. Les relevés des nouveaux comptes sont faits par escape-extension,
+# qui recharge cette liste à chaque tour (un seul écrivain du store et de la base).
 on:
   schedule:
     - cron: "20 */4 * * *"      # toutes les 4 h
@@ -29,14 +31,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Restore raw store cache
-        uses: actions/cache@v4
-        with:
-          path: escape_data
-          key: escape-data-${{ github.run_id }}
-          restore-keys: |
-            escape-data-
-
       - name: Install Playwright + Chromium
         run: |
           pip install --quiet playwright
@@ -46,21 +40,12 @@ jobs:
         run: python3 escape_deep_discover.py --limit ${{ github.event.inputs.limit || '30' }}
         continue-on-error: true
 
-      - name: Scrape + agrège + sync les nouveaux comptes
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: |
-          python3 escape_4escape_all.py --scrape || true
-          python3 escape_all_compute.py || true
-          python3 supa_sync.py || true
-        continue-on-error: true
-
       - name: Commit
         run: |
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
-          git pull --rebase origin main || true
-          git add escape_4escape_companies.json escape_all_data.json
-          git diff --cached --quiet || git commit -m "deep-discover: comptes 4escape cachés ${{ github.run_id }}"
-          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done
+          git add escape_4escape_companies.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "deep-discover: comptes 4escape cachés ${{ github.run_id }}"
+          for i in 1 2 3 4; do git pull --rebase -q origin main && git push -q && exit 0; sleep $((2**i)); done
+          echo "::error::push impossible après 4 tentatives"; exit 1

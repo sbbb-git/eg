@@ -1,7 +1,7 @@
 name: pages (déploiement du dashboard)
 
-# Déploie le site statique (index.html + dashboards + *_data.json) sur GitHub
-# Pages. PRÉREQUIS UNIQUE (manuel, 1 fois) : Settings > Pages > Build and
+# Déploie le dashboard (index.html SEUL : il lit Supabase en direct) sur GitHub
+# Pages. Les fichiers de données et le code ne sont plus publiés sur le site. PRÉREQUIS UNIQUE (manuel, 1 fois) : Settings > Pages > Build and
 # deployment > Source = "GitHub Actions".
 # Ne se déclenche QUE sur main (branche par défaut) ou manuellement, pour ne
 # pas échouer en boucle sur la branche de dev tant que Pages n'est pas activé.
@@ -9,6 +9,7 @@ name: pages (déploiement du dashboard)
 on:
   push:
     branches: ["main"]
+    paths: ["index.html", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -31,9 +32,13 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Assembler le site (la page seule)
+        run: |
+          mkdir -p _site
+          cp index.html .nojekyll _site/
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "_site"
       - id: deployment
         uses: actions/deploy-pages@v4

@@ -1,29 +1,37 @@
-name: escape-extension (discover + scrape)
+name: escape-extension (relevés continus)
 
-# Discovery + scrape toutes les 30 min. Le store brut escape_data/ est
-# conservé entre runs via actions/cache (pas commité — voir .gitignore) ;
-# seul l'agrégat est régénéré et commité par escape-aggregate.yml.
+# GitHub n'exécute qu'une fraction des crons planifiés (un run toutes les ~5 h
+# pour un cron « */30 »). Ce job ne compte donc plus sur le cron pour la
+# fréquence : il boucle lui-même (relevé complet toutes les 10 min) pendant
+# ~5 h 30, en 3 blocs avec sauvegarde du store entre chaque. Le cron sert juste
+# à mettre le run suivant en file d'attente (concurrency) : il démarre dès que
+# celui-ci se termine, d'où une couverture quasi continue.
+#
+# Ce job est le SEUL à écrire le store (escape_data/) et les sessions Supabase :
+# plus de course entre caches de workflows concurrents.
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "7 * * * *"
   workflow_dispatch:
-    inputs:
-      seed:
-        description: "Régénérer un historique de démo (offline)"
-        type: boolean
-        default: false
 
 concurrency:
   group: escape-extension
   cancel-in-progress: false
 
 permissions:
-  contents: write
+  contents: read
+
+env:
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+  PROXY_SERVER: ${{ secrets.PROXY_SERVER }}
+  PROXY_USERNAME: ${{ secrets.PROXY_USERNAME }}
+  PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
 
 jobs:
-  scrape:
+  releves:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
@@ -31,57 +39,48 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Restore raw store cache
-        uses: actions/cache@v4
+      - name: Restaurer le store
+        uses: actions/cache/restore@v4
         with:
           path: escape_data
           key: escape-data-${{ github.run_id }}
-          restore-keys: |
-            escape-data-
+          restore-keys: escape-data-
 
-      # NB: la détection de plateforme (escape_extension_discover --only-unknown)
-      # est lente (41 brands × retries) et inutile à 30 min — déplacée dans
-      # escape-daily.yml. Le job /30 min reste léger (scrape + sync) et finit
-      # largement sous le timeout (cœur ~7 min).
-
-      - name: Scrape dispo — source PRIMAIRE 4escape (léger, /30 min)
-        # Uniquement la dispo (upcoming) : c'est le coeur haute-fréquence.
-        # Catalogue/enrich/prix sont rafraîchis par escape-daily.yml (lent).
-        # Si le catalogue manque (1er run), on le construit d'abord.
+      - name: Playwright (seulement si un proxy Bookeo est configuré)
+        if: env.PROXY_SERVER != ''
         run: |
-          test -f escape_4escape_catalog.json || python3 escape_4escape.py --harvest --enrich
-          python3 escape_4escape.py --scrape
+          pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Relevés — bloc 1 (sync complet au premier tour)
+        run: python3 escape_loop.py --minutes 105 --every 10 --full-first
         continue-on-error: true
 
-      - name: Scrape — sources par-site (catalogue étendu, si --seed)
-        if: ${{ inputs.seed }}
-        run: python3 escape_extension_scrape.py --seed
+      - name: Sauvegarder le store (1/3)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}-1
+
+      - name: Relevés — bloc 2
+        run: python3 escape_loop.py --minutes 105 --every 10
         continue-on-error: true
 
-      - name: Scrape per-slot (enseigne, centre, salle — dispo, prix, joueurs)
-        run: python3 escape_4escape_all.py --scrape
+      - name: Sauvegarder le store (2/3)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}-2
+
+      - name: Relevés — bloc 3
+        run: python3 escape_loop.py --minutes 105 --every 10
         continue-on-error: true
 
-      - name: Aggregate (vues réelles)
-        run: |
-          python3 escape_live_compute.py || true
-          python3 escape_4escape_compute.py || true
-          python3 escape_all_compute.py || true
-          python3 sanity_check.py || true
-
-      - name: Sync Supabase (si secrets configurés)
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: python3 supa_sync.py
-        continue-on-error: true
-
-      - name: Commit aggregates + catalogues
-        run: |
-          git config user.name "escape-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add escape_live_data.json escape_4escape_live.json escape_4escape_catalog.json \
-                  escape_all_data.json escape_4escape_companies.json \
-                  escape_extension_resolved.json escape_sanity.json 2>/dev/null || true
-          git diff --cached --quiet || git commit -m "data: scrape run ${{ github.run_id }}"
-          for i in 1 2 3 4; do git push && break || sleep $((2**i)); done
+      - name: Sauvegarder le store (3/3)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: escape_data
+          key: escape-data-${{ github.run_id }}-3

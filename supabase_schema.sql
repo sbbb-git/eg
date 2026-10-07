@@ -51,7 +51,7 @@ create table if not exists sessions (
   prix_total_moyen  numeric,               -- moyenne du prix total sur les tailles valides
   dispo             boolean,
   booked            boolean,
-  statut            text,                  -- reserve / libre_fin / null
+  statut            text,                  -- reserve / libre_fin / retire / null
   premier_vu        timestamptz,
   dernier_vu        timestamptz,
   releve            timestamptz,

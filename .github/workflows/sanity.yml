@@ -1,10 +1,11 @@
 name: sanity (freshness check)
 
-# Vérifie la fraîcheur des données toutes les 6h. Ouvre (ou met à jour) une
-# issue GitHub si au moins un centre est stale (>16h sans relevé).
+# Surveille la collecte de bout en bout (Supabase + erreurs du scraper) toutes
+# les ~3 h. Ouvre (ou complète) une issue GitHub en cas de problème, la referme
+# quand tout est rétabli.
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "40 */3 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,8 +22,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Restore raw store cache
-        uses: actions/cache@v4
+      - name: Restaurer le store (lecture seule)
+        uses: actions/cache/restore@v4
         with:
           path: escape_data
           key: escape-data-${{ github.run_id }}
@@ -33,8 +34,8 @@ jobs:
         id: sanity
         run: |
           set +e
-          python3 sanity_check.py --hours 16 | tee sanity.log
-          echo "code=$?" >> "$GITHUB_OUTPUT"
+          python3 sanity_check.py --hours 8 | tee sanity.log; code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
 
       - name: Open issue if stale
         if: steps.sanity.outputs.code != '0'
@@ -43,8 +44,8 @@ jobs:
           script: |
             const fs = require('fs');
             const log = fs.readFileSync('sanity.log', 'utf8');
-            const title = '⚠️ Escape IDF — données stale détectées';
-            const body = "Le sanity check a relevé des centres stale (>16h).\n\n```\n" + log + "\n```";
+            const title = '⚠️ Observatoire Escape IDF — problème de collecte';
+            const body = "La surveillance a détecté un problème de collecte.\n\n```\n" + log + "\n```";
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
               state: 'open', labels: 'stale-data' });
@@ -56,4 +57,19 @@ jobs:
               await github.rest.issues.create({
                 owner: context.repo.owner, repo: context.repo.repo,
                 title, body, labels: ['stale-data'] });
+            }
+
+      - name: Refermer l'issue si tout est rétabli
+        if: steps.sanity.outputs.code == '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'stale-data' });
+            for (const i of issues.data) {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, body: '✅ Collecte rétablie : plus aucun problème détecté.' });
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed' });
             }
