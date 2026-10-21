@@ -94,8 +94,10 @@ main{padding:6px 0 60px}
 .hm th{color:var(--muted);font-size:11px;font-weight:600;padding:0 0 4px;text-align:center;font-variant-numeric:tabular-nums}
 /* libellé de jour : largeur garantie, sinon il se replie sur la 1re cellule en
    étroit. (Pas de position:sticky ici : dans un tableau à border-spacing, ça
-   décale le texte et le fait chevaucher la première cellule.) */
-.hm th.row{text-align:right;padding-right:10px;min-width:46px;width:46px;vertical-align:middle}
+   décale le texte et le fait chevaucher la première cellule.) Classe « rl » et non
+   « row » : .row est la ligne de classement (display:grid), qui cassait la cellule
+   et faisait passer le libellé sous la première case. */
+.hm th.rl{text-align:right;padding-right:10px;width:46px;vertical-align:middle;white-space:nowrap}
 .hm td{height:34px;border-radius:5px;text-align:center;font-size:11px;font-variant-numeric:tabular-nums;
   color:#0b0b0b;font-weight:650;cursor:default}
 .hm td.nd{background:var(--surface-2);border:1px solid var(--hair);color:var(--muted);font-weight:500}
@@ -190,6 +192,7 @@ table.tv td.n,table.tv th.n{text-align:right}
         <button data-t="enseignes">Enseignes</button>
         <button data-t="salles">Salles</button>
         <button data-t="carte">Carte</button>
+        <button data-t="parcs">Parcs enfants</button>
       </nav>
     </div>
   </header>
@@ -240,6 +243,9 @@ const H={apikey:KEY,Authorization:"Bearer "+KEY};
 const $=s=>document.querySelector(s);
 const esc=s=>(s||"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1).toLowerCase():"";
+/* villes stockées en MAJUSCULES sans accent : « SAINT-BARTHELEMY-D-ANJOU » -> « Saint-Barthelemy-d-Anjou » */
+const PETITS=new Set(["de","d","la","le","les","en","sur","sous","aux","du","l"]);
+const ville=s=>(s||"").toLowerCase().replace(/[a-zà-ÿ]+/g,(w,i)=>i>0&&PETITS.has(w)?w:w.charAt(0).toUpperCase()+w.slice(1));
 const pct=(a,b)=>b?Math.round(100*a/b):0;
 const eur=v=>v==null?"—":Math.round(v)+" €";
 const iso=d=>d.toISOString().slice(0,10);
@@ -262,6 +268,11 @@ async function qCount(p){const r=await fetch(API+"/"+p+"&limit=1",{headers:{...H
   const cr=r.headers.get("content-range");return cr&&cr.includes("/")?(+cr.split("/")[1]||0):0;}
 
 let EN={},CE={},SA={},BY_ENS={},BY_CENTRE={},CENTRE_OF={},ENS_OF={},SESS=[],FRESH=null,map=null;
+/* Parcs de loisirs enfants (Qweekle) : mêmes tables, marqués salle.theme = "parc" et
+   session.groupby = "parc". Tenus à l'écart de TOUTES les vues escape (sinon ils
+   fausseraient occupation, ventes et carte) ; chargés à part, à l'ouverture de l'onglet. */
+const NOPARC="&or=(groupby.is.null,groupby.neq.parc)";
+let PEN={},PCE={},PSA={},PS=null,VILLES_ESC=[];
 /* Joueurs & panier RÉELS — sessions vendues à la place (non privées).
    places_vendues = baisse des places libres observée par le scraper depuis TRACK_START.
    On ne retient que les sessions suivies ≥ SUIVI_MIN jours avant leur date : une session
@@ -269,8 +280,8 @@ let EN={},CE={},SA={},BY_ENS={},BY_CENTRE={},CENTRE_OF={},ENS_OF={},SESS=[],FRES
 const TRACK_START="2026-09-25", SUIVI_MIN=5, VENTES_MIN=20;
 let VENTES=[], N_PRIVAT=0;
 const ENS_MIN=5;               // échantillon minimal pour afficher une enseigne
-async function qAll(p){let out=[],f=0;for(;;){const b=await qPage(p,f);out=out.concat(b);
-  if(b.length<1000||f>=19000)break;f+=1000;}return out;}
+async function qAll(p,maxPages=20){let out=[],f=0;for(;;){const b=await qPage(p,f);out=out.concat(b);
+  if(b.length<1000||f>=(maxPages-1)*1000)break;f+=1000;}return out;}
 const dayDiff=(a,b)=>Math.round((new Date(a+"T12:00")-new Date(b+"T12:00"))/864e5);
 function panierPour(grid,n){                 // prix_total = prix TOTAL par taille de groupe
   if(!grid||!n)return null;
@@ -330,11 +341,11 @@ const MUET_LIB={complet:"complet sur la période",
                 fermee:"salle fermée / bloquée"};
 
 async function boot(){
-  const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}`);
-  const pages=Math.min(Math.ceil(nSess/1000),20);
-  const sel=`sessions?select=salle_id,date,heure,dispo,booked,prive,statut,prix_total_moyen&date=gte.${TODAY}&order=date,heure`;
+  const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}${NOPARC}`);
+  const pages=Math.min(Math.ceil(nSess/1000),40);
+  const sel=`sessions?select=salle_id,date,heure,dispo,booked,prive,statut,prix_total_moyen&date=gte.${TODAY}${NOPARC}&order=date,heure`;
   const D30=iso(new Date(Date.now()-30*864e5));
-  const selV=`sessions?select=salle_id,date,premier_vu,places_vendues,places_max,booked,prix_total&prive=is.false&places_vendues=gt.0&date=gte.${D30}&date=lt.${TODAY}&order=date`;
+  const selV=`sessions?select=salle_id,date,premier_vu,places_vendues,places_max,booked,prix_total&prive=is.false&places_vendues=gt.0&date=gte.${D30}&date=lt.${TODAY}${NOPARC}&order=date`;
   const [ens,cent,sal,fresh,ventes,...chunks]=await Promise.all([
     q("enseignes?select=id,nom,website&order=nom"),
     q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id"),
@@ -343,9 +354,13 @@ async function boot(){
     qAll(selV).catch(()=>[]),                 // ne doit jamais bloquer le dashboard
     ...Array.from({length:pages},(_,i)=>qPage(sel,i*1000))
   ]);
-  ens.forEach(e=>EN[e.id]=e);
-  cent.forEach(c=>{CE[c.id]=c;(BY_ENS[c.enseigne_id]=BY_ENS[c.enseigne_id]||[]).push(c);});
-  sal.forEach(s=>{SA[s.id]=s;(BY_CENTRE[s.centre_id]=BY_CENTRE[s.centre_id]||[]).push(s);
+  const centParc=new Set(sal.filter(s=>s.theme==="parc").map(s=>s.centre_id));
+  const ensEsc=new Set(cent.filter(c=>!centParc.has(c.id)).map(c=>c.enseigne_id));
+  ens.forEach(e=>{if(ensEsc.has(e.id)||!cent.some(c=>c.enseigne_id===e.id))EN[e.id]=e;else PEN[e.id]=e;});
+  cent.forEach(c=>{if(centParc.has(c.id)){PCE[c.id]=c;return;}
+    CE[c.id]=c;(BY_ENS[c.enseigne_id]=BY_ENS[c.enseigne_id]||[]).push(c);});
+  sal.forEach(s=>{if(s.theme==="parc"){PSA[s.id]=s;return;}
+    SA[s.id]=s;(BY_CENTRE[s.centre_id]=BY_CENTRE[s.centre_id]||[]).push(s);
     const c=CE[s.centre_id];CENTRE_OF[s.id]=c;if(c)ENS_OF[s.id]=c.enseigne_id;});
   SESS=chunks.flat();
   const suivies=ventes.filter(v=>{           // suivie assez tôt avant sa date ?
@@ -358,9 +373,8 @@ async function boot(){
   calibrate();
   FRESH=fresh[0]&&fresh[0].dernier_vu;
   $("#fresh").textContent="relevé "+ago(FRESH);
-  const villes=[...new Set(cent.map(c=>c.ville).filter(Boolean))].sort();
-  $("#fville").innerHTML=`<option value="">Toutes les villes</option>`+
-    villes.map(v=>`<option value="${esc(v)}">${esc(cap(v))}</option>`).join("");
+  VILLES_ESC=[...new Set(Object.values(CE).map(c=>c.ville).filter(Boolean))].sort();
+  fillVilles();
   render();
 }
 
@@ -409,7 +423,15 @@ function aggregate(all){
 }
 
 /* ═════════ rendu ═════════ */
+/* le filtre ville liste les villes de l'univers affiché (escape ou parcs) */
+function fillVilles(){
+  const vs=TAB==="parcs"?[...new Set(Object.values(PCE).map(c=>c.ville).filter(Boolean))].sort():VILLES_ESC;
+  if(VILLE&&!vs.includes(VILLE))VILLE="";
+  $("#fville").innerHTML=`<option value="">Toutes les villes</option>`+
+    vs.map(v=>`<option value="${esc(v)}"${v===VILLE?" selected":""}>${esc(ville(v))}</option>`).join("");
+}
 function render(){
+  if(TAB==="parcs"){renderParcs();return;}
   const rows=slice(), A=aggregate(rows);
   $("#fnote").textContent=`${rows.length.toLocaleString("fr-FR")} créneaux analysés`;
   const v=$("#view");
@@ -507,7 +529,7 @@ function cardHeatmap(A){
   const vals=cells.filter(c=>c.occ!=null).map(c=>c.occ);
   const lo=vals.length?Math.min(...vals):0, hi=vals.length?Math.max(...vals):100;
   const span=Math.max(1,hi-lo);
-  const body=JOURS.map((jn,j)=>`<tr><th class="row">${jn}</th>`+BUCKETS.map((bk,b)=>{
+  const body=JOURS.map((jn,j)=>`<tr><th class="rl">${jn}</th>`+BUCKETS.map((bk,b)=>{
     const c=cells.find(x=>x.j===j&&x.b===b);
     if(!c||c.occ==null)return `<td class="nd" title="pas assez de relevés">·</td>`;
     const idx=Math.min(RAMP.length-1,Math.floor((c.occ-lo)/span*RAMP.length));
@@ -518,7 +540,7 @@ function cardHeatmap(A){
     ${JOURS.map((jn,j)=>`<tr><td>${jn}</td>${BUCKETS.map((bk,b)=>{const c=cells.find(x=>x.j===j&&x.b===b);
       return `<td class="n">${c&&c.occ!=null?c.occ+" %":"—"}</td>`;}).join("")}</tr>`).join("")}</tbody></table>`;
   return card("Quand le marché se remplit","Occupation par jour de semaine et tranche horaire — plus c'est clair, plus c'est réservé.",
-    `<div class="hm"><table><thead><tr><th class="row"></th>${BUCKETS.map(b=>`<th>${b[2]}</th>`).join("")}</tr></thead>
+    `<div class="hm"><table><thead><tr><th class="rl"></th>${BUCKETS.map(b=>`<th>${b[2]}</th>`).join("")}</tr></thead>
       <tbody>${body}</tbody></table></div>
      <div class="legend"><span>Occupation</span><span>${lo} %</span><span class="sw">${RAMP.map(r=>`<i style="background:var(${r})"></i>`).join("")}</span><span>${hi} %</span>
        <span style="margin-left:6px">· <i style="display:inline-block;width:10px;height:9px;border-radius:2px;background:var(--surface-2);border:1px solid var(--hair);vertical-align:middle"></i> trop peu de relevés</span></div>`,
@@ -572,7 +594,7 @@ function cardTopSalles(A){
     .filter(r=>r.s&&r.n>=6).sort((a,b)=>b.occ-a.occ).slice(0,10);
   const body=rows.map(r=>{const c=CENTRE_OF[r.id]||{},e=EN[ENS_OF[r.id]]||{};
     return `<div class="row" onclick="openSalle('${r.id}')" data-tip="${esc(r.s.nom||"")}|${r.occ}% occupé|${r.n} créneaux">
-      <span class="nm">${esc(r.s.nom||"Salle")}<br><span style="color:var(--muted);font-size:11px">${esc(e.nom||"")}${c.ville?" · "+esc(cap(c.ville)):""}</span></span>
+      <span class="nm">${esc(r.s.nom||"Salle")}<br><span style="color:var(--muted);font-size:11px">${esc(e.nom||"")}${c.ville?" · "+esc(ville(c.ville)):""}</span></span>
       <span class="track"><i style="width:${r.occ}%"></i></span><span class="pct">${r.occ}%</span></div>`;}).join("");
   const table=`<table class="tv"><thead><tr><th>Salle</th><th>Enseigne</th><th class="n">Occupation</th></tr></thead><tbody>
     ${rows.map(r=>`<tr><td>${esc((r.s||{}).nom||"")}</td><td>${esc((EN[ENS_OF[r.id]]||{}).nom||"")}</td><td class="n">${r.occ} %</td></tr>`).join("")}</tbody></table>`;
@@ -614,7 +636,7 @@ function viewSalles(A){
     oninput="filterList('qs','#slist')"><div id="slist">${rows.slice(0,250).map(r=>`
     <div class="item" data-k="${esc(((r.s.nom||"")+" "+(r.e.nom||"")+" "+(r.c.ville||"")).toLowerCase())}" onclick="openSalle('${r.s.id}')">
       <h4>${esc(r.s.nom||"Salle")}</h4>
-      <div class="meta">${esc(r.e.nom||"")}${r.c.ville?" · "+esc(cap(r.c.ville)):""}</div>
+      <div class="meta">${esc(r.e.nom||"")}${r.c.ville?" · "+esc(ville(r.c.ville)):""}</div>
       <div class="chips">${r.s.theme?`<span class="chip">${esc(cap(r.s.theme))}</span>`:""}
         ${r.s.duree_minutes?`<span class="chip">${r.s.duree_minutes} min</span>`:""}
         ${r.occ!=null?`<span class="chip">${r.occ}% occupé</span>`:""}
@@ -636,11 +658,177 @@ function viewCarte(A){
       let n=0,lib=0;salles.forEach(s=>{const t=A.topSalle[s.id];if(t){n+=t.n;lib+=t.libres;}});
       const e=EN[c.enseigne_id]||{};
       L.circleMarker([c.lat,c.lon],{radius:7,color:"var(--s1)",fillColor:"#3987e5",fillOpacity:.85,weight:2,opacity:.9})
-        .addTo(map).bindPopup(`<b>${esc(e.nom||c.nom||"")}</b><br>${esc(cap(c.ville||""))} · ${salles.length} salle(s)<br>
+        .addTo(map).bindPopup(`<b>${esc(e.nom||c.nom||"")}</b><br>${esc(ville(c.ville||""))} · ${salles.length} salle(s)<br>
           ${n?pct(n-lib,n)+"% occupé · "+lib+" libres":"pas de relevé sur ce filtre"}<br>
           <a href="#" onclick="map.closePopup();openEns('${c.enseigne_id}');return false">Voir l'enseigne →</a>`);
     });
   },60);
+}
+
+/* ═════════ Parcs enfants (Qweekle) ═════════
+   Une « jauge » par parc et par créneau : toutes les entrées (enfant, adulte, bébé)
+   puisent dans les mêmes places. Remplissage = places prises / capacité de référence.
+   Le chiffre est une part de jauge, pas un nombre de visiteurs (voir Méthodologie). */
+const PARC_DEBUT="2026-10-21";
+const PH=[[0,10],[10,11],[11,12],[12,13],[13,14],[14,15],[15,16],[16,17],[17,24]];
+const phLab=b=>b[0]===0?"–10h":b[1]===24?"17h+":b[0]+"h";
+async function loadParcs(){
+  const D14=iso(new Date(Date.now()-14*864e5));
+  PS=await qAll(`sessions?select=salle_id,date,heure,dispo,statut,places_restantes,places_init,places_vendues,prix_total,premier_vu,dernier_vu&groupby=eq.parc&date=gte.${D14}&order=date,heure`,40);
+}
+const parcOf=sid=>{const s=PSA[sid];return s?PCE[s.centre_id]:null;};
+function shopUrl(c){                        // boutique publique d'où viennent les relevés
+  const slug=c.id.replace(/^qw-/,"");
+  return slug.includes(".qweekle.shop")?"https://"+slug:`https://${c.enseigne_id}.qweekle.com/shop/${slug}`;
+}
+function sliceParcs(passe){
+  const nowHM=PARIS.format(new Date()).slice(11,16);
+  const now=new Date(), end=new Date();
+  let from=TODAY,to=null,hFrom=null;
+  if(passe){from=iso(new Date(Date.now()-14*864e5));to=iso(new Date(Date.now()-864e5));}
+  else if(PER==="7"){end.setDate(now.getDate()+7);to=iso(end);}
+  else if(PER==="soir"){to=TODAY;hFrom=17;}
+  else if(PER==="we"){const d=now.getDay(),add=(6-d+7)%7;const s=new Date();s.setDate(now.getDate()+add);
+    const e=new Date(s);e.setDate(s.getDate()+1);from=iso(s);to=iso(e);}
+  return (PS||[]).filter(x=>{
+    if(x.statut==="retire"||!x.places_init)return false;
+    if(!passe&&x.date===TODAY&&x.heure<nowHM)return false;
+    if(x.date<from||(to&&x.date>to))return false;
+    if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
+    if(VILLE){const c=parcOf(x.salle_id);if(!c||c.ville!==VILLE)return false;}
+    return true;});
+}
+function aggParcs(rows){
+  const A={n:0,init:0,vend:0,rest:0,complets:0,enf:[],adu:[],parc:{},jour:{},heat:{}};
+  /* complet = plus réservable (Rêvopolie : la jauge du parc est atteinte pendant la visite,
+     même s'il reste des arrivées sur ce créneau) */
+  const add=(o,x)=>{o.n++;o.init+=x.places_init;o.vend+=x.places_vendues||0;o.rest+=x.dispo?x.places_restantes||0:0;
+    if(!x.dispo)o.complets++;};
+  for(const x of rows){
+    const c=parcOf(x.salle_id);if(!c)continue;
+    add(A,x);
+    const px=x.prix_total||{};
+    if(px.enfant)A.enf.push(+px.enfant);if(px.adulte)A.adu.push(+px.adulte);
+    const p=A.parc[c.id]=A.parc[c.id]||{n:0,init:0,vend:0,rest:0,complets:0,enf:[],jauges:[]};
+    add(p,x);if(px.enfant)p.enf.push(+px.enfant);p.jauges.push(x.places_init);
+    add(A.jour[x.date]=A.jour[x.date]||{n:0,init:0,vend:0,rest:0,complets:0},x);
+    const jd=(new Date(x.date+"T12:00").getDay()+6)%7,h=+x.heure.slice(0,2);
+    const bi=PH.findIndex(b=>h>=b[0]&&h<b[1]);
+    if(bi>=0)add(A.heat[jd+"|"+bi]=A.heat[jd+"|"+bi]||{n:0,init:0,vend:0,rest:0,complets:0},x);
+  }
+  return A;
+}
+const remp=o=>o&&o.init?Math.round(100*o.vend/o.init):null;
+const prixTxt=v=>v==null?"—":(Math.round(v*10)/10).toLocaleString("fr-FR")+" €";
+
+async function renderParcs(){
+  const v=$("#view");
+  if(!PS){v.innerHTML=`<div class="center">Chargement des parcs…</div>`;
+    try{await loadParcs();}catch(e){v.innerHTML=`<div class="center">Parcs indisponibles (${esc(e.message)}).</div>`;return;}
+    if(TAB!=="parcs")return;}
+  if(!Object.keys(PSA).length){v.innerHTML=`<div class="center">Aucun parc relevé pour l'instant.</div>`;return;}
+  const rows=sliceParcs(false),A=aggParcs(rows),P=aggParcs(sliceParcs(true));
+  $("#fnote").textContent=`${rows.length.toLocaleString("fr-FR")} créneaux de parcs analysés`;
+  v.innerHTML=viewParcs(A,P);wireHovers();
+}
+function viewParcs(A,P){
+  const r=remp(A),nParcs=Object.keys(A.parc).length;
+  const ens=new Set(Object.keys(A.parc).map(cid=>PCE[cid].enseigne_id)).size;
+  const em=median(A.enf),emin=A.enf.length?Math.min(...A.enf):null,am=median(A.adu);
+  const tiles=[
+    {lab:"Remplissage à venir",val:r==null?"—":r+" %",ctx:`${A.vend.toLocaleString("fr-FR")} places prises sur ${A.init.toLocaleString("fr-FR")} de jauge`,bar:r},
+    {lab:"Créneaux complets",val:A.complets.toLocaleString("fr-FR"),ctx:`${pct(A.complets,A.n)} % des ${A.n.toLocaleString("fr-FR")} créneaux — plus aucune entrée possible`},
+    {lab:"Entrée enfant · médiane",val:prixTxt(em),ctx:`${emin!=null&&emin<em?"dès "+prixTxt(emin)+" en heures creuses · ":""}adulte ${prixTxt(am)}`},
+    (P.n>=50?{lab:"Remplissage réalisé · 14 j",val:remp(P)+" %",ctx:`créneaux passés, état juste avant l'ouverture (${P.n.toLocaleString("fr-FR")} créneaux)`}
+            :{lab:"Remplissage réalisé · 14 j",val:"—",ctx:`collecte démarrée le ${frDate(PARC_DEBUT)} — premiers chiffres d'ici quelques jours`}),
+    {lab:"Parcs suivis",val:nParcs,ctx:`${ens} enseigne${ens>1?"s":""} · ${A.rest.toLocaleString("fr-FR")} places encore libres`},
+  ];
+  return `<div class="grid tiles" style="margin:12px 0">${tiles.map(t=>`
+    <div class="card tile"><div class="lab">${t.lab}</div><div class="val">${t.val}</div>
+      <div class="ctx">${t.ctx}</div>${t.bar!=null?`<div class="bar-mini"><i style="width:${t.bar}%"></i></div>`:""}</div>`).join("")}
+  </div>
+  <div class="grid" style="margin-bottom:12px">${cardParcRank(A)}</div>
+  <div class="grid two">${cardParcJours(A)}${cardParcHeat(A)}</div>`;
+}
+function cardParcRank(A){
+  const rows=Object.entries(A.parc).map(([cid,p])=>({cid,c:PCE[cid],e:PEN[PCE[cid].enseigne_id]||{},r:remp(p),p}))
+    .sort((a,b)=>(b.r??-1)-(a.r??-1));
+  const body=rows.map(o=>`<div class="row" onclick="openParc('${o.cid}')" data-tip="${esc(o.c.nom)}|${o.r}% de la jauge prise|${o.p.complets} complets sur ${o.p.n} créneaux · jauge habituelle ${median(o.p.jauges)}">
+      <span class="nm">${esc(o.c.nom)}<br><span style="color:var(--muted);font-size:11px">${esc(ville(o.c.ville||""))} · ${o.p.complets} complet${o.p.complets>1?"s":""} · enfant ${prixTxt(median(o.p.enf))}</span></span>
+      <span class="track"><i style="width:${o.r}%"></i></span><span class="pct">${o.r}%</span></div>`).join("");
+  const table=`<table class="tv"><thead><tr><th>Parc</th><th>Ville</th><th class="n">Remplissage</th><th class="n">Complets</th>
+    <th class="n">Places libres</th><th class="n">Jauge habituelle</th><th class="n">Entrée enfant</th></tr></thead><tbody>
+    ${rows.map(o=>`<tr style="cursor:pointer" onclick="openParc('${o.cid}')"><td>${esc(o.c.nom)}</td><td>${esc(ville(o.c.ville||""))}</td>
+      <td class="n">${o.r} %</td><td class="n">${o.p.complets}/${o.p.n}</td><td class="n">${o.p.rest.toLocaleString("fr-FR")}</td>
+      <td class="n">${median(o.p.jauges)}</td><td class="n">${prixTxt(median(o.p.enf))}</td></tr>`).join("")}</tbody></table>`;
+  return card("Parcs les plus remplis","Part de la jauge déjà réservée sur la période filtrée. Clique pour le détail jour par jour.",
+    `<div class="rank">${body||'<div class="center">Pas de créneau sur ce filtre.</div>'}</div>`,table,"pr");
+}
+function cardParcJours(A){
+  const ds=Object.keys(A.jour).sort();
+  const body=ds.map(d=>{const o=A.jour[d],r=remp(o);
+    return `<div class="row" style="cursor:default" data-tip="${dlong(d)}|${r}% de la jauge prise|${o.complets} complets · ${o.rest.toLocaleString("fr-FR")} places libres">
+      <span class="nm">${dlong(d)}</span><span class="track"><i style="width:${r}%"></i></span><span class="pct">${r}%</span></div>`;}).join("");
+  const table=`<table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th></tr></thead><tbody>
+    ${ds.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest.toLocaleString("fr-FR")}</td></tr>`;}).join("")}</tbody></table>`;
+  return card("Jour par jour","Remplissage de tous les parcs filtrés, par date. Les vacances scolaires et les week-ends ressortent.",
+    `<div class="rank">${body||'<div class="center">Pas de données.</div>'}</div>`,table,"pj");
+}
+function cardParcHeat(A){
+  const cells=[];
+  for(let j=0;j<7;j++)for(let b=0;b<PH.length;b++){const c=A.heat[j+"|"+b];
+    cells.push({j,b,r:c&&c.n>=3?remp(c):null,n:c?c.n:0});}
+  const vals=cells.filter(c=>c.r!=null).map(c=>c.r);
+  const lo=vals.length?Math.min(...vals):0,hi=vals.length?Math.max(...vals):100,span=Math.max(1,hi-lo);
+  const body=JOURS.map((jn,j)=>`<tr><th class="rl">${jn}</th>`+PH.map((bk,b)=>{
+    const c=cells.find(x=>x.j===j&&x.b===b);
+    if(!c||c.r==null)return `<td class="nd" title="fermé ou trop peu de créneaux">·</td>`;
+    const idx=Math.min(RAMP.length-1,Math.floor((c.r-lo)/span*RAMP.length));
+    return `<td style="background:var(${RAMP[idx]});color:${idx>=3?"#0b0b0b":"#ffffff"}" data-tip="${jn} ${phLab(bk)}|${c.r}% de la jauge prise|${c.n} créneaux">${c.r}</td>`;
+  }).join("")+`</tr>`).join("");
+  const table=`<table class="tv"><thead><tr><th>Jour</th>${PH.map(b=>`<th class="n">${phLab(b)}</th>`).join("")}</tr></thead><tbody>
+    ${JOURS.map((jn,j)=>`<tr><td>${jn}</td>${PH.map((bk,b)=>{const c=cells.find(x=>x.j===j&&x.b===b);
+      return `<td class="n">${c&&c.r!=null?c.r+" %":"—"}</td>`;}).join("")}</tr>`).join("")}</tbody></table>`;
+  return card("Heures de pointe","Remplissage par jour de semaine et heure d'arrivée — plus c'est clair, plus c'est pris.",
+    `<div class="hm"><table><thead><tr><th class="rl"></th>${PH.map(b=>`<th>${phLab(b)}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div>
+     <div class="legend"><span>Remplissage</span><span>${lo} %</span><span class="sw">${RAMP.map(r=>`<i style="background:var(${r})"></i>`).join("")}</span><span>${hi} %</span>
+       <span style="margin-left:6px">· <i style="display:inline-block;width:10px;height:9px;border-radius:2px;background:var(--surface-2);border:1px solid var(--hair);vertical-align:middle"></i> fermé / trop peu de créneaux</span></div>`,
+    table,"ph");
+}
+function openParc(cid){
+  const c=PCE[cid];if(!c)return;
+  const e=PEN[c.enseigne_id]||{},sids=Object.values(PSA).filter(s=>s.centre_id===cid).map(s=>s.id);
+  const mine=(PS||[]).filter(x=>sids.includes(x.salle_id));
+  const fut=mine.filter(x=>x.statut!=="retire"&&x.places_init&&(x.date>TODAY||(x.date===TODAY&&x.heure>=PARIS.format(new Date()).slice(11,16))));
+  const A=aggParcs(fut),r=remp(A);
+  const last=mine.reduce((m,x)=>x.dernier_vu>m?x.dernier_vu:m,"");
+  const jours=Object.keys(A.jour).sort();
+  const libres=fut.filter(x=>x.dispo&&x.places_restantes>0).slice(0,24);
+  const px=fut.map(x=>x.prix_total||{});
+  const enf=[...new Set(px.map(p=>p.enfant).filter(Boolean))].sort((a,b)=>a-b);
+  const adu=[...new Set(px.map(p=>p.adulte).filter(Boolean))].sort((a,b)=>a-b);
+  ovOpen(`<div class="sbar"><button onclick="closeOv()">✕ Fermer</button></div>
+    <h2 style="font-size:20px">${esc(c.nom)}</h2>
+    <div class="csub">${esc(e.nom||"")} · ${esc(c.adresse||"")}${c.cp?", "+esc(c.cp):""} ${esc(ville(c.ville||""))}</div>
+    <div class="chips" style="margin-top:10px">
+      ${r!=null?`<span class="chip">${r}% de la jauge prise</span>`:""}
+      <span class="chip">${A.complets} complet${A.complets>1?"s":""} / ${A.n}</span>
+      ${enf.length?`<span class="chip">enfant ${enf.map(prixTxt).join(" / ")}</span>`:""}
+      ${adu.length?`<span class="chip">adulte ${adu.map(prixTxt).join(" / ")}</span>`:""}</div>
+    <div class="src"><h4>Source & fraîcheur</h4>
+      <div class="r"><span class="k">Billetterie</span><a href="${esc(shopUrl(c))}" target="_blank" rel="noopener">${esc(shopUrl(c).replace(/^https?:\/\//,""))} ↗</a></div>
+      ${e.website&&e.website!==shopUrl(c)?`<div class="r"><span class="k">Site officiel</span><a href="${esc(e.website)}" target="_blank" rel="noopener">${esc(e.website.replace(/^https?:\/\//,""))} ↗</a></div>`:""}
+      <div class="r"><span class="k">Origine</span><span>Qweekle · ${cid.includes(".qweekle.shop")?"jauge publiée par l'API":"places mesurées par seuils"}</span></div>
+      <div class="r"><span class="k">Dernier relevé</span><span>${ago(last)}</span></div>
+      <div class="r"><span class="k">Jauge de référence</span><span>${A.n?Math.round(A.init/A.n):"—"} places / créneau (moyenne)</span></div></div>
+    <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Jour par jour</h4>
+    <div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th></tr></thead><tbody>
+      ${jours.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest}</td></tr>`;}).join("")}</tbody></table></div>
+    <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Prochains créneaux réservables</h4>
+    ${libres.length?`<div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Heure</th><th class="n">Places libres</th><th class="n">Enfant</th><th class="n">Adulte</th></tr></thead><tbody>
+      ${libres.map(x=>`<tr><td>${dlong(x.date)}</td><td class="n">${x.heure}</td><td class="n">${x.places_restantes} / ${x.places_init}</td>
+        <td class="n">${prixTxt((x.prix_total||{}).enfant)}</td><td class="n">${prixTxt((x.prix_total||{}).adulte)}</td></tr>`).join("")}</tbody></table></div>`
+      :`<div class="csub">Complet sur la période observée.</div>`}`);
 }
 
 /* ── panneau détail ── */
@@ -658,7 +846,7 @@ async function openEns(id){
     <div class="src" id="es"><h4>Source & fraîcheur</h4><div class="csub">Chargement…</div></div>
     ${centres.map(c=>{const ss=BY_CENTRE[c.id]||[];
       return `<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:650;margin-bottom:2px">${esc(c.nom||e.nom)}</div>
-        <div class="csub" style="margin-bottom:8px">${esc(c.adresse||"")}${c.ville?", "+esc(cap(c.ville)):""}</div>
+        <div class="csub" style="margin-bottom:8px">${esc(c.adresse||"")}${c.ville?", "+esc(ville(c.ville)):""}</div>
         ${ss.map(s=>{const t=A.topSalle[s.id],o=t?pct(t.n-t.libres,t.n):null;
           return `<div class="item" onclick="event.stopPropagation();openSalle('${s.id}','${id}')">
             <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
@@ -691,7 +879,7 @@ async function openSalle(sid,fromEns){
       <button onclick="${fromEns?`openEns('${fromEns}')`:"closeOv()"}">${fromEns?"‹ "+esc(e.nom||"Retour"):"✕ Fermer"}</button>
       <button onclick="closeOv()">✕</button></div>
     <h2 style="font-size:20px">${esc(s.nom||"Salle")}</h2>
-    <div class="csub">${esc(e.nom||"")}${c.nom?" · "+esc(c.nom):""}${c.ville?" ("+esc(cap(c.ville))+")":""}</div>
+    <div class="csub">${esc(e.nom||"")}${c.nom?" · "+esc(c.nom):""}${c.ville?" ("+esc(ville(c.ville))+")":""}</div>
     <div class="chips" style="margin-top:10px">${[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min",
       (s.joueurs_min||s.joueurs_max)&&`${s.joueurs_min||"?"}–${s.joueurs_max||"?"} joueurs`,
       s.difficulty&&"difficulté "+"★".repeat(Math.min(5,s.difficulty))].filter(Boolean)
@@ -768,7 +956,22 @@ function openMethodo(){
       • <b>Créneaux retirés</b> : un créneau qui disparaît de la réservation avant son heure a été supprimé par
       l'enseigne. Il n'est compté ni comme libre ni comme occupé.<br>
       • <b>Relevés</b> : toutes les ~10 minutes. Un créneau passé n'est plus mis à jour : son état est celui observé
-      juste avant son début.</div></div>`);
+      juste avant son début.</div></div>
+    <div class="src"><h4>Parcs enfants (onglet dédié)</h4>
+      <div class="csub" style="line-height:1.6">Palomano (17 parcs), Octopia et Rêvopolie vendent leurs entrées par
+      créneau d'arrivée sur la billetterie <b>Qweekle</b>. Toutes les entrées d'un parc (enfant, adulte, bébé…) puisent
+      dans la <b>même jauge</b> : on mesure donc, pour chaque créneau, les <b>places encore réservables</b>, relevées
+      toutes les ~30 minutes sur 14 jours.<br>
+      • <b>Rêvopolie</b> (nouvelle billetterie) publie ses places libres et sa jauge : le remplissage est exact dès le
+      premier relevé.<br>
+      • <b>Palomano et Octopia</b> (ancienne billetterie) n'affichent que les créneaux encore réservables pour N
+      personnes. Le nombre exact de places libres est retrouvé en essayant plusieurs N (dichotomie). La jauge, non
+      publiée, est estimée par la valeur habituelle du parc (ex. 30 à Montrouge, 70 chez Octopia) ou par le plus haut
+      niveau de places libres vu sur le créneau s'il est supérieur (matinées de vacances).<br>
+      • <b>Remplissage</b> = places prises / jauge. La billetterie tient compte de la capacité du parc sur toute la durée
+      de la visite : c'est une <b>part de jauge occupée</b>, pas un nombre de visiteurs (les entrées sur place ne sont pas
+      vues). Un créneau qui disparaît de la vente plus de 90 min avant l'heure est compté complet.<br>
+      • Les parcs sont <b>exclus</b> de toutes les autres vues (escape games).</div></div>`);
 }
 
 /* tooltips partagés (survol + focus) */
@@ -789,7 +992,9 @@ function wireHovers(){
 /* nav + filtres */
 document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on",x===b));
-  TAB=b.dataset.t;render();});
+  const avant=TAB==="parcs";TAB=b.dataset.t;
+  if(avant!==(TAB==="parcs"))fillVilles();
+  render();});
 document.querySelectorAll("#segper button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#segper button").forEach(x=>x.classList.toggle("on",x===b));
   PER=b.dataset.p;render();});

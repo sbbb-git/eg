@@ -3,6 +3,8 @@
 Observatoire data **privé** du marché des escape games en Île-de-France. Relève
 en continu les créneaux publiés par les enseignes pour reconstituer l'occupation,
 les prix, le nombre de joueurs et le panier, affichés dans un dashboard unique.
+Suit aussi les **parcs de loisirs enfants** réservés via Qweekle (Palomano ×17,
+Octopia, Rêvopolie), dans un onglet séparé.
 
 > ⚠️ Usage interne / benchmark concurrentiel uniquement. Voir [`RGPD_NOTES.md`](RGPD_NOTES.md).
 
@@ -12,6 +14,7 @@ les prix, le nombre de joueurs et le panier, affichés dans un dashboard unique.
 API publique 4escape (booking-data-json + /settings, ~50 enseignes)
         │   escape_loop.py  — boucle : relevé complet toutes les ~10 min
         ▼   escape_4escape_all.py --scrape   (parallèle, ~30 s pour tout le réseau)
+        │   escape_qweekle.py  (parcs enfants, tous les 3 tours, en arrière-plan)
 escape_data/4escape_all/<enseigne>.json   store brut (cache CI, non versionné)
         │   supa_sync.py --since <…>   (seules les sessions modifiées)
         ▼
@@ -27,6 +30,7 @@ index.html — dashboard unique (GitHub Pages), lit Supabase en direct
 |---|---|
 | `escape_4escape_all.py` | Cœur : découverte des comptes 4escape (`--discover`) et relevé de toutes les enseignes (`--scrape`) : enseigne → centres → salles → sessions, prix, places, statut. |
 | `escape_loop.py` | Boucle de relevés continus (un run CI = ~5 h 30 de relevés toutes les 10 min). |
+| `escape_qweekle.py` | Parcs enfants Qweekle : places restantes par créneau (dichotomie sur l'ancienne billetterie Palomano / Octopia, API JSON eshop-v3 pour Rêvopolie), prix enfant / adulte. Store `qweekle__<enseigne>.json`, marqué `theme = parc` / `groupby = parc`. |
 | `supa_sync.py` | Pousse le store vers Supabase (`--since` : incrémental). Géocode les centres, purge les enseignes orphelines. |
 | `sanity_check.py` | Surveillance de bout en bout sur Supabase + erreurs du scraper. |
 | `index.html` | Dashboard (mot de passe) : occupation, heatmap, classements, prix × demande, joueurs et panier réels, salles sans disponibilité, détail enseigne / salle avec sources. |
@@ -51,6 +55,12 @@ index.html — dashboard unique (GitHub Pages), lit Supabase en direct
   sessions passées d'un coup à complet sont traitées comme des privatisations et écartées.
 - **Prix** : chaque tarif est lu selon son type publié (`absolute` / `per-player` /
   `*-product-quantity`).
+- **Parcs enfants — remplissage** : places prises / jauge du créneau. Toutes les
+  entrées d'un parc partagent la même jauge. Rêvopolie publie places libres et jauge ;
+  l'ancienne billetterie (Palomano, Octopia) ne liste que les créneaux réservables
+  pour N personnes : les places exactes sont retrouvées par dichotomie sur N, la
+  jauge est la valeur habituelle du parc (ou le plus haut niveau vu sur le créneau).
+  C'est une part de jauge occupée, pas un nombre de visiteurs.
 
 ## Automatisation (GitHub Actions)
 
