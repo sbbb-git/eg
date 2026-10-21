@@ -148,6 +148,7 @@ table.tv td.n,table.tv th.n{text-align:right}
 .src .k{color:var(--muted)}
 .src .r a{color:var(--s1);text-decoration:none;text-align:right;word-break:break-all}
 .center{text-align:center;color:var(--muted);padding:44px 0;font-size:13.5px}
+.muted{color:var(--muted)}
 .skel{opacity:.45;transition:opacity .2s}
 
 /* tooltip partagé */
@@ -261,11 +262,16 @@ const dlong=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{weekday:"short",
 const ago=t=>{if(!t)return"—";const m=Math.round((Date.now()-new Date(t))/6e4);
   return m<2?"à l'instant":m<60?`il y a ${m} min`:m<1440?`il y a ${Math.round(m/60)} h`:`il y a ${Math.round(m/1440)} j`;};
 
-async function q(p){const r=await fetch(API+"/"+p,{headers:H});if(!r.ok)throw new Error("API "+r.status);return r.json();}
-async function qPage(p,from){const r=await fetch(API+"/"+p,{headers:{...H,Range:`${from}-${from+999}`}});
+/* Supabase renvoie parfois une 500 passagère (délai dépassé sous charge, pendant un sync) :
+   une seconde tentative suffit presque toujours. */
+async function fetchR(url,opt){let r=await fetch(url,opt);
+  if(r.status>=500){await new Promise(z=>setTimeout(z,900));r=await fetch(url,opt);}return r;}
+async function q(p){const r=await fetchR(API+"/"+p,{headers:H});if(!r.ok)throw new Error("API "+r.status);return r.json();}
+async function qPage(p,from){const r=await fetchR(API+"/"+p,{headers:{...H,Range:`${from}-${from+999}`}});
+  if(r.status===416)return [];                 // page au-delà de la fin : vide, pas une erreur
   if(!r.ok)throw new Error("API "+r.status);return r.json();}
-async function qCount(p){const r=await fetch(API+"/"+p+"&limit=1",{headers:{...H,Prefer:"count=exact",Range:"0-0"}});
-  const cr=r.headers.get("content-range");return cr&&cr.includes("/")?(+cr.split("/")[1]||0):0;}
+async function qCount(p){const r=await fetchR(API+"/"+p+"&limit=1",{headers:{...H,Prefer:"count=exact",Range:"0-0"}});
+  const cr=r.headers.get("content-range");return cr&&cr.includes("/")?(+cr.split("/")[1]||0):null;}
 
 let EN={},CE={},SA={},BY_ENS={},BY_CENTRE={},CENTRE_OF={},ENS_OF={},SESS=[],FRESH=null,map=null;
 /* Parcs de loisirs enfants (Qweekle) : mêmes tables, marqués salle.theme = "parc" et
@@ -341,8 +347,10 @@ const MUET_LIB={complet:"complet sur la période",
                 fermee:"salle fermée / bloquée"};
 
 async function boot(){
-  const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}${NOPARC}`);
-  const pages=Math.min(Math.ceil(nSess/1000),40);
+  /* compte indisponible (500 passagère) : on lit 30 pages, les pages vides au-delà de la fin
+     reviennent vides au lieu de faire échouer tout le chargement */
+  const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}${NOPARC}`).catch(()=>null);
+  const pages=nSess==null?30:Math.min(Math.ceil(nSess/1000),40);
   const sel=`sessions?select=salle_id,date,heure,dispo,booked,prive,statut,prix_total_moyen&date=gte.${TODAY}${NOPARC}&order=date,heure`;
   const D30=iso(new Date(Date.now()-30*864e5));
   const selV=`sessions?select=salle_id,date,premier_vu,places_vendues,places_max,booked,prix_total&prive=is.false&places_vendues=gt.0&date=gte.${D30}&date=lt.${TODAY}${NOPARC}&order=date`;
@@ -426,11 +434,19 @@ function aggregate(all){
 
 /* ═════════ rendu ═════════ */
 /* le filtre ville liste les villes de l'univers affiché (escape ou parcs) */
+/* Parcs : zones (Paris, Ouest parisien, Île-de-France, province) puis villes */
+const ZONES={"zone:paris":["Paris",["75"]],"zone:ouest":["Ouest parisien (78, 92, 95)",["78","92","95"]],
+  "zone:idf":["Île-de-France",["75","77","78","91","92","93","94","95"]]};
+function dansZone(c,z){const d=(c.cp||"").slice(0,2);
+  return z==="zone:province"?!ZONES["zone:idf"][1].includes(d):ZONES[z][1].includes(d);}
+function filtreParc(c){return !VILLE||(VILLE.startsWith("zone:")?dansZone(c,VILLE):c.ville===VILLE);}
 function fillVilles(){
   const vs=TAB==="parcs"?[...new Set(Object.values(PCE).map(c=>c.ville).filter(Boolean))].sort():VILLES_ESC;
-  if(VILLE&&!vs.includes(VILLE))VILLE="";
-  $("#fville").innerHTML=`<option value="">Toutes les villes</option>`+
-    vs.map(v=>`<option value="${esc(v)}"${v===VILLE?" selected":""}>${esc(ville(v))}</option>`).join("");
+  const zones=TAB==="parcs"?[...Object.entries(ZONES).map(([k,v])=>[k,v[0]]),["zone:province","Hors Île-de-France"]]:[];
+  if(VILLE&&!vs.includes(VILLE)&&!zones.some(z=>z[0]===VILLE))VILLE="";
+  $("#fville").innerHTML=`<option value="">${TAB==="parcs"?"Toute la France":"Toutes les villes"}</option>`+
+    (zones.length?`<optgroup label="Zones">${zones.map(([k,l])=>`<option value="${k}"${k===VILLE?" selected":""}>${l}</option>`).join("")}</optgroup><optgroup label="Villes">`:"")+
+    vs.map(v=>`<option value="${esc(v)}"${v===VILLE?" selected":""}>${esc(ville(v))}</option>`).join("")+(zones.length?"</optgroup>":"");
 }
 function render(){
   if(TAB==="parcs"){renderParcs();return;}
@@ -674,7 +690,10 @@ function viewCarte(A){
 const PARC_DEBUT="2026-10-21";
 const PH=[[0,10],[10,11],[11,12],[12,13],[13,14],[14,15],[15,16],[16,17],[17,24]];
 const phLab=b=>b[0]===0?"–10h":b[1]===24?"17h+":b[0]+"h";
+let COMPTES=null;                            // comptes publiés (parcs_comptes.json, publié avec la page)
 async function loadParcs(){
+  fetch("parcs_comptes.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{COMPTES=d;
+    if(TAB==="parcs"&&PS)renderParcs();}).catch(()=>{});
   const D14=iso(new Date(Date.now()-14*864e5));
   PS=await qAll(`sessions?select=salle_id,date,heure,dispo,statut,places_restantes,places_init,places_vendues,prix_total,premier_vu,dernier_vu&groupby=eq.parc&date=gte.${D14}&order=date,heure`,40);
 }
@@ -697,15 +716,22 @@ function sliceParcs(passe){
     if(!passe&&x.date===TODAY&&x.heure<nowHM)return false;
     if(x.date<from||(to&&x.date>to))return false;
     if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
-    if(VILLE){const c=parcOf(x.salle_id);if(!c||c.ville!==VILLE)return false;}
+    if(VILLE){const c=parcOf(x.salle_id);if(!c||!filtreParc(c))return false;}
     return true;});
 }
+/* Panier par place : moyenne des prix enfant et adulte du créneau (mix 1 pour 1). Calage :
+   Palomano Clichy déclare 10,1 € par visiteur (1,12 M€, 111 369 visiteurs en 2024) pour des
+   entrées à 15 € et 7 €, soit 11 € en moyenne — les bébés entrent gratuitement. Octopia vend
+   un duo (1 enfant + 1 parent) : une place = un duo. */
+function panierPlace(x){const p=x.prix_total||{};
+  return p.enfant&&p.adulte?(+p.enfant + +p.adulte)/2:+(p.enfant||p.adulte||0);}
+const eurK=v=>v==null?"—":v>=10000?Math.round(v/1000).toLocaleString("fr-FR")+" k€":Math.round(v).toLocaleString("fr-FR")+" €";
 function aggParcs(rows){
-  const A={n:0,init:0,vend:0,rest:0,complets:0,enf:[],adu:[],parc:{},jour:{},heat:{}};
+  const A={n:0,init:0,vend:0,rest:0,complets:0,ca:0,enf:[],adu:[],parc:{},jour:{},heat:{}};
   /* complet = plus réservable (Rêvopolie : la jauge du parc est atteinte pendant la visite,
      même s'il reste des arrivées sur ce créneau) */
   const add=(o,x)=>{o.n++;o.init+=x.places_init;o.vend+=x.places_vendues||0;o.rest+=x.dispo?x.places_restantes||0:0;
-    if(!x.dispo)o.complets++;};
+    o.ca=(o.ca||0)+(x.places_vendues||0)*panierPlace(x);if(!x.dispo)o.complets++;};
   for(const x of rows){
     const c=parcOf(x.salle_id);if(!c)continue;
     add(A,x);
@@ -741,38 +767,57 @@ function viewParcs(A,P){
     {lab:"Remplissage à venir",val:r==null?"—":r+" %",ctx:`${A.vend.toLocaleString("fr-FR")} places prises sur ${A.init.toLocaleString("fr-FR")} de jauge`,bar:r},
     {lab:"Créneaux complets",val:A.complets.toLocaleString("fr-FR"),ctx:`${pct(A.complets,A.n)} % des ${A.n.toLocaleString("fr-FR")} créneaux — plus aucune entrée possible`},
     {lab:"Entrée enfant · médiane",val:prixTxt(em),ctx:`${emin!=null&&emin<em?"dès "+prixTxt(emin)+" en heures creuses · ":""}adulte ${prixTxt(am)}`},
-    (P.n>=50?{lab:"Remplissage réalisé · 14 j",val:remp(P)+" %",ctx:`créneaux passés, état juste avant l'ouverture (${P.n.toLocaleString("fr-FR")} créneaux)`}
-            :{lab:"Remplissage réalisé · 14 j",val:"—",ctx:`collecte démarrée le ${frDate(PARC_DEBUT)} — premiers chiffres d'ici quelques jours`}),
+    {lab:"CA billetterie déjà réservé",val:eurK(A.ca),ctx:`places prises × prix du créneau, sur la période — estimation, voir Méthodologie`},
+    (P.n>=50?{lab:"Réalisé · 14 derniers jours",val:eurK(P.ca),ctx:`CA billetterie · remplissage ${remp(P)} % (${P.n.toLocaleString("fr-FR")} créneaux passés)`}
+            :{lab:"Réalisé · 14 derniers jours",val:"—",ctx:`historique construit depuis le ${frDate(PARC_DEBUT)} : les billetteries ne publient pas le passé`}),
     {lab:"Parcs suivis",val:nParcs,ctx:`${ens} enseigne${ens>1?"s":""} · ${A.rest.toLocaleString("fr-FR")} places encore libres`},
   ];
   return `<div class="grid tiles" style="margin:12px 0">${tiles.map(t=>`
     <div class="card tile"><div class="lab">${t.lab}</div><div class="val">${t.val}</div>
       <div class="ctx">${t.ctx}</div>${t.bar!=null?`<div class="bar-mini"><i style="width:${t.bar}%"></i></div>`:""}</div>`).join("")}
   </div>
+  <div class="grid" style="margin-bottom:12px">${cardParcEnseignes(A)}</div>
   <div class="grid" style="margin-bottom:12px">${cardParcRank(A)}</div>
-  <div class="grid two">${cardParcJours(A)}${cardParcHeat(A)}</div>`;
+  <div class="grid two">${cardParcJours(A)}${cardParcHeat(A)}</div>
+  <div class="grid" style="margin-top:12px">${cardComptes()}</div>`;
+}
+/* Par enseigne : le parc de référence (Palomano) face à ses concurrents */
+function cardParcEnseignes(A){
+  const g={};
+  Object.entries(A.parc).forEach(([cid,p])=>{const eid=PCE[cid].enseigne_id;
+    const e=g[eid]=g[eid]||{n:0,init:0,vend:0,ca:0,complets:0,parcs:0,enf:[]};
+    e.parcs++;e.n+=p.n;e.init+=p.init;e.vend+=p.vend;e.ca+=p.ca;e.complets+=p.complets;e.enf.push(...p.enf);});
+  const rows=Object.entries(g).map(([eid,e])=>({eid,nom:(PEN[eid]||{}).nom||eid,...e,r:remp(e)}))
+    .sort((a,b)=>b.ca-a.ca);
+  const t=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Parcs</th><th class="n">Remplissage</th>
+    <th class="n">Complets</th><th class="n">Entrée enfant</th><th class="n">CA réservé</th><th class="n">CA / parc</th></tr></thead><tbody>
+    ${rows.map(o=>`<tr><td>${o.eid==="palomano"?"<b>"+esc(o.nom)+"</b>":esc(o.nom)}</td><td class="n">${o.parcs}</td>
+      <td class="n">${o.r} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${prixTxt(median(o.enf))}</td>
+      <td class="n">${eurK(o.ca)}</td><td class="n">${eurK(o.ca/o.parcs)}</td></tr>`).join("")}</tbody></table>`;
+  return card("Par enseigne","Palomano face à ses concurrents, sur la période et la zone filtrées. CA réservé = entrées déjà vendues en ligne (estimation).",
+    `<div class="tvw">${t}</div>`,"","pe");
 }
 function cardParcRank(A){
   const rows=Object.entries(A.parc).map(([cid,p])=>({cid,c:PCE[cid],e:PEN[PCE[cid].enseigne_id]||{},r:remp(p),p}))
     .sort((a,b)=>(b.r??-1)-(a.r??-1));
   const body=rows.map(o=>`<div class="row" onclick="openParc('${o.cid}')" data-tip="${esc(o.c.nom)}|${o.r}% de la jauge prise|${o.p.complets} complets sur ${o.p.n} créneaux · jauge habituelle ${median(o.p.jauges)}">
-      <span class="nm">${esc(o.c.nom)}<br><span style="color:var(--muted);font-size:11px">${esc(ville(o.c.ville||""))} · ${o.p.complets} complet${o.p.complets>1?"s":""} · enfant ${prixTxt(median(o.p.enf))}</span></span>
+      <span class="nm">${esc(o.c.nom)}<br><span style="color:var(--muted);font-size:11px">${esc(ville(o.c.ville||""))} · ${eurK(o.p.ca)} réservés · ${o.p.complets} complet${o.p.complets>1?"s":""}</span></span>
       <span class="track"><i style="width:${o.r}%"></i></span><span class="pct">${o.r}%</span></div>`).join("");
   const table=`<table class="tv"><thead><tr><th>Parc</th><th>Ville</th><th class="n">Remplissage</th><th class="n">Complets</th>
-    <th class="n">Places libres</th><th class="n">Jauge habituelle</th><th class="n">Entrée enfant</th></tr></thead><tbody>
+    <th class="n">Places libres</th><th class="n">Jauge habituelle</th><th class="n">Entrée enfant</th><th class="n">CA réservé</th></tr></thead><tbody>
     ${rows.map(o=>`<tr style="cursor:pointer" onclick="openParc('${o.cid}')"><td>${esc(o.c.nom)}</td><td>${esc(ville(o.c.ville||""))}</td>
       <td class="n">${o.r} %</td><td class="n">${o.p.complets}/${o.p.n}</td><td class="n">${o.p.rest.toLocaleString("fr-FR")}</td>
-      <td class="n">${median(o.p.jauges)}</td><td class="n">${prixTxt(median(o.p.enf))}</td></tr>`).join("")}</tbody></table>`;
+      <td class="n">${median(o.p.jauges)}</td><td class="n">${prixTxt(median(o.p.enf))}</td><td class="n">${eurK(o.p.ca)}</td></tr>`).join("")}</tbody></table>`;
   return card("Parcs les plus remplis","Part de la jauge déjà réservée sur la période filtrée. Clique pour le détail jour par jour.",
     `<div class="rank">${body||'<div class="center">Pas de créneau sur ce filtre.</div>'}</div>`,table,"pr");
 }
 function cardParcJours(A){
   const ds=Object.keys(A.jour).sort();
   const body=ds.map(d=>{const o=A.jour[d],r=remp(o);
-    return `<div class="row" style="cursor:default" data-tip="${dlong(d)}|${r}% de la jauge prise|${o.complets} complets · ${o.rest.toLocaleString("fr-FR")} places libres">
+    return `<div class="row" style="cursor:default" data-tip="${dlong(d)}|${r}% de la jauge prise · ${eurK(o.ca)}|${o.complets} complets · ${o.rest.toLocaleString("fr-FR")} places libres">
       <span class="nm">${dlong(d)}</span><span class="track"><i style="width:${r}%"></i></span><span class="pct">${r}%</span></div>`;}).join("");
-  const table=`<table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th></tr></thead><tbody>
-    ${ds.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest.toLocaleString("fr-FR")}</td></tr>`;}).join("")}</tbody></table>`;
+  const table=`<table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th><th class="n">CA réservé</th></tr></thead><tbody>
+    ${ds.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest.toLocaleString("fr-FR")}</td><td class="n">${eurK(o.ca)}</td></tr>`;}).join("")}</tbody></table>`;
   return card("Jour par jour","Remplissage de tous les parcs filtrés, par date. Les vacances scolaires et les week-ends ressortent.",
     `<div class="rank">${body||'<div class="center">Pas de données.</div>'}</div>`,table,"pj");
 }
@@ -797,6 +842,40 @@ function cardParcHeat(A){
        <span style="margin-left:6px">· <i style="display:inline-block;width:10px;height:9px;border-radius:2px;background:var(--surface-2);border:1px solid var(--hair);vertical-align:middle"></i> fermé / trop peu de créneaux</span></div>`,
     table,"ph");
 }
+/* Le RÉTROSPECTIF : comptes déposés au greffe. Les billetteries ne servent aucune date
+   passée ; seul le registre public donne l'historique (CA souvent confidentiel). */
+const exo=f=>Object.entries(f||{}).sort((a,b)=>b[0].localeCompare(a[0]));
+function cardComptes(){
+  if(!COMPTES)return card("Rétrospectif · comptes publiés","Chargement…","","","cp");
+  const lignes=[];
+  (COMPTES.societes||[]).forEach(so=>{const c=so.centre&&PCE[so.centre];
+    const ex=exo(so.finances);
+    lignes.push({nom:so.nom,parc:c?c.nom:(so.role||""),cid:c?so.centre:null,an:ex[0]?ex[0][0]:"",
+      ca:ex[0]?ex[0][1].ca:null,rn:ex[0]?ex[0][1].resultat_net:null,creation:so.creation,src:"comptes déposés"});});
+  (COMPTES.declaratifs||[]).forEach(d=>lignes.push({nom:d.societe||"",parc:(PCE[d.centre]||{}).nom||"",cid:d.centre,
+    an:String(d.annee),ca:d.ca,rn:null,visiteurs:d.visiteurs,src:d.source}));
+  lignes.sort((a,b)=>(b.ca||0)-(a.ca||0)||(b.rn??-1e9)-(a.rn??-1e9));
+  const t=`<table class="tv"><thead><tr><th>Société</th><th>Parc</th><th class="n">Exercice</th><th class="n">CA</th>
+    <th class="n">Résultat net</th><th>Source</th></tr></thead><tbody>
+    ${lignes.map(l=>`<tr${l.cid?` style="cursor:pointer" onclick="openParc('${l.cid}')"`:""}><td>${esc(l.nom)}</td><td>${esc(l.parc)}</td>
+      <td class="n">${l.an||"—"}</td><td class="n">${l.ca?eurK(l.ca):(l.an?"non publié":"—")}${l.visiteurs?` <span class="muted">· ${l.visiteurs.toLocaleString("fr-FR")} visiteurs</span>`:""}</td>
+      <td class="n">${l.rn==null?"—":eurK(l.rn)}</td><td>${esc(l.src)}</td></tr>`).join("")}</tbody></table>`;
+  return card("Rétrospectif · comptes publiés",
+    `Les billetteries ne publient aucune date passée : l'historique vient des comptes déposés au greffe (registre public),
+     dernier exercice connu. « Non publié » = comptes confidentiels. Les sociétés créées récemment n'ont pas encore déposé.`,
+    `<div class="tvw">${t}</div>`,"","cp");
+}
+function comptesParc(cid){
+  const so=((COMPTES||{}).societes||[]).filter(x=>x.centre===cid), de=((COMPTES||{}).declaratifs||[]).filter(x=>x.centre===cid);
+  if(!so.length&&!de.length)return "";
+  const rows=[...so.flatMap(x=>exo(x.finances).map(([an,v])=>`<tr><td>${esc(x.nom)}</td><td class="n">${an}</td>
+      <td class="n">${v.ca?eurK(v.ca):"non publié"}</td><td class="n">${v.resultat_net==null?"—":eurK(v.resultat_net)}</td></tr>`)),
+    ...de.map(d=>`<tr><td>${esc(d.societe||"")} <span class="muted">(${esc(d.source)})</span></td><td class="n">${d.annee}</td>
+      <td class="n">${eurK(d.ca)}${d.visiteurs?` · ${d.visiteurs.toLocaleString("fr-FR")} visiteurs`:""}</td><td class="n">—</td></tr>`)];
+  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Rétrospectif · comptes</h4>
+    ${rows.length?`<div class="tvw"><table class="tv"><thead><tr><th>Société</th><th class="n">Exercice</th><th class="n">CA</th><th class="n">Résultat net</th></tr></thead>
+    <tbody>${rows.join("")}</tbody></table></div>`:`<div class="csub">${esc(so[0].nom)} : société récente, aucun compte déposé à ce jour.</div>`}`;
+}
 function openParc(cid){
   const c=PCE[cid];if(!c)return;
   const e=PEN[c.enseigne_id]||{},sids=Object.values(PSA).filter(s=>s.centre_id===cid).map(s=>s.id);
@@ -814,6 +893,7 @@ function openParc(cid){
     <div class="csub">${esc(e.nom||"")} · ${esc(c.adresse||"")}${c.cp?", "+esc(c.cp):""} ${esc(ville(c.ville||""))}</div>
     <div class="chips" style="margin-top:10px">
       ${r!=null?`<span class="chip">${r}% de la jauge prise</span>`:""}
+      <span class="chip">${eurK(A.ca)} déjà réservés</span>
       <span class="chip">${A.complets} complet${A.complets>1?"s":""} / ${A.n}</span>
       ${enf.length?`<span class="chip">enfant ${enf.map(prixTxt).join(" / ")}</span>`:""}
       ${adu.length?`<span class="chip">adulte ${adu.map(prixTxt).join(" / ")}</span>`:""}</div>
@@ -824,11 +904,12 @@ function openParc(cid){
       <div class="r"><span class="k">Dernier relevé</span><span>${ago(last)}</span></div>
       <div class="r"><span class="k">Jauge de référence</span><span>${A.n?Math.round(A.init/A.n):"—"} places / créneau (moyenne)</span></div></div>
     <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Jour par jour</h4>
-    <div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th></tr></thead><tbody>
-      ${jours.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest}</td></tr>`;}).join("")}</tbody></table></div>
+    <div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th><th class="n">CA réservé</th></tr></thead><tbody>
+      ${jours.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest}</td><td class="n">${eurK(o.ca)}</td></tr>`;}).join("")}</tbody></table></div>
+    ${comptesParc(cid)}
     <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Prochains créneaux réservables</h4>
     ${libres.length?`<div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Heure</th><th class="n">Places libres</th><th class="n">Enfant</th><th class="n">Adulte</th></tr></thead><tbody>
-      ${libres.map(x=>`<tr><td>${dlong(x.date)}</td><td class="n">${x.heure}</td><td class="n">${x.places_restantes} / ${x.places_init}</td>
+      ${libres.map(x=>`<tr><td>${dlong(x.date)}</td><td class="n">${x.heure}</td><td class="n">${x.places_restantes}</td>
         <td class="n">${prixTxt((x.prix_total||{}).enfant)}</td><td class="n">${prixTxt((x.prix_total||{}).adulte)}</td></tr>`).join("")}</tbody></table></div>`
       :`<div class="csub">Complet sur la période observée.</div>`}`);
 }
@@ -861,7 +942,7 @@ async function openEns(id){
   let last=null,tot=0;
   if(ids.length){const inq=`(${ids.join(",")})`;
     const [ls,ct]=await Promise.all([q(`sessions?select=dernier_vu&salle_id=in.${inq}&order=dernier_vu.desc&limit=1`),
-      qCount(`sessions?salle_id=in.${inq}`)]);
+      qCount(`sessions?salle_id=in.${inq}`).then(v=>v||0)]);
     last=ls[0]&&ls[0].dernier_vu;tot=ct;}
   const ag=A.parEns[id];
   const el=document.getElementById("es");if(!el)return;
@@ -891,9 +972,9 @@ async function openSalle(sid,fromEns){
   const [next,ls,tot,nl,nb]=await Promise.all([
     q(`sessions?select=date,heure,prix_total_moyen&salle_id=eq.${sid}&dispo=is.true&date=gte.${TODAY}&order=date,heure&limit=18`),
     q(`sessions?select=dernier_vu&salle_id=eq.${sid}&order=dernier_vu.desc&limit=1`),
-    qCount(`sessions?salle_id=eq.${sid}`),
-    qCount(`sessions?salle_id=eq.${sid}&date=gte.${TODAY}&dispo=is.true`),
-    qCount(`sessions?salle_id=eq.${sid}&date=gte.${TODAY}&dispo=is.false`)]);
+    qCount(`sessions?salle_id=eq.${sid}`).then(v=>v||0),
+    qCount(`sessions?salle_id=eq.${sid}&date=gte.${TODAY}&dispo=is.true`).then(v=>v||0),
+    qCount(`sessions?salle_id=eq.${sid}&date=gte.${TODAY}&dispo=is.false`).then(v=>v||0)]);
   const t=nl+nb, occ=t?Math.round(100*nb/t):0;
   const ss=document.getElementById("ss");if(!ss)return;
   ss.innerHTML=`<h4>Source & fraîcheur</h4>
@@ -960,19 +1041,34 @@ function openMethodo(){
       • <b>Relevés</b> : toutes les ~10 minutes. Un créneau passé n'est plus mis à jour : son état est celui observé
       juste avant son début.</div></div>
     <div class="src"><h4>Parcs enfants (onglet dédié)</h4>
-      <div class="csub" style="line-height:1.6">Palomano (17 parcs), Octopia et Rêvopolie vendent leurs entrées par
-      créneau d'arrivée sur la billetterie <b>Qweekle</b>. Toutes les entrées d'un parc (enfant, adulte, bébé…) puisent
-      dans la <b>même jauge</b> : on mesure donc, pour chaque créneau, les <b>places encore réservables</b>, relevées
-      toutes les ~30 minutes sur 14 jours.<br>
-      • <b>Rêvopolie</b> (nouvelle billetterie) publie ses places libres et sa jauge : le remplissage est exact dès le
-      premier relevé.<br>
-      • <b>Palomano et Octopia</b> (ancienne billetterie) n'affichent que les créneaux encore réservables pour N
-      personnes. Le nombre exact de places libres est retrouvé en essayant plusieurs N (dichotomie). La jauge, non
-      publiée, est estimée par la valeur habituelle du parc (ex. 30 à Montrouge, 70 chez Octopia) ou par le plus haut
-      niveau de places libres vu sur le créneau s'il est supérieur (matinées de vacances).<br>
-      • <b>Remplissage</b> = places prises / jauge. La billetterie tient compte de la capacité du parc sur toute la durée
-      de la visite : c'est une <b>part de jauge occupée</b>, pas un nombre de visiteurs (les entrées sur place ne sont pas
-      vues). Un créneau qui disparaît de la vente plus de 90 min avant l'heure est compté complet.<br>
+      <div class="csub" style="line-height:1.6"><b>Parcs suivis</b> : les 19 Palomano et leurs concurrents qui vendent
+      l'entrée par créneau en ligne, à Paris, dans l'Ouest parisien et en Île-de-France : Rêvopolie, Octopia, Bulles &amp;
+      Billes, Île de la Tortuga, Cité des enfants, Petit Nuage, Le Monde d'Ayden, Les Zacroc's, You Kids, Quand je serai
+      grand, Toumini City et les 7 Gulli Parc d'Île-de-France. <b>Non mesurables</b> : Royal Kids (entrée libre, aucune vente
+      datée en ligne), Kingooroo (site fermé), Kid's Palace, Filou Planet, L'Île de Robinson… (pas de billetterie).<br>
+      • <b>Mesure</b> : pour chaque créneau des 14 prochains jours, les <b>places encore réservables</b>, relevées toutes les
+      ~30 minutes sur la billetterie publique (Qweekle, ROLLER, Cité des sciences, Event Calendar, Apex Timing). Toutes
+      les entrées d'un parc (enfant, adulte, bébé…) puisent dans la même jauge.<br>
+      • Rêvopolie, ROLLER, la Cité des sciences, Petit Nuage et la Tortuga publient leurs places ; l'ancienne boutique
+      Qweekle (Palomano, Gulli Parc…) n'affiche que les créneaux réservables pour N personnes : le nombre exact est
+      retrouvé en essayant plusieurs N. La <b>jauge</b>, quand elle n'est pas publiée, est la valeur haute habituelle du
+      parc (créneaux à J+7 et au-delà, presque vides).<br>
+      • <b>Arrivées ou présences</b> : Palomano vend un quota d'arrivées par créneau (30 par 20 min) ; Gulli Parc,
+      Rêvopolie, Octopia ou You Kids appliquent la jauge du parc pendant toute la visite, donc un même visiteur occupe
+      plusieurs créneaux. Ces présences sont converties en entrées (× intervalle entre créneaux / durée de visite).<br>
+      • <b>Remplissage</b> = places prises / jauge : une <b>part de jauge vendue en ligne</b>, pas une fréquentation (les
+      entrées sur place ne sont pas vues ; chez Gulli Parc elles sont la règle). Un créneau qui disparaît de la vente plus
+      de 90 min avant l'heure est compté complet. Les créneaux déjà complets la première fois qu'on les voit ne sont pas
+      connus : le remplissage des parcs très demandés est sous-estimé pendant les 14 premiers jours de collecte.<br>
+      • <b>CA billetterie</b> = places prises × prix du créneau, avec un panier par place égal à la moyenne des prix
+      enfant et adulte (calage : Palomano Clichy déclare 10,1 € par visiteur pour des entrées à 15 € et 7 €). C'est le CA
+      des <b>entrées réservées en ligne</b> : ni les entrées achetées sur place, ni les anniversaires, ni la restauration,
+      ni les chaussettes. « Déjà réservé » porte sur les créneaux à venir (les ventes continuent jusqu'au jour J) ;
+      « réalisé » sur les créneaux passés, dans leur état juste avant l'ouverture.<br>
+      • <b>Rétrospectif</b> : les billetteries ne publient aucune date passée (vérifié). L'historique se construit donc
+      depuis le ${frDate(PARC_DEBUT)} ; avant, seuls les comptes déposés au greffe (registre public
+      recherche-entreprises) donnent CA et résultat — souvent confidentiels pour les petites sociétés — et les chiffres
+      déclarés par les réseaux.<br>
       • Les parcs sont <b>exclus</b> de toutes les autres vues (escape games).</div></div>`);
 }
 

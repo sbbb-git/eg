@@ -3,8 +3,9 @@
 Observatoire data **privé** du marché des escape games en Île-de-France. Relève
 en continu les créneaux publiés par les enseignes pour reconstituer l'occupation,
 les prix, le nombre de joueurs et le panier, affichés dans un dashboard unique.
-Suit aussi les **parcs de loisirs enfants** réservés via Qweekle (Palomano ×17,
-Octopia, Rêvopolie), dans un onglet séparé.
+Suit aussi les **parcs de loisirs enfants** (Palomano ×19 et leurs concurrents à Paris,
+dans l'Ouest parisien et en Île-de-France : 38 parcs, 13 enseignes) dans un onglet
+séparé : remplissage, CA billetterie estimé, comptes publiés.
 
 > ⚠️ Usage interne / benchmark concurrentiel uniquement. Voir [`RGPD_NOTES.md`](RGPD_NOTES.md).
 
@@ -14,7 +15,7 @@ Octopia, Rêvopolie), dans un onglet séparé.
 API publique 4escape (booking-data-json + /settings, ~50 enseignes)
         │   escape_loop.py  — boucle : relevé complet toutes les ~10 min
         ▼   escape_4escape_all.py --scrape   (parallèle, ~30 s pour tout le réseau)
-        │   escape_qweekle.py  (parcs enfants, tous les 3 tours, en arrière-plan)
+        │   escape_parcs.py  (parcs enfants, tous les 3 tours, en arrière-plan)
 escape_data/4escape_all/<enseigne>.json   store brut (cache CI, non versionné)
         │   supa_sync.py --since <…>   (seules les sessions modifiées)
         ▼
@@ -30,7 +31,8 @@ index.html — dashboard unique (GitHub Pages), lit Supabase en direct
 |---|---|
 | `escape_4escape_all.py` | Cœur : découverte des comptes 4escape (`--discover`) et relevé de toutes les enseignes (`--scrape`) : enseigne → centres → salles → sessions, prix, places, statut. |
 | `escape_loop.py` | Boucle de relevés continus (un run CI = ~5 h 30 de relevés toutes les 10 min). |
-| `escape_qweekle.py` | Parcs enfants Qweekle : places restantes par créneau (dichotomie sur l'ancienne billetterie Palomano / Octopia, API JSON eshop-v3 pour Rêvopolie), prix enfant / adulte. Store `qweekle__<enseigne>.json`, marqué `theme = parc` / `groupby = parc`. |
+| `escape_parcs.py` | Parcs enfants : places restantes par créneau sur 6 billetteries (Qweekle ancienne boutique par dichotomie, Qweekle eshop-v3, ROLLER, Cité des sciences, Event Calendar, Apex Timing), prix enfant / adulte, arrivées ou présences. Store `parc__<enseigne>.json`, marqué `theme = parc` / `groupby = parc`. |
+| `parcs_comptes.py` | Rétrospectif des parcs : comptes déposés (CA, résultat) via recherche-entreprises.api.gouv.fr + chiffres déclarés par les réseaux → `parcs_comptes.json`, publié avec le dashboard (quotidien). |
 | `supa_sync.py` | Pousse le store vers Supabase (`--since` : incrémental). Géocode les centres, purge les enseignes orphelines. |
 | `sanity_check.py` | Surveillance de bout en bout sur Supabase + erreurs du scraper. |
 | `index.html` | Dashboard (mot de passe) : occupation, heatmap, classements, prix × demande, joueurs et panier réels, salles sans disponibilité, détail enseigne / salle avec sources. |
@@ -56,11 +58,16 @@ index.html — dashboard unique (GitHub Pages), lit Supabase en direct
 - **Prix** : chaque tarif est lu selon son type publié (`absolute` / `per-player` /
   `*-product-quantity`).
 - **Parcs enfants — remplissage** : places prises / jauge du créneau. Toutes les
-  entrées d'un parc partagent la même jauge. Rêvopolie publie places libres et jauge ;
-  l'ancienne billetterie (Palomano, Octopia) ne liste que les créneaux réservables
+  entrées d'un parc partagent la même jauge. Plusieurs billetteries publient places
+  libres et jauge ; l'ancienne boutique Qweekle ne liste que les créneaux réservables
   pour N personnes : les places exactes sont retrouvées par dichotomie sur N, la
-  jauge est la valeur habituelle du parc (ou le plus haut niveau vu sur le créneau).
-  C'est une part de jauge occupée, pas un nombre de visiteurs.
+  jauge est la valeur haute habituelle du parc. Les parcs qui appliquent la jauge sur
+  toute la visite (présences) sont convertis en entrées. Part de jauge vendue en
+  ligne, pas une fréquentation.
+- **Parcs enfants — CA** : places prises × prix du créneau (panier = moyenne enfant /
+  adulte, calé sur les 10,1 €/visiteur déclarés par Palomano Clichy). CA des entrées
+  réservées en ligne seulement. Les billetteries ne servent aucune date passée : le
+  rétrospectif vient de l'historique collecté et des comptes publiés.
 
 ## Automatisation (GitHub Actions)
 

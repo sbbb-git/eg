@@ -14,12 +14,12 @@ chaque bloc ; le run suivant, mis en file d'attente, prend le relais.
      par escape-deep-discover) ;
   2. scrape toutes les enseignes ;
   3. moteur Bookeo si un proxy résidentiel est configuré (tous les `--bookeo-every` tours) ;
-  4. parcs enfants Qweekle (escape_qweekle.py) tous les `--qweekle-every` tours, EN
-     ARRIÈRE-PLAN : la dichotomie des anciennes boutiques prend plusieurs minutes, elle
-     ne doit pas retarder les relevés escape ;
+  4. parcs enfants (escape_parcs.py) tous les `--parcs-every` tours, EN ARRIÈRE-PLAN :
+     la dichotomie des anciennes boutiques Qweekle prend plusieurs minutes, elle ne
+     doit pas retarder les relevés escape ;
   5. sync Supabase des seules sessions modifiées depuis le sync précédent (complet au
      1er tour si --full-first). La fenêtre part du DÉBUT du sync précédent : une
-     session écrite par le relevé Qweekle pendant un sync est reprise au suivant.
+     session écrite par le relevé des parcs pendant un sync est reprise au suivant.
 
   python3 escape_loop.py --minutes 110 --every 10 [--full-first]
 """
@@ -49,13 +49,13 @@ def main() -> int:
     ap.add_argument("--every", type=float, default=10)
     ap.add_argument("--full-first", action="store_true", help="sync complet au premier tour")
     ap.add_argument("--bookeo-every", type=int, default=12)
-    ap.add_argument("--qweekle-every", type=int, default=3, help="0 = jamais")
+    ap.add_argument("--parcs-every", type=int, default=3, help="0 = jamais")
     args = ap.parse_args()
     fin = time.time() + args.minutes * 60
     tour = 0
     proxy = bool(os.environ.get("PROXY_SERVER"))
     sync = bool(os.environ.get("SUPABASE_URL") and os.environ.get("SUPABASE_KEY"))
-    qweekle: subprocess.Popen | None = None
+    parcs: subprocess.Popen | None = None
     # début du dernier sync réussi (fenêtre --since du suivant) ; None = sync complet
     dernier_sync = None if args.full_first else datetime.now(timezone.utc) - timedelta(minutes=5)
 
@@ -77,9 +77,9 @@ def main() -> int:
         print(f"\n===== tour {tour} — {iso(datetime.now(timezone.utc))} =====", flush=True)
         sh("git", "fetch", "-q", "origin", "main")
         sh("git", "checkout", "-q", "origin/main", "--", E.COMPANIES_FILE)
-        if (args.qweekle_every and tour % args.qweekle_every == 1 and fin - time.time() > 20 * 60
-                and (qweekle is None or qweekle.poll() is not None)):
-            qweekle = subprocess.Popen([sys.executable, "escape_qweekle.py"])   # ~5-15 min
+        if (args.parcs_every and tour % args.parcs_every == 1 and fin - time.time() > 20 * 60
+                and (parcs is None or parcs.poll() is not None)):
+            parcs = subprocess.Popen([sys.executable, "escape_parcs.py"])   # ~5-15 min
         try:
             E.scrape()
         except Exception as e:                      # un tour raté ne doit pas tuer la boucle
@@ -93,12 +93,12 @@ def main() -> int:
         if reste < max(attente, 0) + 90:            # pas le temps d'un tour de plus
             break
         time.sleep(max(attente, 0))
-    if qweekle is not None and qweekle.poll() is None:
-        print("[loop] attente de la fin du relevé Qweekle…", flush=True)
+    if parcs is not None and parcs.poll() is None:
+        print("[loop] attente de la fin du relevé des parcs…", flush=True)
         try:
-            qweekle.wait(timeout=10 * 60)
+            parcs.wait(timeout=10 * 60)
         except subprocess.TimeoutExpired:
-            qweekle.kill()
+            parcs.kill()
         if sync:
             synchro()                               # ses sessions ne doivent pas attendre le bloc suivant
     print(f"[loop] fin du bloc après {tour} tour(s)", flush=True)
