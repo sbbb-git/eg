@@ -350,7 +350,9 @@ async function boot(){
     q("enseignes?select=id,nom,website&order=nom"),
     q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id"),
     q("salles?select=id,nom,theme,duree_minutes,joueurs_min,joueurs_max,difficulty,centre_id"),
-    q("sessions?select=dernier_vu&order=dernier_vu.desc&limit=1"),
+    /* fraîcheur : bornée aux sessions à venir (index sur date) — un tri de toute la table
+       peut dépasser le délai de la clé publique et faisait échouer tout le chargement */
+    q(`sessions?select=dernier_vu&date=gte.${TODAY}&order=dernier_vu.desc&limit=1`).catch(()=>[]),
     qAll(selV).catch(()=>[]),                 // ne doit jamais bloquer le dashboard
     ...Array.from({length:pages},(_,i)=>qPage(sel,i*1000))
   ]);
