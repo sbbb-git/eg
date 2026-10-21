@@ -691,8 +691,11 @@ const PARC_DEBUT="2026-10-21";
 const PH=[[0,10],[10,11],[11,12],[12,13],[13,14],[14,15],[15,16],[16,17],[17,24]];
 const phLab=b=>b[0]===0?"–10h":b[1]===24?"17h+":b[0]+"h";
 let COMPTES=null;                            // comptes publiés (parcs_comptes.json, publié avec la page)
+let HIST=null;                               // historique réel ROLLER (parcs_historique.json)
 async function loadParcs(){
   fetch("parcs_comptes.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{COMPTES=d;
+    if(TAB==="parcs"&&PS)renderParcs();}).catch(()=>{});
+  fetch("parcs_historique.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{HIST=d;
     if(TAB==="parcs"&&PS)renderParcs();}).catch(()=>{});
   const D14=iso(new Date(Date.now()-14*864e5));
   PS=await qAll(`sessions?select=salle_id,date,heure,dispo,statut,places_restantes,places_init,places_vendues,prix_total,premier_vu,dernier_vu&groupby=eq.parc&date=gte.${D14}&order=date,heure`,40);
@@ -779,6 +782,7 @@ function viewParcs(A,P){
   <div class="grid" style="margin-bottom:12px">${cardParcEnseignes(A)}</div>
   <div class="grid" style="margin-bottom:12px">${cardParcRank(A)}</div>
   <div class="grid two">${cardParcJours(A)}${cardParcHeat(A)}</div>
+  <div class="grid" style="margin-top:12px">${cardHistorique()}</div>
   <div class="grid" style="margin-top:12px">${cardComptes()}</div>`;
 }
 /* Par enseigne : le parc de référence (Palomano) face à ses concurrents */
@@ -865,6 +869,50 @@ function cardComptes(){
      dernier exercice connu. « Non publié » = comptes confidentiels. Les sociétés créées récemment n'ont pas encore déposé.`,
     `<div class="tvw">${t}</div>`,"","cp");
 }
+/* ═════ Historique RÉEL (ROLLER) : l'API ROLLER sert aussi les jours passés, avec les
+   places restantes finales de chaque séance (ventes en ligne ET, a priori, en caisse). ═════ */
+const lundi=d=>{const x=new Date(d+"T12:00");x.setDate(x.getDate()-((x.getDay()+6)%7));return iso(x);};
+function histSemaines(h){
+  const w={};Object.entries(h.jours||{}).forEach(([d,v])=>{const k=lundi(d);
+    const o=w[k]=w[k]||{e:0,j:0,ca:0,a:0,n:0,jours:0};o.e+=v.e||0;o.j+=v.j||0;o.ca+=v.ca||0;o.a+=v.a||0;o.n+=v.n||0;o.jours++;});
+  return Object.entries(w).sort((a,b)=>a[0].localeCompare(b[0]));
+}
+function barresSemaines(sem,cle,lab){       // une série -> une couleur ; libellés sélectifs
+  if(!sem.length)return "";
+  const W=560,Hh=120,P={l:8,r:8,t:8,b:20},n=sem.length,bw=Math.max(3,(W-P.l-P.r)/n-2);
+  const max=Math.max(1,...sem.map(([,o])=>o[cle]));
+  const bars=sem.map(([k,o],i)=>{const h=(o[cle]/max)*(Hh-P.t-P.b),x=P.l+i*((W-P.l-P.r)/n);
+    return `<rect x="${x.toFixed(1)}" y="${(Hh-P.b-h).toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="2" fill="var(--s1)"
+      data-tip="Semaine du ${frDate(k)}|${Math.round(o.e).toLocaleString("fr-FR")} entrées · ${eurK(o.ca)}${o.a?` · ${o.a} anniversaires`:""}|remplissage ${o.j?Math.round(100*o.e/o.j):0} % · ${o.jours} j ouverts"></rect>`;}).join("");
+  const lbl=[0,Math.floor(n/2),n-1].filter((v,i,a)=>a.indexOf(v)===i).map(i=>{const x=P.l+i*((W-P.l-P.r)/n)+bw/2;
+    return `<text x="${x}" y="${Hh-6}" fill="var(--muted)" font-size="10" text-anchor="middle">${frDate(sem[i][0])}</text>`;}).join("");
+  return `<svg viewBox="0 0 ${W} ${Hh}" width="100%" height="${Hh}" role="img" aria-label="${lab}">${bars}${lbl}</svg>`;
+}
+function cardHistorique(){
+  if(!HIST||!HIST.parcs)return card("Historique réel · ROLLER","Chargement…","","","hi");
+  const ps=Object.entries(HIST.parcs).filter(([cid,h])=>h.jours&&Object.keys(h.jours).length&&(!PCE[cid]||filtreParc(PCE[cid])));
+  if(!ps.length)return card("Historique réel · ROLLER","Aucun parc ROLLER dans la zone filtrée.","","","hi");
+  const blocs=ps.map(([cid,h])=>{const sem=histSemaines(h),J=Object.values(h.jours);
+    const e=J.reduce((a,v)=>a+(v.e||0),0),j=J.reduce((a,v)=>a+(v.j||0),0),ca=J.reduce((a,v)=>a+(v.ca||0),0),an=J.reduce((a,v)=>a+(v.a||0),0);
+    return `<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline">
+        <b style="font-size:13.5px;cursor:pointer" onclick="openParc('${cid}')">${esc(h.nom)}</b>
+        <span class="csub">depuis le ${frDate(h.debut)} · ${Math.round(e).toLocaleString("fr-FR")} entrées · ${eurK(ca)} · remplissage ${j?Math.round(100*e/j):0} %${an?` · ${an} anniversaires`:""}</span></div>
+      ${barresSemaines(sem,"e","Entrées par semaine, "+h.nom)}</div>`;}).join("");
+  const t=`<table class="tv"><thead><tr><th>Parc</th><th>Mois</th><th class="n">Entrées</th><th class="n">Remplissage</th><th class="n">CA billetterie</th><th class="n">Anniversaires</th></tr></thead><tbody>
+    ${ps.flatMap(([cid,h])=>{const m={};Object.entries(h.jours).forEach(([d,v])=>{const k=d.slice(0,7),o=m[k]=m[k]||{e:0,j:0,ca:0,a:0};
+      o.e+=v.e||0;o.j+=v.j||0;o.ca+=v.ca||0;o.a+=v.a||0;});
+      return Object.entries(m).sort().map(([k,o])=>`<tr><td>${esc(h.nom)}</td><td>${k}</td><td class="n">${Math.round(o.e).toLocaleString("fr-FR")}</td>
+        <td class="n">${o.j?Math.round(100*o.e/o.j):0} %</td><td class="n">${eurK(o.ca)}</td><td class="n">${o.a||"—"}</td></tr>`);}).join("")}</tbody></table>`;
+  return card("Historique réel · ROLLER",
+    `Le rétrospectif qui existe : la billetterie ROLLER sert aussi les jours passés (places restantes finales de chaque
+     séance, ventes en caisse comprises a priori). Entrées vendues par semaine depuis la mise en service du parc sur ROLLER.`,
+    blocs,t,"hi");
+}
+function histParc(cid){
+  const h=HIST&&HIST.parcs&&HIST.parcs[cid];if(!h||!h.jours)return "";
+  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Historique réel (ROLLER) · depuis le ${frDate(h.debut)}</h4>
+    ${barresSemaines(histSemaines(h),"e","Entrées par semaine")}`;
+}
 function comptesParc(cid){
   const so=((COMPTES||{}).societes||[]).filter(x=>x.centre===cid), de=((COMPTES||{}).declaratifs||[]).filter(x=>x.centre===cid);
   if(!so.length&&!de.length)return "";
@@ -906,6 +954,7 @@ function openParc(cid){
     <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Jour par jour</h4>
     <div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th><th class="n">CA réservé</th></tr></thead><tbody>
       ${jours.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest}</td><td class="n">${eurK(o.ca)}</td></tr>`;}).join("")}</tbody></table></div>
+    ${histParc(cid)}
     ${comptesParc(cid)}
     <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Prochains créneaux réservables</h4>
     ${libres.length?`<div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Heure</th><th class="n">Places libres</th><th class="n">Enfant</th><th class="n">Adulte</th></tr></thead><tbody>

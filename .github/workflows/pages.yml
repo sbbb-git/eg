@@ -9,7 +9,7 @@ name: pages (déploiement du dashboard)
 on:
   push:
     branches: ["main"]
-    paths: ["index.html", "parcs_comptes.json", ".github/workflows/pages.yml"]
+    paths: ["index.html", "parcs_comptes.json", "parcs_historique.json", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -32,10 +32,10 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Assembler le site (la page + les comptes publiés des parcs)
+      - name: Assembler le site (la page + comptes publiés et historique des parcs)
         run: |
           mkdir -p _site
-          cp index.html .nojekyll parcs_comptes.json _site/
+          cp index.html .nojekyll parcs_comptes.json parcs_historique.json _site/
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:

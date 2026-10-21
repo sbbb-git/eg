@@ -77,7 +77,7 @@ ENSEIGNES = {
             "palomano-caen": _p("10 rue des Hauts de Beaulieu", "14000", "Caen", "Palomano Caen"),
             # premier parc (fév. 2023), seul sur ROLLER — 1,12 M€ de CA déclaré en 2024
             "palomano-clichy": {**_p("125 boulevard Jean Jaurès", "92110", "Clichy", "Palomano Clichy"),
-                                "kind": "roller",
+                                "kind": "roller", "anniversaires": "",   # toutes les formules du lieu
                                 "booking": "https://reservation-clichy.palomano.com/reserver/fr/products"},
             # dans le complexe Nikito : billetterie ROLLER de Nikito, jauge de parc (présences)
             "palomano-alfortville": {**_p("Rue Félix Mothiron (Nikito)", "94140", "Alfortville", "Palomano Alfortville"),
