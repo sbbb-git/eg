@@ -710,9 +710,9 @@ def _pas(slots: dict) -> int:
 
 
 def jauge_habituelle(S: dict, rid: str, pnow_s: str) -> int | None:
-    """Jauge habituelle d'un créneau du parc, quand la billetterie ne la publie pas : le
-    75e centile des plus hauts niveaux de places libres vus sur les créneaux à J+7 et
-    au-delà. Loin dans le futur, un créneau est presque vide, donc proche de sa jauge ;
+    """Jauge habituelle d'un créneau du parc, quand la billetterie ne la publie pas : la
+    valeur la plus fréquente (si elle concerne ≥ 30 % des créneaux), sinon le 75e centile,
+    des plus hauts niveaux de places libres vus sur les créneaux à J+7 et au-delà. Loin dans le futur, un créneau est presque vide, donc proche de sa jauge ;
     près de la date, les parcs pleins n'affichent que « 1 place restante » (Quand je serai
     grand, Toumini City en vacances). Le centile écarte aussi les rares créneaux à jauge
     élargie (matinées de vacances Palomano). Ex. : Octopia 70, Palomano Montrouge 30."""
@@ -725,6 +725,9 @@ def jauge_habituelle(S: dict, rid: str, pnow_s: str) -> int | None:
         vals = sorted(v for _, v in tous)
     if not vals:
         return None
+    v, n = Counter(vals).most_common(1)[0]
+    if v > 1 and n >= 0.3 * len(vals):              # une jauge nette (Palomano Bordeaux : 30, pas 40)
+        return v
     return vals[int(0.75 * (len(vals) - 1))]
 
 
