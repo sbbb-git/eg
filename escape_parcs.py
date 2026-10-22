@@ -12,7 +12,7 @@ de relevé par billetterie :
   - Qweekle eshop-v3 (*.qweekle.shop, Rêvopolie) : API JSON, places et jauge publiées.
   - ROLLER (api.roller.app : Palomano Clichy et Alfortville, You Kids).
   - Cité des sciences (Cité des enfants), Event Calendar App (Petit Nuage),
-    Apex Timing (Île de la Tortuga) : API JSON publiques.
+    Apex Timing (Île de la Tortuga), Wix Bookings (Kidz World Lyon) : API JSON publiques.
 Non mesurables : Royal Kids (entrée libre, pas de vente datée en ligne), Kingooroo
 (site fermé), Kid's Palace, Filou Planet… (pas de billetterie en ligne).
 
@@ -188,7 +188,14 @@ ENSEIGNES = {
                                                "host": "resagames-planetparkemerainville.qweekle.shop",
                                                "produit": "f3570c5e10444b3580e78852c4b6eec5"},
                   "planet-park-varennes": {**_p("", "77130", "Varennes-sur-Seine", "Planet Park Varennes"),
-                                           "host": "resagames-planetparkvarennes.qweekle.shop"}},
+                                           "host": "resagames-planetparkvarennes.qweekle.shop"},
+                  # Nantes : ancienne boutique, une seule activité (journée illimitée, ~160 par créneau).
+                  # Cormeilles-en-Parisis, Corbeil, Vedène : e-billets non datés, non mesurables.
+                  "planet-park-nantes": {**_p("5 rue de la Garde", "44300", "Nantes", "Planet Park Nantes"),
+                                         "kind": "legacy", "org": "royal-kids-sainte-luce",
+                                         "shop": "planet-park-nantes", "cat": "entrees-parc",
+                                         "activite": "entree-journee-illimitee-12-eur",
+                                         "prix": {"enfant": 12.0, "adulte": 2.0}}},
     },
     "kawatee": {
         "nom": "Kawatee", "website": "https://kawatee-kawatee.qweekle.shop", "kind": "v3",
@@ -208,6 +215,14 @@ ENSEIGNES = {
         "org": "chibitopia",
         "parcs": {"chibitopia": {**_p("", "67380", "Lingolsheim", "Chibitopia Lingolsheim"),
                                  "cat": "entrees-familles"}},
+    },
+    # Kidz World (Lyon 7e, mini-ville ouverte en avril 2026) : Wix Bookings, une séance de 2 h
+    # par « bracelet », quota propre à chaque séance ; adultes payés sur place (non comptés)
+    "kidz-world": {
+        "nom": "Kidz World", "website": "https://www.kidzworldlyon.com", "kind": "wix", "comptage": "arrivees",
+        "parcs": {"kidz-world-lyon": {**_p("11 rue du Sauveur", "69007", "Lyon", "Kidz World Lyon"),
+                                      "site": "https://www.kidzworldlyon.com",
+                                      "services": {"016ac2e9-59cd-4819-a956-835569f64848": 19.90}}},
     },
     "kizou-aventures": {
         "nom": "Kizou Aventures", "website": "https://kizou-aventures.fr", "kind": "legacy", "org": "kizou-clermont",
@@ -770,6 +785,53 @@ def releve_apex(centre: str, produit: str, st: dict, jours: int) -> dict:
             "req": c.n, "duree": None}
 
 
+# ───────────────────────────── Wix Bookings ─────────────────────────────
+WIX_BOOKINGS = "13d21c63-b5ec-5912-8397-c3a5ddb27a97"
+
+
+def releve_wix(site: str, services: dict, st: dict, jours: int) -> dict:
+    """Wix Bookings (Kidz World Lyon) : jeton public de l'application Bookings
+    (/_api/v1/access-tokens), puis recherche des séances (POST, aucune réservation) :
+    remainingCapacity / totalCapacity par séance, séances complètes comprises.
+    `services` : {id du service: prix enfant}. Deux séances à la même heure : additionnées."""
+    c = Client()
+    s, b = c.get(f"{site}/_api/v1/access-tokens", headers={"Accept": "application/json"})
+    if s != 200:
+        raise IOError(f"jeton Wix HTTP {s}")
+    tok = json.loads(b)["apps"][WIX_BOOKINGS]["instance"]
+    today = paris_now().date()
+    fin = today + timedelta(days=jours)
+    body = json.dumps({"serviceIds": list(services), "fromLocalDate": f"{today}T00:00:00",
+                       "toLocalDate": f"{fin}T00:00:00", "timeZone": "Europe/Paris",
+                       "includeNonBookable": True, "cursorPaging": {"limit": 1000}}).encode()
+    d = None
+    for essai in range(3):
+        try:
+            c.n += 1
+            d = json.loads(c.op.open(Request(f"{site}/_api/service-availability/v2/time-slots/event", data=body,
+                                             headers={"User-Agent": UA, "Authorization": tok,
+                                                      "Content-Type": "application/json",
+                                                      "Accept": "application/json"}), timeout=60).read())
+            break
+        except Exception:
+            time.sleep(3 * (essai + 1))
+    if d is None:
+        raise IOError("séances Wix injoignables")
+    out, duree = {}, None
+    for t in d.get("timeSlots") or []:
+        k = t["localStartDate"][:16].replace("T", " ")
+        if duree is None and t.get("localEndDate"):
+            h1, m1 = map(int, t["localStartDate"][11:16].split(":"))
+            h2, m2 = map(int, t["localEndDate"][11:16].split(":"))
+            duree = (h2 * 60 + m2) - (h1 * 60 + m1)
+        o = out.setdefault(k, {"rest": 0, "cap": 0, "reservable": False, "enfant": services.get(t["serviceId"])})
+        o["rest"] += max(0, int(t.get("remainingCapacity") or 0))
+        o["cap"] += int(t.get("totalCapacity") or 0)
+        o["reservable"] |= bool(t.get("bookable"))
+    return {"slots": out, "couverts": {(today + timedelta(days=i)).isoformat() for i in range(jours)},
+            "source": site, "req": c.n, "duree": duree}
+
+
 # ───────────────────────────── fusion dans le store ─────────────────────────────
 def _comptage(slots: dict, jauge: int | None) -> str:
     """« presence » si la billetterie applique la jauge du PARC sur toute la visite : les
@@ -859,7 +921,7 @@ def fusion(st: dict, rid: str, obs: dict, kind: str) -> int:
             ex["statut"] = None
         S[key] = ex
         n += 1
-    jauge = jauge_habituelle(S, rid, pnow_s) if kind != "v3" else None   # jauge non publiée
+    jauge = jauge_habituelle(S, rid, pnow_s) if kind not in ("v3", "wix") else None   # jauge non publiée
     # Présences -> entrées : une visite de D minutes occupe D/pas créneaux consécutifs ; sommer
     # les places prises de chaque créneau compterait chaque visiteur D/pas fois.
     comptage = obs.get("comptage") or ("presence" if kind == "v3" else _comptage(obs["slots"], jauge))
@@ -928,10 +990,16 @@ def releve_enseigne(eid: str, jours: int, seul: str | None = None) -> tuple[str,
                 obs = releve_eventcal(info["calendrier"], info["widget"], st, jours)
             elif kind == "apex":
                 obs = releve_apex(info["centre"], info["produit"], st, jours)
+            elif kind == "wix":
+                obs = releve_wix(info["site"], info["services"], st, jours)
             else:
                 raise ValueError(f"plateforme inconnue : {kind}")
             obs["kind"] = kind
             obs["comptage"] = info.get("comptage", cfg.get("comptage"))   # sinon détecté à la fusion
+            for o in obs["slots"].values():               # prix non affichés par la billetterie : grille du parc
+                for k2, v in (info.get("prix") or {}).items():
+                    if o.get(k2) is None:
+                        o[k2] = v
             return parc, obs, None
         except Exception as e:                            # un parc en échec n'arrête pas les autres
             return parc, None, f"{parc}: {e}"[:160]

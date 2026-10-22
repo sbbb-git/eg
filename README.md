@@ -4,7 +4,7 @@ Observatoire data **privé** du marché des escape games en Île-de-France. Rel�
 en continu les créneaux publiés par les enseignes pour reconstituer l'occupation,
 les prix, le nombre de joueurs et le panier, affichés dans un dashboard unique.
 Suit aussi les **parcs de loisirs enfants** (Palomano ×19 et leurs concurrents : Paris,
-Ouest parisien, Île-de-France et réseaux du benchmark — 70 parcs, 19 enseignes) dans un
+Ouest parisien, Île-de-France et réseaux du benchmark — 72 parcs, 20 enseignes) dans un
 onglet séparé : remplissage, CA billetterie estimé, historique réel ROLLER, comptes publiés.
 
 > ⚠️ Usage interne / benchmark concurrentiel uniquement. Voir [`RGPD_NOTES.md`](RGPD_NOTES.md).
@@ -31,7 +31,7 @@ index.html — dashboard unique (GitHub Pages), lit Supabase en direct
 |---|---|
 | `escape_4escape_all.py` | Cœur : découverte des comptes 4escape (`--discover`) et relevé de toutes les enseignes (`--scrape`) : enseigne → centres → salles → sessions, prix, places, statut. |
 | `escape_loop.py` | Boucle de relevés continus (un run CI = ~5 h 30 de relevés toutes les 10 min). |
-| `escape_parcs.py` | Parcs enfants : places restantes par créneau sur 6 billetteries (Qweekle ancienne boutique par dichotomie, Qweekle eshop-v3, ROLLER, Cité des sciences, Event Calendar, Apex Timing), prix enfant / adulte, arrivées ou présences. Store `parc__<enseigne>.json`, marqué `theme = parc` / `groupby = parc`. |
+| `escape_parcs.py` | Parcs enfants : places restantes par créneau sur 7 billetteries (Qweekle ancienne boutique par dichotomie, Qweekle eshop-v3, ROLLER, Cité des sciences, Event Calendar, Apex Timing, Wix Bookings), prix enfant / adulte, arrivées ou présences. Store `parc__<enseigne>.json`, marqué `theme = parc` / `groupby = parc`. |
 | `parcs_comptes.py` | Rétrospectif financier : pour les 65 sociétés de `parcs_societes.json` (exploitants rattachés à leur parc par adresse, têtes de réseau), tous les exercices déposés (comptes INPI `ratios_inpi_bce` + registre recherche-entreprises) → `parcs_comptes.json`, publié avec le dashboard (quotidien). |
 | `parcs_historique.py` | Rétrospectif réel des parcs sur ROLLER (Palomano Clichy, Alfortville, 12 You Kids) : l'API sert aussi les jours passés (places restantes finales) → entrées, remplissage, CA, anniversaires par jour → `parcs_historique.json` (quotidien, incrémental). |
 | `supa_sync.py` | Pousse le store vers Supabase (`--since` : incrémental). Géocode les centres, purge les enseignes orphelines. |
