@@ -849,57 +849,88 @@ function cardParcHeat(A){
 /* Le RÉTROSPECTIF : comptes déposés au greffe. Les billetteries ne servent aucune date
    passée ; seul le registre public donne l'historique (CA souvent confidentiel). */
 const exo=f=>Object.entries(f||{}).sort((a,b)=>b[0].localeCompare(a[0]));
+const exLab=k=>k.length>4?k.slice(0,7).replace("-","/"):k;     // « 2025-12-31 » -> « 2025/12 »
 function cardComptes(){
   if(!COMPTES)return card("Rétrospectif · comptes publiés","Chargement…","","","cp");
-  const lignes=[];
-  (COMPTES.societes||[]).forEach(so=>{const c=so.centre&&PCE[so.centre];
-    const ex=exo(so.finances);
-    lignes.push({nom:so.nom,parc:c?c.nom:(so.role||""),cid:c?so.centre:null,an:ex[0]?ex[0][0]:"",
-      ca:ex[0]?ex[0][1].ca:null,rn:ex[0]?ex[0][1].resultat_net:null,creation:so.creation,src:"comptes déposés"});});
-  (COMPTES.declaratifs||[]).forEach(d=>lignes.push({nom:d.societe||"",parc:(PCE[d.centre]||{}).nom||"",cid:d.centre,
-    an:String(d.annee),ca:d.ca,rn:null,visiteurs:d.visiteurs,src:d.source}));
-  lignes.sort((a,b)=>(b.ca||0)-(a.ca||0)||(b.rn??-1e9)-(a.rn??-1e9));
-  const t=`<table class="tv"><thead><tr><th>Société</th><th>Parc</th><th class="n">Exercice</th><th class="n">CA</th>
-    <th class="n">Résultat net</th><th>Source</th></tr></thead><tbody>
-    ${lignes.map(l=>`<tr${l.cid?` style="cursor:pointer" onclick="openParc('${l.cid}')"`:""}><td>${esc(l.nom)}</td><td>${esc(l.parc)}</td>
-      <td class="n">${l.an||"—"}</td><td class="n">${l.ca?eurK(l.ca):(l.an?"non publié":"—")}${l.visiteurs?` <span class="muted">· ${l.visiteurs.toLocaleString("fr-FR")} visiteurs</span>`:""}</td>
-      <td class="n">${l.rn==null?"—":eurK(l.rn)}</td><td>${esc(l.src)}</td></tr>`).join("")}</tbody></table>`;
+  /* une ligne par société exploitant un parc de la zone filtrée, puis les têtes de réseau */
+  const so=(COMPTES.societes||[]).filter(x=>Object.keys(x.finances||{}).length||(x.centres||[]).length)
+    .map(x=>{const ex=exo(x.finances),cs=(x.centres||[]).filter(c=>PCE[c]);
+      return {...x,ex,cs,dans:!VILLE||cs.some(c=>filtreParc(PCE[c]))||(!cs.length&&!VILLE.startsWith("zone:"))};})
+    .filter(x=>x.dans);
+  const ca=x=>(x.ex.find(([,v])=>v.ca)||[,{}])[1].ca||0;
+  so.sort((a,b)=>ca(b)-ca(a)||((b.ex[0]||[,{}])[1].resultat_net||0)-((a.ex[0]||[,{}])[1].resultat_net||0));
+  const cell=v=>v==null?"—":v.ca?eurK(v.ca):"non publié";
+  const t=`<table class="tv"><thead><tr><th>Société</th><th>Groupe / enseigne</th><th>Parc(s) suivis</th><th class="n">Exercice</th>
+    <th class="n">CA</th><th class="n">Résultat net</th><th class="n">Exercice précédent</th><th class="n">Effectif</th></tr></thead><tbody>
+    ${so.map(x=>{const [k0,v0]=x.ex[0]||["",null],[k1,v1]=x.ex[1]||["",null];
+      const parcs=x.cs.map(c=>`<a href="#" onclick="openParc('${c}');return false">${esc(PCE[c].nom)}</a>`).join(", ")||`<span class="muted">${esc((x.parcs||[]).join(", ")||x.role||"")}</span>`;
+      return `<tr><td>${esc(x.nom)}</td><td>${esc(x.groupe||"")}</td><td>${parcs}</td><td class="n">${k0?exLab(k0):"—"}</td>
+        <td class="n">${v0?cell(v0):"aucun dépôt"}</td><td class="n">${v0&&v0.resultat_net!=null?eurK(v0.resultat_net):"—"}</td>
+        <td class="n">${k1?`${exLab(k1)} : ${cell(v1)}${v1.resultat_net!=null?" · RN "+eurK(v1.resultat_net):""}`:"—"}</td>
+        <td class="n">${/non /.test(x.effectif||"")?"—":esc(x.effectif||"")}</td></tr>`;}).join("")}
+    ${(COMPTES.declaratifs||[]).map(d=>`<tr><td>${esc(d.societe||"")}</td><td>déclaratif</td><td>${esc((PCE[d.centre]||{}).nom||"")}</td>
+      <td class="n">${d.annee}</td><td class="n">${eurK(d.ca)}</td><td class="n">—</td><td class="n">${d.visiteurs?d.visiteurs.toLocaleString("fr-FR")+" visiteurs":""}</td>
+      <td class="n"></td></tr>`).join("")}</tbody></table>`;
   return card("Rétrospectif · comptes publiés",
-    `Les billetteries ne publient aucune date passée : l'historique vient des comptes déposés au greffe (registre public),
-     dernier exercice connu. « Non publié » = comptes confidentiels. Les sociétés créées récemment n'ont pas encore déposé.`,
+    `Comptes déposés au greffe (registre public et comptes INPI, tous les exercices disponibles), société par société,
+     rattachée au parc qu'elle exploite. « Non publié » = comptes confidentiels ; « aucun dépôt » = société trop récente.
+     Ex. : ACROCHATS (groupe Gulli Parc / M6) exploite les 7 Gulli Parc d'Île-de-France et Les Zacroc's.`,
     `<div class="tvw">${t}</div>`,"","cp");
+}
+function comptesParc(cid){
+  const so=((COMPTES||{}).societes||[]).filter(x=>(x.centres||[]).includes(cid)),
+        de=((COMPTES||{}).declaratifs||[]).filter(x=>x.centre===cid);
+  if(!so.length&&!de.length)return "";
+  const rows=[...so.flatMap(x=>{const ex=exo(x.finances);
+      return ex.length?ex.map(([k,v])=>`<tr><td>${esc(x.nom)}</td><td class="n">${exLab(k)}</td>
+        <td class="n">${v.ca?eurK(v.ca):"non publié"}</td><td class="n">${v.resultat_net==null?"—":eurK(v.resultat_net)}</td></tr>`)
+        :[`<tr><td>${esc(x.nom)}</td><td class="n">—</td><td class="n" colspan="2">aucun compte déposé (créée ${esc((x.creation||"").slice(0,7))})</td></tr>`];}),
+    ...de.map(d=>`<tr><td>${esc(d.societe||"")} <span class="muted">(${esc(d.source)})</span></td><td class="n">${d.annee}</td>
+      <td class="n">${eurK(d.ca)}${d.visiteurs?` · ${d.visiteurs.toLocaleString("fr-FR")} visiteurs`:""}</td><td class="n">—</td></tr>`)];
+  const multi=so.filter(x=>(x.centres||[]).length>1);
+  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Rétrospectif · comptes de la société exploitante</h4>
+    <div class="tvw"><table class="tv"><thead><tr><th>Société</th><th class="n">Exercice</th><th class="n">CA</th><th class="n">Résultat net</th></tr></thead>
+    <tbody>${rows.join("")}</tbody></table></div>
+    ${multi.length?`<div class="csub" style="margin-top:6px">${multi.map(x=>`${esc(x.nom)} exploite ${x.centres.length} parcs suivis : ses comptes couvrent l'ensemble.`).join(" ")}</div>`:""}`;
 }
 /* ═════ Historique RÉEL (ROLLER) : l'API ROLLER sert aussi les jours passés, avec les
    places restantes finales de chaque séance (ventes en ligne ET, a priori, en caisse). ═════ */
 const lundi=d=>{const x=new Date(d+"T12:00");x.setDate(x.getDate()-((x.getDay()+6)%7));return iso(x);};
+/* Les premières semaines sur ROLLER montrent une jauge intacte (ventes encore sur l'ancien
+   système) : on part du premier jour avec des entrées vendues. */
+function histJours(h){
+  const J=Object.entries(h.jours||{}).sort((a,b)=>a[0].localeCompare(b[0]));
+  const d0=(J.find(([,v])=>(v.e||0)>0)||[null])[0];
+  return d0?J.filter(([d])=>d>=d0):J;
+}
 function histSemaines(h){
-  const w={};Object.entries(h.jours||{}).forEach(([d,v])=>{const k=lundi(d);
+  const w={};histJours(h).forEach(([d,v])=>{const k=lundi(d);
     const o=w[k]=w[k]||{e:0,j:0,ca:0,a:0,n:0,jours:0};o.e+=v.e||0;o.j+=v.j||0;o.ca+=v.ca||0;o.a+=v.a||0;o.n+=v.n||0;o.jours++;});
   return Object.entries(w).sort((a,b)=>a[0].localeCompare(b[0]));
 }
-function barresSemaines(sem,cle,lab){       // une série -> une couleur ; libellés sélectifs
+function barresSemaines(sem,cle,lab){       // une série -> une couleur ; dates en HTML (lisibles sur mobile)
   if(!sem.length)return "";
-  const W=560,Hh=120,P={l:8,r:8,t:8,b:20},n=sem.length,bw=Math.max(3,(W-P.l-P.r)/n-2);
+  const W=1000,Hh=110,n=sem.length,pas=W/n,bw=Math.max(2,pas-3);
   const max=Math.max(1,...sem.map(([,o])=>o[cle]));
-  const bars=sem.map(([k,o],i)=>{const h=(o[cle]/max)*(Hh-P.t-P.b),x=P.l+i*((W-P.l-P.r)/n);
-    return `<rect x="${x.toFixed(1)}" y="${(Hh-P.b-h).toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="2" fill="var(--s1)"
+  const bars=sem.map(([k,o],i)=>{const h=(o[cle]/max)*(Hh-4);
+    return `<rect x="${(i*pas).toFixed(1)}" y="${(Hh-h).toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="2" fill="var(--s1)"
       data-tip="Semaine du ${frDate(k)}|${Math.round(o.e).toLocaleString("fr-FR")} entrées · ${eurK(o.ca)}${o.a?` · ${o.a} anniversaires`:""}|remplissage ${o.j?Math.round(100*o.e/o.j):0} % · ${o.jours} j ouverts"></rect>`;}).join("");
-  const lbl=[0,Math.floor(n/2),n-1].filter((v,i,a)=>a.indexOf(v)===i).map(i=>{const x=P.l+i*((W-P.l-P.r)/n)+bw/2;
-    return `<text x="${x}" y="${Hh-6}" fill="var(--muted)" font-size="10" text-anchor="middle">${frDate(sem[i][0])}</text>`;}).join("");
-  return `<svg viewBox="0 0 ${W} ${Hh}" width="100%" height="${Hh}" role="img" aria-label="${lab}">${bars}${lbl}</svg>`;
+  const lbl=[0,Math.floor((n-1)/2),n-1].filter((v,i,a)=>a.indexOf(v)===i).map(i=>`<span>${frDate(sem[i][0])}</span>`).join("");
+  return `<svg viewBox="0 0 ${W} ${Hh}" preserveAspectRatio="none" width="100%" height="${Hh}" role="img" aria-label="${lab}" style="display:block">${bars}</svg>
+    <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-top:4px">${lbl}</div>`;
 }
 function cardHistorique(){
   if(!HIST||!HIST.parcs)return card("Historique réel · ROLLER","Chargement…","","","hi");
   const ps=Object.entries(HIST.parcs).filter(([cid,h])=>h.jours&&Object.keys(h.jours).length&&(!PCE[cid]||filtreParc(PCE[cid])));
   if(!ps.length)return card("Historique réel · ROLLER","Aucun parc ROLLER dans la zone filtrée.","","","hi");
-  const blocs=ps.map(([cid,h])=>{const sem=histSemaines(h),J=Object.values(h.jours);
+  const blocs=ps.map(([cid,h])=>{const sem=histSemaines(h),HJ=histJours(h),J=HJ.map(([,v])=>v);
     const e=J.reduce((a,v)=>a+(v.e||0),0),j=J.reduce((a,v)=>a+(v.j||0),0),ca=J.reduce((a,v)=>a+(v.ca||0),0),an=J.reduce((a,v)=>a+(v.a||0),0);
     return `<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline">
         <b style="font-size:13.5px;cursor:pointer" onclick="openParc('${cid}')">${esc(h.nom)}</b>
-        <span class="csub">depuis le ${frDate(h.debut)} · ${Math.round(e).toLocaleString("fr-FR")} entrées · ${eurK(ca)} · remplissage ${j?Math.round(100*e/j):0} %${an?` · ${an} anniversaires`:""}</span></div>
+        <span class="csub">depuis le ${frDate(HJ.length?HJ[0][0]:h.debut)} · ${Math.round(e).toLocaleString("fr-FR")} entrées · ${eurK(ca)} · remplissage ${j?Math.round(100*e/j):0} %${an?` · ${an} anniversaires`:""}</span></div>
       ${barresSemaines(sem,"e","Entrées par semaine, "+h.nom)}</div>`;}).join("");
   const t=`<table class="tv"><thead><tr><th>Parc</th><th>Mois</th><th class="n">Entrées</th><th class="n">Remplissage</th><th class="n">CA billetterie</th><th class="n">Anniversaires</th></tr></thead><tbody>
-    ${ps.flatMap(([cid,h])=>{const m={};Object.entries(h.jours).forEach(([d,v])=>{const k=d.slice(0,7),o=m[k]=m[k]||{e:0,j:0,ca:0,a:0};
+    ${ps.flatMap(([cid,h])=>{const m={};histJours(h).forEach(([d,v])=>{const k=d.slice(0,7),o=m[k]=m[k]||{e:0,j:0,ca:0,a:0};
       o.e+=v.e||0;o.j+=v.j||0;o.ca+=v.ca||0;o.a+=v.a||0;});
       return Object.entries(m).sort().map(([k,o])=>`<tr><td>${esc(h.nom)}</td><td>${k}</td><td class="n">${Math.round(o.e).toLocaleString("fr-FR")}</td>
         <td class="n">${o.j?Math.round(100*o.e/o.j):0} %</td><td class="n">${eurK(o.ca)}</td><td class="n">${o.a||"—"}</td></tr>`);}).join("")}</tbody></table>`;
@@ -910,19 +941,9 @@ function cardHistorique(){
 }
 function histParc(cid){
   const h=HIST&&HIST.parcs&&HIST.parcs[cid];if(!h||!h.jours)return "";
-  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Historique réel (ROLLER) · depuis le ${frDate(h.debut)}</h4>
+  const HJ=histJours(h);
+  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Historique réel (ROLLER) · depuis le ${frDate(HJ.length?HJ[0][0]:h.debut)}</h4>
     ${barresSemaines(histSemaines(h),"e","Entrées par semaine")}`;
-}
-function comptesParc(cid){
-  const so=((COMPTES||{}).societes||[]).filter(x=>x.centre===cid), de=((COMPTES||{}).declaratifs||[]).filter(x=>x.centre===cid);
-  if(!so.length&&!de.length)return "";
-  const rows=[...so.flatMap(x=>exo(x.finances).map(([an,v])=>`<tr><td>${esc(x.nom)}</td><td class="n">${an}</td>
-      <td class="n">${v.ca?eurK(v.ca):"non publié"}</td><td class="n">${v.resultat_net==null?"—":eurK(v.resultat_net)}</td></tr>`)),
-    ...de.map(d=>`<tr><td>${esc(d.societe||"")} <span class="muted">(${esc(d.source)})</span></td><td class="n">${d.annee}</td>
-      <td class="n">${eurK(d.ca)}${d.visiteurs?` · ${d.visiteurs.toLocaleString("fr-FR")} visiteurs`:""}</td><td class="n">—</td></tr>`)];
-  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Rétrospectif · comptes</h4>
-    ${rows.length?`<div class="tvw"><table class="tv"><thead><tr><th>Société</th><th class="n">Exercice</th><th class="n">CA</th><th class="n">Résultat net</th></tr></thead>
-    <tbody>${rows.join("")}</tbody></table></div>`:`<div class="csub">${esc(so[0].nom)} : société récente, aucun compte déposé à ce jour.</div>`}`;
 }
 function openParc(cid){
   const c=PCE[cid];if(!c)return;
@@ -1090,11 +1111,19 @@ function openMethodo(){
       • <b>Relevés</b> : toutes les ~10 minutes. Un créneau passé n'est plus mis à jour : son état est celui observé
       juste avant son début.</div></div>
     <div class="src"><h4>Parcs enfants (onglet dédié)</h4>
-      <div class="csub" style="line-height:1.6"><b>Parcs suivis</b> : les 19 Palomano et leurs concurrents qui vendent
-      l'entrée par créneau en ligne, à Paris, dans l'Ouest parisien et en Île-de-France : Rêvopolie, Octopia, Bulles &amp;
-      Billes, Île de la Tortuga, Cité des enfants, Petit Nuage, Le Monde d'Ayden, Les Zacroc's, You Kids, Quand je serai
-      grand, Toumini City et les 7 Gulli Parc d'Île-de-France. <b>Non mesurables</b> : Royal Kids (entrée libre, aucune vente
-      datée en ligne), Kingooroo (site fermé), Kid's Palace, Filou Planet, L'Île de Robinson… (pas de billetterie).<br>
+      <div class="csub" style="line-height:1.6"><b>Parcs suivis</b> (70, filtre « zone » pour Paris / Ouest parisien /
+      Île-de-France) : les 19 Palomano et leurs concurrents qui vendent l'entrée par créneau en ligne — à Paris et en
+      Île-de-France : Rêvopolie, Octopia, Bulles &amp; Billes, Île de la Tortuga, Cité des enfants, Petit Nuage, Le Monde
+      d'Ayden, Les Zacroc's, You Kids (SQY, Plaisir, Palaiseau), Kawatee, Quand je serai grand, Toumini City, Royal Kids
+      Roissy-en-Brie, Planet Park, les 7 Gulli Parc ; et, pour le benchmark national, les 20 Gulli Parc, les 12 You Kids,
+      les mini-villes Little City (Wittenheim) et Chibitopia, Kizou Aventures. <b>Non mesurables</b> : les autres Royal Kids
+      (entrée libre, aucune vente datée en ligne), Happy City, Youpi'Parc (entrée libre), Kidz World (Wix, non testé),
+      Kingooroo (site fermé), Kid's Palace, Filou Planet, L'Île de Robinson… (pas de billetterie).<br>
+      • <b>Historique réel (ROLLER)</b> : contrairement aux autres billetteries, ROLLER sert aussi les jours passés,
+      avec les places restantes finales de chaque séance — ventes en caisse comprises a priori (ROLLER sert aussi de
+      caisse). D'où un vrai rétrospectif jour par jour pour Palomano Clichy et Alfortville et les 12 You Kids, depuis leur
+      passage sur ROLLER (juin-juillet 2026 ; les premières semaines, encore vendues sur l'ancien système, sont écartées).
+      Anniversaires (Clichy) : créneaux de formule où la salle n'est plus réservable.<br>
       • <b>Mesure</b> : pour chaque créneau des 14 prochains jours, les <b>places encore réservables</b>, relevées toutes les
       ~30 minutes sur la billetterie publique (Qweekle, ROLLER, Cité des sciences, Event Calendar, Apex Timing). Toutes
       les entrées d'un parc (enfant, adulte, bébé…) puisent dans la même jauge.<br>
@@ -1114,10 +1143,11 @@ function openMethodo(){
       des <b>entrées réservées en ligne</b> : ni les entrées achetées sur place, ni les anniversaires, ni la restauration,
       ni les chaussettes. « Déjà réservé » porte sur les créneaux à venir (les ventes continuent jusqu'au jour J) ;
       « réalisé » sur les créneaux passés, dans leur état juste avant l'ouverture.<br>
-      • <b>Rétrospectif</b> : les billetteries ne publient aucune date passée (vérifié). L'historique se construit donc
-      depuis le ${frDate(PARC_DEBUT)} ; avant, seuls les comptes déposés au greffe (registre public
-      recherche-entreprises) donnent CA et résultat — souvent confidentiels pour les petites sociétés — et les chiffres
-      déclarés par les réseaux.<br>
+      • <b>Rétrospectif</b> : hors ROLLER, les billetteries ne publient aucune date passée (vérifié : Qweekle, Cité des
+      sciences). L'historique se construit donc depuis le ${frDate(PARC_DEBUT)} ; avant, il reste les comptes déposés au
+      greffe (registre public + comptes INPI, tous exercices) — CA souvent confidentiel pour les petites sociétés — et
+      les chiffres déclarés par les réseaux. 65 sociétés recensées et rattachées à leur parc par adresse
+      d'établissement.<br>
       • Les parcs sont <b>exclus</b> de toutes les autres vues (escape games).</div></div>`);
 }
 

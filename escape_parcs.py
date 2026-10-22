@@ -118,6 +118,20 @@ ENSEIGNES = {
             "gulli-parc-meaux": _p("71 rue Aristide Briand", "77124", "Villenoy", "Gulli Parc Meaux"),
             "gulli-parc-sainte-genevieve-des-bois": _p("20 avenue de la Croix Blanche", "91700",
                                                        "Sainte-Geneviève-des-Bois", "Gulli Parc Sainte-Geneviève"),
+            # hors Île-de-France (réseau de 20 parcs, benchmark)
+            "gulli-parc-aix-en-provence": _p("", "13290", "Aix-en-Provence", "Gulli Parc Aix-en-Provence"),
+            "gulli-parc-audincourt": _p("", "25400", "Audincourt", "Gulli Parc Audincourt"),
+            "gulli-parc-henin-beaumont": _p("", "62110", "Hénin-Beaumont", "Gulli Parc Hénin-Beaumont"),
+            "gulli-parc-le-havre": _p("", "76600", "Le Havre", "Gulli Parc Le Havre"),
+            "gulli-parc-le-mans": _p("", "72650", "Saint-Saturnin", "Gulli Parc Le Mans"),
+            "gulli-parc-lomme": _p("", "59160", "Lomme", "Gulli Parc Lomme"),
+            "gulli-parc-mulhouse": _p("", "68260", "Kingersheim", "Gulli Parc Mulhouse"),
+            "gulli-parc-cap-malo": _p("", "35520", "La Mézière", "Gulli Parc Cap Malo (Rennes)"),
+            "gulli-parc-cesson-sevigne": _p("", "35510", "Cesson-Sévigné", "Gulli Parc Cesson-Sévigné"),
+            "gulli-parc-rouen": _p("", "76000", "Rouen", "Gulli Parc Rouen"),
+            "gulli-parc-toulouse": _p("", "31650", "Saint-Orens-de-Gameville", "Gulli Parc Toulouse"),
+            "gulli-parc-vendeville": _p("", "59175", "Vendeville", "Gulli Parc Vendeville"),
+            "gulli-parc-wambrechies": _p("", "59118", "Wambrechies", "Gulli Parc Wambrechies"),
         }.items()},
     },
     "les-zacrocs": {
@@ -128,10 +142,77 @@ ENSEIGNES = {
     "you-kids": {
         "nom": "You Kids", "website": "https://you-kids.fr/montigny", "kind": "roller",
         # billetterie partagée avec le trampoline You Jump : on suit le seul produit You Kids
-        "parcs": {"you-kids-sqy": {**_p("1 avenue de la Source de la Bièvre", "78180", "Montigny-le-Bretonneux",
-                                       "You Kids SQY Ouest"),
-                                   "booking": "https://billetterie-montigny.you-kids.fr/shop/fr/home",
-                                   "produit": "1366219", "comptage": "presence"}},
+        "comptage": "presence",                      # jauge commune à tout le parc (290 à 640 places)
+        "parcs": {
+            "you-kids-sqy": {**_p("1 avenue de la Source de la Bièvre", "78180", "Montigny-le-Bretonneux",
+                                  "You Kids SQY Ouest"),
+                             "booking": "https://billetterie-montigny.you-kids.fr/shop/fr/home", "produit": "1366219"},
+            "you-kids-plaisir": {**_p("2 route de Thiverval", "78850", "Thiverval-Grignon", "You Kids Plaisir"),
+                                 "kind": "legacy", "org": "you-kids", "shop": "you-kids-thiverval",
+                                 "cat": "entree-kids", "comptage": None},
+            **{k: {**_p("", cp, ville, nom), "booking": f"https://ecom.roller.app/{v}/{sl}/fr/home", "produit": pr}
+               for k, cp, ville, nom, v, sl, pr in [
+                   ("you-kids-palaiseau", "91120", "Palaiseau", "You Kids Paris-Palaiseau",
+                    "youjumpparispalaiseau", "youkids", "1352736"),
+                   ("you-kids-avignon", "84000", "Avignon", "You Kids Avignon", "youjumpavignon", "youkids", "1351832"),
+                   ("you-kids-merignac", "33700", "Mérignac", "You Kids Bordeaux-Mérignac",
+                    "youjumpbordeauxmerignac", "youkids", "1352285"),
+                   ("you-kids-caen", "14000", "Caen", "You Kids Caen", "youjumpcaen", "shop", "1370801"),
+                   ("you-kids-lille", "59520", "Marquette-lez-Lille", "You Kids Lille-Marquette",
+                    "youjumplille", "youkids", "1364866"),
+                   ("you-kids-montpellier", "34970", "Lattes", "You Kids Montpellier-Lattes",
+                    "youjumpmontpellierlattes", "youkids", "1368650"),
+                   ("you-kids-nantes", "44800", "Saint-Herblain", "You Kids Nantes Atlantis",
+                    "youjumpnantesatlantis", "shop", "1371289"),
+                   ("you-kids-geispolsheim", "67118", "Geispolsheim", "You Kids Strasbourg-Geispolsheim",
+                    "youjumpstrasbourggeispolsheim", "youkids", "1372297"),
+                   ("you-kids-mundolsheim", "67450", "Mundolsheim", "You Kids Strasbourg-Mundolsheim",
+                    "youjumpstrasbourgmundolsheim", "youkids", "1370301"),
+                   ("you-kids-toulouse-montaudran", "31400", "Toulouse", "You Kids Toulouse-Montaudran",
+                    "youjumptoulousemontaudran", "youkids", "1369728"),
+                   ("you-kids-toulouse-sept-deniers", "31200", "Toulouse", "You Kids Toulouse-Sept-Deniers",
+                    "youjumptoulouseseptdeniers", "youkids", "1296941"),
+               ]},
+        },
+    },
+    # Royal Kids : entrée libre partout... sauf Roissy-en-Brie, qui vend l'entrée datée (eshop-v3)
+    "royal-kids": {
+        "nom": "Royal Kids", "website": "https://royalkids.fr", "kind": "v3",
+        "parcs": {"royal-kids-roissy": {**_p("", "77680", "Roissy-en-Brie", "Royal Kids Roissy-en-Brie"),
+                                        "host": "resagames-rk.qweekle.shop",
+                                        "produit": "9e8c537987be4f168fec123512475f74"}},
+    },
+    "planet-park": {
+        "nom": "Planet Park", "website": "https://planet-park.com", "kind": "v3",
+        "parcs": {"planet-park-emerainville": {**_p("", "77184", "Émerainville", "Planet Park Émerainville"),
+                                               "host": "resagames-planetparkemerainville.qweekle.shop",
+                                               "produit": "f3570c5e10444b3580e78852c4b6eec5"},
+                  "planet-park-varennes": {**_p("", "77130", "Varennes-sur-Seine", "Planet Park Varennes"),
+                                           "host": "resagames-planetparkvarennes.qweekle.shop"}},
+    },
+    "kawatee": {
+        "nom": "Kawatee", "website": "https://kawatee-kawatee.qweekle.shop", "kind": "v3",
+        "parcs": {"kawatee": {**_p("", "91120", "Palaiseau", "Kawatee Palaiseau"),
+                              "host": "kawatee-kawatee.qweekle.shop", "produit": "94aa2220d60846b49c58fa0dec6badf0"}},
+    },
+    # Mini-villes et parcs du benchmark hors Île-de-France
+    "little-city": {
+        "nom": "Little City (Big Little)", "website": "https://biglittle.qweekle.com/shop/biglittle", "kind": "legacy",
+        "org": "biglittle",
+        "parcs": {"little-city": {**_p("17 rue Jean Monnet", "68270", "Wittenheim", "Little City Wittenheim"),
+                                  "shop": "biglittle", "cat": "little-city",
+                                  "activite": "entree-little-city-jusqua-10-ans"}},
+    },
+    "chibitopia": {
+        "nom": "Chibitopia", "website": "https://chibitopia.qweekle.com/shop/chibitopia", "kind": "legacy",
+        "org": "chibitopia",
+        "parcs": {"chibitopia": {**_p("", "67380", "Lingolsheim", "Chibitopia Lingolsheim"),
+                                 "cat": "entrees-familles"}},
+    },
+    "kizou-aventures": {
+        "nom": "Kizou Aventures", "website": "https://kizou-aventures.fr", "kind": "legacy", "org": "kizou-clermont",
+        "parcs": {"kizou-aventures-clermont-ferrand": {**_p("", "63000", "Clermont-Ferrand", "Kizou Aventures Clermont"),
+                                                      "cat": "entrees-au-parc"}},
     },
     "quand-je-serai-grand": {
         "nom": "Quand je serai grand", "website": "https://quandjeseraigrand-parc.com", "kind": "legacy",
@@ -250,6 +331,7 @@ class Legacy:
         self.c = Client()
         self.cat = cat
         self.tok = None
+        self.single = False
         self.acts: list[tuple[str, str]] = []
 
     def _charge_cat(self, cat: str) -> bool:
@@ -288,11 +370,15 @@ class Legacy:
     def page(self, jour: date, act: str, qty: int):
         """Créneaux réservables pour `qty` × `act` à partir de `jour`.
         -> ({'YYYY-MM-DD HH:MM': prix}, prochaine_dispo | None), ou None si la réponse est invalide."""
-        q = [("_token", self.tok), ("start_at", jour.strftime("%d/%m/%Y"))]
-        q += [(f"activities_qty[{a}]", str(qty) if a == act else "0") for a, _ in self.acts]
+        if self.single:                              # page « une activité » (Little City)
+            url = self.base + f"{self.cat}/{act}/data?lang=fr&" + up.urlencode(
+                {"start_at": jour.strftime("%d/%m/%Y"), "qty": qty})
+        else:
+            q = [("_token", self.tok), ("start_at", jour.strftime("%d/%m/%Y"))]
+            q += [(f"activities_qty[{a}]", str(qty) if a == act else "0") for a, _ in self.acts]
+            url = self.base + f"multi/{self.cat}/data?lang=fr&" + up.urlencode(q)
         for essai in range(3):                       # page d'erreur passagère : on retente
-            st, d = self.c.get(self.base + f"multi/{self.cat}/data?lang=fr&" + up.urlencode(q),
-                               headers={"X-Requested-With": "XMLHttpRequest"})
+            st, d = self.c.get(url, headers={"X-Requested-With": "XMLHttpRequest"})
             if st == 200 and ("activity-slots" in d or "no-slots-available" in d or "update_date" in d):
                 break
             time.sleep(3 * (essai + 1))
@@ -301,7 +387,9 @@ class Legacy:
         d = re.sub(r"\s+", " ", d)
         slots = {}
         self.affiches = {}                            # « N Places disponibles », quand la boutique l'affiche
-        for dt, inner in re.findall(r'data-slot_url="[^"]*/(\d{4}-\d\d-\d\d_\d\d:\d\d)/[^"]*"[^>]*>(.*?)</a>', d):
+        motif = (r'<a href="[^"]*/(\d{4}-\d\d-\d\d_\d\d:\d\d)\?qty=[^"]*"[^>]*>(.*?)</a>' if self.single
+                 else r'data-slot_url="[^"]*/(\d{4}-\d\d-\d\d_\d\d:\d\d)/[^"]*"[^>]*>(.*?)</a>')
+        for dt, inner in re.findall(motif, d):
             k = dt.replace("_", " ")
             pm = re.search(r"([\d.,\s]+)\s*&euro;", inner)
             slots[k] = _num(pm.group(1)) if pm else None
@@ -369,12 +457,15 @@ class Legacy:
 
 
 def releve_legacy(org: str, parc: str, st: dict, jours: int, cat: str | None = None,
-                  shop: str | None = None) -> dict:
+                  shop: str | None = None, activite: str | None = None) -> dict:
     """-> {"slots": {'YYYY-MM-DD HH:MM': {...}}, "couverts": set(dates), "cat":…, "req": n}
-    `shop` : identifiant de la boutique s'il diffère de l'identifiant du parc."""
+    `shop` : identifiant de la boutique s'il diffère de l'identifiant du parc ;
+    `activite` : boutique à page « une activité » (sans page multi-activités)."""
     meta = st.setdefault("_meta", {}).setdefault("parcs", {}).setdefault(parc, {})
     L = Legacy(org, shop or parc, meta.get("cat") or cat)
-    if not L.ouvrir():
+    if activite:
+        L.single, L.acts = True, [(activite, "Entrée enfant")]
+    elif not L.ouvrir():
         raise IOError("catégorie « entrées » introuvable")
     enfant, adulte = choisir_entrees(L.acts)
     rid = f"qw-{parc}-parc"
@@ -429,7 +520,7 @@ def _duree(nom: str) -> int | None:
 
 
 # ───────────────────────────── eshop-v3 (JSON) ─────────────────────────────
-def releve_v3(host: str, st: dict, jours: int) -> dict:
+def releve_v3(host: str, st: dict, jours: int, produit: str | None = None) -> dict:
     c = Client()
     H = {"Accept": "application/json", "X-Venture-Domain": host}
 
@@ -451,6 +542,8 @@ def releve_v3(host: str, st: dict, jours: int) -> dict:
         page += 1
     cand = [(p["id"], p.get("name") or "") for p in prods if p.get("type") == "A"]
     enfant, adulte = choisir_entrees(cand)
+    if produit:                                           # entrée imposée par la configuration
+        enfant = next((i for i, _ in cand if produit in i), produit)
     if not enfant:
         raise IOError("aucune entrée enfant")
     det = J(f"/api/products/{enfant}?locale=fr")["data"]
@@ -769,7 +862,7 @@ def fusion(st: dict, rid: str, obs: dict, kind: str) -> int:
     jauge = jauge_habituelle(S, rid, pnow_s) if kind != "v3" else None   # jauge non publiée
     # Présences -> entrées : une visite de D minutes occupe D/pas créneaux consécutifs ; sommer
     # les places prises de chaque créneau compterait chaque visiteur D/pas fois.
-    comptage = obs.get("comptage") or _comptage(obs["slots"], jauge)
+    comptage = obs.get("comptage") or ("presence" if kind == "v3" else _comptage(obs["slots"], jauge))
     obs["comptage"] = comptage
     f = 1.0
     if comptage == "presence":
@@ -824,9 +917,9 @@ def releve_enseigne(eid: str, jours: int, seul: str | None = None) -> tuple[str,
         try:
             if kind == "legacy":
                 obs = releve_legacy(info.get("org", cfg.get("org")), parc, st, jours,
-                                    info.get("cat"), info.get("shop"))
+                                    info.get("cat"), info.get("shop"), info.get("activite"))
             elif kind == "v3":
-                obs = releve_v3(info.get("host", parc), st, jours)
+                obs = releve_v3(info.get("host", parc), st, jours, info.get("produit"))
             elif kind == "roller":
                 obs = releve_roller(info["booking"], st, jours, info.get("produit"))
             elif kind == "cite":

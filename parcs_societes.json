@@ -1,0 +1,2241 @@
+{
+ "_meta": {
+  "description": "Sociétés exploitant les parcs enfants suivis (et têtes de réseau), rattachées par adresse d'établissement. Recensement du 21/10/2026 (registre SIRENE/RNE, comptes INPI ratios_inpi_bce, sites des enseignes). Les finances sont rafraîchies chaque jour par parcs_comptes.py.",
+  "sources": [
+   "https://recherche-entreprises.api.gouv.fr (SIRENE/RNE, établissements et enseignes)",
+   "https://data.economie.gouv.fr dataset ratios_inpi_bce (comptes annuels déposés, multi-exercices)",
+   "palomano.com/parcs, royalkids.fr, quandjeseraigrand-parc.com, sortiraparis.com, parisjetaime.com, officieldelafranchise.fr, lexpress-franchise.com, societe.com"
+  ]
+ },
+ "entreprises": [
+  {
+   "siren": "890922024",
+   "nom": "PALOMANO",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Clichy (établissement secondaire historique)",
+     "ville": "Clichy",
+     "adresse": "125 bd Jean Jaurès 92110",
+     "etab_depuis": "2021-06-01"
+    }
+   ],
+   "role": "holding / tête de réseau (préside les SAS Clichy, Rueil, Palo-Franchise, Palo-Nomad) ; exploitant historique de Clichy",
+   "siege": "3 RUE DU GENERAL LECLERC 78380 BOUGIVAL",
+   "date_creation": "2020-10-30",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": {
+    "2022-12-31": {
+     "ca": null,
+     "resultat_net": 149369,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI); societe.com (capital 29 388,70 EUR porté le 19/05/2026)",
+   "confidence": "sure",
+   "notes": "Dirigeants: NIN, LINE FAMILY, MENDELSON ACADEMIE (fratrie Mendelson). Seuls comptes 2022 publiés (CA confidentiel). Presse franchise (L'Officiel de la Franchise, 27/02/2025): ~100 000 visiteurs/an et ~1,3 MEUR de CA par parc revendiqués ; parc en propre ~1,5 MEUR d'investissement, franchise ~700 kEUR ; 300 kEUR levés auprès de J-P Nadir (Qui veut être mon associé ?, M6)."
+  },
+  {
+   "siren": "921549382",
+   "nom": "PALOMANO CLICHY",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Clichy",
+     "ville": "Clichy",
+     "adresse": "125 bd Jean Jaurès 92110"
+    }
+   ],
+   "role": "exploitant (succursale)",
+   "siege": "125 BOULEVARD JEAN JAURES 92110 CLICHY",
+   "date_creation": "2022-11-18",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": {
+    "2025-12-31": {
+     "ca": null,
+     "resultat_net": 143183,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Siège transféré de Courbevoie vers le parc le 31/12/2025 (début d'activité déclaré au siège 01/04/2026). Comptes 2025: CA confidentiel, RN +143 kEUR."
+  },
+  {
+   "siren": "921547675",
+   "nom": "PALOMANO RUEIL",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Rueil-Malmaison",
+     "ville": "Rueil-Malmaison",
+     "adresse": "2 rue de l'Arsenal 92500",
+     "etab_depuis": "2024-02-01"
+    }
+   ],
+   "role": "exploitant (succursale)",
+   "siege": "8 RUE MOLIERE 92400 COURBEVOIE",
+   "date_creation": "2022-11-18",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "02",
+    "libelle": "3-5"
+   },
+   "finances": {
+    "2025-12-31": {
+     "ca": null,
+     "resultat_net": -214505,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Perte 2025 de -214,5 kEUR (CA confidentiel)."
+  },
+  {
+   "siren": "925031098",
+   "nom": "PALO-FRANCHISE",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [],
+   "role": "franchiseur",
+   "siege": "8 RUE MOLIERE 92400 COURBEVOIE",
+   "date_creation": "2024-03-27",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": {
+    "2025-12-31": {
+     "ca": null,
+     "resultat_net": 38363,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Franchise ouverte en février 2024 ; 25 contrats annoncés en 2025, objectif 100 parcs en 2028. NAF 47.78C."
+  },
+  {
+   "siren": "929268662",
+   "nom": "PALO-NOMAD",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [],
+   "role": "filiale (Palo-Nomad, NAF 77.29Z location) – activité itinérante/événementielle présumée",
+   "siege": "8 RUE MOLIERE 92400 COURBEVOIE",
+   "date_creation": "2024-05-17",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": "Pas de comptes publiés."
+  },
+  {
+   "siren": "943982355",
+   "nom": "PM MONTROUGE",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Montrouge",
+     "ville": "Montrouge",
+     "adresse": "44 av. Aristide Briand 92120"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "44 AVENUE ARISTIDE BRIAND 92120 MONTROUGE",
+   "date_creation": "2025-04-28",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Créée 28/04/2025 ; adresse identique au parc ; pas encore de comptes."
+  },
+  {
+   "siren": "100245463",
+   "nom": "PALO CDC",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Val d'Europe",
+     "ville": "Chanteloup-en-Brie",
+     "adresse": "Parc commercial Clos du Chêne, av. de la Ferme Briarde 77600"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "PARC COMMERCIAL CLOS DU CHENE AVENUE DE LA FERME BRIARDE 77600 CHANTELOUP-EN-BRIE",
+   "date_creation": "2026-02-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Créée 01/02/2026 ; ouverture annoncée 20/06/2026."
+  },
+  {
+   "siren": "851817221",
+   "nom": "NIKITO ALFORTVILLE (SUPERFLY)",
+   "groupe_marque": "Nikito (Taoni Invest)",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Nikito Alfortville (corner Palomano dans le parc Nikito)",
+     "ville": "Alfortville",
+     "adresse": "rue Félix Mothiron 94140"
+    }
+   ],
+   "role": "exploitant du site Nikito hôte (corner Palomano)",
+   "siege": "RUE FELIX MOTHIRON RUE FELIX MOTHIRON 94140 ALFORTVILLE",
+   "date_creation": "2019-06-13",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2021-12-31": {
+     "ca": null,
+     "resultat_net": 276873,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022-12-31": {
+     "ca": null,
+     "resultat_net": 782563,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-12-31": {
+     "ca": null,
+     "resultat_net": 139645,
+     "confidentialite": "Partiellement confidentiel (RAPCAC)"
+    },
+    "2024-12-31": {
+     "ca": null,
+     "resultat_net": 134800,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "probable",
+   "notes": "Le parc Palomano est intégré au Nikito (ex-Superfly) ; aucune SAS Palomano dédiée trouvée à Alfortville. CA toujours confidentiel ; RN 2021-2024 positif (pic 2022 +783 kEUR). Holding TAONI INVEST 844370742."
+  },
+  {
+   "siren": "930420146",
+   "nom": "ANAIA",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Aix-en-Provence",
+     "ville": "Aix-en-Provence",
+     "adresse": "45 bd Aristide Briand 13100"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "BUREAU 3 8 RUE DE LA REPUBLIQUE 13001 MARSEILLE 1ER",
+   "date_creation": "2024-06-25",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "SAS ANAIA (fam. Cassanet), créée 25/06/2024, adresse identique au parc."
+  },
+  {
+   "siren": "931849392",
+   "nom": "GMGF FAMILY",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Grasse",
+     "ville": "Grasse",
+     "adresse": "129 route de la Paoute 06130"
+    }
+   ],
+   "role": "exploitant (franchisé) – 1er parc franchisé (ouvert janv. 2025)",
+   "siege": "129 ROUTE DE LA PAOUTE 06130 GRASSE",
+   "date_creation": "2024-08-02",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": {
+    "2024-12-31": {
+     "ca": 0,
+     "resultat_net": -64337,
+     "ebe": -53281,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "SAS GMGF FAMILY, créée 02/08/2024 ; 1er exercice (pré-ouverture, clôture 31/12/2024) : CA 0, RN -64 kEUR."
+  },
+  {
+   "siren": "103139549",
+   "nom": "PAOLICE",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Toulon",
+     "ville": "La Garde",
+     "adresse": "375 av. Saint-Just 83130"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "375 AVENUE SAINT JUST 83130 LA GARDE",
+   "date_creation": "2026-03-24",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "SAS PAOLICE créée 24/03/2026 (adresse identique au parc)."
+  },
+  {
+   "siren": "990999690",
+   "nom": "LOPAIZO (PALOMANO)",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Fréjus",
+     "ville": "Puget-sur-Argens",
+     "adresse": "Lot 10 RN7 ZI des Meissugues 83480",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "LOT 10 RN7 ZONE INDUSTRIELLE DES MEISSUGUES 83480 PUGET-SUR-ARGENS",
+   "date_creation": "2025-09-03",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Créée 03/09/2025."
+  },
+  {
+   "siren": "930683743",
+   "nom": "FLOCON DE FAMILLE",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Metz",
+     "ville": "Jouy-aux-Arches",
+     "adresse": "4 allée des Tilleuls 57130"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "14 RUE DE L'ECOLE CENTRALE 57160 ROZERIEULLES",
+   "date_creation": "2024-06-28",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "SAS FLOCON DE FAMILLE créée 28/06/2024 (adresse identique au parc ; ouverture annoncée janv. 2025)."
+  },
+  {
+   "siren": "932630783",
+   "nom": "PALOMANO LILLE",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Lille La Maillerie",
+     "ville": "Villeneuve-d'Ascq",
+     "adresse": "Les Halles de la Maillerie, av. Le Nôtre 59491",
+     "etab_depuis": "2024-12-19"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "33 RUE JEAN JAURES 59510 HEM",
+   "date_creation": "2024-09-03",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Présidée par ARINVEST/APINVEST ; pas de comptes publiés."
+  },
+  {
+   "siren": "988433587",
+   "nom": "PTGKV",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Clermont-Ferrand",
+     "ville": "Clermont-Ferrand",
+     "adresse": "rue de l'Eminée 63000 (parc au n°12)"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "RUE DE L'EMINEE 63000 CLERMONT-FERRAND",
+   "date_creation": "2025-06-19",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": "SAS PTGKV (NAF 93.21Z) créée 19/06/2025, seule société de loisirs récente rue de l'Eminée ; dirigeants TPAG/KV INVEST."
+  },
+  {
+   "siren": "935352526",
+   "nom": "BEAUMAO",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Caen",
+     "ville": "Caen",
+     "adresse": "10 rue des Hauts de Beaulieu 14000",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "10 RUE DES HAUTS DE BEAULIEU 14000 CAEN",
+   "date_creation": "2024-11-13",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "942670209",
+   "nom": "EC&GA AVENTURES (PALOMANO)",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Rouen",
+     "ville": "Maromme",
+     "adresse": "94A rue des Martyrs de la Résistance 76150",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "94 A RUE DES MARTYRS DE LA RESISTANCE 76150 MAROMME",
+   "date_creation": "2026-01-17",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "SAS EC&GA AVENTURES créée 17/01/2026."
+  },
+  {
+   "siren": "939545919",
+   "nom": "MARCELANO",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Nantes Sud",
+     "ville": "Vertou",
+     "adresse": "83 route de la Gare 44120",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "83 ROUTE DE LA GARE 44120 VERTOU",
+   "date_creation": "2025-01-15",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Présidée par BÉVIC INVEST."
+  },
+  {
+   "siren": "937576817",
+   "nom": "PALO ANGERS",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Angers",
+     "ville": "Saint-Barthélemy-d'Anjou",
+     "adresse": "21 rue du Hanipet 49124",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "21 RUE DU HANIPET 49124 SAINT-BARTHELEMY-D'ANJOU",
+   "date_creation": "2024-11-20",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Présidée par MEETHIS RH."
+  },
+  {
+   "siren": "990129314",
+   "nom": "M&R ADVENTURES",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Saint-Quentin",
+     "ville": "Fayet",
+     "adresse": "5 bis rue de la Petite Vallée 02100",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "5 B RUE DE LA PETITE VALLEE 02100 FAYET",
+   "date_creation": "2025-07-22",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "988060851",
+   "nom": "PCLM",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Bordeaux",
+     "ville": "Bordeaux",
+     "adresse": "170 cours du Médoc 33300",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "170 COURS DU MEDOC 33300 BORDEAUX",
+   "date_creation": "2025-07-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "938092798",
+   "nom": "LA PETITE PARENTHESE (PALOMANO)",
+   "groupe_marque": "Palomano",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Toulouse Purpan",
+     "ville": "Toulouse",
+     "adresse": "334 av. de Grande-Bretagne 31300",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "334 AVENUE DE GRANDE BRETAGNE 31300 TOULOUSE",
+   "date_creation": "2024-11-29",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "992459180",
+   "nom": "CITE DES ENFANTS LE MANS (PALOMANO)",
+   "groupe_marque": "Palomano (pipeline)",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Le Mans (futur)",
+     "ville": "Le Mans",
+     "adresse": "6 rue Louis Bruyère 72000",
+     "enseigne_SIRENE": "PALOMANO"
+    }
+   ],
+   "role": "exploitant (franchisé, parc non encore listé sur palomano.com)",
+   "siege": "6 RUE LOUIS BRUYERE 72000 LE MANS",
+   "date_creation": "2025-10-09",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": "Raison sociale CITE DES ENFANTS LE MANS, enseigne PALOMANO."
+  },
+  {
+   "siren": "104547542",
+   "nom": "EL PALOMANO LYON",
+   "groupe_marque": "Palomano (pipeline)",
+   "parcs_exploites": [
+    {
+     "park": "Palomano Lyon (futur)",
+     "ville": "Saint-Maurice-de-Beynost",
+     "adresse": "14 rue des Gravelles 01700"
+    }
+   ],
+   "role": "exploitant (franchisé, en création)",
+   "siege": "14 RUE DES GRAVELLES 01700 SAINT-MAURICE-DE-BEYNOST",
+   "date_creation": "2026-05-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": "Raison sociale EL PALOMANO LYON, créée 01/05/2026."
+  },
+  {
+   "siren": "993431964",
+   "nom": "REVOPOLIE",
+   "groupe_marque": "Rêvopolie",
+   "parcs_exploites": [
+    {
+     "park": "Rêvopolie",
+     "ville": "Paris 15e",
+     "adresse": "25 rue Desnouettes 75015",
+     "enseigne_SIRENE": "REVOPOLIE"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "25 RUE DESNOUETTES 75015 PARIS",
+   "date_creation": "2025-10-24",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Créée 24/10/2025, présidée par XU CAPITAL (934358037)."
+  },
+  {
+   "siren": "932887888",
+   "nom": "OCTOPIA",
+   "groupe_marque": "Octopia",
+   "parcs_exploites": [
+    {
+     "park": "Octopia Kidz",
+     "ville": "Paris 17e",
+     "adresse": "5 rue Émile Allez 75017",
+     "enseigne_SIRENE": "OCTOPIA KIDZ"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "20 AVENUE DU PARC SAINT-JAMES 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2024-08-27",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Siège Neuilly-sur-Seine ; holding sœur OCTOPIA CAPITAL (108043357) créée 07/2026."
+  },
+  {
+   "siren": "941877193",
+   "nom": "BIGBEES (BULLES ET BILLES)",
+   "groupe_marque": "Bulles & Billes",
+   "parcs_exploites": [
+    {
+     "park": "Bulles & Billes",
+     "ville": "Paris 9e",
+     "adresse": "13 rue Sainte-Cécile 75009",
+     "enseigne_SIRENE": "BULLES ET BILLES",
+     "etab_depuis": "2026-05-20"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "52 RUE DU RENDEZ-VOUS 75012 PARIS",
+   "date_creation": "2025-02-27",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Raison sociale BIGBEES ; siège 52 rue du Rendez-Vous 75012."
+  },
+  {
+   "siren": "980145619",
+   "nom": "PETIT NUAGE",
+   "groupe_marque": "Petit Nuage",
+   "parcs_exploites": [
+    {
+     "park": "Petit Nuage",
+     "ville": "Saint-Ouen-sur-Seine",
+     "adresse": "13 rue Simone Veil 93400",
+     "etab_depuis": "2024-09-07 (début activité)"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "13 RUE SIMONE VEIL 93400 SAINT-OUEN-SUR-SEINE",
+   "date_creation": "2023-10-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": "NAF 93.29Z, 6-9 salariés ; pas de comptes publiés."
+  },
+  {
+   "siren": "100663509",
+   "nom": "MDA PARIS",
+   "groupe_marque": "Le Monde d'Ayden",
+   "parcs_exploites": [
+    {
+     "park": "Le Monde d'Ayden",
+     "ville": "Asnières-sur-Seine",
+     "adresse": "rue Henri Bergson 92600"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "RUE HENRI BERGSON 92600 ASNIERES-SUR-SEINE",
+   "date_creation": "2026-02-02",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": "Raison sociale MDA PARIS, créée 02/02/2026, présidée par L'UNIVERS D'AYDEN (réseau, autre filiale L'UNIVERS D'AYDEN FRANCE à Marquette-lez-Lille)."
+  },
+  {
+   "siren": "818345076",
+   "nom": "TORTUGA VETRAZ (L'ILE DE TORTUGA)",
+   "groupe_marque": "Garcin (Seven Squares / L'Île de la Tortuga)",
+   "parcs_exploites": [
+    {
+     "park": "L'Île de la Tortuga Paris",
+     "ville": "Paris 19e",
+     "adresse": "Boom Boom Villette, 30 av. Corentin Cariou 75019",
+     "enseigne_SIRENE": "SEVEN SQUARES PARIS",
+     "etab_depuis": "2023-03-08"
+    },
+    {
+     "park": "L'Île de Tortuga (siège)",
+     "ville": "Vétraz-Monthoux",
+     "adresse": "10 allée des Chênes 74100"
+    }
+   ],
+   "role": "exploitant (Vétraz + établissement Paris 19e)",
+   "siege": "10 ALLEE DES CHENES 74100 VETRAZ-MONTHOUX",
+   "date_creation": "2016-02-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2017-09-30": {
+     "ca": 1560596,
+     "resultat_net": 1882,
+     "ebe": 192204,
+     "confidentialite": "Public"
+    },
+    "2018-09-30": {
+     "ca": 1321988,
+     "resultat_net": 1809,
+     "ebe": 151177,
+     "confidentialite": "Public"
+    },
+    "2019-09-30": {
+     "ca": null,
+     "resultat_net": 63287,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2020-09-30": {
+     "ca": null,
+     "resultat_net": 3779,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2021-09-30": {
+     "ca": null,
+     "resultat_net": -35975,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022-09-30": {
+     "ca": null,
+     "resultat_net": 447852,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2024-09-30": {
+     "ca": null,
+     "resultat_net": 316623,
+     "confidentialite": "Partiellement confidentiel (RAPCAC)"
+    },
+    "2025-09-30": {
+     "ca": null,
+     "resultat_net": 827645,
+     "confidentialite": "Partiellement confidentiel (RAPCAC)"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "CA confidentiel depuis 2019 ; dernier CA publié 1,56 MEUR (2017). RN 2025: +828 kEUR."
+  },
+  {
+   "siren": "880082409",
+   "nom": "GARCIN FRANCE",
+   "groupe_marque": "Garcin (Seven Squares / L'Île de la Tortuga)",
+   "parcs_exploites": [],
+   "role": "holding (préside Tortuga Lille, Grenoble, Saint-Étienne, Villejust)",
+   "siege": "10 ALLEE DES CHENES 74100 VETRAZ-MONTHOUX",
+   "date_creation": "2019-11-14",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": {
+    "2020-09-30": {
+     "ca": 0,
+     "resultat_net": -79765,
+     "ebe": -79765,
+     "confidentialite": "Public"
+    },
+    "2021-09-30": {
+     "ca": 170825,
+     "resultat_net": -440390,
+     "ebe": -93697,
+     "confidentialite": "Public"
+    },
+    "2022-09-30": {
+     "ca": 365000,
+     "resultat_net": -1025542,
+     "ebe": -560575,
+     "confidentialite": "Public"
+    },
+    "2023-09-30": {
+     "ca": 661550,
+     "resultat_net": -684365,
+     "ebe": -554372,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 1195000,
+     "resultat_net": -744271,
+     "ebe": -150407,
+     "confidentialite": "Public"
+    },
+    "2025-09-30": {
+     "ca": null,
+     "resultat_net": -2603680,
+     "confidentialite": "Partiellement confidentiel (RAPCAC)"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Pertes chaque année ; -2,6 MEUR en 2025."
+  },
+  {
+   "siren": "939769162",
+   "nom": "TOUMINI CITY",
+   "groupe_marque": "Toumini City",
+   "parcs_exploites": [
+    {
+     "park": "Toumini City",
+     "ville": "Brétigny-sur-Orge",
+     "adresse": "ZAC Maison-Neuve, 52 av. de la Commune de Paris 91220"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "ZONE DE MAISON-NEUVE 52 AVENUE DE LA COMMUNE DE PARIS 91220 BRETIGNY-SUR-ORGE",
+   "date_creation": "2025-01-13",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Créée 13/01/2025, présidée par S2N INVEST."
+  },
+  {
+   "siren": "928142488",
+   "nom": "TK L'ISLE-ADAM (TERRAKIDS)",
+   "groupe_marque": "Quand je serai grand (Terrakids)",
+   "parcs_exploites": [
+    {
+     "park": "Quand je serai grand",
+     "ville": "Mours (L'Isle-Adam)",
+     "adresse": "PA Col Vert du Kiosque, rue du Kiosque 95260"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "PARC D'ACTIVITE COL VERT DU KIOSQUE 95260 MOURS",
+   "date_creation": "2024-04-18",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; quandjeseraigrand-parc.com (réservation via terrakids.qweekle.com)",
+   "confidence": "probable",
+   "notes": "Raison sociale TK L'ISLE-ADAM (TERRAKIDS), 6-9 salariés."
+  },
+  {
+   "siren": "951931724",
+   "nom": "CPL SQY",
+   "groupe_marque": "You Fun / You Jump (CPL Loisirs)",
+   "parcs_exploites": [
+    {
+     "park": "You Kids SQY",
+     "ville": "Montigny-le-Bretonneux",
+     "adresse": "CC SQY Ouest, 1 av. de la Source de la Bièvre 78180",
+     "etab_depuis": "2025-06-30"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "CENTRE COMMERCIAL 1 AVENUE DE LA SOURCE DE LA BIEVRE 78180 MONTIGNY-LE-BRETONNEUX",
+   "date_creation": "2023-04-21",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; sortiraparis.com",
+   "confidence": "probable",
+   "notes": "Raison sociale CPL SQY ; présidée par CPL LOISIRS (You Jump)."
+  },
+  {
+   "siren": "837931906",
+   "nom": "CPL LOISIRS",
+   "groupe_marque": "You Fun / You Jump (CPL Loisirs)",
+   "parcs_exploites": [],
+   "role": "holding réseau You Jump / You Kids",
+   "siege": "3550 ROUTE DES DOLINES 06410 BIOT",
+   "date_creation": "2018-02-08",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2024-12-31": {
+     "ca": 5801496,
+     "resultat_net": 3781191,
+     "ebe": 1110064,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "CA 2024 5,8 MEUR, RN 3,8 MEUR (remontées de filiales probables)."
+  },
+  {
+   "siren": "512888439",
+   "nom": "ACROCHATS",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [
+    {
+     "park": "Gulli Parc Thiais",
+     "ville": "Thiais",
+     "adresse": "CC Thiais Village, 3 rue de la Résistance 94320",
+     "enseigne_SIRENE": "ACROCHATS",
+     "etab_depuis": "2009-05-20"
+    },
+    {
+     "park": "Gulli Parc Bry-sur-Marne",
+     "ville": "Bry-sur-Marne",
+     "adresse": "Les Armoiries, 19B bd Jean Monnet 94360",
+     "enseigne_SIRENE": "GULLI PARC",
+     "etab_depuis": "2016-06-30"
+    },
+    {
+     "park": "Gulli Parc Sainte-Geneviève-des-Bois",
+     "ville": "Sainte-Geneviève-des-Bois",
+     "adresse": "ZAC Croix Blanche, 20 av. de la Croix Blanche 91700",
+     "enseigne_SIRENE": "GULLI PARC",
+     "etab_depuis": "2017-09-30"
+    },
+    {
+     "park": "Gulli Parc La Ville-du-Bois",
+     "ville": "La Ville-du-Bois",
+     "adresse": "CC La Ville du Bois, 5 rue de la Croix Saint-Jacques 91620",
+     "enseigne_SIRENE": "GULLI PARC",
+     "etab_depuis": "2018-03-31"
+    },
+    {
+     "park": "Gulli Parc Conflans-Sainte-Honorine",
+     "ville": "Conflans-Sainte-Honorine",
+     "adresse": "ZA des Boutries, 18 rue de l'Hautil 78700",
+     "enseigne_SIRENE": "GULLIPARC",
+     "etab_depuis": "2022-10-01"
+    },
+    {
+     "park": "Gulli Parc Meaux",
+     "ville": "Villenoy",
+     "adresse": "71 rue Aristide Briand 77124",
+     "enseigne_SIRENE": "GULLI PARC",
+     "etab_depuis": "2022-12-01"
+    },
+    {
+     "park": "Gulli Parc Carré Sénart",
+     "ville": "Lieusaint",
+     "adresse": "Shopping Parc, 3 allée du Préambule 77127",
+     "enseigne_SIRENE": "SPECIAL KIDS",
+     "etab_depuis": "2024-09-30"
+    },
+    {
+     "park": "Les Zacroc's",
+     "ville": "Plaisir",
+     "adresse": "12 rue Paul Langevin 78370",
+     "enseigne_SIRENE": "LES ZACROC'S",
+     "etab_depuis": "2025-07-01"
+    }
+   ],
+   "role": "exploitant (8 parcs IDF)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2009-05-20",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "22",
+    "libelle": "100-199"
+   },
+   "finances": {
+    "2016-09-30": {
+     "ca": 428667,
+     "resultat_net": 137522,
+     "ebe": -23388,
+     "confidentialite": "Public"
+    },
+    "2017-09-30": {
+     "ca": null,
+     "resultat_net": 223556,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022-09-30": {
+     "ca": null,
+     "resultat_net": 648364,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-09-30": {
+     "ca": 5110244,
+     "resultat_net": 826926,
+     "ebe": 1228966,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 6298245,
+     "resultat_net": 835453,
+     "ebe": 1579972,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": 1804288,
+     "resultat_net": 260986,
+     "ebe": 468780,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 6224512,
+     "resultat_net": 586383,
+     "ebe": 1247572,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises (établissements + enseignes); data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Filiale de LA BOITE AUX ENFANTS (dirigeants SIRENE : COFACOM 411457195, LBAE 519143911). 100-199 salariés. Exercice décalé : clôtures 30/09 jusqu'en 2024 puis exercice court 3 mois au 31/12/2024, puis calendaire. Reprises : Conflans (ex-Kidzy/Parc de Lomme), Villenoy (ex-Amus'Land), Lieusaint (ex-Special Kids/Royal Kids), Plaisir (ex-AJV Kids)."
+  },
+  {
+   "siren": "519143911",
+   "nom": "LA BOITE AUX ENFANTS (L.B.A.E)",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [],
+   "role": "holding / tête de réseau Gulli Parc (licence de la chaîne Gulli, groupe M6)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2009-05-15",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2016-09-30": {
+     "ca": 3040576,
+     "resultat_net": 579483,
+     "ebe": 462155,
+     "confidentialite": "Public"
+    },
+    "2017-09-30": {
+     "ca": 3213263,
+     "resultat_net": -70002,
+     "ebe": 395553,
+     "confidentialite": "Public"
+    },
+    "2022-09-30": {
+     "ca": null,
+     "resultat_net": -331450,
+     "confidentialite": "Partiellement confidentiel (RAPCAC)"
+    },
+    "2023-09-30": {
+     "ca": 1848690,
+     "resultat_net": 90759,
+     "ebe": 241811,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 2324206,
+     "resultat_net": -741207,
+     "ebe": -483354,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": 598017,
+     "resultat_net": -169372,
+     "ebe": -67781,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 2113227,
+     "resultat_net": -1133836,
+     "ebe": -798299,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "METROPOLE TELEVISION (M6) parmi les dirigeants/administrateurs. Pertes croissantes : -741 kEUR (09/2024), -1,13 MEUR (2025)."
+  },
+  {
+   "siren": "489954586",
+   "nom": "PARC DE LOMME",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [
+    {
+     "park": "Gulli Parc Lomme (présumé, d'après raison sociale)",
+     "ville": "Lille-Lomme"
+    },
+    {
+     "park": "ex-Kidzy Conflans (établissement fermé, repris par Acrochats)",
+     "ville": "Conflans-Sainte-Honorine",
+     "enseigne_SIRENE": "KIDZY"
+    }
+   ],
+   "role": "exploitant (hors IDF)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2006-05-02",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2023-09-30": {
+     "ca": 2340451,
+     "resultat_net": 497398,
+     "ebe": 562822,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 2826707,
+     "resultat_net": 127276,
+     "ebe": 376694,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": 790138,
+     "resultat_net": 38101,
+     "ebe": 113763,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 2942282,
+     "resultat_net": 39481,
+     "ebe": 331314,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "probable",
+   "notes": null
+  },
+  {
+   "siren": "514559004",
+   "nom": "BALEO",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [
+    {
+     "park": "Gulli Parc Aix-en-Provence",
+     "ville": "Aix-en-Provence",
+     "adresse": "ZAC Eiffel, 405 rue Gustave Eiffel 13290",
+     "enseigne_SIRENE": "GULLI PARC"
+    }
+   ],
+   "role": "exploitant (hors IDF)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2009-10-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2016-09-30": {
+     "ca": 616058,
+     "resultat_net": -25315,
+     "ebe": 322,
+     "confidentialite": "Public"
+    },
+    "2018-09-30": {
+     "ca": null,
+     "resultat_net": -66673,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2019-09-30": {
+     "ca": null,
+     "resultat_net": 35046,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2021-09-30": {
+     "ca": null,
+     "resultat_net": -130227,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022-09-30": {
+     "ca": null,
+     "resultat_net": 114811,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-09-30": {
+     "ca": 1419623,
+     "resultat_net": 176661,
+     "ebe": 279848,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 2258195,
+     "resultat_net": 177405,
+     "ebe": 417087,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 2235972,
+     "resultat_net": 221493,
+     "ebe": 453614,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "750391179",
+   "nom": "LUDIKLAND 74",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [
+    {
+     "park": "Parc(s) Haute-Savoie/Rhône-Alpes présumé(s) (raison sociale Ludikland 74)",
+     "ville": "n.d."
+    }
+   ],
+   "role": "exploitant (hors IDF)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2012-02-07",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2018-09-30": {
+     "ca": null,
+     "resultat_net": 8417,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2020-09-30": {
+     "ca": null,
+     "resultat_net": -15782,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-09-30": {
+     "ca": 849065,
+     "resultat_net": 141249,
+     "ebe": 204055,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 2934623,
+     "resultat_net": 287331,
+     "ebe": 209740,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": 611054,
+     "resultat_net": -29753,
+     "ebe": 10141,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 2818732,
+     "resultat_net": 301913,
+     "ebe": 485582,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "probable",
+   "notes": "Établissements non identifiés via l'API."
+  },
+  {
+   "siren": "488119355",
+   "nom": "KIDEA SERVICES",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [
+    {
+     "park": "Parc(s) non identifié(s)",
+     "ville": "n.d."
+    }
+   ],
+   "role": "exploitant (hors IDF)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2006-01-15",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "21",
+    "libelle": "50-99"
+   },
+   "finances": {
+    "2016-09-30": {
+     "ca": 463576,
+     "resultat_net": -99141,
+     "ebe": -83515,
+     "confidentialite": "Public"
+    },
+    "2017-09-30": {
+     "ca": null,
+     "resultat_net": 1821032,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2018-09-30": {
+     "ca": null,
+     "resultat_net": -267009,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2021-09-30": {
+     "ca": 798435,
+     "resultat_net": -411991,
+     "ebe": -178292,
+     "confidentialite": "Public"
+    },
+    "2023-09-30": {
+     "ca": 3244831,
+     "resultat_net": 254288,
+     "ebe": 389426,
+     "confidentialite": "Public"
+    },
+    "2024-09-30": {
+     "ca": 3091114,
+     "resultat_net": 83415,
+     "ebe": 256729,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": 785559,
+     "resultat_net": -5528,
+     "ebe": 35247,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 2807056,
+     "resultat_net": 27234,
+     "ebe": 181734,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "probable",
+   "notes": "Établissements non identifiés via l'API."
+  },
+  {
+   "siren": "750422081",
+   "nom": "LMX 74 (LASERMAXX 74)",
+   "groupe_marque": "La Boîte aux Enfants (Gulli Parc)",
+   "parcs_exploites": [
+    {
+     "park": "Lasermaxx 74 (laser game, Haute-Savoie présumé)",
+     "ville": "n.d."
+    }
+   ],
+   "role": "exploitant (laser game)",
+   "siege": "107 AVENUE CHARLES DE GAULLE 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2012-02-07",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": {
+    "2021-12-31": {
+     "ca": null,
+     "resultat_net": 6125,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-12-31": {
+     "ca": null,
+     "resultat_net": 156508,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "probable",
+   "notes": null
+  },
+  {
+   "siren": "811846773",
+   "nom": "AJV KIDS",
+   "groupe_marque": "Indépendant (ex-Zacroc's)",
+   "parcs_exploites": [
+    {
+     "park": "Les Zacroc's (jusqu'en 2025 ; établissement fermé)",
+     "ville": "Plaisir",
+     "adresse": "ZI des Ebisoires, 12 rue Paul Langevin 78370",
+     "enseigne_SIRENE": "LES ZACROC'S"
+    }
+   ],
+   "role": "ancien exploitant (parc cédé à Acrochats en 2025)",
+   "siege": "5 B RUE PARMENTIER 92200 NEUILLY-SUR-SEINE",
+   "date_creation": "2015-06-05",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Siège désormais 5B rue Parmentier Neuilly ; holding MG INVEST."
+  },
+  {
+   "siren": "505346551",
+   "nom": "ROYAL KIDS (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [],
+   "role": "franchiseur",
+   "siege": "ZAC DU POLE TECHNOLOGIQUE RUE JEAN DAUSSET 84000 AVIGNON",
+   "date_creation": "2008-08-15",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": {
+    "2017-09-30": {
+     "ca": null,
+     "resultat_net": -145287,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2018-09-30": {
+     "ca": null,
+     "resultat_net": 22879,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2019-09-30": {
+     "ca": null,
+     "resultat_net": 117472,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2020-09-30": {
+     "ca": null,
+     "resultat_net": 20672,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-12-31": {
+     "ca": 581746,
+     "resultat_net": 58847,
+     "ebe": 90126,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": null,
+     "resultat_net": -86861,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2025-12-31": {
+     "ca": null,
+     "resultat_net": 436084,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI); royalkids.fr",
+   "confidence": "sure",
+   "notes": "16 parcs IDF listés sur royalkids.fr. CA publié 2023 : 582 kEUR."
+  },
+  {
+   "siren": "984445544",
+   "nom": "F-KIDS",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Vélizy 2",
+     "ville": "Vélizy-Villacoublay",
+     "adresse": "16-18 av. Morane Saulnier 78140",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    },
+    {
+     "park": "Royal Kids (siège)",
+     "ville": "Montesson",
+     "adresse": "5 rue du Chant des Oiseaux 78360",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "5 RUE DU CHANT DES OISEAUX 78360 MONTESSON",
+   "date_creation": "2024-02-03",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Raison sociale F-KIDS, 20-49 salariés, présidée par YF GROUP."
+  },
+  {
+   "siren": "534073838",
+   "nom": "A.S PARK (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids (groupe Calvé/Rezki)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Élancourt",
+     "ville": "Élancourt",
+     "adresse": "ZAC Clé Saint-Pierre, 4 rue du Mal de Lattre de Tassigny 78990",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "ZAC DE LA CLE SAINT PIERRE 4 RUE DU MARECHAL DE LATTRE DE TASSIGNY 78990 ELANCOURT",
+   "date_creation": "2011-09-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Pas de comptes publiés."
+  },
+  {
+   "siren": "810093070",
+   "nom": "TL PARK",
+   "groupe_marque": "Royal Kids (groupe Calvé/Rezki)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Maurepas",
+     "ville": "Maurepas",
+     "adresse": "Village des Loisirs, 3 av. Louis Pasteur 78310"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "3 AVENUE LOUIS PASTEUR 78310 MAUREPAS",
+   "date_creation": "2015-02-26",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "02",
+    "libelle": "3-5"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; royalkids.fr",
+   "confidence": "probable",
+   "notes": "Raison sociale TL PARK, mêmes dirigeants que A.S PARK."
+  },
+  {
+   "siren": "804701902",
+   "nom": "RK LE MANS",
+   "groupe_marque": "Royal Kids (groupe Calvé/Rezki)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Éragny",
+     "ville": "Éragny",
+     "adresse": "rue du Bouvreuil 95610"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "RUE DU BOUVREUIL 95610 ERAGNY",
+   "date_creation": "2014-09-17",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": {
+    "2016-09-30": {
+     "ca": 266999,
+     "resultat_net": 49750,
+     "ebe": 53263,
+     "confidentialite": "Public"
+    },
+    "2017-09-30": {
+     "ca": 427516,
+     "resultat_net": 69624,
+     "ebe": 101383,
+     "confidentialite": "Public"
+    },
+    "2018-09-30": {
+     "ca": 490398,
+     "resultat_net": 79794,
+     "ebe": 112176,
+     "confidentialite": "Public"
+    },
+    "2019-09-30": {
+     "ca": 548457,
+     "resultat_net": 96610,
+     "ebe": 150548,
+     "confidentialite": "Public"
+    },
+    "2020-09-30": {
+     "ca": 388608,
+     "resultat_net": 41482,
+     "ebe": 74566,
+     "confidentialite": "Public"
+    },
+    "2021-09-30": {
+     "ca": 212893,
+     "resultat_net": 69122,
+     "ebe": 85538,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "probable",
+   "notes": "Raison sociale RK LE MANS (historique), siège à Éragny, dirigeant S. Calvé."
+  },
+  {
+   "siren": "994266211",
+   "nom": "SJS IVRY",
+   "groupe_marque": "Royal Kids (groupe Calvé/Rezki)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Ivry",
+     "ville": "Ivry-sur-Seine",
+     "adresse": "10 rue Jules Vanzuppe 94200",
+     "etab_depuis": "2025-12-01"
+    }
+   ],
+   "role": "exploitant (franchisé, repreneur)",
+   "siege": "10 RUE JULES VANZUPPE 94200 IVRY-SUR-SEINE",
+   "date_creation": "2025-11-18",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; royalkids.fr",
+   "confidence": "probable",
+   "notes": "Raison sociale SJS IVRY (dirigeant S. Rezki) ; a succédé à ASSIREM PLAY."
+  },
+  {
+   "siren": "810167445",
+   "nom": "ASSIREM PLAY (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Ivry (établissement fermé)",
+     "ville": "Ivry-sur-Seine",
+     "adresse": "10 rue Jules Vanzuppe 94200",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    }
+   ],
+   "role": "ancien exploitant",
+   "siege": "10 RUE JULES VANZUPPE 94200 IVRY-SUR-SEINE",
+   "date_creation": "2015-03-11",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2016-12-31": {
+     "ca": 657892,
+     "resultat_net": 5908,
+     "ebe": 69450,
+     "confidentialite": "Public"
+    },
+    "2018-12-31": {
+     "ca": 679862,
+     "resultat_net": -4239,
+     "ebe": 57367,
+     "confidentialite": "Public"
+    },
+    "2021-12-31": {
+     "ca": 406418,
+     "resultat_net": 47220,
+     "ebe": 94535,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "788922466",
+   "nom": "C.G.C ENJOY PARK (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Bonneuil",
+     "ville": "Bonneuil-sur-Marne",
+     "adresse": "Les Varennes 94380",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "LES VARENNES 94380 BONNEUIL SUR MARNE",
+   "date_creation": "2012-11-18",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": {
+    "2021-06-30": {
+     "ca": null,
+     "resultat_net": -145334,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022-06-30": {
+     "ca": null,
+     "resultat_net": 173557,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-06-30": {
+     "ca": 868651,
+     "resultat_net": 118997,
+     "ebe": 199918,
+     "confidentialite": "Public"
+    },
+    "2024-06-30": {
+     "ca": null,
+     "resultat_net": 184408,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2025-06-30": {
+     "ca": null,
+     "resultat_net": 66288,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "939466512",
+   "nom": "REKRE EPONE (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Épône",
+     "ville": "Épône",
+     "adresse": "151 rue Fernand Léger 78680"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "151 RUE FERNAND LEGER 78680 EPONE",
+   "date_creation": "2025-10-30",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Raison sociale REKRE EPONE, créée 30/10/2025."
+  },
+  {
+   "siren": "817675853",
+   "nom": "RECREA PLAINE (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids (groupe IESO)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Roissy-en-Brie",
+     "ville": "Roissy-en-Brie",
+     "adresse": "av. Jean Monnet 77680",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "LDT LE GRAND ETANG ET RU DU MOULIN AVENUE JEAN MONNET 77680 ROISSY-EN-BRIE",
+   "date_creation": "2016-02-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2019-03-31": {
+     "ca": null,
+     "resultat_net": 18110,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2020-03-31": {
+     "ca": null,
+     "resultat_net": -8938,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2023-03-31": {
+     "ca": null,
+     "resultat_net": 52658,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2024-03-31": {
+     "ca": null,
+     "resultat_net": 233122,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2025-03-31": {
+     "ca": null,
+     "resultat_net": 46203,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Raison sociale RECREA PLAINE ; holding IESO (792572208) détient aussi Planet Park Emerainville et Varennes, Urban Jump."
+  },
+  {
+   "siren": "799903661",
+   "nom": "OBOJEUX",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Paris Nord 2",
+     "ville": "Roissy-en-France",
+     "adresse": "58 rue de la Belle Étoile 95700",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    },
+    {
+     "park": "Royal Kids Montreuil",
+     "ville": "Montreuil",
+     "adresse": "27 rue des Roches 93100"
+    }
+   ],
+   "role": "exploitant (franchisé, 2 parcs)",
+   "siege": "58 RUE DE LA BELLE ETOILE 95700 ROISSY-EN-FRANCE",
+   "date_creation": "2014-01-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": {
+    "2019-12-31": {
+     "ca": null,
+     "resultat_net": 80694,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022-12-31": {
+     "ca": 916572,
+     "resultat_net": 113090,
+     "ebe": 139379,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": null,
+     "resultat_net": 92280,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Raison sociale OBOJEUX."
+  },
+  {
+   "siren": "100863026",
+   "nom": "KIMA PLAY (ROYAL KIDS)",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Rosny-sous-Bois (nouveau)",
+     "ville": "Rosny-sous-Bois",
+     "adresse": "3 rue Charles Garnier 93110",
+     "enseigne_SIRENE": "ROYAL KIDS"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "3 RUE CHARLES GARNIER 93110 ROSNY-SOUS-BOIS",
+   "date_creation": "2026-09-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Raison sociale KIMA PLAY, créée 01/09/2026."
+  },
+  {
+   "siren": "753338292",
+   "nom": "Z' KIDS",
+   "groupe_marque": "Zalegh (Royal Kids / Planet Park)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Bezons",
+     "ville": "Bezons",
+     "adresse": "9 rue Charles-François Daubigny 95870"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "9 RUE CHARLES FRANCOIS DAUBIGNY 95870 BEZONS",
+   "date_creation": "2012-08-10",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2023-12-31": {
+     "ca": null,
+     "resultat_net": 124733,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2024-12-31": {
+     "ca": null,
+     "resultat_net": 108920,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI); royalkids.fr",
+   "confidence": "sure",
+   "notes": "Raison sociale Z' KIDS (fam. Zalegh), 20-49 salariés."
+  },
+  {
+   "siren": "794308106",
+   "nom": "ROYAL Z",
+   "groupe_marque": "Zalegh (Royal Kids / Planet Park)",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Saint-Brice",
+     "ville": "Saint-Brice-sous-Forêt",
+     "adresse": "29 rue de Piscop 95350"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "29 RUE DE PISCOP 95350 SAINT-BRICE-SOUS-FORET",
+   "date_creation": "2013-07-17",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "12",
+    "libelle": "20-49"
+   },
+   "finances": {
+    "2023-12-31": {
+     "ca": null,
+     "resultat_net": 31617,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2024-12-31": {
+     "ca": null,
+     "resultat_net": 14230,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI); royalkids.fr",
+   "confidence": "sure",
+   "notes": "Raison sociale ROYAL Z (fam. Zalegh), 20-49 salariés."
+  },
+  {
+   "siren": "813877388",
+   "nom": "DREAM KIDS",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Buchelay",
+     "ville": "Buchelay",
+     "adresse": "1 rue des Gamelines 78200"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "1 RUE DES GAMELINES 78200 BUCHELAY",
+   "date_creation": "2015-09-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; royalkids.fr",
+   "confidence": "sure",
+   "notes": "Raison sociale DREAM KIDS, 10-19 salariés."
+  },
+  {
+   "siren": "531288751",
+   "nom": "LES BIQUETS",
+   "groupe_marque": "Royal Kids",
+   "parcs_exploites": [
+    {
+     "park": "Royal Kids Beauchamp",
+     "ville": "Beauchamp",
+     "adresse": "190 bis chaussée Jules César 95250"
+    }
+   ],
+   "role": "exploitant (franchisé)",
+   "siege": "190 B CHAUSSEE JULES CESAR 95250 BEAUCHAMP",
+   "date_creation": "2011-03-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; royalkids.fr",
+   "confidence": "sure",
+   "notes": "Raison sociale LES BIQUETS (mêmes dirigeants que JUMP PARC 813185444)."
+  },
+  {
+   "siren": "939086963",
+   "nom": "PP CORMEILLES",
+   "groupe_marque": "Zalegh (Royal Kids / Planet Park)",
+   "parcs_exploites": [
+    {
+     "park": "Planet Park Cormeilles",
+     "ville": "Cormeilles-en-Parisis",
+     "adresse": "ZAC Les Bois Rochefort, bd du Parisis 95240"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "ZAC LES BOIS ROCHEFORT BOULEVARD DU PARISIS 95240 CORMEILLES EN PARISIS",
+   "date_creation": "2024-09-26",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises; parisjetaime.com",
+   "confidence": "sure",
+   "notes": "Raison sociale PP CORMEILLES, créée 26/09/2024, présidée par ZALEGH INVESTISSEMENT (société sœur ZL CORMEILLES 935120584 à la même adresse)."
+  },
+  {
+   "siren": "531009249",
+   "nom": "KINGOOROO",
+   "groupe_marque": "Kingooroo",
+   "parcs_exploites": [
+    {
+     "park": "Kingooroo",
+     "ville": "Aubervilliers",
+     "adresse": "51 rue de Presles 93300"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "51 RUE DE PRESLES 93300 AUBERVILLIERS",
+   "date_creation": "2011-04-14",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "11",
+    "libelle": "10-19"
+   },
+   "finances": {
+    "2024-12-31": {
+     "ca": null,
+     "resultat_net": -924,
+     "confidentialite": "Partiellement confidentiel"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "10-19 salariés ; seul exercice publié 2024 (CA confidentiel, RN -924 EUR)."
+  },
+  {
+   "siren": "939976189",
+   "nom": "KIDZ WORLD (KIDZ WORLD)",
+   "groupe_marque": "Kidz World",
+   "parcs_exploites": [
+    {
+     "park": "Kidz World",
+     "ville": "Lyon 8e",
+     "adresse": "23 rue Jacqueline Auriol 69008",
+     "enseigne_SIRENE": "KIDZ WORLD"
+    }
+   ],
+   "role": "exploitant",
+   "siege": "23 RUE JACQUELINE AURIOL 69008 LYON",
+   "date_creation": "2025-02-01",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "sure",
+   "notes": "Créée 01/02/2025."
+  },
+  {
+   "siren": "539063941",
+   "nom": "HAPPY CITY (HAPPY CITY)",
+   "groupe_marque": "Happy City",
+   "parcs_exploites": [
+    {
+     "park": "Happy City Villefranche (parc pilote)",
+     "ville": "Villefranche-sur-Saône",
+     "adresse": "580 rue Benoît Mulsant 69400",
+     "enseigne_SIRENE": "HAPPY CITY"
+    }
+   ],
+   "role": "exploitant du parc pilote / franchiseur historique",
+   "siege": "580 RUE BENOIT MULSANT 69400 VILLEFRANCHE-SUR-SAONE",
+   "date_creation": "2011-12-26",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "03",
+    "libelle": "6-9"
+   },
+   "finances": {
+    "2023-06-30": {
+     "ca": null,
+     "resultat_net": 123029,
+     "confidentialite": "Partiellement confidentiel"
+    },
+    "2022": {
+     "ca": null,
+     "resultat_net": 123029,
+     "confidentialite": "API (ca=0 -> null)"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": null
+  },
+  {
+   "siren": "840058358",
+   "nom": "HAPPY CITY DEVELOPPEMENT",
+   "groupe_marque": "Happy City",
+   "parcs_exploites": [],
+   "role": "société de développement du réseau (NAF 77.40Z, licences de marque)",
+   "siege": "580 RUE BENOIT MULSANT 69400 VILLEFRANCHE-SUR-SAONE",
+   "date_creation": "2018-05-22",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": null,
+   "source": "API recherche-entreprises",
+   "confidence": "probable",
+   "notes": null
+  },
+  {
+   "siren": "877491167",
+   "nom": "HAPPY CITY HOLDING",
+   "groupe_marque": "Happy City",
+   "parcs_exploites": [],
+   "role": "holding",
+   "siege": "580 RUE BENOIT MULSANT 69400 VILLEFRANCHE-SUR-SAONE",
+   "date_creation": "2019-09-06",
+   "etat": "A",
+   "effectif_tranche": {
+    "code": "NN",
+    "libelle": "non renseigné / non employeur"
+   },
+   "finances": {
+    "2021-12-31": {
+     "ca": 0,
+     "resultat_net": -10042,
+     "ebe": -3614,
+     "confidentialite": "Public"
+    },
+    "2022-12-31": {
+     "ca": 0,
+     "resultat_net": 79179,
+     "ebe": -3997,
+     "confidentialite": "Public"
+    },
+    "2023-12-31": {
+     "ca": 0,
+     "resultat_net": 40030,
+     "ebe": -4118,
+     "confidentialite": "Public"
+    },
+    "2024-12-31": {
+     "ca": 0,
+     "resultat_net": 94111,
+     "ebe": -4312,
+     "confidentialite": "Public"
+    },
+    "2025-12-31": {
+     "ca": 0,
+     "resultat_net": 53154,
+     "ebe": -4360,
+     "confidentialite": "Public"
+    }
+   },
+   "source": "API recherche-entreprises; data.economie.gouv.fr ratios_inpi_bce (comptes déposés INPI)",
+   "confidence": "sure",
+   "notes": "Holding pure (CA 0, RN = dividendes)."
+  }
+ ]
+}

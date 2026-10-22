@@ -105,7 +105,7 @@ def releve_jour(R: Roller, d: date, produit: str | None, jauge: int | None, pres
     p = _entree(prods, produit)
     ann = _anniversaires(prods, anniv) if anniv is not None else None
     if not p or not p.get("sessions"):
-        return {"a": ann} if ann else None
+        return {"a": ann} if ann is not None else None
     ss = [s for s in p["sessions"] if s.get("startTime")]
     variantes = [(v["id"], v.get("name") or "") for v in p.get("products") or []]
     enf, adu = P.choisir_entrees(variantes)
@@ -193,10 +193,17 @@ def main() -> int:
                 n = 0
                 while d < today:
                     k = d.isoformat()
-                    if args.refaire or k not in h["jours"] or (today - d).days <= 3:
+                    fermes = h.setdefault("fermes", [])
+                    if args.refaire or (k not in h["jours"] and k not in fermes) or (today - d).days <= 3:
                         r = releve_jour(R, d, info.get("produit"), jauge, presence, anniv)
                         if r:
                             h["jours"][k] = r
+                            if k in fermes:
+                                fermes.remove(k)
+                        else:
+                            h["jours"].pop(k, None)            # jour fermé : noté, plus relu
+                            if k not in fermes:
+                                fermes.append(k)
                         n += 1
                         time.sleep(0.3)
                     d += timedelta(days=1)
