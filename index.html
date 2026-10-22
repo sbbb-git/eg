@@ -310,7 +310,9 @@ function ventesStats(){
 }
 const frDate=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
 const FIABLE=iso(new Date(new Date(TRACK_START+"T12:00").getTime()+(SUIVI_MIN+7)*864e5));
-let PER="7", VILLE="", TAB="vue";
+/* lien direct vers un onglet : …/eg/#parcs */
+const ONGLETS=["vue","enseignes","salles","carte","parcs"];
+let PER="7", VILLE="", TAB=ONGLETS.includes(location.hash.slice(1))?location.hash.slice(1):"vue";
 /* Deux garde-fous de justesse, calculés une fois après chargement :
    DAY_OK  : on écarte les jours de bord d'horizon (le scraper voit ~7 j, le
              dernier jour n'est que partiellement publié -> fausse occupation).
@@ -1168,11 +1170,12 @@ function wireHovers(){
 }
 
 /* nav + filtres */
-document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
+document.querySelectorAll("#nav button").forEach(b=>{b.classList.toggle("on",b.dataset.t===TAB);b.onclick=()=>{
   document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on",x===b));
   const avant=TAB==="parcs";TAB=b.dataset.t;
+  history.replaceState(null,"",TAB==="vue"?location.pathname+location.search:"#"+TAB);
   if(avant!==(TAB==="parcs"))fillVilles();
-  render();});
+  render();};});
 document.querySelectorAll("#segper button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#segper button").forEach(x=>x.classList.toggle("on",x===b));
   PER=b.dataset.p;render();});
