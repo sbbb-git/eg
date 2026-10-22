@@ -3,176 +3,327 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0d0d0d">
 <meta name="robots" content="noindex, nofollow">
-<title>Observatoire Escape · Île-de-France</title>
+<title>Observatoire loisirs</title>
+<script>
+/* thème : choix mémorisé, sinon celui du système (appliqué avant le rendu, pas de flash) */
+try{const t=localStorage.getItem("obs_theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}
+</script>
 <style>
+/* ═════════ jetons — palette dataviz validée (clair + sombre) ═════════ */
 :root{
-  /* surfaces & encre — palette dataviz validée (mode sombre) */
-  --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#121211;
-  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
-  --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,.10);
-  /* série (une seule série -> une seule couleur) */
-  --s1:#3987e5;
-  /* statut (réservé, jamais série) */
-  --good:#0ca30c; --warn:#fab219; --crit:#d03b3b;
-  /* ramp séquentiel occupation (validé : monotone, gaps>=.06, light-end 2.15:1) */
-  --h1:#184f95; --h2:#256abf; --h3:#3987e5; --h4:#6da7ec; --h5:#9ec5f4; --h6:#cde2fb;
+  color-scheme:light;
+  --plane:#f4f4f1; --surface:#fcfcfb; --surface-2:#f0efeb; --raise:#ffffff;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#76746e;
+  --grid:#e1e0d9; --axis:#c3c2b7; --hair:rgba(11,11,11,.10); --hair-2:rgba(11,11,11,.06);
+  --accent:#2a78d6; --accent-ink:#1c5cab; --accent-soft:rgba(42,120,214,.10);
+  /* comparaison : 4 premières teintes catégorielles, ordre fixe (validé : CVD ΔE ≥ 8,4) */
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100;
+  --dim:#d3d2cb;
+  --good:#0ca30c; --good-ink:#006300; --warn:#fab219; --warn-ink:#8a5a00; --crit:#d03b3b;
+  /* séquentiel bleu : faible -> fort (le faible se fond dans la surface) */
+  --q1:#cde2fb; --q2:#9ec5f4; --q3:#6da7ec; --q4:#3987e5; --q5:#256abf; --q6:#184f95;
+  --shadow:0 1px 2px rgba(11,11,11,.04),0 6px 20px rgba(11,11,11,.04);
   --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#141413; --raise:#222220;
+    --ink:#f0efec; --ink-2:#c3c2b7; --muted:#8f8d87;
+    --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,.10); --hair-2:rgba(255,255,255,.06);
+    --accent:#3987e5; --accent-ink:#86b6ef; --accent-soft:rgba(57,135,229,.16);
+    --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500;
+    --dim:#3d3d3a;
+    --good-ink:#0ca30c; --warn-ink:#fab219;
+    --q1:#184f95; --q2:#256abf; --q3:#3987e5; --q4:#6da7ec; --q5:#9ec5f4; --q6:#cde2fb;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#141413; --raise:#222220;
+  --ink:#f0efec; --ink-2:#c3c2b7; --muted:#8f8d87;
+  --grid:#2c2c2a; --axis:#383835; --hair:rgba(255,255,255,.10); --hair-2:rgba(255,255,255,.06);
+  --accent:#3987e5; --accent-ink:#86b6ef; --accent-soft:rgba(57,135,229,.16);
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500;
+  --dim:#3d3d3a;
+  --good-ink:#0ca30c; --warn-ink:#fab219;
+  --q1:#184f95; --q2:#256abf; --q3:#3987e5; --q4:#6da7ec; --q5:#9ec5f4; --q6:#cde2fb;
+  --shadow:none;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--plane);color:var(--ink);
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
-h1,h2,h3,h4{margin:0;font-weight:650}
-a{color:inherit}
-button{font:inherit}
+  font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;font-weight:650;letter-spacing:-.01em}
+a{color:var(--accent-ink);text-decoration:none}
+a:hover{text-decoration:underline}
+button,select,input{font:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.ink2{color:var(--ink-2)}
 
-/* ── gate ── */
-#gate{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 30% 20%,#1c1c1a,#0d0d0d)}
-#gate .box{background:var(--surface);border:1px solid var(--hair);padding:32px 34px;border-radius:18px;width:340px}
-#gate h1{font-size:18px;margin-bottom:4px}
+/* ── accès ── */
+#gate{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:var(--plane)}
+#gate .box{background:var(--surface);border:1px solid var(--hair);padding:32px 34px;border-radius:18px;width:min(360px,92vw);box-shadow:var(--shadow)}
+#gate h1{font-size:19px;margin-bottom:4px}
 #gate p{color:var(--muted);font-size:13px;margin:0 0 22px}
-#gate input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--hair);
-  background:var(--surface-2);color:var(--ink);font-size:15px;margin-bottom:10px}
-#gate button{width:100%;padding:12px;border:0;border-radius:10px;background:var(--s1);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+#gate input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--hair);background:var(--surface-2);font-size:15px;margin-bottom:10px}
+#gate button{width:100%;padding:12px;border:0;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
 #gate .err{color:var(--crit);font-size:13px;min-height:18px;margin-top:8px}
 
-/* ── shell ── */
+/* ── coque ── */
 #app{display:none}
-.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
-header{border-bottom:1px solid var(--hair);background:var(--plane);position:sticky;top:0;z-index:60}
-.htop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0}
-.brand{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:650}
-.live{width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 8px var(--good);flex:0 0 auto}
-.hmeta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
-.ghost{background:none;border:1px solid var(--hair);color:var(--ink-2);padding:6px 10px;border-radius:9px;cursor:pointer;font-size:12px}
-.ghost:hover{border-color:var(--s1);color:var(--ink)}
-nav{display:flex;gap:2px;overflow-x:auto}
-nav button{background:none;border:0;color:var(--muted);padding:11px 14px;font-size:13.5px;font-weight:600;
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+header{background:var(--surface);border-bottom:1px solid var(--hair);position:sticky;top:0;z-index:60}
+.htop{display:flex;align-items:center;gap:16px;padding:12px 0 10px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;white-space:nowrap}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--good);flex:0 0 auto}
+.univ{display:flex;background:var(--surface-2);border:1px solid var(--hair);border-radius:11px;padding:3px;gap:2px}
+.univ button{border:0;background:none;padding:7px 14px;border-radius:8px;font-weight:600;font-size:13.5px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.univ button.on{background:var(--raise);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.hright{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12.5px}
+.ghost{background:none;border:1px solid var(--hair);color:var(--ink-2);padding:6px 10px;border-radius:9px;cursor:pointer;font-size:12.5px;white-space:nowrap}
+.ghost:hover{color:var(--ink);border-color:var(--axis)}
+.icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+nav.sub{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -4px}
+nav.sub::-webkit-scrollbar{display:none}
+nav.sub button{background:none;border:0;color:var(--ink-2);padding:9px 12px 11px;font-size:13.5px;font-weight:600;
   border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
-nav button.on{color:var(--ink);border-bottom-color:var(--s1)}
+nav.sub button:hover{color:var(--ink)}
+nav.sub button.on{color:var(--ink);border-bottom-color:var(--accent)}
 
-/* filtres : UNE seule rangée au-dessus de tout ce qu'elle cadre */
-.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:14px 0 2px}
-.seg{display:flex;background:var(--surface-2);border:1px solid var(--hair);border-radius:10px;padding:2px}
-.seg button{background:none;border:0;color:var(--muted);padding:7px 12px;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer}
-.seg button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.4)}
-select,input.txt{background:var(--surface-2);border:1px solid var(--hair);color:var(--ink);
-  border-radius:10px;padding:9px 11px;font-size:13px}
-input.txt{flex:1;min-width:150px}
-.fnote{color:var(--muted);font-size:12px;margin-left:auto}
+/* filtres : UNE rangée au-dessus de tout ce qu'elle cadre */
+.fbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:14px 0 4px}
+.seg{display:flex;background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:2px}
+.seg button{background:none;border:0;color:var(--ink-2);padding:7px 11px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--accent-soft);color:var(--accent-ink)}
+.sel{position:relative}
+.sel select{appearance:none;-webkit-appearance:none;background:var(--surface);border:1px solid var(--hair);border-radius:10px;
+  padding:8px 32px 8px 12px;font-size:13px;font-weight:600;cursor:pointer;max-width:260px}
+.sel select.set{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+.sel::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border-right:1.5px solid var(--muted);
+  border-bottom:1.5px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.fnote{color:var(--muted);font-size:12.5px;margin-left:auto}
+.reset{background:none;border:0;color:var(--accent-ink);font-size:12.5px;font-weight:600;cursor:pointer;padding:6px 4px}
 
-main{padding:6px 0 60px}
-.grid{display:grid;gap:12px}
-.tiles{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
-.two{grid-template-columns:1fr 1fr;align-items:start}  /* chaque carte à sa hauteur */
-@media(max-width:860px){.two{grid-template-columns:1fr}}
+main{padding:10px 0 70px}
+.scope{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 16px}
+.scope h1{font-size:24px;line-height:1.2}
+.scope .s{color:var(--ink-2);font-size:13.5px;margin-top:3px}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+.span2{grid-column:span 2}
+.mt{margin-top:14px}
+.grid>*,.card{min-width:0}
 
-/* Les enfants de grille/flex ont min-width:auto : sans ce reset ils s'élargissent
-   au contenu (la heatmap large) au lieu de la laisser défiler en interne, ce qui
-   fait déborder la page horizontalement sur mobile. */
-.grid>*,.card,.chead>div,.row>*{min-width:0}
-.card{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r);padding:16px 18px}
-.card.pad0{padding:16px 18px 10px}
-.ctitle{font-size:14px;font-weight:650}
-.csub{color:var(--muted);font-size:12px;margin-top:2px;line-height:1.45}
+/* cartes */
+.card{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
 .chead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
-.tbtn{background:none;border:1px solid var(--hair);color:var(--muted);border-radius:8px;padding:4px 8px;font-size:11px;cursor:pointer;white-space:nowrap}
-.tbtn:hover{color:var(--ink);border-color:var(--s1)}
+.ctitle{font-size:15px;font-weight:650}
+.csub{color:var(--muted);font-size:12.5px;margin-top:2px;line-height:1.45}
+.cact{display:flex;gap:6px;flex:0 0 auto}
+.tbtn{background:none;border:1px solid var(--hair);color:var(--ink-2);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer;white-space:nowrap}
+.tbtn:hover{color:var(--ink);border-color:var(--axis)}
+.tbtn.on{background:var(--accent-soft);color:var(--accent-ink);border-color:transparent}
+.more{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--accent-ink);background:none;border:0;padding:0}
 
-/* stat tiles */
-.tile .lab{color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.01em}
-.tile .val{font-size:31px;line-height:1.1;margin:7px 0 3px;font-weight:680}
-.tile .ctx{color:var(--ink-2);font-size:12.5px}
-.bar-mini{height:6px;border-radius:3px;background:var(--grid);overflow:hidden;margin-top:9px}
-.bar-mini i{display:block;height:100%;background:var(--s1);border-radius:3px}
+/* tuiles chiffres */
+.tile{padding:16px 18px}
+.tile .lab{color:var(--ink-2);font-size:12.5px;font-weight:600}
+.tile .val{font-size:30px;line-height:1.1;margin:8px 0 6px;font-weight:650;letter-spacing:-.02em}
+.tile .sub{color:var(--muted);font-size:12.5px;line-height:1.4}
+.tile .vs{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.delta{font-weight:650;font-size:12px;padding:1px 6px;border-radius:6px}
+.delta.up{color:var(--good-ink);background:rgba(12,163,12,.10)}
+.delta.dn{color:var(--crit);background:rgba(208,59,59,.10)}
+.delta.eq{color:var(--ink-2);background:var(--surface-2)}
+.meter{height:6px;border-radius:3px;background:var(--grid);overflow:hidden;margin-top:10px;position:relative}
+.meter i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.meter b{position:absolute;top:-3px;width:2px;height:12px;background:var(--ink-2);border-radius:1px}
+
+/* barres horizontales (classements) */
+.hb{display:flex;flex-direction:column;gap:2px}
+.hbr{display:grid;grid-template-columns:minmax(110px,34%) 1fr 64px;gap:12px;align-items:center;padding:5px 6px;margin:0 -6px;border-radius:8px}
+.hbr.click{cursor:pointer}
+.hbr.click:hover{background:var(--surface-2)}
+.hbr .l{min-width:0}
+.hbr .l b{display:block;font-weight:550;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbr .l span{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbr .t{height:10px;background:var(--surface-2);border-radius:0 5px 5px 0;position:relative}
+.hbr .t i{display:block;height:100%;background:var(--accent);border-radius:0 4px 4px 0;min-width:2px}
+.hbr .t i.dim{background:var(--dim)}
+.hbr .t em{position:absolute;top:-3px;width:2px;height:16px;background:var(--ink-2);border-radius:1px}
+.hbr .v{text-align:right;font-weight:650;font-size:13px;font-variant-numeric:tabular-nums}
+.hbr.hl .l b{color:var(--accent-ink)}
+
+/* colonnes (jour par jour) */
+.cols{position:relative;height:170px;display:flex;align-items:flex-end;gap:2px;padding-left:44px;margin-top:6px}
+.cols .gl{position:absolute;left:44px;right:0;border-top:1px solid var(--grid);pointer-events:none}
+.cols .gl span{position:absolute;left:-44px;top:-8px;width:38px;text-align:right;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cols .c{flex:1;height:100%;display:flex;align-items:flex-end;justify-content:center;position:relative;cursor:default}
+.cols .c:hover{background:var(--hair-2);border-radius:6px}
+.cols .c i{display:block;width:min(24px,70%);background:var(--accent);border-radius:4px 4px 0 0;min-height:1px}
+.cols .c i.dim{background:var(--dim)}
+.cols .c i.we{opacity:1}
+.cols .c em{position:absolute;left:12%;right:12%;border-top:2px solid var(--ink-2);pointer-events:none}
+.xl{display:flex;gap:2px;padding-left:44px;margin-top:6px}
+.xl span{flex:1;text-align:center;color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:visible;min-width:0}
+.xl span.we{color:var(--ink-2);font-weight:600}
+.leg{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;color:var(--ink-2);font-size:12px;align-items:center}
+.leg .k{display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.leg .ln{display:inline-block;width:14px;height:0;border-top:2px solid;margin-right:6px;vertical-align:3px}
+
+/* lignes (comparaison) */
+.lc{position:relative;height:220px;margin-left:44px}
+.lc svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lc .gl{position:absolute;left:0;right:0;border-top:1px solid var(--grid)}
+.lc .gl span{position:absolute;left:-44px;top:-8px;width:38px;text-align:right;color:var(--muted);font-size:11px;white-space:nowrap}
+.lc .hit{position:absolute;top:0;bottom:0;display:flex;left:0;right:0}
+.lc .hit div{flex:1;position:relative}
+.lc .hit div:hover::after{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid var(--axis)}
 
 /* heatmap */
-.hm{width:100%;overflow-x:auto}
-.hm table{border-collapse:separate;border-spacing:2px;width:100%;min-width:520px}
-.hm th{color:var(--muted);font-size:11px;font-weight:600;padding:0 0 4px;text-align:center;font-variant-numeric:tabular-nums}
-/* libellé de jour : largeur garantie, sinon il se replie sur la 1re cellule en
-   étroit. (Pas de position:sticky ici : dans un tableau à border-spacing, ça
-   décale le texte et le fait chevaucher la première cellule.) Classe « rl » et non
-   « row » : .row est la ligne de classement (display:grid), qui cassait la cellule
-   et faisait passer le libellé sous la première case. */
-.hm th.rl{text-align:right;padding-right:10px;width:46px;vertical-align:middle;white-space:nowrap}
-.hm td{height:34px;border-radius:5px;text-align:center;font-size:11px;font-variant-numeric:tabular-nums;
-  color:#0b0b0b;font-weight:650;cursor:default}
-.hm td.nd{background:var(--surface-2);border:1px solid var(--hair);color:var(--muted);font-weight:500}
-.legend{display:flex;align-items:center;gap:8px;margin-top:12px;color:var(--muted);font-size:11.5px;flex-wrap:wrap}
-.legend .sw{display:flex;gap:2px}
-.legend .sw i{width:26px;height:9px;border-radius:2px;display:block}
+.hm{overflow-x:auto}
+.hm table{border-collapse:separate;border-spacing:3px;width:100%;min-width:480px}
+.hm th{color:var(--muted);font-size:11.5px;font-weight:600;padding:0 0 4px;text-align:center}
+.hm th.rl{text-align:right;padding-right:8px;width:42px;white-space:nowrap}
+.hm td{height:34px;border-radius:6px;text-align:center;font-size:11.5px;font-variant-numeric:tabular-nums;font-weight:600}
+.hm td.nd{background:var(--surface-2);color:var(--muted);font-weight:400}
+.scale{display:flex;align-items:center;gap:8px;margin-top:12px;color:var(--muted);font-size:12px;flex-wrap:wrap}
+.scale .sw{display:flex;gap:2px}
+.scale .sw i{width:24px;height:9px;border-radius:2px;display:block}
 
-/* barres classement */
-.rank{display:flex;flex-direction:column;gap:9px}
-.row{display:grid;grid-template-columns:minmax(96px,260px) 1fr auto;gap:14px;align-items:center;cursor:pointer}
-.row:hover .nm{color:var(--ink)}
-.nm{color:var(--ink-2);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.track{height:9px;background:var(--grid);border-radius:4px;overflow:hidden}
-.track i{display:block;height:100%;background:var(--s1);border-radius:0 4px 4px 0}
-.pct{font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums;min-width:38px;text-align:right;font-weight:650}
+/* tableaux (triables) */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+table.t th,table.t td{padding:9px 10px;border-bottom:1px solid var(--hair-2);text-align:left;white-space:nowrap}
+table.t th{color:var(--muted);font-weight:600;font-size:12px;position:sticky;top:0;background:var(--surface);user-select:none}
+table.t th.s{cursor:pointer}
+table.t th.s:hover{color:var(--ink)}
+table.t th.on{color:var(--ink)}
+table.t th .ar{display:inline-block;width:10px;font-size:10px;margin-left:3px;color:var(--accent-ink)}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+table.t td.w{white-space:normal;min-width:180px}
+table.t tbody tr.click{cursor:pointer}
+table.t tbody tr.click:hover td{background:var(--surface-2)}
+table.t tbody tr.hl td{background:var(--accent-soft)}
+table.t tbody tr.hl td:first-child b{color:var(--accent-ink)}
+table.t td .sm{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px}
+table.t tfoot td{font-weight:650;border-top:1px solid var(--hair);border-bottom:0}
+.cb{display:flex;align-items:center;gap:8px;min-width:120px}
+.cb .bt{flex:1;height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden;min-width:48px}
+.cb .bt i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.cb span{min-width:38px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.chk{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--axis);display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;vertical-align:middle;background:var(--surface)}
+.chk.on{border-color:transparent;color:#fff}
+.chk.on::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.search{width:100%;max-width:360px;background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:9px 12px;font-size:13.5px}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
 
-/* tableau (table view — jumeau accessible de chaque graphe) */
-table.tv{width:100%;border-collapse:collapse;font-size:12.5px}
-table.tv th,table.tv td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--hair);font-variant-numeric:tabular-nums}
-table.tv th{color:var(--muted);font-weight:600;font-size:11.5px}
-table.tv td.n,table.tv th.n{text-align:right}
-/* un tableau ne doit jamais élargir la page : il défile dans sa carte */
-.tvw{overflow-x:auto;-webkit-overflow-scrolling:touch}
-@media(max-width:600px){table.tv th,table.tv td{padding:6px 5px;font-size:11.5px}}
+/* pastilles, badges */
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--hair);border-radius:999px;padding:4px 10px;font-size:12.5px;
+  color:var(--ink-2);background:var(--surface);white-space:nowrap}
+.pill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.pill button{border:0;background:none;color:var(--muted);cursor:pointer;padding:0 0 0 2px;font-size:14px;line-height:1}
+.pill button:hover{color:var(--ink)}
+.badge{display:inline-block;font-size:11px;font-weight:650;padding:1px 6px;border-radius:5px;background:var(--surface-2);color:var(--ink-2);vertical-align:1px}
+.badge.w{background:rgba(250,178,25,.16);color:var(--warn-ink)}
+.badge.g{background:rgba(12,163,12,.12);color:var(--good-ink)}
+.badge.a{background:var(--accent-soft);color:var(--accent-ink)}
+.empty{color:var(--muted);text-align:center;padding:34px 10px;font-size:13.5px}
+.center{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+.note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5}
+.cmpbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ff{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px 22px}
+.ff h4{font-size:12.5px;color:var(--ink-2);font-weight:650;margin-bottom:6px}
+.ffr{display:grid;grid-template-columns:minmax(70px,38%) 1fr auto;gap:8px;align-items:center;padding:3px 0;font-size:12.5px}
+.ffr span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-2)}
+.ffr .bt{height:8px;background:var(--surface-2);border-radius:0 4px 4px 0}
+.ffr .bt i{display:block;height:100%;border-radius:0 4px 4px 0}
+.ffr b{font-variant-numeric:tabular-nums;font-weight:650;min-width:52px;text-align:right}
 
-/* listes / drilldown */
-.item{background:var(--surface-2);border:1px solid var(--hair);border-radius:11px;padding:12px 13px;margin-bottom:8px;cursor:pointer}
-.item:hover{border-color:var(--s1)}
-.item h4{font-size:14px}
-.item .meta{color:var(--muted);font-size:12px;margin-top:3px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.chip{border:1px solid var(--hair);border-radius:999px;padding:3px 9px;font-size:11px;color:var(--muted)}
-.chip.g{color:var(--good);border-color:rgba(12,163,12,.35)}
-.chip.c{color:var(--warn);border-color:rgba(250,178,25,.3)}
+/* petits multiples (historique) */
+.sm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mini{border:1px solid var(--hair);border-radius:12px;padding:14px 16px;background:var(--surface);cursor:pointer}
+.mini:hover{border-color:var(--axis)}
+.mini .h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.mini .h b{font-size:13.5px}
+.mini .k{display:flex;gap:16px;margin:6px 0 4px;color:var(--ink-2);font-size:12px;flex-wrap:wrap}
+.mini .k strong{display:block;color:var(--ink);font-size:16px;font-weight:650}
+.mini .cols{height:90px;padding-left:0}
+.mini .xl{padding-left:0}
 
-#ov{position:fixed;inset:0;background:rgba(0,0,0,.62);backdrop-filter:blur(3px);z-index:200;display:none}
+/* fiche détail */
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:200;display:none}
 #ov.on{display:block}
-#sheet{position:absolute;right:0;top:0;bottom:0;width:min(560px,100%);overflow-y:auto;background:var(--plane);
-  border-left:1px solid var(--hair);padding:18px 18px calc(30px + env(safe-area-inset-bottom))}
-@media(max-width:600px){#sheet{top:auto;width:100%;max-height:90vh;border-left:0;border-top:1px solid var(--hair);border-radius:18px 18px 0 0}}
-.sbar{display:flex;justify-content:space-between;align-items:center;position:sticky;top:-18px;background:var(--plane);padding:6px 0 10px;z-index:2}
-.sbar button{background:none;border:0;color:var(--muted);font-size:13px;cursor:pointer;padding:4px}
-.sbar button:hover{color:var(--ink)}
-.src{background:var(--surface-2);border:1px solid var(--hair);border-radius:12px;padding:12px 14px;margin:14px 0}
-.src h4{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:9px}
-.src .r{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:12.5px;border-bottom:1px solid rgba(255,255,255,.05)}
-.src .r:last-child{border:0}
-.src .k{color:var(--muted)}
-.src .r a{color:var(--s1);text-decoration:none;text-align:right;word-break:break-all}
-.center{text-align:center;color:var(--muted);padding:44px 0;font-size:13.5px}
-.muted{color:var(--muted)}
-.skel{opacity:.45;transition:opacity .2s}
+#sheet{position:absolute;right:0;top:0;bottom:0;width:min(720px,100%);overflow-y:auto;background:var(--plane);
+  border-left:1px solid var(--hair);padding:0 22px calc(40px + env(safe-area-inset-bottom));box-shadow:-10px 0 40px rgba(0,0,0,.18)}
+.sbar{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--plane);padding:14px 0 10px;z-index:3;gap:8px}
+.crumbs{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--muted);min-width:0;overflow:hidden;white-space:nowrap}
+.crumbs a{cursor:pointer}
+.sh{margin:4px 0 16px}
+.sh .kind{font-size:12px;font-weight:650;color:var(--accent-ink);text-transform:uppercase;letter-spacing:.06em}
+.sh h2{font-size:24px;margin-top:4px;line-height:1.2}
+.sh .s{color:var(--ink-2);font-size:13.5px;margin-top:4px}
+.sh .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.sec{margin-top:22px}
+.sec>h3{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;font-weight:650}
+.kv{background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:4px 14px}
+.kv .r{display:flex;justify-content:space-between;gap:14px;padding:8px 0;font-size:13px;border-bottom:1px solid var(--hair-2)}
+.kv .r:last-child{border:0}
+.kv .r .k{color:var(--muted)}
+.kv .r>span:last-child{text-align:right;word-break:break-word}
+#sheet .card{box-shadow:none}
+#sheet .tw{margin:0 -20px}
 
-/* tooltip partagé */
-#tip{position:fixed;z-index:400;pointer-events:none;background:var(--surface);border:1px solid var(--hair);
-  border-radius:9px;padding:8px 10px;font-size:12px;color:var(--ink);box-shadow:0 8px 26px rgba(0,0,0,.55);display:none;max-width:230px}
-#tip b{display:block;margin-bottom:3px}
+/* infobulle partagée */
+#tip{position:fixed;z-index:400;pointer-events:none;background:var(--raise);border:1px solid var(--hair);border-radius:10px;padding:8px 11px;
+  font-size:12.5px;box-shadow:0 10px 30px rgba(0,0,0,.18);display:none;max-width:260px}
+#tip .v{font-weight:700;font-size:13.5px}
 #tip .m{color:var(--muted)}
-#map{height:66vh;border-radius:var(--r);border:1px solid var(--hair)}
-@media(max-width:600px){
-  .brand{font-size:13.5px}
-  #fresh{display:none}                 /* l'info reste dans « Méthodologie » */
-  .tiles{grid-template-columns:1fr 1fr}
-  .tile .val{font-size:26px}
-  .fnote{margin-left:0;width:100%}
+#tip .row{display:flex;align-items:center;gap:7px;margin-top:2px}
+#tip .row i{width:12px;border-top:2px solid;display:inline-block}
+#map{height:calc(100vh - 260px);min-height:420px;border-radius:var(--r);border:1px solid var(--hair)}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--raise)!important;color:var(--ink)!important}
+.leaflet-popup-content{font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}.span2{grid-column:auto}.sm-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .wrap{padding:0 14px}
+  .htop{flex-wrap:wrap;gap:10px;padding:10px 0 8px}
+  .univ{order:3;width:100%}
+  .univ button{flex:1}
+  #fresh{display:none}
+  .hright{gap:6px}
+  .fbar{gap:6px}
+  .seg{width:100%}
+  .seg button{flex:1;padding:7px 6px}
+  .sel{flex:1;min-width:0}
+  .sel select{width:100%;max-width:none}
+  .fnote{width:100%;margin-left:0}
+  .scope h1{font-size:20px}
+  .card{padding:15px 14px}
+  .tw{margin:0 -14px;padding:0 14px}
+  .tile .val{font-size:25px}
+  table.t td.w{min-width:140px}
+  .hbr{grid-template-columns:minmax(96px,40%) 1fr 52px;gap:8px}
+  #sheet{top:6vh;border-left:0;border-radius:18px 18px 0 0;padding:0 14px calc(40px + env(safe-area-inset-bottom))}
+  #sheet .tw{margin:0 -14px}
+  .xl span:nth-child(even){visibility:hidden}
 }
-.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--surface);color:var(--ink)}
-.leaflet-popup-content a{color:var(--s1)}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
 
 <div id="gate"><div class="box">
-  <h1>Observatoire Escape · IDF</h1>
+  <h1>Observatoire loisirs</h1>
   <p>Accès privé — benchmark interne</p>
   <input id="pw" type="password" placeholder="Mot de passe" autocomplete="off" onkeydown="if(event.key==='Enter')check()">
   <button onclick="check()">Entrer</button>
@@ -183,30 +334,26 @@ table.tv td.n,table.tv th.n{text-align:right}
   <header>
     <div class="wrap">
       <div class="htop">
-        <div class="brand"><span class="live"></span> Observatoire Escape · Île-de-France</div>
-        <div class="hmeta"><span id="fresh">—</span>
+        <div class="logo"><i></i>Observatoire</div>
+        <div class="univ" id="univ">
+          <button data-u="escape">Escape games</button>
+          <button data-u="parcs">Parcs enfants</button>
+        </div>
+        <div class="hright"><span id="fresh"></span>
+          <button class="ghost icon" id="theme" title="Thème clair / sombre" aria-label="Changer de thème"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button>
           <button class="ghost" onclick="openMethodo()">Méthodologie</button>
           <button class="ghost" onclick="logout()">Quitter</button></div>
       </div>
-      <nav id="nav">
-        <button data-t="vue" class="on">Vue d'ensemble</button>
-        <button data-t="enseignes">Enseignes</button>
-        <button data-t="salles">Salles</button>
-        <button data-t="carte">Carte</button>
-        <button data-t="parcs">Parcs enfants</button>
-      </nav>
+      <nav class="sub" id="nav"></nav>
     </div>
   </header>
 
   <div class="wrap">
-    <div class="filters" id="filters">
-      <div class="seg" id="segper">
-        <button data-p="7" class="on">7 jours</button>
-        <button data-p="we">Week-end</button>
-        <button data-p="soir">Ce soir</button>
-        <button data-p="all">Tout</button>
-      </div>
-      <select id="fville"><option value="">Toutes les villes</option></select>
+    <div class="fbar" id="fbar">
+      <div class="seg" id="segper"></div>
+      <div class="sel"><select id="fmarque" aria-label="Marque"></select></div>
+      <div class="sel"><select id="fzone" aria-label="Zone"></select></div>
+      <button class="reset" id="freset" style="display:none" onclick="resetFiltres()">Réinitialiser</button>
       <span class="fnote" id="fnote"></span>
     </div>
     <main id="view"><div class="center">Chargement des relevés…</div></main>
@@ -233,7 +380,7 @@ function enter(){
   document.getElementById("gate").style.display="none";
   document.getElementById("app").style.display="block";
   if(!window._boot){window._boot=1;boot().catch(e=>$("#view").innerHTML=
-    `<div class="center">Impossible de charger les données (${e.message}).<br>Réessaie dans un instant.</div>`);}
+    `<div class="center">Impossible de charger les données (${esc(e.message)}).<br>Réessaie dans un instant.</div>`);}
 }
 if(sessionStorage.getItem(AUTH)===PW_HASH)addEventListener("DOMContentLoaded",enter);
 
@@ -242,13 +389,19 @@ const API="https://nbvronwfvoksonatolcs.supabase.co/rest/v1";
 const KEY="sb_publishable_5vFAbOG-hHH0s9mAoYmGyA_EG4bIQYj";
 const H={apikey:KEY,Authorization:"Bearer "+KEY};
 const $=s=>document.querySelector(s);
-const esc=s=>(s||"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+const esc=s=>String(s??"").replace(/[<>&"']/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;"}[c]));
+const js=s=>esc(JSON.stringify(String(s??"")));       // argument de onclick="f(...)" sûr
 const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1).toLowerCase():"";
 /* villes stockées en MAJUSCULES sans accent : « SAINT-BARTHELEMY-D-ANJOU » -> « Saint-Barthelemy-d-Anjou » */
 const PETITS=new Set(["de","d","la","le","les","en","sur","sous","aux","du","l"]);
 const ville=s=>(s||"").toLowerCase().replace(/[a-zà-ÿ]+/g,(w,i)=>i>0&&PETITS.has(w)?w:w.charAt(0).toUpperCase()+w.slice(1));
 const pct=(a,b)=>b?Math.round(100*a/b):0;
-const eur=v=>v==null?"—":Math.round(v)+" €";
+const nf=v=>v==null?"—":Math.round(v).toLocaleString("fr-FR");
+const eur=v=>v==null?"—":Math.round(v).toLocaleString("fr-FR")+" €";
+const eurK=v=>v==null?"—":Math.abs(v)>=1e6?(v/1e6).toLocaleString("fr-FR",{maximumFractionDigits:2})+" M€"
+  :Math.abs(v)>=10000?Math.round(v/1000).toLocaleString("fr-FR")+" k€":Math.round(v).toLocaleString("fr-FR")+" €";
+const prixTxt=v=>v==null?"—":(Math.round(v*10)/10).toLocaleString("fr-FR")+" €";
+const pctTxt=v=>v==null?"—":v+" %";
 const iso=d=>d.toISOString().slice(0,10);
 /* Les horaires publiés sont en heure de Paris : « aujourd'hui » et « maintenant » aussi,
    quel que soit le fuseau du lecteur (sinon la date bascule faux entre 0 h et 2 h). */
@@ -256,11 +409,15 @@ const PARIS=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Paris",year:"numer
   day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});      // -> "2026-09-25 16:10"
 const TODAY=PARIS.format(new Date()).slice(0,10);
 const JOURS=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
-const BUCKETS=[[0,12,"–12h"],[12,14,"12-14"],[14,16,"14-16"],[16,18,"16-18"],[18,20,"18-20"],[20,22,"20-22"],[22,24,"22h+"]];
-const RAMP=["--h1","--h2","--h3","--h4","--h5","--h6"];
 const dlong=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
+const dcourt=d=>{const x=new Date(d+"T12:00");return JOURS[(x.getDay()+6)%7].slice(0,2)+" "+x.getDate();};
+const estWE=d=>{const g=new Date(d+"T12:00").getDay();return g===0||g===6;};
+const frDate=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
 const ago=t=>{if(!t)return"—";const m=Math.round((Date.now()-new Date(t))/6e4);
   return m<2?"à l'instant":m<60?`il y a ${m} min`:m<1440?`il y a ${Math.round(m/60)} h`:`il y a ${Math.round(m/1440)} j`;};
+const median=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)];};
+const dayDiff=(a,b)=>Math.round((new Date(a+"T12:00")-new Date(b+"T12:00"))/864e5);
+const plur=(n,s,p)=>`${nf(n)} ${n>1?(p||s+"s"):s}`;
 
 /* Supabase renvoie parfois une 500 passagère (délai dépassé sous charge, pendant un sync) :
    une seconde tentative suffit presque toujours. */
@@ -272,13 +429,14 @@ async function qPage(p,from){const r=await fetchR(API+"/"+p,{headers:{...H,Range
   if(!r.ok)throw new Error("API "+r.status);return r.json();}
 async function qCount(p){const r=await fetchR(API+"/"+p+"&limit=1",{headers:{...H,Prefer:"count=exact",Range:"0-0"}});
   const cr=r.headers.get("content-range");return cr&&cr.includes("/")?(+cr.split("/")[1]||0):null;}
+async function qAll(p,maxPages=20){let out=[],f=0;for(;;){const b=await qPage(p,f);out=out.concat(b);
+  if(b.length<1000||f>=(maxPages-1)*1000)break;f+=1000;}return out;}
 
 let EN={},CE={},SA={},BY_ENS={},BY_CENTRE={},CENTRE_OF={},ENS_OF={},SESS=[],FRESH=null,map=null;
-/* Parcs de loisirs enfants (Qweekle) : mêmes tables, marqués salle.theme = "parc" et
-   session.groupby = "parc". Tenus à l'écart de TOUTES les vues escape (sinon ils
-   fausseraient occupation, ventes et carte) ; chargés à part, à l'ouverture de l'onglet. */
+/* Parcs de loisirs enfants : mêmes tables, marqués salle.theme = "parc" et session.groupby = "parc".
+   Tenus à l'écart de TOUTES les vues escape (sinon ils fausseraient occupation, ventes et carte). */
 const NOPARC="&or=(groupby.is.null,groupby.neq.parc)";
-let PEN={},PCE={},PSA={},PS=null,VILLES_ESC=[];
+let PEN={},PCE={},PSA={},PS=null,PS_LOADING=null;
 /* Joueurs & panier RÉELS — sessions vendues à la place (non privées).
    places_vendues = baisse des places libres observée par le scraper depuis TRACK_START.
    On ne retient que les sessions suivies ≥ SUIVI_MIN jours avant leur date : une session
@@ -286,9 +444,6 @@ let PEN={},PCE={},PSA={},PS=null,VILLES_ESC=[];
 const TRACK_START="2026-09-25", SUIVI_MIN=5, VENTES_MIN=20;
 let VENTES=[], N_PRIVAT=0;
 const ENS_MIN=5;               // échantillon minimal pour afficher une enseigne
-async function qAll(p,maxPages=20){let out=[],f=0;for(;;){const b=await qPage(p,f);out=out.concat(b);
-  if(b.length<1000||f>=(maxPages-1)*1000)break;f+=1000;}return out;}
-const dayDiff=(a,b)=>Math.round((new Date(a+"T12:00")-new Date(b+"T12:00"))/864e5);
 function panierPour(grid,n){                 // prix_total = prix TOTAL par taille de groupe
   if(!grid||!n)return null;
   const ks=Object.keys(grid).map(Number).filter(k=>k>0&&grid[k]!=null);
@@ -297,22 +452,7 @@ function panierPour(grid,n){                 // prix_total = prix TOTAL par tail
   const k=ks.reduce((a,b)=>Math.abs(b-n)<Math.abs(a-n)?b:a);
   return grid[k]/k*n;
 }
-function ventesStats(){
-  const rows=VENTES.filter(v=>!VILLE||(CENTRE_OF[v.salle_id]||{}).ville===VILLE);
-  const parEns={};
-  rows.forEach(v=>{const eid=ENS_OF[v.salle_id];if(!eid)return;
-    const e=parEns[eid]=parEns[eid]||{j:[],p:[],pj:[]};
-    e.j.push(v.places_vendues);
-    const pa=panierPour(v.prix_total,v.places_vendues);
-    if(pa){e.p.push(pa);e.pj.push(pa/v.places_vendues);}});
-  const J=rows.map(v=>v.places_vendues), P=rows.map(v=>panierPour(v.prix_total,v.places_vendues)).filter(Boolean);
-  return {n:rows.length,jMed:median(J),pMed:median(P),parEns,nEns:Object.keys(parEns).length};
-}
-const frDate=d=>new Date(d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
 const FIABLE=iso(new Date(new Date(TRACK_START+"T12:00").getTime()+(SUIVI_MIN+7)*864e5));
-/* lien direct vers un onglet : …/eg/#parcs */
-const ONGLETS=["vue","enseignes","salles","carte","parcs"];
-let PER="7", VILLE="", TAB=ONGLETS.includes(location.hash.slice(1))?location.hash.slice(1):"vue";
 /* Deux garde-fous de justesse, calculés une fois après chargement :
    DAY_OK  : on écarte les jours de bord d'horizon (le scraper voit ~7 j, le
              dernier jour n'est que partiellement publié -> fausse occupation).
@@ -331,24 +471,20 @@ function calibrate(){
     const s=st[x.salle_id]=st[x.salle_id]||{n:0,libre:0,booked:0,prix:0};
     s.n++;if(x.dispo)s.libre++;else if(x.booked)s.booked++;if(x.prix_total_moyen)s.prix++;});
   PUBLIE=new Set(Object.keys(st).filter(k=>st[k].libre>0));
-  /* Salle « muette » = pas un seul créneau libre observé. On distingue la cause,
-     car ce n'est pas la même information :
+  /* Salle « muette » = pas un seul créneau libre observé. On distingue la cause :
        - tous les créneaux explicitement réservés  -> complet / fermé sur la période
        - aucun prix publié (API dégradée côté enseigne) -> dispo non publiée */
   MUET={};
   Object.entries(st).forEach(([id,s])=>{
     if(s.libre>0)return;
-    MUET[id]={...s, raison: s.booked>=s.n*0.8 ? "complet"
-                         : s.prix===0        ? "non-publiee"
-                         : "fermee"};
+    MUET[id]={...s, raison: s.booked>=s.n*0.8 ? "complet" : s.prix===0 ? "non-publiee" : "fermee"};
   });
   N_NOPUB=Object.keys(MUET).length;
 }
-const MUET_LIB={complet:"complet sur la période",
-                "non-publiee":"disponibilités non publiées",
-                fermee:"salle fermée / bloquée"};
+const MUET_LIB={complet:"complet sur la période","non-publiee":"disponibilités non publiées",fermee:"salle fermée / bloquée"};
 
 async function boot(){
+  lireHash();
   /* compte indisponible (500 passagère) : on lit 30 pages, les pages vides au-delà de la fin
      reviennent vides au lieu de faire échouer tout le chargement */
   const nSess=await qCount(`sessions?select=salle_id&date=gte.${TODAY}${NOPARC}`).catch(()=>null);
@@ -360,8 +496,7 @@ async function boot(){
     q("enseignes?select=id,nom,website&order=nom"),
     q("centres?select=id,nom,ville,cp,adresse,lat,lon,enseigne_id"),
     q("salles?select=id,nom,theme,duree_minutes,joueurs_min,joueurs_max,difficulty,centre_id"),
-    /* fraîcheur : bornée aux sessions à venir (index sur date) — un tri de toute la table
-       peut dépasser le délai de la clé publique et faisait échouer tout le chargement */
+    /* fraîcheur : bornée aux sessions à venir (index sur date) */
     q(`sessions?select=dernier_vu&date=gte.${TODAY}&order=dernier_vu.desc&limit=1`).catch(()=>[]),
     qAll(selV).catch(()=>[]),                 // ne doit jamais bloquer le dashboard
     ...Array.from({length:pages},(_,i)=>qPage(sel,i*1000))
@@ -385,518 +520,204 @@ async function boot(){
   calibrate();
   FRESH=fresh[0]&&fresh[0].dernier_vu;
   $("#fresh").textContent="relevé "+ago(FRESH);
-  VILLES_ESC=[...new Set(Object.values(CE).map(c=>c.ville).filter(Boolean))].sort();
-  fillVilles();
+  if(S.u==="parcs")await chargerParcs();
   render();
+  if(FICHE.length){const f=FICHE.pop();openFiche(f.t,f.id);}
 }
 
-/* ── filtrage (une rangée de filtres cadre TOUS les graphes) ── */
-function slice(){
-  const nowHM=PARIS.format(new Date()).slice(11,16);
-  const now=new Date(), end=new Date();
-  let from=TODAY, to=null, hFrom=null;
-  if(PER==="7"){end.setDate(now.getDate()+7);to=iso(end);}
-  else if(PER==="soir"){to=TODAY;hFrom=17;}
-  else if(PER==="we"){const d=now.getDay(),add=(6-d+7)%7;const s=new Date();s.setDate(now.getDate()+add);
-    const e=new Date(s);e.setDate(s.getDate()+1);from=iso(s);to=iso(e);}
-  return SESS.filter(x=>{
-    if(!DAY_OK.has(x.date))return false;          // jour de bord d'horizon -> écarté
-    if(x.statut==="retire")return false;          // supprimé par l'enseigne : ni libre ni occupé
-    if(x.date===TODAY&&x.heure<nowHM)return false; // déjà passé : plus réservable, pas « occupé »
-    if(x.date<from)return false;
-    if(to&&x.date>to)return false;
-    if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
-    if(VILLE){const c=CENTRE_OF[x.salle_id];if(!c||c.ville!==VILLE)return false;}
-    return true;});
-}
-const median=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)];};
-
-function aggregate(all){
-  /* Les taux d'occupation ne portent QUE sur les salles qui publient leurs
-     disponibilités ; les autres sont comptées à part (dispo non publiée). */
-  const rows=all.filter(x=>PUBLIE.has(x.salle_id));
-  const A={n:rows.length,libres:0,prix:[],parEns:{},heat:{},topSalle:{},
-           nHors:all.length-rows.length,
-           sallesHors:new Set(all.filter(x=>!PUBLIE.has(x.salle_id)).map(x=>x.salle_id)).size};
-  for(const x of rows){
-    if(x.dispo)A.libres++;
-    const px=x.prive!==false?x.prix_total_moyen:null;   // prive null = pas encore renseigné -> gardé
-    if(px)A.prix.push(px);
-    const eid=ENS_OF[x.salle_id];
-    if(eid){const e=A.parEns[eid]=A.parEns[eid]||{n:0,libres:0,prix:[]};
-      e.n++;if(x.dispo)e.libres++;if(px)e.prix.push(px);}
-    const t=A.topSalle[x.salle_id]=A.topSalle[x.salle_id]||{n:0,libres:0};
-    t.n++;if(x.dispo)t.libres++;
-    const jd=(new Date(x.date+"T12:00").getDay()+6)%7, h=+x.heure.slice(0,2);
-    const bi=BUCKETS.findIndex(b=>h>=b[0]&&h<b[1]);
-    if(bi>=0){const k=jd+"|"+bi;const c=A.heat[k]=A.heat[k]||{n:0,libres:0};c.n++;if(x.dispo)c.libres++;}
-  }
-  return A;
-}
-
-/* ═════════ rendu ═════════ */
-/* le filtre ville liste les villes de l'univers affiché (escape ou parcs) */
-/* Parcs : zones (Paris, Ouest parisien, Île-de-France, province) puis villes */
-const ZONES={"zone:paris":["Paris",["75"]],"zone:ouest":["Ouest parisien (78, 92, 95)",["78","92","95"]],
-  "zone:idf":["Île-de-France",["75","77","78","91","92","93","94","95"]]};
-function dansZone(c,z){const d=(c.cp||"").slice(0,2);
-  return z==="zone:province"?!ZONES["zone:idf"][1].includes(d):ZONES[z][1].includes(d);}
-function filtreParc(c){return !VILLE||(VILLE.startsWith("zone:")?dansZone(c,VILLE):c.ville===VILLE);}
-function fillVilles(){
-  const vs=TAB==="parcs"?[...new Set(Object.values(PCE).map(c=>c.ville).filter(Boolean))].sort():VILLES_ESC;
-  const zones=TAB==="parcs"?[...Object.entries(ZONES).map(([k,v])=>[k,v[0]]),["zone:province","Hors Île-de-France"]]:[];
-  if(VILLE&&!vs.includes(VILLE)&&!zones.some(z=>z[0]===VILLE))VILLE="";
-  $("#fville").innerHTML=`<option value="">${TAB==="parcs"?"Toute la France":"Toutes les villes"}</option>`+
-    (zones.length?`<optgroup label="Zones">${zones.map(([k,l])=>`<option value="${k}"${k===VILLE?" selected":""}>${l}</option>`).join("")}</optgroup><optgroup label="Villes">`:"")+
-    vs.map(v=>`<option value="${esc(v)}"${v===VILLE?" selected":""}>${esc(ville(v))}</option>`).join("")+(zones.length?"</optgroup>":"");
-}
-function render(){
-  if(TAB==="parcs"){renderParcs();return;}
-  const rows=slice(), A=aggregate(rows);
-  $("#fnote").textContent=`${rows.length.toLocaleString("fr-FR")} créneaux analysés`;
-  const v=$("#view");
-  if(TAB==="vue")v.innerHTML=viewVue(A);
-  else if(TAB==="enseignes")v.innerHTML=viewEnseignes(A);
-  else if(TAB==="salles")v.innerHTML=viewSalles(A);
-  else viewCarte(A);
-  if(TAB==="vue"||TAB==="enseignes"||TAB==="salles")wireHovers();
-}
-
-/* ── Vue d'ensemble ── */
-function viewVue(A){
-  const occ=pct(A.n-A.libres,A.n), pm=median(A.prix), V=ventesStats();
-  const salles=new Set(Object.keys(A.topSalle)).size;
-  const libresSoir=SESS.filter(x=>x.date===TODAY&&+x.heure.slice(0,2)>=17&&x.dispo).length;
-  const tiles=[
-    {lab:"Taux d'occupation",val:occ+" %",ctx:`${(A.n-A.libres).toLocaleString("fr-FR")} créneaux pris sur ${A.n.toLocaleString("fr-FR")} publiés`,bar:occ},
-    {lab:"Panier estimé · salle privée",val:eur(pm),ctx:pm?`prix d'une session pour un groupe type de 4 joueurs — la taille réelle des groupes n'est pas publiée`:"prix non publiés"},
-    (V.n>=VENTES_MIN
-      ?{lab:"Joueurs / session · réel",val:V.jMed,ctx:`panier réel ${eur(V.pMed)} · ${V.n} sessions vendues à la place, ${V.nEns} enseigne${V.nEns>1?"s":""} (30 j)`}
-      :{lab:"Joueurs / session · réel",val:"—",ctx:`collecte démarrée le ${frDate(TRACK_START)} · premiers chiffres fiables vers le ${frDate(FIABLE)}`}),
-    {lab:"Salles mesurées",val:salles,ctx:`${Object.keys(A.parEns).length} enseignes${A.sallesHors?` · ${A.sallesHors} salles sans dispo publiée, exclues`:""}`},
-    {lab:"Libres ce soir",val:libresSoir,ctx:"créneaux encore réservables après 17h"},
-  ];
-  return `<div class="grid tiles" style="margin:12px 0">${tiles.map(t=>`
-    <div class="card tile"><div class="lab">${t.lab}</div><div class="val">${t.val}</div>
-      <div class="ctx">${t.ctx}</div>${t.bar!=null?`<div class="bar-mini"><i style="width:${t.bar}%"></i></div>`:""}</div>`).join("")}
-  </div>
-  <div class="grid" style="margin-bottom:12px">${cardHeatmap(A)}</div>
-  <div class="grid two">${cardRank(A)}${cardScatter(A)}</div>
-  <div class="grid" style="margin-top:12px">${cardVentes(V)}</div>
-  <div class="grid two" style="margin-top:12px">${cardTopSalles(A)}${cardMuettes()}</div>`;
-}
-
-/* Joueurs et panier RÉELS — sessions vendues à la place.
-   Une table : 4 mesures par enseigne, peu de lignes — le chiffre est l'information. */
-function cardVentes(V){
-  const sub=`Sessions vendues à la place (non privées) : places vendues = baisse des places libres
-    observée par le scraper. Sessions passées des 30 derniers jours, suivies ≥ ${SUIVI_MIN} j avant leur date.`;
-  if(V.n<VENTES_MIN)
-    return card("Joueurs et panier réels",sub,
-      `<div class="center" style="padding:22px 0">Collecte en cours depuis le ${frDate(TRACK_START)} — ${V.n} session${V.n>1?"s":""} mesurée${V.n>1?"s":""} pour l'instant.<br>
-       Premiers chiffres fiables vers le <b>${frDate(FIABLE)}</b><br>
-       <span style="font-size:12px">Salles privées : 4escape ne publie pas la taille du groupe ; seul le panier estimé est disponible.</span></div>`,"","ve");
-  const all=Object.entries(V.parEns).map(([eid,e])=>({nom:(EN[eid]||{}).nom||eid,eid,n:e.j.length,
-      j:median(e.j),p:median(e.p),pj:median(e.pj)})).sort((a,b)=>b.n-a.n);
-  const rows=all.filter(r=>r.n>=ENS_MIN), petits=all.filter(r=>r.n<ENS_MIN);
-  const t=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Sessions</th><th class="n">Joueurs / session</th>
-    <th class="n">Panier / session</th><th class="n">€ / joueur</th></tr></thead><tbody>
-    ${rows.map(r=>`<tr style="cursor:pointer" onclick="openEns('${r.eid}')"><td>${esc(r.nom)}</td><td class="n">${r.n}</td>
-      <td class="n">${r.j}</td><td class="n">${eur(r.p)}</td><td class="n">${r.pj?Math.round(r.pj)+" €":"—"}</td></tr>`).join("")}
-    ${petits.length?`<tr><td class="muted">${petits.length} autre${petits.length>1?"s":""} enseigne${petits.length>1?"s":""} (moins de ${ENS_MIN} sessions chacune)</td>
-      <td class="n muted">${petits.reduce((a,r)=>a+r.n,0)}</td><td class="n muted" colspan="3">échantillon trop petit</td></tr>`:""}
-    <tr><td><b>Ensemble</b></td><td class="n"><b>${V.n}</b></td><td class="n"><b>${V.jMed}</b></td><td class="n"><b>${eur(V.pMed)}</b></td><td class="n"></td></tr>
-    </tbody></table>`;
-  const note=N_PRIVAT?` ${N_PRIVAT} session${N_PRIVAT>1?"s":""} privatisée${N_PRIVAT>1?"s":""} (passée${N_PRIVAT>1?"s":""} d'un coup à complet) écartée${N_PRIVAT>1?"s":""} : nombre de joueurs inconnu.`:"";
-  return card("Joueurs et panier réels",sub+" Médianes."+note,`<div class="tvw">${t}</div>`,"","ve");
-}
-
-/* Salles sans le moindre créneau libre — signalées, jamais comptées dans les taux */
-function cardMuettes(){
-  const byEns={};
-  Object.entries(MUET).forEach(([sid,m])=>{
-    const eid=ENS_OF[sid];if(!eid)return;
-    (byEns[eid]=byEns[eid]||{tot:0,list:[]}).list.push({sid,...m});
-  });
-  Object.keys(byEns).forEach(eid=>{
-    byEns[eid].tot=(BY_ENS[eid]||[]).flatMap(c=>BY_CENTRE[c.id]||[]).length;});
-  const rows=Object.entries(byEns).map(([eid,v])=>({eid,nom:(EN[eid]||{}).nom||eid,
-      n:v.list.length,tot:v.tot,all:v.list.length>=v.tot&&v.tot>0,
-      raison:v.list.sort((a,b)=>b.n-a.n)[0].raison})).sort((a,b)=>b.n-a.n);
-  if(!rows.length)return card("Salles sans disponibilité","Aucune : toutes les salles suivies publient au moins un créneau libre.","","","mu");
-  const body=rows.slice(0,12).map(r=>`<div class="item" onclick="openEns('${r.eid}')" style="margin-bottom:6px">
-      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
-        <b style="font-size:13.5px">${esc(r.nom)}</b>
-        <span class="chip c">⚠ ${r.n}/${r.tot} salle${r.n>1?"s":""}</span></div>
-      <div class="meta">${r.all?"<b>toute l'enseigne</b> — ":""}${MUET_LIB[r.raison]}</div></div>`).join("");
-  const table=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Salles muettes</th><th>Cause probable</th></tr></thead><tbody>
-    ${rows.map(r=>`<tr><td>${esc(r.nom)}</td><td class="n">${r.n}/${r.tot}</td><td>${MUET_LIB[r.raison]}</td></tr>`).join("")}</tbody></table>`;
-  return card(`Salles sans disponibilité · ${N_NOPUB}`,
-    "Pas un seul créneau libre observé. Exclues des taux d'occupation (sinon elles ressortiraient à « 100 % occupé »).",
-    body,table,"mu");
-}
-
-/* Heatmap : occupation par jour × tranche horaire (séquentiel, 1 teinte) */
-function cardHeatmap(A){
-  const cells=[];
-  for(let j=0;j<7;j++)for(let b=0;b<BUCKETS.length;b++){
-    const c=A.heat[j+"|"+b];
-    cells.push({j,b,occ:c&&c.n>=3?pct(c.n-c.libres,c.n):null,n:c?c.n:0});
-  }
-  /* L'échelle couleur épouse l'amplitude RÉELLE observée : sur 0–100 %, des
-     valeurs toutes comprises entre 13 % et 38 % s'écraseraient sur deux paliers
-     et la heatmap paraîtrait uniforme. Les bornes sont affichées en légende. */
-  const vals=cells.filter(c=>c.occ!=null).map(c=>c.occ);
-  const lo=vals.length?Math.min(...vals):0, hi=vals.length?Math.max(...vals):100;
-  const span=Math.max(1,hi-lo);
-  const body=JOURS.map((jn,j)=>`<tr><th class="rl">${jn}</th>`+BUCKETS.map((bk,b)=>{
-    const c=cells.find(x=>x.j===j&&x.b===b);
-    if(!c||c.occ==null)return `<td class="nd" title="pas assez de relevés">·</td>`;
-    const idx=Math.min(RAMP.length-1,Math.floor((c.occ-lo)/span*RAMP.length));
-    const ink=idx>=3?"#0b0b0b":"#ffffff";
-    return `<td style="background:var(${RAMP[idx]});color:${ink}" data-tip="${jn} ${bk[2]}|${c.occ}% occupé|${c.n} créneaux">${c.occ}</td>`;
-  }).join("")+`</tr>`).join("");
-  const table=`<table class="tv"><thead><tr><th>Jour</th>${BUCKETS.map(b=>`<th class="n">${b[2]}</th>`).join("")}</tr></thead><tbody>
-    ${JOURS.map((jn,j)=>`<tr><td>${jn}</td>${BUCKETS.map((bk,b)=>{const c=cells.find(x=>x.j===j&&x.b===b);
-      return `<td class="n">${c&&c.occ!=null?c.occ+" %":"—"}</td>`;}).join("")}</tr>`).join("")}</tbody></table>`;
-  return card("Quand le marché se remplit","Occupation par jour de semaine et tranche horaire — plus c'est clair, plus c'est réservé.",
-    `<div class="hm"><table><thead><tr><th class="rl"></th>${BUCKETS.map(b=>`<th>${b[2]}</th>`).join("")}</tr></thead>
-      <tbody>${body}</tbody></table></div>
-     <div class="legend"><span>Occupation</span><span>${lo} %</span><span class="sw">${RAMP.map(r=>`<i style="background:var(${r})"></i>`).join("")}</span><span>${hi} %</span>
-       <span style="margin-left:6px">· <i style="display:inline-block;width:10px;height:9px;border-radius:2px;background:var(--surface-2);border:1px solid var(--hair);vertical-align:middle"></i> trop peu de relevés</span></div>`,
-    table,"hm");
-}
-
-/* Classement enseignes — UNE série -> UNE couleur (jamais un ramp sur du nominal) */
-function cardRank(A){
-  const rows=Object.entries(A.parEns).map(([id,v])=>({id,nom:(EN[id]||{}).nom||id,occ:pct(v.n-v.libres,v.n),n:v.n}))
-    .filter(r=>r.n>=12).sort((a,b)=>b.occ-a.occ);
-  const top=rows.slice(0,12);
-  const body=top.map(r=>`<div class="row" onclick="openEns('${r.id}')" data-tip="${esc(r.nom)}|${r.occ}% occupé|${r.n} créneaux relevés">
-      <span class="nm">${esc(r.nom)}</span><span class="track"><i style="width:${r.occ}%"></i></span><span class="pct">${r.occ}%</span></div>`).join("");
-  const table=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Occupation</th><th class="n">Créneaux</th></tr></thead><tbody>
-    ${rows.map(r=>`<tr><td>${esc(r.nom)}</td><td class="n">${r.occ} %</td><td class="n">${r.n}</td></tr>`).join("")}</tbody></table>`;
-  return card("Enseignes les plus demandées",`Taux d'occupation, enseignes avec ≥12 créneaux relevés. Clique pour le détail.`,
-    `<div class="rank">${body||'<div class="center">Pas assez de données sur ce filtre.</div>'}</div>`,table,"rk");
-}
-
-/* Positionnement prix × occupation — nuage, une série, labels sélectifs */
-function cardScatter(A){
-  const pts=Object.entries(A.parEns).map(([id,v])=>({id,nom:(EN[id]||{}).nom||id,
-      occ:pct(v.n-v.libres,v.n),prix:median(v.prix),n:v.n}))
-    .filter(p=>p.prix&&p.n>=12);
-  if(pts.length<3)return card("Positionnement prix × demande","Prix médian d'une session face au taux d'occupation.",
-    `<div class="center">Pas assez d'enseignes avec des prix publiés sur ce filtre.</div>`,"","sc");
-  const W=520,Hh=260,P={l:44,r:16,t:12,b:34};
-  const xs=pts.map(p=>p.prix), xmin=Math.min(...xs)*.92, xmax=Math.max(...xs)*1.06;
-  const X=v=>P.l+(v-xmin)/(xmax-xmin)*(W-P.l-P.r), Y=v=>Hh-P.b-(v/100)*(Hh-P.t-P.b);
-  const gy=[0,25,50,75,100], gx=[0,.25,.5,.75,1].map(f=>Math.round(xmin+f*(xmax-xmin)));
-  const best=[...pts].sort((a,b)=>b.occ-a.occ)[0], pricey=[...pts].sort((a,b)=>b.prix-a.prix)[0];
-  const svg=`<svg viewBox="0 0 ${W} ${Hh}" width="100%" height="${Hh}" role="img" aria-label="Nuage prix médian par session contre taux d'occupation">
-    ${gy.map(g=>`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(g)}" y2="${Y(g)}" stroke="var(--grid)" stroke-width="1"/>
-       <text x="${P.l-8}" y="${Y(g)+4}" fill="var(--muted)" font-size="10" text-anchor="end">${g}%</text>`).join("")}
-    ${gx.map(g=>`<text x="${X(g)}" y="${Hh-12}" fill="var(--muted)" font-size="10" text-anchor="middle">${g} €</text>`).join("")}
-    <line x1="${P.l}" x2="${W-P.r}" y1="${Hh-P.b}" y2="${Hh-P.b}" stroke="var(--axis)" stroke-width="1"/>
-    ${pts.map(p=>`<circle cx="${X(p.prix)}" cy="${Y(p.occ)}" r="6" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"
-        data-tip="${esc(p.nom)}|${p.occ}% occupé · ${eur(p.prix)}|${p.n} créneaux"/>`).join("")}
-    ${[best,pricey].filter((v,i,a)=>v&&a.indexOf(v)===i).map(p=>{
-        const x=X(p.prix), right=x>(W-P.r)*0.62;          // label à gauche si trop près du bord
-        return `<text x="${right?x-10:x+10}" y="${Math.max(14,Y(p.occ)+4)}" text-anchor="${right?"end":"start"}"
-          fill="var(--ink-2)" font-size="11">${esc(p.nom.length>18?p.nom.slice(0,17)+"…":p.nom)}</text>`;}).join("")}
-    <text x="${P.l}" y="10" fill="var(--muted)" font-size="10">occupation ↑</text></svg>`;
-  const table=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Prix médian</th><th class="n">Occupation</th></tr></thead><tbody>
-    ${[...pts].sort((a,b)=>b.occ-a.occ).map(p=>`<tr><td>${esc(p.nom)}</td><td class="n">${eur(p.prix)}</td><td class="n">${p.occ} %</td></tr>`).join("")}</tbody></table>`;
-  return card("Positionnement prix × demande","Chaque point = une enseigne. En haut à droite : cher et très demandé.",svg,table,"sc");
-}
-
-function cardTopSalles(A){
-  const rows=Object.entries(A.topSalle).map(([id,v])=>({id,s:SA[id],occ:pct(v.n-v.libres,v.n),n:v.n}))
-    .filter(r=>r.s&&r.n>=6).sort((a,b)=>b.occ-a.occ).slice(0,10);
-  const body=rows.map(r=>{const c=CENTRE_OF[r.id]||{},e=EN[ENS_OF[r.id]]||{};
-    return `<div class="row" onclick="openSalle('${r.id}')" data-tip="${esc(r.s.nom||"")}|${r.occ}% occupé|${r.n} créneaux">
-      <span class="nm">${esc(r.s.nom||"Salle")}<br><span style="color:var(--muted);font-size:11px">${esc(e.nom||"")}${c.ville?" · "+esc(ville(c.ville)):""}</span></span>
-      <span class="track"><i style="width:${r.occ}%"></i></span><span class="pct">${r.occ}%</span></div>`;}).join("");
-  const table=`<table class="tv"><thead><tr><th>Salle</th><th>Enseigne</th><th class="n">Occupation</th></tr></thead><tbody>
-    ${rows.map(r=>`<tr><td>${esc((r.s||{}).nom||"")}</td><td>${esc((EN[ENS_OF[r.id]]||{}).nom||"")}</td><td class="n">${r.occ} %</td></tr>`).join("")}</tbody></table>`;
-  return card("Salles les plus réservées","Top 10 sur la période filtrée (≥6 créneaux relevés).",
-    `<div class="rank">${body||'<div class="center">Pas assez de données.</div>'}</div>`,table,"ts");
-}
-
-let TVOPEN={};
-function card(title,sub,chart,table,key){
-  const open=!!TVOPEN[key];
-  return `<div class="card pad0"><div class="chead"><div><div class="ctitle">${title}</div><div class="csub">${sub}</div></div>
-    ${table?`<button class="tbtn" onclick="TVOPEN['${key}']=!TVOPEN['${key}'];render()">${open?"Voir le graphique":"Voir le tableau"}</button>`:""}</div>
-    ${open?`<div class="tvw">${table}</div>`:chart}</div>`;
-}
-
-/* ── Enseignes ── */
-function viewEnseignes(A){
-  const rows=Object.values(EN).map(e=>{
-    const salles=(BY_ENS[e.id]||[]).flatMap(c=>BY_CENTRE[c.id]||[]);
-    const ag=A.parEns[e.id];
-    return {e,nc:(BY_ENS[e.id]||[]).length,ns:salles.length,occ:ag?pct(ag.n-ag.libres,ag.n):null,
-            libres:ag?ag.libres:0,prix:ag?median(ag.prix):null,
-            muettes:salles.filter(s=>MUET[s.id]).length};
-  }).filter(r=>r.ns>0).sort((a,b)=>(b.occ??-1)-(a.occ??-1));
-  return `<input class="txt" id="qe" placeholder="Rechercher une enseigne…" style="width:100%;margin:12px 0"
-    oninput="filterList('qe','#elist')"><div id="elist">${rows.map(r=>`
-    <div class="item" data-k="${esc((r.e.nom||"").toLowerCase())}" onclick="openEns('${r.e.id}')">
-      <h4>${esc(r.e.nom)}</h4>
-      <div class="meta">${r.nc} centre${r.nc>1?"s":""} · ${r.ns} salle${r.ns>1?"s":""}${r.prix?" · médian "+eur(r.prix):""}</div>
-      <div class="chips">${r.occ!=null?`<span class="chip">${r.occ}% occupé</span>`:""}
-        ${r.libres?`<span class="chip g">${r.libres} libres</span>`:""}
-        ${r.muettes?`<span class="chip c">⚠ ${r.muettes}/${r.ns} sans dispo publiée</span>`:""}</div></div>`).join("")}</div>`;
-}
-function viewSalles(A){
-  const rows=Object.values(SA).map(s=>{const t=A.topSalle[s.id];
-    return {s,c:CENTRE_OF[s.id]||{},e:EN[ENS_OF[s.id]]||{},occ:t?pct(t.n-t.libres,t.n):null,libres:t?t.libres:0};})
-    .sort((a,b)=>(b.occ??-1)-(a.occ??-1));
-  return `<input class="txt" id="qs" placeholder="Rechercher une salle, une enseigne, une ville…" style="width:100%;margin:12px 0"
-    oninput="filterList('qs','#slist')"><div id="slist">${rows.slice(0,250).map(r=>`
-    <div class="item" data-k="${esc(((r.s.nom||"")+" "+(r.e.nom||"")+" "+(r.c.ville||"")).toLowerCase())}" onclick="openSalle('${r.s.id}')">
-      <h4>${esc(r.s.nom||"Salle")}</h4>
-      <div class="meta">${esc(r.e.nom||"")}${r.c.ville?" · "+esc(ville(r.c.ville)):""}</div>
-      <div class="chips">${r.s.theme?`<span class="chip">${esc(cap(r.s.theme))}</span>`:""}
-        ${r.s.duree_minutes?`<span class="chip">${r.s.duree_minutes} min</span>`:""}
-        ${r.occ!=null?`<span class="chip">${r.occ}% occupé</span>`:""}
-        ${r.libres?`<span class="chip g">${r.libres} libres</span>`:""}
-        ${MUET[r.s.id]?`<span class="chip c">⚠ ${MUET_LIB[MUET[r.s.id].raison]}</span>`:""}</div></div>`).join("")}</div>`;
-}
-function filterList(inp,list){
-  const t=$("#"+inp).value.toLowerCase();
-  document.querySelectorAll(list+" .item").forEach(el=>el.style.display=el.dataset.k.includes(t)?"":"none");
-}
-function viewCarte(A){
-  $("#view").innerHTML=`<div style="margin:12px 0" id="map"></div>`;
-  setTimeout(()=>{
-    if(typeof L==="undefined"){$("#map").innerHTML='<div class="center">Carte indisponible (librairie non chargée).</div>';return;}
-    map=L.map("map").setView([48.857,2.352],10);
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{attribution:"© OpenStreetMap © CARTO",maxZoom:19}).addTo(map);
-    Object.values(CE).filter(c=>c.lat&&c.lon&&(BY_CENTRE[c.id]||[]).length).forEach(c=>{
-      const salles=BY_CENTRE[c.id]||[];
-      let n=0,lib=0;salles.forEach(s=>{const t=A.topSalle[s.id];if(t){n+=t.n;lib+=t.libres;}});
-      const e=EN[c.enseigne_id]||{};
-      L.circleMarker([c.lat,c.lon],{radius:7,color:"var(--s1)",fillColor:"#3987e5",fillOpacity:.85,weight:2,opacity:.9})
-        .addTo(map).bindPopup(`<b>${esc(e.nom||c.nom||"")}</b><br>${esc(ville(c.ville||""))} · ${salles.length} salle(s)<br>
-          ${n?pct(n-lib,n)+"% occupé · "+lib+" libres":"pas de relevé sur ce filtre"}<br>
-          <a href="#" onclick="map.closePopup();openEns('${c.enseigne_id}');return false">Voir l'enseigne →</a>`);
-    });
-  },60);
-}
-
-/* ═════════ Parcs enfants (Qweekle) ═════════
-   Une « jauge » par parc et par créneau : toutes les entrées (enfant, adulte, bébé)
-   puisent dans les mêmes places. Remplissage = places prises / capacité de référence.
-   Le chiffre est une part de jauge, pas un nombre de visiteurs (voir Méthodologie). */
+/* ═════════ parcs enfants : chargés à la demande ═════════ */
 const PARC_DEBUT="2026-10-21";
-const PH=[[0,10],[10,11],[11,12],[12,13],[13,14],[14,15],[15,16],[16,17],[17,24]];
-const phLab=b=>b[0]===0?"–10h":b[1]===24?"17h+":b[0]+"h";
 let COMPTES=null;                            // comptes publiés (parcs_comptes.json, publié avec la page)
 let HIST=null;                               // historique réel ROLLER (parcs_historique.json)
-async function loadParcs(){
+function chargerParcs(){
+  if(PS)return Promise.resolve();
+  if(PS_LOADING)return PS_LOADING;
   fetch("parcs_comptes.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{COMPTES=d;
-    if(TAB==="parcs"&&PS)renderParcs();}).catch(()=>{});
+    if(S.u==="parcs"&&PS)render();}).catch(()=>{});
   fetch("parcs_historique.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{HIST=d;
-    if(TAB==="parcs"&&PS)renderParcs();}).catch(()=>{});
+    if(S.u==="parcs"&&PS)render();}).catch(()=>{});
   const D14=iso(new Date(Date.now()-14*864e5));
-  PS=await qAll(`sessions?select=salle_id,date,heure,dispo,statut,places_restantes,places_init,places_vendues,prix_total,premier_vu,dernier_vu&groupby=eq.parc&date=gte.${D14}&order=date,heure`,40);
+  PS_LOADING=qAll(`sessions?select=salle_id,date,heure,dispo,statut,places_restantes,places_init,places_vendues,prix_total,premier_vu,dernier_vu&groupby=eq.parc&date=gte.${D14}&order=date,heure`,40)
+    .then(r=>{PS=r;});
+  return PS_LOADING;
 }
 const parcOf=sid=>{const s=PSA[sid];return s?PCE[s.centre_id]:null;};
 function shopUrl(c){                        // boutique publique d'où viennent les relevés
   const slug=c.id.replace(/^qw-/,"");
   return slug.includes(".qweekle.shop")?"https://"+slug:`https://${c.enseigne_id}.qweekle.com/shop/${slug}`;
 }
-function sliceParcs(passe){
-  const nowHM=PARIS.format(new Date()).slice(11,16);
-  const now=new Date(), end=new Date();
-  let from=TODAY,to=null,hFrom=null;
-  if(passe){from=iso(new Date(Date.now()-14*864e5));to=iso(new Date(Date.now()-864e5));}
-  else if(PER==="7"){end.setDate(now.getDate()+7);to=iso(end);}
-  else if(PER==="soir"){to=TODAY;hFrom=17;}
-  else if(PER==="we"){const d=now.getDay(),add=(6-d+7)%7;const s=new Date();s.setDate(now.getDate()+add);
-    const e=new Date(s);e.setDate(s.getDate()+1);from=iso(s);to=iso(e);}
-  return (PS||[]).filter(x=>{
-    if(x.statut==="retire"||!x.places_init)return false;
-    if(!passe&&x.date===TODAY&&x.heure<nowHM)return false;
-    if(x.date<from||(to&&x.date>to))return false;
-    if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
-    if(VILLE){const c=parcOf(x.salle_id);if(!c||!filtreParc(c))return false;}
-    return true;});
-}
 /* Panier par place : moyenne des prix enfant et adulte du créneau (mix 1 pour 1). Calage :
    Palomano Clichy déclare 10,1 € par visiteur (1,12 M€, 111 369 visiteurs en 2024) pour des
-   entrées à 15 € et 7 €, soit 11 € en moyenne — les bébés entrent gratuitement. Octopia vend
-   un duo (1 enfant + 1 parent) : une place = un duo. */
+   entrées à 15 € et 7 €, soit 11 € en moyenne — les bébés entrent gratuitement. */
 function panierPlace(x){const p=x.prix_total||{};
   return p.enfant&&p.adulte?(+p.enfant + +p.adulte)/2:+(p.enfant||p.adulte||0);}
-const eurK=v=>v==null?"—":v>=10000?Math.round(v/1000).toLocaleString("fr-FR")+" k€":Math.round(v).toLocaleString("fr-FR")+" €";
-function aggParcs(rows){
-  const A={n:0,init:0,vend:0,rest:0,complets:0,ca:0,enf:[],adu:[],parc:{},jour:{},heat:{}};
-  /* complet = plus réservable (Rêvopolie : la jauge du parc est atteinte pendant la visite,
-     même s'il reste des arrivées sur ce créneau) */
-  const add=(o,x)=>{o.n++;o.init+=x.places_init;o.vend+=x.places_vendues||0;o.rest+=x.dispo?x.places_restantes||0:0;
-    o.ca=(o.ca||0)+(x.places_vendues||0)*panierPlace(x);if(!x.dispo)o.complets++;};
-  for(const x of rows){
-    const c=parcOf(x.salle_id);if(!c)continue;
-    add(A,x);
-    const px=x.prix_total||{};
-    if(px.enfant)A.enf.push(+px.enfant);if(px.adulte)A.adu.push(+px.adulte);
-    const p=A.parc[c.id]=A.parc[c.id]||{n:0,init:0,vend:0,rest:0,complets:0,enf:[],jauges:[]};
-    add(p,x);if(px.enfant)p.enf.push(+px.enfant);p.jauges.push(x.places_init);
-    add(A.jour[x.date]=A.jour[x.date]||{n:0,init:0,vend:0,rest:0,complets:0},x);
-    const jd=(new Date(x.date+"T12:00").getDay()+6)%7,h=+x.heure.slice(0,2);
-    const bi=PH.findIndex(b=>h>=b[0]&&h<b[1]);
-    if(bi>=0)add(A.heat[jd+"|"+bi]=A.heat[jd+"|"+bi]||{n:0,init:0,vend:0,rest:0,complets:0},x);
-  }
-  return A;
-}
-const remp=o=>o&&o.init?Math.round(100*o.vend/o.init):null;
-const prixTxt=v=>v==null?"—":(Math.round(v*10)/10).toLocaleString("fr-FR")+" €";
 
-async function renderParcs(){
-  const v=$("#view");
-  if(!PS){v.innerHTML=`<div class="center">Chargement des parcs…</div>`;
-    try{await loadParcs();}catch(e){v.innerHTML=`<div class="center">Parcs indisponibles (${esc(e.message)}).</div>`;return;}
-    if(TAB!=="parcs")return;}
-  if(!Object.keys(PSA).length){v.innerHTML=`<div class="center">Aucun parc relevé pour l'instant.</div>`;return;}
-  const rows=sliceParcs(false),A=aggParcs(rows),P=aggParcs(sliceParcs(true));
-  $("#fnote").textContent=`${rows.length.toLocaleString("fr-FR")} créneaux de parcs analysés`;
-  v.innerHTML=viewParcs(A,P);wireHovers();
+/* ═════════ géographie : département, région, zone, ville / arrondissement ═════════ */
+const DEP={"01":"Ain","02":"Aisne","03":"Allier","04":"Alpes-de-Haute-Provence","05":"Hautes-Alpes","06":"Alpes-Maritimes",
+"07":"Ardèche","08":"Ardennes","09":"Ariège","10":"Aube","11":"Aude","12":"Aveyron","13":"Bouches-du-Rhône","14":"Calvados",
+"15":"Cantal","16":"Charente","17":"Charente-Maritime","18":"Cher","19":"Corrèze","2A":"Corse-du-Sud","2B":"Haute-Corse",
+"21":"Côte-d'Or","22":"Côtes-d'Armor","23":"Creuse","24":"Dordogne","25":"Doubs","26":"Drôme","27":"Eure","28":"Eure-et-Loir",
+"29":"Finistère","30":"Gard","31":"Haute-Garonne","32":"Gers","33":"Gironde","34":"Hérault","35":"Ille-et-Vilaine","36":"Indre",
+"37":"Indre-et-Loire","38":"Isère","39":"Jura","40":"Landes","41":"Loir-et-Cher","42":"Loire","43":"Haute-Loire",
+"44":"Loire-Atlantique","45":"Loiret","46":"Lot","47":"Lot-et-Garonne","48":"Lozère","49":"Maine-et-Loire","50":"Manche",
+"51":"Marne","52":"Haute-Marne","53":"Mayenne","54":"Meurthe-et-Moselle","55":"Meuse","56":"Morbihan","57":"Moselle",
+"58":"Nièvre","59":"Nord","60":"Oise","61":"Orne","62":"Pas-de-Calais","63":"Puy-de-Dôme","64":"Pyrénées-Atlantiques",
+"65":"Hautes-Pyrénées","66":"Pyrénées-Orientales","67":"Bas-Rhin","68":"Haut-Rhin","69":"Rhône","70":"Haute-Saône",
+"71":"Saône-et-Loire","72":"Sarthe","73":"Savoie","74":"Haute-Savoie","75":"Paris","76":"Seine-Maritime","77":"Seine-et-Marne",
+"78":"Yvelines","79":"Deux-Sèvres","80":"Somme","81":"Tarn","82":"Tarn-et-Garonne","83":"Var","84":"Vaucluse","85":"Vendée",
+"86":"Vienne","87":"Haute-Vienne","88":"Vosges","89":"Yonne","90":"Territoire de Belfort","91":"Essonne","92":"Hauts-de-Seine",
+"93":"Seine-Saint-Denis","94":"Val-de-Marne","95":"Val-d'Oise"};
+const REGIONS={"Île-de-France":["75","77","78","91","92","93","94","95"],"Hauts-de-France":["02","59","60","62","80"],
+"Grand Est":["08","10","51","52","54","55","57","67","68","88"],"Normandie":["14","27","50","61","76"],"Bretagne":["22","29","35","56"],
+"Pays de la Loire":["44","49","53","72","85"],"Centre-Val de Loire":["18","28","36","37","41","45"],
+"Bourgogne-Franche-Comté":["21","25","39","58","70","71","89","90"],
+"Nouvelle-Aquitaine":["16","17","19","23","24","33","40","47","64","79","86","87"],
+"Occitanie":["09","11","12","30","31","32","34","46","48","65","66","81","82"],
+"Auvergne-Rhône-Alpes":["01","03","07","15","26","38","42","43","63","69","73","74"],
+"Provence-Alpes-Côte d'Azur":["04","05","06","13","83","84"],"Corse":["2A","2B"]};
+const DEP_REG={};Object.entries(REGIONS).forEach(([r,ds])=>ds.forEach(d=>DEP_REG[d]=r));
+const IDF=new Set(REGIONS["Île-de-France"]);
+const GEO=new Map();
+function geo(c){
+  if(GEO.has(c.id))return GEO.get(c.id);
+  const cp=String(c.cp||"").trim();let dep=cp.slice(0,2);
+  if(dep==="20")dep=+cp>=20200?"2B":"2A";
+  const idf=IDF.has(dep);
+  const zone=dep==="75"?"Paris":["92","93","94"].includes(dep)?"Petite couronne":idf?"Grande couronne":(DEP_REG[dep]||"Autre");
+  let v=ville(c.ville||"");
+  if(dep==="75"&&/^75\d{3}$/.test(cp)){let a=+cp.slice(2);if(a>100)a-=100;v=a===1?"Paris 1er":`Paris ${a}e`;}
+  const g={dep,depLab:DEP[dep]?`${DEP[dep]} (${dep})`:(dep||"Non renseigné"),reg:DEP_REG[dep]||"Autre",zone,idf,ville:v||"Non renseignée"};
+  GEO.set(c.id,g);return g;
 }
-function viewParcs(A,P){
-  const r=remp(A),nParcs=Object.keys(A.parc).length;
-  const ens=new Set(Object.keys(A.parc).map(cid=>PCE[cid].enseigne_id)).size;
-  const em=median(A.enf),emin=A.enf.length?Math.min(...A.enf):null,am=median(A.adu);
-  const tiles=[
-    {lab:"Remplissage à venir",val:r==null?"—":r+" %",ctx:`${A.vend.toLocaleString("fr-FR")} places prises sur ${A.init.toLocaleString("fr-FR")} de jauge`,bar:r},
-    {lab:"Créneaux complets",val:A.complets.toLocaleString("fr-FR"),ctx:`${pct(A.complets,A.n)} % des ${A.n.toLocaleString("fr-FR")} créneaux — plus aucune entrée possible`},
-    {lab:"Entrée enfant · médiane",val:prixTxt(em),ctx:`${emin!=null&&emin<em?"dès "+prixTxt(emin)+" en heures creuses · ":""}adulte ${prixTxt(am)}`},
-    {lab:"CA billetterie déjà réservé",val:eurK(A.ca),ctx:`places prises × prix du créneau, sur la période — estimation, voir Méthodologie`},
-    (P.n>=50?{lab:"Réalisé · 14 derniers jours",val:eurK(P.ca),ctx:`CA billetterie · remplissage ${remp(P)} % (${P.n.toLocaleString("fr-FR")} créneaux passés)`}
-            :{lab:"Réalisé · 14 derniers jours",val:"—",ctx:`historique construit depuis le ${frDate(PARC_DEBUT)} : les billetteries ne publient pas le passé`}),
-    {lab:"Parcs suivis",val:nParcs,ctx:`${ens} enseigne${ens>1?"s":""} · ${A.rest.toLocaleString("fr-FR")} places encore libres`},
-  ];
-  return `<div class="grid tiles" style="margin:12px 0">${tiles.map(t=>`
-    <div class="card tile"><div class="lab">${t.lab}</div><div class="val">${t.val}</div>
-      <div class="ctx">${t.ctx}</div>${t.bar!=null?`<div class="bar-mini"><i style="width:${t.bar}%"></i></div>`:""}</div>`).join("")}
-  </div>
-  <div class="grid" style="margin-bottom:12px">${cardParcEnseignes(A)}</div>
-  <div class="grid" style="margin-bottom:12px">${cardParcRank(A)}</div>
-  <div class="grid two">${cardParcJours(A)}${cardParcHeat(A)}</div>
-  <div class="grid" style="margin-top:12px">${cardHistorique()}</div>
-  <div class="grid" style="margin-top:12px">${cardComptes()}</div>`;
+const ZONES_FIXES=[["zone:idf","Île-de-France"],["zone:Paris","Paris"],["zone:Petite couronne","Petite couronne (92·93·94)"],
+  ["zone:Grande couronne","Grande couronne (77·78·91·95)"],["zone:ouest","Ouest parisien (78·92·95)"],["zone:hors","Hors Île-de-France"]];
+function inZone(c,z){
+  if(!z)return true;
+  const i=z.indexOf(":"),t=z.slice(0,i),v=z.slice(i+1),g=geo(c);
+  if(t==="zone")return v==="idf"?g.idf:v==="hors"?!g.idf:v==="ouest"?["78","92","95"].includes(g.dep):g.zone===v;
+  if(t==="r")return g.reg===v;
+  if(t==="d")return g.dep===v;
+  if(t==="v")return g.ville===v;
+  return true;
 }
-/* Par enseigne : le parc de référence (Palomano) face à ses concurrents */
-function cardParcEnseignes(A){
-  const g={};
-  Object.entries(A.parc).forEach(([cid,p])=>{const eid=PCE[cid].enseigne_id;
-    const e=g[eid]=g[eid]||{n:0,init:0,vend:0,ca:0,complets:0,parcs:0,enf:[]};
-    e.parcs++;e.n+=p.n;e.init+=p.init;e.vend+=p.vend;e.ca+=p.ca;e.complets+=p.complets;e.enf.push(...p.enf);});
-  const rows=Object.entries(g).map(([eid,e])=>({eid,nom:(PEN[eid]||{}).nom||eid,...e,r:remp(e)}))
-    .sort((a,b)=>b.ca-a.ca);
-  const t=`<table class="tv"><thead><tr><th>Enseigne</th><th class="n">Parcs</th><th class="n">Remplissage</th>
-    <th class="n">Complets</th><th class="n">Entrée enfant</th><th class="n">CA réservé</th><th class="n">CA / parc</th></tr></thead><tbody>
-    ${rows.map(o=>`<tr><td>${o.eid==="palomano"?"<b>"+esc(o.nom)+"</b>":esc(o.nom)}</td><td class="n">${o.parcs}</td>
-      <td class="n">${o.r} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${prixTxt(median(o.enf))}</td>
-      <td class="n">${eurK(o.ca)}</td><td class="n">${eurK(o.ca/o.parcs)}</td></tr>`).join("")}</tbody></table>`;
-  return card("Par enseigne","Palomano face à ses concurrents, sur la période et la zone filtrées. CA réservé = entrées déjà vendues en ligne (estimation).",
-    `<div class="tvw">${t}</div>`,"","pe");
+function zoneLab(z){
+  if(!z)return S.u==="parcs"?"Toute la France":"Toute la zone";
+  const f=ZONES_FIXES.find(x=>x[0]===z);if(f)return f[1].replace(/ \(.*\)$/,"");
+  const i=z.indexOf(":"),t=z.slice(0,i),v=z.slice(i+1);
+  return t==="d"?(DEP[v]?`${DEP[v]} (${v})`:v):v;
 }
-function cardParcRank(A){
-  const rows=Object.entries(A.parc).map(([cid,p])=>({cid,c:PCE[cid],e:PEN[PCE[cid].enseigne_id]||{},r:remp(p),p}))
-    .sort((a,b)=>(b.r??-1)-(a.r??-1));
-  const body=rows.map(o=>`<div class="row" onclick="openParc('${o.cid}')" data-tip="${esc(o.c.nom)}|${o.r}% de la jauge prise|${o.p.complets} complets sur ${o.p.n} créneaux · jauge habituelle ${median(o.p.jauges)}">
-      <span class="nm">${esc(o.c.nom)}<br><span style="color:var(--muted);font-size:11px">${esc(ville(o.c.ville||""))} · ${eurK(o.p.ca)} réservés · ${o.p.complets} complet${o.p.complets>1?"s":""}</span></span>
-      <span class="track"><i style="width:${o.r}%"></i></span><span class="pct">${o.r}%</span></div>`).join("");
-  const table=`<table class="tv"><thead><tr><th>Parc</th><th>Ville</th><th class="n">Remplissage</th><th class="n">Complets</th>
-    <th class="n">Places libres</th><th class="n">Jauge habituelle</th><th class="n">Entrée enfant</th><th class="n">CA réservé</th></tr></thead><tbody>
-    ${rows.map(o=>`<tr style="cursor:pointer" onclick="openParc('${o.cid}')"><td>${esc(o.c.nom)}</td><td>${esc(ville(o.c.ville||""))}</td>
-      <td class="n">${o.r} %</td><td class="n">${o.p.complets}/${o.p.n}</td><td class="n">${o.p.rest.toLocaleString("fr-FR")}</td>
-      <td class="n">${median(o.p.jauges)}</td><td class="n">${prixTxt(median(o.p.enf))}</td><td class="n">${eurK(o.p.ca)}</td></tr>`).join("")}</tbody></table>`;
-  return card("Parcs les plus remplis","Part de la jauge déjà réservée sur la période filtrée. Clique pour le détail jour par jour.",
-    `<div class="rank">${body||'<div class="center">Pas de créneau sur ce filtre.</div>'}</div>`,table,"pr");
+
+/* ═════════ état, adresse partageable ═════════ */
+const VUES={
+  escape:[["synthese","Synthèse"],["marques","Marques"],["lieux","Salles"],["zones","Villes & zones"],["carte","Carte"]],
+  parcs:[["synthese","Synthèse"],["marques","Marques"],["lieux","Parcs"],["zones","Villes & régions"],["carte","Carte"],
+         ["historique","Historique"],["comptes","Comptes publiés"]]};
+const PERIODES={escape:[["7","7 jours"],["we","Week-end"],["soir","Ce soir"],["all","Tout"]],
+                parcs:[["7","7 jours"],["we","Week-end"],["all","14 jours"]]};
+const S={u:"escape",v:"synthese",p:"7",m:"",z:"",cmp:[]};
+let FICHE=[];                                // pile des fiches ouvertes [{t,id}]
+function lireHash(){
+  const h=location.hash.slice(1);if(!h)return;
+  const i=h.indexOf("?"),path=decodeURIComponent(i<0?h:h.slice(0,i)),qs=i<0?"":h.slice(i+1);
+  const [a,b]=path.split("/");
+  /* anciens liens : #parcs, #vue, #enseignes, #salles, #carte */
+  const old={vue:["escape","synthese"],enseignes:["escape","marques"],salles:["escape","lieux"],carte:["escape","carte"],parcs:["parcs","synthese"]};
+  if((a==="escape"||a==="parcs")&&b){S.u=a;S.v=VUES[a].some(v=>v[0]===b)?b:"synthese";}
+  else if(old[a]){[S.u,S.v]=old[a];}
+  const p=new URLSearchParams(qs);
+  S.p=p.get("p")||"7";S.m=p.get("m")||"";S.z=p.get("z")||"";
+  S.cmp=(p.get("cmp")||"").split(",").filter(Boolean).slice(0,4);
+  if(!PERIODES[S.u].some(x=>x[0]===S.p))S.p="7";
+  const f=p.get("f");FICHE=f&&f.includes(":")?[{t:f.slice(0,f.indexOf(":")),id:f.slice(f.indexOf(":")+1)}]:[];
 }
-function cardParcJours(A){
-  const ds=Object.keys(A.jour).sort();
-  const body=ds.map(d=>{const o=A.jour[d],r=remp(o);
-    return `<div class="row" style="cursor:default" data-tip="${dlong(d)}|${r}% de la jauge prise · ${eurK(o.ca)}|${o.complets} complets · ${o.rest.toLocaleString("fr-FR")} places libres">
-      <span class="nm">${dlong(d)}</span><span class="track"><i style="width:${r}%"></i></span><span class="pct">${r}%</span></div>`;}).join("");
-  const table=`<table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th><th class="n">CA réservé</th></tr></thead><tbody>
-    ${ds.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest.toLocaleString("fr-FR")}</td><td class="n">${eurK(o.ca)}</td></tr>`;}).join("")}</tbody></table>`;
-  return card("Jour par jour","Remplissage de tous les parcs filtrés, par date. Les vacances scolaires et les week-ends ressortent.",
-    `<div class="rank">${body||'<div class="center">Pas de données.</div>'}</div>`,table,"pj");
+function ecrireHash(){
+  const p=new URLSearchParams();
+  if(S.p!=="7")p.set("p",S.p);if(S.m)p.set("m",S.m);if(S.z)p.set("z",S.z);if(S.cmp.length)p.set("cmp",S.cmp.join(","));
+  const f=FICHE[FICHE.length-1];if(f)p.set("f",f.t+":"+f.id);
+  const qs=p.toString();
+  history.replaceState(null,"",`#${S.u}/${S.v}${qs?"?"+qs:""}`);
 }
-function cardParcHeat(A){
-  const cells=[];
-  for(let j=0;j<7;j++)for(let b=0;b<PH.length;b++){const c=A.heat[j+"|"+b];
-    cells.push({j,b,r:c&&c.n>=3?remp(c):null,n:c?c.n:0});}
-  const vals=cells.filter(c=>c.r!=null).map(c=>c.r);
-  const lo=vals.length?Math.min(...vals):0,hi=vals.length?Math.max(...vals):100,span=Math.max(1,hi-lo);
-  const body=JOURS.map((jn,j)=>`<tr><th class="rl">${jn}</th>`+PH.map((bk,b)=>{
-    const c=cells.find(x=>x.j===j&&x.b===b);
-    if(!c||c.r==null)return `<td class="nd" title="fermé ou trop peu de créneaux">·</td>`;
-    const idx=Math.min(RAMP.length-1,Math.floor((c.r-lo)/span*RAMP.length));
-    return `<td style="background:var(${RAMP[idx]});color:${idx>=3?"#0b0b0b":"#ffffff"}" data-tip="${jn} ${phLab(bk)}|${c.r}% de la jauge prise|${c.n} créneaux">${c.r}</td>`;
-  }).join("")+`</tr>`).join("");
-  const table=`<table class="tv"><thead><tr><th>Jour</th>${PH.map(b=>`<th class="n">${phLab(b)}</th>`).join("")}</tr></thead><tbody>
-    ${JOURS.map((jn,j)=>`<tr><td>${jn}</td>${PH.map((bk,b)=>{const c=cells.find(x=>x.j===j&&x.b===b);
-      return `<td class="n">${c&&c.r!=null?c.r+" %":"—"}</td>`;}).join("")}</tr>`).join("")}</tbody></table>`;
-  return card("Heures de pointe","Remplissage par jour de semaine et heure d'arrivée — plus c'est clair, plus c'est pris.",
-    `<div class="hm"><table><thead><tr><th class="rl"></th>${PH.map(b=>`<th>${phLab(b)}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div>
-     <div class="legend"><span>Remplissage</span><span>${lo} %</span><span class="sw">${RAMP.map(r=>`<i style="background:var(${r})"></i>`).join("")}</span><span>${hi} %</span>
-       <span style="margin-left:6px">· <i style="display:inline-block;width:10px;height:9px;border-radius:2px;background:var(--surface-2);border:1px solid var(--hair);vertical-align:middle"></i> fermé / trop peu de créneaux</span></div>`,
-    table,"ph");
+
+/* ═════════ découpage : période × marque × zone (une rangée de filtres cadre TOUT) ═════════ */
+function periode(per){
+  const now=new Date(),end=new Date();let from=TODAY,to=null,hFrom=null;
+  if(per==="7"){end.setDate(now.getDate()+7);to=iso(end);}
+  else if(per==="soir"){to=TODAY;hFrom=17;}
+  else if(per==="we"){const d=now.getDay(),add=(6-d+7)%7;const s=new Date();s.setDate(now.getDate()+add);
+    const e=new Date(s);e.setDate(s.getDate()+1);from=iso(s);to=iso(e);}
+  return {from,to,hFrom};
 }
-/* Le RÉTROSPECTIF : comptes déposés au greffe. Les billetteries ne servent aucune date
-   passée ; seul le registre public donne l'historique (CA souvent confidentiel). */
-const exo=f=>Object.entries(f||{}).sort((a,b)=>b[0].localeCompare(a[0]));
-const exLab=k=>k.length>4?k.slice(0,7).replace("-","/"):k;     // « 2025-12-31 » -> « 2025/12 »
-function cardComptes(){
-  if(!COMPTES)return card("Rétrospectif · comptes publiés","Chargement…","","","cp");
-  /* une ligne par société exploitant un parc de la zone filtrée, puis les têtes de réseau */
-  const so=(COMPTES.societes||[]).filter(x=>Object.keys(x.finances||{}).length||(x.centres||[]).length)
-    .map(x=>{const ex=exo(x.finances),cs=(x.centres||[]).filter(c=>PCE[c]);
-      return {...x,ex,cs,dans:!VILLE||cs.some(c=>filtreParc(PCE[c]))||(!cs.length&&!VILLE.startsWith("zone:"))};})
-    .filter(x=>x.dans);
-  const ca=x=>(x.ex.find(([,v])=>v.ca)||[,{}])[1].ca||0;
-  so.sort((a,b)=>ca(b)-ca(a)||((b.ex[0]||[,{}])[1].resultat_net||0)-((a.ex[0]||[,{}])[1].resultat_net||0));
-  const cell=v=>v==null?"—":v.ca?eurK(v.ca):"non publié";
-  const t=`<table class="tv"><thead><tr><th>Société</th><th>Groupe / enseigne</th><th>Parc(s) suivis</th><th class="n">Exercice</th>
-    <th class="n">CA</th><th class="n">Résultat net</th><th class="n">Exercice précédent</th><th class="n">Effectif</th></tr></thead><tbody>
-    ${so.map(x=>{const [k0,v0]=x.ex[0]||["",null],[k1,v1]=x.ex[1]||["",null];
-      const parcs=x.cs.map(c=>`<a href="#" onclick="openParc('${c}');return false">${esc(PCE[c].nom)}</a>`).join(", ")||`<span class="muted">${esc((x.parcs||[]).join(", ")||x.role||"")}</span>`;
-      return `<tr><td>${esc(x.nom)}</td><td>${esc(x.groupe||"")}</td><td>${parcs}</td><td class="n">${k0?exLab(k0):"—"}</td>
-        <td class="n">${v0?cell(v0):"aucun dépôt"}</td><td class="n">${v0&&v0.resultat_net!=null?eurK(v0.resultat_net):"—"}</td>
-        <td class="n">${k1?`${exLab(k1)} : ${cell(v1)}${v1.resultat_net!=null?" · RN "+eurK(v1.resultat_net):""}`:"—"}</td>
-        <td class="n">${/non /.test(x.effectif||"")?"—":esc(x.effectif||"")}</td></tr>`;}).join("")}
-    ${(COMPTES.declaratifs||[]).map(d=>`<tr><td>${esc(d.societe||"")}</td><td>déclaratif</td><td>${esc((PCE[d.centre]||{}).nom||"")}</td>
-      <td class="n">${d.annee}</td><td class="n">${eurK(d.ca)}</td><td class="n">—</td><td class="n">${d.visiteurs?d.visiteurs.toLocaleString("fr-FR")+" visiteurs":""}</td>
-      <td class="n"></td></tr>`).join("")}</tbody></table>`;
-  return card("Rétrospectif · comptes publiés",
-    `Comptes déposés au greffe (registre public et comptes INPI, tous les exercices disponibles), société par société,
-     rattachée au parc qu'elle exploite. « Non publié » = comptes confidentiels ; « aucun dépôt » = société trop récente.
-     Ex. : ACROCHATS (groupe Gulli Parc / M6) exploite les 7 Gulli Parc d'Île-de-France et Les Zacroc's.`,
-    `<div class="tvw">${t}</div>`,"","cp");
+const nowHM=()=>PARIS.format(new Date()).slice(11,16);
+/* o.m / o.z : "" = toutes les marques / toute la zone ; undefined = filtre courant */
+function rowsE(o={}){
+  const m=o.m!==undefined?o.m:S.m,z=o.z!==undefined?o.z:S.z,{from,to,hFrom}=periode(o.p||S.p),hm=nowHM();
+  return SESS.filter(x=>{
+    if(!DAY_OK.has(x.date)||x.statut==="retire")return false;   // bord d'horizon / retiré par l'enseigne
+    if(x.date===TODAY&&x.heure<hm)return false;                  // déjà passé : plus réservable, pas « occupé »
+    if(x.date<from||(to&&x.date>to))return false;
+    if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
+    if(m&&ENS_OF[x.salle_id]!==m)return false;
+    if(z){const c=CENTRE_OF[x.salle_id];if(!c||!inZone(c,z))return false;}
+    return true;});
 }
-function comptesParc(cid){
-  const so=((COMPTES||{}).societes||[]).filter(x=>(x.centres||[]).includes(cid)),
-        de=((COMPTES||{}).declaratifs||[]).filter(x=>x.centre===cid);
-  if(!so.length&&!de.length)return "";
-  const rows=[...so.flatMap(x=>{const ex=exo(x.finances);
-      return ex.length?ex.map(([k,v])=>`<tr><td>${esc(x.nom)}</td><td class="n">${exLab(k)}</td>
-        <td class="n">${v.ca?eurK(v.ca):"non publié"}</td><td class="n">${v.resultat_net==null?"—":eurK(v.resultat_net)}</td></tr>`)
-        :[`<tr><td>${esc(x.nom)}</td><td class="n">—</td><td class="n" colspan="2">aucun compte déposé (créée ${esc((x.creation||"").slice(0,7))})</td></tr>`];}),
-    ...de.map(d=>`<tr><td>${esc(d.societe||"")} <span class="muted">(${esc(d.source)})</span></td><td class="n">${d.annee}</td>
-      <td class="n">${eurK(d.ca)}${d.visiteurs?` · ${d.visiteurs.toLocaleString("fr-FR")} visiteurs`:""}</td><td class="n">—</td></tr>`)];
-  const multi=so.filter(x=>(x.centres||[]).length>1);
-  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Rétrospectif · comptes de la société exploitante</h4>
-    <div class="tvw"><table class="tv"><thead><tr><th>Société</th><th class="n">Exercice</th><th class="n">CA</th><th class="n">Résultat net</th></tr></thead>
-    <tbody>${rows.join("")}</tbody></table></div>
-    ${multi.length?`<div class="csub" style="margin-top:6px">${multi.map(x=>`${esc(x.nom)} exploite ${x.centres.length} parcs suivis : ses comptes couvrent l'ensemble.`).join(" ")}</div>`:""}`;
+function rowsP(o={}){
+  const m=o.m!==undefined?o.m:S.m,z=o.z!==undefined?o.z:S.z,hm=nowHM();
+  let {from,to,hFrom}=periode(o.p||S.p);
+  if(o.passe){from=iso(new Date(Date.now()-14*864e5));to=iso(new Date(Date.now()-864e5));hFrom=null;}
+  return (PS||[]).filter(x=>{
+    if(x.statut==="retire"||!x.places_init)return false;
+    if(!o.passe&&x.date===TODAY&&x.heure<hm)return false;
+    if(x.date<from||(to&&x.date>to))return false;
+    if(hFrom!=null&&+x.heure.slice(0,2)<hFrom)return false;
+    const c=parcOf(x.salle_id);if(!c)return false;
+    if(m&&c.enseigne_id!==m)return false;
+    if(z&&!inZone(c,z))return false;
+    return true;});
 }
-/* ═════ Historique RÉEL (ROLLER) : l'API ROLLER sert aussi les jours passés, avec les
-   places restantes finales de chaque séance (ventes en ligne ET, a priori, en caisse). ═════ */
+
+/* ═════════ agrégats ═════════ */
+/* escape : occupation = part des créneaux publiés qui ne sont plus réservables, sur les seules
+   salles qui publient leurs disponibilités (PUBLIE) */
+const nE=()=>({n:0,libres:0,prix:[],salles:new Set(),centres:new Set(),ens:new Set()});
+function addE(o,x){o.n++;if(x.dispo)o.libres++;
+  const px=x.prive!==false?x.prix_total_moyen:null;if(px)o.prix.push(px);   // prive null = pas encore renseigné -> gardé
+  o.salles.add(x.salle_id);const c=CENTRE_OF[x.salle_id];if(c){o.centres.add(c.id);o.ens.add(c.enseigne_id);}}
+function totE(rows){const o=nE();for(const x of rows)if(PUBLIE.has(x.salle_id))addE(o,x);return o;}
+function grpE(rows,key){const g={};for(const x of rows){if(!PUBLIE.has(x.salle_id))continue;const k=key(x);
+  if(k==null)continue;addE(g[k]=g[k]||nE(),x);}return g;}
+const occ=o=>o&&o.n?Math.round(100*(o.n-o.libres)/o.n):null;
+/* parcs : une jauge par créneau ; remplissage = places prises / jauge ; CA = places × panier */
+const nP=()=>({n:0,init:0,vend:0,rest:0,complets:0,ca:0,enf:[],adu:[],jauges:[],parcs:new Set(),ens:new Set()});
+function addP(o,x){const c=parcOf(x.salle_id);o.n++;o.init+=x.places_init;o.vend+=x.places_vendues||0;
+  o.rest+=x.dispo?x.places_restantes||0:0;o.ca+=(x.places_vendues||0)*panierPlace(x);if(!x.dispo)o.complets++;
+  const p=x.prix_total||{};if(p.enfant)o.enf.push(+p.enfant);if(p.adulte)o.adu.push(+p.adulte);o.jauges.push(x.places_init);
+  if(c){o.parcs.add(c.id);o.ens.add(c.enseigne_id);}}
+function totP(rows){const o=nP();for(const x of rows)addP(o,x);return o;}
+function grpP(rows,key){const g={};for(const x of rows){const k=key(x);if(k==null)continue;addP(g[k]=g[k]||nP(),x);}return g;}
+const remp=o=>o&&o.init?Math.round(100*o.vend/o.init):null;
+
+/* Les deux univers derrière une même interface : les vues ne connaissent que ceci */
+const UNIV={
+  escape:{
+    rows:o=>rowsE(o),tot:totE,grp:grpE,taux:occ,tauxLab:"Occupation",
+    tauxDef:"part des créneaux qui ne sont plus réservables",
+    ens:x=>ENS_OF[x.salle_id],lieu:x=>x.salle_id,centre:x=>CENTRE_OF[x.salle_id],
+    marques:()=>EN,lieux:()=>SA,lieuNom:"salle",lieuxNom:"salles",nLieux:o=>o.salles.size,minN:12,
+    centres:()=>Object.values(CE).filter(c=>(BY_CENTRE[c.id]||[]).length),
+    centreDe:id=>CENTRE_OF[id],marqueDe:id=>ENS_OF[id]},
+  parcs:{
+    rows:o=>rowsP(o),tot:totP,grp:grpP,taux:remp,tauxLab:"Remplissage",
+    tauxDef:"part de la jauge déjà réservée",
+    ens:x=>(parcOf(x.salle_id)||{}).enseigne_id,lieu:x=>(parcOf(x.salle_id)||{}).id,centre:x=>parcOf(x.salle_id),
+    marques:()=>PEN,lieux:()=>PCE,lieuNom:"parc",lieuxNom:"parcs",nLieux:o=>o.parcs.size,minN:8,
+    centres:()=>Object.values(PCE),
+    centreDe:id=>PCE[id],marqueDe:id=>(PCE[id]||{}).enseigne_id}};
+const U=()=>UNIV[S.u];
+const nomM=id=>((U().marques()[id]||EN[id]||PEN[id]||{}).nom)||id;
+const geoKey=(lvl)=>x=>{const c=U().centre(x);if(!c)return null;const g=geo(c);
+  return lvl==="zone"?g.zone:lvl==="reg"?g.reg:lvl==="dep"?g.depLab:g.ville;};
+
+/* historique ROLLER (jours passés) */
 const lundi=d=>{const x=new Date(d+"T12:00");x.setDate(x.getDate()-((x.getDay()+6)%7));return iso(x);};
 /* Les premières semaines sur ROLLER montrent une jauge intacte (ventes encore sur l'ancien
    système) : on part du premier jour avec des entrées vendues. */
@@ -910,276 +731,820 @@ function histSemaines(h){
     const o=w[k]=w[k]||{e:0,j:0,ca:0,a:0,n:0,jours:0};o.e+=v.e||0;o.j+=v.j||0;o.ca+=v.ca||0;o.a+=v.a||0;o.n+=v.n||0;o.jours++;});
   return Object.entries(w).sort((a,b)=>a[0].localeCompare(b[0]));
 }
-function barresSemaines(sem,cle,lab){       // une série -> une couleur ; dates en HTML (lisibles sur mobile)
-  if(!sem.length)return "";
-  const W=1000,Hh=110,n=sem.length,pas=W/n,bw=Math.max(2,pas-3);
-  const max=Math.max(1,...sem.map(([,o])=>o[cle]));
-  const bars=sem.map(([k,o],i)=>{const h=(o[cle]/max)*(Hh-4);
-    return `<rect x="${(i*pas).toFixed(1)}" y="${(Hh-h).toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="2" fill="var(--s1)"
-      data-tip="Semaine du ${frDate(k)}|${Math.round(o.e).toLocaleString("fr-FR")} entrées · ${eurK(o.ca)}${o.a?` · ${o.a} anniversaires`:""}|remplissage ${o.j?Math.round(100*o.e/o.j):0} % · ${o.jours} j ouverts"></rect>`;}).join("");
-  const lbl=[0,Math.floor((n-1)/2),n-1].filter((v,i,a)=>a.indexOf(v)===i).map(i=>`<span>${frDate(sem[i][0])}</span>`).join("");
-  return `<svg viewBox="0 0 ${W} ${Hh}" preserveAspectRatio="none" width="100%" height="${Hh}" role="img" aria-label="${lab}" style="display:block">${bars}</svg>
-    <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-top:4px">${lbl}</div>`;
+function histTot(h){const J=histJours(h).map(([,v])=>v);
+  return {e:J.reduce((a,v)=>a+(v.e||0),0),j:J.reduce((a,v)=>a+(v.j||0),0),ca:J.reduce((a,v)=>a+(v.ca||0),0),
+    a:J.reduce((a,v)=>a+(v.a||0),0),jours:J.length,d0:(histJours(h)[0]||[h.debut])[0]};}
+/* comptes déposés */
+const exo=f=>Object.entries(f||{}).sort((a,b)=>b[0].localeCompare(a[0]));
+const exLab=k=>k.length>4&&k.slice(5,7)!=="12"?k.slice(0,7).replace("-","/"):k.slice(0,4);   // clos en déc. -> « 2025 »
+
+/* ═════════ composants ═════════ */
+const SORT={},TV={},VOIR={},Q={};            // tri, vue tableau, « voir tout », recherche — par bloc
+let NIV=null;                                // niveau géographique de la vue Villes & zones
+const CMP_COL=["var(--c1)","var(--c2)","var(--c3)","var(--c4)"];
+const tipAttr=t=>t?` data-tip="${esc(JSON.stringify(t))}"`:"";
+const niceMax=v=>{if(!(v>0))return 1;const p=Math.pow(10,Math.floor(Math.log10(v))),f=v/p;
+  return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;};
+const pctMax=v=>Math.min(100,Math.max(20,Math.ceil((v+4)/10)*10));
+function card(o){
+  const open=o.key&&TV[o.key];
+  return `<section class="card ${o.cls||""}"${o.id?` id="${o.id}"`:""}><div class="chead"><div><div class="ctitle">${o.title}</div>${o.sub?`<div class="csub">${o.sub}</div>`:""}</div>
+    <div class="cact">${o.actions||""}${o.table?`<button class="tbtn${open?" on":""}" onclick="TV['${o.key}']=!TV['${o.key}'];refresh()">${open?"Graphique":"Tableau"}</button>`:""}</div></div>
+    ${open?o.table:o.body}</section>`;
 }
-function cardHistorique(){
-  if(!HIST||!HIST.parcs)return card("Historique réel · ROLLER","Chargement…","","","hi");
-  const ps=Object.entries(HIST.parcs).filter(([cid,h])=>h.jours&&Object.keys(h.jours).length&&(!PCE[cid]||filtreParc(PCE[cid])));
-  if(!ps.length)return card("Historique réel · ROLLER","Aucun parc ROLLER dans la zone filtrée.","","","hi");
-  const blocs=ps.map(([cid,h])=>{const sem=histSemaines(h),HJ=histJours(h),J=HJ.map(([,v])=>v);
-    const e=J.reduce((a,v)=>a+(v.e||0),0),j=J.reduce((a,v)=>a+(v.j||0),0),ca=J.reduce((a,v)=>a+(v.ca||0),0),an=J.reduce((a,v)=>a+(v.a||0),0);
-    return `<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline">
-        <b style="font-size:13.5px;cursor:pointer" onclick="openParc('${cid}')">${esc(h.nom)}</b>
-        <span class="csub">depuis le ${frDate(HJ.length?HJ[0][0]:h.debut)} · ${Math.round(e).toLocaleString("fr-FR")} entrées · ${eurK(ca)} · remplissage ${j?Math.round(100*e/j):0} %${an?` · ${an} anniversaires`:""}</span></div>
-      ${barresSemaines(sem,"e","Entrées par semaine, "+h.nom)}</div>`;}).join("");
-  const t=`<table class="tv"><thead><tr><th>Parc</th><th>Mois</th><th class="n">Entrées</th><th class="n">Remplissage</th><th class="n">CA billetterie</th><th class="n">Anniversaires</th></tr></thead><tbody>
-    ${ps.flatMap(([cid,h])=>{const m={};histJours(h).forEach(([d,v])=>{const k=d.slice(0,7),o=m[k]=m[k]||{e:0,j:0,ca:0,a:0};
-      o.e+=v.e||0;o.j+=v.j||0;o.ca+=v.ca||0;o.a+=v.a||0;});
-      return Object.entries(m).sort().map(([k,o])=>`<tr><td>${esc(h.nom)}</td><td>${k}</td><td class="n">${Math.round(o.e).toLocaleString("fr-FR")}</td>
-        <td class="n">${o.j?Math.round(100*o.e/o.j):0} %</td><td class="n">${eurK(o.ca)}</td><td class="n">${o.a||"—"}</td></tr>`);}).join("")}</tbody></table>`;
-  return card("Historique réel · ROLLER",
-    `Le rétrospectif qui existe : la billetterie ROLLER sert aussi les jours passés (places restantes finales de chaque
-     séance, ventes en caisse comprises a priori). Entrées vendues par semaine depuis la mise en service du parc sur ROLLER.`,
-    blocs,t,"hi");
+function tile(o){
+  return `<div class="card tile"><div class="lab">${o.lab}</div><div class="val">${o.val}</div>
+    ${o.vs?`<div class="vs">${o.vs}</div>`:""}${o.sub?`<div class="sub">${o.sub}</div>`:""}
+    ${o.meter!=null?`<div class="meter"><i style="width:${Math.max(0,Math.min(100,o.meter))}%"></i>${o.mark!=null?`<b style="left:calc(${Math.min(100,o.mark)}% - 1px)" title="marché"></b>`:""}</div>`:""}</div>`;
 }
-function histParc(cid){
-  const h=HIST&&HIST.parcs&&HIST.parcs[cid];if(!h||!h.jours)return "";
-  const HJ=histJours(h);
-  return `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Historique réel (ROLLER) · depuis le ${frDate(HJ.length?HJ[0][0]:h.debut)}</h4>
-    ${barresSemaines(histSemaines(h),"e","Entrées par semaine")}`;
+/* écart en points face au marché : vert = plus demandé que le marché */
+function ecart(a,b,unit=" pts"){
+  if(a==null||b==null)return "";const d=Math.round(a-b);
+  return `<span class="delta ${d>0?"up":d<0?"dn":"eq"}">${d>0?"+":d<0?"−":"±"}${Math.abs(d)}${unit}</span>`;
 }
-function openParc(cid){
-  const c=PCE[cid];if(!c)return;
-  const e=PEN[c.enseigne_id]||{},sids=Object.values(PSA).filter(s=>s.centre_id===cid).map(s=>s.id);
-  const mine=(PS||[]).filter(x=>sids.includes(x.salle_id));
-  const fut=mine.filter(x=>x.statut!=="retire"&&x.places_init&&(x.date>TODAY||(x.date===TODAY&&x.heure>=PARIS.format(new Date()).slice(11,16))));
-  const A=aggParcs(fut),r=remp(A);
-  const last=mine.reduce((m,x)=>x.dernier_vu>m?x.dernier_vu:m,"");
-  const jours=Object.keys(A.jour).sort();
-  const libres=fut.filter(x=>x.dispo&&x.places_restantes>0).slice(0,24);
-  const px=fut.map(x=>x.prix_total||{});
-  const enf=[...new Set(px.map(p=>p.enfant).filter(Boolean))].sort((a,b)=>a-b);
-  const adu=[...new Set(px.map(p=>p.adulte).filter(Boolean))].sort((a,b)=>a-b);
-  ovOpen(`<div class="sbar"><button onclick="closeOv()">✕ Fermer</button></div>
-    <h2 style="font-size:20px">${esc(c.nom)}</h2>
-    <div class="csub">${esc(e.nom||"")} · ${esc(c.adresse||"")}${c.cp?", "+esc(c.cp):""} ${esc(ville(c.ville||""))}</div>
-    <div class="chips" style="margin-top:10px">
-      ${r!=null?`<span class="chip">${r}% de la jauge prise</span>`:""}
-      <span class="chip">${eurK(A.ca)} déjà réservés</span>
-      <span class="chip">${A.complets} complet${A.complets>1?"s":""} / ${A.n}</span>
-      ${enf.length?`<span class="chip">enfant ${enf.map(prixTxt).join(" / ")}</span>`:""}
-      ${adu.length?`<span class="chip">adulte ${adu.map(prixTxt).join(" / ")}</span>`:""}</div>
-    <div class="src"><h4>Source & fraîcheur</h4>
-      <div class="r"><span class="k">Billetterie</span><a href="${esc(shopUrl(c))}" target="_blank" rel="noopener">${esc(shopUrl(c).replace(/^https?:\/\//,""))} ↗</a></div>
-      ${e.website&&e.website!==shopUrl(c)?`<div class="r"><span class="k">Site officiel</span><a href="${esc(e.website)}" target="_blank" rel="noopener">${esc(e.website.replace(/^https?:\/\//,""))} ↗</a></div>`:""}
-      <div class="r"><span class="k">Origine</span><span>Qweekle · ${cid.includes(".qweekle.shop")?"jauge publiée par l'API":"places mesurées par seuils"}</span></div>
-      <div class="r"><span class="k">Dernier relevé</span><span>${ago(last)}</span></div>
-      <div class="r"><span class="k">Jauge de référence</span><span>${A.n?Math.round(A.init/A.n):"—"} places / créneau (moyenne)</span></div></div>
-    <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Jour par jour</h4>
-    <div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Remplissage</th><th class="n">Complets</th><th class="n">Places libres</th><th class="n">CA réservé</th></tr></thead><tbody>
-      ${jours.map(d=>{const o=A.jour[d];return `<tr><td>${dlong(d)}</td><td class="n">${remp(o)} %</td><td class="n">${o.complets}/${o.n}</td><td class="n">${o.rest}</td><td class="n">${eurK(o.ca)}</td></tr>`;}).join("")}</tbody></table></div>
-    ${histParc(cid)}
-    ${comptesParc(cid)}
-    <h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Prochains créneaux réservables</h4>
-    ${libres.length?`<div class="tvw"><table class="tv"><thead><tr><th>Jour</th><th class="n">Heure</th><th class="n">Places libres</th><th class="n">Enfant</th><th class="n">Adulte</th></tr></thead><tbody>
-      ${libres.map(x=>`<tr><td>${dlong(x.date)}</td><td class="n">${x.heure}</td><td class="n">${x.places_restantes}</td>
-        <td class="n">${prixTxt((x.prix_total||{}).enfant)}</td><td class="n">${prixTxt((x.prix_total||{}).adulte)}</td></tr>`).join("")}</tbody></table></div>`
-      :`<div class="csub">Complet sur la période observée.</div>`}`);
+function barCell(v,max,txt,color){
+  return `<div class="cb"><div class="bt"><i style="width:${max?Math.max(0,Math.min(100,100*(v||0)/max)):0}%${color?`;background:${color}`:""}"></i></div><span>${txt}</span></div>`;
+}
+/* classement horizontal : une série = une couleur ; la marque filtrée ressort, les autres s'effacent */
+function hbars(items,o={}){
+  if(!items.length)return `<div class="empty">${o.empty||"Pas de données sur ce filtre."}</div>`;
+  const max=o.max||niceMax(Math.max(...items.map(i=>i.v||0))),anyHl=items.some(i=>i.hl);
+  return `<div class="hb">${items.map(i=>`<div class="hbr${i.click?" click":""}${i.hl?" hl":""}"${i.click?` onclick="${i.click}"`:""}${tipAttr(i.tip)}>
+    <div class="l"><b>${esc(i.lab)}</b>${i.sub?`<span>${esc(i.sub)}</span>`:""}</div>
+    <div class="t"><i class="${anyHl&&!i.hl?"dim":""}" style="width:${Math.max(0,Math.min(100,100*(i.v||0)/max))}%"></i>${i.mark!=null?`<em style="left:calc(${Math.min(100,100*i.mark/max)}% - 1px)"></em>`:""}</div>
+    <div class="v">${i.txt}</div></div>`).join("")}</div>`;
+}
+/* colonnes datées (jour par jour, semaine par semaine) — trait = repère (marché) */
+function cols(items,o={}){
+  if(!items.length)return `<div class="empty">${o.empty||"Pas de données sur ce filtre."}</div>`;
+  const max=o.max||niceMax(Math.max(...items.map(i=>Math.max(i.v||0,i.mark||0)))),fmt=o.fmt||(v=>v+" %");
+  const axe=o.axe!==false;
+  const gl=axe?[0,.5,1].map(f=>`<div class="gl" style="bottom:${f*100}%"><span>${fmt(max*f)}</span></div>`).join(""):"";
+  const lab=o.lab||(k=>dcourt(k));
+  const nl=items.length>16?Math.ceil(items.length/8):1;          // une étiquette sur nl
+  return `<div class="cols" style="${o.h?`height:${o.h}px;`:""}${axe?"":"padding-left:0"}">${gl}${items.map(i=>`<div class="c"${tipAttr(i.tip)}>
+      <i class="${i.dim?"dim":""}" style="height:${Math.max(0,Math.min(100,100*(i.v||0)/max))}%${i.color?`;background:${i.color}`:""}"></i>
+      ${i.mark!=null?`<em style="bottom:${Math.min(100,100*i.mark/max)}%"></em>`:""}</div>`).join("")}</div>
+    <div class="xl" style="${axe?"":"padding-left:0"}">${items.map((i,n)=>`<span class="${o.we!==false&&estWE(i.k)?"we":""}">${n%nl===0||n===items.length-1&&nl===1?esc(lab(i.k)):""}</span>`).join("")}</div>`;
+}
+/* lignes de comparaison : une couleur par marque, ordre fixe ; repère vertical au survol */
+function lignes(series,xs,o={}){
+  if(!xs.length||!series.length)return `<div class="empty">Pas de données sur ce filtre.</div>`;
+  const vals=series.flatMap(s=>xs.map(x=>s.v[x]).filter(v=>v!=null));
+  const max=o.max||niceMax(Math.max(1,...vals)),fmt=o.fmt||(v=>v+" %"),n=xs.length;
+  const X=i=>n===1?500:i/(n-1)*1000,Y=v=>220-v/max*220;
+  const paths=series.map(s=>{let d="",pen=false;xs.forEach((x,i)=>{const v=s.v[x];
+      if(v==null){pen=false;return;}d+=(pen?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)+" ";pen=true;});
+    return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;}).join("");
+  const gl=[0,.5,1].map(f=>`<div class="gl" style="bottom:${f*100}%"><span>${fmt(max*f)}</span></div>`).join("");
+  const hit=xs.map(x=>`<div${tipAttr({t:dlong(x),rows:series.map(s=>[s.color,s.lab,s.v[x]==null?"—":fmt(s.v[x])])})}></div>`).join("");
+  const nl=n>16?Math.ceil(n/8):1;
+  return `<div class="lc">${gl}<svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">${paths}</svg><div class="hit">${hit}</div></div>
+    <div class="xl">${xs.map((x,i)=>`<span class="${estWE(x)?"we":""}">${i%nl===0?dcourt(x):""}</span>`).join("")}</div>
+    <div class="leg">${series.map(s=>`<span><i class="ln" style="border-color:${s.color}"></i>${esc(s.lab)}</span>`).join("")}</div>`;
+}
+/* heatmap jour × heure : une teinte, du faible (se fond dans la surface) au fort */
+function inkFor(i){const h=getComputedStyle(document.documentElement).getPropertyValue(`--q${i+1}`).trim();
+  const m=h.match(/^#([0-9a-f]{6})$/i);if(!m)return "var(--ink)";const n=parseInt(m[1],16);
+  const L=c=>{c/=255;return c<=.03928?c/12.92:Math.pow((c+.055)/1.055,2.4);};
+  return .2126*L(n>>16&255)+.7152*L(n>>8&255)+.0722*L(n&255)>.32?"#0b0b0b":"#ffffff";}
+function heat(cells,colLabs,o={}){
+  const vals=Object.values(cells).filter(c=>c&&c.v!=null).map(c=>c.v);
+  if(!vals.length)return `<div class="empty">Pas assez de relevés sur ce filtre.</div>`;
+  const lo=Math.min(...vals),hi=Math.max(...vals),span=Math.max(1,hi-lo),inks=[0,1,2,3,4,5].map(inkFor);
+  const body=JOURS.map((jn,j)=>`<tr><th class="rl">${jn}</th>`+colLabs.map((cl,b)=>{const c=cells[j+"|"+b];
+    if(!c||c.v==null)return `<td class="nd"${tipAttr([jn+" "+cl,o.vide||"pas assez de relevés"])}>·</td>`;
+    const i=Math.min(5,Math.floor((c.v-lo)/span*6));
+    return `<td style="background:var(--q${i+1});color:${inks[i]}"${tipAttr([jn+" · "+cl,c.v+" %",c.m])}>${c.v}</td>`;}).join("")+"</tr>").join("");
+  return `<div class="hm"><table><thead><tr><th class="rl"></th>${colLabs.map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div>
+    <div class="scale"><span>${o.lab||"Taux"}</span><span>${lo} %</span><span class="sw">${[1,2,3,4,5,6].map(i=>`<i style="background:var(--q${i})"></i>`).join("")}</span><span>${hi} %</span>
+    <span>· <i style="display:inline-block;width:10px;height:9px;border-radius:2px;background:var(--surface-2);vertical-align:middle"></i> ${o.vide||"pas assez de relevés"}</span></div>`;
+}
+/* tableau triable : clic sur un en-tête = tri, re-clic = sens inverse */
+function tbl(key,colsDef,rows,o={}){
+  if(!rows.length)return `<div class="empty">${o.empty||"Aucune donnée sur ce filtre."}</div>`;
+  const s=SORT[key]||o.def||{k:(colsDef.find(c=>c.n)||colsDef[0]).k,d:-1};
+  const sorted=[...rows].sort((a,b)=>{const va=a[s.k],vb=b[s.k];
+    if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;
+    return (typeof va==="string"?va.localeCompare(vb,"fr",{numeric:true}):va-vb)*s.d;});
+  const lim=o.limit&&!VOIR[key]?o.limit:Infinity,shown=sorted.slice(0,lim);
+  const th=colsDef.map(c=>{const on=s.k===c.k,sortable=c.sort!==false;
+    return `<th class="${c.n?"n ":""}${sortable?"s ":""}${on?"on":""}"${sortable?` onclick="trier('${key}','${c.k}',${c.n?1:0})"`:""}${on?` aria-sort="${s.d>0?"ascending":"descending"}"`:""}>${c.lab}${on?`<span class="ar">${s.d>0?"▲":"▼"}</span>`:""}</th>`;}).join("");
+  const body=shown.map(r=>`<tr class="${o.click?"click ":""}${o.hl&&o.hl(r)?"hl":""}"${o.click?` onclick="${o.click(r)}"`:""}>${colsDef.map(c=>
+    `<td class="${c.n?"n ":""}${c.cls||""}">${c.fmt?c.fmt(r[c.k],r):esc(r[c.k]??"—")}</td>`).join("")}</tr>`).join("");
+  return `<div class="tw"><table class="t"><thead><tr>${th}</tr></thead><tbody>${body}</tbody>${o.foot?`<tfoot>${o.foot}</tfoot>`:""}</table></div>
+    ${sorted.length>lim?`<button class="more" onclick="VOIR['${key}']=1;refresh()">Voir les ${sorted.length} lignes</button>`:""}`;
+}
+function trier(key,k,num){const s=SORT[key];SORT[key]={k,d:s&&s.k===k?-s.d:(num?-1:1)};refresh();}
+const nomCell=(v,r)=>`<b>${esc(v)}</b>${r.sub?`<span class="sm">${esc(r.sub)}</span>`:""}`;
+
+/* infobulle unique, déléguée : le texte vient des données -> textContent, jamais innerHTML */
+const TIP=$("#tip");let tipEl=null;
+function showTip(el,e){
+  let d;try{d=JSON.parse(el.dataset.tip);}catch(_){return;}
+  TIP.replaceChildren();
+  const add=(cls,txt)=>{const x=document.createElement("div");if(cls)x.className=cls;x.textContent=txt;TIP.appendChild(x);return x;};
+  if(Array.isArray(d)){add("m",d[0]);if(d[1])add("v",d[1]);if(d[2])add("m",d[2]);}
+  else{add("m",d.t);(d.rows||[]).forEach(([c,l,v])=>{const r=document.createElement("div");r.className="row";
+    const i=document.createElement("i");i.style.borderColor=c;const b=document.createElement("b");b.textContent=v;
+    const s=document.createElement("span");s.className="m";s.textContent=l;r.append(i,b,s);TIP.appendChild(r);});}
+  TIP.style.display="block";tipEl=el;moveTip(e);
+}
+function moveTip(e){const w=TIP.offsetWidth,h=TIP.offsetHeight;
+  TIP.style.left=Math.max(8,Math.min(e.clientX+14,innerWidth-w-10))+"px";
+  TIP.style.top=(e.clientY-h-14<8?e.clientY+18:e.clientY-h-14)+"px";}
+function hideTip(){TIP.style.display="none";tipEl=null;}
+document.addEventListener("pointerover",e=>{const el=e.target.closest?e.target.closest("[data-tip]"):null;
+  if(el){if(el!==tipEl)showTip(el,e);}else if(tipEl)hideTip();});
+document.addEventListener("pointermove",e=>{if(tipEl)moveTip(e);});
+document.addEventListener("scroll",hideTip,true);
+
+/* ═════════ coque : univers, onglets, filtres ═════════ */
+function marquesUnivers(){
+  const u=U(),M=u.marques(),ids=new Set(u.centres().map(c=>c.enseigne_id));
+  return Object.keys(M).filter(id=>ids.has(id)).sort((a,b)=>nomM(a).localeCompare(nomM(b),"fr"));
+}
+function renderChrome(){
+  document.querySelectorAll("#univ button").forEach(b=>b.classList.toggle("on",b.dataset.u===S.u));
+  $("#nav").innerHTML=VUES[S.u].map(([k,l])=>`<button class="${k===S.v?"on":""}" onclick="allerVue('${k}')">${l}</button>`).join("");
+  $("#segper").innerHTML=PERIODES[S.u].map(([k,l])=>`<button class="${k===S.p?"on":""}" onclick="setP('${k}')">${l}</button>`).join("");
+  const ms=marquesUnivers(),pin=S.u==="parcs"&&ms.includes("palomano");
+  $("#fmarque").innerHTML=`<option value="">Toutes les marques</option>`+
+    (pin?`<option value="palomano">Palomano</option><option disabled>──────────</option>`:"")+
+    ms.filter(id=>!(pin&&id==="palomano")).map(id=>`<option value="${esc(id)}">${esc(nomM(id))}</option>`).join("");
+  $("#fmarque").value=S.m;$("#fmarque").classList.toggle("set",!!S.m);
+  /* zones présentes dans l'univers : groupes, régions, départements, villes */
+  const cs=U().centres(),gs=cs.map(geo);
+  const fixes=ZONES_FIXES.filter(([k])=>cs.some(c=>inZone(c,k)));
+  const regs=[...new Set(gs.map(g=>g.reg))].filter(r=>r!=="Île-de-France"&&r!=="Autre").sort((a,b)=>a.localeCompare(b,"fr"));
+  const deps=[...new Set(gs.map(g=>g.dep).filter(d=>DEP[d]))].sort();
+  const vs=[...new Set(gs.map(g=>g.ville))].sort((a,b)=>a.localeCompare(b,"fr",{numeric:true}));
+  const opt=(v,l)=>`<option value="${esc(v)}">${esc(l)}</option>`;
+  $("#fzone").innerHTML=`<option value="">${S.u==="parcs"?"Toute la France":"Toute la zone"}</option>`+
+    `<optgroup label="Zones">${fixes.map(([k,l])=>opt(k,l)).join("")}</optgroup>`+
+    (S.u==="parcs"&&regs.length?`<optgroup label="Régions">${regs.map(r=>opt("r:"+r,r)).join("")}</optgroup>`:"")+
+    `<optgroup label="Départements">${deps.map(d=>opt("d:"+d,`${DEP[d]} (${d})`)).join("")}</optgroup>`+
+    `<optgroup label="${S.u==="escape"?"Villes et arrondissements":"Villes"}">${vs.map(v=>opt("v:"+v,v)).join("")}</optgroup>`;
+  if(S.z&&![...$("#fzone").options].some(o=>o.value===S.z))S.z="";
+  $("#fzone").value=S.z;$("#fzone").classList.toggle("set",!!S.z);
+  $("#freset").style.display=S.m||S.z?"":"none";
+  document.title=`${S.m?nomM(S.m)+" · ":""}${S.u==="parcs"?"Parcs enfants":"Escape games"} · Observatoire`;
+}
+const perLab=()=>({"7":"7 prochains jours",we:"ce week-end",soir:"ce soir (après 17 h)",all:S.u==="parcs"?"14 prochains jours":"tout l'horizon publié"})[S.p];
+function scope(titre,extra,actions){
+  return `<div class="scope"><div><h1>${esc(titre)}</h1><div class="s">${extra}</div></div>${actions?`<div class="cact">${actions}</div>`:""}</div>`;
 }
 
-/* ── panneau détail ── */
-function ovOpen(h){$("#ov").classList.add("on");$("#sheet").innerHTML=h;$("#sheet").scrollTop=0;}
-function closeOv(){$("#ov").classList.remove("on");}
-$("#ov").onclick=e=>{if(e.target.id==="ov")closeOv();};
-addEventListener("keydown",e=>{if(e.key==="Escape")closeOv();});
+/* ═════════ rendu ═════════ */
+let RENDU=0;
+async function render(){
+  const id=++RENDU;
+  renderChrome();ecrireHash();
+  const v=$("#view");
+  if(S.u==="parcs"&&!PS){
+    v.innerHTML=`<div class="center">Chargement des parcs…</div>`;
+    try{await chargerParcs();}catch(e){v.innerHTML=`<div class="center">Parcs indisponibles (${esc(e.message)}).</div>`;return;}
+    if(id!==RENDU)return;renderChrome();
+  }
+  const a=document.activeElement,fid=a&&a.id,pos=a&&a.selectionStart;
+  if(map){map.remove();map=null;}
+  const f={synthese:vSynthese,marques:vMarques,lieux:vLieux,zones:vZones,carte:vCarte,historique:vHistorique,comptes:vComptes}[S.v]||vSynthese;
+  v.innerHTML=f();
+  if(S.v==="carte")dessinerCarte();
+  const rows=U().rows();
+  $("#fnote").textContent=`${nf(rows.length)} créneaux · relevé ${ago(FRESH)}`;
+  if(fid){const el=document.getElementById(fid);if(el){el.focus();try{el.setSelectionRange(pos,pos);}catch(_){}}}
+}
+function refresh(){render();if(FICHE.length)renderFiche();}
+function allerVue(k){S.v=k;window.scrollTo(0,0);render();}
+function setP(p){S.p=p;refresh();}
+function setM(m){S.m=m;refresh();}
+function setZ(z){S.z=z;refresh();}
+function resetFiltres(){S.m="";S.z="";refresh();}
+async function setU(u){if(u===S.u)return;S.u=u;S.m="";S.z="";S.cmp=[];NIV=null;
+  if(!PERIODES[u].some(x=>x[0]===S.p))S.p="7";if(!VUES[u].some(v=>v[0]===S.v))S.v="synthese";closeFiche(true);render();}
+function toggleCmp(id){const i=S.cmp.indexOf(id);
+  if(i>=0)S.cmp[i]="";                       // la place reste vide : les autres marques gardent leur couleur
+  else{const j=S.cmp.findIndex(x=>!x);if(j>=0)S.cmp[j]=id;else if(S.cmp.length<4)S.cmp.push(id);else return;}
+  while(S.cmp.length&&!S.cmp[S.cmp.length-1])S.cmp.pop();
+  refresh();}
+const cmpCol=id=>CMP_COL[S.cmp.indexOf(id)];
+function chercher(k,v){Q[k]=v;VOIR[k]=0;render();}
 
-async function openEns(id){
-  const e=EN[id];if(!e)return;
-  const centres=BY_ENS[id]||[], A=aggregate(slice());
-  ovOpen(`<div class="sbar"><button onclick="closeOv()">✕ Fermer</button></div>
-    <h2 style="font-size:20px">${esc(e.nom)}</h2>
-    <div class="csub">${centres.length} centre(s) · ${centres.flatMap(c=>BY_CENTRE[c.id]||[]).length} salle(s)</div>
-    <div class="src" id="es"><h4>Source & fraîcheur</h4><div class="csub">Chargement…</div></div>
-    ${centres.map(c=>{const ss=BY_CENTRE[c.id]||[];
-      return `<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:650;margin-bottom:2px">${esc(c.nom||e.nom)}</div>
-        <div class="csub" style="margin-bottom:8px">${esc(c.adresse||"")}${c.ville?", "+esc(ville(c.ville)):""}</div>
-        ${ss.map(s=>{const t=A.topSalle[s.id],o=t?pct(t.n-t.libres,t.n):null;
-          return `<div class="item" onclick="event.stopPropagation();openSalle('${s.id}','${id}')">
-            <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
-              <b style="font-size:13.5px">${esc(s.nom||"Salle")}</b>
-              ${o!=null?`<span class="chip">${o}% occupé</span>`:""}</div>
-            <div class="meta">${[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min",
-              (s.joueurs_min||s.joueurs_max)&&`${s.joueurs_min||"?"}–${s.joueurs_max||"?"} joueurs`].filter(Boolean).join(" · ")}</div></div>`;}).join("")}
-      </div>`;}).join("")}`);
-  const ids=centres.flatMap(c=>BY_CENTRE[c.id]||[]).map(s=>s.id);
-  let last=null,tot=0;
-  if(ids.length){const inq=`(${ids.join(",")})`;
-    const [ls,ct]=await Promise.all([q(`sessions?select=dernier_vu&salle_id=in.${inq}&order=dernier_vu.desc&limit=1`),
-      qCount(`sessions?salle_id=in.${inq}`).then(v=>v||0)]);
-    last=ls[0]&&ls[0].dernier_vu;tot=ct;}
-  const ag=A.parEns[id];
-  const el=document.getElementById("es");if(!el)return;
-  el.innerHTML=`<h4>Source & fraîcheur</h4>
-    ${e.website?`<div class="r"><span class="k">Site officiel</span><a href="${esc(e.website)}" target="_blank" rel="noopener">${esc(e.website.replace(/^https?:\/\//,""))} ↗</a></div>`:""}
-    <div class="r"><span class="k">Origine</span><span>système de réservation officiel</span></div>
-    <div class="r"><span class="k">Dernier relevé</span><span>${ago(last)}</span></div>
-    <div class="r"><span class="k">Créneaux observés</span><span>${tot.toLocaleString("fr-FR")}</span></div>
-    ${ag?`<div class="r"><span class="k">Occupation (filtre)</span><span>${pct(ag.n-ag.libres,ag.n)} % sur ${ag.n} créneaux</span></div>`:""}
-    ${ag&&ag.prix.length?`<div class="r"><span class="k">Prix médian</span><span>${eur(median(ag.prix))}</span></div>`:""}`;
+/* ═════════ Synthèse ═════════ */
+function vSynthese(){
+  const u=U(),rows=u.rows(),T=u.tot(rows),esc_=S.u==="escape";
+  const mk=S.m?u.tot(u.rows({m:""})):null;
+  const titre=S.m?nomM(S.m):esc_?"Le marché des escape games":"Les parcs de loisirs enfants";
+  const extra=`${esc(zoneLab(S.z))} · ${perLab()} · ${plur(u.nLieux(T),u.lieuNom)}${S.m?"":" · "+plur(T.ens.size,"marque")}`;
+  const acts=S.m?`<button class="ghost" onclick="openFiche('marque',${js(S.m)})">Fiche détaillée</button>
+    <button class="ghost" onclick="comparerMarque(${js(S.m)})">Comparer</button>`:"";
+  if(!T.n)return scope(titre,extra,acts)+`<div class="card empty">Aucun créneau sur ce filtre. Élargis la période ou la zone.</div>`;
+  const t=u.taux(T),tm=mk?u.taux(mk):null;
+  let tiles;
+  if(esc_){
+    const V=ventesStats(),soir=T.libres?rowsE({p:"soir"}).filter(x=>x.dispo&&PUBLIE.has(x.salle_id)).length:0;
+    tiles=[
+      tile({lab:"Occupation",val:pctTxt(t),vs:mk?`marché ${pctTxt(tm)} ${ecart(t,tm)}`:"",sub:`${nf(T.n-T.libres)} créneaux pris sur ${nf(T.n)}`,meter:t,mark:tm}),
+      tile({lab:"Prix médian d'une session",val:eur(median(T.prix)),vs:mk?`marché ${eur(median(mk.prix))}`:"",sub:"salle privée, groupe type de 4 joueurs"}),
+      V.n>=VENTES_MIN?tile({lab:"Joueurs par session",val:V.jMed,sub:`mesuré sur ${nf(V.n)} sessions vendues à la place · panier ${eur(V.pMed)}`})
+        :tile({lab:"Joueurs par session",val:"—",sub:`premiers chiffres fiables vers le ${frDate(FIABLE)}`}),
+      tile({lab:"Créneaux encore libres",val:nf(T.libres),sub:`dont ${nf(soir)} ce soir après 17 h`}),
+    ];
+  }else{
+    const P=totP(rowsP({passe:true}));
+    const caM=mk?mk.ca:null;
+    tiles=[
+      tile({lab:"Remplissage à venir",val:pctTxt(t),vs:mk?`marché ${pctTxt(tm)} ${ecart(t,tm)}`:"",sub:`${nf(T.vend)} places réservées sur ${nf(T.init)}`,meter:t,mark:tm}),
+      tile({lab:"CA billetterie déjà réservé",val:eurK(T.ca),vs:mk?`${pct(T.ca,caM)} % du total suivi`:"",sub:`${eurK(T.ca/Math.max(1,T.parcs.size))} par parc · estimation`}),
+      tile({lab:"Entrée enfant · médiane",val:prixTxt(median(T.enf)),vs:mk?`marché ${prixTxt(median(mk.enf))}`:"",sub:`adulte ${prixTxt(median(T.adu))}`}),
+      P.n>=50?tile({lab:"Réalisé · 14 derniers jours",val:eurK(P.ca),sub:`${nf(P.vend)} entrées · remplissage ${pctTxt(remp(P))}`})
+        :tile({lab:"Créneaux complets",val:nf(T.complets),sub:`${pct(T.complets,T.n)} % des créneaux à venir`}),
+    ];
+  }
+  /* marques : classement, la marque filtrée ressort */
+  const gm=u.grp(u.rows({m:""}),u.ens);
+  const im=Object.entries(gm).filter(([,o])=>o.n>=u.minN).map(([id,o])=>({id,o,t:u.taux(o)})).sort((a,b)=>b.t-a.t);
+  const topM=S.m&&!im.slice(0,10).some(x=>x.id===S.m)?[...im.slice(0,9),...im.filter(x=>x.id===S.m)]:im.slice(0,10);
+  const cMarques=card({title:"Classement des marques",sub:`${u.tauxLab} sur la période — ${u.tauxDef}. Clique une marque pour sa fiche.`,
+    body:hbars(topM.map(x=>({lab:nomM(x.id),sub:esc_?plur(x.o.salles.size,"salle"):`${plur(x.o.parcs.size,"parc")} · ${eurK(x.o.ca)} réservés`,
+      v:x.t,txt:pctTxt(x.t),hl:x.id===S.m,click:`openFiche('marque',${js(x.id)})`,
+      tip:[nomM(x.id),pctTxt(x.t)+" "+u.tauxLab.toLowerCase(),esc_?`${nf(x.o.n)} créneaux · ${nf(x.o.libres)} libres`:`${nf(x.o.vend)} places réservées · ${x.o.complets} complets`]})),{max:100})+
+      (im.length>topM.length?`<button class="more" onclick="allerVue('marques')">Les ${im.length} marques →</button>`:""),
+    key:"sm",table:tbl("sm",[{k:"nom",lab:"Marque"},{k:"t",lab:u.tauxLab,n:1,fmt:pctTxt},{k:"n",lab:"Créneaux",n:1,fmt:nf}],
+      im.map(x=>({id:x.id,nom:nomM(x.id),t:x.t,n:x.o.n})),{click:r=>`openFiche('marque',${js(r.id)})`,hl:r=>r.id===S.m})});
+  /* géographie : niveau choisi selon l'étendue du filtre */
+  const niv=nivAuto(rows),gz=u.grp(rows,geoKey(niv));
+  const iz=Object.entries(gz).filter(([,o])=>o.n>=Math.min(u.minN,6)).map(([k,o])=>({k,o,t:u.taux(o)})).sort((a,b)=>b.t-a.t);
+  const nivLab={zone:"zone",reg:"région",dep:"département",ville:esc_?"ville ou arrondissement":"ville"}[niv];
+  const cZones=card({title:`Par ${nivLab}`,sub:`${u.tauxLab} par ${nivLab}. Clique pour filtrer tout le tableau de bord.`,
+    body:hbars(iz.slice(0,10).map(x=>({lab:x.k,sub:plur(u.nLieux(x.o),u.lieuNom)+(esc_?"":` · ${eurK(x.o.ca)}`),v:x.t,txt:pctTxt(x.t),
+      click:`setZ(${js(filtreDe(niv,x.k))})`,tip:[x.k,pctTxt(x.t),plur(u.nLieux(x.o),u.lieuNom)]})),{max:100})+
+      (iz.length>10?`<button class="more" onclick="NIV='${niv}';allerVue('zones')">Toutes les zones →</button>`:""),
+    key:"sz",table:tbl("sz",[{k:"k",lab:cap(nivLab)},{k:"t",lab:u.tauxLab,n:1,fmt:pctTxt},{k:"l",lab:cap(u.lieuxNom),n:1}],
+      iz.map(x=>({k:x.k,t:x.t,l:u.nLieux(x.o)})))});
+  /* jour par jour, avec le marché en repère quand une marque est filtrée */
+  const gd=u.grp(rows,x=>x.date),gdm=mk?u.grp(u.rows({m:""}),x=>x.date):null;
+  const ds=Object.keys(gd).sort();
+  const cJours=card({title:"Jour par jour",sub:`${u.tauxLab} de chaque journée${S.m?" — le trait marque le niveau du marché":""}. Les week-ends sont en gras.`,
+    body:cols(ds.map(d=>{const o=gd[d],m=gdm&&gdm[d];return {k:d,v:u.taux(o),mark:m?u.taux(m):null,
+      tip:[dlong(d),pctTxt(u.taux(o))+(m?` · marché ${pctTxt(u.taux(m))}`:""),esc_?`${nf(o.n)} créneaux · ${nf(o.libres)} libres`:`${nf(o.vend)} places · ${eurK(o.ca)} · ${o.complets} complets`]};}),
+      {max:pctMax(Math.max(...ds.map(d=>Math.max(u.taux(gd[d]),gdm&&gdm[d]?u.taux(gdm[d]):0))))})+
+      (S.m?`<div class="leg"><span><i class="k" style="background:var(--accent)"></i>${esc(nomM(S.m))}</span><span><i class="ln" style="border-color:var(--ink-2)"></i>marché</span></div>`:""),
+    key:"sj",table:tbl("sj",[{k:"d",lab:"Jour",fmt:v=>dlong(v)},{k:"t",lab:u.tauxLab,n:1,fmt:pctTxt},...(mk?[{k:"tm",lab:"Marché",n:1,fmt:pctTxt}]:[]),
+      ...(esc_?[{k:"n",lab:"Créneaux",n:1,fmt:nf},{k:"l",lab:"Libres",n:1,fmt:nf}]:[{k:"v",lab:"Places réservées",n:1,fmt:nf},{k:"ca",lab:"CA réservé",n:1,fmt:eurK}])],
+      ds.map(d=>{const o=gd[d],m=gdm&&gdm[d];return {d,t:u.taux(o),tm:m?u.taux(m):null,n:o.n,l:o.libres,v:o.vend,ca:o.ca};}),{def:{k:"d",d:1}})});
+  /* heures de pointe */
+  const BK=esc_?[[0,12,"–12h"],[12,14,"12-14"],[14,16,"14-16"],[16,18,"16-18"],[18,20,"18-20"],[20,22,"20-22"],[22,24,"22h+"]]
+    :[[0,10,"–10h"],[10,11,"10h"],[11,12,"11h"],[12,13,"12h"],[13,14,"13h"],[14,15,"14h"],[15,16,"15h"],[16,17,"16h"],[17,24,"17h+"]];
+  const gh=u.grp(rows,x=>{const jd=(new Date(x.date+"T12:00").getDay()+6)%7,h=+x.heure.slice(0,2),b=BK.findIndex(k=>h>=k[0]&&h<k[1]);return b<0?null:jd+"|"+b;});
+  const cells={};Object.entries(gh).forEach(([k,o])=>{if(o.n>=3)cells[k]={v:u.taux(o),m:esc_?`${nf(o.n)} créneaux`:`${nf(o.n)} créneaux · ${eurK(o.ca)}`};});
+  const cHeat=card({title:"Heures de pointe",sub:`${u.tauxLab} par jour de semaine et heure${esc_?"":" d'arrivée"} : plus la case est intense, plus c'est pris.`,
+    body:heat(cells,BK.map(b=>b[2]),{lab:u.tauxLab,vide:esc_?"pas assez de relevés":"fermé ou trop peu de créneaux"})});
+  let bas="";
+  if(esc_){
+    const gs=u.grp(rows,x=>x.salle_id);
+    const is=Object.entries(gs).filter(([,o])=>o.n>=6).map(([id,o])=>({id,o,t:occ(o)})).sort((a,b)=>b.t-a.t).slice(0,10);
+    const cTop=card({title:"Salles les plus réservées",sub:"Sur la période et les filtres choisis (au moins 6 créneaux relevés).",
+      body:hbars(is.map(x=>{const c=CENTRE_OF[x.id]||{};return {lab:(SA[x.id]||{}).nom||"Salle",sub:`${nomM(ENS_OF[x.id])} · ${geo(c).ville}`,v:x.t,txt:pctTxt(x.t),
+        click:`openFiche('salle',${js(x.id)})`,tip:[(SA[x.id]||{}).nom||"Salle",pctTxt(x.t)+" occupé",`${nf(x.o.n)} créneaux`]};}),{max:100})});
+    bas=`<div class="grid g2 mt">${cartePrixDemande(gm)}${cTop}</div><div class="grid mt">${carteVentes()}</div>`;
+  }else{
+    const gp=u.grp(rows,u.lieu);
+    const ip=Object.entries(gp).map(([id,o])=>({id,o,t:remp(o)})).sort((a,b)=>b.t-a.t).slice(0,10);
+    const cTop=card({title:"Parcs les plus remplis",sub:"Part de la jauge déjà réservée. Clique pour la fiche du parc.",
+      body:hbars(ip.map(x=>{const c=PCE[x.id];return {lab:c.nom,sub:`${geo(c).ville} · ${eurK(x.o.ca)} réservés`,v:x.t,txt:pctTxt(x.t),
+        click:`openFiche('parc',${js(x.id)})`,tip:[c.nom,pctTxt(x.t)+" de la jauge",`${x.o.complets} complets sur ${x.o.n} créneaux`]};}),{max:100})});
+    bas=`<div class="grid g2 mt">${cHeat}${cTop}</div>${carteHistoResume()}`;
+  }
+  return scope(titre,extra,acts)+`<div class="grid g4">${tiles.join("")}</div>
+    <div class="grid g2 mt">${cMarques}${cZones}</div>
+    <div class="grid mt">${cJours}</div>
+    ${esc_?`<div class="grid mt">${cHeat}</div>`:""}${bas}`;
+}
+/* niveau géographique pertinent : le plus large qui distingue encore plusieurs zones */
+function nivAuto(rows){
+  const u=U(),seen={zone:new Set(),reg:new Set(),dep:new Set()};
+  for(const x of rows){const c=u.centre(x);if(!c)continue;const g=geo(c);seen.zone.add(g.zone);seen.reg.add(g.reg);seen.dep.add(g.dep);}
+  if(S.u==="parcs"&&seen.reg.size>1)return "reg";
+  if(S.u==="escape"&&seen.zone.size>1)return "zone";
+  return seen.dep.size>1?"dep":"ville";
+}
+/* valeur du filtre « zone » correspondant à une ligne d'un niveau géographique */
+function filtreDe(niv,k){
+  if(niv==="zone")return ["Paris","Petite couronne","Grande couronne"].includes(k)?"zone:"+k:"r:"+k;
+  if(niv==="reg")return k==="Île-de-France"?"zone:idf":"r:"+k;
+  if(niv==="dep"){const m=k.match(/\(([0-9AB]{2})\)$/);return m?"d:"+m[1]:"";}
+  return "v:"+k;
+}
+function ventesStats(m=S.m,z=S.z){
+  const rows=VENTES.filter(v=>{const c=CENTRE_OF[v.salle_id];if(!c)return false;
+    if(m&&ENS_OF[v.salle_id]!==m)return false;return !z||inZone(c,z);});
+  const parEns={};
+  rows.forEach(v=>{const eid=ENS_OF[v.salle_id];if(!eid)return;
+    const e=parEns[eid]=parEns[eid]||{j:[],p:[],pj:[]};e.j.push(v.places_vendues);
+    const pa=panierPour(v.prix_total,v.places_vendues);if(pa){e.p.push(pa);e.pj.push(pa/v.places_vendues);}});
+  const J=rows.map(v=>v.places_vendues),P=rows.map(v=>panierPour(v.prix_total,v.places_vendues)).filter(Boolean);
+  return {n:rows.length,jMed:median(J),pMed:median(P),parEns,nEns:Object.keys(parEns).length};
+}
+function carteVentes(){
+  const V=ventesStats(),sub=`Sessions vendues à la place : on suit la baisse des places libres jusqu'au jour J. Sessions des 30 derniers jours, suivies au moins ${SUIVI_MIN} jours avant. Médianes.`;
+  if(V.n<VENTES_MIN)return card({title:"Joueurs et panier réels",sub,body:`<div class="empty">Collecte en cours depuis le ${frDate(TRACK_START)} — ${plur(V.n,"session mesurée","sessions mesurées")}.<br>Premiers chiffres fiables vers le <b>${frDate(FIABLE)}</b>.</div>`});
+  const rows=Object.entries(V.parEns).map(([eid,e])=>({id:eid,nom:nomM(eid),n:e.j.length,j:median(e.j),p:median(e.p),pj:median(e.pj)})).filter(r=>r.n>=ENS_MIN);
+  return card({title:"Joueurs et panier réels",sub,body:tbl("ve",[{k:"nom",lab:"Marque",fmt:v=>`<b>${esc(v)}</b>`},{k:"n",lab:"Sessions mesurées",n:1},
+      {k:"j",lab:"Joueurs / session",n:1},{k:"p",lab:"Panier / session",n:1,fmt:eur},{k:"pj",lab:"€ / joueur",n:1,fmt:eur}],rows,
+    {click:r=>`openFiche('marque',${js(r.id)})`,hl:r=>r.id===S.m,
+     foot:`<tr><td>Ensemble</td><td class="n">${nf(V.n)}</td><td class="n">${V.jMed??"—"}</td><td class="n">${eur(V.pMed)}</td><td></td></tr>`})+
+    (N_PRIVAT?`<div class="note">${plur(N_PRIVAT,"session privatisée","sessions privatisées")} (passées d'un coup à complet) écartées : nombre de joueurs inconnu.</div>`:"")});
+}
+function cartePrixDemande(gm){
+  const pts=Object.entries(gm).map(([id,o])=>({id,nom:nomM(id),t:occ(o),p:median(o.prix),n:o.n})).filter(p=>p.p&&p.n>=12);
+  if(pts.length<3)return card({title:"Prix et demande",sub:"Prix médian d'une session face au taux d'occupation.",body:`<div class="empty">Pas assez de marques avec des prix publiés sur ce filtre.</div>`});
+  const W=560,Hh=280,P={l:46,r:18,t:16,b:36};
+  const xs=pts.map(p=>p.p),xmin=Math.min(...xs)*.92,xmax=Math.max(...xs)*1.06;
+  const X=v=>P.l+(v-xmin)/(xmax-xmin)*(W-P.l-P.r),Y=v=>Hh-P.b-(v/100)*(Hh-P.t-P.b);
+  const gy=[0,25,50,75,100],gx=[0,.25,.5,.75,1].map(f=>Math.round(xmin+f*(xmax-xmin)));
+  const hl=S.m?pts.find(p=>p.id===S.m):null;
+  const lab=[hl||[...pts].sort((a,b)=>b.t-a.t)[0],!hl&&[...pts].sort((a,b)=>b.p-a.p)[0]].filter((v,i,a)=>v&&a.indexOf(v)===i);
+  const svg=`<svg viewBox="0 0 ${W} ${Hh}" width="100%" role="img" aria-label="Prix médian par session contre taux d'occupation, une marque par point" style="display:block;max-height:320px">
+    ${gy.map(g=>`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(g)}" y2="${Y(g)}" stroke="var(--grid)"/><text x="${P.l-8}" y="${Y(g)+4}" fill="var(--muted)" font-size="11" text-anchor="end">${g} %</text>`).join("")}
+    ${gx.map(g=>`<text x="${X(g)}" y="${Hh-12}" fill="var(--muted)" font-size="11" text-anchor="middle">${g} €</text>`).join("")}
+    ${pts.filter(p=>p!==hl).map(p=>`<g style="cursor:pointer" onclick="openFiche('marque',${js(p.id)})"${tipAttr([p.nom,`${pctTxt(p.t)} occupé · ${eur(p.p)}`,`${nf(p.n)} créneaux`])}>
+      <circle cx="${X(p.p)}" cy="${Y(p.t)}" r="12" fill="transparent"/><circle cx="${X(p.p)}" cy="${Y(p.t)}" r="5" fill="${hl?"var(--dim)":"var(--accent)"}" stroke="var(--surface)" stroke-width="2"/></g>`).join("")}
+    ${hl?`<circle cx="${X(hl.p)}" cy="${Y(hl.t)}" r="7" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"${tipAttr([hl.nom,`${pctTxt(hl.t)} occupé · ${eur(hl.p)}`])}/>`:""}
+    ${lab.map(p=>{const x=X(p.p),right=x>W*.62;return `<text x="${right?x-11:x+11}" y="${Math.max(14,Y(p.t)+4)}" text-anchor="${right?"end":"start"}" fill="var(--ink-2)" font-size="12" font-weight="600">${esc(p.nom.length>20?p.nom.slice(0,19)+"…":p.nom)}</text>`;}).join("")}</svg>`;
+  return card({title:"Prix et demande",sub:"Une marque par point : prix médian d'une session (horizontal) et occupation (vertical). En haut à droite : cher et très demandé.",
+    body:svg,key:"pd",table:tbl("pd",[{k:"nom",lab:"Marque"},{k:"p",lab:"Prix médian",n:1,fmt:eur},{k:"t",lab:"Occupation",n:1,fmt:pctTxt}],pts,{click:r=>`openFiche('marque',${js(r.id)})`})});
+}
+function carteHistoResume(){
+  if(!HIST||!HIST.parcs)return "";
+  const ps=Object.entries(HIST.parcs).filter(([cid,h])=>h.jours&&Object.keys(h.jours).length&&PCE[cid]&&(!S.m||PCE[cid].enseigne_id===S.m)&&inZone(PCE[cid],S.z));
+  if(!ps.length)return "";
+  const w={};ps.forEach(([,h])=>histSemaines(h).forEach(([k,o])=>{const x=w[k]=w[k]||{e:0,ca:0,j:0};x.e+=o.e;x.ca+=o.ca;x.j+=o.j;}));
+  const ks=Object.keys(w).sort();
+  return `<div class="grid mt">${card({title:"Entrées réelles par semaine",
+    sub:`Ce qui a été vendu (et pas seulement réservé à l'avance), pour ${plur(ps.length,"parc")} sur ROLLER — la seule billetterie qui publie le passé.`,
+    actions:`<button class="tbtn" onclick="allerVue('historique')">Détail par parc</button>`,
+    body:cols(ks.map(k=>({k,v:w[k].e,tip:[`Semaine du ${frDate(k)}`,`${nf(w[k].e)} entrées`,`${eurK(w[k].ca)} · remplissage ${pctTxt(pct(w[k].e,w[k].j))}`]})),
+      {fmt:v=>nf(v),lab:k=>frDate(k),we:false})})}</div>`;
 }
 
-async function openSalle(sid,fromEns){
-  const s=SA[sid];if(!s)return;
-  const c=CENTRE_OF[sid]||{},e=EN[ENS_OF[sid]]||{};
-  ovOpen(`<div class="sbar">
-      <button onclick="${fromEns?`openEns('${fromEns}')`:"closeOv()"}">${fromEns?"‹ "+esc(e.nom||"Retour"):"✕ Fermer"}</button>
-      <button onclick="closeOv()">✕</button></div>
-    <h2 style="font-size:20px">${esc(s.nom||"Salle")}</h2>
-    <div class="csub">${esc(e.nom||"")}${c.nom?" · "+esc(c.nom):""}${c.ville?" ("+esc(ville(c.ville))+")":""}</div>
-    <div class="chips" style="margin-top:10px">${[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min",
-      (s.joueurs_min||s.joueurs_max)&&`${s.joueurs_min||"?"}–${s.joueurs_max||"?"} joueurs`,
-      s.difficulty&&"difficulté "+"★".repeat(Math.min(5,s.difficulty))].filter(Boolean)
-      .map(t=>`<span class="chip">${esc(String(t))}</span>`).join("")}</div>
-    <div class="src" id="ss"><h4>Source & fraîcheur</h4><div class="csub">Chargement…</div></div>
-    <div id="sn"><div class="csub">Chargement des créneaux…</div></div>`);
-  const [next,ls,tot,nl,nb]=await Promise.all([
-    q(`sessions?select=date,heure,prix_total_moyen&salle_id=eq.${sid}&dispo=is.true&date=gte.${TODAY}&order=date,heure&limit=18`),
-    q(`sessions?select=dernier_vu&salle_id=eq.${sid}&order=dernier_vu.desc&limit=1`),
-    qCount(`sessions?salle_id=eq.${sid}`).then(v=>v||0),
-    qCount(`sessions?salle_id=eq.${sid}&date=gte.${TODAY}&dispo=is.true`).then(v=>v||0),
-    qCount(`sessions?salle_id=eq.${sid}&date=gte.${TODAY}&dispo=is.false`).then(v=>v||0)]);
-  const t=nl+nb, occ=t?Math.round(100*nb/t):0;
-  const ss=document.getElementById("ss");if(!ss)return;
-  ss.innerHTML=`<h4>Source & fraîcheur</h4>
-    ${e.website?`<div class="r"><span class="k">Site officiel</span><a href="${esc(e.website)}" target="_blank" rel="noopener">${esc(e.website.replace(/^https?:\/\//,""))} ↗</a></div>`:""}
-    <div class="r"><span class="k">Origine</span><span>système de réservation officiel</span></div>
-    <div class="r"><span class="k">Dernier relevé</span><span>${ago(ls[0]&&ls[0].dernier_vu)}</span></div>
-    <div class="r"><span class="k">Créneaux observés</span><span>${tot.toLocaleString("fr-FR")}</span></div>
-    <div class="r"><span class="k">Occupation à venir</span><span>${occ} % (${nb}/${t})</span></div>
-    <div class="bar-mini" style="margin-top:8px"><i style="width:${occ}%"></i></div>
-    ${MUET[sid]?`<div class="r" style="margin-top:8px"><span class="k">⚠ Signalement</span>
-      <span style="color:var(--warn);text-align:right">${MUET_LIB[MUET[sid].raison]} — aucun créneau libre observé,
-      salle exclue des taux d'occupation</span></div>`:""}`;
-  document.getElementById("sn").innerHTML=
-    `<h4 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px">Prochains créneaux libres</h4>`+
-    (next.length?`<table class="tv"><tbody>${next.map(o=>`<tr><td>${dlong(o.date)}</td><td class="n">${o.heure}</td>
-      <td class="n">${o.prix_total_moyen?eur(o.prix_total_moyen):""}</td></tr>`).join("")}</tbody></table>`
-    :`<div class="csub">Complet sur la période observée.</div>`);
+/* ═════════ Marques : tableau comparatif + comparaison ═════════ */
+function vMarques(){
+  const u=U(),esc_=S.u==="escape",rows=u.rows({m:""}),g=u.grp(rows,u.ens);
+  const data=Object.entries(g).map(([id,o])=>{const villes=new Set([...(esc_?o.centres:o.parcs)].map(cid=>geo(esc_?CE[cid]:PCE[cid]).ville));
+    return {id,nom:nomM(id),sub:[...villes].slice(0,3).join(", ")+(villes.size>3?"…":""),lieux:u.nLieux(o),villes:villes.size,t:u.taux(o),n:o.n,
+      libres:o.libres,prix:median(esc_?o.prix:o.enf),vend:o.vend,ca:o.ca,caL:o.ca/Math.max(1,u.nLieux(o)),comp:pct(o.complets,o.n)};});
+  const cmp=S.cmp.filter(Boolean);
+  const chk=r=>{const on=S.cmp.includes(r.id);return `<span class="chk${on?" on":""}" style="${on?`background:${cmpCol(r.id)}`:""}" role="checkbox" aria-checked="${on}" title="Comparer" onclick="event.stopPropagation();toggleCmp(${js(r.id)})"></span>`;};
+  const colsDef=[{k:"_c",lab:"",sort:false,fmt:(v,r)=>chk(r)},{k:"nom",lab:"Marque",fmt:nomCell,cls:"w"},
+    {k:"t",lab:u.tauxLab,n:1,fmt:v=>barCell(v,100,pctTxt(v))},
+    ...(esc_?[{k:"prix",lab:"Prix médian",n:1,fmt:eur},{k:"n",lab:"Créneaux",n:1,fmt:nf},{k:"libres",lab:"Libres",n:1,fmt:nf}]
+      :[{k:"ca",lab:"CA réservé",n:1,fmt:eurK},{k:"caL",lab:"CA / parc",n:1,fmt:eurK},{k:"vend",lab:"Places réservées",n:1,fmt:nf},
+        {k:"comp",lab:"Complets",n:1,fmt:v=>v+" %"},{k:"prix",lab:"Entrée enfant",n:1,fmt:prixTxt}]),
+    {k:"lieux",lab:cap(u.lieuxNom),n:1},{k:"villes",lab:"Villes",n:1}];
+  const T=u.tot(rows);
+  const foot=`<tr><td></td><td>Ensemble</td><td class="n">${pctTxt(u.taux(T))}</td>${esc_
+    ?`<td class="n">${eur(median(T.prix))}</td><td class="n">${nf(T.n)}</td><td class="n">${nf(T.libres)}</td>`
+    :`<td class="n">${eurK(T.ca)}</td><td class="n">${eurK(T.ca/Math.max(1,u.nLieux(T)))}</td><td class="n">${nf(T.vend)}</td><td class="n">${pct(T.complets,T.n)} %</td><td class="n">${prixTxt(median(T.enf))}</td>`}<td class="n">${nf(u.nLieux(T))}</td><td></td></tr>`;
+  const table=card({title:`${data.length} marques`,sub:`${esc(zoneLab(S.z))} · ${perLab()}. Coche jusqu'à 4 marques pour les comparer ; clique un nom pour sa fiche. Tri : clic sur un en-tête.`,
+    body:tbl("marques",colsDef,data,{def:{k:esc_?"t":"ca",d:-1},click:r=>`openFiche('marque',${js(r.id)})`,hl:r=>r.id===S.m,foot})});
+  return scope(esc_?"Marques d'escape games":"Marques de parcs enfants",`${esc(zoneLab(S.z))} · ${perLab()}`)+
+    (cmp.length?blocComparaison(cmp):`<div class="card" style="margin-bottom:14px;padding:14px 18px"><span class="muted">Comparer :</span> coche 2 à 4 marques dans le tableau (ex. Palomano face à Gulli Parc et Rêvopolie).</div>`)+
+    `<div class="grid">${table}</div>`;
+}
+function blocComparaison(ids){
+  const u=U(),esc_=S.u==="escape";
+  const chips=ids.map(id=>`<span class="pill"><i style="background:${cmpCol(id)}"></i>${esc(nomM(id))}<button onclick="toggleCmp(${js(id)})" aria-label="Retirer">×</button></span>`).join("");
+  const head=`<div class="cmpbar">${chips}${ids.length<4?`<span class="muted" style="font-size:12.5px">${ids.length<2?"ajoute au moins une autre marque":"jusqu'à 4 marques"}</span>`:""}
+    <button class="reset" onclick="S.cmp=[];refresh()">Tout retirer</button></div>`;
+  if(ids.length<2)return head;
+  const per=Object.fromEntries(ids.map(id=>[id,u.tot(u.rows({m:id}))]));
+  const M=esc_?[["Occupation",o=>occ(o),pctTxt,100],["Prix médian",o=>median(o.prix),eur],["Créneaux libres",o=>o.libres,nf],["Salles",o=>o.salles.size,nf]]
+    :[["Remplissage",o=>remp(o),pctTxt,100],["CA réservé",o=>o.ca,eurK],["CA par parc",o=>o.ca/Math.max(1,o.parcs.size),eurK],
+      ["Entrée enfant",o=>median(o.enf),prixTxt],["Places réservées",o=>o.vend,nf],["Parcs",o=>o.parcs.size,nf]];
+  const metr=`<div class="ff">${M.map(([l,f,fmt,mx])=>{const vs=ids.map(id=>f(per[id])),max=mx||Math.max(1,...vs.filter(v=>v!=null));
+      return `<div><h4>${l}</h4>${ids.map((id,i)=>`<div class="ffr"${tipAttr([nomM(id),fmt(vs[i]),l])}><span>${esc(nomM(id))}</span>
+        <div class="bt"><i style="width:${max&&vs[i]!=null?Math.max(1,Math.min(100,100*vs[i]/max)):0}%;background:${cmpCol(id)}"></i></div><b>${fmt(vs[i])}</b></div>`).join("")}</div>`;}).join("")}</div>`;
+  const xs=[...new Set(ids.flatMap(id=>u.rows({m:id}).map(x=>x.date)))].sort();
+  const series=ids.map(id=>{const gd=u.grp(u.rows({m:id}),x=>x.date);return {lab:nomM(id),color:cmpCol(id),v:Object.fromEntries(xs.map(d=>[d,gd[d]?u.taux(gd[d]):null]))};});
+  const allV=series.flatMap(s=>Object.values(s.v)).filter(v=>v!=null);
+  return head+`<div class="grid ${ids.length>3?"":"g2"}" style="margin-bottom:14px">
+    ${card({title:"Face à face",sub:`${esc(zoneLab(S.z))} · ${perLab()}.`,body:metr})}
+    ${card({title:`${u.tauxLab} jour par jour`,sub:"Survole une date pour lire toutes les marques.",body:lignes(series,xs,{max:pctMax(Math.max(0,...allV))})})}</div>`;
 }
 
-function openMethodo(){
+/* ═════════ Lieux : salles / parcs ═════════ */
+function vLieux(){
+  const u=U(),esc_=S.u==="escape",rows=u.rows(),g=u.grp(rows,u.lieu),q=(Q.lieux||"").toLowerCase().trim();
+  let data;
+  if(esc_){
+    data=Object.values(SA).filter(s=>{const c=CENTRE_OF[s.id];return c&&(!S.m||ENS_OF[s.id]===S.m)&&inZone(c,S.z);}).map(s=>{
+      const o=g[s.id],c=CENTRE_OF[s.id];return {id:s.id,nom:s.nom||"Salle",sub:`${nomM(ENS_OF[s.id])} · ${geo(c).ville}`,marque:nomM(ENS_OF[s.id]),ville:geo(c).ville,
+        t:o?occ(o):null,n:o?o.n:0,libres:o?o.libres:0,prix:o?median(o.prix):null,duree:s.duree_minutes,muet:MUET[s.id]?MUET_LIB[MUET[s.id].raison]:""};});
+  }else{
+    data=Object.values(PCE).filter(c=>(!S.m||c.enseigne_id===S.m)&&inZone(c,S.z)).map(c=>{const o=g[c.id];
+      return {id:c.id,nom:c.nom,sub:`${nomM(c.enseigne_id)} · ${geo(c).ville}`,marque:nomM(c.enseigne_id),ville:geo(c).ville,
+        t:o?remp(o):null,comp:o?pct(o.complets,o.n):null,rest:o?o.rest:null,jauge:o?median(o.jauges):null,prix:o?median(o.enf):null,ca:o?o.ca:null,vend:o?o.vend:null};});
+  }
+  const tous=data.length;
+  if(q)data=data.filter(r=>(r.nom+" "+r.marque+" "+r.ville).toLowerCase().includes(q));
+  const colsDef=esc_?[{k:"nom",lab:"Salle",fmt:nomCell,cls:"w"},{k:"t",lab:"Occupation",n:1,fmt:v=>v==null?"—":barCell(v,100,pctTxt(v))},
+      {k:"n",lab:"Créneaux",n:1,fmt:nf},{k:"libres",lab:"Libres",n:1,fmt:nf},{k:"prix",lab:"Prix médian",n:1,fmt:eur},{k:"duree",lab:"Durée",n:1,fmt:v=>v?v+" min":"—"},
+      {k:"muet",lab:"Signalement",fmt:v=>v?`<span class="badge w">${esc(v)}</span>`:""}]
+    :[{k:"nom",lab:"Parc",fmt:nomCell,cls:"w"},{k:"t",lab:"Remplissage",n:1,fmt:v=>v==null?"—":barCell(v,100,pctTxt(v))},
+      {k:"vend",lab:"Places réservées",n:1,fmt:nf},{k:"comp",lab:"Complets",n:1,fmt:v=>v==null?"—":v+" %"},{k:"rest",lab:"Places libres",n:1,fmt:nf},
+      {k:"jauge",lab:"Jauge / créneau",n:1,fmt:nf},{k:"prix",lab:"Entrée enfant",n:1,fmt:prixTxt},{k:"ca",lab:"CA réservé",n:1,fmt:eurK}];
+  const muets=esc_?data.filter(r=>r.muet).length:0;
+  return scope(esc_?"Salles":"Parcs",`${esc(S.m?nomM(S.m)+" · ":"")}${esc(zoneLab(S.z))} · ${perLab()} · ${plur(tous,u.lieuNom)}`)+
+    `<div class="tools"><input class="search" id="q-lieux" placeholder="Rechercher ${esc_?"une salle, une marque, un arrondissement…":"un parc, une marque, une ville…"}" value="${esc(Q.lieux||"")}" oninput="chercher('lieux',this.value)">
+      ${muets?`<span class="badge w">${muets} salle${muets>1?"s":""} sans aucun créneau libre : exclue${muets>1?"s":""} des taux</span>`:""}</div>`+
+    `<div class="grid">${card({title:`${plur(data.length,u.lieuNom)}`,sub:"Clique une ligne pour la fiche détaillée. Tri : clic sur un en-tête.",
+      body:tbl("lieux",colsDef,data,{def:{k:"t",d:-1},limit:80,click:r=>`openFiche('${esc_?"salle":"parc"}',${js(r.id)})`,empty:"Aucun résultat."})})}</div>`;
+}
+
+/* ═════════ Villes, départements, régions ═════════ */
+function vZones(){
+  const u=U(),esc_=S.u==="escape",rows=u.rows();
+  const nivs=esc_?[["zone","Zones"],["dep","Départements"],["ville","Villes et arrondissements"]]:[["reg","Régions"],["dep","Départements"],["ville","Villes"]];
+  if(!NIV||!nivs.some(n=>n[0]===NIV))NIV=nivAuto(rows);
+  if(!nivs.some(n=>n[0]===NIV))NIV=nivs[0][0];
+  const g=u.grp(rows,geoKey(NIV));
+  const data=Object.entries(g).map(([k,o])=>({k,nom:k,t:u.taux(o),lieux:u.nLieux(o),marques:o.ens.size,n:o.n,libres:o.libres,prix:median(esc_?o.prix:o.enf),
+    ca:o.ca,vend:o.vend,caL:o.ca/Math.max(1,u.nLieux(o))}));
+  const SING={zone:"Zone",reg:"Région",dep:"Département",ville:esc_?"Ville / arrondissement":"Ville"},sing=SING[NIV];
+  const seg=`<div class="seg" style="width:auto">${nivs.map(([k,l])=>`<button class="${k===NIV?"on":""}" onclick="NIV='${k}';render()">${l}</button>`).join("")}</div>`;
+  const colsDef=[{k:"nom",lab:sing,fmt:v=>`<b>${esc(v)}</b>`,cls:"w"},
+    {k:"t",lab:u.tauxLab,n:1,fmt:v=>barCell(v,100,pctTxt(v))},{k:"lieux",lab:cap(u.lieuxNom),n:1},{k:"marques",lab:"Marques",n:1},
+    ...(esc_?[{k:"n",lab:"Créneaux",n:1,fmt:nf},{k:"libres",lab:"Libres",n:1,fmt:nf},{k:"prix",lab:"Prix médian",n:1,fmt:eur}]
+      :[{k:"vend",lab:"Places réservées",n:1,fmt:nf},{k:"prix",lab:"Entrée enfant",n:1,fmt:prixTxt},{k:"ca",lab:"CA réservé",n:1,fmt:eurK},{k:"caL",lab:"CA / parc",n:1,fmt:eurK}])];
+  const top=[...data].sort((a,b)=>b.t-a.t).slice(0,15);
+  return scope(esc_?"Villes & zones":"Villes & régions",`${esc(S.m?nomM(S.m)+" · ":"")}${esc(zoneLab(S.z))} · ${perLab()}`,seg)+
+    `<div class="grid g2">${card({title:`${u.tauxLab} par ${sing.toLowerCase()}`,
+        sub:"Les 15 plus demandées. Clique pour la fiche de la zone.",
+        body:hbars(top.map(x=>({lab:x.nom,sub:plur(x.lieux,u.lieuNom)+` · ${plur(x.marques,"marque")}`,v:x.t,txt:pctTxt(x.t),
+          click:`openFiche('zone',${js(NIV+"|"+x.k)})`,tip:[x.nom,pctTxt(x.t),plur(x.lieux,u.lieuNom)]})),{max:100})})}
+      ${card({title:"Taille des marchés",sub:esc_?"Nombre de créneaux proposés sur la période.":"CA billetterie déjà réservé sur la période.",
+        body:hbars([...data].sort((a,b)=>esc_?b.n-a.n:b.ca-a.ca).slice(0,15).map(x=>({lab:x.nom,sub:plur(x.lieux,u.lieuNom),v:esc_?x.n:x.ca,txt:esc_?nf(x.n):eurK(x.ca),
+          click:`openFiche('zone',${js(NIV+"|"+x.k)})`,tip:[x.nom,esc_?`${nf(x.n)} créneaux`:`${eurK(x.ca)} réservés`]})))})}</div>
+    <div class="grid mt">${card({title:`${data.length} ${nivs.find(n=>n[0]===NIV)[1].toLowerCase()}`,sub:"Clique une ligne pour sa fiche ; « Filtrer » dans la fiche applique la zone à tout le tableau de bord.",
+      body:tbl("zones",colsDef,data,{def:{k:"t",d:-1},click:r=>`openFiche('zone',${js(NIV+"|"+r.k)})`})})}</div>`;
+}
+
+/* ═════════ Carte ═════════ */
+function vCarte(){
+  const u=U(),cs=u.centres().filter(c=>(!S.m||c.enseigne_id===S.m)&&inZone(c,S.z));
+  const sans=cs.filter(c=>!(c.lat&&c.lon)).length;
+  return scope("Carte",`${esc(S.m?nomM(S.m)+" · ":"")}${esc(zoneLab(S.z))} · ${plur(cs.length-sans,"lieu")} placé${cs.length-sans>1?"s":""}${sans?` · ${sans} sans coordonnées`:""}`)+
+    `<div id="map"></div><div class="scale" style="margin-top:10px"><span>${u.tauxLab}</span><span>faible</span><span class="sw">${[1,2,3,4,5,6].map(i=>`<i style="background:var(--q${i})"></i>`).join("")}</span><span>fort</span><span>· taille = volume de créneaux</span></div>`;
+}
+function dessinerCarte(){
+  if(typeof L==="undefined"){$("#map").innerHTML='<div class="center">Carte indisponible (librairie non chargée).</div>';return;}
+  const u=U(),esc_=S.u==="escape",g=u.grp(u.rows(),x=>{const c=u.centre(x);return c&&c.id;});
+  const cs=u.centres().filter(c=>c.lat&&c.lon&&(!S.m||c.enseigne_id===S.m)&&inZone(c,S.z));
+  const dark=getComputedStyle(document.documentElement).colorScheme==="dark";
+  map=L.map("map",{scrollWheelZoom:false});
+  /* fond neutre sans clé (les fonds CARTO exigent désormais une clé d'API) */
+  L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${dark?"Dark":"Light"}_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+    {attribution:"Fond © Esri — HERE, Garmin, © OpenStreetMap",maxZoom:16}).addTo(map);
+  const cssv=k=>getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+  const maxN=Math.max(1,...cs.map(c=>(g[c.id]||{}).n||0)),pts=[];
+  cs.forEach(c=>{const o=g[c.id],t=o?u.taux(o):null,i=t==null?0:Math.min(5,Math.floor(t/100*6));
+    const r=5+9*Math.sqrt(((o||{}).n||0)/maxN);
+    const m=L.circleMarker([c.lat,c.lon],{radius:r,color:cssv("--surface"),weight:1.5,fillColor:t==null?cssv("--dim"):cssv(`--q${i+1}`),fillOpacity:.95}).addTo(map);
+    const nomL=esc_?(c.nom||nomM(c.enseigne_id)):c.nom;
+    m.bindPopup(`<b>${esc(nomL)}</b><br><span style="color:var(--muted)">${esc(nomM(c.enseigne_id))} · ${esc(geo(c).ville)}</span><br>
+      ${t==null?"pas de relevé sur ce filtre":`${u.tauxLab} <b>${t} %</b>${esc_?"":` · ${eurK(o.ca)} réservés`}`}<br>
+      <a href="#" onclick="map.closePopup();openFiche('${esc_?"marque":"parc"}',${js(esc_?c.enseigne_id:c.id)});return false">Ouvrir la fiche →</a>`);
+    pts.push([c.lat,c.lon]);});
+  if(pts.length)map.fitBounds(pts,{padding:[30,30],maxZoom:13});else map.setView([48.857,2.352],10);
+}
+
+/* ═════════ Historique réel (ROLLER) ═════════ */
+function vHistorique(){
+  if(!HIST||!HIST.parcs)return scope("Historique réel","Chargement…");
+  const ps=Object.entries(HIST.parcs).filter(([cid,h])=>h.jours&&Object.keys(h.jours).length&&PCE[cid]&&(!S.m||PCE[cid].enseigne_id===S.m)&&inZone(PCE[cid],S.z));
+  const intro=`Ce qui a réellement été vendu, jour après jour : ROLLER est la seule billetterie qui publie les séances passées (places restantes finales, ventes en caisse comprises a priori). Les autres parcs ne sont mesurés que depuis le ${frDate(PARC_DEBUT).replace(/\.$/,"")}.`;
+  if(!ps.length)return scope("Historique réel",esc(zoneLab(S.z)))+`<div class="card empty">Aucun parc sur ROLLER pour ce filtre. Parcs concernés : Palomano Clichy et Alfortville, les 12 You Kids.</div>`;
+  const mois={};ps.forEach(([cid,h])=>histJours(h).forEach(([d,v])=>{const k=d.slice(0,7),o=mois[k]=mois[k]||{e:0,ca:0,j:0,a:0};o.e+=v.e||0;o.ca+=v.ca||0;o.j+=v.j||0;o.a+=v.a||0;}));
+  const ks=Object.keys(mois).sort();
+  const totaux=card({title:"Par mois, tous les parcs filtrés",sub:"Entrées vendues et CA billetterie estimé (entrées × prix moyen enfant / adulte).",
+    body:cols(ks.map(k=>({k,v:mois[k].e,tip:[new Date(k+"-15").toLocaleDateString("fr-FR",{month:"long",year:"numeric"}),`${nf(mois[k].e)} entrées`,`${eurK(mois[k].ca)} · remplissage ${pctTxt(pct(mois[k].e,mois[k].j))}`]})),
+      {fmt:v=>nf(v),lab:k=>new Date(k+"-15").toLocaleDateString("fr-FR",{month:"short"}),we:false,h:150}),
+    key:"hm",table:tbl("hm",[{k:"k",lab:"Mois"},{k:"e",lab:"Entrées",n:1,fmt:nf},{k:"r",lab:"Remplissage",n:1,fmt:pctTxt},{k:"ca",lab:"CA billetterie",n:1,fmt:eurK},{k:"a",lab:"Anniversaires",n:1,fmt:v=>v||"—"}],
+      ks.map(k=>({k,e:mois[k].e,r:pct(mois[k].e,mois[k].j),ca:mois[k].ca,a:mois[k].a})),{def:{k:"k",d:1}})});
+  const minis=ps.map(([cid,h])=>{const t=histTot(h),sem=histSemaines(h);
+    return `<div class="mini" onclick="openFiche('parc',${js(cid)})"><div class="h"><b>${esc(h.nom)}</b><span class="muted" style="font-size:12px">depuis le ${frDate(t.d0)}</span></div>
+      <div class="k"><span><strong>${nf(t.e)}</strong>entrées</span><span><strong>${eurK(t.ca)}</strong>CA estimé</span><span><strong>${pctTxt(pct(t.e,t.j))}</strong>remplissage</span>${t.a?`<span><strong>${nf(t.a)}</strong>anniversaires</span>`:""}</div>
+      ${cols(sem.map(([k,o])=>({k,v:o.e,tip:[`Semaine du ${frDate(k)}`,`${nf(o.e)} entrées`,`${eurK(o.ca)}${o.a?` · ${o.a} anniversaires`:""} · ${o.jours} j ouverts`]})),{axe:false,lab:k=>frDate(k),we:false,h:90})}</div>`;}).join("");
+  return scope("Historique réel",`${esc(S.m?nomM(S.m)+" · ":"")}${esc(zoneLab(S.z))} · ${plur(ps.length,"parc")} sur ROLLER`)+
+    `<div class="card" style="margin-bottom:14px;padding:14px 18px"><span class="ink2" style="font-size:13px">${intro}</span></div>
+    <div class="grid">${totaux}</div><h3 class="sec" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:22px 0 10px">Semaine par semaine, par parc</h3>
+    <div class="sm-grid">${minis}</div>`;
+}
+
+/* ═════════ Comptes publiés ═════════ */
+function societesFiltrees(){
+  return ((COMPTES||{}).societes||[]).filter(x=>Object.keys(x.finances||{}).length||(x.centres||[]).length).map(x=>{
+    const cs=(x.centres||[]).filter(c=>PCE[c]),ex=exo(x.finances),dern=ex.find(([,v])=>v.ca||v.resultat_net!=null)||ex[0]||["",{}],prec=ex[ex.indexOf(dern)+1]||["",{}];
+    return {...x,cs,ex,k0:dern[0],ca:dern[1].ca||null,rn:dern[1].resultat_net??null,k1:prec[0],ca1:prec[1].ca||null,rn1:prec[1].resultat_net??null,
+      marques:new Set(cs.map(c=>PCE[c].enseigne_id))};
+  }).filter(x=>(!S.m||x.marques.has(S.m)||(x.groupe||"").toLowerCase().includes(nomM(S.m).toLowerCase()))
+    &&(!S.z||x.cs.some(c=>inZone(PCE[c],S.z))));
+}
+function vComptes(){
+  if(!COMPTES)return scope("Comptes publiés","Chargement…");
+  const so=societesFiltrees();
+  const colsDef=[{k:"nom",lab:"Société",fmt:(v,r)=>`<b>${esc(v)}</b><span class="sm">${esc(r.groupe||"")}</span>`,cls:"w"},
+    {k:"parcsTxt",lab:"Parcs suivis",cls:"w",sort:false,fmt:(v,r)=>r.cs.length?r.cs.map(c=>`<a onclick="event.stopPropagation();openFiche('parc',${js(c)})">${esc(PCE[c].nom)}</a>`).join(", ")
+      :`<span class="muted">${esc((r.parcs||[]).slice(0,2).join(", ")||r.role||"")}</span>`},
+    {k:"k0",lab:"Exercice",n:1,fmt:v=>v?exLab(v):"—"},{k:"ca",lab:"CA",n:1,fmt:(v,r)=>r.k0?(v?eurK(v):`<span class="muted">confidentiel</span>`):`<span class="muted">aucun dépôt</span>`},
+    {k:"rn",lab:"Résultat net",n:1,fmt:v=>v==null?"—":`<span style="color:${v<0?"var(--crit)":"inherit"}">${eurK(v)}</span>`},
+    {k:"ca1",lab:"CA précédent",n:1,fmt:(v,r)=>r.k1?`${v?eurK(v):"conf."} <span class="muted">${exLab(r.k1)}</span>`:"—"},
+    {k:"effectif",lab:"Effectif",fmt:v=>/non /.test(v||"")||!v?"—":esc(v)}];
+  const decl=((COMPTES||{}).declaratifs||[]).filter(d=>PCE[d.centre]&&(!S.m||PCE[d.centre].enseigne_id===S.m)&&inZone(PCE[d.centre],S.z));
+  return scope("Comptes publiés",`${esc(S.m?nomM(S.m)+" · ":"")}${esc(zoneLab(S.z))} · ${plur(so.length,"société")}`)+
+    `<div class="card" style="margin-bottom:14px;padding:14px 18px"><span class="ink2" style="font-size:13px">Comptes déposés au greffe (registre public et comptes INPI, tous exercices), société par société, rattachée aux parcs qu'elle exploite. « Confidentiel » : comptes déposés sans CA publié ; « aucun dépôt » : société trop récente.</span></div>
+    <div class="grid">${card({title:"Sociétés exploitantes et têtes de réseau",sub:"Tri par CA du dernier exercice publié. Clique un parc pour sa fiche.",
+      body:tbl("comptes",colsDef,so,{def:{k:"ca",d:-1}})})}</div>`+
+    (decl.length?`<div class="grid mt">${card({title:"Chiffres déclarés par les réseaux",sub:"Non audités.",body:tbl("decl",[{k:"societe",lab:"Société"},{k:"parc",lab:"Parc"},{k:"annee",lab:"Année",n:1},{k:"ca",lab:"CA",n:1,fmt:eurK},{k:"visiteurs",lab:"Visiteurs",n:1,fmt:nf},{k:"source",lab:"Source"}],
+      decl.map(d=>({...d,parc:PCE[d.centre].nom})))})}</div>`:"");
+}
+
+/* ═════════ fiches détail (panneau latéral, pile avec retour) ═════════ */
+let FICHE_VUE="";
+function openFiche(t,id){FICHE.push({t,id});renderFiche();ecrireHash();}
+function closeFiche(silent){FICHE=[];FICHE_VUE="";$("#ov").classList.remove("on");hideTip();if(!silent)ecrireHash();}
+function retourFiche(i){FICHE=FICHE.slice(0,i+1);renderFiche();ecrireHash();}
+function titreFiche(f){
+  return f.t==="marque"?nomM(f.id):f.t==="parc"?(PCE[f.id]||{}).nom||"Parc":f.t==="salle"?(SA[f.id]||{}).nom||"Salle"
+    :f.t==="zone"?f.id.slice(f.id.indexOf("|")+1):"Méthodologie";
+}
+async function renderFiche(){
+  const f=FICHE[FICHE.length-1];if(!f){closeFiche(true);return;}
+  if(f.t==="parc"||(f.t==="marque"&&PEN[f.id])||(f.t==="zone"&&S.u==="parcs"))await chargerParcs().catch(()=>{});
+  const crumbs=FICHE.slice(0,-1).map((x,i)=>`<a onclick="retourFiche(${i})">${esc(titreFiche(x))}</a> ›`).join(" ");
+  const bar=`<div class="sbar"><div class="crumbs">${FICHE.length>1?`<button class="ghost" onclick="retourFiche(${FICHE.length-2})">‹ Retour</button><span>${crumbs}</span>`:""}</div>
+    <button class="ghost" onclick="closeFiche()">✕ Fermer</button></div>`;
+  let body;
+  try{body={marque:ficheMarque,parc:ficheParc,salle:ficheSalle,zone:ficheZone,methodo:ficheMethodo}[f.t](f.id);}
+  catch(e){body=`<div class="empty">Fiche indisponible (${esc(e.message)}).</div>`;}
+  const sh=$("#sheet"),cle=f.t+":"+f.id,top=sh.scrollTop;
+  sh.innerHTML=bar+body;$("#ov").classList.add("on");
+  sh.scrollTop=cle===FICHE_VUE?top:0;FICHE_VUE=cle;
+  if(f.t==="salle")releveSalle(f.id);
+  if(f.t==="marque"&&!PEN[f.id])releveMarque(f.id);
+}
+function ficheTete(kind,titre,sous,acts){
+  return `<div class="sh"><div class="kind">${kind}</div><h2>${esc(titre)}</h2>${sous?`<div class="s">${sous}</div>`:""}${acts?`<div class="acts">${acts}</div>`:""}</div>`;
+}
+const sec=(t,h)=>h?`<div class="sec"><h3>${t}</h3>${h}</div>`:"";
+const kv=rows=>`<div class="kv">${rows.filter(Boolean).map(([k,v])=>`<div class="r"><span class="k">${k}</span><span>${v}</span></div>`).join("")}</div>`;
+const lien=u=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\//,"").replace(/\/$/,""))} ↗</a>`:"—";
+function filtrerMarque(id){const u=PEN[id]?"parcs":"escape";
+  if(u!==S.u){S.u=u;S.cmp=[];NIV=null;if(!PERIODES[u].some(x=>x[0]===S.p))S.p="7";}
+  S.m=id;S.v="synthese";closeFiche(true);window.scrollTo(0,0);render();}
+function comparerMarque(id){const u=PEN[id]?"parcs":"escape";
+  if(u!==S.u){S.u=u;S.cmp=[];S.m="";NIV=null;if(!PERIODES[u].some(x=>x[0]===S.p))S.p="7";}
+  if(!S.cmp.includes(id)){const j=S.cmp.findIndex(x=>!x);if(j>=0)S.cmp[j]=id;else if(S.cmp.length<4)S.cmp.push(id);}
+  S.v="marques";closeFiche(true);window.scrollTo(0,0);render();}
+/* colonnes jour par jour d'une entité, avec un repère (marché, marque…) */
+function joursAvec(u,rows,ref,refLab,titreLab){
+  const gd=u.grp(rows,x=>x.date),gr=ref?u.grp(ref,x=>x.date):null,ds=Object.keys(gd).sort();
+  if(!ds.length)return "";
+  const mx=pctMax(Math.max(...ds.map(d=>Math.max(u.taux(gd[d])||0,gr&&gr[d]?u.taux(gr[d]):0))));
+  return cols(ds.map(d=>{const o=gd[d],r=gr&&gr[d];return {k:d,v:u.taux(o),mark:r?u.taux(r):null,
+      tip:[dlong(d),pctTxt(u.taux(o))+(r?` · ${refLab} ${pctTxt(u.taux(r))}`:""),S.u==="escape"||!o.ca&&o.ca!==0?`${nf(o.n)} créneaux · ${nf(o.libres)} libres`:`${nf(o.vend)} places · ${eurK(o.ca)} · ${o.complets} complets`]};}),{max:mx})+
+    (ref?`<div class="leg"><span><i class="k" style="background:var(--accent)"></i>${esc(titreLab)}</span><span><i class="ln" style="border-color:var(--ink-2)"></i>${esc(refLab)}</span></div>`:"");
+}
+function heuresDe(u,rows,esc_){
+  const BK=esc_?[[0,12,"–12h"],[12,14,"12-14"],[14,16,"14-16"],[16,18,"16-18"],[18,20,"18-20"],[20,22,"20-22"],[22,24,"22h+"]]
+    :[[0,10,"–10h"],[10,11,"10h"],[11,12,"11h"],[12,13,"12h"],[13,14,"13h"],[14,15,"14h"],[15,16,"15h"],[16,17,"16h"],[17,24,"17h+"]];
+  const gh=u.grp(rows,x=>{const jd=(new Date(x.date+"T12:00").getDay()+6)%7,h=+x.heure.slice(0,2),b=BK.findIndex(k=>h>=k[0]&&h<k[1]);return b<0?null:jd+"|"+b;});
+  const cells={};Object.entries(gh).forEach(([k,o])=>{if(o.n>=2)cells[k]={v:u.taux(o),m:`${nf(o.n)} créneaux`};});
+  return heat(cells,BK.map(b=>b[2]),{lab:u.tauxLab,vide:"fermé ou trop peu de créneaux"});
+}
+
+/* ── fiche marque ── */
+function ficheMarque(id){
+  const isP=!!PEN[id],u=isP?UNIV.parcs:UNIV.escape,e=(isP?PEN:EN)[id]||{nom:id};
+  const rows=u.rows({m:id,z:""}),T=u.tot(rows),ref=u.rows({m:"",z:""}),mk=u.tot(ref);
+  const t=u.taux(T),tm=u.taux(mk);
+  const centres=isP?Object.values(PCE).filter(c=>c.enseigne_id===id):(BY_ENS[id]||[]);
+  const villes=[...new Set(centres.map(c=>geo(c).ville))];
+  const nL=isP?centres.length:centres.flatMap(c=>BY_CENTRE[c.id]||[]).length;
+  const tete=ficheTete(`Marque · ${isP?"parcs enfants":"escape games"}`,e.nom,
+    `${plur(nL,u.lieuNom)} · ${esc(villes.slice(0,5).join(", "))}${villes.length>5?` et ${villes.length-5} autres villes`:""}`,
+    `<button class="ghost" onclick="filtrerMarque(${js(id)})">Filtrer le tableau de bord</button>
+     <button class="ghost" onclick="comparerMarque(${js(id)})">Comparer</button>${e.website?`<a class="ghost" href="${esc(e.website)}" target="_blank" rel="noopener">Site ↗</a>`:""}`);
+  let tiles;
+  if(!isP){const V=ventesStats(id,"");
+    tiles=[tile({lab:"Occupation",val:pctTxt(t),vs:`marché ${pctTxt(tm)} ${ecart(t,tm)}`,meter:t,mark:tm}),
+      tile({lab:"Prix médian d'une session",val:eur(median(T.prix)),vs:`marché ${eur(median(mk.prix))}`}),
+      tile({lab:"Créneaux encore libres",val:nf(T.libres),sub:`sur ${nf(T.n)} proposés`}),
+      tile({lab:"Joueurs par session",val:V.n>=ENS_MIN?V.jMed:"—",sub:V.n>=ENS_MIN?`${nf(V.n)} sessions mesurées · panier ${eur(V.pMed)}`:"pas encore assez de sessions mesurées"})];
+  }else{
+    tiles=[tile({lab:"Remplissage à venir",val:pctTxt(t),vs:`marché ${pctTxt(tm)} ${ecart(t,tm)}`,meter:t,mark:tm}),
+      tile({lab:"CA billetterie déjà réservé",val:eurK(T.ca),sub:`${eurK(T.ca/Math.max(1,T.parcs.size))} par parc · ${pct(T.ca,mk.ca)} % du total suivi`}),
+      tile({lab:"Entrée enfant · médiane",val:prixTxt(median(T.enf)),vs:`marché ${prixTxt(median(mk.enf))}`,sub:`adulte ${prixTxt(median(T.adu))}`}),
+      tile({lab:"Créneaux complets",val:nf(T.complets),sub:`${pct(T.complets,T.n)} % · ${nf(T.vend)} places réservées`})];
+  }
+  const g=u.grp(rows,u.lieu);
+  const lieux=isP?centres.map(c=>{const o=g[c.id];return {id:c.id,nom:c.nom,sub:geo(c).ville,t:o?remp(o):null,vend:o?o.vend:null,comp:o?pct(o.complets,o.n):null,prix:o?median(o.enf):null,ca:o?o.ca:null};})
+    :centres.flatMap(c=>(BY_CENTRE[c.id]||[]).map(s=>{const o=g[s.id];return {id:s.id,nom:s.nom||"Salle",sub:`${c.nom||""} · ${geo(c).ville}`,t:o?occ(o):null,n:o?o.n:0,libres:o?o.libres:0,prix:o?median(o.prix):null,muet:MUET[s.id]?MUET_LIB[MUET[s.id].raison]:""};}));
+  const tl=tbl("fm-lieux",isP?[{k:"nom",lab:"Parc",fmt:nomCell,cls:"w"},{k:"t",lab:"Remplissage",n:1,fmt:v=>v==null?"—":barCell(v,100,pctTxt(v))},{k:"vend",lab:"Places",n:1,fmt:nf},{k:"comp",lab:"Complets",n:1,fmt:v=>v==null?"—":v+" %"},{k:"prix",lab:"Enfant",n:1,fmt:prixTxt},{k:"ca",lab:"CA réservé",n:1,fmt:eurK}]
+    :[{k:"nom",lab:"Salle",fmt:(v,r)=>nomCell(v,r)+(r.muet?` <span class="badge w">${esc(r.muet)}</span>`:""),cls:"w"},{k:"t",lab:"Occupation",n:1,fmt:v=>v==null?"—":barCell(v,100,pctTxt(v))},{k:"n",lab:"Créneaux",n:1,fmt:nf},{k:"libres",lab:"Libres",n:1,fmt:nf},{k:"prix",lab:"Prix médian",n:1,fmt:eur}],
+    lieux,{def:{k:"t",d:-1},click:r=>`openFiche('${isP?"parc":"salle"}',${js(r.id)})`});
+  let geoH="";
+  if(villes.length>1){const gv=u.grp(rows,x=>{const c=u.centre(x);return c?geo(c).ville:null;});
+    geoH=hbars(Object.entries(gv).map(([k,o])=>({lab:k,sub:plur(u.nLieux(o),u.lieuNom),v:u.taux(o),txt:pctTxt(u.taux(o))})).sort((a,b)=>b.v-a.v),{max:100});}
+  let histo="",comptes="";
+  if(isP){
+    const hs=HIST&&HIST.parcs?Object.entries(HIST.parcs).filter(([cid,h])=>PCE[cid]&&PCE[cid].enseigne_id===id&&h.jours&&Object.keys(h.jours).length):[];
+    if(hs.length){const w={};hs.forEach(([,h])=>histSemaines(h).forEach(([k,o])=>{const x=w[k]=w[k]||{e:0,ca:0,a:0};x.e+=o.e;x.ca+=o.ca;x.a+=o.a;}));
+      const ks=Object.keys(w).sort(),tot=ks.reduce((a,k)=>a+w[k].e,0),ca=ks.reduce((a,k)=>a+w[k].ca,0);
+      histo=`<div class="card"><div class="csub" style="margin-bottom:8px">${plur(hs.length,"parc")} sur ROLLER · ${nf(tot)} entrées vendues · ${eurK(ca)} depuis le ${frDate(ks[0])}</div>
+        ${cols(ks.map(k=>({k,v:w[k].e,tip:[`Semaine du ${frDate(k)}`,`${nf(w[k].e)} entrées`,`${eurK(w[k].ca)}${w[k].a?` · ${w[k].a} anniversaires`:""}`]})),{fmt:v=>nf(v),lab:k=>frDate(k),we:false,h:130})}</div>`;}
+    const so=((COMPTES||{}).societes||[]).filter(x=>(x.centres||[]).some(c=>PCE[c]&&PCE[c].enseigne_id===id)||(x.groupe||"").toLowerCase().includes((e.nom||"").toLowerCase()));
+    if(so.length)comptes=tbl("fm-comptes",[{k:"nom",lab:"Société",fmt:(v,r)=>`<b>${esc(v)}</b><span class="sm">${esc(r.role||"")}</span>`,cls:"w"},{k:"k0",lab:"Exercice",n:1,fmt:v=>v?exLab(v):"—"},
+        {k:"ca",lab:"CA",n:1,fmt:(v,r)=>r.k0?(v?eurK(v):`<span class="muted">confidentiel</span>`):`<span class="muted">aucun dépôt</span>`},{k:"rn",lab:"Résultat net",n:1,fmt:v=>v==null?"—":eurK(v)}],
+      so.map(x=>{const ex=exo(x.finances),d=ex.find(([,v])=>v.ca||v.resultat_net!=null)||ex[0]||["",{}];return {...x,k0:d[0],ca:d[1].ca||null,rn:d[1].resultat_net??null};}),{def:{k:"ca",d:-1}});
+  }else{
+    const V=ventesStats(id,"");
+    if(V.n>=ENS_MIN)comptes="";
+  }
+  return tete+`<div class="grid g2">${tiles.join("")}</div>`+
+    sec(`Jour par jour · ${perLab()}`,`<div class="card">${joursAvec(u,rows,ref,"marché",e.nom)||'<div class="empty">Pas de créneau sur la période.</div>'}</div>`)+
+    sec(`${cap(u.lieuxNom)} (${lieux.length})`,`<div class="card">${tl}</div>`)+
+    (geoH?sec("Par ville",`<div class="card">${geoH}</div>`):"")+
+    sec("Heures de pointe",`<div class="card">${heuresDe(u,rows,!isP)}</div>`)+
+    (histo?sec("Historique réel (ROLLER) · entrées par semaine",histo):"")+
+    (comptes?sec("Comptes publiés des sociétés",`<div class="card">${comptes}</div>`):"")+
+    sec("Source et fraîcheur",`<div id="fm-src">${kv([["Site officiel",lien(e.website)],["Origine",isP?"billetteries publiques des parcs":"système de réservation officiel"],
+      ["Période",perLab()],["Créneaux analysés",nf(T.n)],["Dernier relevé",isP?ago(rows.reduce((m,x)=>x.dernier_vu>m?x.dernier_vu:m,"")):"…"]])}</div>`);
+}
+async function releveMarque(id){
+  const ids=(BY_ENS[id]||[]).flatMap(c=>BY_CENTRE[c.id]||[]).map(s=>s.id);if(!ids.length)return;
+  try{const ls=await q(`sessions?select=dernier_vu&salle_id=in.(${ids.join(",")})&order=dernier_vu.desc&limit=1`);
+    const el=document.querySelector("#fm-src .r:last-child span:last-child");if(el)el.textContent=ago(ls[0]&&ls[0].dernier_vu);}catch(_){}
+}
+
+/* ── fiche parc ── */
+function ficheParc(cid){
+  const c=PCE[cid];if(!c)return `<div class="empty">Parc introuvable.</div>`;
+  const u=UNIV.parcs,e=PEN[c.enseigne_id]||{},g=geo(c);
+  const tout=rowsP({m:"",z:""}),rows=tout.filter(x=>(parcOf(x.salle_id)||{}).id===cid),ref=tout.filter(x=>(parcOf(x.salle_id)||{}).enseigne_id===c.enseigne_id);
+  const T=totP(rows),R=totP(ref),t=remp(T),tr=remp(R);
+  const nbP=Object.values(PCE).filter(x=>x.enseigne_id===c.enseigne_id).length;
+  const tete=ficheTete(`Parc · ${esc(e.nom||"")}`,c.nom,`${esc(c.adresse||"")}${c.cp?", "+esc(c.cp):""} ${esc(g.ville)} · ${esc(g.depLab)}`,
+    `<button class="ghost" onclick="openFiche('marque',${js(c.enseigne_id)})">Voir la marque ${esc(e.nom||"")}</button>
+     <a class="ghost" href="${esc(shopUrl(c))}" target="_blank" rel="noopener">Billetterie ↗</a>`);
+  const px=rows.map(x=>x.prix_total||{}),enf=[...new Set(px.map(p=>p.enfant).filter(Boolean))].sort((a,b)=>a-b),adu=[...new Set(px.map(p=>p.adulte).filter(Boolean))].sort((a,b)=>a-b);
+  const tiles=[tile({lab:"Remplissage à venir",val:pctTxt(t),vs:nbP>1?`moyenne ${esc(e.nom||"marque")} ${pctTxt(tr)} ${ecart(t,tr)}`:"",sub:`${nf(T.vend)} places réservées sur ${nf(T.init)}`,meter:t,mark:nbP>1?tr:null}),
+    tile({lab:"CA billetterie déjà réservé",val:eurK(T.ca),sub:"places réservées × prix du créneau"}),
+    tile({lab:"Créneaux complets",val:`${nf(T.complets)} / ${nf(T.n)}`,sub:`${nf(T.rest)} places encore libres`}),
+    tile({lab:"Prix d'entrée",val:enf.length?prixTxt(median(T.enf)):"—",sub:`enfant ${enf.map(prixTxt).join(" / ")||"—"} · adulte ${adu.map(prixTxt).join(" / ")||"—"}`})];
+  const h=HIST&&HIST.parcs&&HIST.parcs[cid];
+  let histo="";
+  if(h&&h.jours&&Object.keys(h.jours).length){const tt=histTot(h),sem=histSemaines(h);
+    const mois={};histJours(h).forEach(([d,v])=>{const k=d.slice(0,7),o=mois[k]=mois[k]||{e:0,ca:0,j:0,a:0};o.e+=v.e||0;o.ca+=v.ca||0;o.j+=v.j||0;o.a+=v.a||0;});
+    histo=`<div class="card"><div class="mini" style="border:0;padding:0;cursor:default"><div class="k" style="margin-top:0"><span><strong>${nf(tt.e)}</strong>entrées vendues</span><span><strong>${eurK(tt.ca)}</strong>CA estimé</span>
+      <span><strong>${pctTxt(pct(tt.e,tt.j))}</strong>remplissage</span>${tt.a?`<span><strong>${nf(tt.a)}</strong>anniversaires</span>`:""}<span><strong>${frDate(tt.d0)}</strong>début</span></div></div>
+      ${cols(sem.map(([k,o])=>({k,v:o.e,tip:[`Semaine du ${frDate(k)}`,`${nf(o.e)} entrées`,`${eurK(o.ca)}${o.a?` · ${o.a} anniversaires`:""} · ${o.jours} j ouverts`]})),{fmt:v=>nf(v),lab:k=>frDate(k),we:false,h:130})}
+      <div style="margin-top:12px">${tbl("fp-mois",[{k:"k",lab:"Mois",fmt:v=>new Date(v+"-15").toLocaleDateString("fr-FR",{month:"long",year:"numeric"})},{k:"e",lab:"Entrées",n:1,fmt:nf},{k:"r",lab:"Remplissage",n:1,fmt:pctTxt},{k:"ca",lab:"CA estimé",n:1,fmt:eurK},{k:"a",lab:"Anniversaires",n:1,fmt:v=>v||"—"}],
+        Object.entries(mois).map(([k,o])=>({k,e:o.e,r:pct(o.e,o.j),ca:o.ca,a:o.a})),{def:{k:"k",d:1}})}</div></div>`;}
+  const so=((COMPTES||{}).societes||[]).filter(x=>(x.centres||[]).includes(cid)),de=((COMPTES||{}).declaratifs||[]).filter(x=>x.centre===cid);
+  const lignesC=[...so.flatMap(x=>{const ex=exo(x.finances);return ex.length?ex.map(([k,v])=>({soc:x.nom,k,ca:v.ca||null,rn:v.resultat_net??null,note:""}))
+      :[{soc:x.nom,k:"",ca:null,rn:null,note:`aucun compte déposé (créée ${(x.creation||"").slice(0,7)})`}];}),
+    ...de.map(d=>({soc:d.societe,k:String(d.annee),ca:d.ca,rn:null,note:`${d.source}${d.visiteurs?` · ${nf(d.visiteurs)} visiteurs`:""}`}))];
+  const comptes=lignesC.length?tbl("fp-comptes",[{k:"soc",lab:"Société",fmt:(v,r)=>`<b>${esc(v)}</b>${r.note?`<span class="sm">${esc(r.note)}</span>`:""}`,cls:"w"},{k:"k",lab:"Exercice",n:1,fmt:v=>v?exLab(v):"—"},
+      {k:"ca",lab:"CA",n:1,fmt:(v,r)=>v?eurK(v):r.k?`<span class="muted">confidentiel</span>`:"—"},{k:"rn",lab:"Résultat net",n:1,fmt:v=>v==null?"—":eurK(v)}],lignesC,{def:{k:"k",d:-1}})+
+    (so.some(x=>(x.centres||[]).length>1)?`<div class="note">${so.filter(x=>(x.centres||[]).length>1).map(x=>`${esc(x.nom)} exploite ${x.centres.length} parcs suivis : ses comptes couvrent l'ensemble.`).join(" ")}</div>`:""):"";
+  const hm=nowHM(),libres=(PS||[]).filter(x=>(parcOf(x.salle_id)||{}).id===cid&&x.statut!=="retire"&&x.dispo&&x.places_restantes>0&&(x.date>TODAY||x.date===TODAY&&x.heure>=hm)).slice(0,16);
+  const last=(PS||[]).filter(x=>(parcOf(x.salle_id)||{}).id===cid).reduce((m,x)=>x.dernier_vu>m?x.dernier_vu:m,"");
+  return tete+`<div class="grid g2">${tiles.join("")}</div>`+
+    sec(`Jour par jour · ${perLab()}`,`<div class="card">${joursAvec(u,rows,nbP>1?ref:null,`moyenne ${e.nom||"marque"}`,c.nom)||'<div class="empty">Pas de créneau sur la période.</div>'}</div>`)+
+    sec("Heures de pointe",`<div class="card">${heuresDe(u,rows,false)}</div>`)+
+    (histo?sec("Historique réel (ROLLER)",histo):"")+
+    (comptes?sec("Comptes de la société exploitante",`<div class="card">${comptes}</div>`):"")+
+    sec("Prochains créneaux réservables",`<div class="card">${libres.length?tbl("fp-libres",[{k:"date",lab:"Jour",fmt:v=>dlong(v)},{k:"heure",lab:"Heure",n:1},{k:"places_restantes",lab:"Places libres",n:1},
+      {k:"e",lab:"Enfant",n:1,fmt:prixTxt},{k:"a",lab:"Adulte",n:1,fmt:prixTxt}],libres.map(x=>({...x,e:(x.prix_total||{}).enfant,a:(x.prix_total||{}).adulte})),{def:{k:"date",d:1}})
+      :'<div class="empty">Complet sur la période observée.</div>'}</div>`)+
+    sec("Source et fraîcheur",kv([["Billetterie",lien(shopUrl(c))],e.website&&e.website!==shopUrl(c)?["Site officiel",lien(e.website)]:null,
+      ["Mesure",cid.includes(".qweekle.shop")?"jauge publiée par la billetterie":"places relevées sur la billetterie publique"],
+      ["Jauge de référence",T.n?`${nf(T.init/T.n)} places par créneau (moyenne)`:"—"],["Dernier relevé",ago(last)]]));
+}
+
+/* ── fiche salle (escape) ── */
+function ficheSalle(sid){
+  const s=SA[sid];if(!s)return `<div class="empty">Salle introuvable.</div>`;
+  const u=UNIV.escape,c=CENTRE_OF[sid]||{},eid=ENS_OF[sid],e=EN[eid]||{};
+  const tout=rowsE({m:"",z:""}),rows=tout.filter(x=>x.salle_id===sid),ref=tout.filter(x=>ENS_OF[x.salle_id]===eid);
+  const T=totE(rows),R=totE(ref),t=occ(T),tr=occ(R),nS=(BY_ENS[eid]||[]).flatMap(x=>BY_CENTRE[x.id]||[]).length;
+  const meta=[s.theme&&cap(s.theme),s.duree_minutes&&s.duree_minutes+" min",(s.joueurs_min||s.joueurs_max)&&`${s.joueurs_min||"?"} à ${s.joueurs_max||"?"} joueurs`,
+    s.difficulty&&"difficulté "+"★".repeat(Math.min(5,s.difficulty))].filter(Boolean).join(" · ");
+  const tete=ficheTete(`Salle · ${esc(e.nom||"")}`,s.nom||"Salle",`${esc(c.nom||"")}${c.nom?" · ":""}${esc(geo(c).ville)}${meta?" · "+esc(meta):""}`,
+    `<button class="ghost" onclick="openFiche('marque',${js(eid)})">Voir la marque ${esc(e.nom||"")}</button>${e.website?`<a class="ghost" href="${esc(e.website)}" target="_blank" rel="noopener">Site ↗</a>`:""}`);
+  const tiles=[tile({lab:"Occupation à venir",val:PUBLIE.has(sid)?pctTxt(t):"—",vs:nS>1&&PUBLIE.has(sid)?`moyenne ${esc(e.nom||"")} ${pctTxt(tr)} ${ecart(t,tr)}`:"",meter:PUBLIE.has(sid)?t:null,mark:nS>1?tr:null,
+      sub:PUBLIE.has(sid)?`${nf(T.n-T.libres)} créneaux pris sur ${nf(T.n)}`:"aucun créneau libre observé : exclue des taux"}),
+    tile({lab:"Prix médian d'une session",val:eur(median(T.prix)),sub:"groupe type de 4 joueurs"})];
+  const hm=nowHM(),next=SESS.filter(x=>x.salle_id===sid&&x.dispo&&x.statut!=="retire"&&(x.date>TODAY||x.date===TODAY&&x.heure>=hm)).slice(0,18);
+  return tete+`<div class="grid g2">${tiles.join("")}</div>`+
+    (MUET[sid]?`<div class="card" style="margin-top:14px"><span class="badge w">${esc(MUET_LIB[MUET[sid].raison])}</span> <span class="ink2" style="font-size:13px">aucun créneau libre observé : la salle est exclue des taux d'occupation.</span></div>`:"")+
+    sec(`Jour par jour · ${perLab()}`,`<div class="card">${PUBLIE.has(sid)?joursAvec(u,rows,nS>1?ref:null,`moyenne ${e.nom||"marque"}`,s.nom||"Salle"):""||'<div class="empty">Pas de disponibilité publiée.</div>'}</div>`)+
+    sec("Prochains créneaux libres",`<div class="card">${next.length?tbl("fs-next",[{k:"date",lab:"Jour",fmt:v=>dlong(v)},{k:"heure",lab:"Heure",n:1},{k:"prix_total_moyen",lab:"Prix (4 joueurs)",n:1,fmt:eur}],next,{def:{k:"date",d:1}})
+      :'<div class="empty">Complet sur la période observée.</div>'}</div>`)+
+    sec("Source et fraîcheur",`<div id="fs-src">${kv([["Site officiel",lien(e.website)],["Origine","système de réservation officiel"],["Créneaux à venir",nf(SESS.filter(x=>x.salle_id===sid).length)],["Dernier relevé","…"]])}</div>`);
+}
+async function releveSalle(sid){
+  try{const ls=await q(`sessions?select=dernier_vu&salle_id=eq.${encodeURIComponent(sid)}&order=dernier_vu.desc&limit=1`);
+    const el=document.querySelector("#fs-src .r:last-child span:last-child");if(el)el.textContent=ago(ls[0]&&ls[0].dernier_vu);}catch(_){}
+}
+
+/* ── fiche zone ── */
+function ficheZone(key){
+  const i=key.indexOf("|"),niv=key.slice(0,i),val=key.slice(i+1),u=U(),esc_=S.u==="escape";
+  const dans=c=>{const g=geo(c);return (niv==="zone"?g.zone:niv==="reg"?g.reg:niv==="dep"?g.depLab:g.ville)===val;};
+  const tout=u.rows({z:""}),rows=tout.filter(x=>{const c=u.centre(x);return c&&dans(c);}),T=u.tot(rows),mk=u.tot(tout),t=u.taux(T),tm=u.taux(mk);
+  const f=filtreDe(niv,val);
+  const tete=ficheTete(`${{zone:"Zone",reg:"Région",dep:"Département",ville:"Ville"}[niv]} · ${esc_?"escape games":"parcs enfants"}`,val,
+    `${plur(u.nLieux(T),u.lieuNom)} · ${plur(T.ens.size,"marque")}${S.m?` · marque filtrée : ${esc(nomM(S.m))}`:""} · ${perLab()}`,
+    f?`<button class="ghost" onclick="closeFiche(true);setZ(${js(f)})">Filtrer le tableau de bord sur cette zone</button>`:"");
+  const tiles=esc_?[tile({lab:"Occupation",val:pctTxt(t),vs:`ensemble ${pctTxt(tm)} ${ecart(t,tm)}`,meter:t,mark:tm}),tile({lab:"Prix médian d'une session",val:eur(median(T.prix)),vs:`ensemble ${eur(median(mk.prix))}`}),
+      tile({lab:"Créneaux proposés",val:nf(T.n),sub:`${nf(T.libres)} encore libres`}),tile({lab:"Salles",val:nf(T.salles.size),sub:plur(T.centres.size,"centre")})]
+    :[tile({lab:"Remplissage à venir",val:pctTxt(t),vs:`ensemble ${pctTxt(tm)} ${ecart(t,tm)}`,meter:t,mark:tm}),tile({lab:"CA billetterie déjà réservé",val:eurK(T.ca),sub:`${pct(T.ca,mk.ca)} % du total suivi`}),
+      tile({lab:"Entrée enfant · médiane",val:prixTxt(median(T.enf)),vs:`ensemble ${prixTxt(median(mk.enf))}`}),tile({lab:"Parcs",val:nf(T.parcs.size),sub:plur(T.ens.size,"marque")})];
+  const gm=u.grp(rows,u.ens);
+  const bm=hbars(Object.entries(gm).map(([id,o])=>({lab:nomM(id),sub:plur(u.nLieux(o),u.lieuNom)+(esc_?"":` · ${eurK(o.ca)}`),v:u.taux(o),txt:pctTxt(u.taux(o)),hl:id===S.m,
+    click:`openFiche('marque',${js(id)})`})).sort((a,b)=>b.v-a.v),{max:100});
+  const g=u.grp(rows,u.lieu);
+  const lieux=Object.entries(g).map(([id,o])=>{const c=esc_?CENTRE_OF[id]:PCE[id];
+    return {id,nom:esc_?(SA[id]||{}).nom||"Salle":c.nom,sub:`${nomM(c.enseigne_id)} · ${geo(c).ville}`,t:u.taux(o),n:o.n,prix:median(esc_?o.prix:o.enf),ca:o.ca};});
+  const tl=tbl("fz-lieux",[{k:"nom",lab:esc_?"Salle":"Parc",fmt:nomCell,cls:"w"},{k:"t",lab:u.tauxLab,n:1,fmt:v=>barCell(v,100,pctTxt(v))},
+    ...(esc_?[{k:"n",lab:"Créneaux",n:1,fmt:nf},{k:"prix",lab:"Prix médian",n:1,fmt:eur}]:[{k:"prix",lab:"Enfant",n:1,fmt:prixTxt},{k:"ca",lab:"CA réservé",n:1,fmt:eurK}])],
+    lieux,{def:{k:"t",d:-1},limit:40,click:r=>`openFiche('${esc_?"salle":"parc"}',${js(r.id)})`});
+  return tete+`<div class="grid g2">${tiles.join("")}</div>`+sec("Marques présentes",`<div class="card">${bm}</div>`)+
+    sec(`Jour par jour · ${perLab()}`,`<div class="card">${joursAvec(u,rows,tout,"ensemble",val)}</div>`)+
+    sec(`${cap(u.lieuxNom)} (${lieux.length})`,`<div class="card">${tl}</div>`);
+}
+
+/* ── méthodologie ── */
+function openMethodo(){openFiche("methodo","sources");}
+function ficheMethodo(){
   const nE=Object.keys(EN).length,nC=Object.keys(CE).length,nS=Object.keys(SA).length;
-  ovOpen(`<div class="sbar"><button onclick="closeOv()">✕ Fermer</button></div>
-    <h2 style="font-size:20px">Méthodologie & sources</h2>
-    <div class="src"><h4>Couverture</h4>
-      <div class="r"><span class="k">Enseignes</span><span>${nE}</span></div>
-      <div class="r"><span class="k">Centres</span><span>${nC}</span></div>
-      <div class="r"><span class="k">Salles</span><span>${nS}</span></div>
-      <div class="r"><span class="k">Créneaux chargés</span><span>${SESS.length.toLocaleString("fr-FR")}</span></div>
-      <div class="r"><span class="k">Dernier relevé</span><span>${ago(FRESH)}</span></div></div>
-    <div class="src"><h4>D'où viennent les données</h4>
-      <div class="csub" style="line-height:1.6">Les disponibilités sont relevées automatiquement sur les
-      <b>systèmes de réservation officiels</b> des enseignes (données publiques affichées au client),
-      toutes les 30 minutes. Chaque fiche enseigne et salle indique sa source et l'heure du dernier relevé.</div></div>
-    <div class="src"><h4>Comment lire l'occupation</h4>
-      <div class="csub" style="line-height:1.6"><b>Occupation</b> = part des créneaux publiés qui ne sont
-      plus réservables. Un créneau peut être indisponible parce qu'il est réservé <i>ou</i> parce que la salle
-      est fermée sur ce créneau : l'indicateur mesure donc la <b>disponibilité commerciale</b>, une borne haute
-      de la fréquentation réelle. Les cases de la heatmap avec moins de 3 relevés ne sont pas colorées.</div></div>
-    <div class="src"><h4>Ce qui est volontairement écarté</h4>
-      <div class="csub" style="line-height:1.6">
-      • <b>${N_NOPUB} salles</b> n'ont jamais affiché le moindre créneau libre sur la période : elles ne
-      publient pas leurs disponibilités (salle fermée, réservation par téléphone…). Les compter reviendrait à
-      les afficher à « 100 % occupé », ce qui serait faux — elles sont donc <b>exclues des taux</b>.<br>
-      • Le <b>dernier jour de l'horizon</b> n'est publié que partiellement par les enseignes ; il est écarté
-      pour ne pas gonfler artificiellement l'occupation.</div></div>
-    <div class="src"><h4>Prix et panier</h4>
-      <div class="csub" style="line-height:1.6"><b>Panier estimé (salles privées)</b> : prix <b>total d'une session</b>
-      pour un <b>groupe type de 4 joueurs</b> (ou la taille minimale/maximale de la salle si 4 sort de sa plage). Chaque
-      tarif est lu selon son type publié (prix du groupe ou prix par joueur). 4escape ne publie pas combien de joueurs
-      ont réservé une salle privée : ce panier est une <b>estimation</b>, pas une mesure.<br>
-      <b>Joueurs et panier réels (sessions vendues à la place)</b> : quand une session se vend par place, le nombre de
-      places libres baisse à chaque vente. Le scraper suit ce nombre depuis le ${frDate(TRACK_START)} ; la
-      référence est le plus haut niveau de places libres observé, ce qui écarte la capacité que l'enseigne bloque
-      d'emblée et absorbe les annulations. Seules les sessions suivies au moins ${SUIVI_MIN} jours avant leur date
-      sont comptées. Une session réservée qui passe d'un coup à complet est traitée comme une <b>privatisation</b>
-      (nombre de joueurs inconnu) et écartée. Les enseignes avec moins de ${ENS_MIN} sessions mesurées ne sont pas
-      détaillées. Limite : une vente suivie d'une annulation entre deux relevés est invisible.</div></div>
-    <div class="src"><h4>Cas particuliers</h4>
-      <div class="csub" style="line-height:1.6">• <b>Salles non publiées</b> : certaines enseignes ouvrent à la réservation
-      des salles absentes de leur catalogue public. Elles sont suivies sous le nom « Salle non publiée » (leur vrai nom
-      n'est pas diffusé).<br>
-      • <b>Créneaux retirés</b> : un créneau qui disparaît de la réservation avant son heure a été supprimé par
-      l'enseigne. Il n'est compté ni comme libre ni comme occupé.<br>
-      • <b>Relevés</b> : toutes les ~10 minutes. Un créneau passé n'est plus mis à jour : son état est celui observé
-      juste avant son début.</div></div>
-    <div class="src"><h4>Parcs enfants (onglet dédié)</h4>
-      <div class="csub" style="line-height:1.6"><b>Parcs suivis</b> (72, filtre « zone » pour Paris / Ouest parisien /
-      Île-de-France) : les 19 Palomano et leurs concurrents qui vendent l'entrée par créneau en ligne — à Paris et en
-      Île-de-France : Rêvopolie, Octopia, Bulles &amp; Billes, Île de la Tortuga, Cité des enfants, Petit Nuage, Le Monde
-      d'Ayden, Les Zacroc's, You Kids (SQY, Plaisir, Palaiseau), Kawatee, Quand je serai grand, Toumini City, Royal Kids
-      Roissy-en-Brie, Planet Park, les 7 Gulli Parc ; et, pour le benchmark national, les 20 Gulli Parc, les 12 You Kids,
-      les mini-villes Kidz World (Lyon), Little City (Wittenheim) et Chibitopia, Kizou Aventures, Planet Park Nantes.
-      <b>Non mesurables</b> : les autres Royal Kids dont Montreuil et Épône, Planet Park Cormeilles (e-billets non datés),
-      Happy City, Youpi'Parc, Ludiqland (entrée libre, paiement sur place), Kingooroo (site fermé), Kid's Palace, Filou
-      Planet, L'Île de Robinson… (pas de billetterie).<br>
-      • <b>Historique réel (ROLLER)</b> : contrairement aux autres billetteries, ROLLER sert aussi les jours passés,
-      avec les places restantes finales de chaque séance — ventes en caisse comprises a priori (ROLLER sert aussi de
-      caisse). D'où un vrai rétrospectif jour par jour pour Palomano Clichy et Alfortville et les 12 You Kids, depuis leur
-      passage sur ROLLER (juin-juillet 2026 ; les premières semaines, encore vendues sur l'ancien système, sont écartées).
-      Anniversaires (Clichy) : créneaux de formule où la salle n'est plus réservable.<br>
-      • <b>Mesure</b> : pour chaque créneau des 14 prochains jours, les <b>places encore réservables</b>, relevées toutes les
-      ~30 minutes sur la billetterie publique (Qweekle, ROLLER, Cité des sciences, Event Calendar, Apex Timing). Toutes
-      les entrées d'un parc (enfant, adulte, bébé…) puisent dans la même jauge.<br>
-      • Rêvopolie, ROLLER, la Cité des sciences, Petit Nuage et la Tortuga publient leurs places ; l'ancienne boutique
-      Qweekle (Palomano, Gulli Parc…) n'affiche que les créneaux réservables pour N personnes : le nombre exact est
-      retrouvé en essayant plusieurs N. La <b>jauge</b>, quand elle n'est pas publiée, est la valeur haute habituelle du
-      parc (créneaux à J+7 et au-delà, presque vides).<br>
-      • <b>Arrivées ou présences</b> : Palomano vend un quota d'arrivées par créneau (30 par 20 min) ; Gulli Parc,
-      Rêvopolie, Octopia ou You Kids appliquent la jauge du parc pendant toute la visite, donc un même visiteur occupe
-      plusieurs créneaux. Ces présences sont converties en entrées (× intervalle entre créneaux / durée de visite).<br>
-      • <b>Remplissage</b> = places prises / jauge : une <b>part de jauge vendue en ligne</b>, pas une fréquentation (les
-      entrées sur place ne sont pas vues ; chez Gulli Parc elles sont la règle). Un créneau qui disparaît de la vente plus
-      de 90 min avant l'heure est compté complet. Les créneaux déjà complets la première fois qu'on les voit ne sont pas
-      connus : le remplissage des parcs très demandés est sous-estimé pendant les 14 premiers jours de collecte.<br>
-      • <b>CA billetterie</b> = places prises × prix du créneau, avec un panier par place égal à la moyenne des prix
-      enfant et adulte (calage : Palomano Clichy déclare 10,1 € par visiteur pour des entrées à 15 € et 7 €). C'est le CA
-      des <b>entrées réservées en ligne</b> : ni les entrées achetées sur place, ni les anniversaires, ni la restauration,
-      ni les chaussettes. « Déjà réservé » porte sur les créneaux à venir (les ventes continuent jusqu'au jour J) ;
-      « réalisé » sur les créneaux passés, dans leur état juste avant l'ouverture.<br>
-      • <b>Rétrospectif</b> : hors ROLLER, les billetteries ne publient aucune date passée (vérifié : Qweekle, Cité des
-      sciences). L'historique se construit donc depuis le ${frDate(PARC_DEBUT)} ; avant, il reste les comptes déposés au
-      greffe (registre public + comptes INPI, tous exercices) — CA souvent confidentiel pour les petites sociétés — et
-      les chiffres déclarés par les réseaux. 65 sociétés recensées et rattachées à leur parc par adresse
-      d'établissement.<br>
-      • Les parcs sont <b>exclus</b> de toutes les autres vues (escape games).</div></div>`);
+  const p=t=>`<div class="card" style="font-size:13px;line-height:1.6;color:var(--ink-2)">${t}</div>`;
+  return ficheTete("Méthodologie","D'où viennent les chiffres","Ce que mesure chaque indicateur, et ce qu'il ne mesure pas.")+
+    sec("Couverture",kv([["Marques d'escape games",nf(nE)],["Centres",nf(nC)],["Salles",nf(nS)],["Parcs enfants",nf(Object.keys(PCE).length)],
+      ["Créneaux escape chargés",nf(SESS.length)],["Dernier relevé",ago(FRESH)]]))+
+    sec("Escape games · origine",p(`Les disponibilités sont relevées automatiquement sur les <b>systèmes de réservation officiels</b> des marques
+      (données publiques affichées au client), toutes les ~10 minutes. Chaque fiche indique sa source et l'heure du dernier relevé.`))+
+    sec("Escape games · occupation",p(`<b>Occupation</b> = part des créneaux publiés qui ne sont plus réservables. Un créneau peut être indisponible
+      parce qu'il est réservé <i>ou</i> parce que la salle est fermée : l'indicateur mesure la <b>disponibilité commerciale</b>, une borne haute de la
+      fréquentation réelle. Les cases de heatmap avec moins de 3 relevés ne sont pas colorées.<br>
+      • <b>${nf(N_NOPUB)} salles</b> n'ont jamais affiché le moindre créneau libre : elles ne publient pas leurs disponibilités (fermée, réservation par
+      téléphone…). Elles sont <b>exclues des taux</b> (sinon elles ressortiraient à « 100 % occupé ») et signalées dans la vue Salles.<br>
+      • Le <b>dernier jour de l'horizon</b>, publié partiellement par les marques, est écarté.<br>
+      • Un créneau qui disparaît avant son heure a été <b>retiré</b> par la marque : ni libre ni occupé.`))+
+    sec("Escape games · prix et joueurs",p(`<b>Prix médian</b> : prix total d'une session pour un <b>groupe type de 4 joueurs</b> (ou la taille min./max. de la
+      salle si 4 sort de sa plage) — une estimation : la taille réelle des groupes n'est pas publiée pour les salles privées.<br>
+      <b>Joueurs et panier réels</b> : quand une session se vend à la place, le nombre de places libres baisse à chaque vente. Suivi depuis le
+      ${frDate(TRACK_START)} ; seules les sessions suivies au moins ${SUIVI_MIN} jours avant leur date comptent. Une session qui passe d'un coup à complet
+      est traitée comme une <b>privatisation</b> et écartée. Marques avec moins de ${ENS_MIN} sessions mesurées : non détaillées.`))+
+    sec("Parcs enfants · mesure",p(`Pour chaque créneau des 14 prochains jours, les <b>places encore réservables</b>, relevées toutes les ~30 minutes sur la
+      billetterie publique (Qweekle, ROLLER, Cité des sciences, Event Calendar, Apex Timing, Wix Bookings). Toutes les entrées d'un parc (enfant, adulte,
+      bébé…) puisent dans la même jauge.<br>
+      • Quand la billetterie n'affiche pas le nombre de places, il est retrouvé en essayant plusieurs quantités ; la <b>jauge</b>, quand elle n'est pas
+      publiée, est la valeur haute habituelle du parc (créneaux à J+7 et au-delà, presque vides).<br>
+      • <b>Arrivées ou présences</b> : Palomano vend un quota d'arrivées par créneau ; Gulli Parc, Rêvopolie, Octopia ou You Kids appliquent la jauge
+      pendant toute la visite. Ces présences sont converties en entrées (× intervalle entre créneaux / durée de visite).<br>
+      • <b>Remplissage</b> = places réservées / jauge : une part de jauge vendue en ligne, pas une fréquentation (les entrées sur place ne sont pas vues).
+      Un créneau qui disparaît de la vente plus de 90 min avant l'heure est compté complet.`))+
+    sec("Parcs enfants · chiffre d'affaires",p(`<b>CA billetterie</b> = places réservées × prix du créneau, avec un panier par place égal à la moyenne des prix
+      enfant et adulte (calage : Palomano Clichy déclare 10,1 € par visiteur). Ni les entrées achetées sur place, ni les anniversaires, ni la restauration.
+      « Déjà réservé » porte sur les créneaux à venir ; « réalisé » sur les créneaux passés, dans leur état juste avant l'ouverture.`))+
+    sec("Parcs enfants · rétrospectif",p(`<b>Historique réel</b> : ROLLER (Palomano Clichy et Alfortville, les 12 You Kids) publie aussi les séances passées
+      avec leurs places restantes finales — ventes en caisse comprises a priori. Les premières semaines, encore vendues sur l'ancien système, sont écartées.
+      Ailleurs, aucune date passée n'est publiée (vérifié : Qweekle, Cité des sciences) : l'historique se construit depuis le ${frDate(PARC_DEBUT)}.<br>
+      <b>Comptes publiés</b> : comptes déposés au greffe (registre public et comptes INPI, tous exercices) de 65 sociétés rattachées à leur parc par
+      adresse d'établissement — CA souvent confidentiel pour les petites sociétés.`))+
+    sec("Parcs enfants · couverture",p(`72 parcs : les 19 Palomano et leurs concurrents qui vendent l'entrée datée en ligne — Rêvopolie, Octopia, Bulles &amp; Billes,
+      Île de la Tortuga, Cité des enfants, Petit Nuage, Le Monde d'Ayden, Les Zacroc's, You Kids, Kawatee, Quand je serai grand, Toumini City,
+      Royal Kids Roissy-en-Brie, Planet Park, les 20 Gulli Parc, Kidz World (Lyon), Little City, Chibitopia, Kizou Aventures.
+      <b>Non mesurables</b> : les autres Royal Kids (dont Montreuil et Épône), Planet Park Cormeilles (billets non datés), Happy City, Youpi'Parc,
+      Ludiqland (paiement sur place), Kingooroo (fermé), Kid's Palace, Filou Planet, L'Île de Robinson (pas de billetterie).`));
 }
 
-/* tooltips partagés (survol + focus) */
-function wireHovers(){
-  const tip=$("#tip");
-  document.querySelectorAll("[data-tip]").forEach(el=>{
-    el.onmouseenter=ev=>{const [a,b,c]=el.dataset.tip.split("|");
-      tip.innerHTML=`<b>${a}</b>${b?`<div>${b}</div>`:""}${c?`<div class="m">${c}</div>`:""}`;
-      tip.style.display="block";move(ev);};
-    el.onmousemove=move;
-    el.onmouseleave=()=>tip.style.display="none";
-  });
-  function move(ev){const t=$("#tip"),w=t.offsetWidth,h=t.offsetHeight;
-    t.style.left=Math.min(ev.clientX+14,innerWidth-w-10)+"px";
-    t.style.top=Math.max(8,ev.clientY-h-12)+"px";}
-}
-
-/* nav + filtres */
-document.querySelectorAll("#nav button").forEach(b=>{b.classList.toggle("on",b.dataset.t===TAB);b.onclick=()=>{
-  document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on",x===b));
-  const avant=TAB==="parcs";TAB=b.dataset.t;
-  history.replaceState(null,"",TAB==="vue"?location.pathname+location.search:"#"+TAB);
-  if(avant!==(TAB==="parcs"))fillVilles();
-  render();};});
-document.querySelectorAll("#segper button").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll("#segper button").forEach(x=>x.classList.toggle("on",x===b));
-  PER=b.dataset.p;render();});
-$("#fville").onchange=e=>{VILLE=e.target.value;render();};
+/* ═════════ branchements ═════════ */
+document.querySelectorAll("#univ button").forEach(b=>b.onclick=()=>setU(b.dataset.u));
+$("#fmarque").onchange=e=>setM(e.target.value);
+$("#fzone").onchange=e=>setZ(e.target.value);
+$("#ov").onclick=e=>{if(e.target.id==="ov")closeFiche();};
+addEventListener("keydown",e=>{if(e.key==="Escape"&&FICHE.length)closeFiche();});
+$("#theme").onclick=()=>{
+  const t=getComputedStyle(document.documentElement).colorScheme==="dark"?"light":"dark";
+  document.documentElement.dataset.theme=t;try{localStorage.setItem("obs_theme",t);}catch(_){}
+  if(window._boot&&(SESS.length||PS))refresh();};
+addEventListener("hashchange",()=>{lireHash();render();const f=FICHE.pop();if(f)openFiche(f.t,f.id);else closeFiche(true);});
 </script>
 </body>
 </html>
