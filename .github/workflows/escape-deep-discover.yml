@@ -47,5 +47,5 @@ jobs:
           git add escape_4escape_companies.json
           git diff --cached --quiet && exit 0
           git commit -q -m "deep-discover: comptes 4escape cachés ${{ github.run_id }}"
-          for i in 1 2 3 4; do git pull --rebase -q origin main && git push -q && exit 0; sleep $((2**i)); done
+          for i in 1 2 3 4; do git pull --rebase --autostash -q origin main && git push -q && exit 0; sleep $((2**i)); done
           echo "::error::push impossible après 4 tentatives"; exit 1
