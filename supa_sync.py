@@ -20,6 +20,7 @@ import glob
 import json
 import os
 import urllib.parse as up
+from datetime import datetime, timedelta, timezone
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
@@ -30,6 +31,9 @@ KEY = os.environ.get("SUPABASE_KEY", "")
 GEO = read_json("escape_geo_cp.json", {}) or {}
 CENTROIDS = GEO.get("_dept_centroids", {})
 CHUNK = 500
+# Rétention : le dashboard lit 30 jours de ventes passées (escape) et 14 jours (parcs). Les
+# sessions plus anciennes ne sont plus envoyées ; supa_purge.py les archive puis les efface.
+RETENTION_JOURS = int(os.environ.get("SUPA_RETENTION_JOURS", "35"))
 GEO_CACHE = "escape_data/geo_centres.json"     # conservé par le cache CI, comme le store
 _geo = read_json(GEO_CACHE, {}) or {}
 
@@ -112,6 +116,7 @@ def main() -> int:
     if not (URL and KEY):
         print("[supa] SUPABASE_URL / SUPABASE_KEY manquants — abandon."); return 1
     enseignes, centres, salles, sessions = {}, {}, {}, {}
+    limite = (datetime.now(timezone.utc).date() - timedelta(days=RETENTION_JOURS)).isoformat()
     for f in glob.glob("escape_data/4escape_all/*.json"):
         st = read_json(f, {}) or {}
         eid = st.get("enseigne_id")
@@ -141,6 +146,8 @@ def main() -> int:
             if rid not in salles:
                 continue
             if args.since and (sess.get("maj") or "") < args.since:
+                continue
+            if sess["date"] < limite:                  # hors rétention : déjà archivé / purgé
                 continue
             sessions[f"{rid}|{sess['date']}|{sess['heure']}"] = {
                 "salle_id": rid, "date": sess["date"], "heure": sess["heure"],

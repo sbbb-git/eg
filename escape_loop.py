@@ -49,7 +49,7 @@ def main() -> int:
     ap.add_argument("--every", type=float, default=10)
     ap.add_argument("--full-first", action="store_true", help="sync complet au premier tour")
     ap.add_argument("--bookeo-every", type=int, default=12)
-    ap.add_argument("--parcs-every", type=int, default=3, help="0 = jamais")
+    ap.add_argument("--parcs-every", type=int, default=2, help="0 = jamais ; 2 = un tour sur deux (~20 min)")
     args = ap.parse_args()
     fin = time.time() + args.minutes * 60
     tour = 0

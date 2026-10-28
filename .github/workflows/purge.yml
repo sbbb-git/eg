@@ -1,0 +1,38 @@
+name: purge (base Supabase légère)
+# Archive dans archive/ puis supprime de Supabase les sessions de plus de 35 jours.
+on:
+  schedule:
+    - cron: "41 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: purge
+  cancel-in-progress: false
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Archiver puis purger les sessions anciennes
+        run: python3 supa_purge.py
+      - name: Commit de l'archive
+        if: always()                    # même si la purge s'arrête en route : ce qui est archivé est gardé
+        run: |
+          git config user.name "escape-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add archive/ 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -q -m "archive: sessions anciennes ${{ github.run_id }}"
+          for i in 1 2 3 4; do git pull --rebase --autostash -q origin main && git push -q && exit 0; sleep $((2**i)); done
+          echo "::error::push impossible après 4 tentatives"; exit 1
