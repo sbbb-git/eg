@@ -135,7 +135,8 @@ ENSEIGNES = {
         }.items()},
     },
     "les-zacrocs": {
-        "nom": "Les Zacroc's", "website": "https://www.leszacrocs.com", "kind": "legacy", "org": "la-boite-aux-enfants",
+        # boutique propre depuis la sortie du groupe Gulli Parc (nov. 2026) ; avant : la-boite-aux-enfants
+        "nom": "Les Zacroc's", "website": "https://www.leszacrocs.com", "kind": "legacy", "org": "leszacrocs",
         "parcs": {"leszacrocs": {**_p("12 rue Paul Langevin", "78370", "Plaisir", "Les Zacroc's Plaisir"),
                                  "cat": "entrees-parc"}},
     },
