@@ -277,6 +277,14 @@ ENSEIGNES = {
     },
 }
 
+# Parcs découverts par la veille (veille.py) : boutique Qweekle nouvelle d'un réseau déjà suivi
+# (même org), qui vend déjà des entrées datées — collectée sans attendre une mise à jour du code.
+for _d in (read_json("parcs_decouverts.json", {}) or {}).get("parcs", []):
+    _e = ENSEIGNES.get(_d.get("enseigne"))
+    if _e and _d.get("id") and _d["id"] not in _e["parcs"]:
+        _e["parcs"][_d["id"]] = {**_p(_d.get("adresse", ""), _d.get("cp", ""), _d.get("ville", ""), _d.get("nom") or _d["id"]),
+                                 **({"cat": _d["cat"]} if _d.get("cat") else {})}
+
 # Choix des produits : la catégorie « entrées famille » du parc et, dedans, l'entrée
 # enfant standard (les variantes restreintes — after school, tout-petits, CSE… —
 # n'ont pas tous les créneaux).

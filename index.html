@@ -528,6 +528,7 @@ async function boot(){
 /* ═════════ parcs enfants : chargés à la demande ═════════ */
 const PARC_DEBUT="2026-10-21";
 let COMPTES=null;                            // comptes publiés (parcs_comptes.json, publié avec la page)
+let VEILLE=null;                             // veille des nouveaux établissements (veille.json, publié avec la page)
 let HIST=null;                               // historique réel ROLLER (parcs_historique.json)
 function chargerParcs(){
   if(PS)return Promise.resolve();
@@ -609,9 +610,9 @@ function zoneLab(z){
 
 /* ═════════ état, adresse partageable ═════════ */
 const VUES={
-  escape:[["synthese","Synthèse"],["marques","Marques"],["lieux","Salles"],["zones","Villes & zones"],["carte","Carte"]],
+  escape:[["synthese","Synthèse"],["marques","Marques"],["lieux","Salles"],["zones","Villes & zones"],["carte","Carte"],["veille","Veille"]],
   parcs:[["synthese","Synthèse"],["marques","Marques"],["lieux","Parcs"],["zones","Villes & régions"],["carte","Carte"],
-         ["historique","Historique"],["comptes","Comptes publiés"]]};
+         ["historique","Historique"],["comptes","Comptes publiés"],["veille","Veille"]]};
 const PERIODES={escape:[["7","7 jours"],["we","Week-end"],["soir","Ce soir"],["all","Tout"]],
                 parcs:[["7","7 jours"],["we","Week-end"],["all","14 jours"]]};
 const S={u:"escape",v:"synthese",p:"7",m:"",z:"",cmp:[]};
@@ -908,7 +909,9 @@ async function render(){
   }
   const a=document.activeElement,fid=a&&a.id,pos=a&&a.selectionStart;
   if(map){map.remove();map=null;}
-  const f={synthese:vSynthese,marques:vMarques,lieux:vLieux,zones:vZones,carte:vCarte,historique:vHistorique,comptes:vComptes}[S.v]||vSynthese;
+  if(S.v==="veille"&&!VEILLE){fetch("veille.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{items:{}}).catch(()=>({items:{}}))
+    .then(d=>{VEILLE=d;if(S.v==="veille")render();});}
+  const f={synthese:vSynthese,marques:vMarques,lieux:vLieux,zones:vZones,carte:vCarte,historique:vHistorique,comptes:vComptes,veille:vVeille}[S.v]||vSynthese;
   v.innerHTML=f();
   if(S.v==="carte")dessinerCarte();
   const rows=U().rows();
@@ -1241,6 +1244,32 @@ function vHistorique(){
     `<div class="card" style="margin-bottom:14px;padding:14px 18px"><span class="ink2" style="font-size:13px">${intro}</span></div>
     <div class="grid">${totaux}</div><h3 class="sec" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:22px 0 10px">Semaine par semaine, par parc</h3>
     <div class="sm-grid">${minis}</div>`;
+}
+
+/* ═════════ Veille : nouveaux établissements (veille.py, quotidien) ═════════ */
+const VB={"intégré automatiquement":"g","suivi":"g","à intégrer":"a","annoncé":"a","à surveiller":"w","boutique sans entrées datées":"w","non suivi":""};
+function vVeille(){
+  if(!VEILLE)return scope("Veille","Chargement…");
+  const init=VEILLE.inventaire_initial||"",esc_=S.u==="escape";
+  const all=Object.entries(VEILLE.items||{}).map(([k,v])=>({k,...v})).filter(x=>x.univers===S.u&&(!S.z||!x.cp||inZone({id:"veille:"+x.k,cp:x.cp,ville:x.ville},S.z)));
+  /* escape : l'annuaire complet sert d'inventaire ; seuls les lieux apparus ensuite sont des nouveautés */
+  const neuf=x=>!esc_||(x.premier_vu||"")>init.slice(0,13);
+  const nouv=all.filter(neuf).sort((a,b)=>(b.premier_vu||"").localeCompare(a.premier_vu||""));
+  const cols=[{k:"premier_vu",lab:"Détecté le",fmt:v=>v?frDate(v.slice(0,10)):"—"},{k:"titre",lab:"Établissement",cls:"w",
+      fmt:(v,r)=>`<b>${esc(v)}</b><span class="sm">${esc(r.detail||"")}</span>`},{k:"type",lab:"Signal"},
+    {k:"ville",lab:"Ville",fmt:(v,r)=>esc(v?ville(v):"")+(r.cp?` <span class="muted">${esc(r.cp)}</span>`:"")},
+    {k:"statut",lab:"Statut",fmt:v=>`<span class="badge ${VB[v]||""}">${esc(v||"")}</span>`},
+    {k:"url",lab:"",sort:false,fmt:v=>v?`<a href="${esc(v)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">ouvrir ↗</a>`:""}];
+  const intro=esc_?`Chaque jour, l'annuaire des escape games d'Île-de-France (escapegame.fr, the-escapers.com) est relu : tout lieu qui y apparaît est signalé ici.`
+    :`Chaque jour : les sites des réseaux (nouvelles boutiques en ligne, ouvertures annoncées) et le registre des entreprises (sociétés de parcs créées depuis moins d'un an). Une nouvelle boutique d'un réseau suivi qui vend déjà des entrées datées est collectée automatiquement.`;
+  const nonSuivis=esc_?all.filter(x=>x.statut==="non suivi"):[];
+  return scope("Veille",`${esc(zoneLab(S.z))} · relue ${ago(VEILLE.generated)} · inventaire de départ le ${init?frDate(init.slice(0,10)):"—"}`)+
+    `<div class="card" style="margin-bottom:14px;padding:14px 18px"><span class="ink2" style="font-size:13px">${intro}</span></div>
+    <div class="grid">${card({title:`Nouveautés (${nouv.length})`,sub:esc_?"Lieux apparus dans l'annuaire depuis l'inventaire de départ.":"Plus récentes en premier.",
+      body:tbl("veille",cols,nouv,{def:{k:"premier_vu",d:-1},empty:"Rien de nouveau depuis l'inventaire de départ."})})}</div>`+
+    (nonSuivis.length?`<div class="grid mt">${card({title:`Lieux de l'annuaire non suivis (${nonSuivis.length})`,
+      sub:"Escape games connus de l'annuaire mais absents des relevés (billetterie non prise en charge ou non identifiée).",
+      body:tbl("veille-ns",cols.filter(c=>c.k!=="premier_vu"),nonSuivis,{def:{k:"titre",d:1},limit:40})})}</div>`:"");
 }
 
 /* ═════════ Comptes publiés ═════════ */

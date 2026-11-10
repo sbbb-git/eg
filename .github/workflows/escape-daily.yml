@@ -13,6 +13,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write          # alerte de veille (nouveaux établissements)
 
 jobs:
   daily:
@@ -68,13 +69,30 @@ jobs:
         run: python3 parcs_historique.py
         continue-on-error: true
 
+      - name: Veille — nouveaux établissements (réseaux, registre, annuaire escape)
+        run: python3 veille.py
+        continue-on-error: true
+
+      - name: Alerte de veille (issue GitHub quand il y a du nouveau)
+        if: hashFiles('veille_nouveautes.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s veille_nouveautes.md ] || exit 0
+          n=$(grep -c '^- ' veille_nouveautes.md)
+          { echo "Nouveaux établissements repérés par la veille ($(date +%d/%m/%Y)) :"; echo; cat veille_nouveautes.md; echo;
+            echo "Détail dans l'onglet Veille du dashboard."; } > corps.md
+          gh issue create --title "Veille : $n nouveauté(s) — $(date +%d/%m/%Y)" --body-file corps.md
+        continue-on-error: true
+
       - name: Commit
         run: |
           git config user.name "escape-bot"
           git config user.email "bot@users.noreply.github.com"
           git add escape_4escape_catalog.json escape_idf_directory.json \
                   escape_sites_cache.json escape_4escape_companies.json \
-                  escape_geo_cache.json parcs_comptes.json parcs_historique.json 2>/dev/null || true
+                  escape_geo_cache.json parcs_comptes.json parcs_historique.json \
+                  veille.json parcs_decouverts.json 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -q -m "data: refresh quotidien ${{ github.run_id }}"
           for i in 1 2 3 4; do git pull --rebase --autostash -q origin main && git push -q && exit 0; sleep $((2**i)); done
