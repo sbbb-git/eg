@@ -313,8 +313,9 @@ def main() -> int:
         v["actif"] = k in vus or not v.get("dernier_vu")
     write_json(OUT, {"generated": maintenant, "inventaire_initial": prec.get("inventaire_initial") or maintenant,
                      "inventaires": inventaires, "items": dict(sorted(items.items()))})
-    write_json(DECOUVERTS, {"maj": maintenant, "parcs": decouverts,
-                            "note": "parcs découverts par veille.py et collectés automatiquement par escape_parcs.py"})
+    if decouverts != (read_json(DECOUVERTS, {}) or {}).get("parcs", []):     # réécrit seulement s'il change
+        write_json(DECOUVERTS, {"maj": maintenant, "parcs": decouverts,
+                                "note": "parcs découverts par veille.py et collectés automatiquement par escape_parcs.py"})
     lignes = []
     for k in nouveaux:
         x = items[k]
