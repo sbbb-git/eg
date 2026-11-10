@@ -40,15 +40,49 @@ SITES = {
     "palomano": ["https://www.palomano.com/", "https://www.palomano.com/parcs/", "https://www.palomano.com/parcs-sud/",
                  "https://www.palomano.com/paris/", "https://www.palomano.com/ouvertures-imminentes/"],
     "gulli-parc": ["https://gulli-parc.com/", "https://gulli-parc.com/nos-parcs/"],
-    "you-kids": ["https://you-kids.fr/"],
-    "royal-kids": ["https://royalkids.fr/", "https://royalkids.fr/nos-parcs/"],
-    "planet-park": ["https://planet-park.com/"],
+    "you-kids": ["https://www.you-kids.fr/"],
+    "royal-kids": ["https://royalkids.fr/", "https://royalkids.fr/les-parcs/"],
+    "planet-park": ["https://www.planet-park.com/"],
 }
+# pages « parc » des sites, suivies à un niveau : une page nouvelle = un parc annoncé ou ouvert
+FICHES = {
+    "gulli-parc": r"https://gulli-parc\.com/nos-parcs/[a-z0-9-]+/?",
+    "you-kids": r"https://www\.you-kids\.fr/[a-z0-9-]+/?",
+    "royal-kids": r"https://royalkids\.fr/(?:les-parcs|parc|parcs)/[a-z0-9-]+/?",
+    "planet-park": r"https://www\.planet-park\.com/[a-z0-9-]+/?",
+}
+PAS_PARC = re.compile(r"/(?:contact|faq|blog|actu[\w-]*|cgv|cgu|conditions[\w-]*|mentions[\w-]*|recrutement|franchise[\w-]*|"
+                      r"anniversaires?|tarifs?|groupes?|cse|ecoles?|wp-[\w-]+|feed|politique[\w-]*|cookies|carte-cadeau|"
+                      r"offres?|nous-rejoindre|activites|devis|css|images?|img|js|vendors?|assets|static|fonts?|uploads?)/?$", re.I)
+
+
+def parc_suivi(eid: str, texte: str) -> bool:
+    """La page (slug ou titre) désigne-t-elle un parc déjà collecté de ce réseau ?"""
+    mots = {m for m in _cle(texte).split("-") if len(m) > 2} - {"parc", "gulli", "you", "kids", "royal", "planet", "park",
+                                                                 "votre", "jeux", "enfant", "enfants", "interieur", "pour"}
+    for pid, i in (P.ENSEIGNES.get(eid) or {}).get("parcs", {}).items():
+        ref = set(_cle(f"{pid} {i.get('nom', '')} {i.get('ville', '')}").split("-"))
+        if mots and len(mots & ref) * 2 >= len(mots):   # « rennes-cesson » ~ Gulli Parc Cesson-Sévigné
+            return True
+    return False
 ANNONCE = re.compile(r"^(Palomano|Gulli Parc|You Kids|Royal Kids|Planet Park)\s+\S", re.I)
 # sociétés : requêtes au registre (+ code NAF quand le mot seul est trop large)
 REQUETES = [("palomano", None), ("gulli parc", None), ("you kids", None), ("royal kids", None),
             ("planet park", None), ("mini ville", "93.29Z"), ("parc de jeux", "93.29Z"),
-            ("parc enfants", "93.29Z"), ("kids park", "93.29Z"), ("city kids", "93.29Z")]
+            ("parc enfants", "93.29Z"), ("kids park", "93.29Z"), ("city kids", "93.29Z"), ("play", "93.29Z"),
+            ("kids", "93.29Z"), ("ludique", "93.29Z"), ("jeux enfants", "93.29Z")]
+# ouvertures repérées à la main (presse, pages cachées des réseaux) : suivies jusqu'à leur boutique
+ANNONCES = [
+    ("Palomano Lyon Est", "palomano", "BRON", "69500", "Galeries Lafayette, 209 boulevard Pinel — ouverture début 2027",
+     "https://www.palomano.com/ouvertures-imminentes/"),
+    ("Planet Park Lille", "planet-park", "RONCHIN", "59790", "rue des Sciences — « ouverture prochainement »", "https://www.planet-park.com/"),
+    ("Planet Park Nîmes", "planet-park", "NIMES", "30000", "411 rue Maurice Schumann — page non publiée, pas de boutique",
+     "https://www.planet-park.com/"),
+    ("Royal Kids Rosny-sous-Bois", "royal-kids", "ROSNY-SOUS-BOIS", "93110", "3 rue Charles Garnier (KIMA PLAY) — pas de boutique",
+     "https://royalkids.fr/les-parcs/"),
+    ("You Kids Marseille (You Jump Plan-de-Campagne)", "you-kids", "LES PENNES-MIRABEAU", "13170",
+     "annoncé sur le site, pas encore de produit You Kids en vente", "https://www.you-kids.fr/"),
+]
 
 
 def _get(url: str, tries: int = 3) -> tuple[int, str]:
@@ -127,12 +161,15 @@ def source_reseaux(signal, decouverts: list) -> None:
     org_de = {cfg.get("org"): eid for eid, cfg in P.ENSEIGNES.items() if cfg.get("org")}
     deja = {d["id"] for d in decouverts}
     for eid, pages in SITES.items():
-        vus = set()
+        vus, fiches = set(), set()
         for url in pages:
             st, h = _get(url)
             if st != 200:
                 continue
             vus |= liens_boutiques(h)
+            if eid in FICHES:
+                fiches |= {u.rstrip("/") + "/" for u in re.findall(FICHES[eid], h)
+                           if not PAS_PARC.search(up.urlparse(u).path.rstrip("/"))}
             if "ouverture" in url:                       # parcs annoncés (titres de la page)
                 for m in re.findall(r"<h[1-4][^>]*>(.*?)</h[1-4]>", h, re.S):
                     t = _texte(m)
@@ -140,6 +177,18 @@ def source_reseaux(signal, decouverts: list) -> None:
                         signal(f"annonce:{eid}:{_cle(t)}", univers="parcs", type="ouverture annoncée", titre=t,
                                marque=eid, statut="annoncé", url=url, detail="page « ouvertures imminentes » du réseau")
             time.sleep(0.5)
+        for u in sorted(fiches - {p.rstrip("/") + "/" for p in pages})[:80]:
+            st, h = _get(u)
+            if st != 200:
+                continue
+            vus |= liens_boutiques(h)
+            t = _texte((re.search(r"<h1[^>]*>(.*?)</h1>", h, re.S) or [None, ""])[1]) or u.rstrip("/").rsplit("/", 1)[-1]
+            t = re.split(r"\s*[:|–-]\s*votre|\s*:\s*parc", t)[0].strip()[:90]
+            slug = up.urlparse(u).path.strip("/").rsplit("/", 1)[-1]
+            signal(f"page:{eid}:{up.urlparse(u).path}", univers="parcs", type="page parc du réseau", titre=t,
+                   marque=eid, statut="suivi" if parc_suivi(eid, slug) else "à vérifier", url=u,
+                   detail=f"fiche parc publiée sur le site {up.urlparse(u).netloc}")
+            time.sleep(0.4)
         for k in sorted(vus - set(connus)):
             plat, _, ref = k.partition(":")
             if plat == "qweekle":
@@ -166,6 +215,12 @@ def source_reseaux(signal, decouverts: list) -> None:
                        detail=f"billetterie {'ROLLER' if plat == 'roller' else 'Qweekle eshop'} liée depuis le site du réseau")
 
 
+def source_annonces(signal) -> None:
+    for nom, eid, ville, cp, detail, url in ANNONCES:
+        signal(f"annonce:{eid}:{_cle(nom)}", univers="parcs", type="ouverture annoncée", titre=nom, marque=eid,
+               ville=ville, cp=cp, statut="annoncé", url=url, detail=detail)
+
+
 def source_registre(signal) -> None:
     connus = {s["siren"] for s in (read_json("parcs_societes.json", {}) or {}).get("entreprises", [])}
     depuis = (date.today() - timedelta(days=365)).isoformat()
@@ -183,6 +238,8 @@ def source_registre(signal) -> None:
                 if r.get("siren") in connus or cree < depuis:
                     continue
                 sg = r.get("siege") or {}
+                if str(r.get("nature_juridique") or "").startswith("92") or (sg.get("code_postal") or "").startswith(("97", "98")):
+                    continue                                  # associations, outre-mer : hors champ
                 nom = r.get("nom_complet") or r.get("nom_raison_sociale") or r["siren"]
                 if not naf and _cle(q).replace("-", "") not in _cle(nom).replace("-", ""):
                     continue                                  # le nom doit contenir la marque
@@ -225,21 +282,28 @@ def main() -> int:
     prec = read_json(OUT, {}) or {}
     items = prec.get("items", {})
     initial = not items
+    inventaires = dict(prec.get("inventaires") or {})
+    if items and not inventaires:                   # veille.json d'avant ce suivi par type
+        inventaires = {v.get("type"): prec.get("inventaire_initial") for v in items.values()}
     dec = read_json(DECOUVERTS, {}) or {}
     decouverts = dec.get("parcs", [])
     maintenant = datetime.now(timezone.utc).isoformat(timespec="seconds")
     nouveaux, vus = [], set()
 
+    types_connus = set(inventaires)
+
     def signal(cle, **x):
         vus.add(cle)
         old = items.get(cle)
         items[cle] = {**(old or {}), **x, "premier_vu": (old or {}).get("premier_vu") or maintenant, "dernier_vu": maintenant}
-        if not old and not initial:
+        inventaires.setdefault(x.get("type"), maintenant)
+        if not old and not initial and x.get("type") in types_connus and x.get("statut") != "suivi":
             nouveaux.append(cle)
         elif old and old.get("statut") != x.get("statut") and x.get("statut") == "intégré automatiquement":
             nouveaux.append(cle)
 
-    for nom, f in (("réseaux", lambda: source_reseaux(signal, decouverts)), ("registre", lambda: source_registre(signal)),
+    for nom, f in (("réseaux", lambda: source_reseaux(signal, decouverts)), ("annonces", lambda: source_annonces(signal)),
+                   ("registre", lambda: source_registre(signal)),
                    ("escape", lambda: source_escape(signal))):
         try:
             f()
@@ -248,7 +312,7 @@ def main() -> int:
     for k, v in items.items():                       # disparu des sources : gardé, marqué
         v["actif"] = k in vus or not v.get("dernier_vu")
     write_json(OUT, {"generated": maintenant, "inventaire_initial": prec.get("inventaire_initial") or maintenant,
-                     "items": dict(sorted(items.items()))})
+                     "inventaires": inventaires, "items": dict(sorted(items.items()))})
     write_json(DECOUVERTS, {"maj": maintenant, "parcs": decouverts,
                             "note": "parcs découverts par veille.py et collectés automatiquement par escape_parcs.py"})
     lignes = []

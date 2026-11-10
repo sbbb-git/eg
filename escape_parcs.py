@@ -118,6 +118,8 @@ ENSEIGNES = {
             "gulli-parc-meaux": _p("71 rue Aristide Briand", "77124", "Villenoy", "Gulli Parc Meaux"),
             "gulli-parc-sainte-genevieve-des-bois": _p("20 avenue de la Croix Blanche", "91700",
                                                        "Sainte-Geneviève-des-Bois", "Gulli Parc Sainte-Geneviève"),
+            # ouverture le 19/12/2026, à l'adresse des ex-Zacroc's (repris sous l'enseigne Gulli Parc)
+            "gulli-parc-plaisir": _p("12 rue Paul Langevin (Carré des Ébisoires)", "78370", "Plaisir", "Gulli Parc Plaisir"),
             # hors Île-de-France (réseau de 20 parcs, benchmark)
             "gulli-parc-aix-en-provence": _p("", "13290", "Aix-en-Provence", "Gulli Parc Aix-en-Provence"),
             "gulli-parc-audincourt": _p("", "25400", "Audincourt", "Gulli Parc Audincourt"),
@@ -134,12 +136,8 @@ ENSEIGNES = {
             "gulli-parc-wambrechies": _p("", "59118", "Wambrechies", "Gulli Parc Wambrechies"),
         }.items()},
     },
-    "les-zacrocs": {
-        # boutique propre depuis la sortie du groupe Gulli Parc (nov. 2026) ; avant : la-boite-aux-enfants
-        "nom": "Les Zacroc's", "website": "https://www.leszacrocs.com", "kind": "legacy", "org": "leszacrocs",
-        "parcs": {"leszacrocs": {**_p("12 rue Paul Langevin", "78370", "Plaisir", "Les Zacroc's Plaisir"),
-                                 "cat": "entrees-parc"}},
-    },
+    # Les Zacroc's (Plaisir) : plus aucune entrée datée depuis le 01/11/2026 ; le parc rouvre sous
+    # l'enseigne Gulli Parc le 19/12/2026 (gulli-parc-plaisir, même adresse). Retiré de la collecte.
     "you-kids": {
         "nom": "You Kids", "website": "https://you-kids.fr/montigny", "kind": "roller",
         # billetterie partagée avec le trampoline You Jump : on suit le seul produit You Kids
@@ -161,6 +159,8 @@ ENSEIGNES = {
                    ("you-kids-caen", "14000", "Caen", "You Kids Caen", "youjumpcaen", "shop", "1370801"),
                    ("you-kids-lille", "59520", "Marquette-lez-Lille", "You Kids Lille-Marquette",
                     "youjumplille", "youkids", "1364866"),
+                   ("you-kids-perpignan", "66450", "Pollestres", "You Kids Perpignan-Pollestres",
+                    "youfunperpignan", "shop", "1152827"),
                    ("you-kids-montpellier", "34970", "Lattes", "You Kids Montpellier-Lattes",
                     "youjumpmontpellierlattes", "youkids", "1368650"),
                    ("you-kids-nantes", "44800", "Saint-Herblain", "You Kids Nantes Atlantis",
